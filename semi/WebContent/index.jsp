@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	sdf
+	<a href="/views/paymentAPI.html">결제 API</a>
 </body>
 </html>
