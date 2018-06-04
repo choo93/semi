@@ -11,7 +11,7 @@
 	<header>
 	</header>
 	<section>
-		메인 부분 창호가 없어요
+		메인 부분 창호가 없어요!!
 	</section>
 	<footer></footer>
 </body>
