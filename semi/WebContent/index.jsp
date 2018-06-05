@@ -119,7 +119,6 @@
 	quae quia cum, natus unde quidem beatae ullam iste error porro fuga,
 	repudiandae itaque non. A sapiente ea amet fuga laudantium officiis ut.
 	</section>
-	<!-- sd -->
 	<%@ include file="footer.jsp"%>
 </body>
 </html>
