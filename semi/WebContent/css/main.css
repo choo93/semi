@@ -2,7 +2,7 @@
 a{text-decoration:none;}
 li{list-style:none;}
 
-/* scroll */
+/* header - scroll */
 .scroll header{
     left:-170px;
 }
@@ -16,13 +16,13 @@ li{list-style:none;}
     visibility:hidden;
 }
 .scroll section{
-    padding-left:70px;
+    padding-left:51px;
 }
 .scroll footer{
     padding-left:60px;
 }
 
-/* 헤더 부분 */
+/* header */
 #menuIcon{
     display:none;
     width:50px; 
@@ -57,20 +57,19 @@ h1{
     color:#007dc1;
 }
 
-/* 메인 부분 */
+/* main */
 section{
-    padding:20px;
-    padding-left:240px;
+    padding-left:221px;
     font-size:14px;
     transition:padding 0.8s;
 }
-section div{
+section #test{
     background-color:#007dc1;
     width:100%;
     height:500px;
 }
 
-/* 푸터 부분 */
+/* footer */
 footer{
     padding-left:230px;
     background-color:black;

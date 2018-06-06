@@ -1,4 +1,4 @@
-/* javascript, jquery */
+/* scrolling */
 $(window).scroll(function() {
   $el = $('#scroll');
   
@@ -6,9 +6,6 @@ $(window).scroll(function() {
   else $el.removeClass('scroll');
 });
 
-//$('#menuIcon').click(
-//    $('#scroll').addClass('scroll');
-//);
 function menu(){
     $('#scroll').removeClass('scroll');
 }

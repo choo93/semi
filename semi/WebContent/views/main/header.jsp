@@ -8,7 +8,7 @@
 </head>
 <body>
 	<header>
-		<img src="image/menu.png" id="menuIcon" onclick="menu();">
+		<img src="../../image/menu.png" id="menuIcon" onclick="menu();">
 		<h1>설레임</h1>
 		<ul class="menu">
 			<li><a href="#">하이라이트</a></li>
