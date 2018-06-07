@@ -10,8 +10,7 @@
 <script src="js/main.js"></script>
 </head>
 <body id="scroll">
-	<jsp:include page="/views/main/header.jsp" />
-	<h2>안녕하세요?</h2>
+	<%@ include file="/views/main/header.jsp" %>
 	<section>
 		<div id="test"></div>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, id!
@@ -1148,6 +1147,6 @@
 		provident obcaecati enim dolor quia rem porro, ducimus quam, rerum
 		aliquam illo eveniet. Mollitia delectus reiciendis esse!
 	</section>
-	<jsp:include page="/views/main/footer.jsp" />
+	<%@ include file="/views/main/header.jsp" %>
 </body>
 </html>

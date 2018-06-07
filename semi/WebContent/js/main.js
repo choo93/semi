@@ -9,7 +9,3 @@ $(window).scroll(function() {
 function menu(){
     $('#scroll').removeClass('scroll');
 }
-
-$(document).ready(function(){
-    $('div.')
-});

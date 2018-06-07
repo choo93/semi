@@ -2,26 +2,6 @@
 a{text-decoration:none;color:black;}
 li{list-style:none;}
 
-/* header - scroll */
-.scroll header{
-    left:-170px;
-}
-.scroll #menu_icon{
-    display:block;
-}
-.scroll h1{
-    visibility:hidden;
-}
-.scroll .menu{
-    visibility:hidden;
-}
-.scroll section{
-    padding-left:51px;
-}
-.scroll footer{
-    padding-left:60px;
-}
-
 /* header */
 #menu_icon{
     display:none;
@@ -46,26 +26,6 @@ h1{
     font-size:18px; padding:20px;
 }
 
-/* navigation */
-.main_list{
-    overflow:hidden;
-    height:44px;
-}
-.main_list ul
-/*
-.menu li a{
-    color:#555;
-    font-size:12px;
-    height:30px;
-    line-height:30px;
-    display:block;
-    padding:0 20px;
-}
-.menu li a:hover{
-    color:#007dc1;
-}
-*/
-
 /* main */
 section{
     padding-left:221px;
@@ -77,6 +37,27 @@ section #test{
     width:100%;
     height:500px;
 }
+
+/* header - scroll */
+.scroll header{
+    left:-170px;
+}
+.scroll #menu_icon{
+    display:block;
+}
+.scroll h1{
+    visibility:hidden;
+}
+.scroll .menu{
+    visibility:hidden;
+}
+.scroll section{
+    padding-left:51px;
+}
+.scroll footer{
+    padding-left:60px;
+}
+
 
 /* footer */
 footer{
