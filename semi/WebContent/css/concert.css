@@ -101,9 +101,9 @@ dl>hr {
 	height: 530px;
 }
 
-#contentBottom>div{
+#contentBottom>div {
 	width: 950px;
-	margin : auto;
+	margin: auto;
 }
 
 #basicInfo {
@@ -112,6 +112,9 @@ dl>hr {
 	border-top: 3px solid black;
 	background-color: RGB(245, 245, 245);
 	margin-bottom: 30px;
+	font-size: 25px;
+	line-height: 40px;
+	padding-left: 10px;
 }
 
 #map {
@@ -120,6 +123,19 @@ dl>hr {
 	border-top: 3px solid black;
 	background-color: RGB(245, 245, 245);
 	margin-bottom: 60px;
+	font-size: 25px;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+#basicInfo>div {
+	float: right;
+	padding-right: 10px;
+}
+
+#map>div {
+	float: right;
+	padding-right: 10px;
 }
 
 #comment {

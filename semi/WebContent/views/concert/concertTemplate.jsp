@@ -21,12 +21,12 @@
             <div id="contentTop">
                 <div id="info">
                     <div id="poster">
-                        <img alt="공연 포스터">
+                        <img src=${requestScope.concertInfo.concertPhoto } alt="공연 포스터">
                     </div>
                     <div id="reserveInfo">
                         <dl>
                             <dt>장르</dt>
-                            <dd>내용</dd>
+                            <dd>${requestScope.concertInfo.concertGanre }</dd>
                             <dt>일시</dt>
                             <dd></dd>
                             <dt>장소</dt>
@@ -48,10 +48,14 @@
             </div>
             <div id="contentBottom">
             	<div>
-                	<div id="basicInfo">기본 정보</div>
+                	<div id="basicInfo">기본 정보
+                		<div>▼</div>
+                	</div>
                 </div>
                 <div>
-                	<div id="map">지도 & 교통편</div>
+                	<div id="map">지도 & 교통편
+                		<div>▼</div>
+                	</div>
                 </div>
                 <div>
                 	<div id="comment"></div>
