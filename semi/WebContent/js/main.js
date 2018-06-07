@@ -9,3 +9,18 @@ $(window).scroll(function() {
 function menu(){
     $('#scroll').removeClass('scroll');
 }
+
+$(document).ready(function(){
+   $('.menu_one').click(function(){
+      $('.sub_menu_one').slideToggle(); 
+   });
+   $('.menu_two').click(function(){
+      $('.sub_menu_two').slideToggle(); 
+   }); 
+   $('.menu_three').click(function(){
+      $('.sub_menu_three').slideToggle(); 
+   }); 
+   $('.menu_four').click(function(){
+      $('.sub_menu_four').slideToggle(); 
+   });     
+});

@@ -25,7 +25,25 @@ header{
 h1{
     font-size:18px; padding:20px;
 }
-
+header>ul{
+    padding:20px; font-size:15px;
+}
+header>ul>li>ul{
+    display:none;
+    padding-left:20px;
+    padding-bottom:10px;
+}
+/*
+.menu{
+    
+}
+.sub_menu{
+    display:none;
+}
+.sub_select{
+    display:block;
+}
+*/
 /* main */
 section{
     padding-left:221px;
