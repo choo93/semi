@@ -19,14 +19,13 @@ public class ConcertInfoServlet extends HttpServlet {
     public ConcertInfoServlet() {
         super();
     }
-
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int indexNo = Integer.parseInt(request.getParameter("indexNo"));
 		
 		ConcertInfo ci = new ConcertService().selectAllInfo(1);
-		System.out.println(ci);
+
 		if(ci!=null) {
-			
 			RequestDispatcher view = request.getRequestDispatcher("/views/concert/concertTemplate.jsp");
 			request.setAttribute("concertInfo", ci);
 			view.forward(request, response);

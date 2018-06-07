@@ -16,7 +16,7 @@
 		<div id="wrap">
         <div id="contents">
             <div id="contentTitle">
-				제목
+				${requestScope.concertInfo.concertTitle }
             </div>
             <div id="contentTop">
                 <div id="info">
@@ -28,17 +28,17 @@
                             <dt>장르</dt>
                             <dd>${requestScope.concertInfo.concertGanre }</dd>
                             <dt>일시</dt>
-                            <dd></dd>
+                            <dd>${requestScope.concertInfo.concertDate }</dd>
                             <dt>장소</dt>
-                            <dd></dd>
+                            <dd>${requestScope.concertInfo.concertAddress }</dd>
                             <hr>
                             <dt>연령대</dt>
-                            <dd></dd>
+                            <dd>${requestScope.concertInfo.concertAge }</dd>
                             <dt>상영시간</dt>
                             <dd></dd>
                             <hr>
                             <dt>가격</dt>
-                            <dd></dd>
+                            <dd>${requestScope.concertInfo.concertPrice }</dd>
                         </dl>
                     </div>
                 </div>
@@ -58,7 +58,11 @@
                 	</div>
                 </div>
                 <div>
-                	<div id="comment"></div>
+                	<div id="comment">
+                		<textarea>
+                    	</textarea>
+                    	<input type="submit" value="작성">
+                	</div>
                 </div>
             </div>
         </div>
