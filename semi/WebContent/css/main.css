@@ -1,5 +1,5 @@
 *{margin:0; padding:0;}
-a{text-decoration:none;}
+a{text-decoration:none;color:black;}
 li{list-style:none;}
 
 /* header - scroll */
@@ -45,6 +45,14 @@ header{
 h1{
     font-size:18px; padding:20px;
 }
+
+/* navigation */
+.main_list{
+    overflow:hidden;
+    height:44px;
+}
+.main_list ul
+/*
 .menu li a{
     color:#555;
     font-size:12px;
@@ -56,6 +64,7 @@ h1{
 .menu li a:hover{
     color:#007dc1;
 }
+*/
 
 /* main */
 section{

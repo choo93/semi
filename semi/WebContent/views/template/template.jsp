@@ -12,8 +12,7 @@
 <body id="scroll">
 	<jsp:include page="/views/main/header.jsp" />
 	<section>
-		<div style="width:100%; height:1000px; background-color:yellow;"></div>
-		test test test
+		<div style="width:100%; height:1000px; background-color:pink;"></div>
 	</section>
 	<jsp:include page="/views/main/footer.jsp" />
 </body>
