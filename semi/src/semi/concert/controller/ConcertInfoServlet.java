@@ -26,7 +26,7 @@ public class ConcertInfoServlet extends HttpServlet {
 		ConcertInfo ci = new ConcertService().selectAllInfo(1);
 
 		if(ci!=null) {
-			RequestDispatcher view = request.getRequestDispatcher("/views/concert/concertTemplate.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/views/concert/concertInfoTemplate.jsp");
 			request.setAttribute("concertInfo", ci);
 			view.forward(request, response);
 		}
