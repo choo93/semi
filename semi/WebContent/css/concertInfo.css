@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+div {
+	border: 0.5px solid black;
+}
+
+#contents {
+	width: 100%;
+}
+
+#contentTitle {
+	width: 100%;
+	height: 100px;
+	border-bottom: 1px solid lightgrey;
+	font-size: 40px;
+	font-size: 40px;
+	padding-left: 50px;
+	line-height: 80px;
+}
+
+#contentTop {
+	width: 950px;
+	height: 455px;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+#info {
+	width: 630px;
+	height: 100%;
+	float: left;
+	border-top: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
+}
+
+#poster {
+	width: 55%;
+	height: 100%;
+	float: left;
+}
+
+#reserveInfo {
+	width: 45%;
+	height: 100%;
+	float: left;
+}
+
+dl {
+	padding-top: 15px;
+}
+
+dt {
+	width: 70px;
+	display: block;
+	float: left;
+	color: gray;
+	font-size: 14px;
+}
+
+dd {
+	width: 200px;
+	height: 40px;
+	display: block;
+	padding-left: 100px;
+	font-weight: bold
+}
+
+dl>hr {
+	margin-bottom: 15px;
+}
+
+#reserve {
+	width: 285px;
+	height: 100%;
+	float: right;
+	background-color: RGB(0, 125, 195);
+}
+
+#contentBottom {
+	width: 100%;
+	height: 530px;
+}
+
+#contentBottom>div {
+	width: 950px;
+	margin: auto;
+}
+
+#basicInfo {
+	width: 635px;
+	height: 55px;
+	border-top: 3px solid black;
+	background-color: RGB(245, 245, 245);
+	margin-bottom: 30px;
+	font-size: 25px;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+#map {
+	width: 635px;
+	height: 55px;
+	border-top: 3px solid black;
+	background-color: RGB(245, 245, 245);
+	margin-bottom: 60px;
+	font-size: 25px;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+#basicInfo>div {
+	float: right;
+	padding-right: 10px;
+}
+
+#map>div {
+	float: right;
+	padding-right: 10px;
+}
+
+#comment {
+	width: 635px;
+	height: 240px;
+	background-color: RGB(245, 245, 245);
+}
+
+textarea {
+	margin-left: 50px;
+	margin-top : 20px;
+	width: 530px;
+	height: 180px;
+	display: block;
+}
+
+#comment>input {
+	width: 70px;
+	height: 30px;
+	float: right;
+	margin-top: 5px;
+	margin-right: 50px;
+}
+
+#topFooter {
+	width: 950px;
+	height: 190px;
+	margin: auto;
+	border-top: 3px solid black;
+}
+
+#bottomFooter {
+	width: 100%;
+	height: 150px;
+	background-color: RGB(244, 242, 242);
+}
