@@ -31,7 +31,6 @@ public class ConcertInfoServlet extends HttpServlet {
 			view.forward(request, response);
 		}
 		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
