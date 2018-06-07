@@ -6,7 +6,7 @@ li{list-style:none;}
 .scroll header{
     left:-170px;
 }
-.scroll #menuIcon{
+.scroll #menu_icon{
     display:block;
 }
 .scroll h1{
@@ -23,13 +23,13 @@ li{list-style:none;}
 }
 
 /* header */
-#menuIcon{
+#menu_icon{
     display:none;
     width:50px; 
     float:right;
     cursor:pointer;
 }
-#menuIcon:hover header{
+#menu_icon:hover header{
     width:220px;
 }
 header{
