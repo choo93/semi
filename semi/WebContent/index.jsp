@@ -1147,6 +1147,6 @@
 		provident obcaecati enim dolor quia rem porro, ducimus quam, rerum
 		aliquam illo eveniet. Mollitia delectus reiciendis esse!
 	</section>
-	<%@ include file="/views/main/header.jsp" %>
+	<%@ include file="/views/main/footer.jsp" %>
 </body>
 </html>
