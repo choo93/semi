@@ -16,7 +16,7 @@
 	<%@ include file="/views/main/header.jsp" %>
 	<section>
 	<div style="width:100%; height:1200px;" >
-	<a href="#">
+	<a href="/views/travelReady/GuideBookMap.jsp">
 	<div style="width:50%; height:400px; background-color:blue; float:left; line-height:300px;">가이드북 & 지도</div></a>
 	<div style="width:50%; height:400px; background-color:red; float:right;"></div>
 	<div style="width:50%; height:400px; background-color:pink; float:left;"></div>
