@@ -11,6 +11,7 @@
 </head>
 <body id="scroll">
 	<jsp:include page="/views/main/header.jsp" />
+	<h2>안녕하세요?</h2>
 	<section>
 		<div id="test"></div>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, id!
