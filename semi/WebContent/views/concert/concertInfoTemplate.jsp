@@ -9,6 +9,40 @@
 	<link rel="stylesheet" href="/css/concertInfo.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
+	<script src="/js/concertInfo.js"></script>
+	
+	<script>
+        // 이거는 자바 스크립트 선언에서 가져오는 듯
+        function initMap() {
+        	var uluru = {
+                    lat: ${requestScope.concertInfo.concertLatitude}, 
+                lng: ${requestScope.concertInfo.concertLongtitude}
+            };
+            var map = new google.maps.Map(document.getElementById('mapContent'), {
+                zoom: 18,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+        
+        var latitude;
+        var longitude;
+        window.onload = function() {
+            navigator.geolocation.getCurrentPosition(showYourLocation);
+        }
+
+        function showYourLocation(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+        }
+	</script>
+	
+	
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap">
+    </script>
 </head>
 <body id="scroll">
 	<jsp:include page="/views/main/header.jsp" />
@@ -35,7 +69,7 @@
                             <dt>연령대</dt>
                             <dd>${requestScope.concertInfo.concertAge }</dd>
                             <dt>상영시간</dt>
-                            <dd></dd>
+                            <dd>${requestScope.concertInfo.concertShowTime }</dd>
                             <hr>
                             <dt>가격</dt>
                             <dd>${requestScope.concertInfo.concertPrice }</dd>
@@ -49,12 +83,18 @@
             <div id="contentBottom">
             	<div>
                 	<div id="basicInfo">기본 정보
-                		<div>▼</div>
+                		<div id="toggleBtn1">▼</div>
+                	</div>
+                	<div id="basicInfoContent">
+                		${requestScope.concertInfo.concertExplain }
                 	</div>
                 </div>
                 <div>
                 	<div id="map">지도 & 교통편
-                		<div>▼</div>
+                		<div id="toggleBtn2">▼</div>
+                	</div>
+                	<div id="mapContent" style="width:635px; height:300px;">
+                		
                 	</div>
                 </div>
                 <div>
