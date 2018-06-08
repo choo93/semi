@@ -30,21 +30,20 @@
     margin-left: 15%;
     margin-bottom:10%;
 	width:1200px;
-	height:1400px;
-	background : skyblue;
+	height:1800px;
+	
 }
 
 
 #contents{
 	width: 100%;
 	height: 150px;
-	background : green;
+	background-color : RGB(0, 125, 195);
 }
 
 #contents-1{
 	width: 70%;
 	height: 100%;
-	background : green;
 	float : left;
 }
 
@@ -63,17 +62,6 @@
 	background-color : RGB(0, 125, 195);
 	font-size : 20px;
 	color : white;
-	
-}
-
-#contentGido {
-	width: 30%;
-	height: 100%;
-	background-color :RGB(0, 125, 195);
-	font-size : 20px;
-	color : white;
-	text-align : center;
-	float : left;
 	
 }
 
@@ -98,6 +86,7 @@
 	width:100%;
 	height:100px;
 	border : 2px solid black;
+	background-color : #363636;
 }
 #hotelSubPhoto1{
 	width:20%;
@@ -134,32 +123,35 @@
 #hotelExplain{
 	width: 100%;
 	height : 500px;
-	background : orange;
+	
 }
 
 #hotelName{
 	width: 100%;
 	height : 100px;
-	background : skyblue;
-	font-size : 30px;
+	border : 1px solid black;
 }
-#hotelPhone{
+#hotelTotalExplain{
 	width: 100%;
-	height : 100px;
-	background : yellow;
-	font-size : 30px;
+	height : 236px;
+	border : 1px solid black;
 }
 #hotelPrice{
 	width: 100%;
 	height : 300px;
-	background : pink;
-	
+    border : 1px solid black;	
 }
-#hotelTotalExplain{
+#hotelPhoneAndGido{
 	width:100%;
-	height :236px;
-	background : skyblue;
+	height :100px;
+	border : 1px solid black;
 }
+#contentFullGido {
+	width: 100%;
+	height: 400px;
+	background-color:red;
+}
+
 
 </style>
 
@@ -171,7 +163,7 @@
 	<div id="contentTitle">호텔 아띠 충무로</div>
 	<div id="hotelAddress">대한민국 > 서울  > 중구</div>
 	</div>
-	<div id="contentGido">상세  지도</div></div>
+	</div>
 	
 	
 	<div id="hotelPhoto">
@@ -181,6 +173,7 @@
 	<img class="mySlides" src="/image/bg3.jpg" height="300px" width="600px">
 	<img class="mySlides" src="/image/menu.png" height="300px" width="600px">
 	<img class="mySlides" src="/image/" height="300px" width="600px">
+	
 	</div>
 	
 	<div id="hotelInfoSubPhoto">
@@ -197,13 +190,10 @@
 	
 	
 	</div>
-	
-	<div id="hotelExplain">
-	<div id="hotelName">호텔이름 : KH정보교육원</div>
-	<div id="hotelPhone">호텔 전화번호 : 010 - 1111- 2222</div>
-	<div id="hotelPrice"><h2>호텔 가격(방마다)</h2> <h4><br> 싱글룸 : 15만원 <br> 더블룸 : 17만원   <br> 패밀리룸 : 19만원  <br> 스텐다드룸 : 16만원</h4></div>
 	</div>
 	
+	<div id="hotelExplain">
+	<div id="hotelName"><h2> 호텔이름</h2>  <br><h3>KH정보교육원</h3></div>
 	<div id="hotelTotalExplain"><h2>호텔 설명 </h2><br>서울 중심에 자리한 럭셔리 호텔인 서울 신라 호텔은 3호선 동대입구역 5번 출구에서 도보로 
 	5분 거리에 있으며 명동과 동대문 방면으로 무료 셔틀버스를 운행하고 있습니다. 호텔에서 번화한 명동 거리까지는 차로 15분, 
 	시청까지는 차로 약 20분이 소요됩니다.호텔 내에 유명 작가들의 조각상이 모여있는 야외조각공원과 겔랑 스파가 있어 여유로운 휴식 시간을
@@ -214,6 +204,12 @@
 	    욕조, 비데, 헤어드라이어 등이 완비되어 있습니다. 또한, 이그제큐티브 이상 객실에서는 이규제큐티브 라운지를 이용하실 수 있습니다.
 	    호텔 내에 중식, 일식, 한식, 프렌치, 뷔페 등 다양한 메뉴를 선보이는 5개의 레스토랑과 1개의 바가 있어 다이닝 선택의 폭이 넓습니다. 
 	    매일 아침 조식은 1층 파크뷰에서 즉석에서 조리한 뷔페를 즐기실 수 있으며 별도의 요금이 발생합니다.</div>
+	<div id="hotelPrice"><h2>호텔 가격(방마다)</h2> <h4><br> 싱글룸 : 15만원 <br> 더블룸 : 17만원   <br> 패밀리룸 : 19만원  <br> 스텐다드룸 : 16만원</h4></div>
+	
+	<div id=""></div>
+	<div id="hotelPhone"><h2>호텔 전화번호</h2> <br><h3>010 - 1111- 2222</h3></div>
+	
+	<div id="contentGido">상세  지도</div>
 	
 	</div>
 	</section>
@@ -246,6 +242,21 @@ function showDivs(n) {
   }
   x[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " w3-border-red";
+}
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 5000); // Change image every 2 seconds
 }
 </script>
 	
