@@ -13,7 +13,7 @@
 	<%@ include file="/views/main/header.jsp" %>
 	<section>
 		<div style="width:100%; height:1000px; background-color:blue;">
-			
+			<img src="../../image/bg1.jpg" style="width:100%; float:right;"/>
 		</div>
 	</section>
 	<%@ include file="/views/main/footer.jsp" %>
