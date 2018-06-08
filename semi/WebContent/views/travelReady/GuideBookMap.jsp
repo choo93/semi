@@ -9,8 +9,13 @@
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>	
 </head>
+	
 
 	<style>
+	div{
+	overflow-x:hidden;
+		overflow-y:hidden;
+	}
 	#pagetitle
 	{
 	position:relative;
@@ -135,7 +140,7 @@
 			<div id="pagecontent">
 				<section id="content">
 					<div id="guidebookRq">
-						<a href="#">
+						<a href="GuideBookRequest.jsp">
 							무료가이드북&지도<br>
 							<strong>
 								 신청하기
@@ -148,9 +153,21 @@
 							<div class="name">2018서울 관광가이드북</div>
 							<div class="button">PDF View<br>(76MB)</div>
 						</div>
-						<div class="item"></div>
-						<div class="item"></div>
-						<div class="item"></div>
+						<div class="item">
+							<div class="img">2</div>
+							<div class="name">2</div>
+							<div class="button">2</div>
+						</div>
+						<div class="item"> 
+							<div class="img">3</div>
+							<div class="name">3</div>
+							<div class="button">3</div>
+						</div>
+						<div class="item">
+							<div class="img">4</div>
+							<div class="name">4</div>
+							<div class="button">4</div>
+						</div>
 						<div class="item"></div>
 						<div class="item"></div>
 						<div class="item"></div>
