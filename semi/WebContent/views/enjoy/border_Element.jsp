@@ -100,13 +100,12 @@
 				</div>
 			</section>
 			<!-- ▼ 메뉴 토글1 스크립트 -->
-			var toggleText1 = true;
-
+			
 			<script>
+				var toggleText1 = true;
 				$('#2').click(function () {
 					
 					$('#1').toggle('display');
-					$('#3').toggle('display');	
 					if(toggleText1==true)				
 					{
 						window.document.getElementsByClassName('toggleText')[0].innerHTML=("▼");

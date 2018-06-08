@@ -10,16 +10,25 @@ public class ConcertInfo {
 	private String concertGanre;
 	private String concertAddress;
 	private String concertAge;
+	private String concertShowTime;
 	private int concertPrice;
 	private String concertExplain;
 	private String concertPhone;
 	private String concertSite;
 	private String concertTraffic;
-	private int concertLatitude;
-	private int concertLongtitude;
-	
+	private double concertLatitude;
+	private double concertLongtitude;
 	
 	public ConcertInfo() {}
+
+	public String getConcertShowTime() {
+		return concertShowTime;
+	}
+
+
+	public void setConcertShowTime(String concertShowTime) {
+		this.concertShowTime = concertShowTime;
+	}
 
 
 	public int getIndexNo() {
@@ -162,22 +171,22 @@ public class ConcertInfo {
 	}
 
 
-	public int getConcertLatitude() {
+	public double getConcertLatitude() {
 		return concertLatitude;
 	}
 
 
-	public void setConcertLatitude(int concertLatitude) {
+	public void setConcertLatitude(double concertLatitude) {
 		this.concertLatitude = concertLatitude;
 	}
 
 
-	public int getConcertLongtitude() {
+	public double getConcertLongtitude() {
 		return concertLongtitude;
 	}
 
 
-	public void setConcertLongtitude(int concertLongtitude) {
+	public void setConcertLongtitude(double concertLongtitude) {
 		this.concertLongtitude = concertLongtitude;
 	}
 
