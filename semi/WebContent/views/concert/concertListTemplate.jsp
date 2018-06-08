@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+	import="semi.concert.model.vo.*" import="java.util.*"
+%>
+<%
+	ConcertPageData cpd = (ConcertPageData)request.getAttribute("concertPageData");
+	ArrayList<ConcertInfo> list = cpd.getConcertList();
+	String pageNavi = cpd.getPageNavi();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,24 +17,27 @@
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
 </head>
+<style>
+	
+</style>
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp" %>
 	<section>
 		
 		<div id="title">
-        
+        	공연 예약
     	</div>
     	
-    	<%for(int i=0;i<5;i++){ %>
+    	<%for(ConcertInfo ci : list){ %>
     	
     	<div id="contents">
-        	<img alt="포스터">
-        	<div id="explain"></div>
+        	<img src="<%=ci.getConcertPhoto() %>" alt="포스터">
+        	<div id="explain"><%=ci.getConcertSummary() %></div>
     	</div>
     	
     	<%} %>
 		
-		
+		<label id="navi"><%= pageNavi %></label>
 	</section>
 	<%@ include file="/views/main/footer.jsp" %>
 </body>
