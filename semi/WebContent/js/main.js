@@ -2,7 +2,7 @@
 $(window).scroll(function() {
   $el = $('#scroll');
   
-  if($(this).scrollTop() >= 100) $el.addClass('scroll');
+  if($(this).scrollTop() >= 10) $el.addClass('scroll');
   else $el.removeClass('scroll');
 });
 
