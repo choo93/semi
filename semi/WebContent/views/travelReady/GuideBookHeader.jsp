@@ -34,7 +34,7 @@
 <body>
 		<div id="pagetitle">
 			<div id="title">
-				<p style="height:50px;">현재위치 : 여행준비 > 가이드북&지도</p>
+				<p style="height:50px;">현재위치  : 여행준비 > 가이드북&지도</p>
 				<h3 style="font-size:50px;">가이드북&지도</h3>
 			</div>
 		</div>
