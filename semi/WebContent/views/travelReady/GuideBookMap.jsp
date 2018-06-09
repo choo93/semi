@@ -12,10 +12,7 @@
 	
 
 	<style>
-	div{
-	overflow-x:hidden;
-		overflow-y:hidden;
-	}
+
 	#pagetitle
 	{
 	position:relative;
@@ -78,6 +75,9 @@
     	padding-left:60%;
     	font-size:40px;
     	font-weight:400;
+    	overflow:hidden;
+    	text-overflow:ellipsis;
+
     }
     
     #guidebookRq>a strong
@@ -121,6 +121,9 @@
     	margin-top:8px;
     	font-weight:700;
     	color:black;
+    	overflow:hidden;text-overflow:ellipsis;
+
+
     	
     }
     .button
@@ -130,6 +133,8 @@
     	text-align:center;
     	color:red;
     	font-weight:800;
+    	overflow:hidden;text-overflow:ellipsis;
+
     }
 	</style>
 
