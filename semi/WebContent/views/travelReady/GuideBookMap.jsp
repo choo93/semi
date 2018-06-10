@@ -145,6 +145,9 @@
 			<div id="pagecontent">
 				<section id="content">
 					<div id="guidebookRq">
+						<form action="/adminGuideBookRequest">
+							<input type="submit" value="배송확인">
+						</form>
 						<a href="GuideBookRequest.jsp">
 							무료가이드북&지도<br>
 							<strong>

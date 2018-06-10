@@ -7,20 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import semi.travelready.model.service.GuideBookRequestService;
-import semi.travelready.model.vo.GuideBookRequest;
-
 /**
- * Servlet implementation class GuideBookRequestServlet
+ * Servlet implementation class RequestDeleteServlet
  */
-@WebServlet(name = "GuideBookRequest", urlPatterns = { "/guideBookRequest" })
-public class GuideBookRequestServlet extends HttpServlet {
+@WebServlet(name = "RequestDelete", urlPatterns = { "/requestDelete" })
+public class RequestDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GuideBookRequestServlet() {
+    public RequestDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,22 +28,8 @@ public class GuideBookRequestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String guideBookNum=request.getParameter("guidebooknum");
-		String mapNum=request.getParameter("mapnum");
-		
-		guideBookNum=guideBookNum.charAt(0)+"";
-		mapNum=mapNum.charAt(0)+"";
-	
-		
-		GuideBookRequest gbr=new GuideBookRequest();
-		
-		gbr.setName(request.getParameter("name"));
-		gbr.setEmail(request.getParameter("email"));
-		gbr.setPhone(request.getParameter("phone"));
-		gbr.setAddr(request.getParameter("addrnum")+request.getParameter("addr")+request.getParameter("addr2"));
-		gbr.setGuideBookNum(Integer.parseInt(guideBookNum));
-		gbr.setMapNum(Integer.parseInt(mapNum));
-		int result=new GuideBookRequestService().infoInsert(gbr);
+		String orderNo=request.getParameter("orderNo");
+		System.out.println(orderNo);
 	}
 
 	/**

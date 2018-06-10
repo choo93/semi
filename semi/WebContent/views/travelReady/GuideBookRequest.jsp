@@ -59,14 +59,14 @@ Email : <input type="email" placeholder="이메일을 입력하세요" name="ema
 상세주소 : <input type="text" placeholder="상세 주소를 입력하세요" name="addr2">
 
 가이드북:<select name="guidebooknum">
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
+		<option>1권</option>
+		<option>2권</option>
+		<option>3권</option>
 		</select>
 지도:<select name="mapnum">
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
+		<option>1권</option>
+		<option>2권</option>
+		<option>3권</option>
 		</select><br>
 		<input type="submit" value="신청하기">
 		<button type="button" onclick="back();">취소</button>

@@ -8,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.travelready.model.service.GuideBookRequestService;
-import semi.travelready.model.vo.GuideBookRequest;
 
 /**
- * Servlet implementation class GuideBookRequestServlet
+ * Servlet implementation class DeliveryCheckServlet
  */
-@WebServlet(name = "GuideBookRequest", urlPatterns = { "/guideBookRequest" })
-public class GuideBookRequestServlet extends HttpServlet {
+@WebServlet(name = "DeliveryCheck", urlPatterns = { "/deliveryCheck" })
+public class DeliveryCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GuideBookRequestServlet() {
+    public DeliveryCheckServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,22 +30,21 @@ public class GuideBookRequestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String guideBookNum=request.getParameter("guidebooknum");
-		String mapNum=request.getParameter("mapnum");
+		String deliveryCheck=request.getParameter("deliveryCheck");
+		int orderNo=Integer.parseInt(request.getParameter("orderNo"));
 		
-		guideBookNum=guideBookNum.charAt(0)+"";
-		mapNum=mapNum.charAt(0)+"";
-	
 		
-		GuideBookRequest gbr=new GuideBookRequest();
+		if(deliveryCheck.equals("배송전")) {
+			deliveryCheck="배송완료";
+		}
+		else {
+			deliveryCheck="배송전";
+		}
 		
-		gbr.setName(request.getParameter("name"));
-		gbr.setEmail(request.getParameter("email"));
-		gbr.setPhone(request.getParameter("phone"));
-		gbr.setAddr(request.getParameter("addrnum")+request.getParameter("addr")+request.getParameter("addr2"));
-		gbr.setGuideBookNum(Integer.parseInt(guideBookNum));
-		gbr.setMapNum(Integer.parseInt(mapNum));
-		int result=new GuideBookRequestService().infoInsert(gbr);
+		int result=new GuideBookRequestService().deliveryCheck(deliveryCheck,orderNo);
+		if(result>0) {
+			response.sendRedirect("/adminGuideBookRequest");
+		}
 	}
 
 	/**

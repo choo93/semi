@@ -1,6 +1,9 @@
 package semi.travelready.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +14,16 @@ import semi.travelready.model.service.GuideBookRequestService;
 import semi.travelready.model.vo.GuideBookRequest;
 
 /**
- * Servlet implementation class GuideBookRequestServlet
+ * Servlet implementation class AdminGuideBookRequestServlet
  */
-@WebServlet(name = "GuideBookRequest", urlPatterns = { "/guideBookRequest" })
-public class GuideBookRequestServlet extends HttpServlet {
+@WebServlet(name = "AdminGuideBookRequest", urlPatterns = { "/adminGuideBookRequest" })
+public class AdminGuideBookRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GuideBookRequestServlet() {
+    public AdminGuideBookRequestServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,24 +32,12 @@ public class GuideBookRequestServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
 		
-		String guideBookNum=request.getParameter("guidebooknum");
-		String mapNum=request.getParameter("mapnum");
+		ArrayList<GuideBookRequest> list=new GuideBookRequestService().RequestList();
 		
-		guideBookNum=guideBookNum.charAt(0)+"";
-		mapNum=mapNum.charAt(0)+"";
-	
-		
-		GuideBookRequest gbr=new GuideBookRequest();
-		
-		gbr.setName(request.getParameter("name"));
-		gbr.setEmail(request.getParameter("email"));
-		gbr.setPhone(request.getParameter("phone"));
-		gbr.setAddr(request.getParameter("addrnum")+request.getParameter("addr")+request.getParameter("addr2"));
-		gbr.setGuideBookNum(Integer.parseInt(guideBookNum));
-		gbr.setMapNum(Integer.parseInt(mapNum));
-		int result=new GuideBookRequestService().infoInsert(gbr);
+		RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/adminGuideBookRequest.jsp");
+		request.setAttribute("guidebookRequest", list);
+		view.forward(request, response);
 	}
 
 	/**

@@ -1,6 +1,7 @@
 package semi.travelready.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import semi.concert.model.dao.ConcertDAO;
@@ -24,6 +25,28 @@ public class GuideBookRequestService {
 			JDBCTemplate.rollback(conn);
 		}
 		
+		return result;
+	}
+
+	public ArrayList<GuideBookRequest> RequestList() {
+		Connection conn=JDBCTemplate.getConnection();
+		ArrayList<GuideBookRequest> list=new GuideBookRequestDao().RequestList(conn);
+		JDBCTemplate.close(conn);
+		return list;
+		
+		
+	}
+
+	public int deliveryCheck(String deliveryCheck, int orderNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new GuideBookRequestDao().deliveryCheck(conn,deliveryCheck,orderNo);
+		JDBCTemplate.close(conn);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}
+		else {
+			JDBCTemplate.rollback(conn);
+		}
 		return result;
 	}
 
