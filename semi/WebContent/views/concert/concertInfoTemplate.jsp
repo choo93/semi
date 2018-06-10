@@ -77,7 +77,15 @@
                     </div>
                 </div>
                 <div id="reserve">
-                    
+                    <div>
+						예약 가능 일자
+                    </div>
+                    <div id="reserveDate">
+                        ${requestScope.concertInfo.concertDate }
+                    </div>
+                    <div id="reserveBtn">
+                        <a href="#">예약하기</a>
+                    </div>
                 </div>
             </div>
             <div id="contentBottom">
