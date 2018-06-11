@@ -6,9 +6,6 @@
 	box-sizing: border-box;
 }
 
-div {
-	border: 0.5px solid black;
-}
 
 #title {
 	width: 100%;
@@ -27,7 +24,7 @@ div {
 	margin-bottom: 30px;
 }
 
-img {
+#photo {
 	width: 290px;
 	height: 100%;
 	float: left;

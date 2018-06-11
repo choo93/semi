@@ -28,7 +28,7 @@
     	<%for(ConcertInfo ci : list){ %>
     	
     	<div id="contents">
-        	<img src="<%=ci.getConcertPhoto() %>" alt="포스터">
+        	<img id="photo" src="<%=ci.getConcertPhoto() %>" alt="포스터">
         	<div id="explain">
         		<div id="concertTitle" onclick="concertInfo(<%=ci.getIndexNo() %>);">
         			<%=ci.getConcertTitle() %>

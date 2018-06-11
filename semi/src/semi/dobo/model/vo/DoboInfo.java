@@ -22,9 +22,22 @@ public class DoboInfo {
 	private String doboSubTitle4;
 	private String doboSubPhoto4;
 	private String doboSubExplain4;
+	private String doboAdditionType;
 	private String doboAddition;
 	
 	public DoboInfo() {}
+
+	
+	
+	public String getDoboAdditionType() {
+		return doboAdditionType;
+	}
+
+	public void setDoboAdditionType(String doboAdditionType) {
+		this.doboAdditionType = doboAdditionType;
+	}
+
+
 
 	public int getIndenxNum() {
 		return indenxNum;

@@ -27,7 +27,7 @@
     	<%for(DoboInfo di : list){ %>
     	
     	<div id="contents">
-        	<img src="<%=di.getDoboMainPhoto() %>" alt="포스터">
+        	<img id="photo" src="<%=di.getDoboMainPhoto() %>" alt="포스터">
         	<div id="explain">
         		<div id="concertTitle" onclick="concertInfo(<%=di.getIndenxNum() %>);">
         			<%=di.getDoboTitle() %>

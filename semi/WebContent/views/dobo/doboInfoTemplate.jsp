@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="semi.dobo.model.vo.*"	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +25,7 @@
 						<div id="summary">${requestScope.doboInfo.doboSummary }</div>
 						<div id="mainInfo">
 							<div>
-								<img src=${requestScope.doboInfo.doboMainPhoto } alt="도보관광메인사진">
+								<img id="photo" src=${requestScope.doboInfo.doboMainPhoto } alt="도보관광메인사진">
 							</div>
 							<div>${requestScope.doboInfo.doboMainExplain }</div>
 						</div>
@@ -84,7 +86,18 @@
 							</div>
 						</div>
 					</div>
-					<div id="additional"></div>
+					<div id="additional">
+					
+						
+						<%
+						if(((DoboInfo)request.getAttribute("doboInfo")).getDoboAdditionType()!=null){
+						
+						if(((DoboInfo)request.getAttribute("doboInfo")).getDoboAdditionType().equals("video")){ %>
+							<iframe allowfullscreen="" frameborder="0" height="315" src="${requestScope.doboInfo.doboAddition }" width="560"></iframe>
+						<%} 
+						}%>
+						
+					</div>
 					<div id="comment">
 						<textarea>
                     	</textarea>

@@ -46,7 +46,8 @@ public class DoboDAO {
 				di.setDoboSubTitle4(rset.getString(19));
 				di.setDoboSubPhoto4(rset.getString(20));
 				di.setDoboSubExplain4(rset.getString(21));
-				di.setDoboAddition(rset.getString(22));
+				di.setDoboAdditionType(rset.getString(22));
+				di.setDoboAddition(rset.getString(23));
 				
 			}
 			
@@ -103,7 +104,8 @@ public class DoboDAO {
 				di.setDoboSubTitle4(rset.getString(19));
 				di.setDoboSubPhoto4(rset.getString(20));
 				di.setDoboSubExplain4(rset.getString(21));
-				di.setDoboAddition(rset.getString(22));
+				di.setDoboAdditionType(rset.getString(22));
+				di.setDoboAddition(rset.getString(23));
 				
 				list.add(di);
 			}
