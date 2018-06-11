@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import semi.travelready.model.vo.GuideBookDown;
 import semi.travelready.model.vo.GuideBookRequest;
 
 public class GuideBookRequestDao {
@@ -98,6 +99,76 @@ public class GuideBookRequestDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}
+
+	public ArrayList<GuideBookDown> guideBookDown(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		ArrayList<GuideBookDown> list=new ArrayList<GuideBookDown>();
+		String query="select * from guidebookdown";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				GuideBookDown gbd=new GuideBookDown();
+				
+				gbd.setGuideNo(rset.getInt("guideno"));
+				gbd.setGuideName(rset.getString("guidename"));
+				gbd.setGuideBookImagePath(rset.getString("guidebookimagepath"));
+				gbd.setGuidePDFPath(rset.getString("guidepdfpath"));
+				gbd.setFileSize(rset.getString("filesize"));
+				list.add(gbd);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally
+		{
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+		
+		
+		
+		
+	}
+
+	public GuideBookDown pdfDown(Connection conn, int orderNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		GuideBookDown gbd=null;
+		String query="select * from guidebookdown where guideno=?";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, orderNo);
+			
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+			gbd=new GuideBookDown();
+			gbd.setGuideNo(rset.getInt("guideno"));
+			gbd.setGuideName(rset.getString("guidename"));
+			gbd.setGuideBookImagePath(rset.getString("guidebookimagepath"));
+			gbd.setGuidePDFPath(rset.getString("guidepdfpath"));
+			gbd.setFileSize(rset.getString("filesize"));
+			gbd.setGuideBookName(rset.getString("guidebookName"));
+			
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return gbd;
 	}
 
 }

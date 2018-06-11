@@ -1,9 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="java.util.*"
+    import="semi.travelready.model.vo.*"
+    %>
+    
+    <%ArrayList<GuideBookDown> list=(ArrayList<GuideBookDown>)request.getAttribute("image"); %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
 	<link rel="stylesheet" href="../../css/main.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
@@ -136,6 +144,12 @@
     	overflow:hidden;text-overflow:ellipsis;
 
     }
+    #btn{
+    color:red;
+    background-color:white;
+    border:0px;
+    font-weight:700;
+    }
 	</style>
 
 <body id="scroll">
@@ -148,42 +162,26 @@
 						<form action="/adminGuideBookRequest">
 							<input type="submit" value="배송확인">
 						</form>
-						<a href="GuideBookRequest.jsp">
+						<a href="/views/travelReady/GuideBookRequest.jsp">
 							무료가이드북&지도<br>
 							<strong>
 								 신청하기
 							</strong>
 						</a>
 					</div>
+					
 					<div id="guidebookDn">
+					
+						<%for(GuideBookDown gbd : list) {%>
+				
 						<div class="item">
-							<div class="img" style="background-image:url(http://korean.visitseoul.net/comm/getImage?srvcId=GUIDEBOOK&parentSn=41&fileTy=THUMB&fileNo=11);"></div>
-							<div class="name">2018서울 관광가이드북</div>
-							<div class="button">PDF View<br>(76MB)</div>
+							<div class="img" style="<%=gbd.getGuideBookImagePath()%>"></div>
+							<div class="name"><%=gbd.getGuideName()%></div>
+							<form action="/pdfDown" method="post">
+							<input type="hidden" name="orderNo" value="<%=gbd.getGuideNo()%>" ><div class="button">PDF View<br>(75MB)<input type="submit" id="btn" value="다운로드"></div>
+							</form>
 						</div>
-						<div class="item">
-							<div class="img">2</div>
-							<div class="name">2</div>
-							<div class="button">2</div>
-						</div>
-						<div class="item"> 
-							<div class="img">3</div>
-							<div class="name">3</div>
-							<div class="button">3</div>
-						</div>
-						<div class="item">
-							<div class="img">4</div>
-							<div class="name">4</div>
-							<div class="button">4</div>
-						</div>
-						<div class="item"></div>
-						<div class="item"></div>
-						<div class="item"></div>
-						<div class="item"></div>
-						<div class="item"></div>
-						<div class="item"></div>
-						<div class="item"></div>
-						<div class="item"></div>
+						<%} %>
 					</div>
 				</section>
 			</div>
