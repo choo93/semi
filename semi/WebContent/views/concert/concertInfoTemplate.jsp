@@ -6,10 +6,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="../../css/main.css">
-	<link rel="stylesheet" href="/css/concertInfo.css">
+	<link rel="stylesheet" href="/css/concert/concertInfo.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
-	<script src="/js/concertInfo.js"></script>
+	<script src="/js/concert/concertInfo.js"></script>
 	
 	<script>
         // 이거는 자바 스크립트 선언에서 가져오는 듯
