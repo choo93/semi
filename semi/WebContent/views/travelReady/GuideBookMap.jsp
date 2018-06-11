@@ -9,8 +9,10 @@
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>	
 </head>
+	
 
 	<style>
+
 	#pagetitle
 	{
 	position:relative;
@@ -73,6 +75,9 @@
     	padding-left:60%;
     	font-size:40px;
     	font-weight:400;
+    	overflow:hidden;
+    	text-overflow:ellipsis;
+
     }
     
     #guidebookRq>a strong
@@ -116,6 +121,9 @@
     	margin-top:8px;
     	font-weight:700;
     	color:black;
+    	overflow:hidden;text-overflow:ellipsis;
+
+
     	
     }
     .button
@@ -125,6 +133,8 @@
     	text-align:center;
     	color:red;
     	font-weight:800;
+    	overflow:hidden;text-overflow:ellipsis;
+
     }
 	</style>
 
@@ -135,7 +145,10 @@
 			<div id="pagecontent">
 				<section id="content">
 					<div id="guidebookRq">
-						<a href="#">
+						<form action="/adminGuideBookRequest">
+							<input type="submit" value="배송확인">
+						</form>
+						<a href="GuideBookRequest.jsp">
 							무료가이드북&지도<br>
 							<strong>
 								 신청하기
@@ -148,9 +161,21 @@
 							<div class="name">2018서울 관광가이드북</div>
 							<div class="button">PDF View<br>(76MB)</div>
 						</div>
-						<div class="item"></div>
-						<div class="item"></div>
-						<div class="item"></div>
+						<div class="item">
+							<div class="img">2</div>
+							<div class="name">2</div>
+							<div class="button">2</div>
+						</div>
+						<div class="item"> 
+							<div class="img">3</div>
+							<div class="name">3</div>
+							<div class="button">3</div>
+						</div>
+						<div class="item">
+							<div class="img">4</div>
+							<div class="name">4</div>
+							<div class="button">4</div>
+						</div>
 						<div class="item"></div>
 						<div class="item"></div>
 						<div class="item"></div>
