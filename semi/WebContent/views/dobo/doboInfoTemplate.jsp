@@ -95,9 +95,6 @@
 			</div>
 		</div>
 
-
-
-
 	</section>
 	<jsp:include page="/views/main/footer.jsp" />
 </body>
