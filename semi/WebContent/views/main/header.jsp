@@ -9,8 +9,14 @@
 <body>
     <header>
         <img src="../../image/menu.png" id="menu_icon" onclick="menu();">
-        <a href="http://localhost"><img src="../../image/logo.jpg" id="logo"></a>
-		<ul>
+        <img src="../../image/close.png" id="close_icon" onclick="close();">
+        <div>
+            <a href="http://localhost">
+                <img src="../../image/logo.jpg" id="logo" style="height:100%;">
+            </a>
+        </div>
+
+		<ul id="main_category">
 			<li class="toggle menu_one"><a href="#">하이라이트</a>
 			<ul class="sub_menu_one">
 			    <li><a href="">Top 10</a></li>
