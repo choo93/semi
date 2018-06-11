@@ -30,7 +30,7 @@
 							<div>${requestScope.doboInfo.doboMainExplain }</div>
 						</div>
 						<div id="reserve">
-							<button>예약하기</button>
+							<button>예약하기!</button>
 						</div>
 					</div>
 					<div id="contentTop2">
