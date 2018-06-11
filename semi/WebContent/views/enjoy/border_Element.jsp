@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import = "semi.enjoy.model.vo.EnjoyListData"
+    %>
+<% EnjoyListData ELD = (EnjoyListData)request.getAttribute("ELD"); %>    
 	<!DOCTYPE html>
 	<html>
 

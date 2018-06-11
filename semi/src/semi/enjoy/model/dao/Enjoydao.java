@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import semi.enjoy.model.vo.EnjoyListData;
+import semi.enjoy.model.vo.EnjoySelectOneData;
 
 public class Enjoydao {
 
@@ -208,6 +209,40 @@ public class Enjoydao {
 		}
 
 		return sb.toString();
+	}
+
+	public EnjoyListData getOneData(int indexNo, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		System.out.println(indexNo);
+		String Query ="select * from list_Element where Index_TitleNo = ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(Query);
+			pstmt.setInt(1, indexNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				
+				EnjoyListData ELD = new EnjoyListData();
+				ELD.setIndex_BasicInfo(rset.getString("index_basicInfo"));
+				ELD.setIndex_Image(rset.getString("index_image"));
+				ELD.setIndex_Title(rset.getString("index_title"));
+				ELD.setIndex_Ondate(rset.getDate("index_Ondate"));
+				ELD.setIndex_TitleNo(rset.getInt("index_TitleNo"));
+				ELD.setIndex_Tags(rset.getString("index_Tags"));
+				ELD.setList_Element(rset.getString("list_Element"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return ELD;
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import semi.enjoy.model.dao.Enjoydao;
 import semi.enjoy.model.vo.EnjoyListData;
+import semi.enjoy.model.vo.EnjoySelectOneData;
 import semi.enjoy.model.vo.PageData;
 
 public class EnjoyService {
@@ -22,6 +23,20 @@ public class EnjoyService {
 		
 		return list;
 	}
+	public EnjoyListData getOneData(int IndexNo) {
+		
+
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		EnjoyListData ELD = new Enjoydao().getOneData(IndexNo,conn);
+		
+		
+		
+		return ELD;
+	}
+	
+	
 
 	public PageData getListData(int currentPage, String search) {
 		
