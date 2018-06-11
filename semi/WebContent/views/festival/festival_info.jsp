@@ -7,6 +7,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<script src="../../js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="../../css/main.css">
 
 		<script src="../../js/bootstrap.min.js"></script>
@@ -14,18 +15,7 @@
 		<script src="../../js/main.js"></script>
 
 
-   <!-- Bootstrap -->
-   <link href="../css/bootstrap.min.css" rel="stylesheet">
-   <link href="../css/kfonts2.css" rel="stylesheet">
-   <style>
-   h2 { margin: 20px 0} 
-   </style>
-   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-   <!--[if lt IE 9]>
-	 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-   <![endif]-->
+
 		<style>
 			.item {
 				padding-left: 20%;
@@ -50,71 +40,56 @@
 		<%@ include file="/views/main/header.jsp"%>
 			<section>
 				<div class="container">
-					<div class="panel-group" id="accordion">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-										여기를 클릭해 보세요. #1
-									</a>
-								</h4>
-							</div>
-							<div id="collapseOne" class="panel-collapse collapse in">
-								<div class="panel-body">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus
-									tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt lacinia. Aliquam posuere
-									pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus. Pellentesque sit amet dignissim mauris. Suspendisse
-									a erat congue nunc auctor malesuada. Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean
-									id condimentum mauris. Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae est at erat
-									tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi sit amet urna elementum semper. Etiam
-									dignissim pharetra mauris. Donec rhoncus nisl sem, ut ultrices odio porttitor sed. Donec consequat facilisis velit.
-									Cras feugiat tincidunt fermentum. Duis interdum nec quam id eleifend.
+						<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
+								  <div class="panel-heading">
+									<h4 class="panel-title">
+									  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+										여기를 클릭해 보세요. #1 
+									  </a>
+									</h4>
+								  </div>
+								  <div id="collapseOne" class="panel-collapse collapse in">
+									<div class="panel-body">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt lacinia. Aliquam posuere pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus. Pellentesque sit amet dignissim mauris. Suspendisse a erat congue nunc auctor malesuada. Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean id condimentum mauris.
+						
+										Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae est at erat tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi sit amet urna elementum semper. Etiam dignissim pharetra mauris. Donec rhoncus nisl sem, ut ultrices odio porttitor sed. Donec consequat facilisis velit. Cras feugiat tincidunt fermentum. Duis interdum nec quam id eleifend.
+									</div>
+								  </div>
 								</div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+								<div class="panel panel-default">
+								  <div class="panel-heading">
+									<h4 class="panel-title">
+									  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
 										여기를 클릭해 보세요. #2
-									</a>
-								</h4>
-							</div>
-							<div id="collapseTwo" class="panel-collapse collapse ">
-								<div class="panel-body">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus
-									tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt lacinia. Aliquam posuere
-									pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus. Pellentesque sit amet dignissim mauris. Suspendisse
-									a erat congue nunc auctor malesuada. Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean
-									id condimentum mauris. Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae est at erat
-									tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi sit amet urna elementum semper. Etiam
-									dignissim pharetra mauris. Donec rhoncus nisl sem, ut ultrices odio porttitor sed. Donec consequat facilisis velit.
-									Cras feugiat tincidunt fermentum. Duis interdum nec quam id eleifend.
+									  </a>
+									</h4>
+								  </div>
+								  <div id="collapseTwo" class="panel-collapse collapse ">
+									<div class="panel-body">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt lacinia. Aliquam posuere pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus. Pellentesque sit amet dignissim mauris. Suspendisse a erat congue nunc auctor malesuada. Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean id condimentum mauris.
+						
+										Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae est at erat tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi sit amet urna elementum semper. Etiam dignissim pharetra mauris. Donec rhoncus nisl sem, ut ultrices odio porttitor sed. Donec consequat facilisis velit. Cras feugiat tincidunt fermentum. Duis interdum nec quam id eleifend.
+									</div>
+								  </div>
 								</div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-										여기를 클릭해 보세요. #3
-									</a>
-								</h4>
-							</div>
-							<div id="collapseThree" class="panel-collapse collapse">
-								<div class="panel-body">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus
-									tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt lacinia. Aliquam posuere
-									pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus. Pellentesque sit amet dignissim mauris. Suspendisse
-									a erat congue nunc auctor malesuada. Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean
-									id condimentum mauris. Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae est at erat
-									tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi sit amet urna elementum semper. Etiam
-									dignissim pharetra mauris. Donec rhoncus nisl sem, ut ultrices odio porttitor sed. Donec consequat facilisis velit.
-									Cras feugiat tincidunt fermentum. Duis interdum nec quam id eleifend.
+								<div class="panel panel-default">
+								  <div class="panel-heading">
+									<h4 class="panel-title">
+									  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+										여기를 클릭해 보세요. #3 
+									  </a>
+									</h4>
+								  </div>
+								  <div id="collapseThree" class="panel-collapse collapse">
+									<div class="panel-body">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt lacinia. Aliquam posuere pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus. Pellentesque sit amet dignissim mauris. Suspendisse a erat congue nunc auctor malesuada. Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean id condimentum mauris.
+						
+										Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae est at erat tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi sit amet urna elementum semper. Etiam dignissim pharetra mauris. Donec rhoncus nisl sem, ut ultrices odio porttitor sed. Donec consequat facilisis velit. Cras feugiat tincidunt fermentum. Duis interdum nec quam id eleifend.
+									</div>
+								  </div>
 								</div>
-							</div>
-						</div>
-					</div>
+							  </div>
 				</div>
 			</section>
 
@@ -216,10 +191,6 @@
 				</div> -->
 
 			<%@ include file="/views/main/footer.jsp"%>
-			    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-				<!-- Include all compiled plugins (below), or include individual files as needed -->
-				<script src="../js/bootstrap.min.js"></script>
 	</body>
 
 	</html>
