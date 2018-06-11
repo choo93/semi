@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-	import="semi.concert.model.vo.*" import="java.util.*"
+	import="semi.dobo.model.vo.*" import="java.util.*"
 %>
 <%
-	ConcertPageData cpd = (ConcertPageData)request.getAttribute("concertPageData");
-	ArrayList<ConcertInfo> list = cpd.getConcertList();
-	String pageNavi = cpd.getPageNavi();
+	DoboPageData dpd = (DoboPageData)request.getAttribute("doboPageData");
+	ArrayList<DoboInfo> list = dpd.getDoboList();
+	String pageNavi = dpd.getPageNavi();
 %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,6 @@
 	<link rel="stylesheet" href="../../css/concertList.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
-	<script src="../../js/concertList.js"></script>
 </head>
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp" %>
@@ -25,22 +24,18 @@
         	공연 예약
     	</div>
     	
-    	<%for(ConcertInfo ci : list){ %>
+    	<%for(DoboInfo di : list){ %>
     	
     	<div id="contents">
-        	<img id="photo" src="<%=ci.getConcertPhoto() %>" alt="포스터">
+        	<img id="photo" src="<%=di.getDoboMainPhoto() %>" alt="포스터">
         	<div id="explain">
-        		<div id="concertTitle" onclick="concertInfo(<%=ci.getIndexNo() %>);">
-        			<%=ci.getConcertTitle() %>
-        		</div>
-        		<div id="concertDate">
-        			<%=ci.getConcertDate() %>
+        		<div id="concertTitle" onclick="concertInfo(<%=di.getIndenxNum() %>);">
+        			<%=di.getDoboTitle() %>
         		</div>
         		<div id="concertSummary">
-        			<%=ci.getConcertSummary() %>
+        			<%=di.getDoboSummary() %>
         		</div>
         		
-        	
         	</div>
     	</div>
     	
