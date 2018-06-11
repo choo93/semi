@@ -13,17 +13,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="../../css/main.css">
-	<link rel="stylesheet" href="/css/concertList.css">
+	<link rel="stylesheet" href="../../css/concertList.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
+	<script src="../../js/concertList.js"></script>
 </head>
-<style>
-	
-</style>
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp" %>
 	<section>
-		
 		<div id="title">
         	공연 예약
     	</div>
@@ -32,7 +29,19 @@
     	
     	<div id="contents">
         	<img src="<%=ci.getConcertPhoto() %>" alt="포스터">
-        	<div id="explain"><%=ci.getConcertSummary() %></div>
+        	<div id="explain">
+        		<div id="concertTitle" onclick="concertInfo(<%=ci.getIndexNo() %>);">
+        			<%=ci.getConcertTitle() %>
+        		</div>
+        		<div id="concertDate">
+        			<%=ci.getConcertDate() %>
+        		</div>
+        		<div id="concertSummary">
+        			<%=ci.getConcertSummary() %>
+        		</div>
+        		
+        	
+        	</div>
     	</div>
     	
     	<%} %>
