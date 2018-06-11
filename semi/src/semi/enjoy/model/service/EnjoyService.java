@@ -5,11 +5,24 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import semi.enjoy.model.dao.Enjoydao;
+import semi.enjoy.model.vo.EnjoyDetailData1;
 import semi.enjoy.model.vo.EnjoyListData;
-import semi.enjoy.model.vo.EnjoySelectOneData;
+
 import semi.enjoy.model.vo.PageData;
 
 public class EnjoyService {
+	
+	public EnjoyDetailData1 getOneDetailData(int IndexNo){
+		Connection conn = JDBCTemplate.getConnection();
+		
+		EnjoyDetailData1 edd1 = new Enjoydao().getOneDetailData(IndexNo,conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return edd1;
+		
+	}
+	
 
 	public ArrayList<EnjoyListData> getAllData() {
 		

@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import semi.enjoy.model.vo.EnjoyDetailData1;
 import semi.enjoy.model.vo.EnjoyListData;
-import semi.enjoy.model.vo.EnjoySelectOneData;
+
 
 public class Enjoydao {
 
@@ -214,16 +215,16 @@ public class Enjoydao {
 	public EnjoyListData getOneData(int indexNo, Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		System.out.println(indexNo);
-		String Query ="select * from list_Element where Index_TitleNo = ? ";
 		
+		String Query ="select * from list_Element where Index_TitleNo = ? ";
+		EnjoyListData ELD = null;
 		try {
 			pstmt = conn.prepareStatement(Query);
 			pstmt.setInt(1, indexNo);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				
-				EnjoyListData ELD = new EnjoyListData();
+				ELD = new EnjoyListData();
 				ELD.setIndex_BasicInfo(rset.getString("index_basicInfo"));
 				ELD.setIndex_Image(rset.getString("index_image"));
 				ELD.setIndex_Title(rset.getString("index_title"));
@@ -243,6 +244,46 @@ public class Enjoydao {
 		}
 		
 		return ELD;
+	}
+
+	public EnjoyDetailData1 getOneDetailData(int indexNo, Connection conn) {
+		EnjoyDetailData1 edd1 = null;
+		PreparedStatement pstmt = null;
+		String Query = "select * from Element_Index_detail where SEQ_Index_titleNo = ?";
+		ResultSet rset = null;
+		try {
+			pstmt = conn.prepareStatement(Query);
+			pstmt.setInt(1,indexNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next())
+			{
+			edd1 = new EnjoyDetailData1();
+			edd1.setSEQ_Index_TitleNo(rset.getInt("seq_index_titleNo"));
+			edd1.setIndex_type(rset.getString("index_type"));
+			edd1.setDetail_addr(rset.getString("detail_addr"));
+			edd1.setDetail_tell(rset.getString("detail_tell"));
+			edd1.setDetail_url(rset.getString("detail_url"));
+			edd1.setDetail_onday(rset.getString("detail_onTime"));
+			edd1.setDetail_offday(rset.getString("detail_offday"));
+			edd1.setDetail_onday(rset.getString("detail_onday"));
+			edd1.setDetail_notice(rset.getString("detail_notice"));
+			edd1.setDetail_payment(rset.getString("detail_payment"));
+			edd1.setDetail_disabled(rset.getString("detail_disabled"));
+			edd1.setDetail_utility(rset.getString("detail_utility"));
+			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		
+		return edd1;
 	}
 
 }
