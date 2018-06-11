@@ -228,6 +228,11 @@
 												<div style="float:left; width:20%;height:100%; text-align:center; line-height:5;">
 														점수
 												</div>
+												
+												<!-- 리스트 버튼// 삭제예정 -->
+												<form action="/enjoyList" method="post">
+												<input type="submit" value="버튼">
+												</form>
 										</div>
 								</div>
 						</div>						
