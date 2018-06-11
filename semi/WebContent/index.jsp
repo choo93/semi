@@ -4,8 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <title>Seoulaim</title>
 <link rel="stylesheet" href="css/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/main.js"></script>
 </head>
