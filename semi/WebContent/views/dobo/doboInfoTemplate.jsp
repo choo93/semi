@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="../../css/doboInfo.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
-</script>
 </head>
 <body id="scroll">
 	<jsp:include page="/views/main/header.jsp" />
@@ -17,16 +16,16 @@
 
 		<div id="wrap">
 			<div id="contents">
-				<div id="contentTitle">sdfs</div>
+				<div id="contentTitle">${requestScope.doboInfo.doboTitle }</div>
 				<div id="contentTop">
 					<div id="contentTop1">
-						<p>코스소개</p>
-						<div id="summary">ㄴㅇㄹd</div>
+						<p>${requestScope.doboCourse }</p>
+						<div id="summary">${requestScope.doboInfo.doboSummary }</div>
 						<div id="mainInfo">
 							<div>
-								<img src="#" alt="도보관광메인사진">
+								<img src=${requestScope.doboInfo.doboMainPhoto } alt="도보관광메인사진">
 							</div>
-							<div>asdad</div>
+							<div>${requestScope.doboInfo.doboMainExplain }</div>
 						</div>
 						<div id="reserve">
 							<button>예약하기</button>
@@ -36,11 +35,11 @@
 						<p>도보코스 안내</p>
 						<div id="courseInfo">
 							<p>도보코스</p>
-							<div>도코</div>
+							<div>${requestScope.doboInfo.doboCourse }</div>
 							<p>소요시간</p>
-							<div>소시</div>
+							<div>${requestScope.doboInfo.doboTime }</div>
 							<p>만남 장소</p>
-							<div>만장</div>
+							<div>${requestScope.doboInfo.doboMeet }</div>
 						</div>
 						<p>※ 도보관광코스에 포함되어 있지 않는 체험프로그램은 관광 종료 후, 개별적으로 체험 해주시기 바랍니다.</p>
 					</div>
@@ -49,39 +48,39 @@
 					<div id="subInfo">
 						<p>코스 내 주요 관광 명소</p>
 						<div>
-							<p>1번</p>
+							<p>${requestScope.doboInfo.doboSubTitle1 }</p>
 							<div>
 								<div>
-									<img src="#" alt="사진1">
+									<img src=${requestScope.doboInfo.doboSubPhoto1 } alt="사진1">
 								</div>
-								<div>글1</div>
+								<div>${requestScope.doboInfo.doboSubExplain1 }</div>
 							</div>
 						</div>
 						<div>
-							<p>2번</p>
+							<p>${requestScope.doboInfo.doboSubTitle2 }</p>
 							<div>
 								<div>
-									<img src="#" alt="사진2">
+									<img src=${requestScope.doboInfo.doboSubPhoto2 } alt="사진2">
 								</div>
-								<div>글2</div>
+								<div>${requestScope.doboInfo.doboSubExplain2 }</div>
 							</div>
 						</div>
 						<div>
-							<p>3번</p>
+							<p>${requestScope.doboInfo.doboSubTitle3 }</p>
 							<div>
 								<div>
-									<img src="#" alt="사진3">
+									<img src=${requestScope.doboInfo.doboSubPhoto3 } alt="사진3">
 								</div>
-								<div>글3</div>
+								<div>${requestScope.doboInfo.doboSubExplain3 }</div>
 							</div>
 						</div>
 						<div>
-							<p>4번</p>
+							<p>${requestScope.doboInfo.doboSubTitle4 }</p>
 							<div>
 								<div>
-									<img src="#" alt="사진4">
+									<img src=${requestScope.doboInfo.doboSubPhoto4 } alt="사진4">
 								</div>
-								<div>글4</div>
+								<div>${requestScope.doboInfo.doboSubExplain4 }</div>
 							</div>
 						</div>
 					</div>
