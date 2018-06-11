@@ -1,16 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-	<link rel="stylesheet" href="../../css/main.css">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>bootstrap template</title>
+
+
+    
+     <link rel="stylesheet" href="../../css/main.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
-	<script src="../../js/main.js"></script>		
-</head>
-<style>
-#pagetitle
+	<script src="../../js/main.js"></script>	
+
+  </head>
+  
+  <body>
+  <style>
+  #pagetitle
 	{
 	position:relative;
  	padding-left:3%;
@@ -21,7 +32,6 @@
     height:120px;
     margin-bottom:35px;
     }
-    
     #title
     {
     	position:relative;
@@ -33,34 +43,82 @@
     	overflow-x:hidden;
 		overflow-y:hidden;
     }
-    #order
-    {
-    position:relative;
-  width:960px;
-  height:1000px;
-  background:#f00;
+  </style>
+	<%@ include file="/views/main/header.jsp" %>
 
-    }
-</style>
-<script>
-	function back(){
-		history.go(-1);
-	}
-</script>
-<body>
-<%@ include file="/views/main/header.jsp" %>
-<section>
-		<div id="pagetitle">
+      <section>
+      		<div id="pagetitle">
 			<div id="title">
 				<p style="height:50px;">현재위치  : 여행준비 > 가이드북&지도</p>
 				<h3 style="font-size:50px;">가이드북&지도 신청하기</h3>
 			</div>
 		</div>
-		<center>
-		<div id="order">
-		</div>
-		</center>
-		</section>
-<%@ include file="/views/main/footer.jsp" %>
-</body>
+		
+		    <!-- Bootstrap -->
+    <link href="../../minhocss/bootstrap.min.css" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="../../minhocss/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <!-- Custom style -->
+    <link rel="stylesheet" href="../../minhocss/style.css" media="screen" title="no title" charset="utf-8">
+      
+        <div class="col-md-6 col-md-offset-3">
+          <form role="form">
+            <div class="form-group">
+              <label for="InputEmail">이메일 주소</label>
+              <input type="email" class="form-control" id="InputEmail" placeholder="이메일 주소">
+            </div>
+            <div class="form-group">
+              <label for="InputPassword1">비밀번호</label>
+              <input type="password" class="form-control" id="InputPassword1" placeholder="비밀번호">
+            </div>
+            <div class="form-group">
+              <label for="InputPassword2">비밀번호 확인</label>
+              <input type="password" class="form-control" id="InputPassword2" placeholder="비밀번호 확인">
+              <p class="help-block">비밀번호 확인을 위해 다시한번 입력 해 주세요</p>
+            </div>
+            <div class="form-group">
+              <label for="username">이름</label>
+              <input type="text" class="form-control" id="username" placeholder="이름을 입력해 주세요">
+            </div>
+            <div class="form-group">
+              <label for="username">휴대폰 인증</label>
+              <div class="input-group">
+                <input type="tel" class="form-control" id="username" placeholder="- 없이 입력해 주세요">
+                <span class="input-group-btn" style="margin-left:50px;">
+                  <button class="btn btn-success">인증번호 전송<i class="fa fa-mail-forward spaceLeft"></i></button>
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username">인증번호 입력</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="username" placeholder="인증번호">
+                <span class="input-group-btn">
+                  <button class="btn btn-success">인증번호 입력<i class="fa fa-edit spaceLeft"></i></button>
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+                <label>약관 동의</label>
+              <div data-toggle="buttons">
+              <label class="btn btn-primary active">
+                  <span class="fa fa-check"></span>
+                  <input id="agree" type="checkbox" autocomplete="on">
+              </label>
+              <a href="#">이용약관</a>에 동의합니다.
+              </div>
+            </div>
+            <div class="form-group text-center" style="text-align:center;">
+              <button type="submit" class="btn btn-info">회원가입<i class="fa fa-check spaceLeft"></i></button>
+              <button type="submit" class="btn btn-warning">가입취소<i class="fa fa-times spaceLeft"></i></button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../../js1/bootstrap.min.js"></script>
+  </body>
 </html>

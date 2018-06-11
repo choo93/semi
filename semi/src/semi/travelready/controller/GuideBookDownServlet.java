@@ -33,16 +33,12 @@ public class GuideBookDownServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<GuideBookDown> list=new GuideBookRequestService().guideBookDown();
-		if(!list.isEmpty())
-		{
+	
 		RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/GuideBookMap.jsp");
 		request.setAttribute("image", list);
 		view.forward(request, response);
-		}
-		else
-		{
-			System.out.println("없자나");
-		}
+		
+
 	}
 
 	/**
