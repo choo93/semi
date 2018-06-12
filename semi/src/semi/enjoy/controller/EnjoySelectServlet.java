@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import semi.enjoy.model.service.EnjoyService;
+import semi.enjoy.model.vo.EnjoyDetailData1;
+import semi.enjoy.model.vo.EnjoyElementData;
 import semi.enjoy.model.vo.EnjoyListData;
 
 
@@ -45,17 +49,25 @@ public class EnjoySelectServlet extends HttpServlet {
 //		//▼ 댓글가져와야하고, 세부사항 가져와야함
 //		ArrayList<NoticeComment> list = new NoticeService().noticeComment(noticeNo);
 //		
+		// 세부사항을 가져오는 로직
+				
+		EnjoyDetailData1 edd1 = new EnjoyService().getOneDetailData(SEQ_Index_TitleNo);
 		
-		if(ELD!=null)
+		EnjoyElementData EED = new EnjoyElementData(ELD,edd1);
+		
+		
+		if(ELD!=null&&edd1!=null)
 		{
-				RequestDispatcher view =  request.getRequestDispatcher("/views/enjoy/border_Element.jsp");
-				request.setAttribute("ELD", ELD);
+		
+			RequestDispatcher view =  request.getRequestDispatcher("/views/enjoy/border_Element.jsp");
+				request.setAttribute("EED", EED);
 //				request.setAttribute("comment", list);
 				view.forward(request, response);
 		}
 		else 
 		{
 //			response.sendRedirect("/Views/Notice/Error.html");
+			
 		}
 	}
 

@@ -4,15 +4,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	
-	PageData pd = (PageData) request.getAttribute("pageData");
+	PageData pd = (PageData)request.getAttribute("pageData");
 	ArrayList<EnjoyListData> list = pd.getEnjoyList();
 	String pageNavi = pd.getPageNavi();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../css/main.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
