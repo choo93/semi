@@ -4,15 +4,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	
-	PageData pd = (PageData) request.getAttribute("pageData");
+	PageData pd = (PageData)request.getAttribute("pageData");
 	ArrayList<EnjoyListData> list = pd.getEnjoyList();
 	String pageNavi = pd.getPageNavi();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../css/main.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
@@ -35,6 +37,7 @@
 			<%
 				for (EnjoyListData eld : list) {
 			%>
+			<form action="/enjoySelect?IndexNo=<%=eld.getIndex_TitleNo()%>" method="post">
 			<div class="content" id="list_1"
 				style="margin-left: 10%; padding: 20px;">
 				<%
@@ -47,6 +50,7 @@
 					style="float: left; width: 400px; height: 200px; background-image:"<%eld.getIndex_Image();%>">
 					<!--url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);  -->
 				</div>
+		
 				<div id="info"
 					style="float: left; height: 200px; background-color: orange">
 					<div id="title" style="font: bold 30pt 나눔스퀘어;">
@@ -64,9 +68,11 @@
 					<br> 작성일 :
 					<%=eld.getIndex_Ondate()%>
 					<br>
-					<button id="button">자세히</button>
+					<input type="submit" value="자세히">
+					
 				</div>
 			</div>
+			</form>
 			<%
 				}
 			%>

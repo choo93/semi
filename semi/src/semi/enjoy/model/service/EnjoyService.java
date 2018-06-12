@@ -5,10 +5,24 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import semi.enjoy.model.dao.Enjoydao;
+import semi.enjoy.model.vo.EnjoyDetailData1;
 import semi.enjoy.model.vo.EnjoyListData;
+
 import semi.enjoy.model.vo.PageData;
 
 public class EnjoyService {
+	
+	public EnjoyDetailData1 getOneDetailData(int IndexNo){
+		Connection conn = JDBCTemplate.getConnection();
+		
+		EnjoyDetailData1 edd1 = new Enjoydao().getOneDetailData(IndexNo,conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return edd1;
+		
+	}
+	
 
 	public ArrayList<EnjoyListData> getAllData() {
 		
@@ -22,8 +36,22 @@ public class EnjoyService {
 		
 		return list;
 	}
+	public EnjoyListData getOneData(int IndexNo) {
+		
 
-	public PageData getListData(int currentPage, String search) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		EnjoyListData ELD = new Enjoydao().getOneData(IndexNo,conn);
+		
+		
+		
+		return ELD;
+	}
+	
+	
+
+	public PageData getListData(int currentPage, String search, String type) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -32,9 +60,9 @@ public class EnjoyService {
 		int naviCountPerPage = 5; // 네비게이터의 범위 (1~5) (6~10)
 		
 //		ArrayList<EnjoyListData> list = new Enjoydao().getAllData(conn);
-		ArrayList<EnjoyListData> list = new Enjoydao().getListData(conn,recordCountPerPage,currentPage,search);
+		ArrayList<EnjoyListData> list = new Enjoydao().getListData(conn,recordCountPerPage,currentPage,search,type);
 		
-		String PageNavi = new Enjoydao().getPageNavi(conn,naviCountPerPage,recordCountPerPage,currentPage,search);
+		String PageNavi = new Enjoydao().getPageNavi(conn,naviCountPerPage,recordCountPerPage,currentPage,search,type);
 		
 		
 		
