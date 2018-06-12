@@ -5,13 +5,69 @@ li{list-style:none;}
 
 /* responsive web - desktop */
 @media screen and ( min-width:1024px ) {
+    
+/* header - scroll */
+/*
+.scroll footer{
+    padding-left:65px;
+}
+*/
 
 /* header */
-header{
-    position:fixed;
-    background-color:
+#menu_icon{
+    display:block;
+    width:50px; 
+    cursor:pointer;
 }
-header
+#logo{
+    display:none;
+}
+#close_icon{
+    display:none;
+}
+header{
+    background:#fff;
+    position:fixed;
+    width:50px;
+    height:100%;
+    top:0; left:0;
+    border-right:1px solid #ddd;
+    transition:left 0.8s;
+    z-index:9999;
+}
+header>ul{
+    display:none;
+}
+    
+header ul li{
+    display:block;
+}
+header ul li a{
+    display:block;
+}
+header ul li a:hover{
+    color:#b43029;
+}
+header>ul>li{
+    padding-left:20px;
+}
+header>ul>li>a{
+    font-weight:bold;
+    line-height:4;
+}
+header .toggle{
+    border-left:3px solid white;
+}
+header .toggle:hover{
+    border-left:3px solid #b43029;
+}
+header>ul>li>ul{
+    display:none;
+}
+header>ul>li>ul>li{
+    padding-left:20px;
+    line-height:3;
+}
 
 /* main */
 section{
@@ -19,6 +75,7 @@ section{
     font-size:14px;
     transition:padding 0.8s;
 }
+
 
 /* footer */
 footer{
@@ -29,9 +86,6 @@ footer{
     color:white;
     transition:padding 0.8s;
 }
-    
-/* menu click */
-
     
 }
 
