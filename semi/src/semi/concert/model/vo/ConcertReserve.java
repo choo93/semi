@@ -10,8 +10,6 @@ public class ConcertReserve {
 	
 	public ConcertReserve() {}
 
-	
-	
 	public String getConcertTitle() {
 		return concertTitle;
 	}
