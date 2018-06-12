@@ -33,3 +33,7 @@ $(document).ready(function(){
 		}
 	});
 });
+
+function reserve(indexNo, concertCode, price){
+	window.open("/views/concert/concertReserveTemplate.jsp?indexNo="+indexNo+"&concertCode="+concertCode+"&price="+price,"_blank","width=800px,height=750px;");
+}

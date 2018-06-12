@@ -5,10 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="../../css/doboInfo.css">
+<link rel="stylesheet" href="../../css/dobo/doboInfo.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
 </head>
@@ -30,7 +31,7 @@
 							<div>${requestScope.doboInfo.doboMainExplain }</div>
 						</div>
 						<div id="reserve">
-							<button>예약하기</button>
+							<button>예약하기!</button>
 						</div>
 					</div>
 					<div id="contentTop2">

@@ -1,0 +1,369 @@
+@charset "UTF-8";
+
+#contents {
+	width: 100%;
+	height: 150px;
+	background-color: RGB(0, 125, 195);
+}
+
+#contents-1 {
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+
+#contentTitle {
+	width: 100%;
+	height: 50%;
+	background-color: RGB(0, 125, 195);
+	font-size: 40px;
+	color: white;
+}
+
+#hotelTotalList{
+	width: 100%;
+	height: 2000px;
+	margin-top:2%;
+}
+#hotelTotalList-1{
+	width:100%;
+	height: 200px;
+}
+
+#hotelImageList-1{
+	width:400px;
+	height: 100%;
+	float:left;
+	border-radius: 12px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	float:left;
+}
+
+#hotelExplain{
+	width:728px;
+	height:100%;
+	border:3px solid RGB(0, 125, 195);
+	border-right: 20px solid RGB(0, 125, 195);
+	margin-left:4%;
+	float:left;
+}
+
+#hotelTitle{
+	width:100%;
+	height:30%;
+}
+
+#hotelTotalExplain{
+	width:100%;
+	height:50%;
+}
+
+
+#hotelTotalList-2{
+	width:100%;
+	height: 200px;
+	margin-top:1%;
+}
+
+#hotelImageList-2{
+	width:400px;
+	height: 100%;
+	float:left;
+	border-radius: 12px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
+#hotelExplain-2{
+	width:728px;
+	height:100%;
+	border:3px solid RGB(0, 125, 195);
+	border-right: 20px solid RGB(0, 125, 195);
+	margin-left:4%;
+	float:left;
+}
+
+#hotelTitle-2{
+	width:100%;
+	height:30%;
+}
+
+#hotelTotalExplain-2{
+	width:100%;
+	height:50%;
+}
+
+#hotelTotalList-3{
+	width:100%;
+	height: 200px;
+	margin-top:1%;
+}
+
+#hotelImageList-3{
+	width:400px;
+	height: 100%;
+	float:left;
+	border-radius: 12px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
+#hotelExplain-3{
+	width:728px;
+	height:100%;
+	border:3px solid RGB(0, 125, 195);
+	border-right: 20px solid RGB(0, 125, 195);
+	margin-left:4%;
+	float:left;
+}
+
+#hotelTitle-3{
+	width:100%;
+	height:30%;
+}
+
+#hotelTotalExplain-3{
+	width:100%;
+	height:50%;
+}
+
+#hotelTotalList-4{
+	width:100%;
+	height: 200px;
+	margin-top:1%;
+}
+
+#hotelImageList-4{
+	width:400px;
+	height: 100%;
+	float:left;
+	border-radius: 12px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
+#hotelExplain-4{
+	width:728px;
+	height:100%;
+	border:3px solid RGB(0, 125, 195);
+	border-right: 20px solid RGB(0, 125, 195);
+	margin-left:4%;
+	float:left;
+}
+
+#hotelTitle-4{
+	width:100%;
+	height:30%;
+}
+
+#hotelTotalExplain-4{
+	width:100%;
+	height:50%;
+}
+
+#hotelTotalList-5{
+	width:100%;
+	height: 200px;
+	margin-top:1%;
+}
+
+#hotelImageList-5{
+	width:400px;
+	height: 100%;
+	float:left;
+	border-radius: 12px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
+#hotelExplain-5{
+	width:728px;
+	height:100%;
+	border:3px solid RGB(0, 125, 195);
+	border-right: 20px solid RGB(0, 125, 195);
+	margin-left:4%;
+	float:left;
+}
+
+#hotelTitle-5{
+	width:100%;
+	height:30%;
+}
+
+#hotelTotalExplain-5{
+	width:100%;
+	height:50%;
+}
+
+#hotelTotalList-6{
+	width:100%;
+	height: 200px;
+	margin-top:1%;
+}
+
+#hotelImageList-6{
+	width:400px;
+	height: 100%;
+	float:left;
+	border-radius: 12px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
+#hotelExplain-6{
+	width:728px;
+	height:100%;
+	border:3px solid RGB(0, 125, 195);
+	border-right: 20px solid RGB(0, 125, 195);
+	margin-left:4%;
+	float:left;
+}
+
+#hotelTitle-6{
+	width:100%;
+	height:30%;
+}
+
+#hotelTotalExplain-6{
+	width:100%;
+	height:50%;
+}
+
+#hotelTotalList-7{
+	width:100%;
+	height: 200px;
+	margin-top:1%;
+}
+
+#hotelImageList-7{
+	width:400px;
+	height: 100%;
+	float:left;
+	border-radius: 12px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
+#hotelExplain-7{
+	width:728px;
+	height:100%;
+	border:3px solid RGB(0, 125, 195);
+	border-right: 20px solid RGB(0, 125, 195);
+	margin-left:4%;
+	float:left;
+}
+
+#hotelTitle-7{
+	width:100%;
+	height:30%;
+}
+
+#hotelTotalExplain-7{
+	width:100%;
+	height:50%;
+}
+#hotelTotalList-8{
+	width:100%;
+	height: 200px;
+	margin-top:1%;
+}
+
+#hotelImageList-8{
+	width:400px;
+	height: 100%;
+	float:left;
+	border-radius: 12px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
+#hotelExplain-8{
+	width:728px;
+	height:100%;
+	border:3px solid RGB(0, 125, 195);
+	border-right: 20px solid RGB(0, 125, 195);
+	margin-left:4%;
+	float:left;
+}
+
+#hotelTitle-8{
+	width:100%;
+	height:30%;
+}
+
+#hotelTotalExplain-8{
+	width:100%;
+	height:50%;
+}
+
+#hotelTotalList-9{
+	width:100%;
+	height: 200px;
+	margin-top:1%;
+	border-radius: 12px;
+	border-radius: 12px;
+	background-repeat:no-repeat;
+}
+
+#hotelImageList-9{
+	width:400px;
+	height: 100%;
+	float:left;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
+#hotelExplain-9{
+	width:728px;
+	height:100%;
+	border:3px solid RGB(0, 125, 195);
+	border-right: 20px solid RGB(0, 125, 195);
+	margin-left:4%;
+	float:left;
+}
+
+#hotelTitle-9{
+	width:100%;
+	height:30%;
+}
+
+#hotelTotalExplain-9{
+	width:100%;
+	height:50%;
+}
+
+#hotelTotalList-10{
+	width:100%;
+	height: 200px;
+	margin-top:1%;
+	border-radius: 12px;
+}
+
+#hotelImageList-10{
+	width:400px;
+	height: 100%;
+	float:left;border-radius: 12px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
+#hotelExplain-10{
+	width:728px;
+	height:100%;
+	border:3px solid RGB(0, 125, 195);
+	border-right: 20px solid RGB(0, 125, 195);
+	margin-left:4%;
+	float:left;
+}
+
+#hotelTitle-10{
+	width:100%;
+	height:30%;
+}
+
+#hotelTotalExplain-10{
+	width:100%;
+	height:50%;
+}
+

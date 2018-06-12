@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
 </head>
@@ -98,6 +98,8 @@ function deliveryBefore() {
 }
 function test(){
 	var f=document.getElementsByName("check");
+	var no=document.getElementsByName("tdorderNo");
+
 	var count=0;
 	  for(var i=0; i<f.length; i++){
 	       
@@ -108,7 +110,15 @@ function test(){
 	    }
 	    if(count > 0){
 	        if(confirm("선택된 항목들을 삭제하시겠습니까?")){
-	            f_view.submit();
+	        	
+	        	for(var i=0; i<f.length; i++){
+	        		if(f[i].checked==true){
+	        			
+	        			
+	        		
+	        		}	
+	        	}
+	            
 	        }
 	    }
 	    else
@@ -177,7 +187,7 @@ function test(){
 <c:forEach items="${guidebookRequest}" var="g">
 <tr>
 	<td><input type="checkBox" name="check" value="${g.deliveryCheck}"></td>
-	<td>${g.orderNo}</td>
+	<td name="tdorderNo" value="${g.orderNo}">${g.orderNo}</td>
 	<td>${g.name}</td>
 	<td>${g.email}</td>
 	<td>${g.phone}</td>
@@ -185,6 +195,7 @@ function test(){
 	<td>${g.guideBookNum}</td>
 	<td>${g.mapNum}</td>
 	<td>${g.orderDate}</td>
+	</form>
 	<form action="/deliveryCheck" method="post">
 	<td><input type="submit" id="deliverycheck" value="${g.deliveryCheck}">
 		<input type="hidden" value="${g.deliveryCheck}" name="deliveryCheck">
@@ -194,7 +205,6 @@ function test(){
 </tr>
 </c:forEach>
 </table>
-</form>
 
 		<button onclick="test()">삭제</button>
 </div>

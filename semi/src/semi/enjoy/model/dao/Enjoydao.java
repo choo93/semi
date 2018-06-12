@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import semi.enjoy.model.vo.EnjoyDetailData1;
 import semi.enjoy.model.vo.EnjoyListData;
+
 
 public class Enjoydao {
 
@@ -49,7 +51,7 @@ public class Enjoydao {
 	}
 
 	public ArrayList<EnjoyListData> getListData(Connection conn, int recordCountPerPage, int currentPage,
-			String search) {
+			String search, String type) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -60,12 +62,13 @@ public class Enjoydao {
 		// 끝 게시물 계산
 		int end = currentPage * recordCountPerPage;
 
-		String query = "select * from (select list_element.*,row_number() over(order by Index_titleNo)as num from List_Element) where num between ? and ?";
+		String query = "select * from (select list_element.*,row_number() over(order by Index_titleNo)as num from List_Element where List_Element =? ) where num between ? and ?";
 		ArrayList<EnjoyListData> list = new ArrayList<EnjoyListData>();
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);	
+			pstmt.setString(1, type);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);	
 			rset = pstmt.executeQuery();
 			while (rset.next()) {
 				EnjoyListData ELD = new EnjoyListData();
@@ -94,20 +97,20 @@ public class Enjoydao {
 	}
 
 	public String getPageNavi(Connection conn, int naviCountPerPage, int recordCountPerPage, int currentPage,
-			String search) {
+			String search, String type) {
 
 		// 게시물의 토탈 개수를 구해야 함
 		int recordTotalCount = 0;
 		// 총 게시물 개수 저장 변수 (정보가 없으므로 초기값은 0)
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-
-		String query = "SELECT count(*)AS totalCount FROM List_Element";
+		
+		String query = "SELECT count(*)AS totalCount FROM List_Element where list_element = ? ";
 		//String query = "SELECT count(*)AS totalCount FROM List_Element where contents like ?";
 
 		try {
 			pstmt = conn.prepareStatement(query);
-//			pstmt.setString(1, "%" + search + "%");
+			pstmt.setString(1, type);			
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				recordTotalCount = rset.getInt("totalCount");
@@ -194,20 +197,98 @@ public class Enjoydao {
 		StringBuilder sb = new StringBuilder(); // 오랜만이야..
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<a href='/enjoyList?currentPage=" + (startNavi - 1) + "'> < </a>");
+			sb.append("<a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+  "'> < </a>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<a href='/enjoyList?currentPage=" + i + "'><B> " + i + " </B></a>");
+				sb.append("<a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "'><B> " + i + " </B></a>");
 			} else {
-				sb.append("<a href='/enjoyList?currentPage=" + i + "'> " + i + " </a>");
+				sb.append("<a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "'> " + i + " </a>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<a href='/enjoyList?currentPage=" + (endNavi + 1) + "'> > </a>");
+			sb.append("<a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "'> > </a>");
 		}
 
 		return sb.toString();
+	}
+
+	public EnjoyListData getOneData(int indexNo, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String Query ="select * from list_Element where Index_TitleNo = ? ";
+		EnjoyListData ELD = null;
+		try {
+			pstmt = conn.prepareStatement(Query);
+			pstmt.setInt(1, indexNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				
+				ELD = new EnjoyListData();
+				ELD.setIndex_BasicInfo(rset.getString("index_basicInfo"));
+				ELD.setIndex_Image(rset.getString("index_image"));
+				ELD.setIndex_Title(rset.getString("index_title"));
+				ELD.setIndex_Ondate(rset.getDate("index_Ondate"));
+				ELD.setIndex_TitleNo(rset.getInt("index_TitleNo"));
+				ELD.setIndex_Tags(rset.getString("index_Tags"));
+				ELD.setList_Element(rset.getString("list_Element"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return ELD;
+	}
+
+	public EnjoyDetailData1 getOneDetailData(int indexNo, Connection conn) {
+		EnjoyDetailData1 edd1 = null;
+		PreparedStatement pstmt = null;
+		String Query = "select * from Element_Index_detail where SEQ_Index_titleNo = ?";
+		ResultSet rset = null;
+		try {
+			pstmt = conn.prepareStatement(Query);
+			pstmt.setInt(1,indexNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next())
+			{
+			edd1 = new EnjoyDetailData1();
+			edd1.setSEQ_Index_TitleNo(rset.getInt("seq_index_titleNo"));
+			edd1.setIndex_type(rset.getString("index_type"));
+			edd1.setDetail_addr(rset.getString("detail_addr"));
+			edd1.setDetail_tell(rset.getString("detail_tell"));
+			edd1.setDetail_url(rset.getString("detail_url"));
+			edd1.setDetail_onTime(rset.getString("detail_onTime"));
+			edd1.setDetail_offday(rset.getString("detail_offday"));
+			edd1.setDetail_onday(rset.getString("detail_onday"));
+			edd1.setDetail_notice(rset.getString("detail_notice"));
+			edd1.setDetail_payment(rset.getString("detail_payment"));
+			edd1.setDetail_disabled(rset.getString("detail_disabled"));
+			edd1.setDetail_utility(rset.getString("detail_utility"));
+			
+			}
+			else {
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		
+		}
+		
+		
+		
+		return edd1;
 	}
 
 }

@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: 0px;
+}
+
+div {
+	
+}
+
+#wrap {
+	width: 95%;
+	margin: auto;
+}
+
+#top {
+	margin-top: 40px;
+	height: 435px;
+	background-image: url(../../image/dobo/doboMainIMG.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+#top>div {
+	min-width: 660px;
+}
+
+#top>div:first-child {
+	width: 55%;
+	height: 285px;
+	margin: auto;
+}
+
+#top>div:first-child>img {
+	width: 186px;
+	height: 42px;
+}
+
+#top>div:first-child>p {
+	text-align: right;
+}
+
+#top>div>p:first-of-type {
+	font-size: 25px;
+}
+
+#top>div:first-child>span:first-of-type {
+	display: block;
+	text-align: right;
+	font-size: 50px;
+	color: RGB(0, 125, 195);
+}
+
+#top>div:first-child>span:last-of-type {
+	display: block;
+	width: 20%;
+	height: 0%;
+	border: 1.5px solid black;
+	margin-top: 3%;
+	margin-left: 80%;
+}
+
+#top>div>p:not(first-of-type) {
+	font-size: 18px;
+}
+
+#sel {
+	width: 100%;
+	height: 150px;
+	background-color: RGBA(109, 111, 166, 0.8);
+}
+
+#sel>div:first-child {
+	width: 55%;
+	height: 40%;
+	margin: auto;
+	color: white;
+	font-size: 30px;
+	line-height: 50px;
+	border-bottom: 1px solid white;
+}
+
+#sel>div:last-child {
+	width: 55%;
+	height: 60%;
+	margin: auto;
+}
+
+#sel>div:last-child>div {
+	width: 50%;
+	height: 100%;
+	padding-top: 20px;
+	float: left;
+}
+
+#sel>div:last-child>div>* {
+	display: block;
+	height: 70%;
+	text-align: center;
+	float: left;
+}
+
+#sel>div:last-child>div>label {
+	display: block;
+	width: 35%;
+	line-height: 50px;
+	background-color: white;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#sel>div:last-child>div>input {
+	width: 65%;
+	font-size: 20px;
+}
+
+#wrap>p {
+	height: 90px;
+	text-align: center;
+	line-height: 90px;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+#beforeNotice {
+	width: 55%;
+	margin: auto;
+	height: 360px;
+}
+
+#beforeNotice>div:first-child {
+	height: 40px;
+}
+
+#beforeNotice>div:last-child {
+	height: 320px;
+	background-color: RGB(245, 245, 245);
+	padding: 15px;
+	font-size: 15px;
+	overflow: hidden;
+	text-overflow: clip;
+}
+
+#input {
+	width: 55%;
+	margin: auto;
+	margin-top: 35px;
+}
+
+#input>div:first-child {
+	height: 55px;
+	padding-top: 7px;
+	text-align: right;
+}
+
+#input>div:last-child {
+	height: 500px;
+}
+
+#submit {
+	width: 100%;
+}
+
+#form {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+#form>div {
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid lightgrey;
+}
+
+#form>div>* {
+	float: left;
+	line-height: 50px;
+}
+
+#form>div>label:first-child {
+	display: block;
+	width: 25%;
+	height: 100%;
+	text-align: center;
+	line-height: 50px;
+	margin-right: 0px;
+}
+
+#form>div>label:not (:first-child ){
+	margin-left: 5px;
+	margin-right: 20px;
+}
+
+#form>div>input {
+	margin-top: 8px;
+	height: 35px;
+	border: 1px solid grey;
+}
+
+#form>div>input:last-child {
+	width: 50%;
+}
+
+#form>div:last-child {
+	height: 300px;
+}
+
+#form>div>textarea {
+	margin-top: 10px;
+	width: 60%;
+	height: 70%;
+	border: 1px solid black;
+}
+
+#afterNotice {
+	width: 55%;
+	margin: auto;
+}
+
+#afterNotice>div:first-child {
+	padding-top: 50px;
+	height: 93px;
+	font-size: 20px;
+}
+
+#afterNotice>div:last-child {
+	height: 315px;
+	background-color: RGB(245, 245, 245);
+	padding: 15px;
+	font-size: 15px;
+	overflow: hidden;
+	text-overflow: clip;
+}
+
+#btn {
+	width: 55%;
+	height: 105px;
+	margin: auto;
+	text-align: center;
+	line-height: 100px;
+}
+
+#btn>input {
+	width: 100px;
+	height: 40px;
+	background-color: RGB(0, 125, 195);
+	border: 1px solid RGB(0, 125, 195);
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+}
