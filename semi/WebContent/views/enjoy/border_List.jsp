@@ -14,72 +14,90 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css">
+
 <link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/moreBtn.css">
+<link rel="stylesheet" href="../../css/enjoySelect.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
 </head>
+<style>
+.photo {
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	z-index: 1;
+	vertical-align: middle;
+	position: relative;
+	float: left;
+}
+</style>
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp"%>
 	<section>
-
+	
 		<!-- 내용물 -->
-		<div id="enjoyPage" style="height: 2000px;">
+		<div id="enjoyPage" style="width: 100%; height: 100%;">
 
-			<div id="line" style="background-color: pink; margin-left: 10%;">
+			<div id="line" style="margin-left: 10%; padding: 20px;">
 				<select name="list">
 					<option value="">정렬하기</option>
 					<option value="title">제목</option>
 					<option value="dayOfIssue">발행일</option>
 				</select>
 			</div>
-
 			<%
 				for (EnjoyListData eld : list) {
 			%>
-			<form action="/enjoySelect?IndexNo=<%=eld.getIndex_TitleNo()%>" method="post">
-			<div class="content" id="list_1"
-				style="margin-left: 10%; padding: 20px;">
-				<%
-					eld.getIndex_TitleNo();
-				%>
-				<%
-					eld.getList_Element();
-				%>
-				<div id="photo"
-					style="float: left; width: 400px; height: 200px; background-image:"<%eld.getIndex_Image();%>">
-					<!--url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);  -->
-				</div>
-		
-				<div id="info"
-					style="float: left; height: 200px; background-color: orange">
-					<div id="title" style="font: bold 30pt 나눔스퀘어;">
-						<%=eld.getIndex_Title()%>
+			<form action="/enjoySelect?IndexNo=<%=eld.getIndex_TitleNo()%>"
+				method="post">
+
+				<div class="content" id="list_1"
+					style="margin-left: 10%; margin-bottom:11%; padding: 20px;">
+					<%eld.getIndex_TitleNo();eld.getList_Element();%>
+					<div class="photo"
+						style="float:left; width: 400px; height: 200px; border-radius: 12px; background-image: url(<%=eld.getIndex_Image()%>);">
+						<!--url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);  -->
 					</div>
-					<div id="contents">
-						<%=eld.getIndex_BasicInfo()%>
-					</div>
-					<div id="tags">
-						<p style="display: inline; height: 100%;">태그</p>
-						<div style="display: inline;">
-							<%=eld.getIndex_Tags()%>
+
+					<div id="info"
+						style="float: left; width: 800px; height: 200px; margin-left: 20px; border: 1px solid #9B95C9; border-width: 2px 20px 2px 2px; position: relative;">
+						<div id="title" style="font: bold 30pt 나눔스퀘어; margin: 10px;">
+							<%=eld.getIndex_Title()%>
 						</div>
+						<div id="contents" style="padding: 5px; margin: 10px;">
+							<%=eld.getIndex_BasicInfo()%><br>
+							
+						</div>
+						<div id="tags"
+							style="position: absolute; margin: 10px; left: 5px; bottom: 5px;">
+						
+							
+							<div style="display: inline;">
+								<% StringTokenizer Tag = new StringTokenizer(eld.getIndex_Tags(),"#");  
+										while(Tag.hasMoreTokens())
+										{
+											%><a href="#">#<%=Tag.nextToken()%></a>
+											<%
+										}
+										
+									%>
+							</div>
+						</div>
+						
+						<button id="button" style="margin-left: 80%; margin-top: 3%;">자세히</button>
+
 					</div>
-					<br> 작성일 :
-					<%=eld.getIndex_Ondate()%>
-					<br>
-					<input type="submit" value="자세히">
-					
 				</div>
-			</div>
 			</form>
-			<%
+		</div>
+
+		<%
 				}
 			%>
-	</div>
-	<label><%=pageNavi%></label><br>
 
-			<%-- <jsp:useBean id="list" class="semi.enjoy.model.vo.EnjoyListData" scope="request">
+		<label><%=pageNavi%></label><br>
+	
+		<%-- <jsp:useBean id="list" class="semi.enjoy.model.vo.EnjoyListData" scope="request">
 	</jsp:useBean> --%>
 	</section>
 	<%@ include file="/views/main/footer.jsp"%>

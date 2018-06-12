@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+#reviewButton{
+  background:#8490C7;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:50px;
+  font-size:1em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+#reviewButton:hover{
+  background:#fff;
+  color:#8490C7;
+}
+#reviewButton:before, #reviewButton:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #8490C7;
+  transition:400ms ease all;
+}
+#reviewButton:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+#reviewButton:hover:before, #reviewButton:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}

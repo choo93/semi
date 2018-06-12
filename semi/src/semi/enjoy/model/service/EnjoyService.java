@@ -80,4 +80,18 @@ public class EnjoyService {
 		
 		return pd;
 	}
+
+
+	public int insertReview(String reviewTitle, String reviewContents, int indexNo) {
+		// 
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new Enjoydao().insertReview(conn,reviewTitle,reviewContents,indexNo);
+		
+		
+		JDBCTemplate.close(conn);
+		
+		
+		return result;
+	}
 }
