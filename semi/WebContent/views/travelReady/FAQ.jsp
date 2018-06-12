@@ -101,7 +101,13 @@ fieldset{
 	margin-top:2%;
 	width:100%;
 	height:98%;
-	background-color:red;
+
+}
+
+dt
+{
+	border-top:1px solid #dcdcdc;
+	padding : 10px 20px 10px 45px;
 }
 </style>
 
@@ -145,10 +151,19 @@ fieldset{
 					</ul>
 				</div>
 				
-				<div style="width:100%; height:600px;">
+				<div style="width:100%; height:470px;">
 					<h3 style="font-size:24px;">FQA</h3>
 					<dl id="faqcontent">
-						
+						<dt><a href="#">1</a></dt>
+						<dt><a href="#">2</a></dt>
+						<dt><a href="#">3</a></dt>
+						<dt><a href="#">4</a></dt>
+						<dt><a href="#">5</a></dt>
+						<dt><a href="#">6</a></dt>
+						<dt><a href="#">7</a></dt>
+						<dt><a href="#">8</a></dt>
+						<dt><a href="#">9</a></dt>
+						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#">10</a></dt>
 					</dl>
 				</div>
 				<div style="width:100%; height:50px; background-color:blue; padding-top:30px; padding-bottom:50px;">
