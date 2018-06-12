@@ -14,7 +14,7 @@
 }
 
 .pagination>li>a, .pagination>li>span {
-	color: #9B95C9;
+	color: #9B95C9;  
 }
 
 .pagination>.active>span:hover, .pagination>.active>a:hover, .pagination>li>span:hover,
