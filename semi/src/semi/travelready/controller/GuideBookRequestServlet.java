@@ -34,9 +34,16 @@ public class GuideBookRequestServlet extends HttpServlet {
 		String guideBookNum=request.getParameter("guidebooknum");
 		String mapNum=request.getParameter("mapnum");
 		
+		if(guideBookNum.equals("선택")) {
+			guideBookNum="0권";
+		}
+		
+		if(mapNum.equals("선택")) {
+			mapNum="0권";
+		}
+		
 		guideBookNum=guideBookNum.charAt(0)+"";
 		mapNum=mapNum.charAt(0)+"";
-	
 		
 		GuideBookRequest gbr=new GuideBookRequest();
 		
