@@ -7,6 +7,7 @@ import common.JDBCTemplate;
 import semi.concert.model.dao.ConcertDAO;
 import semi.concert.model.vo.ConcertInfo;
 import semi.concert.model.vo.ConcertPageData;
+import semi.concert.model.vo.ConcertReserve;
 
 public class ConcertService {
 
@@ -33,6 +34,22 @@ public class ConcertService {
 		JDBCTemplate.close(conn);
 		
 		return cpd;
+	}
+
+
+	public int addReserve(ConcertReserve cr) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new ConcertDAO().addReserve(conn, cr);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 	
 }

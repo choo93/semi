@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import semi.concert.model.vo.ConcertInfo;
+import semi.concert.model.vo.ConcertReserve;
 
 public class ConcertDAO {
 
@@ -177,6 +178,32 @@ public class ConcertDAO {
 		}
 		
 		return sb.toString();
+		
+		
+	}
+
+
+	public int addReserve(Connection conn, ConcertReserve cr) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "insert into CONCERTRESERVE values (CONCERTRESERVE_SEQ.NEXTVAL,?,?,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, cr.getConcertCode());
+			pstmt.setInt(2, cr.getConcertPrice());
+			pstmt.setString(3, cr.getConcertReserveDate());
+			pstmt.setString(4, cr.getConcertReserveTime());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 		
 		
 	}
