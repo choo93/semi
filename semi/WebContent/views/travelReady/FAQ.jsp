@@ -103,7 +103,6 @@ fieldset{
 	height:98%;
 
 }
-
 dt
 {
 	border-top:1px solid #dcdcdc;
