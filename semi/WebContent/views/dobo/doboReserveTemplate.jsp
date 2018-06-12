@@ -14,8 +14,10 @@
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp"%>
 	<section>
+	<%System.out.println(request.getParameter("doboCode")); %>
 
-		<form action="#" method="get">
+		<form action="/doboReserve" method="get">
+			<input type="hidden" value="<%=request.getParameter("doboCode") %>" name="doboCode">
 			<div id="wrap">
 				<div id="top">
 					<div>

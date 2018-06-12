@@ -7,6 +7,7 @@ import common.JDBCTemplate;
 import semi.dobo.model.dao.DoboDAO;
 import semi.dobo.model.vo.DoboInfo;
 import semi.dobo.model.vo.DoboPageData;
+import semi.dobo.model.vo.DoboReserve;
 
 public class DoboService {
 
@@ -33,6 +34,21 @@ public class DoboService {
 		JDBCTemplate.close(conn);
 		
 		return dpd;
+	}
+
+	public int addReserve(DoboReserve dr) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new DoboDAO().addReserve(conn,dr);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 
 }
