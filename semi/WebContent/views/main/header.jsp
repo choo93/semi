@@ -9,16 +9,19 @@
 <body>
     <header>
         <img src="../../image/menu.png" id="menu_icon" onclick="menu();">
-        <img src="../../image/close.png" id="close_icon" onclick="close();">
+        <img src="../../image/menu_mobile.png" id="menu_icon_mobile" onclick="menu_mobile();" style="display:none;">
+        
+        
         <div>
             <a href="http://localhost">
                 <img src="../../image/logo.jpg" id="logo" style="height:100%;">
             </a>
         </div>
-
+        
 		<ul id="main_category">
+            <img src="../../image/close.png" id="menu_icon_close" onclick="close_mobile();" style="width:30px; float:right; cursor:pointer; padding:15px;">
 			<li class="toggle menu_one"><a href="#">하이라이트</a>
-			<ul class="sub_menu_one">
+			<ul class="sub_menu_one" style="display:none;">
 			    <li><a href="">Top 10</a></li>
 			    <li><a href="">축제&amp;행사</a></li>
 			    <li><a href="">서울 특화관광</a></li>
@@ -27,7 +30,7 @@
 			</ul>
 			</li>
 			<li class="toggle menu_two"><a href="#">서울즐기기</a>
-            <ul class="sub_menu_two">
+            <ul class="sub_menu_two" style="display:none;">
 			    <li><a href="">추천코스</a></li>
 			    <li><a href="">명소</a></li>
 			    <li><a href="">쇼핑</a></li>
@@ -37,14 +40,14 @@
 			</ul>
 			</li>
 			<li class="toggle menu_three"><a href="#">예약하기</a>
-            <ul class="sub_menu_three">
+            <ul class="sub_menu_three" style="display:none;">
 			    <li><a href="">공연예약</a></li>
 			    <li><a href="">호텔예약</a></li>
 			    <li><a href="">서울도보관광예약</a></li>
 			</ul>			
 			</li>
 			<li class="toggle menu_four"><a href="#">여행준비</a>
-			<ul class="sub_menu_four">
+			<ul class="sub_menu_four" style="display:none;">
 			    <li><a href="">가이드북&amp;지도</a></li>
 			    <li><a href="">여행필수정보</a></li>
 			    <li><a href="">서비스 안내</a></li>
@@ -55,6 +58,19 @@
 			</ul>
 			</li>
 		</ul>
+		
+        <script>
+            function menu_mobile(){
+                $('.main').css('overflow','hidden');
+                $('#main_category').addClass('category_view');
+                $('#menu_icon_close').css('display','block');
+            }
+            function close_mobile(){
+                $('.main').css('overflow','inherit');
+                $('#main_category').removeClass('category_view');
+                $('#menu_icon_close').css('display','none');
+            }
+        </script>
 	</header>
 </body>
 </html>
