@@ -6,6 +6,7 @@
 	box-sizing: border-box;
 }
 
+
 div {
 }
 
@@ -103,15 +104,16 @@ dl>hr {
 	padding-top: 17px;
 }
 
-#reserveBtn>a {
-	text-decoration: none;
+#reserveBtn>button {
 	color: white;
+	background-color:RGB(0, 125, 195);
 	border: 2px solid white;
 	font-size: 40px;
 	padding: 10px;
 	padding-left: 40px;
 	padding-right: 40px;
 	border-radius: 10px;
+	cursor:pointer;
 }
 
 #contentBottom {
