@@ -6,7 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/hotelInfo.css">
 <link rel="stylesheet" href="/lib/w3.css">
+<link rel="stylesheet" href="../../css/hotelList.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
 <script src="/js/hotelInfoToogle.js"></script>
@@ -21,154 +24,11 @@
 
 <body id="scroll">
 
-	<style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-#contents {
-	width: 100%;
-	height: 150px;
-	background-color: RGB(0, 125, 195);
-}
-
-#contents-1 {
-	width: 70%;
-	height: 100%;
-	float: left;
-}
-
-#contentTitle {
-	width: 100%;
-	height: 50%;
-	background-color: RGB(0, 125, 195);
-	font-size: 40px;
-	color: white;
-}
-
-#hotelAddress {
-	width: 100%;
-	height: 50%;
-	background-color: RGB(0, 125, 195);
-	font-size: 20px;
-	color: white;
-}
-
-#hotelPhoto {
-	width: 100%;
-	height: 500px;
-	border: 2px solid black;
-	margin-top: 1%;
-	position:relative;
-}
-
-#hotelMainPhoto {
-	width: 100%;
-	height: 398px;
-	padding-left: 25%;
-	padding-right: 5%;
-	padding-top: 4%;
-	padding-bottom: 5%;
-	background-color: #363636;
-
-}
-
-#hotelInfoSubPhoto {
-	width: 100%;
-	height: 100px;
-	border: 2px solid black;
-	background-color: #363636;
-}
-
-#hotelSubPhoto1 {
-	width: 20%;
-	height: 100%;
-	float: left;
-	padding: 1%;
-}
-
-#hotelSubPhoto2 {
-	width: 20%;
-	height: 100%;
-	float: left;
-	padding: 1%;
-}
-
-#hotelSubPhoto3 {
-	width: 20%;
-	height: 100%;
-	float: left;
-	padding: 1%;
-}
-
-#hotelSubPhoto4 {
-	width: 20%;
-	height: 100%;
-	float: left;
-	padding: 1%;
-}
-
-#hotelSubPhoto5 {
-	width: 20%;
-	height: 100%;
-	float: left;
-	padding: 1%;
-}
-
-#hotelName {
-	width: 100%;
-	height: 100px;
-	font-size: 20px;
-	padding-top: 1%;
-	margin-top: 1%;
-}
-#button{
-	width:100%;
-	height:50px;
-	padding-top: 1%;
-}
-
-#reserve{
-	width:50%;
-	height:100%;
-	float:left;
-}
-
-#reserve>button{
-    width: 80px;
-	height: 100%;
-	margin-left: 45%;
-	background-color: RGB(0, 125, 195);
-	border: RGB(0, 125, 195);
-	border-radius: 5px;
-	color: white;
-	font-weight: bold;
-}
-
-#back{
-	width:50%;
-	height:100%;
-	float:left;
-}
-
-#back>button{
-    width: 80px;
-	height: 100%;
-	margin-left: 45%;
-	background-color: RGB(0, 125, 195);
-	border: RGB(0, 125, 195);
-	border-radius: 5px;
-	color: white;
-	font-weight: bold;
-}
-
-</style>
+>
 
 	<%@ include file="/views/main/header.jsp"%>
 	<section>
-	<div style="width: 1200px; height: 1800px;">
+	<div style="width: 1200px; height: 1800px; margin-left:15%;">
 		<div id="contents">
 			<div id="contents-1">
 				<div id="contentTitle">호텔아띠 충무로(Goodstay Hotel Atti)</div>
@@ -263,7 +123,7 @@
 				</div>
 
 				<div style="width: 20%; height: 100%; float: left;">
-					<h3 class="toggleText2" style="text-align: right; font-size:20px;">▼</h3>
+					<h3 class="toggleText2" style="text-align: right; font-size:20px;">▲</h3>
 				</div>
 			</div>
 		</div>
@@ -292,7 +152,7 @@
 
 				</div>
 				<div style="width: 20%; height: 100%; float: left;">
-					<h3 class="toggleText3" style="text-align: right; font-size:20px; ">▼</h3>
+					<h3 class="toggleText3" style="text-align: right; font-size:20px; ">▲</h3>
 				</div>
 			</div>
 		</div>
@@ -304,10 +164,10 @@
 		
 		<div id="button">
 		<div id="reserve">
-		<button>예약하기</button>  
+		<button onclick="hotelReserve();">예약하기</button>  
 		</div>
 		<div id="back">
-		 <button>호텔 목록페이지</button>
+		 <button onclick="back();">호텔 목록페이지</button>
 		 </div>
 		 </div>
 	</div>
@@ -317,6 +177,20 @@
 
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap">
 	</script>
+	
+	<script>
+		function back()
+		{
+			//history.go(-1);
+		}
+	</script>
+	
+	<script>
+		function hotelReserve(){
+			location.href="/views/hotel/hotelReserve.jsp";
+		}
+	</script>
+	
 	
 	<!-- 지도 api -->
 	<script>
