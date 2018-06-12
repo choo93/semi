@@ -28,9 +28,9 @@
                 width: 100%;
                 height: 1000px;
             }
-            
+
             .carousel-caption {
-                bottom: 90%;
+                bottom: 85%;
             }
 
             .control {
@@ -40,7 +40,24 @@
                 display: inline-block;
                 right: 50%;
             }
+
+            .font {
+                color: white;
+                text-shadow: 1px -1px 1px rgb(233, 231, 109), -1px 2px 2px rgb(137, 31, 199);
+                height: 60px;
+                margin-bottom: 10px;
+                font: italic bold 3.3rem "나눔스퀘어";
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding-top: 10px;
+                margin: 0;
+            }
+            .head {
+                /* background-color: #ffffff; */
+                background-color: rgb(0,0,0,0.8);
+            }
             
+
             .container {
                 padding-top: 30px;
             }
@@ -52,6 +69,8 @@
 
             <section>
                 <div class="container-fluid">
+                        <div class="head" style="text-align: center">
+                            <p class="font">동대문</p></div>
 
                     <!-- 캐러셀 시작 -->
                     <div id="carousel-generic" class="carousel slide">
@@ -66,27 +85,15 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <img src="../../image/festival/main.jpg">
-                                <div class="carousel-caption">
-                                        <h1>동대문</h1>
-                                     </div>  
                             </div>
                             <div class="item">
                                 <img src="../../image/festival/sub1.jpg">
-                                <div class="carousel-caption">
-                                        <h1>동대문</h1>
-                                     </div>  
                             </div>
                             <div class="item">
                                 <img src="../../image/festival/sub2.jpg">
-                                <div class="carousel-caption">
-                                        <h1>동대문</h1>
-                                     </div>  
                             </div>
                             <div class="item">
                                 <img src="../../image/festival/sub3.jpg">
-                                <div class="carousel-caption">
-                                        <h1>동대문</h1>
-                                     </div>  
                             </div>
                         </div>
                         <!-- 컨트롤러 부분 -->
@@ -195,51 +202,51 @@
                             </div>
                         </div>
                         <div class="panel panel-danger">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse"data-target="#collapseThree">
-                                            지도&교통
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus
-                                        tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt
-                                        lacinia. Aliquam posuere pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus.
-                                        Pellentesque sit amet dignissim mauris. Suspendisse a erat congue nunc auctor malesuada.
-                                        Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean id condimentum
-                                        mauris. Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae
-                                        est at erat tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi
-                                        sit amet urna elementum semper. Etiam dignissim pharetra mauris. Donec rhoncus nisl sem,
-                                        ut ultrices odio porttitor sed. Donec consequat facilisis velit. Cras feugiat tincidunt
-                                        fermentum. Duis interdum nec quam id eleifend.
-                                    </div>
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-target="#collapseThree">
+                                        지도&교통
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus
+                                    tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt
+                                    lacinia. Aliquam posuere pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus.
+                                    Pellentesque sit amet dignissim mauris. Suspendisse a erat congue nunc auctor malesuada.
+                                    Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean id condimentum
+                                    mauris. Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae
+                                    est at erat tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi
+                                    sit amet urna elementum semper. Etiam dignissim pharetra mauris. Donec rhoncus nisl sem,
+                                    ut ultrices odio porttitor sed. Donec consequat facilisis velit. Cras feugiat tincidunt
+                                    fermentum. Duis interdum nec quam id eleifend.
                                 </div>
                             </div>
-                            <div class="panel panel-danger">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse"data-target="#collapseFour">
-                                                댓글
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseFour" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus
-                                            tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt
-                                            lacinia. Aliquam posuere pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus.
-                                            Pellentesque sit amet dignissim mauris. Suspendisse a erat congue nunc auctor malesuada.
-                                            Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean id condimentum
-                                            mauris. Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae
-                                            est at erat tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi
-                                            sit amet urna elementum semper. Etiam dignissim pharetra mauris. Donec rhoncus nisl sem,
-                                            ut ultrices odio porttitor sed. Donec consequat facilisis velit. Cras feugiat tincidunt
-                                            fermentum. Duis interdum nec quam id eleifend.
-                                        </div>
-                                    </div>
+                        </div>
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-target="#collapseFour">
+                                        댓글
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus
+                                    tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt
+                                    lacinia. Aliquam posuere pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus.
+                                    Pellentesque sit amet dignissim mauris. Suspendisse a erat congue nunc auctor malesuada.
+                                    Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean id condimentum
+                                    mauris. Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae
+                                    est at erat tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi
+                                    sit amet urna elementum semper. Etiam dignissim pharetra mauris. Donec rhoncus nisl sem,
+                                    ut ultrices odio porttitor sed. Donec consequat facilisis velit. Cras feugiat tincidunt
+                                    fermentum. Duis interdum nec quam id eleifend.
                                 </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
