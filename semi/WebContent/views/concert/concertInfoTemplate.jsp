@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String reserve = (String)request.getAttribute("reserve"); %>    
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="../../css/main.css">
@@ -10,24 +12,55 @@
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
 	<script src="/js/concert/concertInfo.js"></script>
-	
+	<%-- <%
+	if(reserve!=null){
+	if(reserve.equals("success")){
+
+	%>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				if(opener!=null){
+					alert('예약 되었습니다.');
+					opener.location.reload();
+					window.close();
+				}
+			}
+			
+		</script>
+	<%
+	}else if(reserve.equals("fail")){
+	%>
+		<script type="text/javascript">
+			window.onload = function(){
+				if(opener!=null){
+					alert('예약에 실패하였습니다.');
+					opener.location.reload();
+					window.close();
+				}
+			}
+			
+		</script>
+	<%
+	}}%> --%>
+		
 	<script>
         // 이거는 자바 스크립트 선언에서 가져오는 듯
         function initMap() {
         	var uluru = {
-                lat: ${requestScope.concertInfo.concertLatitude}, 
-                lng: ${requestScope.concertInfo.concertLongtitude}
-            };
-            var map = new google.maps.Map(document.getElementById('mapContent'), {
-                zoom: 18,
-                center: uluru
-            });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-            });
-        }
-        
+                    lat: ${requestScope.concertInfo.concertLatitude}, 
+                    lng: ${requestScope.concertInfo.concertLongtitude}
+                };
+                var map = new google.maps.Map(document.getElementById('mapContent'), {
+                    zoom: 18,
+                    center: uluru
+                });
+                var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+            }
+            
         var latitude;
         var longitude;
         window.onload = function() {
@@ -84,7 +117,7 @@
                         ${requestScope.concertInfo.concertDate }
                     </div>
                     <div id="reserveBtn">
-                        <a href="#">예약하기</a>
+                        <button onclick="reserve(${requestScope.concertInfo.indexNo },${requestScope.concertInfo.concertCode }, ${requestScope.concertInfo.concertPrice });">예약하기</button>
                     </div>
                 </div>
             </div>
