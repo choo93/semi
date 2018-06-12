@@ -23,7 +23,7 @@ public class ConcertInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int indexNo = Integer.parseInt(request.getParameter("indexNo"));
 		
-		ConcertInfo ci = new ConcertService().selectAllInfo(1);
+		ConcertInfo ci = new ConcertService().selectAllInfo(indexNo);
 
 		if(ci!=null) {
 			RequestDispatcher view = request.getRequestDispatcher("/views/concert/concertInfoTemplate.jsp");

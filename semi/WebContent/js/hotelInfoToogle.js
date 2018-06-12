@@ -7,44 +7,41 @@ var toggleText3 = true;
 $(document).ready(function(){
 	$('#hotelExplainToggle').click(function () {
 
-		$('#hotelTotalExplain').toggle('display');
+		$('#hotelTotalExplain').slideToggle();
 		if(toggleText1==true)
 		{
-			window.document.getElementById('toggleText1').innerHTML = ("▼");
+			window.document.getElementsByClassName('toggleText1')[0].innerHTML = ("▲");
 			toggleText1 = false;
 		}
 		else{
-			console.log(document.getElementById('toggleText1'));
-			window.document.getElementById('toggleText1').innerHTML = "▲";
+			window.document.getElementsByClassName('toggleText1')[0].innerHTML = ("▼");
 			toggleText1 = true;
 		}
 	});
 	
 	$('#hotelPriceToggle').click(function () {
 
-		$('#hotelPriceExplain').toggle('display');
+		$('#hotelPriceExplain').slideToggle();
 		if(toggleText1==true)
 		{
-			window.document.getElementById('toggleText2').innerHTML = "▼";
+			window.document.getElementsByClassName('toggleText2')[0].innerHTML = "▼";
 			toggleText1 = false;
 		}
 		else{
-			console.log(document.getElementById('toggleText2'));
-			window.document.getElementById('toggleText2').innerHTML = "▲";
+			window.document.getElementsByClassName('toggleText2')[0].innerHTML = "▲";
 			toggleText1 = true;
 		}
 	});
 	$('#hotelMapToggle').click(function () {
 
-		$('#hotelMapInfo').toggle('display');
+		$('#hotelMapInfo').slideToggle();
 		if(toggleText1==true)
 		{
-			window.document.getElementById('toggleText3').innerHTML = "▼";
+			window.document.getElementsByClassName('toggleText3')[0].innerHTML = "▼";
 			toggleText1 = false;
 		}
 		else{
-			console.log(document.getElementById('toggleText3'));
-			window.document.getElementById('toggleText3').innerHTML = "▲";
+			window.document.getElementsByClassName('toggleText3')[0].innerHTML = "▲";
 			toggleText1 = true;
 		}
 	});

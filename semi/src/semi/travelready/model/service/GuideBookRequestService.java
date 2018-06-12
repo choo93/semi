@@ -7,6 +7,7 @@ import common.JDBCTemplate;
 import semi.concert.model.dao.ConcertDAO;
 import semi.concert.model.vo.ConcertInfo;
 import semi.travelready.model.dao.GuideBookRequestDao;
+import semi.travelready.model.vo.GuideBookDown;
 import semi.travelready.model.vo.GuideBookRequest;
 
 public class GuideBookRequestService {
@@ -48,6 +49,22 @@ public class GuideBookRequestService {
 			JDBCTemplate.rollback(conn);
 		}
 		return result;
+	}
+
+	public ArrayList<GuideBookDown> guideBookDown() {
+		Connection conn=JDBCTemplate.getConnection();
+		ArrayList<GuideBookDown> list=new GuideBookRequestDao().guideBookDown(conn);
+		JDBCTemplate.close(conn);
+		return list;
+		
+	}
+
+	public GuideBookDown pdfDown(int orderNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		GuideBookDown gbd=new GuideBookRequestDao().pdfDown(conn,orderNo);
+		JDBCTemplate.close(conn);
+		return gbd;
+		
 	}
 
 }

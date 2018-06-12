@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.pagination>.active>span {
+	background-color: #9B95C9;
+	border: 1px solid #ddd;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>span,
+	.pagination>.active>span:focus {
+	color: #fff;
+	cursor: default;
+	background-color: #9B95C9;
+	border: 1px solid #ddd;
+}
+
+.pagination>li>a, .pagination>li>span {
+	color: #9B95C9;
+}
+
+.pagination>.active>span:hover, .pagination>.active>a:hover, .pagination>li>span:hover,
+	.pagination>li>a:hover {
+	background-color: #eee;
+	border-color: #ddd;
+	color: #9B95C9;
+}

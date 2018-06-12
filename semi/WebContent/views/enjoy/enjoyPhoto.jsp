@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,72 +92,56 @@ box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 }
 </style>
 <body id="scroll">
-   <%@ include file="/views/main/header.jsp"%>
-   <section>
-      <div id="enjoyPhoto" style="width: 100%;">
-      
-      	<a href="sojung.jsp">
-         	<div id="photo1" class="picture" style="width: 50%; height: 350px;">
-         		<div class="effectLeft" style="width: 100%; height: 100%;">
-         		<div class="fontPosition">
-            		<span class="font">추천코스</span>
-           		</div>
-           		</div>
-         	</div>
-         </a>
-         
-         <a href="#">
-         <div id="photo2" class="picture" style="width: 50%; height: 350px;">
-         <div class="effectRight" style="width: 100%; height: 100%;">
-         	<div class="fontPosition">
-            	<span class="font">명소</span>
-           	</div>
-         </div>
-         </div>
-         </a>
-         
-         <a href="#">
-         <div id="photo3" class="picture" style="width: 50%; height: 350px;">
-         <div class="effectLeft" style="width: 100%; height: 100%;">
-         	<div class="fontPosition">
-            	<span class="font">쇼핑</span>
-           	</div>
-         </div>
-         </div>
-         </a>
-         
-         <a href="#">
-         <div id="photo4" class="picture" style="width: 50%; height: 350px;">
-         <div class="effectRight" style="width: 100%; height: 100%;">
-         	<div class="fontPosition">
-            	<span class="font">숙박</span>
-           	</div>
-         </div>
-         </div>
-         </a>
-         
-         <a href="#">
-         <div id="photo5" class="picture" style="width: 50%; height: 350px;">
-         <div class="effectLeft" style="width: 100%; height: 100%;">
-         	<div class="fontPosition">
-            	<span class="font">음식점</span>
-           	</div>
-         </div>
-         </div>
-         </a>
-         
-         <a href="#">
-         <div id="photo6" class="picture" style="width: 50%; height: 350px;">
-         <div class="effectRight" style="width: 100%; height: 100%;">
-         	<div class="fontPosition">
-            	<span class="font">캘린더</span>
-           	</div>
-         </div>
-         </div>
-         </a>
-         
-      </div>
-   </section> 
-   <%@ include file="/views/main/footer.jsp"%>
+	<%@ include file="/views/main/header.jsp"%>
+	
+	<section>
+		<div id="enjoyPhoto" style="width: 100%;">
+			<div id="photo1" style="width: 50%; height: 350px; float: left;">
+					<a href="/enjoyList?type=type1">
+				 <img class="photo1"
+					src="../../image/enjoy/SEOUL1.png"
+					style="width: 100%; height: 100%;">
+					</a>
+				 
+				
+			</div>
+			<div id="photo2" style="width: 50%; height: 350px; float: left;">
+				
+				<a href="/enjoyList?type=type2">
+				<img class="photo2"
+					src="../../image/enjoy/SEOUL2.png"
+					style="width: 100%; height: 100%;"></a>
+										
+															
+			</div>
+			<div id="photo3" style="width: 50%; height: 350px; float: left;">
+				
+				<a href="/enjoyList?type=type3"><img class="photo3"
+					src="../../image/enjoy/SEOUL3.png"
+					style="width: 100%; height: 100%;"></a>
+
+			</div>
+			<div id="photo4" style="width: 50%; height: 350px; float: left;">
+				
+				<a href="/enjoyList?type=type4"><img class="photo4"
+					src="../../image/enjoy/SEOUL4.png"
+					style="width: 100%; height: 100%;"></a>
+
+			</div>
+			<div id="photo5" style="width: 50%; height: 350px; float: left;">
+				
+				<a href="/enjoyList?type=type5"><img class="photo5"
+					src="../../image/enjoy/SEOUL5.png"
+					style="width: 100%; height: 100%;"></a>
+			</div>
+			<div id="photo6" style="width: 50%; height: 350px; float: left;">
+				
+				<a href="/enjoyList?type=type6"><img class="photo6"
+					src="../../image/enjoy/SEOUL6.png"
+					style="width: 100%; height: 100%;"></a>
+			</div>
+		</div>
+	</section>
+	<%@ include file="/views/main/footer.jsp"%>
 </body>
 </html>

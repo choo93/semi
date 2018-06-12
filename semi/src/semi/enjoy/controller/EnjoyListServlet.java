@@ -61,12 +61,24 @@ public class EnjoyListServlet extends HttpServlet {
 		{
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
+		// 화면구성시 분류가져오기
+		String type = "";
+		if(request.getParameter("type")!=null)
+		{
+			type = request.getParameter("type");
+
+		}
+		else
+		{
+			type="";
+		}
+				
 		
 		// 페이지값 셋팅
 		
 		// 비지니스 로직
 		
-		PageData pd = new EnjoyService().getListData(currentPage,search);
+		PageData pd = new EnjoyService().getListData(currentPage,search,type);
 		
 		
 //		ArrayList<EnjoyListData> list  = new EnjoyService().getAllData();
@@ -75,9 +87,10 @@ public class EnjoyListServlet extends HttpServlet {
 		if(pd!=null) 
 		{// 정보가 제대로 있을경우 처리
 				RequestDispatcher view = request.getRequestDispatcher("/views/enjoy/border_List.jsp");
+				
 				request.setAttribute("pageData", pd);
 				view.forward(request, response);
-				
+			
 		}
 		else 
 		{
