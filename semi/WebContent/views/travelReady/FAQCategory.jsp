@@ -134,7 +134,7 @@ dd
 {
 display:none; 
 border-bottom:1px solid #dcdcdc; 
-width:100%; 
+width:895px; 
 padding : 10px 20px 10px 45px;
 line-height:22px;
 background-color:gray;
@@ -163,12 +163,12 @@ background-color:gray;
 	padding-left: 10px;
 }
 
+
 </style>
 <script>
 var toggleText1 = false;
 var toggleText2 = false;
-function test(id){
-	console.log(id);
+function answer(id){
 	$('#'+id).toggle('display');
 	if(toggleText1==true)
 	{
@@ -205,13 +205,13 @@ function test(id){
 				<fieldset>
 					<legend>게시물 검색</legend>
 					<form action="/faqSearch">
-					<input type="text" name="search" style="width:300px; height:30px;">
+					<input type="text" name="search"  style="width:300px; height:30px;">
 					<input type="submit" value="검색" style="width:150px; height:35px; margin-left:10px;">
 					</form>
 				</fieldset>
 				
 				<div id="category" style="width:960px; height:100px; margin-top:30px; margin-bottom:30px;">
-					<ul style="width:100%;height:100%;float:left; list-style:none;">
+					<ul onclick="test();" style="width:100%;height:100%;float:left; list-style:none;">
 						<a href="/faqCategory?search=3"><li style="background-image:url(/views/travelReady/image/bus.png);"><span class="span">서울 시티 투어 탑승</span></li></a>
 						<a href="#"><li style="background-image:url(/views/travelReady/image/hotel.png);"><span class="span">호텔 예약</span></li></a>
 						<a href="#"><li style="background-image:url(/views/travelReady/image/work.png);"><span class="span">도보 관광</span></li></a>
@@ -227,7 +227,7 @@ function test(id){
 					<h3 style="font-size:24px;">FQA</h3>
 					<dl id="faqcontent">
 					<%for(Faq f:list){ %>
-						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#none" onclick="test(<%=f.getFaqNo()%>);">[<%=f.getCategory()%>]<br><%=f.getTitle() %></a></dt>
+						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#none" onclick="answer(<%=f.getFaqNo()%>);">[<%=f.getCategory()%>]<br><%=f.getTitle() %></a></dt>
 						<dd id="<%=f.getFaqNo()%>"><%=f.getAnswer()%></dd>
 					<%} %>
 					</dl>					
@@ -235,9 +235,9 @@ function test(id){
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
 				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 
 					if(i==fpd.getCurrentPage()){%>
-						<a href='/faq?currentPage=<%=i%>'><%=i%></a>
+						<a href='/faqCategory?search=<%=request.getAttribute("search")%>&currentPage=<%=i%>'><%=i%></a>
 					<%}else{ %>
-						<a href='/faq?currentPage=<%=i%>'><%=i%></a>
+						<a href='/faqCategory?search=<%=request.getAttribute("search")%>&currentPage=<%=i%>'><%=i%></a>
 					<%} %>
 				<%} %>
 				</div>

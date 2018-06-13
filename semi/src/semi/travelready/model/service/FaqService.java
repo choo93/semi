@@ -39,4 +39,62 @@ public class FaqService {
 		return fpd2;
 	}
 
+	public FaqPageData searchList(int currentPage, String search) {
+		Connection conn=JDBCTemplate.getConnection();
+		
+		int recordCountPerPage=10;
+		int naviCountPerPage=5;
+		
+		ArrayList<Faq> list=new FaqDao().getSearchCurrentPage(conn,currentPage,recordCountPerPage,search);
+		FaqPageData fpd=new FaqDao().getSearchPageNavi(conn,currentPage,recordCountPerPage,naviCountPerPage,search);
+		
+		int resultcurrentPage=fpd.getCurrentPage();
+		int endNavi=fpd.getEndNavi();
+		int startNavi=fpd.getStartNavi();
+		int pageTotalCount=fpd.getPageTotalCount();
+		
+		FaqPageData fpd2=null;
+		
+		if(!list.isEmpty()) {
+			fpd2=new FaqPageData();
+			fpd2.setNoticelist(list);
+			fpd2.setCurrentPage(resultcurrentPage);
+			fpd2.setEndNavi(endNavi);
+			fpd2.setStartNavi(startNavi);
+			fpd2.setPageTotalCount(pageTotalCount);
+			
+		}
+		JDBCTemplate.close(conn);
+		return fpd2;
+	}
+
+	public FaqPageData searchList2(int currentPage, String search) {
+		Connection conn=JDBCTemplate.getConnection();
+		
+		int recordCountPerPage=10;
+		int naviCountPerPage=5;
+		
+		ArrayList<Faq> list=new FaqDao().getSearchCurrentPage2(conn,currentPage,recordCountPerPage,search);
+		FaqPageData fpd=new FaqDao().getSearchPageNavi2(conn,currentPage,recordCountPerPage,naviCountPerPage,search);
+		
+		int resultcurrentPage=fpd.getCurrentPage();
+		int endNavi=fpd.getEndNavi();
+		int startNavi=fpd.getStartNavi();
+		int pageTotalCount=fpd.getPageTotalCount();
+		
+		FaqPageData fpd2=null;
+		
+		if(!list.isEmpty()) {
+			fpd2=new FaqPageData();
+			fpd2.setNoticelist(list);
+			fpd2.setCurrentPage(resultcurrentPage);
+			fpd2.setEndNavi(endNavi);
+			fpd2.setStartNavi(startNavi);
+			fpd2.setPageTotalCount(pageTotalCount);
+			
+		}
+		JDBCTemplate.close(conn);
+		return fpd2;
+	}
+
 }
