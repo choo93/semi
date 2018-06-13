@@ -69,25 +69,13 @@
             margin-top: 10px;
             margin-bottom: 10px;
         }
-        .font {
-			color: #9B95C9;
-			text-shadow: 1px -1px 1px #F6C467, -1px 2px 2px white;
-			height: 60px;
-			margin-bottom: 10px;
-			font: italic bold 3.3rem "나눔스퀘어";
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
 
     </style>
 
     <body id="scroll">
         <%@ include file="/views/main/header.jsp"%>
             <section>
-                <div id="head" class="container-fulid">
-                <h1 class="font" style="text-align: center;">봄 축제</h1>
-                </div>
-                <hr>
+
                 <div id="line" style="margin-left: 10%; padding: 20px;">
                     <select name="list">
                         <option value="">정렬하기</option>
