@@ -1,6 +1,6 @@
 package semi.dobo.model.vo;
 
-public class DoboReserve {
+public class DoboReserve {		// 예약 VO에는 DB에 넣을 때 필요한 정보(컬럼)들과 예약한 목록을 출력할 때 필요한 정보(컬럼)들이 모두 있어야함
 	private int reserveNo;
 	private String doboCode;
 	private String doboTitle;
@@ -11,10 +11,26 @@ public class DoboReserve {
 	private String nation;
 	private String phone;
 	private String comment;
+	private String doboMeet;
 	
 	
 	
 	public DoboReserve() {}
+
+
+	
+
+	public String getDoboMeet() {
+		return doboMeet;
+	}
+
+
+
+
+	public void setDoboMeet(String doboMeet) {
+		this.doboMeet = doboMeet;
+	}
+
 
 
 

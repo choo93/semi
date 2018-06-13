@@ -1,14 +1,29 @@
 package semi.concert.model.vo;
 
-public class ConcertReserve {
+public class ConcertReserve {		// 예약 VO에는 DB에 넣을 때 필요한 정보(컬럼)들과 예약한 목록을 출력할 때 필요한 정보(컬럼)들이 모두 있어야함  
 	private int concertReserveNo;
 	private String concertCode;
 	private String concertTitle;
 	private int concertPrice;
 	private String concertReserveTime;
 	private String concertReserveDate;
+	private String concertAddress;
 	
 	public ConcertReserve() {}
+
+	
+	
+	public String getConcertAddress() {
+		return concertAddress;
+	}
+
+
+
+	public void setConcertAddress(String concertAddress) {
+		this.concertAddress = concertAddress;
+	}
+
+
 
 	public String getConcertTitle() {
 		return concertTitle;
