@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
+<%
+	FaqPageData fpd=(FaqPageData)request.getAttribute("faqPageData");
+	ArrayList<Faq> list=fpd.getNoticelist();
+%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -108,8 +115,39 @@ dt
 	border-top:1px solid #dcdcdc;
 	padding : 10px 20px 10px 45px;
 }
-</style>
 
+#navi a{
+	font-size:30px;
+	border:2px solid #0080ff;
+	width:35px;
+	height:35px;
+	border-radius:3px;
+	text-align:center;
+}
+dd
+{
+display:none; 
+border-bottom:1px solid #dcdcdc; 
+width:100%; 
+padding : 10px 20px 10px 45px;
+line-height:22px;
+}
+
+</style>
+<script>
+	function answer(id){
+		
+		var ss=document.getElementById(id);
+		if(ss.style.display=='block'){
+			ss.style.display='none';
+		}else
+			{
+			ss.style.display='block'
+			}
+	
+	}
+
+</script>
 
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
@@ -150,23 +188,23 @@ dt
 					</ul>
 				</div>
 				
-				<div style="width:100%; height:470px;">
+				<div style="width:100%; height:600px;">
 					<h3 style="font-size:24px;">FQA</h3>
 					<dl id="faqcontent">
-						<dt><a href="#">1</a></dt>
-						<dt><a href="#">2</a></dt>
-						<dt><a href="#">3</a></dt>
-						<dt><a href="#">4</a></dt>
-						<dt><a href="#">5</a></dt>
-						<dt><a href="#">6</a></dt>
-						<dt><a href="#">7</a></dt>
-						<dt><a href="#">8</a></dt>
-						<dt><a href="#">9</a></dt>
-						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#">10</a></dt>
+					<%for(Faq f:list){ %>
+						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#none" onclick="answer(<%=f.getFaqNo()%>);">[<%=f.getCategory()%>]<br>  <%=f.getTitle() %></a></dt>
+						<dd id="<%=f.getFaqNo()%>"><%=f.getAnswer()%></dd>
+					<%} %>
 					</dl>
 				</div>
-				<div style="width:100%; height:50px; background-color:blue; padding-top:30px; padding-bottom:50px;">
-				dfdsfsdfds
+				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
+				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 
+					if(i==fpd.getCurrentPage()){%>
+						<a href='/faq?currentPage=<%=i%>'><%=i%></a>
+					<%}else{ %>
+						<a href='/faq?currentPage=<%=i%>'><%=i%></a>
+					<%} %>
+				<%} %>
 				</div>
 			</section>
 			
