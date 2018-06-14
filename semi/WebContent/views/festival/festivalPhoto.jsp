@@ -131,7 +131,7 @@
 			<section>
 				<div class="container-fluid">
 					<div class="row">
-						<a href="/views/festival/festival_List2.jsp">
+						<a href="/views/festival/festival_List.jsp">
 							<div class="col-xs-6 picture photo1">
 
 								<h2 class="font">봄

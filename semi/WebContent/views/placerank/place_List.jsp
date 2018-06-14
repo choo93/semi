@@ -1,129 +1,141 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
-    <html>
+    <%@ page import="semi.place.model.vo.*" import="java.util.*" %>
+        <% 	
+PageData pd = (PageData)request.getAttribute("pageData");
+ArrayList<RankListData> list = pd.getPlaceList();
+String pageNavi = pd.getPageNavi();
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Insert title here</title>
-        <link rel="stylesheet" href="../../css/bootstrap.min.css">
-        <!-- 부트스트랩 CSS -->
-        <link rel="stylesheet" href="../../css/main.css">
-        <!-- main header CSS -->
-        <link rel="stylesheet" href="../../css/moreBtn.css">
-        <!-- 버튼 CSS -->
-        <link rel="stylesheet" href="../../css/festival/pagination.css">
-        <!-- 페이징 CSS (부트스트랩) -->
+int index = 0;%>
+            <!DOCTYPE html>
+            <html>
 
-        <script src="../../js/jquery-3.3.1.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/main.js"></script>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>Insert title here</title>
+                <link rel="stylesheet" href="../../css/bootstrap.min.css">
+                <!-- 부트스트랩 CSS -->
+                <link rel="stylesheet" href="../../css/moreBtn.css">
+                <!-- 버튼 CSS -->
+                <link rel="stylesheet" href="../../css/festival/pagination.css">
+                <!-- 페이징 CSS (부트스트랩) -->
+                <link rel="stylesheet" href="../../css/main.css">
+                <!-- main header CSS -->
+                <script src="../../js/jquery-3.3.1.min.js"></script>
+                <script src="../../js/bootstrap.min.js"></script>
+                <script src="../../js/main.js"></script>
 
-    </head>
-    <style>
-        .photo {
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            height: 200px;
-            border-radius: 12px;
-        }
+            </head>
+            <style>
+                .photo {
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    height: 200px;
+                    border-radius: 12px;
+                }
 
-        .info {
-            width: 800px;
-            height: 200px;
-            margin-left: 20px;
-            border: 1px solid #9B95C9;
-            border-width: 2px 20px 2px 2px;
-        }
+                .info {
+                    width: 800px;
+                    height: 200px;
+                    margin-left: 20px;
+                    border: 1px solid #9B95C9;
+                    border-width: 2px 20px 2px 2px;
+                }
 
-        .title {
-            font: bold 30pt 나눔스퀘어;
-            margin-top: 10px;
-            margin-left: 10px;
-        }
+                .title {
+                    font: bold 30pt 나눔스퀘어;
+                    margin-top: 10px;
+                    margin-left: 10px;
+                }
 
-        .content {
-            padding: 20px;
-            clear: left;
-        }
+                .content {
+                    padding: 20px;
+                    clear: left;
+                }
 
-        .contents {
-            padding: 5px;
-            margin-top: 10px;
-            margin-left: 10px;
-        }
+                .contents {
+                    padding: 5px;
+                    margin-top: 10px;
+                    margin-left: 10px;
+                }
 
-        .tags {
-            padding: 5px;
-            margin-top: 10px;
-            margin-left: 10px;
-            display: inline-block;
-        }
-        .ptags {
-            display: inline;
-        }
-        #button {
-            margin-top: 20px;
-        }
-        hr {
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
+                .tags {
+                    padding: 5px;
+                    margin-top: 10px;
+                    margin-left: 10px;
+                    display: inline-block;
+                }
 
-    </style>
+                .ptags {
+                    display: inline;
+                }
 
-    <body id="scroll">
-        <%@ include file="/views/main/header.jsp"%>
-            <section>
+                #button {
+                    margin-top: 20px;
+                }
 
-                <div id="line" style="margin-left: 10%; padding: 20px;">
-                    <select name="list">
-                        <option value="">정렬하기</option>
-                        <option value="title">제목</option>
-                        <option value="dayOfIssue">발행일</option>
-                    </select>
-                </div>
+                hr {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+            </style>
 
-                <!-- 내용물 -->
-                <div class="container">
-                    <!-- 첫번째 컨텐츠 -->
-                    <div class="row">
-                        <div class="col-xs-12 content" id="list_1">
-                            <!-- 첫번째 내용 -->
-                            <div class="row">
-                                <!-- 첫번째 사진 -->
-                                <div class="col-xs-3 photo" style="background-image: url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);"></div>
+            <body id="scroll">
+                <%@ include file="/views/main/header.jsp"%>
+                    <section>
 
-                                <div class="col-xs-6 col-xs-offset-3 info">
-                                    <!-- 첫번째 컨텐츠 제목 -->
-                                    <div class="title">
-                                        갤러리 3안
-                                    </div>
-                                    <hr>
-                                    <!-- 첫번째 컨텐츠 설명 -->
-                                    <div class="contents">
-                                        삼청동에 개관한 갤러리 3안은 회화, 영상, 조각, 설치 외 다양한 예술 분야를 다루고 있으며 구애받지 않는 실험 정신을 가진 아티스트들의 작품을 감상할 수 있다.<br>
-                                        
-                                    </div>
-                                    <!-- 첫번째 컨텐츠 태그 -->
-                                    <div class="tags">
-                                        <p class="ptags">태그</p>
-                                        <div style="display: inline;">
-                                            <a href="#">#갤러리3안</a>
-                                            <a href="#">#갤러리3안</a>
-                                            <a href="#">#갤러리3안</a>
-                                            <a href="#">#갤러리3안</a>
-                                            <a href="#">#갤러리3안</a>
-                                            <a href="#">#갤러리3안</a>
+                        <div id="line" style="margin-left: 10%; padding: 20px;">
+                            <select name="list">
+                                <option value="">정렬하기</option>
+                                <option value="title">제목</option>
+                                <option value="dayOfIssue">발행일</option>
+                            </select>
+                        </div>
+
+                        <!-- 내용물 -->
+                        <div class="container">
+                            <!-- 첫번째 컨텐츠 -->
+                            <%for(RankListData rld : list) { %>
+                                <form action="/placeSelect" method="POST">
+                                    <input type="hidden" name="titleNo" value="<%=rld.getIndex_TitleNo()%>" />
+                                    <div class="row">
+                                        <div class="col-xs-12 content" id="list<%=index+1 %>">
+                                            <!-- 첫번째 내용 -->
+                                            <div class="row">
+                                                <!-- 첫번째 사진 -->
+                                                <div class="col-xs-3 photo" style="background-image:<%=rld.getIndex_Image()%>"></div>
+
+                                                <div class="col-xs-6 col-xs-offset-3 info">
+                                                    <!-- 첫번째 컨텐츠 제목 -->
+                                                    <div class="title">
+                                                        <%=rld.getIndex_Title() %>
+                                                    </div>
+                                                    <hr>
+                                                    <!-- 첫번째 컨텐츠 설명 -->
+                                                    <div class="contents">
+                                                        <%=rld.getIndex_BasicInfo() %>
+                                                    </div>
+                                                    <!-- 첫번째 컨텐츠 태그 -->
+                                                    <div class="tags">
+                                                        <p class="ptags">태그</p>
+                                                        <div style="display: inline;">
+                                                            <%StringTokenizer sT = new StringTokenizer(rld.getIndex_Tags(),"#");
+                                                                while(sT.hasMoreTokens()) { %>
+                                                                <a href="#">#
+                                                                    <%=sT.nextToken() %>
+                                                                </a>
+                                                                <%} %>
+                                                        </div>
+                                                    </div>
+                                                    <input type="submit" class="btn pull-right" id="button">자세히</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <button class="btn pull-right" id="button">자세히</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 두번째 컨텐츠 -->
+                                </form>
+                                <%} %>
+                                    <!-- 
+                    두번째 컨텐츠
                     <div class="row">
                         <div class="col-xs-12 content" id="list_2">
                             <div class="row">
@@ -155,7 +167,7 @@
                         </div>
                     </div>
 
-                    <!-- 세번째 컨텐츠 -->
+                    세번째 컨텐츠
                     <div class="row">
                         <div class="col-xs-12 content" id="list_3">
                             <div class="row">
@@ -186,7 +198,7 @@
                         </div>
                     </div>
 
-                    <!-- 네번째 컨텐츠 -->
+                    네번째 컨텐츠
                     <div class="row">
                         <div class="col-xs-12 content" id="list_4">
                             <div class="row">
@@ -216,14 +228,15 @@
                         </div>
                     </div>
 
+-->
 
-                    
 
-                    <!-- 페이징 처리 시작 -->
+                                    <!-- 페이징 처리 시작 -->
 
-                    <div class="container" style="text-align: center ">
-                        <ul class="pagination pagination-lg">
-                            <li class="disabled">
+                                    <div class="container" style="text-align: center ">
+                                        <ul class="pagination pagination-lg">
+                                            <%=pageNavi %>
+                                                <!--    <li class="disabled">
                                 <span>«</span>
                             </li>
                             <li class="active">
@@ -244,15 +257,15 @@
                             </li>
                             <li>
                                 <a href="#">»</a>
-                            </li>
-                        </ul>
+                            </li> -->
+                                        </ul>
 
-                    </div>
-                </div>
+                                    </div>
+                        </div>
 
 
-            </section>
-            <%@ include file="/views/main/footer.jsp"%>
-    </body>
+                    </section>
+                    <%@ include file="/views/main/footer.jsp"%>
+            </body>
 
-    </html>
+            </html>
