@@ -206,4 +206,45 @@ public class QnaDao {
 		
 	}
 
+	public int qnaChkUpdate(Connection conn, int questionNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String query="update question set questionchk='확인완료'  where questionNo=?";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, questionNo);
+			result=pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+		
+	}
+
+	public int insertQna(Connection conn, String title, String content) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String query="insert into question values()";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+		
+			result=pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
 }

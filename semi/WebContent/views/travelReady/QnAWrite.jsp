@@ -3,8 +3,8 @@
     
 <%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
 <%
-	QnaPageData qpd=(QnaPageData)request.getAttribute("qnaPageData");
-	ArrayList<Qna> list=qpd.getNoticelist();
+	Qna q=(Qna)request.getAttribute("qna");
+	Answer an=(Answer)request.getAttribute("answer");
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -75,64 +75,37 @@
     	margin-bottom:30px;
     
     }
-    #faqtitleimg
+    .image{
+    background-repeat:no-repeat;
+    background-size:50% 100%;
+    }
+    dl
     {
-    width: 74px;
-    height: 74px;
-    background-image:url(/views/travelReady/image/Faq_0.jpg);
-    background-repeat: no-repeat;
-    background-size:100% 100%;
-    margin:0px;
+    width:100%;
+    height:80%; 
+    padding-top:35px;"
+    }
+    dt
+    {
     float:left;
-}
-legend
-{
-	visibility: hidden;
-	widgth:0px;
-	height:0px;
-}
+     width:20%;
+     margin-left:5%
+    }
+    .answer
+    {
+    	width:80%;
+    	height:80%;
+    }
 
-fieldset{
-	border:0px;
-}
-
-ul{
-	width:100%;
-	height:100%;
-}
-
-#QnA ul li{
-	width:100%;
-	height:10%;
-	list-style:none;
-	float:left;
-	 background-repeat: no-repeat; 
-	 background-size:100% 70%;
-	 text-align:center;
-	 line-height:180px;
-}
-span
-{
-	display:table-cell;
-	height:78px;
-	
-}
-#faqcontent
-{
-	margin-top:2%;
-	width:100%;
-	height:98%;
-
-}
 
 
 </style>
 <script>
-if (self.name != 'reload') {
-    self.name = 'reload';
-    self.location.reload(true);
-}
-else self.name = '';
+function back()
+{
+	history.back(-1);
+	}
+
 </script>
 
 <body id="scroll">
@@ -157,47 +130,36 @@ else self.name = '';
 				여행박사 상품 및 서비스에 대해 궁금하신 사항을 친절하게 안내해 드리겠습니다. <br>
 				질문을 하시기 전에 '자주 하시는 질문'을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				</div>
-				
-				<div style="width:100%; height:60px; margin-bottom:10px;">
-					<fieldset>
-						<legend>게시글 검색</legend>
-						<button class="btn btn-outline-primary">등록일</button>
-						<button class="btn btn-outline-primary">해결된 질문</button>
-						<button class="btn btn-outline-primary">미해결된 질문</button>
-					</fieldset>
-				
-				</div>
+	
 				
 				
-				<div id="QnA" style="width:100%; height:580px;">
-					<table class="table">
-						<tr>
-							<th style="width:10%;">번호</th><th style="width:50%; text-align:center;">제목</th><th style="width:15%;">글쓴이</th><th style="width:15%;">등록일</th><th style="width:10%;">조회수</th>
-						</tr>
-						<%for(Qna q:list){ %>
-						<tr>
-							<td><%=q.getQuestionNo()%></td><td><div style="width:20%; height:17.4px; float:left;"><%=q.getQuestionChk()%></div>
-							<div style="width:80%; margin-left:20%; height:17.4px;"><a href="/qnaSelect?questionNo=<%=q.getQuestionNo()%>&hits=<%=q.getHits()%>"><%=q.getTitle()%></a></div>
-							</td><td><%=q.getUserName()%></td><td><%=q.getWriteDate()%></td><td><%=q.getHits()%></td>
-						</tr>
-						
-						<%} %>
-						
-					</table>
-					<form action="/views/travelReady/QnAWrite.jsp">
-					<input type="submit" value="글쓰기" class="btn btn-primary">
+				<div id="QnA" style="width:100%; height:560px;">
+				<form action="/qnAWrite">
+  
+  
+  <div class="form-group">
+    <label for="exampleFormControlInput1">제목</label>
+    <input type="text" name="title" class="form-control" id="exampleFormControlInput1">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">내용</label>
+    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="23" style="resize:none;"></textarea>
+  </div>
+
+					
+				
+			</div>
+			
+			<div style="width:960px; height:40px; text-align:center;">
+				<input class="btn btn-primary"  type="submit" value="등록">
 				</form>
-				</div>
+				<button class="btn btn-primary"  onclick="back();">취소</button>
+			</div>
+			
+			
 				
-				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
-					<%for(int i=qpd.getStartNavi(); i<=qpd.getEndNavi();i++){ 
-					if(i==qpd.getCurrentPage()){%>
-						<a class="btn btn-primary btn-lg" href='/qna?currentPage=<%=i%>'><%=i%></a>
-					<%}else{ %>
-						<a class="btn btn-primary btn-lg" href='/qna?currentPage=<%=i%>'><%=i%></a>
-					<%} %>
-				<%} %>
-				</div>
+
 		 
 			</section>
 			

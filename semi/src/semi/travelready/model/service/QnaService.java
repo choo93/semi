@@ -82,4 +82,35 @@ Connection conn=JDBCTemplate.getConnection();
 		
 	}
 
+	public int qnaChkUpdate(int questionNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new QnaDao().qnaChkUpdate(conn,questionNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else
+		{
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	public int insertQna(String title, String content) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new QnaDao().insertQna(conn,title,content);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else
+		{
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return result;
+		
+	}
+
 }
