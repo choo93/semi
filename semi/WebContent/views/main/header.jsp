@@ -1,22 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="semi.login.model.vo.*" %>
+<% SeoulUser user = (SeoulUser)session.getAttribute("user"); %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-</head>
+</head>	
 <body>
     <header>
         <img src="../../image/menu.png" id="menu_icon" onclick="menu();">
         <img src="../../image/menu_mobile.png" id="menu_icon_mobile" onclick="menu_mobile();" style="display:none;">
-        
         
         <div>
             <a href="http://localhost">
                 <img src="../../image/logo.jpg" id="logo" style="height:100%;">
             </a>
         </div>
+        
+        <% if(user==null){ %>
+        <div id="login_join">
+        	<p class="login_before login_left"><a href="/views/login/login.jsp">로그인</a></p>
+        	<p class="login_before login_right"><a href="">회원가입</a></p>
+        </div>    
+        <% } else { %>
+        <div id="login_join" class="login_after">
+        	<p><span><%=user.getUserName()%></span>님 환영합니다</p>
+        	<p>
+        		<a href="">마이페이지</a>
+        		<a href="/logout">로그아웃</a>
+        	</p>
+        </div>
+        <% } %>
+
+        
+        <style>
+            .scroll #login_join{
+                visibility:hidden;  
+            }
+            @media screen and ( min-width:655px ) and ( max-width:1023px ){
+                #login_join{
+                    display:none;
+                }
+                #main_category{
+                    clear:inherit;
+                }
+            }
+            @media screen and ( max-width:654px ) {
+                #login_join{
+                    display:none;
+                }
+            }
+        </style>	        
         
 		<ul id="main_category">
             <img src="../../image/close.png" id="menu_icon_close" onclick="close_mobile();" style="width:30px; float:right; cursor:pointer; padding:15px;">
@@ -42,7 +78,7 @@
 			<li class="toggle menu_three"><a href="#">예약하기</a>
             <ul class="sub_menu_three" style="display:none;">
 			    <li><a href="">공연예약</a></li>
-			    <li><a href="">호텔예약</a></li>
+			    <li><a href="/hotelList">호텔예약</a></li>
 			    <li><a href="">서울도보관광예약</a></li>
 			</ul>			
 			</li>
@@ -57,7 +93,7 @@
 			    <li><a href="">공지사항</a></li>
 			</ul>
 			</li>
-		</ul>
+		</ul>	
 		
         <script>
             function menu_mobile(){
