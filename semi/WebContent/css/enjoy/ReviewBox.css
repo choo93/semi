@@ -1,0 +1,33 @@
+@charset "UTF-8";.leftBox {
+   position: relative;
+   background: #C7C4E2; /*네모*/
+   border: 2px solid #8490C7; /*네모테두리*/
+   border-radius: 10px;
+}
+.rightBox {
+   position: relative;
+   border-radius: 15px;
+   background: #C7C4E2; /*네모*/
+   border: 4px solid #9B95C9; /*네모테두리*/
+}
+.rightBox:after, .rightBox:before {
+   right: 100%;
+   top: 40%;
+   border: solid transparent;
+   content: " ";
+   height: 0;
+   width: 0;
+   position: absolute;
+   pointer-events: none;
+}
+
+.rightBox:after {
+   border-right-color: #C7C4E2; /*삼각형*/
+   border-width: 27px;
+   margin-top: -30px;
+}
+.rightBox:before {
+   border-right-color: #9B95C9; /*삼각형테두리*/
+   border-width: 36px;
+   margin-top: -36px;
+}

@@ -6,14 +6,22 @@
 	import="semi.enjoy.model.vo.EnjoyElementData"
 	import="semi.enjoy.model.vo.EnjoyComment"
 	import="semi.enjoy.model.vo.CommentData" import="java.util.*"%>
-<%  
-	EnjoyElementData EED = (EnjoyElementData)request.getAttribute("EED");
-	EnjoyListData ELD = EED.getELD(); EnjoyDetailData1 edd1 = EED.getEdd1();
-	
-	CommentData cd = null; cd = EED.getCd();
-	ArrayList<EnjoyComment> CommentList = null;  CommentList = cd.getCommentList();
-	String pageNavi = null; pageNavi= cd.getPageNavi();
-	
+<%
+	EnjoyElementData EED = (EnjoyElementData) request.getAttribute("EED");
+	EnjoyListData ELD = EED.getELD();
+	EnjoyDetailData1 edd1 = EED.getEdd1();
+
+	CommentData cd = null;
+	ArrayList<EnjoyComment> CommentList = null;
+	String pageNavi = null;
+	if (EED.getCd() != null) {
+		cd = EED.getCd();
+		CommentList = cd.getCommentList();
+		pageNavi = cd.getPageNavi();
+	} else {
+		CommentList = new ArrayList<EnjoyComment>();
+
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +31,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
-<link rel="stylesheet" href="../../css/arrow-box.css">
+<link rel="stylesheet" href="../../css/enjoy/ReviewBox.css">
 <link rel="stylesheet" href="../../css/enjoy/reviewInput.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
@@ -34,6 +42,7 @@
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp"%>
 	<section>
+
 		<div style="width: 100%; height: 2000px;">
 			<div style="width: 100%; height: 100%;">
 				<!--▼ 메인이미지 -->
@@ -85,13 +94,13 @@
 					<div style="width: 100%; height: 60%;">
 
 						<div>
-							<%=ELD.getIndex_BasicInfo() %>
+							<%=ELD.getIndex_BasicInfo()%>
 							<!-- 1980년에 첫 면세점을 열어, 현재는 전국적으로 지점이 8개가 있다. 롯데면세는 루이뷔통을 처음으로 국내에 소개한 이래로, 샤넬·구찌·프라다·헤르메스·불가리 등 400개 이상의 해외 브랜드를 판매하고 있다. -->
 						</div>
 
 						<p>
 							작성일 :
-							<%=ELD.getIndex_Ondate() %>
+							<%=ELD.getIndex_Ondate()%>
 							<!-- 2018.02.09 작성일 / 2018.02.09 발행일] -->
 						</p>
 
@@ -110,14 +119,13 @@
 									<a href="#">#롯데면세점</a>
 									<a href="#">#롯데면세점</a>
 									<a href="#">#롯데면세점</a> -->
-							<% StringTokenizer Tag = new StringTokenizer(ELD.getIndex_Tags(),"#");  
-										while(Tag.hasMoreTokens())
-										{
-											%><a href="#">#<%=Tag.nextToken()%></a>
 							<%
-										}
-										
-									%>
+								StringTokenizer Tag = new StringTokenizer(ELD.getIndex_Tags(), "#");
+								while (Tag.hasMoreTokens()) {
+							%><a href="#">#<%=Tag.nextToken()%></a>
+							<%
+								}
+							%>
 
 						</div>
 					</div>
@@ -145,26 +153,26 @@
 
 					<hr>
 					<table style="height: 100%; width: 100%;">
-						
+
 						<tr>
 							<td>주소</td>
 							<td>
-								<!-- 03131 서울 종로구 삼일대로 464(윤현궁) --> <%=edd1.getDetail_addr() %>
+								<!-- 03131 서울 종로구 삼일대로 464(윤현궁) --> <%=edd1.getDetail_addr()%>
 							</td>
 						</tr>
 						<tr>
 							<td>전화번호</td>
 							<td>
-								<!-- 02-766-9090 --> <%=edd1.getDetail_tell() %>
+								<!-- 02-766-9090 --> <%=edd1.getDetail_tell()%>
 							</td>
 						</tr>
-						
-			
+
+
 						<tr>
 							<td>웹사이트</td>
 							<td>
 								<!-- <a href="http://www.naver.com/">웹사이트 보기</a> --> <a
-								href="<%=edd1.getDetail_url() %>">웹사이트 보기</a>
+								href="<%=edd1.getDetail_url()%>">웹사이트 보기</a>
 							</td>
 						</tr>
 						<tr>
@@ -172,26 +180,26 @@
 							<td>
 								<!-- 11 ~ 3월 09:00 ~ 18:00
 									<br>
-										4 ~ 10월 09:00 ~ 19:00 --> <%=edd1.getDetail_onTime() %>
+										4 ~ 10월 09:00 ~ 19:00 --> <%=edd1.getDetail_onTime()%>
 							</td>
 						</tr>
 						<tr>
 							<td>휴무일</td>
 							<td>
-								<!-- 매주 월요일(월요일이 국가 지정 공휴일인 경우 해당 날짜에 개관) --> <%=edd1.getDetail_offday() %>
+								<!-- 매주 월요일(월요일이 국가 지정 공휴일인 경우 해당 날짜에 개관) --> <%=edd1.getDetail_offday()%>
 							</td>
 						</tr>
 						<tr>
 							<td>운영 요일</td>
 							<td>
-								<!-- 화수목금토일 --> <%=edd1.getDetail_onday() %>
+								<!-- 화수목금토일 --> <%=edd1.getDetail_onday()%>
 							</td>
 						</tr>
 						<tr>
 							<td>장애인 편의시설</td>
 							<td>
 								<!-- 접근가능
-										<br>장애인화장실 --> <%=edd1.getDetail_disabled() %>
+										<br>장애인화장실 --> <%=edd1.getDetail_disabled()%>
 							</td>
 						</tr>
 						<tr>
@@ -210,19 +218,19 @@
 								<!-- 운현궁 양관 : 본래 흥선대원군의 손자인 이준용을 위해 지은 건물로 양관이라고 불린다.
 										<br> 프렌치 르네상스 풍의 석재를 혼용한 벽돌 2층 저택에 16개의 천장 문양이 모두 다르다.
 										<br> 1948년 덕성여자대학교에 매각되어 한때 교사로 쓰였고 지금도 평생교육원으로 쓰인다.
-										<br> 인기 드라마 궁의 촬영 장소로 사용되기도 했다. --> <%=edd1.getDetail_notice() %>
+										<br> 인기 드라마 궁의 촬영 장소로 사용되기도 했다. --> <%=edd1.getDetail_notice()%>
 							</td>
 						</tr>
 						<tr>
 							<td>이용요금</td>
-							<td><%=edd1.getDetail_payment() %></td>
+							<td><%=edd1.getDetail_payment()%></td>
 						</tr>
 						<tr>
 							<td>이용시설안내</td>
 							<td>
 								<!-- 운현궁 정례 행사, 운현궁 일요 예술마당, 고종 명성후 가례(국혼례) 행사 안내
 										<br> - 궁중의상체험
-										<br> - 대원군행차체험 --> <%=edd1.getDetail_utility() %>
+										<br> - 대원군행차체험 --> <%=edd1.getDetail_utility()%>
 							</td>
 						</tr>
 					</table>
@@ -260,79 +268,89 @@
 						</div>
 					</div>
 				</div>
-				<div id="review_info" style="width: 100%; height:; display: none;">
+				<div id="review_info" style="width: 100%; display: none;">
 					<hr>
 					<!-- 댓글 내용 불러오는곳 -->
-					
 
-					<% for(EnjoyComment EC : CommentList) {%>
-					<div
-						style="width: 100%; height: 200px; position: relative; padding: 30px;">
-						<!-- ID, 게시날자 입력하는곳 -->
-						<div
-							style="width: 20%; height: 100%;; float: left; border: 1px solid black;">
-							<br> <span><%=EC.getUSER_ID() %></span> <br> <br>
-							<span><%=EC.getWrite_Date() %></span> <br> <br>
-						</div>
-
-						<div class="arrow_box"
-							style="width: 70%; height: 100%; padding: 5px; background-color: gray; float: left; position: relative;">
-							<!-- 제목,내용 입력하는곳 -->
-							<div style="float: left; width: 80%; height: 100%;">
-								<div style="width: 100%; height: 20%;"><%=EC.getINDEX_TITLE() %></div>
-
-								<div style="width: 100%; height: 80%;"><%=EC.getUSER_COMMNET() %></div>
-							</div>
-							<!-- 추천점수 입력하는곳 -->
-							<div
-								style="float: left; width: 20%; height: 100%; text-align: center; line-height: 5;">
-								점수</div>
-
-
+					<%
+						if (!CommentList.isEmpty()) {
+					%>
+					<%
+						for (EnjoyComment EC : CommentList) {
+					%>
+					<div style="position: relative; top: 20px; float: left;">
+						<div class="leftBox" style="position: relative; width: 170px; height: 110px; margin-right: 50px;"> <br> 
+						<span id="userId" style="position: absolute; color: #6C4371; top: 10px; margin: 15px; font: bold 1.3rem 나눔스퀘어;"><%=EC.getUSER_ID()%></span>
+							<br> <br> <span id="insertDate" style="color: #6C4371; margin: 15px;"><%=EC.getWrite_Date()%></span>
+							<br>
 						</div>
 					</div>
-					<%} %>
-					<%=pageNavi %>
-<!-- 댓글이 없을경우도 처리해야함.  -->
 
-					<br>
-					<!-- 댓글 입력폼 -->
-					<div class="review" align="center" style="width: 50%">
-						<form action="/review" method="post">
-							<!-- if(((Member)session.getAttribute("user"))==null) {%> -->
-							<div id="notWriteReview">
-								<input type="text" name="Not_Index_Title" readonly
-									placeholder="로그인 한 사용자만 작성이 가능합니다" maxlength="60"
-									style="width: 820px; height: 30px; background-color: #8490C7; color: #FFFFFF; font: 12pt 나눔스퀘어; padding-top: 5px; margin-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; text-indent: 10px;">
+					<div class="rightBox" style="width: 70%; height: 100%; padding: 5px; float: left; position: relative;">
 
-								<textarea name="Not_User_Comment" readonly
-									placeholder="로그인 한 사용자만 작성이 가능합니다" rows="10" cols="100"
-									style="resize: none; border: 1px solid #8490C7; background-color: #FFFFFF; color: #8490C7; font: 12pt 나눔스퀘어; margin-left: 10px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; text-indent: 10px;"></textarea>
-							</div>
-							<!-- }else{ %>-->
-							<div id="writeReview">
-								<input autocomplete="off" type="text" name="Index_Title"
-									placeholder="제목을 입력하세요" maxlength="60"
-									style="width: 820px; height: 30px; background-color: #8490C7; color: #FFFFFF; font: 12pt 나눔스퀘어; padding-top: 5px; margin-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; text-indent: 10px;">
-
-								<textarea autocomplete="off" name="User_Comment"
-									placeholder="내용을 입력하세요" rows="10" cols="100"
-									style="resize: none; border: 1px solid #8490C7; background-color: #FFFFFF; color: #8490C7; font: 12pt 나눔스퀘어; margin-left: 10px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; text-indent: 10px;"></textarea>
-							</div>
-							<div id="reviewBtn" style="margin-top: 10px;">
-								<input type="submit" value="댓글작성" id="reviewButton" />
-							</div>
-							<!-- }%> -->
-
-							<input type="hidden" value="" name="">
-							<!-- 유저 ID?? 이걸로넘겨야하나 세션으로넘겨야하나? 세션이맞나..? -->
-							<input type="hidden" value="<%=edd1.getSEQ_Index_TitleNo()%>"
-								name="index_titleNo">
-						</form>
+						<!-- 제목,내용 입력하는곳 -->
+						<div style="float: left; width: 80%; height: 100%;">
+							<div style="width: 100%; height: 20%; color: #6C4371; font: bold 1.5rem 나눔스퀘어; margin-top: 15px; margin-left: 15px;"><%=EC.getINDEX_TITLE()%></div>
+							<div style="width: 100%; height: 80%; color: #6C4371; font: 1.2rem 나눔스퀘어; margin-left: 15px;"><%=EC.getUSER_COMMNET()%></div>
+						</div>
+						<!-- 추천점수 입력하는곳 -->
+						<div style="float: left; width: 20%; height: 100%; color: #6C4371; text-align: center; line-height: 5;"> 점수</div>
+						</div>
 					</div>
-
 				</div>
+
+			<%
+				}
+			%>
+			<%=pageNavi%>
+			<%
+				} else {
+			%>
+			<div style="width: 100%; height: 200px; position: relative; padding: 30px;">
 			</div>
+			<%
+				}
+			%>
+			<!-- 댓글이 없을경우도 처리해야함.  -->
+
+			<br>
+			<!-- 댓글 입력폼 -->
+			<div class="review" align="center" style="width: 50%">
+				<form action="/review" method="post">
+					<!-- if(((Member)session.getAttribute("user"))==null) {%> -->
+					<div id="notWriteReview">
+						<input type="text" name="Not_Index_Title" readonly
+							placeholder="로그인 한 사용자만 작성이 가능합니다" maxlength="60"
+							style="width: 820px; height: 30px; background-color: #8490C7; color: #FFFFFF; font: 12pt 나눔스퀘어; padding-top: 5px; margin-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; text-indent: 10px;">
+
+						<textarea name="Not_User_Comment" readonly
+							placeholder="로그인 한 사용자만 작성이 가능합니다" rows="10" cols="100"
+							style="resize: none; border: 1px solid #8490C7; background-color: #FFFFFF; color: #8490C7; font: 12pt 나눔스퀘어; margin-left: 10px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; text-indent: 10px;"></textarea>
+					</div>
+					<!-- }else{ %>-->
+					<div id="writeReview">
+						<input autocomplete="off" type="text" name="Index_Title"
+							placeholder="제목을 입력하세요" maxlength="60"
+							style="width: 820px; height: 30px; background-color: #8490C7; color: #FFFFFF; font: 12pt 나눔스퀘어; padding-top: 5px; margin-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; text-indent: 10px;">
+
+						<textarea autocomplete="off" name="User_Comment"
+							placeholder="내용을 입력하세요" rows="10" cols="100"
+							style="resize: none; border: 1px solid #8490C7; background-color: #FFFFFF; color: #8490C7; font: 12pt 나눔스퀘어; margin-left: 10px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; text-indent: 10px;"></textarea>
+					</div>
+					<div id="reviewBtn" style="margin-top: 10px;">
+						<input type="submit" value="댓글작성" id="reviewButton" />
+					</div>
+					<!-- }%> -->
+
+					<input type="hidden" value="" name="">
+					<!-- 유저 ID?? 이걸로넘겨야하나 세션으로넘겨야하나? 세션이맞나..? -->
+					<input type="hidden" value="<%=edd1.getSEQ_Index_TitleNo()%>"
+						name="index_titleNo">
+				</form>
+			</div>
+
+		</div>
+		</div>
 		</div>
 		</div>
 	</section>

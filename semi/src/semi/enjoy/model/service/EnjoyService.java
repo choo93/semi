@@ -53,7 +53,7 @@ public class EnjoyService {
 	
 	
 
-	public PageData getListData(int currentPage, String search, String type) {
+	public PageData getListData(int currentPage, String search, String type, String option) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -62,9 +62,9 @@ public class EnjoyService {
 		int naviCountPerPage = 5; // 네비게이터의 범위 (1~5) (6~10)
 		
 //		ArrayList<EnjoyListData> list = new Enjoydao().getAllData(conn);
-		ArrayList<EnjoyListData> list = new Enjoydao().getListData(conn,recordCountPerPage,currentPage,search,type);
+		ArrayList<EnjoyListData> list = new Enjoydao().getListData(conn,recordCountPerPage,currentPage,search,type,option);
 		
-		String PageNavi = new Enjoydao().getPageNavi(conn,naviCountPerPage,recordCountPerPage,currentPage,search,type);
+		String PageNavi = new Enjoydao().getPageNavi(conn,naviCountPerPage,recordCountPerPage,currentPage,search,type,option);
 		
 		
 		
