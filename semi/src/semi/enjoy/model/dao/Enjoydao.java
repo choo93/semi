@@ -52,7 +52,7 @@ public class Enjoydao {
 	}
 
 	public ArrayList<EnjoyListData> getListData(Connection conn, int recordCountPerPage, int currentPage,
-			String search, String type) {
+			String search, String type, String option) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -62,12 +62,25 @@ public class Enjoydao {
 
 		// 끝 게시물 계산
 		int end = currentPage * recordCountPerPage;
-
-		String query = "select * from (select list_element.*,row_number() over(order by Index_titleNo)as num from List_Element where List_Element =? ) where num between ? and ?";
+		String query = "";
+		
+		if(option.equals("title"))
+		{
+		query = "select * from (select list_element.*,row_number() over(order by INDEX_TITLE)as num from List_Element where List_Element = ?) where num between ? and ?";
+		}
+		else if(option.equals("dayOfIssue")) 
+		{
+			query = "select * from (select list_element.*,row_number() over(order by INDEX_ONDATE desc)as num from List_Element where List_Element = ?) where num between ? and ?";
+		}
+		else
+		{
+		query = "select * from (select list_element.*,row_number() over(order by Index_titleNo)as num from List_Element where List_Element =? ) where num between ? and ?";
+		}
 		ArrayList<EnjoyListData> list = new ArrayList<EnjoyListData>();
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, type);
+			if(option.equals("")) {pstmt.setString(1, type);}
+			else {pstmt.setString(1, option);}
 			pstmt.setInt(2, start);
 			pstmt.setInt(3, end);	
 			rset = pstmt.executeQuery();
@@ -98,7 +111,7 @@ public class Enjoydao {
 	}
 
 	public String getPageNavi(Connection conn, int naviCountPerPage, int recordCountPerPage, int currentPage,
-			String search, String type) {
+			String search, String type, String option) {
 
 		// 게시물의 토탈 개수를 구해야 함
 		int recordTotalCount = 0;
@@ -198,17 +211,17 @@ public class Enjoydao {
 		StringBuilder sb = new StringBuilder(); // 오랜만이야..
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+  "'> < </a>");
+			sb.append("<a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&option="+option+"'> < </a>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "'><B> " + i + " </B></a>");
+				sb.append("<a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "&option="+option+"'><B> " + i + " </B></a>");
 			} else {
-				sb.append("<a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "'> " + i + " </a>");
+				sb.append("<a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&option="+option+"'> " + i + " </a>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "'> > </a>");
+			sb.append("<a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&option="+option+"'> > </a>");
 		}
 
 		return sb.toString();

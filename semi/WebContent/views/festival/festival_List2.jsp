@@ -227,7 +227,7 @@
                                 <span>«</span>
                             </li>
                             <li class="active">
-                                <span>1
+                                <span>
                                 </span>
                             </li>
                             <li>

@@ -79,7 +79,10 @@ public class EnjoySelectServlet extends HttpServlet {
 				//페이징처리한 대상가져오기
 				CommentData cd = new EnjoyService().getListCommentData(currentPage,search,SEQ_Index_TitleNo);
 				
-		
+				
+//				System.out.println(cd.getPageNavi());
+				
+				
 		
 		////////////
 		EnjoyElementData EED = new EnjoyElementData(ELD,edd1,cd);

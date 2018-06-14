@@ -74,13 +74,31 @@ public class EnjoyListServlet extends HttpServlet {
 		}
 		
 		
+		// 정렬하기
+		
+		
+		String option ="";
+		if(request.getParameter("option")!=null)
+		{
+			option = request.getParameter("option");
+		}
+		else {
+			option ="";
+		}
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		// 페이지값 셋팅
 		
 		// 비지니스 로직
 		
-		PageData pd = new EnjoyService().getListData(currentPage,search,type);
+		PageData pd = new EnjoyService().getListData(currentPage,search,type,option);
 		
 		
 //		ArrayList<EnjoyListData> list  = new EnjoyService().getAllData();
@@ -91,6 +109,7 @@ public class EnjoyListServlet extends HttpServlet {
 				RequestDispatcher view = request.getRequestDispatcher("/views/enjoy/border_List.jsp");
 				
 				request.setAttribute("pageData", pd);
+				request.setAttribute("type", type);
 				view.forward(request, response);
 			
 		}
