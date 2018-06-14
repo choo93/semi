@@ -802,7 +802,8 @@ footer{
 
 
 /* login_join */
-#login_join p{
+/*
+#login_join .login_before{
     float:left;
     width:95px;
     padding-bottom:30px;
@@ -810,11 +811,12 @@ footer{
 #main_category{
     clear:both;
 }
-#login_join p:nth-child(1){
+#login_join .login_left{
     text-align:right;
     padding-right:15px;
 }
-#login_join p:nth-child(2){
+#login_join .login_right{
     text-align:left;
     padding-left:15px;
 }
+*/

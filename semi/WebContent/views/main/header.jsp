@@ -21,11 +21,13 @@
         
         <% if(user==null){ %>
         <div id="login_join">
-        	<p><a href="/views/login/login.jsp">로그인</a></p>
-        	<p><a href="">회원가입</a></p>
+        	<p class="login_before login_left"><a href="/views/login/login.jsp">로그인</a></p>
+        	<p class="login_before login_right"><a href="">회원가입</a></p>
         </div>    
         <% } else { %>
+        <div id="login_join">
         	[<%=user.getUserName()%>]님 환영합니다
+        </div>
         <% } %>
 
         
