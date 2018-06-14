@@ -42,7 +42,7 @@
             </div>
             <p>
                 <label>
-                    <input type="checkbox">
+                    <input type="checkbox" id="id_save_check">
                     <span>아이디 기억하기</span>
                 </label>
             </p>

@@ -25,8 +25,12 @@
         	<p class="login_before login_right"><a href="">회원가입</a></p>
         </div>    
         <% } else { %>
-        <div id="login_join">
-        	[<%=user.getUserName()%>]님 환영합니다
+        <div id="login_join" class="login_after">
+        	<p><span><%=user.getUserName()%></span>님 환영합니다</p>
+        	<p>
+        		<a href="">마이페이지</a>
+        		<a href="/logout">로그아웃</a>
+        	</p>
         </div>
         <% } %>
 
@@ -74,7 +78,7 @@
 			<li class="toggle menu_three"><a href="#">예약하기</a>
             <ul class="sub_menu_three" style="display:none;">
 			    <li><a href="">공연예약</a></li>
-			    <li><a href="">호텔예약</a></li>
+			    <li><a href="/hotelList">호텔예약</a></li>
 			    <li><a href="">서울도보관광예약</a></li>
 			</ul>			
 			</li>
