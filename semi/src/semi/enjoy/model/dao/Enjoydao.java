@@ -309,7 +309,7 @@ public class Enjoydao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query="insert into Element_Index_Review values(?,?,'test','test',?,Element_Index_Review_SEQ.nextval,sysdate)";
+		String query="insert into Element_Index_Review values(1,?,'test','test',?,Element_Index_Review_SEQ.nextval,sysdate)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -489,6 +489,25 @@ public class Enjoydao {
 
 				return sb.toString();
 			}
+
+	public int deleteReview(Connection conn, int commentNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "delete from Element_Index_Review where seq_review=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, commentNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }
 
 

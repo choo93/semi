@@ -136,4 +136,17 @@ public class EnjoyService {
 		
 		return cd;
 	}
+
+
+	public int deleteReview(int commentNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new Enjoydao().deleteReview(conn,commentNo);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
 }

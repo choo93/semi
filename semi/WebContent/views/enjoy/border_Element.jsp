@@ -254,7 +254,6 @@
 
 				</div>
 
-
 				<!--▼ 댓글리뷰-->
 				<div style="width: 100%; height: 3%;">
 					<!-- 댓글 바 -->
@@ -275,34 +274,45 @@
 					<%
 						if (!CommentList.isEmpty()) {
 					%>
-					<%
-						for (EnjoyComment EC : CommentList) {
-					%>
-					<div style="position: relative; top: 20px; float: left;">
-						<div class="leftBox" style="position: relative; width: 170px; height: 110px; margin-right: 50px;"> <br> 
-						<span id="userId" style="position: absolute; color: #6C4371; top: 10px; margin: 15px; font: bold 1.3rem 나눔스퀘어;"><%=EC.getUSER_ID()%></span>
-							<br> <br> <span id="insertDate" style="color: #6C4371; margin: 15px;"><%=EC.getWrite_Date()%></span>
-							<br>
-						</div>
-					</div>
+					<% for(EnjoyComment EC : CommentList) {%>
+   					<!-- 커다란 DIV -->
+   					<div id="review_info" align="center" style="width: 100%;">
+      					<!-- 댓글 내용 넣을곳 -->
+      					<div style="width: 1000px; height: 180px; position: relative; padding: 20px; text-align: left;">
+         					<!-- ID, 게시날자 입력하는곳 -->
+         					<div style="position: relative; top: 20px; float: left;">
+         					<div class="leftBox" style="position: relative; width: 170px; height: 110px; margin-right: 50px;">
+            					<br> <span id="userId" style="position: absolute; color: #6C4371; top: 10px; margin: 15px; font: bold 1.3rem 나눔스퀘어;"><%=EC.getUSER_ID() %></span> <br>
+            					<br> <span id="insertDate" style="color: #6C4371; margin: 15px;"><%=EC.getWrite_Date() %></span> <br>
+         					</div>
+         					</div>
 
-					<div class="rightBox" style="width: 70%; height: 100%; padding: 5px; float: left; position: relative;">
-
-						<!-- 제목,내용 입력하는곳 -->
-						<div style="float: left; width: 80%; height: 100%;">
-							<div style="width: 100%; height: 20%; color: #6C4371; font: bold 1.5rem 나눔스퀘어; margin-top: 15px; margin-left: 15px;"><%=EC.getINDEX_TITLE()%></div>
-							<div style="width: 100%; height: 80%; color: #6C4371; font: 1.2rem 나눔스퀘어; margin-left: 15px;"><%=EC.getUSER_COMMNET()%></div>
-						</div>
-						<!-- 추천점수 입력하는곳 -->
-						<div style="float: left; width: 20%; height: 100%; color: #6C4371; text-align: center; line-height: 5;"> 점수</div>
-						</div>
-					</div>
-				</div>
-
-			<%
-				}
-			%>
-			<%=pageNavi%>
+         					<div class="rightBox" style="width: 70%; height: 100%; padding: 5px; float: left; position: relative;">
+            				<!-- 제목,내용 입력하는곳 -->
+            				<div style="float: left; width: 80%; height: 90%;">
+               					<div name="Index_Title" style="width: 100%; height: 20%; color: #6C4371; font: bold 1.5rem 나눔스퀘어; margin-top: 15px; margin-left: 15px;"><%=EC.getINDEX_TITLE() %></div>
+               					<div name="User_Comment" style="width: 100%; height: 80%; color: #6C4371; font: 1.2rem 나눔스퀘어; margin-left: 15px;"><%=EC.getUSER_COMMNET() %></div>
+               				</div>
+            				<!-- 추천점수 입력하는곳 -->
+            				<div style="float: left; width: 20%; height: 90%; color: #6C4371; text-align: center; line-height: 5;">
+               					점수
+            				</div>
+            				<div style="width: 7%; height: 10%; float: right;">
+            				<form action="/enjoyCommentDelete" method="post" style="display:inline;">
+            				<input type="hidden" name="index_titleNo" value="<%=edd1.getSEQ_Index_TitleNo()%>"/>
+            				<input type="hidden" name="SEQ_REVIEW" value="<%=EC.getSEQ_REIVEW()%>"/>
+            				<!-- EC로 써도 되는거 맞나? -->
+            				
+            				<input type="submit" value="삭제"/>
+            				</form>
+         					</div>
+         					<div style="width: 7%; height: 10%; float: right;">
+         						수정
+         					</div>
+      					</div>
+   					</div>
+   					<%} %>
+   					<%=pageNavi %>
 			<%
 				} else {
 			%>
