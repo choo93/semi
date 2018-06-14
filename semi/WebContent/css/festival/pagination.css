@@ -12,6 +12,9 @@
 	background-color: #9B95C9;
 	border: 1px solid #ddd;
 }
+.pagination>.active>a:focus {
+	font-size: 20px;
+}
 
 .pagination>li>a, .pagination>li>span {
 	color: #9B95C9;

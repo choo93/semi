@@ -13,12 +13,19 @@ import semi.hotel.model.vo.HotelListData;
 public class HotelDAO {
 
 	public HotelInfo selectAllInfo(Connection conn, int indexNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "";
+		HotelInfo ci = null;
+		
+		
 		
 		return null;
 	}
 	
 
-	public ArrayList<HotelListData> selectAllHotel(Connection conn, int currentPage, int recordCountPerPage) {
+	public ArrayList<HotelInfo> selectAllHotel(Connection conn, int currentPage, int recordCountPerPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -26,9 +33,9 @@ public class HotelDAO {
 		
 		int end = currentPage*recordCountPerPage;
 		
-		String query="";
+		String query="select * from(select hotelList.*, row_number() over(order by indexNum desc) as num from hotelList) where num between ? and ?";
 		
-		ArrayList<HotelListData> list = new ArrayList<HotelListData>();
+		ArrayList<HotelInfo> list = new ArrayList<HotelInfo>();
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -39,9 +46,17 @@ public class HotelDAO {
 			
 			while(rset.next())
 			{
-				HotelListData hld = new HotelListData();
+				HotelInfo hl = new HotelInfo();
 				
-				list.add(hld);
+				hl.setIndexNum(rset.getInt("indexNum"));
+				System.out.println(hl.getIndexNum());
+				hl.setHotelName(rset.getString("hotelName"));
+				System.out.println(hl.getHotelName());
+				hl.setHotelExplain(rset.getString("hotelExplain"));
+				System.out.println(hl.getHotelExplain());
+				hl.setHotelMainPhoto(rset.getString("hotelMainPhoto"));
+				System.out.println(hl.getHotelMainPhoto());
+				list.add(hl);
 			}
 			
 		} catch (SQLException e) {
@@ -62,14 +77,14 @@ public class HotelDAO {
 		//게시물 토탈 개수 
 		int recordTotalCount = 0;
 		
-		String query="select count(*) from Member_mgr";
+		String query="select count(*) from hotelList";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			rset = pstmt.executeQuery();
 			if(rset.next())
 			{
-				recordTotalCount = rset.getInt("");
+				recordTotalCount = rset.getInt("count(*)");
 			}
 			
 		} catch (SQLException e) {
@@ -123,22 +138,22 @@ public class HotelDAO {
 		
 		if(needPrev) //시작이 1페이지가 아니라면!
 		{
-			sb.append("<a href='/notice?currentPage="+(startNavi-1)+"'> < </a>");
+			sb.append("<a href='/hotelList?currentPage="+(startNavi-1)+"'> < </a>");
 		}
 		for(int i=startNavi;i<=endNavi;i++)
 		{
 			if(i==currentPage)
 			{
-				sb.append("<a href='/notice?currentPage="+i+"'> <B> "+i+" </B></a>");
+				sb.append("<a href='/hotelList?currentPage="+i+"'> <B> "+i+" </B></a>");
 			}
 			else
 			{
-				sb.append("<a href='/notice?currentPage="+i+"'> "+i+" </a>");
+				sb.append("<a href='/hotelList?currentPage="+i+"'> "+i+" </a>");
 			}
 		}
 		if(needNext) // 끝 페이지가 아니라면!
 		{
-			sb.append("<a href='/notice?currentPage="+(endNavi+1)+"'> > </a>");
+			sb.append("<a href='/hotelList?currentPage="+(endNavi+1)+"'> > </a>");
 		}
 		return sb.toString();
 	}

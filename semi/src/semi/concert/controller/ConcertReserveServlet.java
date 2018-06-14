@@ -43,13 +43,14 @@ public class ConcertReserveServlet extends HttpServlet {
 		
 		System.out.println(date);
 		System.out.println(time);*/
-		int indexNo = Integer.parseInt(request.getParameter("indexNo"));
+		//int indexNo = Integer.parseInt(request.getParameter("indexNo"));
 		ConcertReserve cr = new ConcertReserve();
 		cr.setConcertCode(request.getParameter("concertCode"));
+		cr.setUserNo("111");
 		cr.setConcertPrice(Integer.parseInt(request.getParameter("price")));
 		cr.setConcertReserveDate(request.getParameter("date"));
 		cr.setConcertReserveTime(request.getParameter("time"));
-		
+		cr.setSeatNo(Integer.parseInt(request.getParameter("seatNo")));
 		
 		int result = new ConcertService().addReserve(cr);
 		

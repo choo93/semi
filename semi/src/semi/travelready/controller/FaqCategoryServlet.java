@@ -56,6 +56,11 @@ int currentPage;
 			request.setAttribute("search", search);
 			view.forward(request, response);
 		}
+		else {
+			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/searchFail.jsp");
+			request.setAttribute("search", search);
+			view.forward(request, response);
+		}
 	}
 
 	/**

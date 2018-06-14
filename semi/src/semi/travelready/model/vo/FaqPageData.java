@@ -11,7 +11,14 @@ public class FaqPageData {
 	private int endNavi;
 	private int currentPage;
 	private int pageTotalCount;
+	private int recordTotalCount;
 	
+	public int getRecordTotalCount() {
+		return recordTotalCount;
+	}
+	public void setRecordTotalCount(int recordTotalCount) {
+		this.recordTotalCount = recordTotalCount;
+	}
 	public int getPageTotalCount() {
 		return pageTotalCount;
 	}

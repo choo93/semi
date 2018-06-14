@@ -37,7 +37,7 @@ public class HotelListServlet extends HttpServlet {
 		else currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		// 즉, 첫페이지만 1로 셋팅하고 그외 페이지라면 해당 페이지 값을 가져옴
 		
-		HotelPageData hpd = new HotelService().getHotelList(currentPage);
+		HotelPageData hpd = new HotelService().getHotelInfo(currentPage);
 		
 		if(hpd!=null)
 		{

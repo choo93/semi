@@ -125,7 +125,7 @@
 			<section>
 				<div class="container-fluid">
 					<div class="row">
-						<a href="/views/placerank/placerank_List.jsp">
+						<a href="/placeRankList?type=type1">
 							<div class="col-xs-6 picture photo1">
 
 									<h2 class="font">Top 10 관광명소<div class="under-bar"></div>	</h2>

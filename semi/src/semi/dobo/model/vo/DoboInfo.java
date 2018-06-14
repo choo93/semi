@@ -1,7 +1,7 @@
 package semi.dobo.model.vo;
 
 public class DoboInfo {
-	private int indenxNum;
+	private int indexNo;
 	private String doboCode;
 	private String doboTitle;
 	private String doboMainPhoto;
@@ -39,12 +39,12 @@ public class DoboInfo {
 
 
 
-	public int getIndenxNum() {
-		return indenxNum;
+	public int getIndexNo() {
+		return indexNo;
 	}
 
-	public void setIndenxNum(int indenxNum) {
-		this.indenxNum = indenxNum;
+	public void setIndexNo(int indexNo) {
+		this.indexNo = indexNo;
 	}
 
 	public String getDoboCode() {
@@ -217,7 +217,7 @@ public class DoboInfo {
 
 	@Override
 	public String toString() {
-		return "indenxNum=" + indenxNum + ", doboCode=" + doboCode + ", doboTitle=" + doboTitle
+		return "indexNo=" + indexNo + ", doboCode=" + doboCode + ", doboTitle=" + doboTitle
 				+ ", doboMainPhoto=" + doboMainPhoto + ", doboSummary=" + doboSummary + ", doboMainExplain="
 				+ doboMainExplain + ", doboCourse=" + doboCourse + ", doboTime=" + doboTime + ", doboMeet=" + doboMeet
 				+ ", doboSubTitle1=" + doboSubTitle1 + ", doboSubPhoto1=" + doboSubPhoto1 + ", doboSubExplain1="

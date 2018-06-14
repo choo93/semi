@@ -1,6 +1,8 @@
 package semi.dobo.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,9 +35,13 @@ public class DoboReserveServlet extends HttpServlet {
 		
 		int result = new DoboService().addReserve(dr);
 		
+		RequestDispatcher view = request.getRequestDispatcher("/views/dobo/reserve.jsp");
 		if(result>0) {
-			
+			request.setAttribute("reserve", "success");
+		}else {
+			request.setAttribute("reserve", "fail");
 		}
+		view.forward(request, response);
 		
 		
 	}
