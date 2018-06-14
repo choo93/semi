@@ -26,7 +26,7 @@ public class DoboDAO {
 			
 			if(rset.next()) {
 				di = new DoboInfo();
-				di.setIndenxNum(rset.getInt(1));
+				di.setIndexNo(rset.getInt(1));
 				di.setDoboCode(rset.getString(2));
 				di.setDoboTitle(rset.getString(3));
 				di.setDoboMainPhoto(rset.getString(4));
@@ -84,7 +84,7 @@ public class DoboDAO {
 				DoboInfo di = new DoboInfo();
 				
 				di = new DoboInfo();
-				di.setIndenxNum(rset.getInt(1));
+				di.setIndexNo(rset.getInt(1));
 				di.setDoboCode(rset.getString(2));
 				di.setDoboTitle(rset.getString(3));
 				di.setDoboMainPhoto(rset.getString(4));

@@ -51,5 +51,12 @@ public class ConcertService {
 		
 		return result;
 	}
+
+	public ArrayList<String> loadSeat(ConcertReserve cr) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<String> list = new ConcertDAO().loadSeat(conn,cr);
+		JDBCTemplate.close(conn);
+		return list;
+	}
 	
 }

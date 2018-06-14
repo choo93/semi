@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../../css/dobo/doboReserve.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
+<script src="/js/dobo/doboReserve.js"></script>
 </head>
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp"%>
@@ -32,10 +33,10 @@
 						<div>제목</div>
 						<div>
 							<div>
-								<label>예약 일</label> <input type="date" name="date">
+								<label>예약 일</label> <input id="date" type="date" name="date">
 							</div>
 							<div>
-								<label>예약 시간</label> <input type="time" name="time">
+								<label>예약 시간</label> <input id="time" type="time" name="time">
 							</div>
 						</div>
 					</div>
@@ -64,17 +65,17 @@
 					<div id="form">
 
 						<div>
-							<label>이름*</label> <input type="text" id="name" name="name">
+							<label>이름*</label> <input id="name" type="text" id="name" name="name">
 						</div>
 						<div>
-							<label>성별*</label> <input type="radio" name="gender" value="M"><label>남성</label>
+							<label>성별*</label> <input type="radio" name="gender" value="M" checked><label>남성</label>
 							<input type="radio" name="gender" value="F"> <label>여성</label>
 						</div>
 						<div>
-							<label>국적*</label> <input type="text" id="nation" name="nation">
+							<label>국적*</label> <input id="nation" type="text" id="nation" name="nation">
 						</div>
 						<div>
-							<label>휴대전화*</label> <input type="text" id="phone" name="phone">
+							<label>휴대전화*</label> <input id="phone" type="text" id="phone" name="phone">
 						</div>
 						<div>
 							<label>하고싶은 말</label>
@@ -101,7 +102,7 @@
 
 				</div>
 				<div id="btn">
-					<input type="submit" value="예약하기">
+					<input type="submit" value="예약하기" onclick="return check();">
 				</div>
 
 			</div>

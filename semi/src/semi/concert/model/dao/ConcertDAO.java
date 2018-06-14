@@ -186,14 +186,16 @@ public class ConcertDAO {
 	public int addReserve(Connection conn, ConcertReserve cr) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "insert into CONCERTRESERVE values (CONCERTRESERVE_SEQ.NEXTVAL,?,?,?,?)";
+		String query = "insert into CONCERTRESERVE values (CONCERTRESERVE_SEQ.NEXTVAL,?,?,?,?,?,?)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, cr.getConcertCode());
-			pstmt.setInt(2, cr.getConcertPrice());
-			pstmt.setString(3, cr.getConcertReserveDate());
-			pstmt.setString(4, cr.getConcertReserveTime());
+			pstmt.setString(2, cr.getUserNo());
+			pstmt.setInt(3, cr.getConcertPrice());
+			pstmt.setString(4, cr.getConcertReserveDate());
+			pstmt.setString(5, cr.getConcertReserveTime());
+			pstmt.setInt(6, cr.getSeatNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -206,6 +208,33 @@ public class ConcertDAO {
 		return result;
 		
 		
+	}
+
+	public ArrayList<String> loadSeat(Connection conn, ConcertReserve cr) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select seatNo from concertReserve where concertCode = ? and concertReserveTime = ? and concertReserveDate = ?";
+		ArrayList<String> list = new ArrayList<String>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, cr.getConcertCode());
+			pstmt.setString(2, cr.getConcertReserveTime());
+			pstmt.setString(3, cr.getConcertReserveDate());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(rset.getString(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
 	}
 
 }
