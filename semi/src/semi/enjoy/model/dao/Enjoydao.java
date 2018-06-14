@@ -291,4 +291,28 @@ public class Enjoydao {
 		return edd1;
 	}
 
+	public int insertReview(Connection conn, String reviewTitle, String reviewContents, int indexNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query="insert into Element_Index_Review values(?,?,'test','test',?,Element_Index_Review_SEQ.nextval)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, indexNo);
+			pstmt.setString(2, reviewTitle);
+			/*pstmt.setString(3, );//유저id
+			pstmt.setString(4, );//유저이미지
+*/			pstmt.setString(3, reviewContents);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }
+
+
