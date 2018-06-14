@@ -161,7 +161,7 @@ p {
 						</p>
 					</div>
 				</div>
-			</a> <a href="#">
+			</a> <a href="/faq">
 				<div id="notice" class="menu">
 					<div class="middle">
 						<div class="font" style="color: black;">공지사항</div>

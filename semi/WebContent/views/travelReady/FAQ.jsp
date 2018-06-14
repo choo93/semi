@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
+<%
+	FaqPageData fpd=(FaqPageData)request.getAttribute("faqPageData");
+	ArrayList<Faq> list=fpd.getNoticelist();
+%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +18,9 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 	<link rel="stylesheet" href="../../css/main.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
-	<script src="../../js/main.js"></script>	
+	<script src="../../js/main.js"></script>
+
+		
 
 <style>
 #pagetitle
@@ -103,14 +112,74 @@ fieldset{
 	height:98%;
 
 }
-
 dt
 {
 	border-top:1px solid #dcdcdc;
 	padding : 10px 20px 10px 45px;
+	background-repeat:no-repeat;
+	background-image:url(/views/travelReady/image/question.png);
+	background-size:3% 100%;
+	line-height:22px;
 }
-</style>
 
+#navi a{
+	font-size:30px;
+	border:2px solid #0080ff;
+	width:35px;
+	height:35px;
+	border-radius:3px;
+	text-align:center;
+}
+dd
+{
+display:none; 
+border-bottom:1px solid #dcdcdc; 
+width:100%; 
+padding : 10px 20px 10px 45px;
+line-height:22px;
+background-color:gray;
+}
+
+#basicInfo {
+	width: 635px;
+	height: 55px;
+	border-top: 3px solid black;
+	background-color: RGB(245, 245, 245);
+	font-size: 25px;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+#basicInfo:hover {
+	cursor: pointer;
+}
+
+#basicInfoContent {
+	width: 635px;
+	height: 200px;
+	font-weight: bold;
+	display: none;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+</style>
+<script>
+var toggleText1 = false;
+var toggleText2 = false;
+function test(id){
+	console.log(id);
+	$('#'+id).toggle('display');
+	if(toggleText1==true)
+	{
+		toggleText1 = false;
+	}
+	else{
+
+		toggleText1 = true;
+	}
+}
+</script>
 
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
@@ -128,51 +197,55 @@ dt
 				<div id="faqtitle">
 				<div id="faqtitleimg"></div>
 				<strong style="font-size:18px;">"FAQ를 통해서 원하시는 답변을 쉽고 빠르게 찾아보세요"</strong><br>
-				
+
 				질문을 하기시 전 자주하시는 질문을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				원하는 내용을 찾지 못하실 경우 '질문과 답변' 게시판에 문의해 주시면 친절하게 안내해 드리겠습니다.<br>
 				</div>
 				
 				<fieldset>
 					<legend>게시물 검색</legend>
-					<input type="text" name="search" style="width:300px; height:30px;"><input type="submit" value="검색" style="width:150px; height:35px; margin-left:10px;">
+					<form action="/faqSearch">
+					<input type="text" name="search" style="width:300px; height:30px;">
+					<input type="submit" value="검색" style="width:150px; height:35px; margin-left:10px;">
+					</form>
 				</fieldset>
 				
 				<div id="category" style="width:960px; height:100px; margin-top:30px; margin-bottom:30px;">
 					<ul style="width:100%;height:100%;float:left; list-style:none;">
-						<li style="background-image:url(/views/travelReady/image/bus.png);"><span class="span">서울 시티 투어 탑승</span></li>
-						<li style="background-image:url(/views/travelReady/image/hotel.png);"><span class="span">호텔 예약</span></li>
-						<li style="background-image:url(/views/travelReady/image/work.png);"><span class="span">도보 관광</span></li>
-						<li>4</li>
-						<li>5</li>
-						<li>6</li>
-						<li>7</li>
-						<li>8</li>
+						<a href="/faqCategory?search=3"><li style="background-image:url(/views/travelReady/image/bus.png);"><span class="span">서울 시티 투어 탑승</span></li></a>
+						<a href="#"><li style="background-image:url(/views/travelReady/image/hotel.png);"><span class="span">호텔 예약</span></li></a>
+						<a href="#"><li style="background-image:url(/views/travelReady/image/work.png);"><span class="span">도보 관광</span></li></a>
+						<a href="#"><li>4</li></a>
+						<a href="#"><li>5</li></a>
+						<a href="#"><li>6</li></a>
+						<a href="#"><li>7</li></a>
+						<a href="#"><li>8</li></a>
 					</ul>
 				</div>
 				
-				<div style="width:100%; height:470px;">
+				<div style="width:100%; height:780px;">
 					<h3 style="font-size:24px;">FQA</h3>
 					<dl id="faqcontent">
-						<dt><a href="#">1</a></dt>
-						<dt><a href="#">2</a></dt>
-						<dt><a href="#">3</a></dt>
-						<dt><a href="#">4</a></dt>
-						<dt><a href="#">5</a></dt>
-						<dt><a href="#">6</a></dt>
-						<dt><a href="#">7</a></dt>
-						<dt><a href="#">8</a></dt>
-						<dt><a href="#">9</a></dt>
-						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#">10</a></dt>
-					</dl>
+					<%for(Faq f:list){ %>
+						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#none" onclick="test(<%=f.getFaqNo()%>);">[<%=f.getCategory()%>]<br><%=f.getTitle() %></a></dt>
+						<dd id="<%=f.getFaqNo()%>"><%=f.getAnswer()%></dd>
+					<%} %>
+					</dl>					
 				</div>
-				<div style="width:100%; height:50px; background-color:blue; padding-top:30px; padding-bottom:50px;">
-				dfdsfsdfds
+				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
+				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 
+					if(i==fpd.getCurrentPage()){%>
+						<a href='/faq?currentPage=<%=i%>'><%=i%></a>
+					<%}else{ %>
+						<a href='/faq?currentPage=<%=i%>'><%=i%></a>
+					<%} %>
+				<%} %>
 				</div>
+		
 			</section>
 			
 			</div>
-			
+
 			
 			</section>
 			<%@ include file="/views/main/footer.jsp"%>

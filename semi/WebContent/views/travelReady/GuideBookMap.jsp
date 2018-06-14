@@ -32,7 +32,6 @@
     height:120px;
     margin-bottom:35px;
     }
-    
     #title
     {
     	position:relative;
@@ -44,68 +43,51 @@
     	overflow-x:hidden;
 		overflow-y:hidden;
     }
-    
-    #pagecontent
-    {
-    min-height:1000px;
-    
-    margin-left:3%;
-    	margin-right:3%;
-    }
     #content
     {
-    width:100%;
-    min-height:1000px;
+    margin:0 auto;
+    width:960px;
+    min-height:1800px;
     padding-left:0px;
     }
-    #guidebookRq
+    #pagecontent
     {
-    	width:100%;
-    	border:3px;
-    	height:180px;
-    	margin-bottom:30px;
-    	background:url(
+    	min-height:1000px;
+    	margin-left:3%;
+    	margin-right:3%;
+    	padding-left:51px;
+    	margin:o auto;
+    }
+    .dis
+    {
+    	width:960px;
+    }
+    #guidebookrequest
+    {
+    width:960px; 
+ 
+    height:100%;
+    background:url(
 				http://korean.visitseoul.net/humanframe/theme/visitseoul/assets/images/content/guidebook.png);
-		background-repeat:no-repeat;
-		background-size:70% 120%;
-		
-		overflow-x:hidden;
-		overflow-y:hidden;
-				
-    
+	background-repeat:no-repeat;
+	background-size:80% 120%;
     }
-    #guidebookRq>a
+    #guidebookrequest>a
     {
-    	width:65%;
-    	height:120px;
+    	width:30%;
+    	height:95%;
+    	padding-left:70%;
+    	padding-top:5%;
     	display:inline-block;
-    	padding-top:40px;
-    	padding-left:60%;
-    	font-size:40px;
-    	font-weight:400;
-    	overflow:hidden;
-    	text-overflow:ellipsis;
-
     }
-    
-    #guidebookRq>a strong
-    {
-    	margin-top:5px;
-    	border:3px;
-    	text-align:center;
-    	background-color:#007dc3;
-    	color:white;
-    	font-size:40px;
-    	margin-left:9%;
-    	border-radius: 9px;
-    }
-    #guidebookDn
-    {
-   
-    	width:100%;
-    	height:2000px;
-    	
-    }
+   #rq{
+   margin-left:55px; 
+   font-size:30px; 
+   background-color:#007dc3;
+   border-radius:9px;
+   color:white;
+   border:5px soild white;
+   }
     .item
     {
     	float:left;
@@ -114,7 +96,7 @@
     
     	margin:3% 3% 50px 3%;
     }
-    .img
+ .img
     {
      background-repeat:no-repeat;
     	width:100%;
@@ -130,11 +112,8 @@
     	font-weight:700;
     	color:black;
     	overflow:hidden;text-overflow:ellipsis;
-
-
-    	
     }
-    .button
+     .button
     {
     	border:1px solid red;
     	border-radius:5px;
@@ -150,46 +129,48 @@
     border:0px;
     font-weight:700;
     }
-	</style>
-
+</style>
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
 	<section>
-		<%@ include file="/views/travelReady/GuideBookHeader.jsp" %>
+			<div id="pagetitle">
+			<div id="title">
+				<p style="height:50px;">현재위치  : 여행준비 > 가이드북 & 지도</p>
+				<h3 style="font-size:50px;">가이드북&지도</h3>
+			</div>
+			</div>
 			<div id="pagecontent">
 				<section id="content">
-					<div id="guidebookRq">
-						<form action="/adminGuideBookRequest">
-							<input type="submit" value="배송확인">
-						</form>
+					<div class="dis" style="height:200px;">
+						<div id="guidebookrequest">
 						<a href="/views/travelReady/GuideBookRequest.jsp">
-							무료가이드북&지도<br>
-							<strong>
-								 신청하기
-							</strong>
-						</a>
+							<strong style="font-size:25px;">무료가이드북 & 지도</strong>
+							<br>
+								<strong id="rq">신청하기</strong>
+
+							</a>
+						</div>
+						
 					</div>
 					
-						<%for(GuideBookDown gbd : list) {%>
-				
+					<div class="dis" style="height:1000px; margin-top:32px;">
+					<%for(GuideBookDown gbd : list) {%>
 						<div class="item">
 							<div class="img" style="<%=gbd.getGuideBookImagePath()%>"></div>
 							<div class="name"><%=gbd.getGuideName()%></div>
 							<form action="/pdfDown" method="post">
-							<input type="hidden" name="orderNo" value="<%=gbd.getGuideNo()%>" ><div class="button">PDF View<br>(75MB)<input type="submit" id="btn" value="다운로드"></div>
+							<input type="hidden" name="orderNo" value="<%=gbd.getGuideNo()%>" >
+							<div class="button">PDF View<br>(75MB)<input type="submit" id="btn" value="다운로드"></div>
 							</form>
 						</div>
 						<%} %>
+						
 					
-					<div id="guidebookDn">
-					  
-
 					</div>
 				</section>
-			</div>
 			
-	
-	</section>
+			</div>
+		</section>
 <%@ include file="/views/main/footer.jsp" %>
 </body>
 </html>
