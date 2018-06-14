@@ -29,6 +29,9 @@ li{list-style:none;}
 .scroll .toggle{
     visibility:hidden;
 }
+.scroll #login_join{
+    visibility:hidden;  
+            }    
 .scroll section{
     padding-left:51px;
 }
@@ -795,5 +798,23 @@ footer{
     .category_view .menu_one{
         margin-top:160px;
     }
+}
 
+
+/* login_join */
+#login_join p{
+    float:left;
+    width:95px;
+    padding-bottom:30px;
+}
+#main_category{
+    clear:both;
+}
+#login_join p:nth-child(1){
+    text-align:right;
+    padding-right:15px;
+}
+#login_join p:nth-child(2){
+    text-align:left;
+    padding-left:15px;
 }

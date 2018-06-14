@@ -1,22 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="semi.login.model.vo.*" %>
+<% SeoulUser user = (SeoulUser)session.getAttribute("user"); %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-</head>
+</head>	
 <body>
     <header>
         <img src="../../image/menu.png" id="menu_icon" onclick="menu();">
         <img src="../../image/menu_mobile.png" id="menu_icon_mobile" onclick="menu_mobile();" style="display:none;">
-        
         
         <div>
             <a href="http://localhost">
                 <img src="../../image/logo.jpg" id="logo" style="height:100%;">
             </a>
         </div>
+        
+        <% if(user==null){ %>
+        <div id="login_join">
+        	<p><a href="/views/login/login.jsp">로그인</a></p>
+        	<p><a href="">회원가입</a></p>
+        </div>    
+        <% } else { %>
+        	[<%=user.getUserName()%>]님 환영합니다
+        <% } %>
+
+        
+        <style>
+            .scroll #login_join{
+                visibility:hidden;  
+            }
+            @media screen and ( min-width:655px ) and ( max-width:1023px ){
+                #login_join{
+                    display:none;
+                }
+                #main_category{
+                    clear:inherit;
+                }
+            }
+            @media screen and ( max-width:654px ) {
+                #login_join{
+                    display:none;
+                }
+            }
+        </style>	        
         
 		<ul id="main_category">
             <img src="../../image/close.png" id="menu_icon_close" onclick="close_mobile();" style="width:30px; float:right; cursor:pointer; padding:15px;">
@@ -57,7 +87,7 @@
 			    <li><a href="">공지사항</a></li>
 			</ul>
 			</li>
-		</ul>
+		</ul>	
 		
         <script>
             function menu_mobile(){
