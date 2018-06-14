@@ -1,11 +1,15 @@
 package semi.enjoy.model.vo;
 
+import java.util.ArrayList;
+
 import semi.enjoy.model.service.EnjoyService;
 
 public class EnjoyElementData {
 
 	private EnjoyListData ELD;		
 	private EnjoyDetailData1 edd1;
+	private CommentData cd ;
+	
 	public EnjoyListData getELD() {
 		return ELD;
 	}
@@ -18,15 +22,24 @@ public class EnjoyElementData {
 	public void setEdd1(EnjoyDetailData1 edd1) {
 		this.edd1 = edd1;
 	}
-	public EnjoyElementData(EnjoyListData eLD, EnjoyDetailData1 edd1) {
+	public CommentData getCd() {
+		return cd;
+	}
+	public void setCd(CommentData cd) {
+		this.cd = cd;
+	}
+	public EnjoyElementData(EnjoyListData eLD, EnjoyDetailData1 edd1, CommentData cd) {
 		super();
 		ELD = eLD;
 		this.edd1 = edd1;
+		this.cd = cd;
 	}
 	public EnjoyElementData() {
-		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	
 	
 	
 	

@@ -3,12 +3,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="semi.enjoy.model.vo.EnjoyListData"
 	import="semi.enjoy.model.vo.EnjoyDetailData1"
-	import="semi.enjoy.model.vo.EnjoyElementData"%>
+	import="semi.enjoy.model.vo.EnjoyElementData"
+	import="semi.enjoy.model.vo.EnjoyComment"
+	import="semi.enjoy.model.vo.CommentData" import="java.util.*"%>
 <%  
 	EnjoyElementData EED = (EnjoyElementData)request.getAttribute("EED");
+	EnjoyListData ELD = EED.getELD(); EnjoyDetailData1 edd1 = EED.getEdd1();
 	
-	EnjoyListData ELD = EED.getELD();
-	EnjoyDetailData1 edd1 = EED.getEdd1();
+	CommentData cd = null; cd = EED.getCd();
+	ArrayList<EnjoyComment> CommentList = null;  CommentList = cd.getCommentList();
+	String pageNavi = null; pageNavi= cd.getPageNavi();
 	
 %>
 <!DOCTYPE html>
@@ -141,7 +145,7 @@
 
 					<hr>
 					<table style="height: 100%; width: 100%;">
-
+						
 						<tr>
 							<td>주소</td>
 							<td>
@@ -154,13 +158,8 @@
 								<!-- 02-766-9090 --> <%=edd1.getDetail_tell() %>
 							</td>
 						</tr>
-						<tr>
-							<td>팩스번호</td>
-							<td>
-								<!-- 02-742-3900 -->
-
-							</td>
-						</tr>
+						
+			
 						<tr>
 							<td>웹사이트</td>
 							<td>
@@ -264,32 +263,39 @@
 				<div id="review_info" style="width: 100%; height:; display: none;">
 					<hr>
 					<!-- 댓글 내용 불러오는곳 -->
+					
+
+					<% for(EnjoyComment EC : CommentList) {%>
 					<div
 						style="width: 100%; height: 200px; position: relative; padding: 30px;">
 						<!-- ID, 게시날자 입력하는곳 -->
 						<div
 							style="width: 20%; height: 100%;; float: left; border: 1px solid black;">
-							<br> <span>ID</span> <br>
-							<br> <span>날짜</span> <br>
-							<br>
+							<br> <span><%=EC.getUSER_ID() %></span> <br> <br>
+							<span><%=EC.getWrite_Date() %></span> <br> <br>
 						</div>
 
 						<div class="arrow_box"
 							style="width: 70%; height: 100%; padding: 5px; background-color: gray; float: left; position: relative;">
 							<!-- 제목,내용 입력하는곳 -->
 							<div style="float: left; width: 80%; height: 100%;">
-								<div style="width: 100%; height: 20%;">제목</div>
+								<div style="width: 100%; height: 20%;"><%=EC.getINDEX_TITLE() %></div>
 
-								<div style="width: 100%; height: 80%;">내용</div>
+								<div style="width: 100%; height: 80%;"><%=EC.getUSER_COMMNET() %></div>
 							</div>
 							<!-- 추천점수 입력하는곳 -->
 							<div
 								style="float: left; width: 20%; height: 100%; text-align: center; line-height: 5;">
 								점수</div>
 
-							
+
 						</div>
 					</div>
+					<%} %>
+					<%=pageNavi %>
+<!-- 댓글이 없을경우도 처리해야함.  -->
+
+					<br>
 					<!-- 댓글 입력폼 -->
 					<div class="review" align="center" style="width: 50%">
 						<form action="/review" method="post">
@@ -305,21 +311,23 @@
 							</div>
 							<!-- }else{ %>-->
 							<div id="writeReview">
-								<input autocomplete="off" type="text" name="Index_Title" placeholder="제목을 입력하세요"
-									maxlength="60"
+								<input autocomplete="off" type="text" name="Index_Title"
+									placeholder="제목을 입력하세요" maxlength="60"
 									style="width: 820px; height: 30px; background-color: #8490C7; color: #FFFFFF; font: 12pt 나눔스퀘어; padding-top: 5px; margin-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; text-indent: 10px;">
 
-								<textarea autocomplete="off" name="User_Comment" placeholder="내용을 입력하세요" rows="10"
-									cols="100"
+								<textarea autocomplete="off" name="User_Comment"
+									placeholder="내용을 입력하세요" rows="10" cols="100"
 									style="resize: none; border: 1px solid #8490C7; background-color: #FFFFFF; color: #8490C7; font: 12pt 나눔스퀘어; margin-left: 10px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; text-indent: 10px;"></textarea>
 							</div>
 							<div id="reviewBtn" style="margin-top: 10px;">
 								<input type="submit" value="댓글작성" id="reviewButton" />
 							</div>
 							<!-- }%> -->
-							
-							<input type="hidden" value="" name=""> <!-- 유저 ID?? 이걸로넘겨야하나 세션으로넘겨야하나? 세션이맞나..? -->
-							<input type="hidden" value="<%=edd1.getSEQ_Index_TitleNo()%>" name="index_titleNo">
+
+							<input type="hidden" value="" name="">
+							<!-- 유저 ID?? 이걸로넘겨야하나 세션으로넘겨야하나? 세션이맞나..? -->
+							<input type="hidden" value="<%=edd1.getSEQ_Index_TitleNo()%>"
+								name="index_titleNo">
 						</form>
 					</div>
 
@@ -332,40 +340,46 @@
 
 	<!-- ▼ 이미지 슬라이더 스크립트 -->
 	<script>
-				var slideIndex = 1;
-				showDivs(slideIndex);
+		var slideIndex = 1;
+		showDivs(slideIndex);
 
-				function plusDivs(n) {
-					showDivs(slideIndex += n);
-				}
+		function plusDivs(n) {
+			showDivs(slideIndex += n);
+		}
 
-				function showDivs(n) {
-					var i;
-					var x = document.getElementsByClassName("mySlides");
-					if (n > x.length) { slideIndex = 1 }
-					if (n < 1) { slideIndex = x.length };
-					for (i = 0; i < x.length; i++) {
-						x[i].style.display = "none";
-					}
-					x[slideIndex - 1].style.display = "block";
-				}
+		function showDivs(n) {
+			var i;
+			var x = document.getElementsByClassName("mySlides");
+			if (n > x.length) {
+				slideIndex = 1
+			}
+			if (n < 1) {
+				slideIndex = x.length
+			}
+			;
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			x[slideIndex - 1].style.display = "block";
+		}
 
-				var myIndex = 0;
-				carousel();
+		var myIndex = 0;
+		carousel();
 
-				function carousel() {
-					var i;
-					var x = document.getElementsByClassName("mySlides");
-					for (i = 0; i < x.length; i++) {
-						x[i].style.display = "none";
-					}
-					myIndex++;
-					if (myIndex > x.length) { myIndex = 1 }
-					x[myIndex - 1].style.display = "block";
-					setTimeout(carousel, 3000);
-				}
-
-			</script>
+		function carousel() {
+			var i;
+			var x = document.getElementsByClassName("mySlides");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			myIndex++;
+			if (myIndex > x.length) {
+				myIndex = 1
+			}
+			x[myIndex - 1].style.display = "block";
+			setTimeout(carousel, 3000);
+		}
+	</script>
 	<!-- ▲ 이미지 슬라이더 스크립트 -->
 
 	<%@ include file="/views/main/footer.jsp"%>
