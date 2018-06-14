@@ -1,7 +1,6 @@
-package semi.enjoy.controller;
+/*package semi.enjoy.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,36 +11,31 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import semi.enjoy.model.service.EnjoyService;
-import semi.enjoy.model.vo.EnjoyListData;
-import semi.enjoy.model.vo.PageData;
+import semi.enjoy.model.vo.CommentData;
 
-/**
- * Servlet implementation class EnjoyListServlet
- */
-@WebServlet(name = "EnjoyList", urlPatterns = { "/enjoyList" })
-public class EnjoyListServlet extends HttpServlet {
+*//**
+ * Servlet implementation class EnjoyCommentListServlet
+ *//*
+@WebServlet(name = "EnjoyCommentList", urlPatterns = { "/enjoyCommentList" })
+public class EnjoyCommentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
+    *//**
      * @see HttpServlet#HttpServlet()
-     */
-    public EnjoyListServlet() {
+     *//*
+    public EnjoyCommentListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
+	*//**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	 *//*
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
 		request.setCharacterEncoding("utf-8");
 		
 		//▼페이징처리
-		
-		
 		String search = "";
 		if(request.getParameter("search")!=null)
 		{
@@ -61,36 +55,31 @@ public class EnjoyListServlet extends HttpServlet {
 		{
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-		// 화면구성시 분류가져오기
-		String type = "";
-		if(request.getParameter("type")!=null)
+		// 인덱스 넘버 가져오기
+		int SEQ_Index_TitleNo = 0;
+		if(Integer.parseInt(request.getParameter("IndexNo"))!=0)
 		{
-			type = request.getParameter("type");
-
-		}
-		else
-		{
-			type="";
+			SEQ_Index_TitleNo = Integer.parseInt(request.getParameter("IndexNo"));
 		}
 		
-		
+			
 		
 		
 		// 페이지값 셋팅
 		
 		// 비지니스 로직
 		
-		PageData pd = new EnjoyService().getListData(currentPage,search,type);
+		CommentData cd = new EnjoyService().getListCommentData(currentPage,search,SEQ_Index_TitleNo);
 		
 		
 //		ArrayList<EnjoyListData> list  = new EnjoyService().getAllData();
 		HttpSession session = request.getSession(false);
 		// ★ 회원정보 섹션에대한 처리를 따로아직안했음.
-		if(pd!=null) 
+		if(cd!=null) 
 		{// 정보가 제대로 있을경우 처리
 				RequestDispatcher view = request.getRequestDispatcher("/views/enjoy/border_List.jsp");
 				
-				request.setAttribute("pageData", pd);
+				request.setAttribute("CommentData", cd);
 				view.forward(request, response);
 			
 		}
@@ -102,12 +91,14 @@ public class EnjoyListServlet extends HttpServlet {
 		
 	}
 
-	/**
+
+	*//**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	 *//*
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
 }
+*/

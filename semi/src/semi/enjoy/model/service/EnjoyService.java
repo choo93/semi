@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import semi.enjoy.model.dao.Enjoydao;
+import semi.enjoy.model.vo.CommentData;
+import semi.enjoy.model.vo.EnjoyComment;
 import semi.enjoy.model.vo.EnjoyDetailData1;
 import semi.enjoy.model.vo.EnjoyListData;
 
@@ -93,5 +95,45 @@ public class EnjoyService {
 		
 		
 		return result;
+	}
+
+
+	public ArrayList<EnjoyComment> noticeComment(int sEQ_Index_TitleNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<EnjoyComment> list = new Enjoydao().noticeComment(sEQ_Index_TitleNo,conn);
+		
+		JDBCTemplate.close(conn);
+		
+		
+		return list;
+	}
+
+
+	public CommentData getListCommentData(int currentPage, String search, int indexNo) {
+		Connection conn = JDBCTemplate.getConnection();		
+		int recordCountPerPage  = 5;  // 한페이지에 보일 댓글의 갯수
+		int naviCountPerPage = 5; // 네비게이터의 범위 (1~5) (6~10)
+		
+		
+		ArrayList<EnjoyComment> list = new Enjoydao().getListCommentData(conn,recordCountPerPage,currentPage,search,indexNo);
+		
+		String PageNavi = new Enjoydao().getPageNaviComment(conn,naviCountPerPage,recordCountPerPage,currentPage,search,indexNo);
+		
+		
+		
+		CommentData cd =null;
+		if(!list.isEmpty() &&!PageNavi.isEmpty()) {
+			cd = new CommentData();
+			cd.setCommentList(list);
+			cd.setPageNavi(PageNavi);
+		}
+		
+		
+		JDBCTemplate.close(conn);
+		
+		
+		
+		return cd;
 	}
 }

@@ -1,6 +1,7 @@
 package semi.enjoy.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,12 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import semi.enjoy.model.service.EnjoyService;
+import semi.enjoy.model.vo.CommentData;
+import semi.enjoy.model.vo.EnjoyComment;
 import semi.enjoy.model.vo.EnjoyDetailData1;
 import semi.enjoy.model.vo.EnjoyElementData;
 import semi.enjoy.model.vo.EnjoyListData;
+import semi.enjoy.model.vo.PageData;
 
 
 /**
@@ -43,17 +45,51 @@ public class EnjoySelectServlet extends HttpServlet {
 		
 		
 		//▼ 기본 내용을 가져오는 로직
-
-		EnjoyListData ELD = new EnjoyService().getOneData(SEQ_Index_TitleNo);
-		
-//		//▼ 댓글가져와야하고, 세부사항 가져와야함
-//		ArrayList<NoticeComment> list = new NoticeService().noticeComment(noticeNo);
-//		
-		// 세부사항을 가져오는 로직
-				
+		EnjoyListData ELD = new EnjoyService().getOneData(SEQ_Index_TitleNo);				
+		// 세부사항을 가져오는 로직				
 		EnjoyDetailData1 edd1 = new EnjoyService().getOneDetailData(SEQ_Index_TitleNo);
 		
-		EnjoyElementData EED = new EnjoyElementData(ELD,edd1);
+		
+		// 댓글 을 가져오는 로직
+//		ArrayList<EnjoyComment> list = new EnjoyService().noticeComment(SEQ_Index_TitleNo);
+		
+		// 댓글을 페이징처리해야하는것.
+		
+		//▼페이징처리
+				String search = "";
+				if(request.getParameter("search")!=null)
+				{
+					search = request.getParameter("search");
+				}
+				else 
+				{
+					search = "";
+				}
+				
+				int currentPage; 
+				if(request.getParameter("currentPage")==null)
+				{
+					currentPage=1;
+				}
+				else 
+				{
+					currentPage = Integer.parseInt(request.getParameter("currentPage"));
+				}
+
+				//페이징처리한 대상가져오기
+				CommentData cd = new EnjoyService().getListCommentData(currentPage,search,SEQ_Index_TitleNo);
+				
+		
+		
+		////////////
+		EnjoyElementData EED = new EnjoyElementData(ELD,edd1,cd);
+		
+		
+		
+
+		
+		
+		
 		
 		
 		if(ELD!=null&&edd1!=null)
