@@ -10,6 +10,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -122,14 +126,7 @@ dt
 	line-height:22px;
 }
 
-#navi a{
-	font-size:30px;
-	border:2px solid #0080ff;
-	width:35px;
-	height:35px;
-	border-radius:3px;
-	text-align:center;
-}
+
 dd
 {
 display:none; 
@@ -140,28 +137,7 @@ line-height:22px;
 background-color:gray;
 }
 
-#basicInfo {
-	width: 635px;
-	height: 55px;
-	border-top: 3px solid black;
-	background-color: RGB(245, 245, 245);
-	font-size: 25px;
-	line-height: 40px;
-	padding-left: 10px;
-}
 
-#basicInfo:hover {
-	cursor: pointer;
-}
-
-#basicInfoContent {
-	width: 635px;
-	height: 200px;
-	font-weight: bold;
-	display: none;
-	padding-top: 10px;
-	padding-left: 10px;
-}
 
 </style>
 <script>
@@ -197,6 +173,7 @@ function test(id){
 				<div id="faqtitle">
 				<div id="faqtitleimg"></div>
 				<strong style="font-size:18px;">"FAQ를 통해서 원하시는 답변을 쉽고 빠르게 찾아보세요"</strong><br>
+				<a href="/qna">게시판</a>
 
 				질문을 하기시 전 자주하시는 질문을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				원하는 내용을 찾지 못하실 경우 '질문과 답변' 게시판에 문의해 주시면 친절하게 안내해 드리겠습니다.<br>
@@ -205,26 +182,31 @@ function test(id){
 				<fieldset>
 					<legend>게시물 검색</legend>
 					<form action="/faqSearch">
-					<input type="text" name="search" style="width:300px; height:30px;">
-					<input type="submit" value="검색" style="width:150px; height:35px; margin-left:10px;">
+									<div class="input-group">
+      <input type="text" class="form-control" name="search" placeholder="Search for..." aria-label="Search for...">
+      <span class="input-group-btn">
+        <input type="submit" class="btn btn-secondary" value="검색"></button>
+ 
+      </span>
+      </div>
 					</form>
 				</fieldset>
 				
 				<div id="category" style="width:960px; height:100px; margin-top:30px; margin-bottom:30px;">
 					<ul style="width:100%;height:100%;float:left; list-style:none;">
-						<a href="/faqCategory?search=3"><li style="background-image:url(/views/travelReady/image/bus.png);"><span class="span">서울 시티 투어 탑승</span></li></a>
-						<a href="#"><li style="background-image:url(/views/travelReady/image/hotel.png);"><span class="span">호텔 예약</span></li></a>
-						<a href="#"><li style="background-image:url(/views/travelReady/image/work.png);"><span class="span">도보 관광</span></li></a>
-						<a href="#"><li>4</li></a>
-						<a href="#"><li>5</li></a>
-						<a href="#"><li>6</li></a>
-						<a href="#"><li>7</li></a>
-						<a href="#"><li>8</li></a>
+						<a href="/faqCategory?search=서울 시티 투어 탑승"><li style="background-image:url(/views/travelReady/image/bus.png);"><span class="span">서울 시티 투어 탑승</span></li></a>
+						<a href="/faqCategory?search=호텔 예약"><li style="background-image:url(/views/travelReady/image/hotel.png);"><span class="span">호텔 예약</span></li></a>
+						<a href="/faqCategory?search=도보 관광"><li style="background-image:url(/views/travelReady/image/work.png);"><span class="span">도보 관광</span></li></a>
+						<a href="/faqCategory?search=모바일서비스"><li style="background-image:url(/views/travelReady/image/mobile.png);"><span class="span">모바일서비스</span></li></a>
+						<a href="/faqCategory?search=문화행사 예매"><li style="background-image:url(/views/travelReady/image/culture.png);"><span class="span">문화행사 예매</span></li></a>
+						<a href="/faqCategory?search=사이트이용"><li style="background-image:url(/views/travelReady/image/site.png);"><span class="span">사이트이용</span></li></a>
+						<a href="/faqCategory?search=가이드북"><li style="background-image:url(/views/travelReady/image/guidebook.png);"><span class="span">가이드북</span></li></a>
+						<a href="/faqCategory?search=기타"><li style="background-image:url(/views/travelReady/image/etc.png);"><span class="span">기타</span></li></a>
 					</ul>
 				</div>
 				
 				<div style="width:100%; height:780px;">
-					<h3 style="font-size:24px;">FQA</h3>
+					<h3 style="font-size:24px;">FAQ</h3>
 					<dl id="faqcontent">
 					<%for(Faq f:list){ %>
 						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#none" onclick="test(<%=f.getFaqNo()%>);">[<%=f.getCategory()%>]<br><%=f.getTitle() %></a></dt>
@@ -232,12 +214,13 @@ function test(id){
 					<%} %>
 					</dl>					
 				</div>
+				
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
 				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 
 					if(i==fpd.getCurrentPage()){%>
-						<a href='/faq?currentPage=<%=i%>'><%=i%></a>
+						<a class="btn btn-primary btn-lg" href='/faq?currentPage=<%=i%>'><%=i%></a>
 					<%}else{ %>
-						<a href='/faq?currentPage=<%=i%>'><%=i%></a>
+						<a class="btn btn-primary btn-lg" href='/faq?currentPage=<%=i%>'><%=i%></a>
 					<%} %>
 				<%} %>
 				</div>

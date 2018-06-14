@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
-<%
-	FaqPageData fpd=(FaqPageData)request.getAttribute("faqPageData");
-	ArrayList<Faq> list=fpd.getNoticelist();
-%>
+
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -126,12 +123,19 @@ dt
 	line-height:22px;
 }
 
-
+#navi a{
+	font-size:30px;
+	border:2px solid #0080ff;
+	width:35px;
+	height:35px;
+	border-radius:3px;
+	text-align:center;
+}
 dd
 {
 display:none; 
 border-bottom:1px solid #dcdcdc; 
-width:895px; 
+width:100%; 
 padding : 10px 20px 10px 45px;
 line-height:22px;
 background-color:gray;
@@ -160,12 +164,12 @@ background-color:gray;
 	padding-left: 10px;
 }
 
-
 </style>
 <script>
 var toggleText1 = false;
 var toggleText2 = false;
-function answer(id){
+function test(id){
+	console.log(id);
 	$('#'+id).toggle('display');
 	if(toggleText1==true)
 	{
@@ -202,8 +206,8 @@ function answer(id){
 				<fieldset>
 					<legend>게시물 검색</legend>
 					<form action="/faqSearch">
-										<div class="input-group">
-      <input type="text" class="form-control" name="search" value="<%=request.getAttribute("search")%>" placeholder="Search for..." aria-label="Search for...">
+									<div class="input-group">
+      <input type="text" class="form-control" name="search" placeholder="Search for..." aria-label="Search for...">
       <span class="input-group-btn">
         <input type="submit" class="btn btn-secondary" value="검색"></button>
  
@@ -213,7 +217,7 @@ function answer(id){
 				</fieldset>
 				
 				<div id="category" style="width:960px; height:100px; margin-top:30px; margin-bottom:30px;">
-					<ul onclick="test();" style="width:100%;height:100%;float:left; list-style:none;">
+					<ul style="width:100%;height:100%;float:left; list-style:none;">
 						<a href="/faqCategory?search=서울 시티 투어 탑승"><li style="background-image:url(/views/travelReady/image/bus.png);"><span class="span">서울 시티 투어 탑승</span></li></a>
 						<a href="/faqCategory?search=호텔 예약"><li style="background-image:url(/views/travelReady/image/hotel.png);"><span class="span">호텔 예약</span></li></a>
 						<a href="/faqCategory?search=도보 관광"><li style="background-image:url(/views/travelReady/image/work.png);"><span class="span">도보 관광</span></li></a>
@@ -226,22 +230,12 @@ function answer(id){
 				</div>
 				
 				<div style="width:100%; height:780px;">
-					<h3 style="font-size:24px;">FAQ<br><%=request.getAttribute("search")%>검색결과<%=fpd.getRecordTotalCount()%></h3>
+					<h3 style="font-size:24px;">FAQ<br><%=request.getAttribute("search")%>에 대한 검색결과0건</h3>
 					<dl id="faqcontent">
-					<%for(Faq f:list){ %>
-						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#none" onclick="answer(<%=f.getFaqNo()%>);">[<%=f.getCategory()%>]<br><%=f.getTitle() %></a></dt>
-						<dd id="<%=f.getFaqNo()%>"><%=f.getAnswer()%></dd>
-					<%} %>
+				
+						<dt style="border-bottom:1px solid #dcdcdc; text-align:center;"><strong>검색 결과가 없습니다.</strong></dt>
+	
 					</dl>					
-				</div>
-				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
-				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 
-					if(i==fpd.getCurrentPage()){%>
-						<a class="btn btn-primary btn-lg" href='/faqSearch?search=<%=request.getAttribute("search")%>&currentPage=<%=i%>'><%=i%></a>
-					<%}else{ %>
-						<a class="btn btn-primary btn-lg" href='/faqSearch?search=<%=request.getAttribute("search")%>&currentPage=<%=i%>'><%=i%></a>
-					<%} %>
-				<%} %>
 				</div>
 		
 			</section>

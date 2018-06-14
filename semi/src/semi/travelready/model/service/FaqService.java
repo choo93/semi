@@ -23,6 +23,7 @@ public class FaqService {
 		int endNavi=fpd.getEndNavi();
 		int startNavi=fpd.getStartNavi();
 		int pageTotalCount=fpd.getPageTotalCount();
+		int recordTotalCount=fpd.getRecordTotalCount();
 		
 		FaqPageData fpd2=null;
 		
@@ -33,6 +34,7 @@ public class FaqService {
 			fpd2.setEndNavi(endNavi);
 			fpd2.setStartNavi(startNavi);
 			fpd2.setPageTotalCount(pageTotalCount);
+			fpd2.setRecordTotalCount(recordTotalCount);
 			
 		}
 		JDBCTemplate.close(conn);
@@ -52,6 +54,7 @@ public class FaqService {
 		int endNavi=fpd.getEndNavi();
 		int startNavi=fpd.getStartNavi();
 		int pageTotalCount=fpd.getPageTotalCount();
+		int recordTotalCount=fpd.getRecordTotalCount();
 		
 		FaqPageData fpd2=null;
 		
@@ -62,6 +65,7 @@ public class FaqService {
 			fpd2.setEndNavi(endNavi);
 			fpd2.setStartNavi(startNavi);
 			fpd2.setPageTotalCount(pageTotalCount);
+			fpd2.setRecordTotalCount(recordTotalCount);
 			
 		}
 		JDBCTemplate.close(conn);
@@ -81,6 +85,7 @@ public class FaqService {
 		int endNavi=fpd.getEndNavi();
 		int startNavi=fpd.getStartNavi();
 		int pageTotalCount=fpd.getPageTotalCount();
+		int recordTotalCount=fpd.getRecordTotalCount();
 		
 		FaqPageData fpd2=null;
 		
@@ -91,6 +96,7 @@ public class FaqService {
 			fpd2.setEndNavi(endNavi);
 			fpd2.setStartNavi(startNavi);
 			fpd2.setPageTotalCount(pageTotalCount);
+			fpd2.setRecordTotalCount(recordTotalCount);
 			
 		}
 		JDBCTemplate.close(conn);
