@@ -103,6 +103,7 @@ public class FaqDao {
 		fpd.setEndNavi(endNavi);
 		fpd.setStartNavi(startNavi);
 		fpd.setPageTotalCount(pageTotalCount);
+		fpd.setRecordTotalCount(recordTotalCount);
 		
 		return fpd;
 		
@@ -206,6 +207,7 @@ public class FaqDao {
 		fpd.setEndNavi(endNavi);
 		fpd.setStartNavi(startNavi);
 		fpd.setPageTotalCount(pageTotalCount);
+		fpd.setRecordTotalCount(recordTotalCount);
 		
 		return fpd;
 	}
@@ -308,6 +310,7 @@ public class FaqDao {
 		fpd.setEndNavi(endNavi);
 		fpd.setStartNavi(startNavi);
 		fpd.setPageTotalCount(pageTotalCount);
+		fpd.setRecordTotalCount(recordTotalCount);
 		
 		return fpd;
 	}

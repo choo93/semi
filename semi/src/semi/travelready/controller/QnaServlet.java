@@ -10,19 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.travelready.model.service.FaqService;
+import semi.travelready.model.service.QnaService;
 import semi.travelready.model.vo.FaqPageData;
+import semi.travelready.model.vo.QnaPageData;
 
 /**
- * Servlet implementation class FaqCategoryServlet
+ * Servlet implementation class QnaServlet
  */
-@WebServlet(name = "FaqCategory", urlPatterns = { "/faqCategory" })
-public class FaqCategoryServlet extends HttpServlet {
+@WebServlet(name = "Qna", urlPatterns = { "/qna" })
+public class QnaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqCategoryServlet() {
+    public QnaServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +33,8 @@ public class FaqCategoryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 int currentPage;
-		
-		request.setCharacterEncoding("utf-8");
-		String search=request.getParameter("search");
-		
 		
 		if(request.getParameter("currentPage")==null)
 		{
@@ -46,21 +45,16 @@ int currentPage;
 			currentPage=Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		FaqPageData fpd=new FaqService().searchList2(currentPage,search);
+		QnaPageData qpd=new QnaService().QnaAll(currentPage);
 		
 		
-		if(fpd!=null)
+		if(qpd!=null)
 		{
-			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/FAQCategory.jsp");
-			request.setAttribute("faqPageData", fpd);
-			request.setAttribute("search", search);
+			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/QnA.jsp");
+			request.setAttribute("qnaPageData", qpd);
 			view.forward(request, response);
 		}
-		else {
-			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/searchFail.jsp");
-			request.setAttribute("search", search);
-			view.forward(request, response);
-		}
+		
 	}
 
 	/**
