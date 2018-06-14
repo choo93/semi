@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+div {
+	border: 0.5px solid black;
+}
+
+#wrap {
+	width: 800px;
+	height: 700px;
+}
+
+#room{
+	width:95%;	height:95%;
+	margin:2.5%;
+}
+
+#room>div{
+	width: 9%;	height:7.5%;
+	float:left;
+	margin-right:1.5%;
+	margin-left:1.5%;
+	margin-top:1%;
+	margin-bottom:1%;
+	text-align:center;
+	line-height:350%;
+	cursor:pointer;
+}
+
+#room>hr{
+	width:90%;
+	margin-left:5%;
+}
+#room>hr:last-child{
+	display:none;
+}
+
+#submit{
+	width:100px;	height:40px;
+	margin:auto;
+	margin-top:10px;
+	margin-left:350px;
+}
+
+#payy{
+	width:100px;	height:40px;
+	margin:auto;
+	margin-top:10px;
+	margin-left:350px;
+}

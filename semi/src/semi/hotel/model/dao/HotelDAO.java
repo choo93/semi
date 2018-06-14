@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import semi.hotel.model.vo.HotelInfo;
 import semi.hotel.model.vo.HotelListData;
+import semi.hotel.model.vo.HotelReserve;
 
 public class HotelDAO {
 
@@ -156,6 +157,35 @@ public class HotelDAO {
 			sb.append("<a href='/hotelList?currentPage="+(endNavi+1)+"'> > </a>");
 		}
 		return sb.toString();
+	}
+
+
+	public ArrayList<String> loadRoom(Connection conn, HotelReserve hr) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select hotelRoomNo from HOTELRESERVE where HOTELCODE = ? and hotelreserveDate = ?";
+		ArrayList<String> list = new ArrayList<String>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, hr.getHotelCode());
+			pstmt.setString(2, hr.getReserveDate());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(rset.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return list;
 	}
 
 }
