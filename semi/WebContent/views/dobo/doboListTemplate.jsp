@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="../../css/concert/concertList.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
+	<script src="../../js/dobo/doboList.js"></script>
 </head>
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp" %>
@@ -30,7 +31,7 @@
     	<div id="contents">
         	<img id="photo" src="<%=di.getDoboMainPhoto() %>" alt="포스터">
         	<div id="explain">
-        		<div id="concertTitle" onclick="concertInfo(<%=di.getIndenxNum() %>);">
+        		<div id="concertTitle" onclick="doboInfo(<%=di.getIndexNo() %>);">
         			<%=di.getDoboTitle() %>
         		</div>
         		<div id="concertSummary">
