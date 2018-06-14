@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> <!-- import="semi.hotel.model.vo.*"
-    import="java.util.*"%> 
- 
-  
- 
-    HotelPageData hpd = (HotelPageData) request.getAttribute("HotelpageData");
-	ArrayList<HotelListData> list = hpd.getHotelList();
-	String pageNavi = hpd.getPageNavi(); 
-%>    -->
-     
+	pageEncoding="UTF-8" import="semi.hotel.model.vo.*"
+	import="java.util.*"%>
+
+
+<%
+	HotelPageData hpd = (HotelPageData) request.getAttribute("HotelPageData");
+	ArrayList<HotelInfo> list = hpd.getHotelList();
+	String pageNavi = hpd.getPageNavi();
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,9 +16,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="/lib/w3.css">
-<link rel="stylesheet" href="../../css/hotelList.css">
+<link rel="stylesheet" href="../../css/hotel/hotelList.css">
 <link rel="stylesheet" href="../../css/moreBtn.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes"
+	rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
 </head>
@@ -26,29 +28,38 @@
 
 
 
-<%@ include file="/views/main/header.jsp" %>
+	<%@ include file="/views/main/header.jsp"%>
 	<section>
-	
-	
-	<div style="width: 1200px; height: 2500px; margin-left:15%;">
-	
-	<div id="contents">
-	<div id="contents-1">
-	<div id="contentTitle">호텔 목록</div>
-	</div>
-	</div>
-	
-	<div id="hotelTotalList">
-	<div id="hotelTotalList-1">
-	<div id="hotelImageList-1" style="background-image:url(//imgio.trivago.com/itemimages/15/54/155461_v5_isq.jpeg)"></div>
-	
-	<div id="hotelExplain">
-	<div id="hotelTitle" style="font: bold 30pt 나눔스퀘어; ">호텔 리츠칼튼 서울</div>
-	<div id="hotelTotalExplain">이호텔은 서울 어딘가에 위치해 있으며.....</div>
-	 <button id="button" onclick="hotelInfo();" style="margin-left: 80%;">자세히</button>
-	</div>
-	</div>
-	
+
+
+	<div style="width: 1200px; height: 2500px; margin-left: 15%;">
+
+		<div id="contents">
+			<div id="contents-1">
+				<div id="contentTitle">호텔 목록</div>
+			</div>
+		</div>
+		<div id="hotelTotalList">
+			<%
+				for (HotelInfo hl : list) {
+			%>
+			<div id="hotelTotalList-1" style="margin-top:1%">
+				<div id="hotelImageList-1"
+					style="background-image:url<%=hl.getHotelMainPhoto()%>"></div>
+
+				<div id="hotelExplain">
+					<div id="hotelTitle" style="font: bold 30pt 나눔스퀘어;"><%=hl.getHotelName()%></div>
+					<div id="hotelTotalExplain"><%=hl.getHotelExplain()%></div>
+					<button id="button" onclick="hotelInfo();"
+						style="margin-left: 80%;">자세히</button>
+				</div>
+			</div>
+
+			<%
+				}
+			%>
+		</div>
+			<!-- 
 	<div id="hotelTotalList-2">
 	<div id="hotelImageList-2" style="background-image:url(//imgio.trivago.com/itemimages/15/60/156078_v3_isq.jpeg)"></div>
 	
@@ -139,20 +150,17 @@
 	 <button id="button" style="margin-left: 80%;">자세히</button>
 	</div>
 	</div>
-	
+	 -->
 	</div>
-	
-</div>
-    <!--  <label><</label><br>  -->
+	<label><%=pageNavi%></label> <br>
 
-<script>
-	function hotelInfo(){
-		location.href="/views/hotel/hotelInfo.jsp";
-	}
-</script>
-
-</section>
-	<%@ include file="/views/main/footer.jsp" %>
+	<script>
+		function hotelInfo() {
+			location.href = "/views/hotel/hotelInfo.jsp";
+		}
+	</script> 
+	</section>
+	<%@ include file="/views/main/footer.jsp"%>
 
 </body>
 </html>

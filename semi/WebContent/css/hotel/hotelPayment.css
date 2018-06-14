@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+#contents{
+	width:100%;
+	height:50px;
+}
+#hotelReserveDate{
+	width:50%;
+	height:100%;
+	float:left;
+	font-size:20px;
+}
+#hotelPrice{
+	width:50%;
+	height:100%;
+	float:left;
+	font-size:20px;
+	text-align:right;
+	
+}
+
+#contents-1{
+	width:100%;
+	height:50px;
+}
+
+#hotelServicePriceExplain{
+	width:50%;
+	height:100%;
+	float:left;
+	font-size:20px;
+}
+
+#hotelServicePrice{
+	width:50%;
+	height:100%;
+	float:left;
+	font-size:20px;
+	text-align:right;
+}
+
+#contents-2{
+	width:100%;
+	height:100px;
+}
+
+#hotelTotalPrice{
+	width:50%;
+	height:100%;
+	float:left;
+	font-size:20px;
+}
+
+#hotelTotalPrice-1{
+	width:50%;
+	height:100%;
+	float:left;
+	font-size:40px;
+	text-align:right;
+}
+
+#contents-3{
+	width:100%;
+	height:250px;
+}
+
+#content-4{
+	width:100%;
+	height:200px;
+	padding-top:10%;
+	padding-left:35%;
+}

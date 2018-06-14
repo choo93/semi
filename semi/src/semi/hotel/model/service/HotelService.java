@@ -19,14 +19,15 @@ public class HotelService {
 		return hi;
 	}
 
-	public HotelPageData getHotelList(int currentPage) {
+	public HotelPageData getHotelInfo(int currentPage) {
 		Connection conn = JDBCTemplate.getConnection();
 		int recordCountPerPage = 10;
 		int naviCountPerPage = 5;
 		
-		ArrayList<HotelListData> list = new HotelDAO().selectAllHotel(conn,currentPage,recordCountPerPage);
+		ArrayList<HotelInfo> list = new HotelDAO().selectAllHotel(conn,currentPage,recordCountPerPage);
+		System.out.println(list);
 		String pageNavi = new HotelDAO().getHotelPageNavi(conn, currentPage, recordCountPerPage, naviCountPerPage);
-		
+		System.out.println("pageNavi : "+pageNavi);
 		HotelPageData hpd = null;
 		if(!list.isEmpty() &&!pageNavi.isEmpty()) {
 		hpd = new HotelPageData();

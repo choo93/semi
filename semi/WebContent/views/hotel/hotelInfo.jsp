@@ -6,9 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="../../css/hotelInfo.css">
+<link rel="stylesheet" href="../../css//hotel/hotelInfo.css">
 <link rel="stylesheet" href="/lib/w3.css">
-<link rel="stylesheet" href="../../css/hotelList.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
@@ -78,8 +77,10 @@
 
 			</div>
 		</div>
-
+		
 		<div id="hotelName" style="border-top: 3px solid black;">호텔이름 : 호텔아띠</div>
+		<div id="#hotelPhone" style="padding-bottom:2%">연락처 : 010-1111-2222</div>
+	
 		
 		<div style="width: 100%; height:3%;">
 
@@ -142,6 +143,7 @@
 				 체크아웃 시작시간 : 12:00 PM <br>
 				 체크인 마감시간 : 12:00 AM <br>
 				 체크인 시작시간 : 03:00 PM </div>
+				 
 		</div>
 
 		<div style="width: 100% height: 3%">

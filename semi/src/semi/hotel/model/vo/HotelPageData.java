@@ -3,22 +3,22 @@ package semi.hotel.model.vo;
 import java.util.ArrayList;
 
 public class HotelPageData {
-	private ArrayList<HotelListData> HotelList;
+	private ArrayList<HotelInfo> hotelList;
 	private String pageNavi;
 	
 	public HotelPageData() {}
 	
-	public HotelPageData(ArrayList<HotelListData> hotelList, String pageNavi) {
-		this.HotelList = hotelList;
+	public HotelPageData(ArrayList<HotelInfo> hotelList, String pageNavi) {
+		this.hotelList = hotelList;
 		this.pageNavi = pageNavi;
 	}
 
-	public ArrayList<HotelListData> getHotelList() {
-		return HotelList;
+	public ArrayList<HotelInfo> getHotelList() {
+		return hotelList;
 	}
 
-	public void setHotelList(ArrayList<HotelListData> hotelList) {
-		HotelList = hotelList;
+	public void setHotelList(ArrayList<HotelInfo> hotelList) {
+		this.hotelList = hotelList;
 	}
 
 	public String getPageNavi() {
