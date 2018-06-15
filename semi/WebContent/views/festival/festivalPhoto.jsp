@@ -131,7 +131,7 @@
 			<section>
 				<div class="container-fluid">
 					<div class="row">
-						<a href="/views/festival/festival_List.jsp">
+						<a href="/festivalList?season=spring">
 							<div class="col-xs-6 picture photo1">
 
 								<h2 class="font">봄
@@ -140,7 +140,7 @@
 
 							</div>
 						</a>
-						<a href="#">
+						<a href="/festivalList?season=summer">
 							<div class="col-xs-6 picture photo2">
 
 								<h2 class="font">여름
@@ -153,7 +153,7 @@
 					</div>
 
 					<div class="row">
-						<a href="#">
+						<a href="/festivalList?season=fall">
 							<div class="col-xs-6 picture photo3">
 
 								<h2 class="font">가을
@@ -162,7 +162,7 @@
 
 							</div>
 						</a>
-						<a href="#">
+						<a href="/festivalList?season=winter">
 							<div class="col-xs-6 picture photo4">
 
 								<h2 class="font">겨울
