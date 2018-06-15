@@ -315,4 +315,27 @@ public class FaqDao {
 		return fpd;
 	}
 
+	public int insertFaq(Connection conn, String title, String category, String answer) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String query="insert into faq values(faq_SEQ.nextval,?,?,?)";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, category);
+			pstmt.setString(3, answer);
+			result=pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
 }

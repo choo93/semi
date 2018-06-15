@@ -96,6 +96,16 @@
     	width:80%;
     	height:80%;
     }
+        #faqtitleimg
+    {
+    width: 74px;
+    height: 74px;
+    background-image:url(/views/travelReady/image/Faq_0.jpg);
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    margin:0px;
+    float:left;
+}
 
 
 
@@ -152,6 +162,15 @@ function back()
 					<dd class="answer"><%=an.getContent()%></dd>
 				</dt></dl>
 				</li>
+				<%}else{%>
+				<form action="/answerWrite">
+				<li style="height:310px;border-bottom:2px solid gray;">
+					  <div class="form-group">
+    			<label for="exampleFormControlTextarea1">답변 하기</label>
+    			<textarea class="form-control" name="answer" id="Qcontent" rows="14" style="resize:none;"></textarea>
+    		
+  				</div>
+				</li>
 				<%} %>
 				
 				
@@ -160,7 +179,11 @@ function back()
 				
 				</div>
 				<button class="btn btn-primary" style="margin-top:20px;" onclick="back();">목록</button>
-				
+				<%if(an==null){ %>
+					<input type="hidden" name="questionNo" value="<%=q.getQuestionNo()%>">
+				<input type="submit"class="btn btn-primary" style="margin-top:20px;" value="답변 등록">
+				</form>
+				<%} %>
 
 		 
 			</section>

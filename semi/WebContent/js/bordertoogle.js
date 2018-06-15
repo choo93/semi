@@ -24,11 +24,11 @@ $(document).ready(function () {
 
         $('#detail_info').slideToggle();
         if (toggleText1 == true) {
-            window.document.getElementsByClassName('toggleText1')[0].innerHTML = ("▲");
+            window.document.getElementsByClassName('toggleText1')[0].innerHTML = ("▼");
             toggleText1 = false;
         }
         else {
-            window.document.getElementsByClassName('toggleText1')[0].innerHTML = ("▼");
+            window.document.getElementsByClassName('toggleText1')[0].innerHTML = ("▲");
             toggleText1 = true;
         }
     });
@@ -51,11 +51,11 @@ $(document).ready(function () {
 
         $('#review_info').slideToggle();
         if (toggleText1 == true) {
-            window.document.getElementsByClassName('toggleText3')[0].innerHTML = ("▲");
+            window.document.getElementsByClassName('toggleText3')[0].innerHTML = ("▼");
             toggleText1 = false;
         }
         else {
-            window.document.getElementsByClassName('toggleText3')[0].innerHTML = ("▼");
+            window.document.getElementsByClassName('toggleText3')[0].innerHTML = ("▲");
             toggleText1 = true;
         }
     });

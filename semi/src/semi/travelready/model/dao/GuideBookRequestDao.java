@@ -116,7 +116,7 @@ public class GuideBookRequestDao {
 				GuideBookDown gbd=new GuideBookDown();
 				
 				gbd.setGuideNo(rset.getInt("guideno"));
-				gbd.setGuideName(rset.getString("guidebookname"));
+				gbd.setGuideName(rset.getString("guidename"));
 				gbd.setGuideBookImagePath(rset.getString("guidebookimagepath"));
 				gbd.setGuidePDFPath(rset.getString("guidepdfpath"));
 				gbd.setFileSize(rset.getString("filesize"));

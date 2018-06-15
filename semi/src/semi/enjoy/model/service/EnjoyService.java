@@ -53,7 +53,7 @@ public class EnjoyService {
 	
 	
 
-	public PageData getListData(int currentPage, String search, String type) {
+	public PageData getListData(int currentPage, String search, String type, String option) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -62,9 +62,9 @@ public class EnjoyService {
 		int naviCountPerPage = 5; // 네비게이터의 범위 (1~5) (6~10)
 		
 //		ArrayList<EnjoyListData> list = new Enjoydao().getAllData(conn);
-		ArrayList<EnjoyListData> list = new Enjoydao().getListData(conn,recordCountPerPage,currentPage,search,type);
+		ArrayList<EnjoyListData> list = new Enjoydao().getListData(conn,recordCountPerPage,currentPage,search,type,option);
 		
-		String PageNavi = new Enjoydao().getPageNavi(conn,naviCountPerPage,recordCountPerPage,currentPage,search,type);
+		String PageNavi = new Enjoydao().getPageNavi(conn,naviCountPerPage,recordCountPerPage,currentPage,search,type,option);
 		
 		
 		
@@ -85,27 +85,17 @@ public class EnjoyService {
 
 
 	public int insertReview(String reviewTitle, String reviewContents, int indexNo) {
-		// 
 		Connection conn = JDBCTemplate.getConnection();
-		
 		int result = new Enjoydao().insertReview(conn,reviewTitle,reviewContents,indexNo);
-		
-		
 		JDBCTemplate.close(conn);
-		
-		
 		return result;
 	}
 
 
 	public ArrayList<EnjoyComment> noticeComment(int sEQ_Index_TitleNo) {
 		Connection conn = JDBCTemplate.getConnection();
-		
 		ArrayList<EnjoyComment> list = new Enjoydao().noticeComment(sEQ_Index_TitleNo,conn);
-		
 		JDBCTemplate.close(conn);
-		
-		
 		return list;
 	}
 
@@ -135,5 +125,30 @@ public class EnjoyService {
 		
 		
 		return cd;
+	}
+
+	public int deleteReview(int commentNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new Enjoydao().deleteReview(conn,commentNo);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+	public int updateReview(String commentTitle, String comment, int commentNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new Enjoydao().updateReview(conn,commentTitle,comment,commentNo);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
 	}
 }
