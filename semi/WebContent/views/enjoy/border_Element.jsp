@@ -142,14 +142,14 @@
 
 						</div>
 						<div style="width: 20%; height: 100%; float: left;">
-							<h3 class="toggleText1" style="text-align: right;">▼</h3>
+							<h3 class="toggleText1" style="text-align: right;">▲</h3>
 
 
 						</div>
 					</div>
 				</div>
 
-				<div id="detail_info" style="width: 100%; display: none;">
+				<div id="detail_info" style="width: 100%;">
 
 					<hr>
 					<table style="height: 100%; width: 100%;">
@@ -248,10 +248,11 @@
 						</div>
 					</div>
 				</div>
-				<div id="map_info" style="width: 100%; height: 7%; display: none;">
+				<div id="map_info" style="width: 100%; height: 15%; display: none;">
 					<hr>
 					<!-- 지도교통 내용 넣을곳 -->
-					
+					   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap">
+   </script>
 						<script>
         // 이거는 자바 스크립트 선언에서 가져오는 듯
         function initMap() {
@@ -292,11 +293,11 @@
 							<h3>리뷰&댓글</h3>
 						</div>
 						<div style="width: 20%; height: 100%; float: left;">
-							<h3 class="toggleText3" style="text-align: right;">▼</h3>
+							<h3 class="toggleText3" style="text-align: right;">▲</h3>
 						</div>
 					</div>
 				</div>
-				<div id="review_info" style="width: 100%; display: none;">
+				<div id="review_info" style="width: 100%;">
 					<hr>
 					<!-- 댓글 내용 불러오는곳 -->
 
