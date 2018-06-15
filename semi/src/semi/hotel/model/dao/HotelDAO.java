@@ -273,9 +273,22 @@ public class HotelDAO {
 		int a =1;
 		
 		if(a==1) {
+			String query="select * from hotelRoomInfo where roomCode = ?";
 			
 		}else if(a==2) {
-			
+			String query="select * from hotelRoomInfo where roomCode = ?";
+		}
+		else if(a==3) {
+			String query="select * from hotelRoomInfo where roomCode = ?";
+		}
+		else if(a==4) {
+			String query="select * from hotelRoomInfo where roomCode = ?";
+		}
+		else if(a==5) {
+			String query="select * from hotelRoomInfo where roomCode = ?";
+		}
+		else if(a==6) {
+			String query="select * from hotelRoomInfo where roomCode = ?";
 		}
 		
 		String query="select * from hotelRoomInfo where roomCode = ?";
