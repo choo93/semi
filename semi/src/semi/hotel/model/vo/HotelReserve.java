@@ -7,7 +7,7 @@ public class HotelReserve {
 	private int roomNo;
 	private String roomCode;
 	private String reserveDate;
-	private String price;
+	private int price;
 	
 	public HotelReserve() {}
 
@@ -59,11 +59,11 @@ public class HotelReserve {
 		this.reserveDate = reserveDate;
 	}
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 

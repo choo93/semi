@@ -49,4 +49,16 @@ public class HotelService {
 		return list;
 	}
 
+	public int addReserve(HotelReserve hr) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new HotelDAO().addReserve(conn,hr);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
 }

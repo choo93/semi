@@ -32,7 +32,7 @@ public class RoomSelectServlet extends HttpServlet {
 		hr.setRoomNo(Integer.parseInt(request.getParameter("roomNo")));
 		hr.setRoomCode(request.getParameter("roomCode"));
 		hr.setReserveDate(request.getParameter("date"));
-		hr.setPrice(request.getParameter("price"));
+		hr.setPrice(Integer.parseInt(request.getParameter("price")));
 		
 		ArrayList<String> list = new HotelService().loadRoom(hr);
 		

@@ -188,4 +188,30 @@ public class HotelDAO {
 		return list;
 	}
 
+
+	public int addReserve(Connection conn, HotelReserve hr) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query="insert into HOTELRESERVE values(HOTELRESERVE_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, hr.getHotelCode());
+			pstmt.setInt(2, hr.getUserNo());
+			pstmt.setInt(3, hr.getRoomNo());
+			pstmt.setString(4, hr.getRoomCode());
+			pstmt.setString(5, hr.getReserveDate());
+			pstmt.setInt(6, hr.getPrice());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

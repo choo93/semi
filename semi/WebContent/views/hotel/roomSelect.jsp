@@ -18,7 +18,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 </head>
 
 <body>
-	<form action="/concertReserve">
+	<form action="/hotelReserve">
 	<div id="wrap">
         <div id="room">
             <%for(int i=0;i<10;i++){ %>
@@ -44,11 +44,11 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
     <script>
 		window.onload=function(){
 			<%
-			System.out.println(list.size());
-			for(int i=0;i<list.size();i++){%>
+			for(int i=0;i<list.size();i++){
+			%>
 				document.getElementById(<%=list.get(i)%>).style.backgroundColor = 'grey';
 				document.getElementById(<%=list.get(i)%>).onclick = "";
-				document.getElementById(<%=list.get(i)%>).style.cursor = 'none';
+				document.getElementById(<%=list.get(i)%>).style.cursor = 'auto';
     		<%}%>
 		}
 		
@@ -64,7 +64,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 				pay_method : 'card',
 				merchant_uid : 'merchant_' + new Date().getTime(),
 				name : '주문명:결제테스트',
-				amount : <%=request.getParameter("price") %>,
+				amount : <%=hr.getPrice() %>,
 				buyer_email : 'iamport@siot.do',
 				buyer_name : '구매자이름',
 				buyer_tel : '010-1234-5678',

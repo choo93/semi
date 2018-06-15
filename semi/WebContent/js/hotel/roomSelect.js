@@ -12,6 +12,7 @@ function select(me){
 		document.getElementById('roomNo').value = null;
 	}
 }
+
 function selBool(){
 	if(sel){
 		pay();
