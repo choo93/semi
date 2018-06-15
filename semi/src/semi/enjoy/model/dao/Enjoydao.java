@@ -490,6 +490,7 @@ public class Enjoydao {
 				return sb.toString();
 			}
 
+
 	public int deleteReview(Connection conn, int commentNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
