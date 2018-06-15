@@ -4,6 +4,7 @@ public class DoboReserve {		// 예약 VO에는 DB에 넣을 때 필요한 정보
 	private int reserveNo;
 	private String doboCode;
 	private String doboTitle;
+	private int userNo;
 	private String date;
 	private String time;
 	private String reserveName;
@@ -17,8 +18,22 @@ public class DoboReserve {		// 예약 VO에는 DB에 넣을 때 필요한 정보
 	
 	public DoboReserve() {}
 
-
 	
+	
+
+	public int getUserNo() {
+		return userNo;
+	}
+
+
+
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
+
+
 
 	public String getDoboMeet() {
 		return doboMeet;

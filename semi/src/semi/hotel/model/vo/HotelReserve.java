@@ -1,19 +1,74 @@
 package semi.hotel.model.vo;
 
 public class HotelReserve {
+	private int reserveNo;
+	private String hotelCode;
+	private String hotelName;
+	private int userNo;
+	private int roomNo;
 	private String roomCode;
-	private int roomPrice;
-	private String roomExplain;
-	private String roomFixedNumber;
+	private String reserveDate;
+	private int price;
+	private String address;
 	
 	public HotelReserve() {}
+	
+	
 
-	public HotelReserve(String roomCode, int roomPrice, String roomExplain, String roomFixedNumber) {
-		super();
-		this.roomCode = roomCode;
-		this.roomPrice = roomPrice;
-		this.roomExplain = roomExplain;
-		this.roomFixedNumber = roomFixedNumber;
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	public String getHotelName() {
+		return hotelName;
+	}
+
+
+
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
+
+
+
+	public int getReserveNo() {
+		return reserveNo;
+	}
+
+	public void setReserveNo(int reserveNo) {
+		this.reserveNo = reserveNo;
+	}
+
+	public String getHotelCode() {
+		return hotelCode;
+	}
+
+	public void setHotelCode(String hotelCode) {
+		this.hotelCode = hotelCode;
+	}
+
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
+	public int getRoomNo() {
+		return roomNo;
+	}
+
+	public void setRoomNo(int roomNo) {
+		this.roomNo = roomNo;
 	}
 
 	public String getRoomCode() {
@@ -24,30 +79,27 @@ public class HotelReserve {
 		this.roomCode = roomCode;
 	}
 
-	public int getRoomPrice() {
-		return roomPrice;
+	public String getReserveDate() {
+		return reserveDate;
 	}
 
-	public void setRoomPrice(int roomPrice) {
-		this.roomPrice = roomPrice;
+	public void setReserveDate(String reserveDate) {
+		this.reserveDate = reserveDate;
 	}
 
-	public String getRoomExplain() {
-		return roomExplain;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setRoomExplain(String roomExplain) {
-		this.roomExplain = roomExplain;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
-	public String getRoomFixedNumber() {
-		return roomFixedNumber;
+	@Override
+	public String toString() {
+		return "reserveNo=" + reserveNo + ", hotelCode=" + hotelCode + ", userNo=" + userNo + ", roomNo="
+				+ roomNo + ", roomCode=" + roomCode + ", reserveDate=" + reserveDate + ", price=" + price;
 	}
-
-	public void setRoomFixedNumber(String roomFixedNumber) {
-		this.roomFixedNumber = roomFixedNumber;
-	}
-
 	
 	
 	

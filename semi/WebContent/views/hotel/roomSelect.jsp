@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import = "java.util.*"	import="semi.concert.model.vo.*"
+    import="java.util.*" import="semi.hotel.model.vo.*"
 %>
-<%ArrayList<String> list = (ArrayList<String>)request.getAttribute("seat");%>
-<%ConcertReserve cr = (ConcertReserve)request.getAttribute("reserve"); %>
+<%ArrayList<String> list = (ArrayList<String>)request.getAttribute("room");
+HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="/css/concert/concertSeat.css">
-<script src="/js/concert/seatSelect.js"></script>
+<link rel="stylesheet" href="/css/hotel/roomSelect.css">
+<script src="/js/hotel/roomSelect.js"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
@@ -18,26 +18,25 @@
 </head>
 
 <body>
-	<form action="/concertReserve">
+	<form action="/hotelReserve">
 	<div id="wrap">
-        <div id="screen">SCREEN</div>
-        <div id="seat">
-            <%for(int i=0;i<6;i++){ %>
-            	<%for(int j=0;j<10;j++){ %>
-            		<div id="<%=i*10+j+1%>" onclick="select(this);"><%=i*10+j+1%>석</div>
+        <div id="room">
+            <%for(int i=0;i<10;i++){ %>
+            	<%for(int j=0;j<8;j++){ %>
+            		<div id="<%=i*8+j+1%>" onclick="select(this);"><%=100*(10-i)+j+1%>호</div>
             	<%
             	}
             	%>
-            	<br>
+            	<hr>
             <%
             }
             %>
         </div>
-        <input id="seatNo" type="hidden" name="seatNo">
-        <input type="hidden" name="concertCode" value="<%=cr.getConcertCode() %>">
-        <input type="hidden" name="price" value="<%=cr.getConcertPrice() %>">
-        <input type="hidden" name="date" value="<%=cr.getConcertReserveDate() %>">
-        <input type="hidden" name="time" value="<%=cr.getConcertReserveTime() %>">
+        <input id="roomNo" type="hidden" name="roomNo">
+        <input type="hidden" name="hotelCode" value="<%=hr.getHotelCode() %>">
+        <input type="hidden" name="price" value="<%=hr.getPrice() %>">
+        <input type="hidden" name="date" value="<%=hr.getReserveDate() %>">
+        <input type="hidden" name="roomCode" value="<%=hr.getRoomCode() %>">
     </div>
     	<button id="payy" type="button" onclick="selBool();">결제하기</button>
     	<input id="submit" type="submit" value="예약 완료" style="display:none;">
@@ -45,7 +44,8 @@
     <script>
 		window.onload=function(){
 			<%
-			for(int i=0;i<list.size();i++){%>
+			for(int i=0;i<list.size();i++){
+			%>
 				document.getElementById(<%=list.get(i)%>).style.backgroundColor = 'grey';
 				document.getElementById(<%=list.get(i)%>).onclick = "";
 				document.getElementById(<%=list.get(i)%>).style.cursor = 'auto';
@@ -64,7 +64,7 @@
 				pay_method : 'card',
 				merchant_uid : 'merchant_' + new Date().getTime(),
 				name : '주문명:결제테스트',
-				amount : <%=request.getParameter("price") %>,
+				amount : <%=hr.getPrice() %>,
 				buyer_email : 'iamport@siot.do',
 				buyer_name : '구매자이름',
 				buyer_tel : '010-1234-5678',

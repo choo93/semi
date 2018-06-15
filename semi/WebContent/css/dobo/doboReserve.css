@@ -116,6 +116,14 @@ div {
 	width: 65%;
 	font-size: 20px;
 }
+#time{
+	width:65%;
+	text-align:center;
+}
+#time>option{
+	height:50px;
+	text-align:center;
+}
 
 #wrap>p {
 	height: 90px;
