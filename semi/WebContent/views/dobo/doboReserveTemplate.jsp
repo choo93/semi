@@ -36,7 +36,11 @@
 								<label>예약 일</label> <input id="date" type="date" name="date">
 							</div>
 							<div>
-								<label>예약 시간</label> <input id="time" type="time" name="time">
+								<label>예약 시간</label> 
+								<select id="time" name="time">
+            						<option value="09:00">09:00</option>
+            						<option value="13:00">13:00</option>
+        						</select>
 							</div>
 						</div>
 					</div>
