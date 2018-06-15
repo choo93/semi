@@ -21,14 +21,14 @@
 }
 
 #contents {
-	width: 80%;
+	width: 900px;
 	height: 200px;
 	margin: auto;
 	margin-bottom: 30px;
 }
 
 #photo {
-	width: 35%;
+	width: 30%;
 	height: 100%;
 	float: left;
 	margin-right:5%;
@@ -36,7 +36,7 @@
 }
 
 #explain {
-	width: 60%;
+	width: 65%;
 	height: 100%;
 	float: left;
 	border: 3px solid RGB(0, 125, 195);
