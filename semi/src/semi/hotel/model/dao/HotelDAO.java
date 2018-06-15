@@ -10,6 +10,7 @@ import common.JDBCTemplate;
 import semi.hotel.model.vo.HotelInfo;
 import semi.hotel.model.vo.HotelListData;
 import semi.hotel.model.vo.HotelReserve;
+import semi.hotel.model.vo.RoomInfo;
 
 public class HotelDAO {
 
@@ -262,6 +263,46 @@ public class HotelDAO {
 		}
 		
 		return result;
+	}
+
+
+	public RoomInfo hotelRoomInfo(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int a =1;
+		
+		if(a==1) {
+			
+		}else if(a==2) {
+			
+		}
+		
+		String query="select * from hotelRoomInfo where roomCode = ?";
+		
+		RoomInfo ri = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			
+			if(rset.next())
+			{
+				ri.setRoomCode(rset.getString("roomCode"));
+				ri.setRoomPrice(rset.getInt("roomPrice"));
+				ri.setRoomExplain(rset.getString("roomExplain"));
+				ri.setRoomFixedNumber(rset.getString("roomFixedNumber"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return ri;
+		
 	}
 
 }
