@@ -145,7 +145,7 @@ else self.name = '';
 			</div>
 			</div>
 			
-			<div id="pagecontent">
+			<div id="pagecontent" >
 			<section id="content">
 				<h2 style="font-size:24px; font-weight:bold; color:#0080ff;">질문 & 답변</h2>
 				<div id="faqtitle">
@@ -161,9 +161,12 @@ else self.name = '';
 				<div style="width:100%; height:60px; margin-bottom:10px;">
 					<fieldset>
 						<legend>게시글 검색</legend>
-						<button class="btn btn-outline-primary">등록일</button>
-						<button class="btn btn-outline-primary">해결된 질문</button>
-						<button class="btn btn-outline-primary">미해결된 질문</button>
+						
+				
+						<a href="/qnaCategory?search=확인완료" class="btn btn-outline-primary">해결된 질문</a>
+						<a href="/qnaCategory?search=확인전" class="btn btn-outline-primary">미해결된 질문</a>
+
+						
 					</fieldset>
 				
 				</div>
@@ -184,8 +187,9 @@ else self.name = '';
 						<%} %>
 						
 					</table>
-					<button class="btn btn-primary">글쓰기</button>
-				
+					<form action="/views/travelReady/QnAWrite.jsp">
+					<input type="submit" value="글쓰기" class="btn btn-primary">
+				</form>
 				</div>
 				
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">

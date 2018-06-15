@@ -206,7 +206,10 @@ function test(id){
 				</div>
 				
 				<div style="width:100%; height:780px;">
-					<h3 style="font-size:24px;">FAQ</h3>
+					<h3 style="font-size:24px; float:left; margin-right:50px;">FAQ</h3>				
+				<form action="/views/travelReady/FAQAnswer.jsp">
+				<input type="submit" value="등록" class="btn btn-primary">
+				</form>
 					<dl id="faqcontent">
 					<%for(Faq f:list){ %>
 						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#none" onclick="test(<%=f.getFaqNo()%>);">[<%=f.getCategory()%>]<br><%=f.getTitle() %></a></dt>
@@ -214,6 +217,8 @@ function test(id){
 					<%} %>
 					</dl>					
 				</div>
+				
+
 				
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
 				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 

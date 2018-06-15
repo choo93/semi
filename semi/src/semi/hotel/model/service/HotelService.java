@@ -9,6 +9,7 @@ import semi.hotel.model.dao.HotelDAO;
 import semi.hotel.model.vo.HotelInfo;
 import semi.hotel.model.vo.HotelListData;
 import semi.hotel.model.vo.HotelPageData;
+import semi.hotel.model.vo.HotelReserve;
 
 public class HotelService {
 
@@ -25,9 +26,7 @@ public class HotelService {
 		int naviCountPerPage = 5;
 		
 		ArrayList<HotelInfo> list = new HotelDAO().selectAllHotel(conn,currentPage,recordCountPerPage);
-		System.out.println(list);
 		String pageNavi = new HotelDAO().getHotelPageNavi(conn, currentPage, recordCountPerPage, naviCountPerPage);
-		System.out.println("pageNavi : "+pageNavi);
 		HotelPageData hpd = null;
 		if(!list.isEmpty() &&!pageNavi.isEmpty()) {
 		hpd = new HotelPageData();
@@ -38,6 +37,26 @@ public class HotelService {
 		JDBCTemplate.close(conn);
 		
 		return hpd;
+	}
+
+	public ArrayList<String> loadRoom(HotelReserve hr) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<String> list = new HotelDAO().loadRoom(conn, hr);
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+
+	public int addReserve(HotelReserve hr) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new HotelDAO().addReserve(conn,hr);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
 	}
 
 }

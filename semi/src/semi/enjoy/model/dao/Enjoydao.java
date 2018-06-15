@@ -490,6 +490,81 @@ public class Enjoydao {
 				return sb.toString();
 			}
 
+
+	public int deleteReview(Connection conn, int commentNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "delete from Element_Index_Review where seq_review=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, commentNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateReview(Connection conn, String commentTitle, String comment, int commentNo) {
+		PreparedStatement pstmt =null;
+		int result = 0;
+		
+		String query = "update Element_Index_Review set INDEX_TITLE=?, USER_COMMENT=? where SEQ_REVIEW=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, commentTitle);
+			pstmt.setString(2, comment);
+			pstmt.setInt(3, commentNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	public ArrayList<EnjoyFestival> AllFestivalData(Connection conn) {
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      String Query = "select * from festival";
+	      ArrayList<EnjoyFestival> list = new ArrayList<EnjoyFestival>();
+
+	      try {
+	         pstmt = conn.prepareStatement(Query);
+	         rset = pstmt.executeQuery();
+
+	         EnjoyFestival EF = null;
+	         while (rset.next()) {
+	            EF = new EnjoyFestival();
+	            EF.setFestival_index(rset.getInt(1));
+	            EF.setFestival_title(rset.getString(3));
+	            EF.setSEQ_Index_TitleNo(rset.getInt(4));
+	            EF.setFestival_period(rset.getString(8));
+	            EF.setFestival_ontime(rset.getString(10));
+	            list.add(EF);
+
+	         }
+
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } finally {
+	         JDBCTemplate.close(rset);
+	         JDBCTemplate.close(pstmt);
+	      }
+
+	      return list;
+	      
+	      
+	   }
+	
 }
 
 

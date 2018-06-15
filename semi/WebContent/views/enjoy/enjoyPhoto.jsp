@@ -136,7 +136,7 @@ box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 			</div>
 			<div id="photo6" style="width: 50%; height: 350px; float: left;">
 				
-				<a href="/enjoyList?type=type6"><img class="photo6"
+				<a href="/enjoyCalendar"><img class="photo6"
 					src="../../image/enjoy/SEOUL6.png"
 					style="width: 100%; height: 100%;"></a>
 			</div>

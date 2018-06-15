@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ page import="semi.festival.model.vo.*" import="java.util.*" %>
+<% 	
+FestivalPageData fpd = (FestivalPageData)request.getAttribute("pageData");
+ArrayList<Festival> list = fpd.getFestivalList();
+String pageNavi = fpd.getPageNavi();
+String seasons = null;
+switch(list.get(0).getFestivalSeason())
+{
+case "spring" : seasons = "봄 축제"; break;
+case "summer" : seasons = "여름 축제"; break;
+case "fall" : seasons = "가을 축제"; break;
+case "winter" : seasons = "겨울 축제"; break;
+}
+
+int index = 0;
+%>
+
     <!DOCTYPE html>
     <html>
 
@@ -85,7 +102,7 @@
         <%@ include file="/views/main/header.jsp"%>
             <section>
                 <div id="head" class="container-fulid">
-                <h1 class="font" style="text-align: center;">봄 축제</h1>
+                <h1 class="font" style="text-align: center;"><%=seasons %></h1>
                 </div>
                 <hr>
                 <div id="line" style="margin-left: 10%; padding: 20px;">
@@ -97,45 +114,50 @@
                 </div>
 
                 <!-- 내용물 -->
+              
                 <div class="container">
+                  <form action ="/festivalSelect" method="get">
                     <!-- 첫번째 컨텐츠 -->
+                    <%for(Festival f : list) { %>
                     <div class="row">
-                        <div class="col-xs-12 content" id="list_1">
+                        <div class="col-xs-12 content" id="list_<%=index+1%>">
                             <!-- 첫번째 내용 -->
                             <div class="row">
                                 <!-- 첫번째 사진 -->
-                                <div class="col-xs-3 photo" style="background-image: url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);"></div>
+                                <div class="col-xs-3 photo" style="background-image: <%=f.getFestivalMainImg()%>"></div>
 
                                 <div class="col-xs-6 col-xs-offset-3 info">
                                     <!-- 첫번째 컨텐츠 제목 -->
                                     <div class="title">
-                                        갤러리 3안
+                                        <%=f.getFestivalTitle() %>
                                     </div>
                                     <hr>
                                     <!-- 첫번째 컨텐츠 설명 -->
                                     <div class="contents">
-                                        삼청동에 개관한 갤러리 3안은 회화, 영상, 조각, 설치 외 다양한 예술 분야를 다루고 있으며 구애받지 않는 실험 정신을 가진 아티스트들의 작품을 감상할 수 있다.<br>
-                                        
+                                        <%=f.getFestivalBasicInfo() %>
                                     </div>
                                     <!-- 첫번째 컨텐츠 태그 -->
                                     <div class="tags">
                                         <p class="ptags">태그</p>
                                         <div style="display: inline;">
-                                            <a href="#">#갤러리3안</a>
-                                            <a href="#">#갤러리3안</a>
-                                            <a href="#">#갤러리3안</a>
-                                            <a href="#">#갤러리3안</a>
-                                            <a href="#">#갤러리3안</a>
-                                            <a href="#">#갤러리3안</a>
+                                           <%StringTokenizer sT = new StringTokenizer(f.getFestivalTag(),"#");
+                                                                while(sT.hasMoreTokens()) { %>
+                                                                <a href="#">#
+                                                                    <%=sT.nextToken() %>
+                                                                </a>
+                                                                <%} %>
                                         </div>
                                     </div>
-                                    <button class="btn pull-right" id="button">자세히</button>
+                                    <input type="hidden" value="<%=f.getTitleNo()%>" name="titleNo" />
+                                    <input type="submit" value="자세히" class="btn pull-right" id="button" />
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <%index++; } %>
+                    </form>
 
-                    <!-- 두번째 컨텐츠 -->
+               <!--      두번째 컨텐츠
                     <div class="row">
                         <div class="col-xs-12 content" id="list_2">
                             <div class="row">
@@ -167,7 +189,7 @@
                         </div>
                     </div>
 
-                    <!-- 세번째 컨텐츠 -->
+                    세번째 컨텐츠
                     <div class="row">
                         <div class="col-xs-12 content" id="list_3">
                             <div class="row">
@@ -198,7 +220,7 @@
                         </div>
                     </div>
 
-                    <!-- 네번째 컨텐츠 -->
+                    네번째 컨텐츠
                     <div class="row">
                         <div class="col-xs-12 content" id="list_4">
                             <div class="row">
@@ -226,7 +248,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
 
                     
@@ -235,7 +257,9 @@
 
                     <div class="container" style="text-align: center ">
                         <ul class="pagination pagination-lg">
-                            <li class="disabled">
+                        
+                        <%=pageNavi %>
+                            <!-- <li class="disabled">
                                 <span>«</span>
                             </li>
                             <li class="active">
@@ -256,7 +280,7 @@
                             </li>
                             <li>
                                 <a href="#">»</a>
-                            </li>
+                            </li> -->
                         </ul>
 
                     </div>

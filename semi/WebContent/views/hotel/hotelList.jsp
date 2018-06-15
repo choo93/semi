@@ -16,6 +16,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="/lib/w3.css">
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../css/hotel/hotelList.css">
 <link rel="stylesheet" href="../../css/moreBtn.css">
 <link
@@ -23,6 +24,8 @@
 	rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/hotel/hotelList.js"></script>
 </head>
 <body id="scroll">
 
@@ -32,7 +35,7 @@
 	<section>
 
 
-	<div style="width: 1200px; height: 2500px; margin-left: 15%;">
+	<div style="width: 1200px; height: 2400px; margin-left: 15%;">
 
 		<div id="contents">
 			<div id="contents-1">
@@ -45,12 +48,13 @@
 			%>
 			<div id="hotelTotalList-1" style="margin-top:1%">
 				<div id="hotelImageList-1"
-					style="background-image:url<%=hl.getHotelMainPhoto()%>"></div>
+					style="background-image:url<%=hl.getHotelListMainPhoto()%>"></div>
 
 				<div id="hotelExplain">
 					<div id="hotelTitle" style="font: bold 30pt 나눔스퀘어;"><%=hl.getHotelName()%></div>
-					<div id="hotelTotalExplain"><%=hl.getHotelExplain()%></div>
-					<button id="button" onclick="hotelInfo();"
+					<div id="hotelTotalExplain" style="font-size:15px;"><%=hl.getHotelBriefDescription()%></div>
+					
+					<button id="button" onclick="hotelInfo(<%=hl.getIndexNum() %>);"
 						style="margin-left: 80%;">자세히</button>
 				</div>
 			</div>
@@ -152,11 +156,13 @@
 	</div>
 	 -->
 	</div>
-	<label><%=pageNavi%></label> <br>
+	<div class = "container" style="text-align:center;">
+	<ul class="pagination pagination-lg"><%= pageNavi %></ul>
+	</div>
 
 	<script>
-		function hotelInfo() {
-			location.href = "/views/hotel/hotelInfo.jsp";
+		function hotelInfo(index) {
+			location.href = "/hotelInfo?indexNum="+index;
 		}
 	</script> 
 	</section>

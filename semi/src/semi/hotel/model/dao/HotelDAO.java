@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import semi.hotel.model.vo.HotelInfo;
 import semi.hotel.model.vo.HotelListData;
+import semi.hotel.model.vo.HotelReserve;
 
 public class HotelDAO {
 
@@ -16,12 +17,45 @@ public class HotelDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = "";
-		HotelInfo ci = null;
+		String query = "select * from hotelInfo where indexNum = ?";
+		HotelInfo hi = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, indexNum);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				hi = new HotelInfo();
+				hi.setIndexNum(rset.getInt("indexNum"));
+				hi.setHotelCode(rset.getString("hotelCode"));
+				hi.setHotelName(rset.getString("hotelName"));
+				hi.setHotelListMainPhoto(rset.getString("hotelListMainPhoto"));
+				hi.setHotelMainPhoto(rset.getString("hotelMainPhoto"));
+				hi.setHotelSubPhoto1(rset.getString("hotelSubPhoto1"));
+				hi.setHotelSubPhoto2(rset.getString("hotelSubPhoto2"));
+				hi.setHotelSubPhoto3(rset.getString("hotelSubPhoto3"));
+				hi.setHotelSubPhoto4(rset.getString("hotelSubPhoto4"));
+				hi.setHotelAddress(rset.getString("hotelAddress"));
+				hi.setHotelPhone(rset.getString("hotelPhone"));
+				hi.setHotelExplain(rset.getString("hotelExplain"));
+				hi.setHotelBriefDescription(rset.getString("hotelBriefDescription"));
+				hi.setHotelRoomPriceExplain(rset.getString("hotelRoomPriceExplain"));
+				hi.setHotelCheckInOut(rset.getString("hotelCheckInOut"));
+				hi.setHotelLatitude(rset.getDouble("hotelLatitude"));
+				hi.setHotelLongtitude(rset.getDouble("hotelLongtitude"));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
 		
 		
-		
-		return null;
+		return hi;
 	}
 	
 
@@ -33,7 +67,7 @@ public class HotelDAO {
 		
 		int end = currentPage*recordCountPerPage;
 		
-		String query="select * from(select hotelList.*, row_number() over(order by indexNum desc) as num from hotelList) where num between ? and ?";
+		String query="select * from(select hotelInfo.*, row_number() over(order by indexNum desc) as num from hotelInfo) where num between ? and ?";
 		
 		ArrayList<HotelInfo> list = new ArrayList<HotelInfo>();
 		
@@ -46,17 +80,26 @@ public class HotelDAO {
 			
 			while(rset.next())
 			{
-				HotelInfo hl = new HotelInfo();
+				HotelInfo hi = new HotelInfo();
 				
-				hl.setIndexNum(rset.getInt("indexNum"));
-				System.out.println(hl.getIndexNum());
-				hl.setHotelName(rset.getString("hotelName"));
-				System.out.println(hl.getHotelName());
-				hl.setHotelExplain(rset.getString("hotelExplain"));
-				System.out.println(hl.getHotelExplain());
-				hl.setHotelMainPhoto(rset.getString("hotelMainPhoto"));
-				System.out.println(hl.getHotelMainPhoto());
-				list.add(hl);
+				hi.setIndexNum(rset.getInt("indexNum"));
+				hi.setHotelCode(rset.getString("hotelCode"));
+				hi.setHotelName(rset.getString("hotelName"));
+				hi.setHotelListMainPhoto(rset.getString("hotelListMainPhoto"));
+				hi.setHotelMainPhoto(rset.getString("hotelMainPhoto"));
+				hi.setHotelSubPhoto1(rset.getString("hotelSubPhoto1"));
+				hi.setHotelSubPhoto2(rset.getString("hotelSubPhoto2"));
+				hi.setHotelSubPhoto3(rset.getString("hotelSubPhoto3"));
+				hi.setHotelSubPhoto4(rset.getString("hotelSubPhoto4"));
+				hi.setHotelAddress(rset.getString("hotelAddress"));
+				hi.setHotelPhone(rset.getString("hotelPhone"));
+				hi.setHotelExplain(rset.getString("hotelExplain"));
+				hi.setHotelBriefDescription(rset.getString("hotelBriefDescription"));
+				hi.setHotelRoomPriceExplain(rset.getString("hotelRoomPriceExplain"));
+				hi.setHotelCheckInOut(rset.getString("hotelCheckInOut"));
+				hi.setHotelLatitude(rset.getDouble("hotelLatitude"));
+				hi.setHotelLongtitude(rset.getDouble("hotelLongtitude"));
+				list.add(hi);
 			}
 			
 		} catch (SQLException e) {
@@ -77,7 +120,7 @@ public class HotelDAO {
 		//게시물 토탈 개수 
 		int recordTotalCount = 0;
 		
-		String query="select count(*) from hotelList";
+		String query="select count(*) from hotelInfo";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -138,24 +181,87 @@ public class HotelDAO {
 		
 		if(needPrev) //시작이 1페이지가 아니라면!
 		{
-			sb.append("<a href='/hotelList?currentPage="+(startNavi-1)+"'> < </a>");
+			sb.append("<li> <a href='/hotelList?currentPage="+(startNavi-1)+"'> « </a></li>");
+		}
+		else
+		{
+			sb.append("<li class='disabled'> <span>«</span></li>");
 		}
 		for(int i=startNavi;i<=endNavi;i++)
 		{
 			if(i==currentPage)
 			{
-				sb.append("<a href='/hotelList?currentPage="+i+"'> <B> "+i+" </B></a>");
+				sb.append("<li class='active'><a href='/hotelList?currentPage="+i+"'>  "+i+" </a></li>");
 			}
 			else
 			{
-				sb.append("<a href='/hotelList?currentPage="+i+"'> "+i+" </a>");
+				sb.append("<li><a href='/hotelList?currentPage="+i+"'> "+i+" </a></li>");
 			}
 		}
 		if(needNext) // 끝 페이지가 아니라면!
 		{
-			sb.append("<a href='/hotelList?currentPage="+(endNavi+1)+"'> > </a>");
+			sb.append("<li><a href='/hotelList?currentPage="+(endNavi+1)+"'> » </a></li>");
+		}
+		else
+		{
+			sb.append("<li class='disabled'> <sapn>»</span> </li>");
 		}
 		return sb.toString();
+	}
+
+
+	public ArrayList<String> loadRoom(Connection conn, HotelReserve hr) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select hotelRoomNo from HOTELRESERVE where HOTELCODE = ? and hotelreserveDate = ?";
+		ArrayList<String> list = new ArrayList<String>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, hr.getHotelCode());
+			pstmt.setString(2, hr.getReserveDate());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(rset.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return list;
+	}
+
+
+	public int addReserve(Connection conn, HotelReserve hr) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query="insert into HOTELRESERVE values(HOTELRESERVE_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, hr.getHotelCode());
+			pstmt.setInt(2, hr.getUserNo());
+			pstmt.setInt(3, hr.getRoomNo());
+			pstmt.setString(4, hr.getRoomCode());
+			pstmt.setString(5, hr.getReserveDate());
+			pstmt.setInt(6, hr.getPrice());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

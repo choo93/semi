@@ -48,7 +48,7 @@
 			for(int i=0;i<list.size();i++){%>
 				document.getElementById(<%=list.get(i)%>).style.backgroundColor = 'grey';
 				document.getElementById(<%=list.get(i)%>).onclick = "";
-				document.getElementById(<%=list.get(i)%>).style.cursor = 'none';
+				document.getElementById(<%=list.get(i)%>).style.cursor = 'auto';
     		<%}%>
 		}
 		

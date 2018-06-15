@@ -82,4 +82,82 @@ Connection conn=JDBCTemplate.getConnection();
 		
 	}
 
+	public int qnaChkUpdate(int questionNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new QnaDao().qnaChkUpdate(conn,questionNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else
+		{
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	public int insertQna(String title, String content) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new QnaDao().insertQna(conn,title,content);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else
+		{
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return result;
+		
+	}
+
+	public int answerWrite(String answer, int questionNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new QnaDao().answerWrite(conn,answer,questionNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else
+		{
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return result;
+		
+	}
+
+	public QnaPageData searchList(int currentPage, String search) {
+		Connection conn=JDBCTemplate.getConnection();
+		
+		int recordCountPerPage=10;
+		int naviCountPerPage=5;
+		
+		ArrayList<Qna> list=new QnaDao().getSearchCurrentPage(conn,currentPage,recordCountPerPage,search);
+		QnaPageData qpd=new QnaDao().getSearchPageNavi(conn,currentPage,recordCountPerPage,naviCountPerPage,search);
+		
+		int resultcurrentPage=qpd.getCurrentPage();
+		int endNavi=qpd.getEndNavi();
+		int startNavi=qpd.getStartNavi();
+		int pageTotalCount=qpd.getPageTotalCount();
+		int recordTotalCount=qpd.getRecordTotalCount();
+		
+		QnaPageData qpd2=null;
+		
+		if(!list.isEmpty()) {
+			qpd2=new QnaPageData();
+			qpd2.setNoticelist(list);
+			qpd2.setCurrentPage(resultcurrentPage);
+			qpd2.setEndNavi(endNavi);
+			qpd2.setStartNavi(startNavi);
+			qpd2.setPageTotalCount(pageTotalCount);
+			qpd2.setRecordTotalCount(recordTotalCount);
+			
+		}
+		JDBCTemplate.close(conn);
+		return qpd2;
+	}
+
 }

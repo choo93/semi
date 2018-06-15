@@ -41,6 +41,7 @@ public class QnaSelectServlet extends HttpServlet {
 		Qna q=new QnaService().qnaSelect(questionNo);
 		Answer an=new QnaService().qnaComment(questionNo);
 		
+		
 		int result = new QnaService().hitsUpdate(questionNo,hits);
 		
 		

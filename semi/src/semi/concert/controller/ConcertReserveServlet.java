@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import semi.concert.model.service.ConcertService;
 import semi.concert.model.vo.ConcertReserve;
@@ -46,7 +47,9 @@ public class ConcertReserveServlet extends HttpServlet {
 		//int indexNo = Integer.parseInt(request.getParameter("indexNo"));
 		ConcertReserve cr = new ConcertReserve();
 		cr.setConcertCode(request.getParameter("concertCode"));
-		cr.setUserNo("111");
+		HttpSession session = request.getSession(false);
+		//cr.setUserNo(((Member)session.getAttribute("user")).getUserNo());
+		cr.setUserNo("1");
 		cr.setConcertPrice(Integer.parseInt(request.getParameter("price")));
 		cr.setConcertReserveDate(request.getParameter("date"));
 		cr.setConcertReserveTime(request.getParameter("time"));
