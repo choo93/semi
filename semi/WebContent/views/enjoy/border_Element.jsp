@@ -314,92 +314,77 @@
 							<div style="position: relative; top: 20px; float: left;">
 								<div class="leftBox"
 									style="position: relative; width: 170px; height: 110px; margin-right: 50px;">
-									<br> <span id="userId"
-										style="position: absolute; color: #6C4371; top: 10px; margin: 15px; font: bold 1.3rem 나눔스퀘어;"><%=EC.getUSER_ID() %></span>
-									<br> <br> <span id="insertDate"
-										style="color: #6C4371; margin: 15px;"><%=EC.getWrite_Date() %></span>
-									<br>
+									<br> <span id="userId" style="position: absolute; color: #6C4371; margin: 30px; top: 15px; left: 27px; font: bold 1.5rem 나눔스퀘어;"><%=EC.getUSER_ID() %></span>
 								</div>
 							</div>
 
 							<div class="rightBox"
 								style="width: 70%; height: 100%; padding: 5px; float: left; position: relative;">
 								<!-- 제목,내용 입력하는곳 -->
-								<div
-									style="float: left; position: relative; width: 80%; height: 90%;">
-									<div id="indexTitle" name="Index_Title"
-										style="width: 100%; height: 20%; color: #6C4371; font: bold 1.5rem 나눔스퀘어; margin-top: 15px; margin-left: 15px;">
-										<span id="<%=EC.getSEQ_REIVEW()%>_indexTitleHtml"
-											style="font: bold 1.5rem 나눔스퀘어;"><%=EC.getINDEX_TITLE() %></span>
-										<input type="hidden" name="Index_Title"
-											id="<%=EC.getSEQ_REIVEW()%>_title"
-											style="width: 380px; height: 20px; border: 1px solid #9B95C9; background-color: #C7C4E2;"
-											value="<%=EC.getINDEX_TITLE()%>" />
+								<div style="float: left; position: relative; width: 80%; height: 90%;">
+								<form action="/enjoyCommentUpdate" method="post" style="display: inline;">
+								<!-- /views/enjoy/commentUpdate.jsp -->
+								<input type="hidden" name="index_titleNo" value="<%=edd1.getSEQ_Index_TitleNo()%>" />
+								<input type="hidden" name="SEQ_REVIEW" value="<%=EC.getSEQ_REIVEW()%>" />
+									<div id="indexTitle" name="Index_Title" style="width: 100%; height: 20%; color: #6C4371; font: bold 1.5rem 나눔스퀘어; margin-top: 15px; margin-left: 15px;">
+										<span id="<%=EC.getSEQ_REIVEW()%>_indexTitleHtml" style="font: bold 1.5rem 나눔스퀘어;"><%=EC.getINDEX_TITLE() %></span>
+										<input type="hidden" name="Index_Title" id="<%=EC.getSEQ_REIVEW()%>_title" style="width: 380px; height: 20px; border: 1px solid #9B95C9; background-color: #C7C4E2;" value="<%=EC.getINDEX_TITLE()%>" />
 									</div>
 
-									<div id="userComment" name="User_Comment"
-										style="width: 100%; height: 80%; color: #FFFFFF; font: 1.2rem 나눔스퀘어; margin-left: 15px;">
-										<span id="<%=EC.getSEQ_REIVEW()%>_userCommentHtml"
-											style="font: bold 1.2rem 나눔스퀘어;"><%=EC.getUSER_COMMNET() %></span>
-										<textarea rows="5" cols="60" style="display: none;"
-											name="User_Comment" id="<%=EC.getSEQ_REIVEW()%>_comment"><%=EC.getUSER_COMMNET()%></textarea>
+									<div id="userComment" name="User_Comment" style="width: 100%; height: 80%; color: #6C4371; font: 1.2rem 나눔스퀘어; margin-left: 15px;">
+										<span id="<%=EC.getSEQ_REIVEW()%>_userCommentHtml" style="font: bold 1.2rem 나눔스퀘어;"><%=EC.getUSER_COMMNET() %></span>
+										<textarea rows="5" cols="60" style="display: none;" name="User_Comment" id="<%=EC.getSEQ_REIVEW()%>_comment"><%=EC.getUSER_COMMNET()%></textarea>
 									</div>
-									<input type="hidden"
-										style="position: absolute; left: 10px; bottom: 15px;"
-										id="<%=EC.getSEQ_REIVEW()%>_submit" value="수정">
+									
+									<input type="hidden" style="position: absolute; left: 550px; bottom: 1px; width: 40px; height: 20px;" id="<%=EC.getSEQ_REIVEW()%>_submit" value="수정">
+									<button type="button" id="<%=EC.getSEQ_REIVEW()%>_reBtn" style="display:none;" onclick="cancel(<%=EC.getSEQ_REIVEW()%>);">취소</button>
+								</form>
 								</div>
 								<!-- 추천점수 입력하는곳 -->
-								<div
-									style="float: left; width: 20%; height: 90%; color: #6C4371; text-align: center; line-height: 5;">
-									점수</div>
+								<div style="float: left; width: 20%; height: 90%; color: #6C4371; text-align: center; line-height: 5;">
+									<span id="insertDate" style="color: #6C4371; font: bold 1.2rem 나눔스퀘어; margin: 15px;"><%=EC.getWrite_Date() %></span>
+									
+								</div>
 								<div style="width: 7%; height: 10%; float: right;">
 									<form action="/enjoyCommentDelete" method="post"
 										style="display: inline;">
-										<input type="hidden" name="index_titleNo"
-											value="<%=edd1.getSEQ_Index_TitleNo()%>" /> <input
-											type="hidden" name="SEQ_REVIEW"
-											value="<%=EC.getSEQ_REIVEW()%>" /> <input type="submit"
-											value="삭제" />
+										<input type="hidden" name="index_titleNo" value="<%=edd1.getSEQ_Index_TitleNo()%>" />
+										<input type="hidden" name="SEQ_REVIEW" value="<%=EC.getSEQ_REIVEW()%>" />
+										<input type="submit" id="<%=EC.getSEQ_REIVEW()%>_commentDeleteBtn" style="position: absolute; bottom: 15px; width: 40px; height: 20px" value="삭제" />
 									</form>
 								</div>
 
 								<div style="width: 7%; height: 10%; float: right;">
-									<form action="/enjoyCommentUpdate" method="post"
-										style="display: inline;">
-										<!-- /views/enjoy/commentUpdate.jsp -->
-										<input type="hidden" name="index_titleNo"
-											value="<%=edd1.getSEQ_Index_TitleNo()%>" /> <input
-											type="hidden" name="SEQ_REVIEW"
-											value="<%=EC.getSEQ_REIVEW()%>" /> <input type="hidden"
-											name="Index_Title" id="<%=EC.getSEQ_REIVEW()%>_title"
-											value="<%=EC.getINDEX_TITLE()%>" /> <input type="hidden"
-											name="User_Comment" id="<%=EC.getSEQ_REIVEW()%>_comment"
-											value="<%=EC.getUSER_COMMNET()%>" /> <input type="hidden"
-											name="comment_Title" value="">
+								
+								<%-- <input type="hidden" name="Index_Title" id="<%=EC.getSEQ_REIVEW()%>_title" value="<%=EC.getINDEX_TITLE()%>" /> --%>
+								<%-- <input type="hidden" name="User_Comment" id="<%=EC.getSEQ_REIVEW()%>_comment" value="<%=EC.getUSER_COMMNET()%>" /> --%>
+										
 										<%-- <input type="hidden" id="<%=EC.getSEQ_REIVEW()%>_submit" value="수정"> --%>
 										<!-- <input type="submit" value="수정"/> -->
-									</form>
+									
 
-									<button type="button" id="<%=EC.getSEQ_REIVEW()%>_btn"
-										onclick="update(<%=EC.getSEQ_REIVEW()%>);">수정</button>
+									<button type="button" id="<%=EC.getSEQ_REIVEW()%>_btn" style="position: absolute; bottom: 15px; width: 40px; height: 20px;" onclick="update(<%=EC.getSEQ_REIVEW()%>);">수정</button>
 
 									<script>
          							function update(id){
-         								alert("덧글을 수정합니다");
          								window.document.getElementById(id+"_title").type="text";
          								window.document.getElementById(id+"_comment").style="display:inline; resize: none; border: 1px solid #9B95C9; background-color: #C7C4E2";
-         								window.document.getElementById(id+"_indexTitleHtml").innerHTML="";
-         								window.document.getElementById(id+"_userCommentHtml").innerHTML="";
+         								window.document.getElementById(id+"_indexTitleHtml").style="display:none";
+         								window.document.getElementById(id+"_userCommentHtml").style="display:none";
          								window.document.getElementById(id+"_submit").type="submit";
          								window.document.getElementById(id+"_btn").style="display:none";
-         								
-         								
-         								//window.document.getElementById("userComment").type="text";
-         								//document.getElementById(id).style="display:none";
-         								//document.getElementById(id+"_input").type="text";
-         								//document.getElementById(id+"_btn").style="display:none";
-         								//document.getElementById(id+"_submit").type="submit";
-         								//document.getElementById(id+"_reBtn").style="display:inline";
+         								window.document.getElementById(id+"_reBtn").style="display:inline; position: absolute; left: 600px; bottom: 1px; width: 40px; height: 20px;";
+         								window.document.getElementById(id+"_commentDeleteBtn").style="display:none";
+         							}
+         							function cancel(id){
+         								window.document.getElementById(id+"_title").type="hidden";
+         								window.document.getElementById(id+"_comment").style="display:none";
+         								window.document.getElementById(id+"_indexTitleHtml").style="display:inline; font: bold 1.5rem 나눔스퀘어;";
+         								window.document.getElementById(id+"_userCommentHtml").style="display:inline; font: 1.2rem 나눔스퀘어;";
+         								window.document.getElementById(id+"_submit").type="hidden";
+         								window.document.getElementById(id+"_btn").style="display:inline; position: absolute; bottom: 16px; width: 40px; height: 20px;";
+         								window.document.getElementById(id+"_reBtn").style="display:none";
+         								window.document.getElementById(id+"_commentDeleteBtn").style="display:inline; position: absolute; bottom: 16px; width: 40px; height: 20px;";
          							}
          						</script>
 								</div>
