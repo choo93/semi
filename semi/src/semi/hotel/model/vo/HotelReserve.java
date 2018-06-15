@@ -3,13 +3,41 @@ package semi.hotel.model.vo;
 public class HotelReserve {
 	private int reserveNo;
 	private String hotelCode;
+	private String hotelName;
 	private int userNo;
 	private int roomNo;
 	private String roomCode;
 	private String reserveDate;
 	private int price;
+	private String address;
 	
 	public HotelReserve() {}
+	
+	
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	public String getHotelName() {
+		return hotelName;
+	}
+
+
+
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
+
+
 
 	public int getReserveNo() {
 		return reserveNo;
