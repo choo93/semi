@@ -151,4 +151,16 @@ public class EnjoyService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+	   public ArrayList<EnjoyFestival> AllFestivalData() {
+		      Connection conn = JDBCTemplate.getConnection();
+		      
+		      ArrayList<EnjoyFestival> list =new Enjoydao().AllFestivalData(conn);
+		      
+		      JDBCTemplate.close(conn);
+		      
+		      return list;
+		   
+		      
+		   }
+	
 }
