@@ -75,6 +75,17 @@
     	margin-bottom:30px;
     
     }
+    
+       #faqtitleimg
+    {
+    width: 74px;
+    height: 74px;
+    background-image:url(/views/travelReady/image/Faq_0.jpg);
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    margin:0px;
+    float:left;
+}
     .image{
     background-repeat:no-repeat;
     background-size:50% 100%;
@@ -104,7 +115,32 @@
 function back()
 {
 	history.back(-1);
-	}
+}
+	
+function chk()
+{
+	var title=document.getElementById('Qtitle').value;
+	var content=document.getElementById('Qcontent').value;
+	
+	if(title=="")
+		{
+			alert("질문을 등록해주세요");
+			return false;
+		}
+	if(content=="")
+		{
+			alert("내용을 입력해주세요");
+			return false;
+		}
+	else
+		{
+		alert("질문 등록이 완료되었습니다.");
+		}
+	
+	
+
+		
+}
 
 </script>
 
@@ -134,17 +170,17 @@ function back()
 				
 				
 				<div id="QnA" style="width:100%; height:560px;">
-				<form action="/qnAWrite">
-  
+				
+  <form action="/qnAWrite">
   
   <div class="form-group">
     <label for="exampleFormControlInput1">제목</label>
-    <input type="text" name="title" class="form-control" id="exampleFormControlInput1">
+    <input type="text" name="title" class="form-control" id="Qtitle">
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">내용</label>
-    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="23" style="resize:none;"></textarea>
+    <textarea class="form-control" name="content" id="Qcontent" rows="23" style="resize:none;"></textarea>
   </div>
 
 					
@@ -152,14 +188,11 @@ function back()
 			</div>
 			
 			<div style="width:960px; height:40px; text-align:center;">
-				<input class="btn btn-primary"  type="submit" value="등록">
+				<input class="btn btn-primary"  type="submit" value="등록" onclick="return chk();">
 				</form>
 				<button class="btn btn-primary"  onclick="back();">취소</button>
 			</div>
 			
-			
-				
-
 		 
 			</section>
 			

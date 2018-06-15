@@ -230,11 +230,13 @@ public class QnaDao {
 	public int insertQna(Connection conn, String title, String content) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String query="insert into question values()";
+		String query="insert into question values(Question_SEQ.nextval,sysdate,0,'userName',?,?,'userId','확인전')";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
-		
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
 			result=pstmt.executeUpdate();
 			
 			
@@ -245,6 +247,134 @@ public class QnaDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}
+
+	public int answerWrite(Connection conn, String answer, int questionNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String query="insert into answer values(Answer_SEQ.nextval,?,'username',sysdate,?)";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setString(1, answer);
+			pstmt.setInt(2, questionNo);
+			result=pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public ArrayList<Qna> getSearchCurrentPage(Connection conn, int currentPage, int recordCountPerPage,
+			String search) {
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		
+		int start=currentPage*recordCountPerPage-(recordCountPerPage-1);
+		
+		int end=currentPage*recordCountPerPage;
+		
+	
+		String query="select * from" +
+				"(select question.*,row_number() over(order by questionNo desc)as num from question where questionchk like ?)" + 
+				"where num between ? and ?";
+
+
+		
+		ArrayList<Qna> list=new ArrayList<Qna>();
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, '%'+search+'%');
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Qna q=new Qna();
+				q.setQuestionNo(rset.getInt("questionNo"));
+				q.setWriteDate(rset.getDate("writeDate"));
+				q.setHits(rset.getInt("hits"));
+				q.setUserName(rset.getString("username"));
+				q.setTitle(rset.getString("title"));
+				q.setContent(rset.getString("content"));
+				q.setUserId(rset.getString("userId"));
+				q.setQuestionChk(rset.getString("questionChk"));
+				list.add(q);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally
+		{
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
+
+	public QnaPageData getSearchPageNavi(Connection conn, int currentPage, int recordCountPerPage, int naviCountPerPage,
+			String search) {
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		
+		int recordTotalCount=0;
+	
+		String query="select count(*)as totalCount from question where questionchk like ?";
+
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, '%'+search+'%');
+			rset=pstmt.executeQuery();
+			if(rset.next());{
+			recordTotalCount=rset.getInt("totalCount");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		int pageTotalCount=0;
+		
+		if(recordTotalCount%recordCountPerPage!=0) {
+			pageTotalCount=recordTotalCount/recordCountPerPage+1;
+		}else {
+			pageTotalCount=recordTotalCount/recordCountPerPage;
+		}
+		
+		if(currentPage<1) {
+			currentPage=1;
+		}else if(currentPage>pageTotalCount) {
+			currentPage=pageTotalCount;
+		}
+		
+		int startNavi=((currentPage-1)/naviCountPerPage)*naviCountPerPage+1;
+		
+		int endNavi=startNavi + naviCountPerPage -1;
+		
+		if(endNavi>pageTotalCount) {
+			endNavi=pageTotalCount;
+		}
+		
+		QnaPageData qpd=new QnaPageData();
+		qpd.setCurrentPage(currentPage);
+		qpd.setEndNavi(endNavi);
+		qpd.setStartNavi(startNavi);
+		qpd.setPageTotalCount(pageTotalCount);
+		qpd.setRecordTotalCount(recordTotalCount);
+		
+		return qpd;
 	}
 
 }

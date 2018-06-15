@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import semi.travelready.model.service.QnaService;
+import semi.travelready.model.service.FaqService;
 
 /**
- * Servlet implementation class QnAWriteServlet
+ * Servlet implementation class FaqWriteServlet
  */
-@WebServlet(name = "QnAWrite", urlPatterns = { "/qnAWrite" })
-public class QnAWriteServlet extends HttpServlet {
+@WebServlet(name = "FaqWrite", urlPatterns = { "/faqWrite" })
+public class FaqWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnAWriteServlet() {
+    public FaqWriteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,14 +31,16 @@ public class QnAWriteServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String title=request.getParameter("title");
-		String content=request.getParameter("content");
+		String category=request.getParameter("category");
+		String answer=request.getParameter("answer");
 		
-		int result=new QnaService().insertQna(title,content);
+		int result=new FaqService().insertFaq(title,category,answer);
 		
 		if(result>0)
 		{
-			response.sendRedirect("/qna");
+			response.sendRedirect("/faq");
 		}
+		
 		
 	}
 

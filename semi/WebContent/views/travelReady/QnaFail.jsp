@@ -2,11 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
-<%
-	QnaPageData qpd=(QnaPageData)request.getAttribute("qnaPageData");
-	ArrayList<Qna> list=qpd.getNoticelist();
-%>
-    
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -162,7 +158,7 @@ else self.name = '';
 					<fieldset>
 						<legend>게시글 검색</legend>
 						
-				
+						
 						<a href="/qnaCategory?search=확인완료" class="btn btn-outline-primary">해결된 질문</a>
 						<a href="/qnaCategory?search=확인전" class="btn btn-outline-primary">미해결된 질문</a>
 
@@ -177,14 +173,9 @@ else self.name = '';
 						<tr>
 							<th style="width:10%;">번호</th><th style="width:50%; text-align:center;">제목</th><th style="width:15%;">글쓴이</th><th style="width:15%;">등록일</th><th style="width:10%;">조회수</th>
 						</tr>
-						<%for(Qna q:list){ %>
-						<tr>
-							<td><%=q.getQuestionNo()%></td><td><div style="width:20%; height:17.4px; float:left;"><%=q.getQuestionChk()%></div>
-							<div style="width:80%; margin-left:20%; height:17.4px;"><a href="/qnaSelect?questionNo=<%=q.getQuestionNo()%>&hits=<%=q.getHits()%>"><%=q.getTitle()%></a></div>
-							</td><td><%=q.getUserName()%></td><td><%=q.getWriteDate()%></td><td><%=q.getHits()%></td>
-						</tr>
-						
-						<%} %>
+							<tr>
+							<th colspan="5">검색 결과가 없습니다.</th>
+							</tr>
 						
 					</table>
 					<form action="/views/travelReady/QnAWrite.jsp">
@@ -192,15 +183,7 @@ else self.name = '';
 				</form>
 				</div>
 				
-				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
-					<%for(int i=qpd.getStartNavi(); i<=qpd.getEndNavi();i++){ 
-					if(i==qpd.getCurrentPage()){%>
-						<a class="btn btn-primary btn-lg" href='/qna?currentPage=<%=i%>'><%=i%></a>
-					<%}else{ %>
-						<a class="btn btn-primary btn-lg" href='/qna?currentPage=<%=i%>'><%=i%></a>
-					<%} %>
-				<%} %>
-				</div>
+	
 		 
 			</section>
 			

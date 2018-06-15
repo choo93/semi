@@ -162,7 +162,7 @@ else self.name = '';
 					<fieldset>
 						<legend>게시글 검색</legend>
 						
-				
+						
 						<a href="/qnaCategory?search=확인완료" class="btn btn-outline-primary">해결된 질문</a>
 						<a href="/qnaCategory?search=확인전" class="btn btn-outline-primary">미해결된 질문</a>
 
@@ -195,9 +195,9 @@ else self.name = '';
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
 					<%for(int i=qpd.getStartNavi(); i<=qpd.getEndNavi();i++){ 
 					if(i==qpd.getCurrentPage()){%>
-						<a class="btn btn-primary btn-lg" href='/qna?currentPage=<%=i%>'><%=i%></a>
+						<a class="btn btn-primary btn-lg" href='/qnaCategory?search=<%=request.getAttribute("search")%>&currentPage=<%=i%>'><%=i%></a>
 					<%}else{ %>
-						<a class="btn btn-primary btn-lg" href='/qna?currentPage=<%=i%>'><%=i%></a>
+						<a class="btn btn-primary btn-lg" href='/qnaCategory?search=<%=request.getAttribute("search")%>&currentPage=<%=i%>'><%=i%></a>
 					<%} %>
 				<%} %>
 				</div>

@@ -103,4 +103,22 @@ public class FaqService {
 		return fpd2;
 	}
 
+	public int insertFaq(String title, String category, String answer) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new FaqDao().insertFaq(conn,title,category,answer);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else
+		{
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+		
+		
+	}
+
 }

@@ -3,8 +3,8 @@
     
 <%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
 <%
-	QnaPageData qpd=(QnaPageData)request.getAttribute("qnaPageData");
-	ArrayList<Qna> list=qpd.getNoticelist();
+	Qna q=(Qna)request.getAttribute("qna");
+	Answer an=(Answer)request.getAttribute("answer");
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -66,15 +66,6 @@
     min-height:1000px;
     padding-left:0px;
     }
-    #faqtitle
-    {
-    	width:960px;
-    	height:90px;
-  
-    	margin-top:30px;
-    	margin-bottom:30px;
-    
-    }
     #faqtitleimg
     {
     width: 74px;
@@ -85,54 +76,78 @@
     margin:0px;
     float:left;
 }
-legend
-{
-	visibility: hidden;
-	widgth:0px;
-	height:0px;
-}
+    #faqtitle
+    {
+    	width:960px;
+    	height:90px;
+  
+    	margin-top:30px;
+    	margin-bottom:30px;
+    
+    }
+    .image{
+    background-repeat:no-repeat;
+    background-size:50% 100%;
+    }
+    dl
+    {
+    width:100%;
+    height:80%; 
+    padding-top:35px;"
+    }
+    dt
+    {
+    float:left;
+     width:20%;
+     margin-left:5%
+    }
+    .answer
+    {
+    	width:80%;
+    	height:80%;
+    }
 
-fieldset{
-	border:0px;
-}
-
-ul{
-	width:100%;
-	height:100%;
-}
-
-#QnA ul li{
-	width:100%;
-	height:10%;
-	list-style:none;
-	float:left;
-	 background-repeat: no-repeat; 
-	 background-size:100% 70%;
-	 text-align:center;
-	 line-height:180px;
-}
-span
-{
-	display:table-cell;
-	height:78px;
-	
-}
-#faqcontent
-{
-	margin-top:2%;
-	width:100%;
-	height:98%;
-
-}
 
 
 </style>
 <script>
-if (self.name != 'reload') {
-    self.name = 'reload';
-    self.location.reload(true);
+function back()
+{
+	history.back(-1);
 }
-else self.name = '';
+	
+function chk()
+{
+	var title=document.getElementById('faqTitle').value;
+	var content=document.getElementById('faqContent').value;
+	var category=document.getElementById('faqCategory').value;
+	
+	
+	if(title=="")
+		{
+			alert("질문을 등록해주세요");
+			return false;
+		}
+	
+	if(category=="FAQ 항목 선택"){
+		alert("항목을 선택해주세요");
+		return false;
+	}
+	if(content=="")
+		{
+			alert("내용을 입력해주세요");
+			return false;
+		}
+	else
+		{
+		alert("FAQ 등록이 완료되었습니다.");
+		}
+	
+	
+
+		
+}
+
 </script>
 
 <body id="scroll">
@@ -140,14 +155,14 @@ else self.name = '';
 <section>
   		<div id="pagetitle">
 			<div id="title">
-				<p style="height:50px;">현재위치  : 여행준비 > 질문 & 답변</p>
-				<h3 style="font-size:50px;">질문 & 답변</h3>
+				<p style="height:50px;">현재위치  : 여행준비 > FAQ</p>
+				<h3 style="font-size:50px;">FAQ</h3>
 			</div>
 			</div>
 			
 			<div id="pagecontent">
 			<section id="content">
-				<h2 style="font-size:24px; font-weight:bold; color:#0080ff;">질문 & 답변</h2>
+				<h2 style="font-size:24px; font-weight:bold; color:#0080ff;">FAQ</h2>
 				<div id="faqtitle">
 				<div id="faqtitleimg"></div>
 				<strong style="font-size:18px;">"서울 관광에 관해서 궁금하신 사항을 질문해주세요. 어떤 질문이든 환영하며, 신속하게 답변 드리겠습니다"</strong><br>
@@ -157,50 +172,48 @@ else self.name = '';
 				여행박사 상품 및 서비스에 대해 궁금하신 사항을 친절하게 안내해 드리겠습니다. <br>
 				질문을 하시기 전에 '자주 하시는 질문'을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				</div>
+	
 				
-				<div style="width:100%; height:60px; margin-bottom:10px;">
-					<fieldset>
-						<legend>게시글 검색</legend>
-						
 				
-						<a href="/qnaCategory?search=확인완료" class="btn btn-outline-primary">해결된 질문</a>
-						<a href="/qnaCategory?search=확인전" class="btn btn-outline-primary">미해결된 질문</a>
+		<div id="QnA" style="width:100%; height:560px;">
+				
+  	<form action="/faqWrite">
+  
 
-						
-					</fieldset>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">제목</label>
+    <input type="text" name="title" class="form-control" id="faqTitle"  style="height:50px;">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">FAQ 목록</label>
+    <select class="form-control" name="category" id="faqCategory" style="height:50px;">
+      <option selected>FAQ 항목 선택</option>
+      <option>서울 시티 투어 탑승</option>
+      <option>호텔 예약</option>
+      <option>도보 관광</option>
+      <option>모바일서비스</option>
+      <option>문화행사 예매</option>
+      <option>사이트이용</option>
+      <option>가이드북</option>
+      <option>기타</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">답변</label>
+    <textarea class="form-control" name="answer" id="faqContent" rows="15" style="resize:none;"></textarea>
+  </div>
+
+
+					
 				
-				</div>
-				
-				
-				<div id="QnA" style="width:100%; height:580px;">
-					<table class="table">
-						<tr>
-							<th style="width:10%;">번호</th><th style="width:50%; text-align:center;">제목</th><th style="width:15%;">글쓴이</th><th style="width:15%;">등록일</th><th style="width:10%;">조회수</th>
-						</tr>
-						<%for(Qna q:list){ %>
-						<tr>
-							<td><%=q.getQuestionNo()%></td><td><div style="width:20%; height:17.4px; float:left;"><%=q.getQuestionChk()%></div>
-							<div style="width:80%; margin-left:20%; height:17.4px;"><a href="/qnaSelect?questionNo=<%=q.getQuestionNo()%>&hits=<%=q.getHits()%>"><%=q.getTitle()%></a></div>
-							</td><td><%=q.getUserName()%></td><td><%=q.getWriteDate()%></td><td><%=q.getHits()%></td>
-						</tr>
-						
-						<%} %>
-						
-					</table>
-					<form action="/views/travelReady/QnAWrite.jsp">
-					<input type="submit" value="글쓰기" class="btn btn-primary">
+			</div>
+			
+			<div style="width:960px; height:40px; text-align:center;">
+				<input class="btn btn-primary"  type="submit" value="등록" onclick="return chk();">
 				</form>
-				</div>
-				
-				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
-					<%for(int i=qpd.getStartNavi(); i<=qpd.getEndNavi();i++){ 
-					if(i==qpd.getCurrentPage()){%>
-						<a class="btn btn-primary btn-lg" href='/qna?currentPage=<%=i%>'><%=i%></a>
-					<%}else{ %>
-						<a class="btn btn-primary btn-lg" href='/qna?currentPage=<%=i%>'><%=i%></a>
-					<%} %>
-				<%} %>
-				</div>
+				<button class="btn btn-primary"  onclick="back();">취소</button>
+			</div>
+			
 		 
 			</section>
 			
