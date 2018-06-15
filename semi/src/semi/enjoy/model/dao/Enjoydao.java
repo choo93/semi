@@ -309,7 +309,7 @@ public class Enjoydao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query="insert into Element_Index_Review values(1,?,'test','test',?,Element_Index_Review_SEQ.nextval,sysdate)";
+		String query="insert into Element_Index_Review values(?,?,'test','test',?,Element_Index_Review_SEQ.nextval,sysdate)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -504,6 +504,27 @@ public class Enjoydao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateReview(Connection conn, String commentTitle, String comment, int commentNo) {
+		PreparedStatement pstmt =null;
+		int result = 0;
+		
+		String query = "update Element_Index_Review set INDEX_TITLE=?, USER_COMMENT=? where SEQ_REVIEW=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, commentTitle);
+			pstmt.setString(2, comment);
+			pstmt.setInt(3, commentNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;

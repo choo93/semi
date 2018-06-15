@@ -85,27 +85,17 @@ public class EnjoyService {
 
 
 	public int insertReview(String reviewTitle, String reviewContents, int indexNo) {
-		// 
 		Connection conn = JDBCTemplate.getConnection();
-		
 		int result = new Enjoydao().insertReview(conn,reviewTitle,reviewContents,indexNo);
-		
-		
 		JDBCTemplate.close(conn);
-		
-		
 		return result;
 	}
 
 
 	public ArrayList<EnjoyComment> noticeComment(int sEQ_Index_TitleNo) {
 		Connection conn = JDBCTemplate.getConnection();
-		
 		ArrayList<EnjoyComment> list = new Enjoydao().noticeComment(sEQ_Index_TitleNo,conn);
-		
 		JDBCTemplate.close(conn);
-		
-		
 		return list;
 	}
 
@@ -137,13 +127,25 @@ public class EnjoyService {
 		return cd;
 	}
 
-
 	public int deleteReview(int commentNo) {
 		Connection conn = JDBCTemplate.getConnection();
 		int result = new Enjoydao().deleteReview(conn,commentNo);
 		if(result>0) {
 			JDBCTemplate.commit(conn);
 		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+	public int updateReview(String commentTitle, String comment, int commentNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new Enjoydao().updateReview(conn,commentTitle,comment,commentNo);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		} else {
 			JDBCTemplate.rollback(conn);
 		}
 		JDBCTemplate.close(conn);
