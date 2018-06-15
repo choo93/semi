@@ -37,7 +37,9 @@
         		<div id="concertSummary">
         			<%=di.getDoboSummary() %>
         		</div>
-        		
+        		<div id="btn">
+        			<button id="button" onclick="doboInfo(<%=di.getIndexNo() %>);">자세히</button>
+        		</div>
         	</div>
     	</div>
     	

@@ -8,31 +8,32 @@
 <script src="../../js/concert/concertReserve.js"></script>
 <title>Insert title here</title>
 
-<style>
-
-#wrap {
-	width: 500px;
-	height: 300px;
-}
-</style>
 <body>
 	<div id="wrap">
 		<form action="/seatSelect" method="get">
-			날짜선택 : <input id="date" type="date" name="date"><br> 
-			시간 선택 : <select id="time" name="time">
-            			<option value="09:00">11:00</option>
-            			<option value="13:00">13:00</option>
-            			<option value="13:00">15:00</option>
-            			<option value="13:00">17:00</option>
-            			<option value="13:00">19:00</option>
-            			<option value="13:00">21:00</option>
-        			</select>
-        	<br>
+			<div id="dated">
+				<label>날짜선택  </label>
+				<input id="date" type="date" name="date"><br>
+			</div> 
+			<div id="timed">
+				<label>시간 선택  </label>
+				<select id="time" name="time">
+            		<option value="09:00">11:00</option>
+            		<option value="13:00">13:00</option>
+            		<option value="13:00">15:00</option>
+            		<option value="13:00">17:00</option>
+            		<option value="13:00">19:00</option>
+            		<option value="13:00">21:00</option>
+        		</select>
+        	</div>
 			<input type="hidden" name="indexNo" value="<%=request.getParameter("indexNo")%>">
 			<input type="hidden" name="concertCode" value="<%=request.getParameter("concertCode")%>">
-			가격: <label><%=request.getParameter("price")%></label><br>
+			<div id="priced">
+				<label>가격 </label>
+				<label id="price">\ <%=request.getParameter("price")%></label>
+			</div>
 			<input type="hidden" name="price" value="<%=request.getParameter("price")%>">
-			<input type="submit" value="좌석선택" onclick="return check();">
+			<input id="submit" type="submit" value="좌석선택" onclick="return check();">
 		</form>
 		
 	</div>
