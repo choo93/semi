@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.hotel.model.service.HotelService;
-import semi.hotel.model.vo.HotelReserve;
+import semi.hotel.model.vo.HotelRoomInfo;
 
 /**
  * Servlet implementation class HotelReserveServlet
@@ -32,9 +32,14 @@ public class HotelReserveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HotelRoomInfo hr = new HotelService().hotelRoomInfo();
 		
+		if(hr!=null) {
+			RequestDispatcher view = request.getRequestDispatcher("/views/hotel/hotelReserve.jsp");
+			request.setAttribute("hotelRoomInfo", hr);
+			view.forward(request, response);
+		}
 		
-			
 		
 	}
 

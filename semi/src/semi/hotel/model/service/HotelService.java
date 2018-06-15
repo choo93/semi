@@ -9,6 +9,7 @@ import semi.hotel.model.dao.HotelDAO;
 import semi.hotel.model.vo.HotelInfo;
 import semi.hotel.model.vo.HotelListData;
 import semi.hotel.model.vo.HotelPageData;
+import semi.hotel.model.vo.HotelRoomInfo;
 
 public class HotelService {
 
@@ -37,5 +38,17 @@ public class HotelService {
 		
 		return hpd;
 	}
+
+	public HotelRoomInfo hotelRoomInfo() {
+		Connection conn = JDBCTemplate.getConnection();
+		HotelRoomInfo hr = new HotelDAO().hotelRoomInfo(conn);
+		JDBCTemplate.close(conn);
+		
+		return hr;
+	}
+
+	
+
+	
 
 }

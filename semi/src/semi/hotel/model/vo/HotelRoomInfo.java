@@ -1,14 +1,14 @@
 package semi.hotel.model.vo;
 
-public class HotelReserve {
+public class HotelRoomInfo {
 	private String roomCode;
 	private int roomPrice;
 	private String roomExplain;
 	private String roomFixedNumber;
 	
-	public HotelReserve() {}
+	public HotelRoomInfo() {}
 
-	public HotelReserve(String roomCode, int roomPrice, String roomExplain, String roomFixedNumber) {
+	public HotelRoomInfo(String roomCode, int roomPrice, String roomExplain, String roomFixedNumber) {
 		super();
 		this.roomCode = roomCode;
 		this.roomPrice = roomPrice;

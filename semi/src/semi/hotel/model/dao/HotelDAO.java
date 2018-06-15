@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import semi.hotel.model.vo.HotelInfo;
 import semi.hotel.model.vo.HotelListData;
+import semi.hotel.model.vo.HotelRoomInfo;
 
 public class HotelDAO {
 
@@ -206,6 +207,45 @@ public class HotelDAO {
 			sb.append("<li class='disabled'> <sapn>»</span> </li>");
 		}
 		return sb.toString();
+	}
+
+
+	public HotelRoomInfo hotelRoomInfo(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int a =1;
+		
+		if(a==1) {
+			
+		}else if(a==2) {
+			
+		}
+		
+		String query="select * from roomInfo where roomCode = ?";
+		
+		HotelRoomInfo hr = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			
+			if(rset.next())
+			{
+				hr.setRoomCode(rset.getString("roomCode"));
+				hr.setRoomPrice(rset.getInt("roomPrice"));
+				hr.setRoomExplain(rset.getString("roomExplain"));
+				hr.setRoomFixedNumber(rset.getString("roomFixedNumber"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return hr;
 	}
 
 }
