@@ -25,9 +25,7 @@ public class HotelService {
 		int naviCountPerPage = 5;
 		
 		ArrayList<HotelInfo> list = new HotelDAO().selectAllHotel(conn,currentPage,recordCountPerPage);
-		System.out.println(list);
 		String pageNavi = new HotelDAO().getHotelPageNavi(conn, currentPage, recordCountPerPage, naviCountPerPage);
-		System.out.println("pageNavi : "+pageNavi);
 		HotelPageData hpd = null;
 		if(!list.isEmpty() &&!pageNavi.isEmpty()) {
 		hpd = new HotelPageData();
