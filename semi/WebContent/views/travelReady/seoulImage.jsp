@@ -7,17 +7,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<link href="../../minhocss/bootstrap.min.css" rel="stylesheet">
+<link href="../../css/kfonts2.css" rel="stylesheet">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Insert title here</title>
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 	<link rel="stylesheet" href="../../css/main.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
@@ -84,10 +86,118 @@ else self.name = '';
 				<h3 style="font-size:50px;">서울 관광 이미지 다운로드</h3>
 			</div>
 			</div>
+		<div class="container"> 
+ <h1> 서울 관광 이미지 </h1>
+ <div class="row">
+    
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+          <div class="caption">
+            <h3>여긴 어디? </h3>
+            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div> 
+    
+        <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+          <div class="caption">
+            <h3>여긴 어디? </h3>
+            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div> 
+        <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+          <div class="caption">
+            <h3>여긴 어디? </h3>
+            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div> 
+        <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+          <div class="caption">
+            <h3>여긴 어디? </h3>
+            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div> 
+        <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+          <div class="caption">
+            <h3>여긴 어디? </h3>
+            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div> 
+        <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+          <div class="caption">
+            <h3>여긴 어디? </h3>
+            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div> 
+        <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+          <div class="caption">
+            <h3>여긴 어디? </h3>
+            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div> 
+        <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+          <div class="caption">
+            <h3>여긴 어디? </h3>
+            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div> 
+        <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+          <div class="caption">
+            <h3>여긴 어디? </h3>
+            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div> 
+        <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+          <div class="caption">
+            <h3>여긴 어디? </h3>
+            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div> 
+    
+    
+
+
+
+
+
+
+</div>
+</div>
 			
 
 			
 			</section>
 			<%@ include file="/views/main/footer.jsp"%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  
+    <script src="../../js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -145,7 +145,7 @@ else self.name = '';
 			</div>
 			</div>
 			
-			<div id="pagecontent">
+			<div id="pagecontent" >
 			<section id="content">
 				<h2 style="font-size:24px; font-weight:bold; color:#0080ff;">질문 & 답변</h2>
 				<div id="faqtitle">
