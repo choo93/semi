@@ -8,7 +8,7 @@
 <html>
 <head>
 
-<link href="../../minhocss/bootstrap.min.css" rel="stylesheet">
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
 <link href="../../css/kfonts2.css" rel="stylesheet">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,7 +20,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
-	<link rel="stylesheet" href="../../css/main.css">
+	<link rel="stylesheet" href="../../minhocss/main.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
 
@@ -80,12 +80,7 @@ else self.name = '';
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
 <section>
-  		<div id="pagetitle">
-			<div id="title">
-				<p style="height:50px;">현재위치  : 여행준비 >서울 관광 이미지 다운로드</p>
-				<h3 style="font-size:50px;">서울 관광 이미지 다운로드</h3>
-			</div>
-			</div>
+  	
 		<div class="container"> 
  <h1> 서울 관광 이미지 </h1>
  <div class="row">
