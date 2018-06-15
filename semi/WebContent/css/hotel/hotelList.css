@@ -367,3 +367,13 @@
 	height:50%;
 }
 
+#navi {
+	margin-left: 40%;
+	margin-bottom:30%;
+}
+#navi>a{
+	font-size:40px;
+}
+#navi>a>b{
+	font-size:40px;
+}

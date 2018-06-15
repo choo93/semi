@@ -489,6 +489,46 @@ public class Enjoydao {
 
 				return sb.toString();
 			}
+
+	public int deleteReview(Connection conn, int commentNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "delete from Element_Index_Review where seq_review=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, commentNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateReview(Connection conn, String commentTitle, String comment, int commentNo) {
+		PreparedStatement pstmt =null;
+		int result = 0;
+		
+		String query = "update Element_Index_Review set INDEX_TITLE=?, USER_COMMENT=? where SEQ_REVIEW=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, commentTitle);
+			pstmt.setString(2, comment);
+			pstmt.setInt(3, commentNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }
 
 

@@ -153,7 +153,7 @@ p {
 				</div>
 				</a>
 
-			<a href="#">
+			<a href="/faq">
 				<div id="FAQ" class="menu">
 					<div class="middle">
 						<div class="font">묻고 답하기</div>
@@ -161,7 +161,7 @@ p {
 						</p>
 					</div>
 				</div>
-			</a> <a href="/faq">
+			</a> <a href="#">
 				<div id="notice" class="menu">
 					<div class="middle">
 						<div class="font" style="color: black;">공지사항</div>

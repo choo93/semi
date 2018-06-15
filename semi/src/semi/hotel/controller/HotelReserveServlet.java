@@ -13,6 +13,10 @@ import javax.servlet.http.HttpSession;
 import semi.hotel.model.service.HotelService;
 import semi.hotel.model.vo.HotelReserve;
 
+
+import semi.hotel.model.service.HotelService;
+import semi.hotel.model.vo.HotelReserve;
+
 @WebServlet(name = "HotelReserve", urlPatterns = { "/hotelReserve" })
 public class HotelReserveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +26,7 @@ public class HotelReserveServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		HotelReserve hr = new HotelReserve();
 		
 		HttpSession session = request.getSession(false);
@@ -43,6 +48,7 @@ public class HotelReserveServlet extends HttpServlet {
 			request.setAttribute("reserve", "success");
 		}
 		view.forward(request, response);
+
 		
 	}
 
