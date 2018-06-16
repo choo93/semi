@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
-
+<%
+	SeoulImagePageData sipd=(SeoulImagePageData)request.getAttribute("SeoulImagePageData");
+	ArrayList<SeoulImageFile> list=sipd.getNoticelist();
+%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -75,107 +78,33 @@ if (self.name != 'reload') {
     self.location.reload(true);
 }
 else self.name = '';
+
+function insert(){
+	window.open("/views/travelReady/imagePop.jsp","_blank","width=500,height=200");
+}
+
 </script>
 
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
 <section>
   	
-		<div class="container"> 
- <h1> 서울 관광 이미지 </h1>
+	<div class="container"> 
+ <h1> 서울 관광 이미지  </h1>
+ <botton class="btn btn-primary" onclick="insert();">등록</botton>
  <div class="row">
-    
+    <%for(SeoulImageFile sif:list){ %>
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
-        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
+        <img src="<%=sif.getImageViewPath()%>" alt="...">
           <div class="caption">
-            <h3>여긴 어디? </h3>
+            <h3><%=sif.getTitle()%> </h3>
             <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
         </div>
       </div>
     </div> 
-    
-        <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
-          <div class="caption">
-            <h3>여긴 어디? </h3>
-            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
-        </div>
-      </div>
-    </div> 
-        <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
-          <div class="caption">
-            <h3>여긴 어디? </h3>
-            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
-        </div>
-      </div>
-    </div> 
-        <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
-          <div class="caption">
-            <h3>여긴 어디? </h3>
-            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
-        </div>
-      </div>
-    </div> 
-        <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
-          <div class="caption">
-            <h3>여긴 어디? </h3>
-            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
-        </div>
-      </div>
-    </div> 
-        <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
-          <div class="caption">
-            <h3>여긴 어디? </h3>
-            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
-        </div>
-      </div>
-    </div> 
-        <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
-          <div class="caption">
-            <h3>여긴 어디? </h3>
-            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
-        </div>
-      </div>
-    </div> 
-        <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
-          <div class="caption">
-            <h3>여긴 어디? </h3>
-            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
-        </div>
-      </div>
-    </div> 
-        <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
-          <div class="caption">
-            <h3>여긴 어디? </h3>
-            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
-        </div>
-      </div>
-    </div> 
-        <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="/views/travelReady/seoulImage/seoul.JPG" alt="...">
-          <div class="caption">
-            <h3>여긴 어디? </h3>
-            <p><a href="#" class="btn btn-primary" role="button">다운로드</a> <a href="#" class="btn btn-default" role="button">보기</a></p>
-        </div>
-      </div>
-    </div> 
+    <%} %>
+
     
     
 

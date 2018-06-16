@@ -142,7 +142,7 @@ p {
 						</div>
 			</div>
 			
-			<a href="#">
+			<a href="/seoulImage">
 			<div id="image" class="menu">
 				<div class="middle">
 						<div class="font">서울 관광 이미지</div>
