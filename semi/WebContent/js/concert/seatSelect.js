@@ -1,24 +1,20 @@
 
 
 var sel = false;
-var sel2 ="";
 function select(me){
 	if(!sel){
-		if(sel2==""){
-			sel = true;
-			me.style.backgroundColor = "blue";
-			document.getElementById('seatNo').value = me.id;
-			sel2 = me.id;
-		}
+		sel = true;
+		me.style.backgroundColor = "blue";
+		document.getElementById('seatNo').value = me.id;
 	}else{		// 선택이 0 일 때
-		if(me.id == sel2){
+		if(me.id == document.getElementById('seatNo').value){
 			sel=false;
 			me.style.backgroundColor = "white";
 			document.getElementById('seatNo').value = null;
-			sel2 = "";
 		}
 	}
 }
+
 function selBool(){
 	if(sel){
 		pay();
