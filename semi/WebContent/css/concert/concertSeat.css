@@ -6,9 +6,6 @@
 	box-sizing: border-box;
 }
 
-div {
-	border: 0.5px solid black;
-}
 
 #wrap {
 	width: 800px;
@@ -23,12 +20,14 @@ div {
 	text-align:center;
 	font-size:30px;
 	line-height:70px;
+	border: 0.5px solid black;
 }
 
 #seat {
 	width: 90%;
-	height: 85%;
+	height: 80%;
 	margin: auto;
+	border: 0.5px solid black;
 }
 
 #seat>div{
@@ -38,9 +37,41 @@ div {
 	margin-top:4%;
 	float:left;
 	text-align:center;
-	line-height:350%;
+	line-height:300%;
 	cursor:pointer;
+	background-color: RGB(0, 125, 195);
+	border: 0.5px solid black;
+	border-bottom:10px solid black;
 }
+
+#seat>div:hover{
+	border:4px solid red;
+	border-bottom:10px solid black;
+}
+
+#info{
+	margin-top:1%;
+	width:100%;	height:30px;
+}
+
+#info>div{
+	width:30%;	height:100%;
+	float:left;
+	margin-right:3.33%;
+}
+
+#info>div>div:first-child{
+	width:15%;	height:100%;
+	margin-right:10%;
+	float:left;
+}
+
+#info>div>div:last-child{
+	width:75%;	height:100%;
+	float:left;
+	line-height:200%;
+}
+
 #submit{
 	width:100px;	height:40px;
 	margin:auto;
@@ -48,9 +79,25 @@ div {
 	margin-left:350px;
 }
 
+#blue{
+	background-color: RGB(0, 125, 195);
+}
+
+#green{
+	background-color:red;
+}
+
+#gray{
+	background-color:gray;
+}
+
 #payy{
 	width:100px;	height:40px;
 	margin:auto;
 	margin-top:10px;
 	margin-left:350px;
+	background-color:RGB(0, 125, 195);
+	cursor:pointer;
+	border:1px solid RGB(0, 125, 195);
+	border-radius:10px;
 }

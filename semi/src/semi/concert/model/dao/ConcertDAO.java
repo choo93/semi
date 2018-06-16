@@ -191,7 +191,7 @@ public class ConcertDAO {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, cr.getConcertCode());
-			pstmt.setString(2, cr.getUserNo());
+			pstmt.setInt(2, cr.getUserNo());
 			pstmt.setInt(3, cr.getConcertPrice());
 			pstmt.setString(4, cr.getConcertReserveDate());
 			pstmt.setString(5, cr.getConcertReserveTime());

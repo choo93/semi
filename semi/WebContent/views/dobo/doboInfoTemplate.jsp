@@ -100,11 +100,21 @@
 						}%>
 						
 					</div>
-					<div id="comment">
-						<textarea>
-                    	</textarea>
-						<input type="submit" value="작성">
-					</div>
+					<form action="/commentLoad" method="get">
+                	<div id="commentt">댓글</div>
+                	<input type="hidden" value="ds" name="Index_Title">
+                	<div id="comment">
+                		<%if(session.getAttribute("user")!=null){ %>
+                			<textarea name="User_Comment"></textarea>
+                    		<input type="submit" value="작성">
+                		<%}else{ %>
+                			<textarea readonly placeholder="로그인 후 작성이 가능 합니다"></textarea>
+                			<input type="button" value="작성">
+                		<%} %>
+                	</div>
+                	<input type="hidden" value="<%= request.getParameter("indexNo") %>" name="index_titleNo">
+                	<input type="hidden" value="dobo" name="type">
+                	</form>
 
 				</div>
 			</div>

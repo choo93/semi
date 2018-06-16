@@ -48,7 +48,8 @@ div {
 	height: 70px;
 	background-color: RGB(229, 242, 249);
 	color: RGB(0, 125, 195);
-	padding: 20px;
+	padding-top:10px;
+	padding-left: 20px;
 	margin-bottom: 50px;
 }
 
@@ -69,6 +70,8 @@ div {
 #mainInfo>div:last-child {
 	width: 60%;
 	height: 100%;
+	padding-top:10px;
+	padding-left:20px;
 }
 
 #reserve {
@@ -162,6 +165,8 @@ div {
 	width: 60%;
 	height: 100%;
 	float: left;
+	padding-left:20px;
+	padding-top:10px;
 }
 
 #additional {
@@ -171,17 +176,29 @@ div {
 	/* margin-bottom: 50px; */
 }
 
+
+#commentt{
+	margin-top: 30px;
+	margin:auto;
+	width: 700px;
+	height: 65px;
+	font-size: 25px;
+	line-height: 40px;
+	padding-left: 10px;
+	background-color: RGB(245, 245, 245);
+	border-top:3px solid black;
+	
+}
+
 #comment {
 	width: 700px;
 	height: 240px;
 	margin: auto;
 	background-color: RGB(245, 245, 245);
-	margin-top: 30px;
 }
 
 textarea {
 	margin: auto;
-	margin-top: 20px;
 	width: 530px;
 	height: 180px;
 	display: block;

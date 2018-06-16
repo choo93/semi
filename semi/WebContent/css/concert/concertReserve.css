@@ -2,16 +2,28 @@
 *{
 	margin:0;	padding:0;
 	box-sizing:border-box;
-	
 }
 
 
 #wrap{
 	width:700px;	height:700px;
 	margin:auto;
+	padding-top:50px;
 }
+
+#wrap>label:first-child{
+	width:50%;	height:50px;
+	margin-left:40%;
+	font-size:40px;
+}
+
 #wrap>form{
 	width:100%;	height:100%;
+	margin-top:70px;
+}
+
+#wrap>form>div>label{
+	line-height:200%;
 }
 
 #time{
@@ -42,7 +54,7 @@
 #timed{
 	height:10%;	width:90%;
 	margin-left:5%;
-	margin-top:5%;
+	margin-top:8%;
 }
 
 #timed>label{
@@ -63,7 +75,7 @@
 #priced{
 	height:10%;	width:90%;
 	margin-left:5%;
-	margin-top:5%;
+	margin-top:8%;
 }
 
 #priced>label:first-child{
@@ -86,18 +98,12 @@
 #submit{
 	width:150px;	height:50px;
 	margin-left:300px;
-	margin-top:30px;
-	background-color:white;
+	margin-top:90px;
+	background-color:RGB(0, 125, 195);
 	font-size:20px;
 	font-weight:bold;
-	border-radius:5px;
+	border-radius:10px;
 	cursor:pointer;
+	color:white;
+	border:1px solid RGB(0, 125, 195);
 }
-
-#wrap>div{
-	
-}
-
-#wrap label{
-}
-

@@ -15,6 +15,10 @@ div {
 	height: 700px;
 }
 
+#wrap{
+	width:100%;
+}
+
 #room{
 	width:95%;	height:95%;
 	margin:2.5%;
@@ -28,8 +32,10 @@ div {
 	margin-top:1%;
 	margin-bottom:1%;
 	text-align:center;
-	line-height:350%;
+	line-height:330%;
 	cursor:pointer;
+	background-color:RGB(0, 125, 195);
+	border:0;
 }
 
 #room>hr{
@@ -52,4 +58,8 @@ div {
 	margin:auto;
 	margin-top:10px;
 	margin-left:350px;
+	background-color:RGB(0, 125, 195);
+	cursor:pointer;
+	border:1px solid RGB(0, 125, 195);
+	border-radius:10px;
 }

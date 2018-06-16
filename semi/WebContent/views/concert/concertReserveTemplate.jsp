@@ -10,6 +10,7 @@
 
 <body>
 	<div id="wrap">
+		<label>예약 하기</label>
 		<form action="/seatSelect" method="get">
 			<div id="dated">
 				<label>날짜선택  </label>

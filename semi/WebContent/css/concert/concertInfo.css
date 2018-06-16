@@ -180,16 +180,28 @@ dl>hr {
 	padding-right: 10px;
 }
 
+
+#commentt{
+	margin-top: 30px;
+	width: 635px;
+	height: 65px;
+	font-size: 25px;
+	line-height: 40px;
+	padding-left: 10px;
+	background-color: RGB(245, 245, 245);
+	border-top:3px solid black;
+}
+
 #comment {
 	width: 635px;
 	height: 240px;
 	background-color: RGB(245, 245, 245);
-	margin-top: 30px;
+	
 }
 
 textarea {
 	margin-left: 50px;
-	margin-top: 20px;
+	/* margin-top: 20px; */
 	width: 530px;
 	height: 180px;
 	display: block;
@@ -201,17 +213,4 @@ textarea {
 	float: right;
 	margin-top: 5px;
 	margin-right: 50px;
-}
-
-#topFooter {
-	width: 950px;
-	height: 190px;
-	margin: auto;
-	border-top: 3px solid black;
-}
-
-#bottomFooter {
-	width: 100%;
-	height: 150px;
-	background-color: RGB(244, 242, 242);
 }
