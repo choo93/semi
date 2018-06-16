@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import ="java.util.*" import = "semi.enjoy.model.vo.EnjoyFestival"
+	import ="java.text.SimpleDateFormat"
+	%>
+<% 
+ArrayList<EnjoyFestival> list = (ArrayList<EnjoyFestival>)request.getAttribute("list");
+SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
+Date currentTime = new Date ();
+String mTime = mSimpleDateFormat.format ( currentTime );
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,104 +78,31 @@
         	      },
         	      navLinks: true, // can click day/week names to navigate views,
         	      businessHours: true, // display business hours,
-              defaultDate : "2018-06-12"
+              defaultDate : "<%= mTime %>"
               
               ,droppable: true
             , editable : true
             , eventLimit : true
             , events: [
+            	<% for(EnjoyFestival EF : list) {%>
+            	
+            	
             	  {
-                      title: 'Business Lunch',
-                      start: '2018-06-03T13:00:00',
-                      constraint: 'businessHours'
-                    },
-                {
-                      title : "All Day Event"
-                    , start : "2018-06-01"
-                    
-                },
-                {
-                      title : "Long Event"
-                    , start : "2018-06-07"
-                    , end : "2018-06-10"
-                },
-                {
-                      id : 999
-                    , title : "Repeating Event"
-                    , start : "2018-06-09T16:00:00"
-                },
-                {
-                      id : 998
-                    , title : "Repeating Event"
-                    , start : "2018-06-16T16:00:00"
-                },
-                {
-                    id : 997
-                  , title : "Repeating Event2"
-                  , start : "2018-06-12T16:00:00"
-              	},
-              	{
-                    id : 996
-                  , title : "Repeating Event3"
-                  , start : "2018-06-12T16:00:00"
-              	},
-              	{
-                    id : 996
-                  , title : "Repeating Event4"
-                  , start : "2018-06-12T20:00:00"
-              	},
-              	{
-                    id : 996
-                  , title : "Repeating Event5"
-                  , start : "2018-06-12T18:00:00"
-              	},
-                {
-                      title : "Conference"
-                    , start : "2018-06-11"
-                    , end : "2018-06-13"
-                },
-                {
-                      title : "Meeting2"
-                    , start : "2018-06-20"
-                    , end : "2018-06-22",
-                    overlap: false,
-                    rendering: 'background',
-                    color: '#ff9f89'
-                },
-                {
-                    id: 'availableForMeeting',
-                    start: '2018-06-13T10:00:00',
-                    end: '2018-06-13T16:00:00',
-                    rendering: 'background'
-                  },
-                {
-                      title : "Lunch"
-                    , start : "2018-06-12T12:00:00"
-                },
-                {
-                      title : "Meeting"
-                    , start : "2018-06-12T14:30:00"
-                },
-                {
-                      title : "Happy Hour"
-                    , start : "2018-06-12T17:30:00"
-                },
-                {
-                      title : "Dinner"
-                    , start : "2018-06-12T20:00:00"
-                },
-                {
-                      title : "Birthday Party"
-                    , start : "2018-06-13T07:00:00"
-                },
-                {
-                      title : "Click for Google"
-                    , url : "http://google.com/"
-                    , start : "2018-06-28"
-                }
-            ]
+                      title: '<%=EF.getFestival_title()%>',
+                      <% StringTokenizer ST = new StringTokenizer(EF.getFestival_ontime(), " ~ ");
+                      while(ST.hasMoreTokens()){%>
+                      start: '<%=ST.nextToken()%>' ,
+                      end : '<%=ST.nextToken()%>',
+                      <%}%>
+                      id : '<%=EF.getSEQ_Index_TitleNo()%>'
+                      
+                    }
+            	  <%}%>
+            	  ]
+              
         });
     });
+ 
 </script>
 
 
