@@ -490,6 +490,7 @@ public class Enjoydao {
 				return sb.toString();
 			}
 
+
 	public int deleteReview(Connection conn, int commentNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -529,6 +530,41 @@ public class Enjoydao {
 		}
 		return result;
 	}
+	public ArrayList<EnjoyFestival> AllFestivalData(Connection conn) {
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      String Query = "select * from festival";
+	      ArrayList<EnjoyFestival> list = new ArrayList<EnjoyFestival>();
+
+	      try {
+	         pstmt = conn.prepareStatement(Query);
+	         rset = pstmt.executeQuery();
+
+	         EnjoyFestival EF = null;
+	         while (rset.next()) {
+	            EF = new EnjoyFestival();
+	            EF.setFestival_index(rset.getInt(1));
+	            EF.setFestival_title(rset.getString(3));
+	            EF.setSEQ_Index_TitleNo(rset.getInt(4));
+	            EF.setFestival_period(rset.getString(8));
+	            EF.setFestival_ontime(rset.getString(10));
+	            list.add(EF);
+
+	         }
+
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } finally {
+	         JDBCTemplate.close(rset);
+	         JDBCTemplate.close(pstmt);
+	      }
+
+	      return list;
+	      
+	      
+	   }
+	
 }
 
 
