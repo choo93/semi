@@ -153,14 +153,14 @@
 						
 					</div>
 					
-					<div class="dis" style="height:1000px; margin-top:32px;">
+					<div class="dis" style="height:2000px; margin-top:32px;">
 					<%for(GuideBookDown gbd : list) {%>
 						<div class="item">
 							<div class="img" style="<%=gbd.getGuideBookImagePath()%>"></div>
 							<div class="name"><%=gbd.getGuideName()%></div>
 							<form action="/pdfDown" method="post">
 							<input type="hidden" name="orderNo" value="<%=gbd.getGuideNo()%>" >
-							<div class="button">PDF View<br>(75MB)<input type="submit" id="btn" value="다운로드"></div>
+							<div class="button">PDF View<br>(<%=gbd.getFileSize()%>)<input type="submit" id="btn" value="다운로드"></div>
 							</form>
 						</div>
 						<%} %>

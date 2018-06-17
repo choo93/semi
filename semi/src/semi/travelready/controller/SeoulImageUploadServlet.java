@@ -42,7 +42,7 @@ public class SeoulImageUploadServlet extends HttpServlet {
 		
 		int FileSizeLimit=1024*1021*5;
 		
-		String uploadFilePath=getServletContext().getRealPath("/")+"seoulImageUpload";
+		String uploadFilePath=getServletContext().getRealPath("/")+"image/travelReady/seoulupload";
 		
 		String encType="utf-8";
 		
@@ -75,7 +75,7 @@ public class SeoulImageUploadServlet extends HttpServlet {
 		sif.setImageFileSize(fileSize);
 		sif.setImageUploadTime(uploadTime);
 		sif.setTitle(title);
-		sif.setImageViewPath("/seoulImageUpload/"+afterFileName);
+		sif.setImageViewPath("/image/travelReady/seoulupload/"+afterFileName);
 		
 		int result=new SeoulImageService().imageUpload(sif);
 		

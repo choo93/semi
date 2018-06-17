@@ -116,7 +116,7 @@ public class GuideBookRequestDao {
 				GuideBookDown gbd=new GuideBookDown();
 				
 				gbd.setGuideNo(rset.getInt("guideno"));
-				gbd.setGuideName(rset.getString("guidename"));
+				gbd.setGuideName(rset.getString("guidebookname"));
 				gbd.setGuideBookImagePath(rset.getString("guidebookimagepath"));
 				gbd.setGuidePDFPath(rset.getString("guidepdfpath"));
 				gbd.setFileSize(rset.getString("filesize"));
@@ -153,11 +153,11 @@ public class GuideBookRequestDao {
 			while(rset.next()) {
 			gbd=new GuideBookDown();
 			gbd.setGuideNo(rset.getInt("guideno"));
-			gbd.setGuideName(rset.getString("guidename"));
+			gbd.setGuideName(rset.getString("guidebookname"));
 			gbd.setGuideBookImagePath(rset.getString("guidebookimagepath"));
 			gbd.setGuidePDFPath(rset.getString("guidepdfpath"));
 			gbd.setFileSize(rset.getString("filesize"));
-			gbd.setGuideBookName(rset.getString("guidebookName"));
+			
 			
 			}
 			
