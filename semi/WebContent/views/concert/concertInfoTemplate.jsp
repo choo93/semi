@@ -119,7 +119,7 @@
                 </div>
                 
                 <div>
-                <form action="/commentLoad" method="get">
+                <form action="/commentAdd" method="get">
                 	<div id="commentt">댓글</div>
                 	<input type="hidden" value="ds" name="Index_Title">
                 	<div id="comment">
@@ -134,8 +134,20 @@
                 	<input type="hidden" value="<%= request.getParameter("indexNo") %>" name="index_titleNo">
                 	<input type="hidden" value="concert" name="type">
                 	</form>
+                	<div id="commentList">
+						<div>
+							<div id="commentTitle">
+								<div>choo93</div>
+								<div>2018-06-25</div>
+							</div>
+							<div id="commentConctent">
+								as
+							</div>
+						</div>
+					</div>
                 </div>
-
+					
+				
 				</div>
         </div>
     </div>

@@ -10,11 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import semi.enjoy.model.service.EnjoyService;
 
-@WebServlet(name = "CommentLoad", urlPatterns = { "/commentLoad" })
-public class CommentLoadServlet extends HttpServlet {
+@WebServlet(name = "CommentAdd", urlPatterns = { "/commentAdd" })
+public class CommentAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public CommentLoadServlet() {
+	public CommentAddServlet() {
 		super();
 	}
 
