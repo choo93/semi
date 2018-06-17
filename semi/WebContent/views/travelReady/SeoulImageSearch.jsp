@@ -13,6 +13,7 @@
 
 <link href="../../css/bootstrap.min.css" rel="stylesheet">
 <link href="../../css/kfonts2.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/travelReady/main.css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,6 +77,8 @@
     color: #0171b0;
     line-height: 22px;
 }
+
+
 
 
 </style>

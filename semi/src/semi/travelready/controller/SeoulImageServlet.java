@@ -52,6 +52,7 @@ int currentPage;
 			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/seoulImage.jsp");
 			request.setAttribute("SeoulImagePageData", sipd);
 			view.forward(request, response);
+			
 		}
 	}
 

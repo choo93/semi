@@ -13,6 +13,7 @@
 
 <link href="../../css/bootstrap.min.css" rel="stylesheet">
 <link href="../../css/kfonts2.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/travelReady/main.css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,9 +83,21 @@
 <script>
 
 
+function contentChange(){
+	
+	
+	
+	document.getElementById('div1').style.display="block";
+	document.getElementById('imagechange').style.display="none";
+	  $("#div1").load("/views/travelReady/SeoulImageBody.jsp");
+	
+	
+}
+
 function insert(){
 	window.open("/views/travelReady/imagePop.jsp","_blank","width=500,height=200");
 }
+
 
 </script>
 
@@ -111,9 +124,9 @@ function insert(){
   </div>
 </form>
 </center>
-
+<div id="div1" style="width:100%; height:700px; display:none;"></div>
   	
-	<div class="container"> 
+	<div id="imagechange" class="container"> 
  <h1> 서울 관광 이미지  </h1>
  <botton class="btn btn-primary" onclick="insert();">등록</botton>총<%=sipd.getRecordTotalCount()%>
  <div class="row">
@@ -125,18 +138,11 @@ function insert(){
             <h3><%=sif.getTitle()%> </h3>
           
             <p><a href="/seoulImageDown?imageNo=<%=sif.getImageN0()%>" class="btn btn-primary" role="button">다운로드</a> 
-            <a href="/views/travelReady/SeoulImageBody.jsp" class="btn btn-default" role="button">보기</a></p>
+            <a href="#" onclick="contentChange();" class="btn btn-default" role="button">보기</a></p>
         </div>
       </div>
     </div> 
     <%} %>
-
-    
-    
-
-
-
-
 
 
 </div>
