@@ -68,9 +68,12 @@
 					<%
 						eld.getIndex_TitleNo();
 							eld.getList_Element();
+							StringTokenizer STImage = new StringTokenizer(eld.getIndex_Image(),"##");
+							
+								
 					%>
 					<div class="photo"
-						style="float:left; width: 400px; height: 200px; border-radius: 12px; background-image: url(<%=eld.getIndex_Image()%>);">
+						style="float:left; width: 400px; height: 200px; border-radius: 12px; background-image: url(<%=STImage.nextToken()%>);">
 						<!--url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);  -->
 					</div>
 
