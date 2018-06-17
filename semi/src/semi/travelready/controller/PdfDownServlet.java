@@ -41,21 +41,19 @@ public class PdfDownServlet extends HttpServlet {
 			
 			
 			if(gbd!=null) {
-				//해당 파일을 열람
+				
 				File file=new File(gbd.getGuidePDFPath());
 				
-				//파일이름을 운영체제(windows)에 맞게 인코딩 해주어야 함
-				String encFileName=new String(gbd.getGuideBookName().getBytes(),"iso-8859-1");
-				//파일의 내용을 전송시에는 response 헤더를 변경해주어야 함
+		
+				String encFileName=new String(gbd.getGuideName().getBytes(),"iso-8859-1");
+			
 				response.setContentType("application/octet-stream");
 				response.setContentLengthLong(file.length());
 				response.setHeader("Content-Disposition", "attachment;filename="+encFileName);
 				
-				//파일의 내용을 읽어와야 전송하기 때문에 내용을 가져올 수 있는 inputstream 사용
+			
 				FileInputStream fileIn=new FileInputStream(file);
-				//파일의 내용을 클라이언트한테 전송하기 위하여
-				//response객체를 이용하여 outputStream을 가져옴
-				
+			
 				ServletOutputStream out=response.getOutputStream();
 				
 				byte[] outputByte=new byte[4096];
