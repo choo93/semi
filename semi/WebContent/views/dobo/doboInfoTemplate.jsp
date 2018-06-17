@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="semi.dobo.model.vo.*"	
+	import="semi.dobo.model.vo.*"	import="semi.enjoy.model.vo.*"
+    import="java.util.*"
 %>
+<%
+	CommentData cd = (CommentData)request.getAttribute("commentData");
+	ArrayList<EnjoyComment> commentList = new ArrayList<EnjoyComment>();
+	String navi="";
+	if(cd!=null){
+		commentList = cd.getCommentList();
+		navi = cd.getPageNavi();
+	}
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,7 +110,7 @@
 						}%>
 						
 					</div>
-					<form action="/commentLoad" method="get">
+					<form action="/commentAdd" method="get">
                 	<div id="commentt">댓글</div>
                 	<input type="hidden" value="ds" name="Index_Title">
                 	<div id="comment">
@@ -115,7 +125,28 @@
                 	<input type="hidden" value="<%= request.getParameter("indexNo") %>" name="index_titleNo">
                 	<input type="hidden" value="dobo" name="type">
                 	</form>
-
+					<div id="commentList">
+                		<%
+                		if(commentList.size()>0){ 
+                			for(EnjoyComment comment: commentList){
+                		%>
+                		
+						<div>
+							<div id="commentTitle">
+								<div><%=comment.getUSER_ID() %></div>
+								<div><%=comment.getWrite_Date() %></div>
+							</div>
+							<div id="commentContent"><pre><%=comment.getUSER_COMMNET() %></pre></div>
+						</div>
+						
+						<%
+                			}%>
+                			<label id="navi"><%= navi%></label>
+                		<%
+						}else{ %>
+							<div id="noComment">등록된 댓글이 없습니다.</div>
+						<%} %>
+					</div>
 				</div>
 			</div>
 		</div>

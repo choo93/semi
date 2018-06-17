@@ -110,6 +110,7 @@ div {
 	background-color: white;
 	font-size: 14px;
 	font-weight: bold;
+	border-right:1px solid lightgrey;
 }
 
 #sel>div:last-child>div>input {
@@ -118,8 +119,16 @@ div {
 }
 #time{
 	width:65%;
-	text-align:center;
+	text-align-last:center;
+	font-size:20px;
 }
+
+#date{
+	border-right:1px solid lightgrey;
+	text-align-last:center;
+}
+
+
 #time>option{
 	height:50px;
 	text-align:center;

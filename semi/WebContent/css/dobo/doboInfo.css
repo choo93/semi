@@ -211,3 +211,59 @@ textarea {
 	margin-top: 5px;
 	margin-right: 85px;
 }
+
+
+#commentList{
+	width: 635px;
+	margin:auto;
+	margin-top:50px;
+	margin-bottom:50px;
+	border-top:1px solid lightgrey;
+	border-bottom:1px solid lightgrey;
+	padding:30px;
+	overflow:auto;
+	
+}
+
+#commentList>div:not(#noComment){
+	width:90%;	height:100px;	margin:auto;
+	border-bottom:1px solid lightgrey;
+	margin-bottom:20px;
+}
+#commentTitle{
+	width:100%;
+	height:20%;
+}
+#commentTitle>div:first-child{
+	width:15%;	height:100%;
+	float:left;
+	font-weight:bold;
+}
+
+#commentTitle>div:last-child{
+	width:85%;	height:100%;
+	float:left;
+	color:grey;
+}
+
+#commentContent{
+	width:100%;	height:80%;
+	padding-top:10px;
+	overflow:auto;
+}
+
+#noComment{
+	font-size:40px;
+	text-align:center;
+}
+
+
+#navi {
+	margin-left: 40%;
+}
+#navi>a{
+	font-size:20px;
+}
+#navi>a>b{
+	font-size:20px;
+}

@@ -1,8 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="semi.login.model.vo.*"
+    import="semi.login.model.vo.*"	import="semi.enjoy.model.vo.*"
+    import="java.util.*"
     %>
-<% String reserve = (String)request.getAttribute("reserve"); %>    
+<% String reserve = (String)request.getAttribute("reserve"); 
+	CommentData cd = (CommentData)request.getAttribute("commentData");
+	ArrayList<EnjoyComment> commentList = new ArrayList<EnjoyComment>();
+	String navi="";
+	if(cd!=null){
+		commentList = cd.getCommentList();
+		navi = cd.getPageNavi();
+	}
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -135,15 +144,26 @@
                 	<input type="hidden" value="concert" name="type">
                 	</form>
                 	<div id="commentList">
+                		<%
+                		if(commentList.size()>0){ 
+                			for(EnjoyComment comment: commentList){
+                		%>
+                		
 						<div>
 							<div id="commentTitle">
-								<div>choo93</div>
-								<div>2018-06-25</div>
+								<div><%=comment.getUSER_ID() %></div>
+								<div><%=comment.getWrite_Date() %></div>
 							</div>
-							<div id="commentConctent">
-								as
-							</div>
+							<div id="commentContent"><pre><%=comment.getUSER_COMMNET() %></pre></div>
 						</div>
+						
+						<%
+                			}%>
+                			<label id="navi"><%= navi%></label>
+                		<%
+						}else{ %>
+							<div id="noComment">등록된 댓글이 없습니다.</div>
+						<%} %>
 					</div>
                 </div>
 					

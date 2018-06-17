@@ -20,7 +20,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 <body>
 	<form action="/hotelReserve">
 	<div id="wrap">
-		<div>호실 선택</div>
+		<div id="title">호실 선택</div>
         <div id="room">
             <%for(int i=0;i<10;i++){ %>
             	<%for(int j=0;j<8;j++){ %>
@@ -38,9 +38,26 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
         <input type="hidden" name="price" value="<%=hr.getPrice() %>">
         <input type="hidden" name="date" value="<%=hr.getReserveDate() %>">
         <input type="hidden" name="roomCode" value="<%=hr.getRoomCode() %>">
-    </div>
-    	<button id="payy" type="button" onclick="selBool();">결제하기</button>
+        
+        <div id="info">
+        	<div>
+        		<div id="blue"></div>
+        		<div>선택 가능 좌석</div>
+        	</div>
+        	<div>
+        		<div id="green"></div>
+        		<div>선택한 좌석</div>
+        	</div>
+        	<div>
+        		<div id="gray"></div>
+        		<div>사용중인 좌석</div>
+        	</div>
+        </div>
+        
+        <button id="payy" type="button" onclick="selBool();">결제하기</button>
     	<input id="submit" type="submit" value="예약 완료" style="display:none;">
+    </div>
+    	
     </form>
     <script>
 		window.onload=function(){
