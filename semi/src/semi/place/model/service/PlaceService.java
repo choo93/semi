@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import semi.place.model.dao.PlaceDao;
-import semi.place.model.vo.PageData;
+import semi.place.model.vo.PlacePageData;
 import semi.place.model.vo.PlaceDetailData;
 import semi.place.model.vo.RankListData;
 
@@ -13,7 +13,7 @@ public class PlaceService {
 
 
 
-	public PageData getListData(int currentPage, String search, String type) {
+	public PlacePageData getListData(int currentPage, String search, String type) {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		
@@ -27,9 +27,9 @@ public class PlaceService {
 		
 		
 		
-		PageData pd =null;
+		PlacePageData pd =null;
 		if(!list.isEmpty() &&!PageNavi.isEmpty()) {
-			pd = new PageData();
+			pd = new PlacePageData();
 			pd.setPlaceList(list);
 			pd.setPageNavi(PageNavi);
 		}

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 
 
-public class PageData {
+public class PlacePageData {
 	private ArrayList<RankListData> placeList;
 	private String pageNavi;
 	
-	public PageData() {
+	public PlacePageData() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PageData(ArrayList<RankListData> placeList, String pageNavi) {
+	public PlacePageData(ArrayList<RankListData> placeList, String pageNavi) {
 		super();
 		this.placeList = placeList;
 		this.pageNavi = pageNavi;

@@ -2,7 +2,7 @@
    pageEncoding="UTF-8"%>
     <%@ page import="semi.place.model.vo.*" import="java.util.*" %>
         <% 	
-PageData pd = (PageData)request.getAttribute("pageData");
+PlacePageData pd = (PlacePageData)request.getAttribute("pageData");
 ArrayList<RankListData> list = pd.getPlaceList();
 String pageNavi = pd.getPageNavi();
 
