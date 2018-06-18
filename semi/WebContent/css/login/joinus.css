@@ -1,0 +1,23 @@
+*{margin:0;padding:0;}
+h3{margin:0!important;clear:both;}
+@media screen and ( min-width:1024px ) {
+    #menu_icon{
+    display:block;
+    }
+    #logo{
+        display:none;
+    }
+    #login_join{
+        display:none;
+    }
+    #main_category{
+        display:none;
+    }
+    header{
+        width:50px;
+    }
+    section{
+        padding-left:51px;
+    }
+}
+

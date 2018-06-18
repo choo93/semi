@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import semi.login.model.vo.SeoulUser;
@@ -52,6 +54,7 @@ public class UserDao {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userId);
 			rset = pstmt.executeQuery();
+			System.out.println("1. "+query);
 			if(rset.next()) {
 				if(rset.getInt("change_date")>=90) {
 					result = true;
@@ -63,6 +66,132 @@ public class UserDao {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public ArrayList<SeoulUser> allSelect(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "select * from seoul_user";
+		ArrayList<SeoulUser> list = new ArrayList<SeoulUser>();
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			while(rset.next()) {
+				SeoulUser su = new SeoulUser();
+				su.setUserNo(rset.getInt("user_no"));
+				su.setUserId(rset.getString("user_id"));
+				su.setUserPwd(rset.getString("user_pwd"));
+				su.setUserName(rset.getString("user_name"));
+				su.setUserEmail(rset.getString("user_email"));
+				su.setUserPhone(rset.getString("user_phone"));
+				su.setUserAddr(rset.getString("user_addr"));
+				su.setUserJoindate(rset.getDate("user_joindate"));
+				su.setUserActive(rset.getString("user_active"));
+				su.setUserModified(rset.getDate("user_modified"));
+				list.add(su);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return list;
+	}
+
+	public int deleteUser(Connection conn, String userId, String userPwd) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "delete from seoul_user where user_id=? and user_pwd=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertUser(Connection conn, SeoulUser su) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "insert into seoul_user values(sequence_user.nextval,?,?,?,?,?,?,sysdate,'Y',sysdate)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, su.getUserId());
+			pstmt.setString(2, su.getUserPwd());
+			pstmt.setString(3, su.getUserName());
+			pstmt.setString(4, su.getUserEmail());
+			pstmt.setString(5, su.getUserPhone());
+			pstmt.setString(6, su.getUserAddr());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int activation(Connection conn, String userActive, String userId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "update seoul_user set user_active = ? where user_id = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userActive);
+			pstmt.setString(2, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateUser(Connection conn, SeoulUser su) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		boolean changePwd = false;
+		String query = "select user_pwd from seoul_user where user_id=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, su.getUserId());
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				if(!(su.getUserPwd().equals(rset.getString("user_pwd")))) {
+					changePwd = true;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		query = null;
+		if(changePwd==true) {
+			query = "update seoul_user set user_pwd=?, user_email=?, user_phone=?, user_addr=?, user_modified=sysdate where user_id=?";
+		}else {
+			query = "update seoul_user set user_pwd=?, user_email=?, user_phone=?, user_addr=? where user_id=?";
+		}
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, su.getUserPwd());
+			pstmt.setString(2, su.getUserEmail());
+			pstmt.setString(3, su.getUserPhone());
+			pstmt.setString(4, su.getUserAddr());
+			pstmt.setString(5, su.getUserId());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
