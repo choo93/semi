@@ -5,10 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import common.JDBCTemplate;
 import semi.enjoy.model.vo.EnjoyComment;
 import semi.enjoy.model.vo.EnjoyDetailData1;
+import semi.enjoy.model.vo.EnjoyFestival;
 import semi.enjoy.model.vo.EnjoyListData;
 
 
@@ -564,6 +566,130 @@ public class Enjoydao {
 	      
 	      
 	   }
+
+	public int insertCrawlerBasicInfor(Connection conn, String currentTypeElement, String titleName, String bid,
+			String writeDate, String tags, String mainsrc) {
+		// TODO Auto-generated method stub
+		
+		PreparedStatement pstmt=  null;
+		int result = 0;
+		String Query ="Insert into list_Element values(?,list_Element_SEQ.nextval,?,?,?,?,?) ";
+		try {
+			pstmt = conn.prepareStatement(Query);
+			pstmt.setString(1, currentTypeElement);
+			pstmt.setString(2, titleName);
+			pstmt.setString(3, bid);
+			pstmt.setString(4, writeDate);
+			pstmt.setString(5, tags);
+			pstmt.setString(6, mainsrc);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return result;
+		
+	}
+
+	public int insertCrawlerDefailInfor(Connection conn, String currentTypeElement, String addr, String phone,
+			String weburl, String ontime, String offday, String onday, String notice, String payment, String disabled,
+			String utilly) {
+
+		
+		PreparedStatement pstmt=  null;
+		int result = 0;
+		String Query ="Insert into Element_Index_detail values(list_Element_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(Query);
+			pstmt.setString(1, currentTypeElement);
+			pstmt.setString(2, addr);
+			pstmt.setString(3, phone);
+			pstmt.setString(4, weburl);
+			pstmt.setString(5, ontime);
+			pstmt.setString(6, offday);
+			pstmt.setString(7, onday);
+			pstmt.setString(8, notice);
+			pstmt.setString(9, payment);
+			pstmt.setString(10, disabled);
+			pstmt.setString(11, utilly);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return result;
+		
+	}
+
+	public int insertCrawlerTotal(Connection conn, String currentTypeElement, String addr, String phone, String weburl,
+			String ontime, String offday, String onday, String notice, String payment, String disabled, String utilly,
+			String titleName, String bid, String writeDate, String tags, String subImage) {
+		// TODO Auto-generated method stub
+		
+		
+		PreparedStatement pstmt=  null;
+		
+		int result = 0;
+		int result2 = 0;
+		String Query ="Insert into list_Element values(?,list_Element_SEQ.nextval,?,?,?,?,?) ";
+		String Query2 ="Insert into Element_Index_detail values(list_Element_SEQ.currval,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(Query);
+			pstmt.setString(1, currentTypeElement);
+			pstmt.setString(2, titleName);
+			pstmt.setString(3, bid);
+			pstmt.setString(4, writeDate);
+			pstmt.setString(5, tags);
+			pstmt.setString(6, subImage);
+			result = pstmt.executeUpdate();
+			
+			pstmt = conn.prepareStatement(Query2);
+			pstmt.setString(1, currentTypeElement);
+			pstmt.setString(2, addr);
+			pstmt.setString(3, phone);
+			pstmt.setString(4, weburl);
+			pstmt.setString(5, ontime);
+			pstmt.setString(6, offday);
+			pstmt.setString(7, onday);
+			pstmt.setString(8, notice);
+			pstmt.setString(9, payment);
+			pstmt.setString(10, disabled);
+			pstmt.setString(11, utilly);
+			
+			
+			result2 = pstmt.executeUpdate();
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result*result2;
+	
+
+		
+
+	}
 	
 }
 
