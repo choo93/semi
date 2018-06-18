@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% String reserve = (String)request.getAttribute("reserve"); %>    
+    pageEncoding="UTF-8"
+    import="semi.login.model.vo.*"	import="semi.enjoy.model.vo.*"
+    import="java.util.*"
+    %>
+<% String reserve = (String)request.getAttribute("reserve"); 
+	CommentData cd = (CommentData)request.getAttribute("commentData");
+	ArrayList<EnjoyComment> commentList = new ArrayList<EnjoyComment>();
+	String navi="";
+	if(cd!=null){
+		commentList = cd.getCommentList();
+		navi = cd.getPageNavi();
+	}
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,41 +20,13 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="../../css/main.css">
 	<link rel="stylesheet" href="/css/concert/concertInfo.css">
+	
+<link rel="stylesheet" href="../../css/enjoy/ReviewBox.css">
+<link rel="stylesheet" href="../../css/enjoy/reviewInput.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
 	<script src="/js/concert/concertInfo.js"></script>
-	<%-- <%
-	if(reserve!=null){
-	if(reserve.equals("success")){
-
-	%>
-		<script type="text/javascript">
-			
-			window.onload = function(){
-				if(opener!=null){
-					alert('예약 되었습니다.');
-					opener.location.reload();
-					window.close();
-				}
-			}
-			
-		</script>
-	<%
-	}else if(reserve.equals("fail")){
-	%>
-		<script type="text/javascript">
-			window.onload = function(){
-				if(opener!=null){
-					alert('예약에 실패하였습니다.');
-					opener.location.reload();
-					window.close();
-				}
-			}
-			
-		</script>
-	<%
-	}}%> --%>
-		
+	
 	<script>
         // 이거는 자바 스크립트 선언에서 가져오는 듯
         function initMap() {
@@ -117,7 +100,12 @@
                         ${requestScope.concertInfo.concertDate }
                     </div>
                     <div id="reserveBtn">
-                        <button onclick="reserve(${requestScope.concertInfo.indexNo },${requestScope.concertInfo.concertCode }, ${requestScope.concertInfo.concertPrice });">예약하기</button>
+                    	<%
+                    	if(session.getAttribute("user")!=null){ %>                    
+                        	<button onclick="reserve(${requestScope.concertInfo.indexNo },${requestScope.concertInfo.concertCode }, ${requestScope.concertInfo.concertPrice });">예약하기</button>
+                        <%}else{ %>
+                        	<button onclick="nologin();">예약하기</button>
+                        <%} %>
                     </div>
                 </div>
             </div>
@@ -138,14 +126,49 @@
                 		
                 	</div>
                 </div>
+                
                 <div>
+                <form action="/commentAdd" method="get">
+                	<div id="commentt">댓글</div>
+                	<input type="hidden" value="ds" name="Index_Title">
                 	<div id="comment">
-                		<textarea>
-                    	</textarea>
-                    	<input type="submit" value="작성">
+                		<%if(session.getAttribute("user")!=null){ %>
+                			<textarea name="User_Comment"></textarea>
+                    		<input type="submit" value="작성">
+                		<%}else{ %>
+                			<textarea readonly placeholder="로그인 후 작성이 가능 합니다"></textarea>
+                			<input type="button" value="작성">
+                		<%} %>
                 	</div>
+                	<input type="hidden" value="<%= request.getParameter("indexNo") %>" name="index_titleNo">
+                	<input type="hidden" value="concert" name="type">
+                	</form>
+                	<div id="commentList">
+                		<%
+                		if(commentList.size()>0){ 
+                			for(EnjoyComment comment: commentList){
+                		%>
+                		
+						<div>
+							<div id="commentTitle">
+								<div><%=comment.getUSER_ID() %></div>
+								<div><%=comment.getWrite_Date() %></div>
+							</div>
+							<div id="commentContent"><pre><%=comment.getUSER_COMMNET() %></pre></div>
+						</div>
+						
+						<%
+                			}%>
+                			<label id="navi"><%= navi%></label>
+                		<%
+						}else{ %>
+							<div id="noComment">등록된 댓글이 없습니다.</div>
+						<%} %>
+					</div>
                 </div>
-            </div>
+					
+				
+				</div>
         </div>
     </div>
 	</section>

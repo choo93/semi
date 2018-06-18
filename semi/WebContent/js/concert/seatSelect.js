@@ -4,14 +4,17 @@ var sel = false;
 function select(me){
 	if(!sel){
 		sel = true;
-		me.style.backgroundColor = "blue";
+		me.style.backgroundColor = "red";
 		document.getElementById('seatNo').value = me.id;
-	}else{
-		sel=false;
-		me.style.backgroundColor = "white";
-		document.getElementById('seatNo').value = null;
+	}else{		// 선택이 0 일 때
+		if(me.id == document.getElementById('seatNo').value){
+			sel=false;
+			me.style.backgroundColor = "RGB(0, 125, 195)";
+			document.getElementById('seatNo').value = null;
+		}
 	}
 }
+
 function selBool(){
 	if(sel){
 		pay();

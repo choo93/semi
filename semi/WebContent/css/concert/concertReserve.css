@@ -1,5 +1,109 @@
 @charset "UTF-8";
+*{
+	margin:0;	padding:0;
+	box-sizing:border-box;
+}
+
+
+#wrap{
+	width:700px;	height:700px;
+	margin:auto;
+	padding-top:50px;
+}
+
+#wrap>label:first-child{
+	width:50%;	height:50px;
+	margin-left:40%;
+	font-size:40px;
+}
+
+#wrap>form{
+	width:100%;	height:100%;
+	margin-top:70px;
+}
+
+#wrap>form>div>label{
+	line-height:200%;
+}
+
 #time{
 	width:150px;
 	height:30px;
+}
+
+#dated{
+	height:10%;	width:90%;
+	margin-left:5%;
+	margin-top:5%;
+}
+
+#dated>label{
+	display:block;
+	width:30%;	height:100%;
+	color:lightgrey;
+	float:left;
+	font-size:30px;
+}
+#date{
+	width:70%;	height:100%;
+	font-size:30px;
+	text-align:center;
+	color:lightgrey;
+}
+
+#timed{
+	height:10%;	width:90%;
+	margin-left:5%;
+	margin-top:8%;
+}
+
+#timed>label{
+	display:block;
+	width:30%;	height:100%;
+	color:lightgrey;
+	float:left;
+	font-size:30px;
+}
+
+#time{
+	width:70%;	height:100%;
+	font-size:30px;
+	text-align-last:center;
+	color:lightgrey;
+}
+
+#priced{
+	height:10%;	width:90%;
+	margin-left:5%;
+	margin-top:8%;
+}
+
+#priced>label:first-child{
+	display:block;
+	width:30%;	height:100%;
+	color:lightgrey;
+	float:left;
+	font-size:30px;
+}
+
+#price{
+	display:block;
+	width:70%;	height:100%;
+	font-size:30px;
+	text-align:center;
+	float:left;
+	color:lightgrey;
+}
+
+#submit{
+	width:150px;	height:50px;
+	margin-left:300px;
+	margin-top:90px;
+	background-color:RGB(0, 125, 195);
+	font-size:20px;
+	font-weight:bold;
+	border-radius:10px;
+	cursor:pointer;
+	color:white;
+	border:1px solid RGB(0, 125, 195);
 }

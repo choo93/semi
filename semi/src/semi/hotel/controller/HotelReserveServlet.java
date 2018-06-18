@@ -12,8 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import semi.hotel.model.service.HotelService;
 import semi.hotel.model.vo.HotelReserve;
-
-
+import semi.login.model.vo.SeoulUser;
 import semi.hotel.model.service.HotelService;
 import semi.hotel.model.vo.HotelReserve;
 
@@ -32,8 +31,7 @@ public class HotelReserveServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		hr.setHotelCode(request.getParameter("hotelCode"));
-		//hr.setUserNo(((Member)session.getAttribute("user")).getUserNo());
-		hr.setUserNo(1);
+		hr.setUserNo(((SeoulUser)session.getAttribute("user")).getUserNo());
 		hr.setRoomNo(Integer.parseInt(request.getParameter("roomNo")));
 		hr.setRoomCode(request.getParameter("roomCode"));
 		hr.setReserveDate(request.getParameter("date"));
