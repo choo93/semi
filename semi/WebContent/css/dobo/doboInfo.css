@@ -23,6 +23,7 @@ div {
 	font-size: 40px;
 	padding-left: 50px;
 	line-height: 80px;
+	font-weight:bold;
 }
 
 #contentTop {
@@ -51,6 +52,8 @@ div {
 	padding-top:10px;
 	padding-left: 20px;
 	margin-bottom: 50px;
+	font-size:18px;
+	line-height:250%;
 }
 
 #mainInfo {
@@ -72,6 +75,9 @@ div {
 	height: 100%;
 	padding-top:10px;
 	padding-left:20px;
+	font-size:15px;
+	line-height:23px;
+	text-indent: 10px;
 }
 
 #reserve {
@@ -118,6 +124,8 @@ div {
 #courseInfo>div {
 	margin-bottom: 20px;
 	font-size: 14px;
+	text-indent: 10px;
+	line-height:20px;
 }
 
 #contentTop2>p:last-child {
@@ -167,6 +175,9 @@ div {
 	float: left;
 	padding-left:20px;
 	padding-top:10px;
+	font-size:15px;
+	text-indent: 10px;
+	line-height:23px;
 }
 
 #additional {
@@ -178,8 +189,8 @@ div {
 
 
 #commentt{
-	margin-top: 30px;
 	margin:auto;
+	margin-top: 30px;
 	width: 700px;
 	height: 65px;
 	font-size: 25px;

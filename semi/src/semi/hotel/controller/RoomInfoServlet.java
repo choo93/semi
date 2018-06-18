@@ -1,6 +1,7 @@
 package semi.hotel.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,12 +32,17 @@ public class RoomInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int indexNum = Integer.parseInt(request.getParameter("indexNum"));
+		int roomCode = Integer.parseInt(request.getParameter("roomCode"));
+
 		
-		RoomInfo ri = new HotelService().hotelRoomInfo();
 		
-		if(ri!=null) {
+		ArrayList<RoomInfo> list = new HotelService().hotelRoomInfo(roomCode);
+		
+		
+		if(!list.isEmpty()) {
 			RequestDispatcher view = request.getRequestDispatcher("/views/hotel/hotelReserve.jsp");
-			request.setAttribute("roomInfo", ri);
+			request.setAttribute("roomInfo", list);
 			view.forward(request, response);
 		}
 	}

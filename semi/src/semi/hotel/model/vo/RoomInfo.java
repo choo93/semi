@@ -2,16 +2,30 @@ package semi.hotel.model.vo;
 
 public class RoomInfo {
 	private String roomCode;
-    private int roomPrice;
+	private String roomTitle;
+    private String roomPrice;
     private String roomExplain;
-    private String roomFixedNumber;
+    private int roomCapacity;
 	public RoomInfo() {}
-	public RoomInfo(String roomCode, int roomPrice, String roomExplain, String roomFixedNumber) {
+	
+	
+	
+	
+	
+	public RoomInfo(String roomCode, String roomTitle, String roomPrice, String roomExplain, int roomCapacity) {
 		super();
 		this.roomCode = roomCode;
+		this.roomTitle = roomTitle;
 		this.roomPrice = roomPrice;
 		this.roomExplain = roomExplain;
-		this.roomFixedNumber = roomFixedNumber;
+		this.roomCapacity = roomCapacity;
+	}
+
+	public String getRoomTitle() {
+		return roomTitle;
+	}
+	public void setRoomTitle(String roomTitle) {
+		this.roomTitle = roomTitle;
 	}
 	public String getRoomCode() {
 		return roomCode;
@@ -19,10 +33,10 @@ public class RoomInfo {
 	public void setRoomCode(String roomCode) {
 		this.roomCode = roomCode;
 	}
-	public int getRoomPrice() {
+	public String getRoomPrice() {
 		return roomPrice;
 	}
-	public void setRoomPrice(int roomPrice) {
+	public void setRoomPrice(String roomPrice) {
 		this.roomPrice = roomPrice;
 	}
 	public String getRoomExplain() {
@@ -31,12 +45,24 @@ public class RoomInfo {
 	public void setRoomExplain(String roomExplain) {
 		this.roomExplain = roomExplain;
 	}
-	public String getRoomFixedNumber() {
-		return roomFixedNumber;
+    public int getRoomCapacity() {
+		return roomCapacity;
 	}
-	public void setRoomFixedNumber(String roomFixedNumber) {
-		this.roomFixedNumber = roomFixedNumber;
+	public void setRoomCapacity(int roomCapacity) {
+		this.roomCapacity = roomCapacity;
 	}
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "roomCode=" + roomCode + ", roomTitle=" + roomTitle + ", roomPrice=" + roomPrice
+				+ ", roomExplain=" + roomExplain + ", roomCapacity=" + roomCapacity;
+	}
+	
+	
 	
 	
 
