@@ -5,6 +5,7 @@
 <%
 	SeoulImagePageData sipd=(SeoulImagePageData)request.getAttribute("SeoulImagePageData");
 	ArrayList<SeoulImageFile> list=sipd.getNoticelist();
+	int index = 0;
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,21 +14,19 @@
 
 <link href="../../css/bootstrap.min.css" rel="stylesheet">
 <link href="../../css/kfonts2.css" rel="stylesheet">
-	<link rel="stylesheet" href="../../css/travelReady/main.css">
+<link rel="stylesheet" href="../../css/travelReady/main.css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Insert title here</title>
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
-	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
-	<link rel="stylesheet" href="../../minhocss/main.css">
-  	<script src="../../js/jquery-3.3.1.min.js"></script>
-	<script src="../../js/main.js"></script>
-
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
+<link rel="stylesheet" href="../../minhocss/main.css">
+<script src="../../js/jquery-3.3.1.min.js"></script>
+<script src="../../js/main.js"></script>
 		
 
 <style>
@@ -136,10 +135,14 @@ function insert(){
 	<div id="imagechange" class="container"> 
  <h1> 서울 관광 이미지   </h1>
  <botton class="btn btn-primary" onclick="insert();">등록</botton>총<%=sipd.getRecordTotalCount()%>
+  <%for(SeoulImageFile sif:list){ 
+  if(index<3){
+	  if(index==0){
+  %> <div class="row">
+  <%} %>  
 
- <div class="row">
-     <%for(SeoulImageFile sif:list){ %>
-    <div class="col-sm-5 col-md-3">
+   
+    <div class="col-sm-3 col-md-3">
       <div class="thumbnail">
         <img src="<%=sif.getImageViewPath()%>" alt="...">
           <div class="caption">
@@ -152,11 +155,28 @@ function insert(){
     </div> 
    
 	
-	
 
-<%} %>
-</div>
+	<%index++;}else { %>
+	 <div class="col-sm-3 col-md-3">
+      <div class="thumbnail">
+        <img src="<%=sif.getImageViewPath()%>" alt="...">
+          <div class="caption">
+            <h3><%=sif.getTitle()%> </h3>
+          
+            <p><a href="/seoulImageDown?imageNo=<%=sif.getImageN0()%>" class="btn btn-primary" role="button">다운로드</a> 
+            <a href="#" onclick="contentChange(<%=sipd.getCurrentPage()%>);" class="btn btn-default" role="button">보기</a></p>
+        </div>
+      </div>
+    </div>
+ </div><%index=0;} %>
  
+ 
+ 
+ 
+ 
+
+ <%} %>
+ </div>
 	<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
 		
 					<%for(int i=sipd.getStartNavi(); i<=sipd.getEndNavi();i++){ 
@@ -167,7 +187,7 @@ function insert(){
 					<%} %>
 				<%} %>
 				</div>
-</div>
+
 			
 
 			

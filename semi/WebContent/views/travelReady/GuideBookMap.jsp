@@ -133,12 +133,7 @@
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
 	<section>
-			<div id="pagetitle">
-			<div id="title">
-				<p style="height:50px;">현재위치  : 여행준비 > 가이드북 & 지도</p>
-				<h3 style="font-size:50px;">가이드북&지도</h3>
-			</div>
-			</div>
+
 			<div id="pagecontent">
 				<section id="content">
 					<div class="dis" style="height:200px;">
@@ -154,9 +149,6 @@
 					</div>
 					
 					<div class="dis" style="height:2000px; margin-top:32px;">
-					<form action="/adminGuideBookRequest">
-						<input type="submit" value="신청목록확인">
-					</form>
 					<%for(GuideBookDown gbd : list) {%>
 						<div class="item">
 							<div class="img" style="<%=gbd.getGuideBookImagePath()%>"></div>

@@ -121,7 +121,7 @@ p {
 					</div>
 				</div>
 			</a>
-			 <a href="#">
+			 <a href="travelInformation.jsp">
 				<div id="info" class="menu">
 					<div class="middle">
 						<div class="font">여행 필수 정보</div>
