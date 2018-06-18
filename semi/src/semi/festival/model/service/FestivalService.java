@@ -46,12 +46,12 @@ public class FestivalService {
 	}
 
 
-	public FestivalDetail festivalSelect(int titleNo) {
+	public Festival festivalSelect(int titleNo) {
 		Connection conn = JDBCTemplate.getConnection();
-		FestivalDetail fd = new FestivalDao().festivalSelect(conn,titleNo);
+		Festival f = new FestivalDao().festivalSelect(conn,titleNo);
 		
 		JDBCTemplate.close(conn);
-		return fd;
+		return f;
 	}
 	
 }

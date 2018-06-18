@@ -50,6 +50,8 @@ public class FestivalDao {
 				f.setFestivalSite(rset.getString("festival_site"));
 				f.setFestivalPayment(rset.getString("festival_payment"));
 				f.setFestivalTag(rset.getString("festival_tag"));
+				f.setFestivalLatitude(rset.getDouble("festival_latitude"));
+				f.setFestivalLongtitude(rset.getDouble("festival_longtitude"));
 				f.setFestivalMainImg(rset.getString("festival_mainimg"));
 				f.setFestivalSubImg1(rset.getString("festival_subimg1"));
 				f.setFestivalSubImg2(rset.getString("festival_subimg2"));
@@ -190,11 +192,11 @@ public class FestivalDao {
 		return sb.toString();
 	}
 
-	public FestivalDetail festivalSelect(Connection conn, int titleNo) {
+	public Festival festivalSelect(Connection conn, int titleNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from festival_detail where seq_index_titleno = ?";
-		FestivalDetail fd = null;
+		String query = "select * from festival where seq_index_titleno = ?";
+		Festival f = null;
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, titleNo);
@@ -202,23 +204,28 @@ public class FestivalDao {
 			rset = pstmt.executeQuery();
 			if(rset.next())
 			{
-				fd = new FestivalDetail();
-				fd.setFestival_index(rset.getInt("festival_index"));
-				fd.setTitleNo(rset.getInt("seq_index_titleno"));
-				fd.setFestival_detailInfo(rset.getString("festival_detailinfo"));
-				fd.setFestival_period(rset.getString("festival_period"));
-				fd.setFestival_addr(rset.getString("festival_addr"));
-				fd.setFestival_ontime(rset.getString("festival_ontime"));
-				fd.setFestival_tell(rset.getString("festival_tell"));
-				fd.setFestival_notice(rset.getString("festival_notice"));
-				fd.setFestival_utility(rset.getString("festival_utility"));
-				fd.setFestival_site(rset.getString("festival_site"));
-				fd.setFestival_payment(rset.getString("festival_payment"));
-				fd.setFestival_latitude(rset.getDouble("festival_latitude"));
-				fd.setFestival_longtitude(rset.getDouble("festival_longtitude"));
-				fd.setFestival_mainImg(rset.getString("festival_mainimg"));
-				fd.setFestival_subImg1(rset.getString("festival_subimg1"));
-				fd.setFestival_subImg2(rset.getString("festival_subimg2"));
+				f = new Festival();
+				f.setFestivalNo(rset.getInt("festival_index"));
+				f.setFestivalSeason(rset.getString("festival_season"));
+				f.setFestivalTitle(rset.getString("festival_title"));
+				f.setTitleNo(rset.getInt("SEQ_Index_TitleNo"));
+				f.setFestivalBasicInfo(rset.getString("festival_basicinfo"));
+				f.setFestivalDetailInfo(rset.getString("festival_detailinfo"));
+				f.setFestivalWriteDate(rset.getDate("festival_writeDate"));
+				f.setFestivalPeriod(rset.getString("festival_period"));
+				f.setFestivalAddr(rset.getString("festival_addr"));
+				f.setFestivalOntime(rset.getString("festival_ontime"));
+				f.setFestivalTell(rset.getString("festival_tell"));
+				f.setFestivalNotice(rset.getString("festival_notice"));
+				f.setFestivalUtility(rset.getString("festival_utility"));
+				f.setFestivalSite(rset.getString("festival_site"));
+				f.setFestivalPayment(rset.getString("festival_payment"));
+				f.setFestivalTag(rset.getString("festival_tag"));
+				f.setFestivalLatitude(rset.getDouble("festival_latitude"));
+				f.setFestivalLongtitude(rset.getDouble("festival_longtitude"));
+				f.setFestivalMainImg(rset.getString("festival_mainimg"));
+				f.setFestivalSubImg1(rset.getString("festival_subimg1"));
+				f.setFestivalSubImg2(rset.getString("festival_subimg2"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -226,7 +233,7 @@ public class FestivalDao {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		return fd;
+		return f;
 	}
 
 }

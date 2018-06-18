@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import semi.festival.model.service.FestivalService;
-import semi.festival.model.vo.FestivalDetail;
+import semi.festival.model.vo.Festival;
 
 /**
  * Servlet implementation class FestivalSelectServlet
@@ -35,14 +35,15 @@ public class FestivalSelectServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		int titleNo = Integer.parseInt(request.getParameter("titleNo"));
+		System.out.println(titleNo);
+		Festival f = new FestivalService().festivalSelect(titleNo);
 		
-		FestivalDetail fd = new FestivalService().festivalSelect(titleNo);
-		
+		System.out.println(f.getFestivalAddr());
 		HttpSession session = request.getSession(false);
-		if(fd!=null)
+		if(f!=null)
 		{
 			RequestDispatcher view = request.getRequestDispatcher("/views/festival/festival_info.jsp");
-			request.setAttribute("festival", fd);
+			request.setAttribute("festival", f);
 			view.forward(request, response);
 		}else
 		{
