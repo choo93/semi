@@ -35,13 +35,19 @@
     	padding-left:51px;
     	margin:o auto;
     }
-    
      .item
     {
     	float:left;
     	width:48%;
     	height:350px;
     	margin:1%;
+    }
+    .dis
+    {
+    margin-top:50px;
+    background:url(http://korean.visitseoul.net/media/img/Essential_Information?srvcId=MEDIA&parentSn=116&fileTy=MEDIA&fileNo=1);
+	background-repeat:no-repeat;
+	background-size:100% 100%;
     }
 </style>
 <body id="scroll">
@@ -51,12 +57,14 @@
 				<section id="content">					
 					
 			
-					<div class="dis" style="height:200px; background-color:red;">
-		
-						
+					<div class="dis" style="height:250px; margin-left:1%; margin-right:1%;">
+					<div style="color:white; padding-top:110px; padding-left:40px;">
+						<h4>여행필수 정보</h4>
+						<p>서울 여행에 대한 기본 정보를 참고하시 바랍니다.</p>
+					</div>
 					</div>
 					
-					<div class="dis" style="height:1900px; margin-top:32px; background-color:blue;">
+					<div style="height:1900px; margin-top:20px;">
 						
 					<div class="item" style="background-color:black;">
 						

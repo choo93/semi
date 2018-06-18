@@ -70,7 +70,7 @@
     background:url(
 				http://korean.visitseoul.net/humanframe/theme/visitseoul/assets/images/content/guidebook.png);
 	background-repeat:no-repeat;
-	background-size:80% 120%;
+	background-size:100% 100%;
     }
     #guidebookrequest>a
     {
