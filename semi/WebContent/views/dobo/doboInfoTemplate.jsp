@@ -4,6 +4,7 @@
     import="java.util.*"
 %>
 <%
+	DoboInfo di = (DoboInfo)request.getAttribute("doboInfo");
 	CommentData cd = (CommentData)request.getAttribute("commentData");
 	ArrayList<EnjoyComment> commentList = new ArrayList<EnjoyComment>();
 	String navi="";
@@ -70,6 +71,7 @@
 								<div>${requestScope.doboInfo.doboSubExplain1 }</div>
 							</div>
 						</div>
+						<%if(di.getDoboSubTitle2()!=null){ %>
 						<div>
 							<p>${requestScope.doboInfo.doboSubTitle2 }</p>
 							<div>
@@ -79,6 +81,8 @@
 								<div>${requestScope.doboInfo.doboSubExplain2 }</div>
 							</div>
 						</div>
+						<%} %>
+						<%if(di.getDoboSubTitle3()!=null){ %>
 						<div>
 							<p>${requestScope.doboInfo.doboSubTitle3 }</p>
 							<div>
@@ -88,6 +92,8 @@
 								<div>${requestScope.doboInfo.doboSubExplain3 }</div>
 							</div>
 						</div>
+						<%} %>
+						<%if(di.getDoboSubTitle4()!=null){ %>
 						<div>
 							<p>${requestScope.doboInfo.doboSubTitle4 }</p>
 							<div>
@@ -97,6 +103,8 @@
 								<div>${requestScope.doboInfo.doboSubExplain4 }</div>
 							</div>
 						</div>
+						<%} %>
+						
 					</div>
 					<div id="additional">
 					
@@ -106,7 +114,9 @@
 						
 						if(((DoboInfo)request.getAttribute("doboInfo")).getDoboAdditionType().equals("video")){ %>
 							<iframe allowfullscreen="" frameborder="0" height="315" src="${requestScope.doboInfo.doboAddition }" width="560"></iframe>
-						<%} 
+						<%}else if(((DoboInfo)request.getAttribute("doboInfo")).getDoboAdditionType().equals("map")){ %>
+							<img src=${requestScope.doboInfo.doboAddition }>
+						<%}
 						}%>
 						
 					</div>

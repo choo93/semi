@@ -64,7 +64,7 @@ dt {
 }
 
 dd {
-	width: 200px;
+	width: 300px;
 	height: 40px;
 	display: block;
 	padding-left: 100px;
@@ -141,7 +141,6 @@ dl>hr {
 
 #basicInfoContent {
 	width: 635px;
-	height: 200px;
 	font-weight: bold;
 	display: none;
 	padding-top: 10px;
@@ -174,6 +173,53 @@ dl>hr {
 	float: right;
 	padding-right: 10px;
 }
+
+#phone{
+	width:100%;
+	height:20%;
+}
+
+#basicInfoContent>div>div{
+	float:left;
+}
+
+#basicInfoContent>div{
+	border-top:0.5px solid lightgrey;
+}
+
+#basicInfoContent>pre:first-child{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#basicInfoContent>div>div:first-child{
+	width:30%;
+	height:100%;
+	background-color:rgb(245,245,245);
+	text-align:center;
+	line-height:300%;
+}
+
+#phone{
+	width:100%;
+	height:50px;
+}
+
+#site{
+	width:100%;	height:50px;
+}
+
+
+
+#traffic{
+	width:100%;	height:200px;
+}
+
+#basicInfoContent>div>div:last-child{
+	padding-left:20px;
+	line-height:350%;
+}
+
 
 #map>div {
 	float: right;
