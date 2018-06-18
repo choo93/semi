@@ -33,7 +33,7 @@ public class SeoulImageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-int currentPage;
+		int currentPage;
 		
 		if(request.getParameter("currentPage")==null)
 		{

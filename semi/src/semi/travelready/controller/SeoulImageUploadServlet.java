@@ -40,7 +40,7 @@ public class SeoulImageUploadServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		
-		int FileSizeLimit=1024*1021*5;
+		int FileSizeLimit=1024*1024*10;
 		
 		String uploadFilePath=getServletContext().getRealPath("/")+"image/travelReady/seoulupload";
 		

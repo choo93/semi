@@ -171,4 +171,29 @@ public class GuideBookRequestDao {
 		return gbd;
 	}
 
+	public int requestDelete(Connection conn, String[] orderNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		String query="delete from GUIDEBOOKREQUEST where orderno=?";
+		
+		try {
+			for(int i=0; i<orderNo.length; i++) {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, Integer.parseInt(orderNo[i]));
+			result+=pstmt.executeUpdate();
+			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
 }
