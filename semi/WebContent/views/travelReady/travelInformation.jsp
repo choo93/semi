@@ -77,7 +77,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">서울 방문</div>
 			
 					</div>
 					
@@ -86,7 +86,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">서울의 교통수단</div>
 			
 					</div>
 					
@@ -95,7 +95,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">서울로 가는 교통편</div>
 			
 					</div>
 					
@@ -104,16 +104,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
-			
-					</div>
-					
-							<div class="item">
-					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=135&fileTy=ATTACH&fileNo=1&thumbTy=L);
-											background-repeat:no-repeat;
-											background-size:100% 100%;">
-											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">기후</div>
 			
 					</div>
 					
@@ -122,7 +113,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">국경일</div>
 			
 					</div>
 					
@@ -131,7 +122,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">전화 및 인터넷</div>
 			
 					</div>
 					
@@ -140,7 +131,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">예절</div>
 			
 					</div>
 					
@@ -149,7 +140,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">관광안내소</div>
 			
 					</div>
 					
@@ -158,7 +149,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">겁근성</div>
 			
 					</div>
 					
@@ -167,7 +158,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">도시 간 이동</div>
 			
 					</div>
 					
@@ -176,10 +167,18 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"></div>
+					<div class="imgfont">서울의료관광 헬프데스크</div>
 			
 					</div>
 					
+									<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=1078&fileTy=ATTACH&fileNo=2&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont">관광불편처리센터</div>
+			
+					</div>
 			
 					
 					</div>
