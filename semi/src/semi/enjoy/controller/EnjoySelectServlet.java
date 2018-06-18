@@ -88,7 +88,7 @@ public class EnjoySelectServlet extends HttpServlet {
 		EnjoyElementData EED = new EnjoyElementData(ELD,edd1,cd);
 		
 		
-		
+		// 기본정보 ELD, 세부정보 edd1
 
 		
 		
