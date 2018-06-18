@@ -279,9 +279,6 @@ footer{
     .scroll section{
     	margin-left:51px;
     }	
-    .scroll footer{
-    	margin-left:51px;
-    }
     .scroll #main_icon{
     	display:block;
     	float:right;
@@ -407,6 +404,9 @@ footer{
 	padding-bottom:30px;
 	line-height:100%;
 }
+.login_before>a:hover{
+	color:#b43029;
+}
 .collapsible{
 	clear:both;
 }
@@ -453,7 +453,7 @@ footer{
 .main_sub_category>li{
 	cursor:pointer;
 	line-height:48px;
-	padding-left:40px;
+	padding-left:20px;
 }
 .main_sub_category>li:hover{
     background-color:rgba(0,0,0,0.05);

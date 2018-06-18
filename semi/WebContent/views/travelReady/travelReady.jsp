@@ -28,7 +28,6 @@
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes"
 	rel="stylesheet">
 <link rel="stylesheet" href="../../css/main/materialize.min.css">
-<link rel="stylesheet" href="../../css/main/main.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main/materialize.min.js"></script>
 <script src="../../js/main/main.js"></script>
