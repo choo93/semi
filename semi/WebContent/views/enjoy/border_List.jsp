@@ -14,12 +14,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/moreBtn.css">
-<link rel="stylesheet" href="../../css/enjoySelect.css">
+<!-- <link rel="stylesheet" href="../../css/enjoySelect.css"> -->
+<link rel="stylesheet" href="../../css/enjoy/pagination.css">
+<!-- 페이징 CSS (부트스트랩) -->
 <script src="../../js/jquery-3.3.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/main.js"></script>
+
 </head>
 <style>
 .photo {
@@ -62,7 +67,7 @@
 			%>
 			<form action="/enjoySelect?IndexNo=<%=eld.getIndex_TitleNo()%>"
 				method="post">
-
+				
 				<div class="content" id="list_1"
 					style="margin-left: 10%; margin-bottom: 11%; padding: 20px;">
 					<%
@@ -82,37 +87,58 @@
 						<div id="title" style="font: bold 30pt 나눔스퀘어; margin: 10px;">
 							<%=eld.getIndex_Title()%>
 						</div>
-						<div id="contents" style="padding: 5px; margin: 10px;">
+						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden;">
+							<% int word1 = eld.getIndex_BasicInfo().length();
+							if(word1>400){ 
+							%>
+							<%=eld.getIndex_BasicInfo().substring(0,400)%>.....
+							<%}else{ %>
 							<%=eld.getIndex_BasicInfo()%><br>
+							<%} %>
 
 						</div>
 						<div id="tags"
-							style="position: absolute; margin: 10px; left: 5px; bottom: 5px;">
+							style="position: absolute; margin: 10px; left: 5px; bottom: 1px; overflow:hidden;">
 
 
 							<div style="display: inline;">
 								<%
 									StringTokenizer Tag = new StringTokenizer(eld.getIndex_Tags(), "#");
-										while (Tag.hasMoreTokens()) {
+									int su1 = Tag.countTokens();
+										if(su1<6){
+										for(int i=0;i<su1;i++) {
 								%><a href="#">#<%=Tag.nextToken()%></a>
 								<%
-									}
+										}}
+										else{
+											for(int i=0;i<6;i++){%>
+												<a href="#">#<%=Tag.nextToken()%></a>
+											<%}
+												
+											
+										}
+										
 								%>
 							</div>
 						</div>
 
-						<button id="button" style="margin-left: 80%; margin-top: 3%;">자세히</button>
+						<button id="button" style="position:absolute; right:30px; bottom: 30px;">자세히</button>
 
 					</div>
 				</div>
+				
 			</form>
 		</div>
 
 		<%
 			}
 		%>
-
-		<label><%=pageNavi%></label><br>
+		<div class="container" style="text-align: center ">
+        <ul class="pagination pagination-lg">
+		<%=pageNavi%>
+		</ul>
+		</div>
+	
 
 		<%-- <jsp:useBean id="list" class="semi.enjoy.model.vo.EnjoyListData" scope="request">
 	</jsp:useBean> --%>

@@ -163,68 +163,14 @@ public class EnjoyService {
 		      
 		   }
 
-
-
-
-	public int insertCrawlerBasicInfor(String currentTypeElement, String titleName, String bid, String writeDate,
-			String tags, String mainsrc) {
-
-	Connection conn = JDBCTemplate.getConnection();
-		
-		int result = new Enjoydao().insertCrawlerBasicInfor(conn,currentTypeElement, titleName, bid,writeDate,tags,mainsrc);
-		
-		JDBCTemplate.close(conn);
-		if(result>0)
-		{
-			JDBCTemplate.commit(conn);
+		public EnjoyComment searchOneComment(int commentNo) {
+			Connection conn = JDBCTemplate.getConnection();
+			EnjoyComment EC = new Enjoydao().searchOneComment(conn,commentNo);
+			JDBCTemplate.close(conn);
+			return EC;
 		}
-		else {
-			JDBCTemplate.rollback(conn);
-		}
-		
-		return result;
-	}
 
 
-	public int insertCrawlerDefailInfor(String currentTypeElement, String addr, String phone, String weburl,
-			String ontime, String offday, String onday, String notice, String payment, String disabled, String utilly) {
-		// TODO Auto-generated method stub
-	Connection conn = JDBCTemplate.getConnection();
-		
-		int result = new Enjoydao().insertCrawlerDefailInfor(conn,currentTypeElement,addr, phone, weburl, ontime,offday,onday,notice,payment,disabled,utilly);
-		
-		JDBCTemplate.close(conn);
-		if(result>0)
-		{
-			JDBCTemplate.commit(conn);
-		}
-		else {
-			JDBCTemplate.rollback(conn);
-		}
-		
-		return result;
-	}
 
-
-	public int insertCrawlerTotal(String currentTypeElement, String addr, String phone, String weburl, String ontime,
-			String offday, String onday, String notice, String payment, String disabled, String utilly,
-			String titleName, String bid, String writeDate, String tags, String subImage) {
-
-		Connection conn = JDBCTemplate.getConnection();
-		
-		int result = new Enjoydao().insertCrawlerTotal(conn,currentTypeElement,addr, phone, weburl, ontime,offday,onday,notice,payment,disabled,utilly,titleName,bid,writeDate,tags,subImage);
-		
-		JDBCTemplate.close(conn);
-		if(result>0)
-		{
-			JDBCTemplate.commit(conn);
-		}
-		else {
-			JDBCTemplate.rollback(conn);
-		}
-		
-		return result;
-		
-	}
 	
 }
