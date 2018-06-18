@@ -1,0 +1,34 @@
+@charset "UTF-8";
+.writeBox{
+	display: inline-block;
+	position: relative;
+	background: #C7C4E2;
+	border: 2px solid #9B95C9;
+	border-radius: 10px;
+}
+.writeBox:after{
+	content: '';
+	position: absolute;
+	border-top: 35px solid #C7C4E2;
+	border-right: 20px solid transparent;
+	border-left: 20px solid transparent;
+	bottom: -33px;
+	left: 300px;
+}
+.writeBox:before{
+	content: '';
+	position: absolute;
+	border-top: 48px solid #9B95C9;
+	border-right: 25px solid transparent;
+	border-left: 25px solid transparent;
+	bottom: -45px;
+	left: 298px;
+	z-index: -1;
+}
+.cantWriteBox{
+	display: inline-block;
+	position: relative;
+	background: #C5C8CB;
+	border: 2px solid #949699;
+	border-radius: 10px;
+}
