@@ -1,0 +1,340 @@
+/* intro */
+#intro_page a{
+    text-decoration:none;
+    color:white;
+    font-size:6rem;
+    position:absolute;
+    bottom:200px;
+    right:300px;
+    font-family: 'Great Vibes', cursive;
+}
+#intro_page a:hover{
+    color:yellow;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #fff; }
+::-webkit-scrollbar-thumb { background: #b43029; }
+::-webkit-scrollbar-thumb:hover { background: #000; }
+
+/* main */
+h1,h2,p{margin:0;}
+a{color:black;}
+
+/* header */
+.btn{
+	width:100%;
+	background-color:#b43029;
+}
+.btn:hover{
+	background-color:#b43029;
+}
+.main_admin_page a{
+	float:right;
+	margin-right:30px;
+	color:#b43029;
+}
+#main_login_page{
+	text-align:center;
+	margin-top:20px;
+	line-height:2;
+	margin-bottom:20px;
+}
+#main_login_page span{
+	font-weight:bold;
+}
+#main_login_page a{
+	color:black;
+}
+#main_login_page a:hover{
+	color:#b43029;
+}
+
+
+/* section */
+.section1{
+	background-image:url(../../image/main/main1.jpg);
+	background-size:cover;
+	height:300px;
+	background-position:center;
+	background-attachment:fixed;
+
+}
+.section1 h1{
+	text-align:center;
+	font-size:4.8rem;
+	padding-top:80px;
+	color:white;
+}
+.section1>p{
+	margin:0;
+	font-size:1.8rem;
+	font-family:'Great Vibes',cursive;
+	text-align:Center;
+	color:white;
+}
+.red_box{
+	padding-bottom:20px;
+}
+.red_box h2, .white_box h2, .white_box2 h2, .red_box2 h2{
+	padding:20px;
+	font-size:1.7rem;font-weight:bold;
+}
+.red_box .border_top, .white_box .border_top, .white_box2 .border_top, .red_box2 .border_top{
+	margin:0;
+	background-color:#b43029;
+	height:5px;
+	width:55px;
+	margin-left:20px;
+	border:none;
+}
+.red_box p, .white_box p, .white_box2 p, .red_box2 p{
+	margin-left:20px;
+	margin-top:20px;
+	margin-right:20px;
+	font-size:14px;
+	line-height:1.7;
+	text-align:justify;
+}
+.red_box a, .white_box a, .white_box2 a, .red_box2 a{
+	font-size:16px;
+	font-weight:bold;
+	margin-top:20px;
+	display:block;
+	margin-left:20px;
+}
+.red_box .border_bottom, .white_box .border_bottom{
+	background-color:#b43029;
+	height:2px;
+	width:79px;
+	margin-left:20px;
+	border:none;
+}
+.white_box2 .border_bottom, .red_box2 .border_bottom{
+	background-color:#b43029;
+	height:2px;
+	width:64px;
+	margin-left:20px;
+	border:none;
+}
+.white_box, .white_box2, .red_box2{
+	padding-bottom:20px;
+}
+
+/* footer */
+footer{
+	background-color:black;
+	color:white;
+	padding:5px;
+	text-align:Center;
+}
+
+
+
+/* responsive web - mobile */
+@media (max-width:767px){
+    .sidenav-trigger>img{
+        margin-left:10px;
+        margin-top:10px;
+        margin-bottom:5px;
+        padding:3px;
+        height:36px;
+    }
+    #main_category{
+        display:none;
+    }
+    
+ 	.collapsible-header:hover{
+		border-left:3px solid #b43029;
+	}
+	.collapsible-body li:hover{
+		border-left:3px solid #b43029;
+	}   
+    
+    #slide_main_login{
+        padding:5px;
+    }
+    
+    /* mobile section */
+    section{
+        padding-top:51px;
+    }
+    
+    #main_category{
+    	display:none;
+    }
+    #main_category li{
+    	float:left;
+    } 
+}
+
+/* responsive web - mobile & tablet */
+@media (max-width:1024px){
+    #main_header{
+        position:fixed;
+        background-color:white;
+        border-bottom:1px solid #ddd;
+        width:100%;
+    }
+    #main_logo{
+    	margin-top:10px;
+        margin-left:5px;
+        margin-bottom:5px;
+        padding:3px;
+        height:36px;
+    }
+    #main_icon{
+    	display:none;
+    }
+   #desktop_category{
+   		display:none;
+   }
+}
+
+/* responsive web - tablet */
+@media (min-width:768px) and (max-width:1024px){
+	#main_logo{
+		float:left;
+	}
+	#main_category{
+		margin:0;
+		float:left;
+		width:84%;
+	}
+	.category_title{
+		float:left;
+		width:25%;
+		height:51px;
+		text-align:center;
+		line-height:51px;
+	}
+	.category_title:hover{
+		color:#b43029;
+		border-top:3px solid #b43029;
+	}
+	.category_title:hover .category_sub_menu{
+		display:block!important;
+		background-color:#b43029;
+	}
+	.category_sub_menu a:hover{
+		background-color:white;
+		color:#b43029;
+		display:block;
+	}
+	.section1{
+    	height:500px;
+    }
+    .section1 h1{
+    	font-size:5.8rem;
+    	padding-top:150px;
+    }
+    .section1 p{
+    	font-size:2rem;
+    }
+	
+
+}
+
+/* responseive web - tablet & desktop */
+@media (min-width:768px){
+    .sidenav-trigger{
+        display:none;
+    }
+}
+
+/* responsive web - desktop */
+@media (min-width:1025px){
+    .scroll header{
+    	left:-170px;
+    }
+    .scroll section{
+    	margin-left:51px;
+    }	
+    .scroll footer{
+    	margin-left:51px;
+    }
+    .scroll #main_icon{
+    	display:block;
+    	float:right;
+    	height:36px;
+    	margin:3px;
+    	cursor:pointer;
+    	margin-top:20px;
+    }
+    .scroll #main_logo{
+    	display:none;
+    }
+    .scroll #desktop_category{
+    	display:none;
+    }
+    header{
+    	position:fixed;
+    	top:0; left:0;
+    	background:#fff;
+    	width:220px;
+    	height:100%;
+    	border-right:1px solid #ddd;
+    	transition:left 0.8s;
+    }
+    section{
+    	margin-left:221px;
+    	transition:margin 0.8s;
+    }
+    footer{
+    	text-align:left;
+    	margin-left:221px;
+    }
+    #main_icon{
+    	display:none;
+    }
+    #main_logo{
+    	width:90%;
+    	margin:5%;
+    }
+    #main_category{
+    	display:none;
+    }
+    
+    /* main - contents */
+    .section1{
+    	height:800px;
+    	position:relative;
+    }
+    .section1 h1{
+    	font-size:6.8rem;
+    	position:absolute;
+    	left:110px;
+    	top:199px;
+    }
+    .section1 p{
+    	font-size:2.4rem;
+    	position:absolute;
+    	left:123px;
+    	top:377px;
+    }
+    .section2{
+    	position:relative;
+    	height:400px;
+    }
+    .red_box{
+    	width:700px;
+    	height:400px;
+    	background-color:#b43029;
+    	position:absolute;
+    	right:0px;
+    	bottom:150px;
+    	color:white;
+    }
+    .red_box .border_top{
+    	background-color:white;
+    }
+    .red_box a{
+    	color:white;
+    }
+    .red_box .border_bottom{
+    	background-color:white;
+    }
+
+}
+

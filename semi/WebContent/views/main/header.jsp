@@ -19,18 +19,27 @@
             </a>
         </div>
         
+        <!-- 이 부분 그대로 -->
         <% if(user==null){ %>
         <div id="login_join">
         	<p class="login_before login_left"><a href="/views/login/login.jsp">로그인</a></p>
-        	<p class="login_before login_right"><a href="">회원가입</a></p>
+        	<p class="login_before login_right"><a href="/views/login/joinus.jsp">회원가입</a></p>
         </div>    
         <% } else { %>
-        <div id="login_join" class="login_after">
-        	<p><span><%=user.getUserName()%></span>님 환영합니다</p>
-        	<p>
-        		<a href="">마이페이지</a>
-        		<a href="/logout">로그아웃</a>
-        	</p>
+        <div id="login_join" class="login_after">	
+			<% if(user.getUserId().equals("admin")){ %>
+				<p><%=user.getUserName()%> 페이지 입니다</p>
+				<a href="/allUser">전체회원조회</a>
+			<% } else { %>
+				<p><span><%=user.getUserName()%></span>님 환영합니다</p>
+				<label onclick="myInfo();" id="infoBtn">마이페이지</label>
+				<form action="myPage" method="post" style="display:none;" id="myInfo">
+					<label style="color:red;">비밀번호 입력 : </label>
+					<input type="password" name="userPwd">
+					<input type="submit" value="확인">	
+				</form>
+			<% } %>
+			<a href="/logout">로그아웃</a><br>
         </div>
         <% } %>
 
@@ -52,7 +61,20 @@
                     display:none;
                 }
             }
-        </style>	        
+            /* 코드 추가한 부분 */
+            #infoBtn{
+            	cursor:pointer;
+            	text-decoration:underline;
+            	color:blue;
+            }
+        </style>	    
+        
+        <div id="main_search">
+        	<form action="/mainSearch" method="get">
+        		<input type="search">
+        		<input type="submit" value="search">
+        	</form>
+        </div>    
         
 		<ul id="main_category">
             <img src="../../image/close.png" id="menu_icon_close" onclick="close_mobile();" style="width:30px; float:right; cursor:pointer; padding:15px;">
@@ -67,13 +89,13 @@
 			</li>
 			<li class="toggle menu_two"><a href="#">서울즐기기</a>
             <ul class="sub_menu_two" style="display:none;">
-			    <li><a href="">추천코스</a></li>
-			    <li><a href="">명소</a></li>
-			    <li><a href="">쇼핑</a></li>
-			    <li><a href="">숙박</a></li>
-			    <li><a href="">음식점</a></li>
-			    <li><a href="">캘린더</a></li>
-			</ul>
+			    <li><a href="/enjoyList?type=type1">추천코스</a></li>
+			    <li><a href="/enjoyList?type=type2">명소</a></li>
+			    <li><a href="/enjoyList?type=type3">쇼핑</a></li>
+			    <li><a href="/enjoyList?type=type4">숙박</a></li>
+			    <li><a href="/enjoyList?type=type5">음식점</a></li>
+			    <li><a href="/enjoyList?type=type6">캘린더</a></li>
+			</ul>			
 			</li>
 			<li class="toggle menu_three"><a href="#">예약하기</a>
             <ul class="sub_menu_three" style="display:none;">
@@ -82,7 +104,7 @@
 			    <li><a href="">서울도보관광예약</a></li>
 			</ul>			
 			</li>
-			<li class="toggle menu_four"><a href="#">여행준비</a>
+			<li class="toggle menu_four"><a href="/views/travelReady/travelReady.jsp">여행준비</a>
 			<ul class="sub_menu_four" style="display:none;">
 			    <li><a href="">가이드북&amp;지도</a></li>
 			    <li><a href="">여행필수정보</a></li>
@@ -105,6 +127,10 @@
                 $('.main').css('overflow','inherit');
                 $('#main_category').removeClass('category_view');
                 $('#menu_icon_close').css('display','none');
+            }
+            <!-- 코드 추가한 부분 -->
+            function myInfo(){
+            	document.getElementById("myInfo").style="display:inline";
             }
         </script>
 	</header>
