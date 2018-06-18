@@ -34,8 +34,7 @@ public class HotelInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int indexNum = Integer.parseInt(request.getParameter("indexNum"));
-		
-		HotelInfo hi = new HotelService().selectAllInfo(indexNum);
+        HotelInfo hi = new HotelService().selectAllInfo(indexNum);
      	if(hi!=null) {
 			RequestDispatcher view = request.getRequestDispatcher("/views/hotel/hotelInfo.jsp");
 			request.setAttribute("hotelInfo", hi);
