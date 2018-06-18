@@ -83,13 +83,20 @@
 <script>
 
 
-function contentChange(){
-	
-	
-	
-	document.getElementById('div1').style.display="block";
-	document.getElementById('imagechange').style.display="none";
-	  $("#div1").load("/views/travelReady/SeoulImageBody.jsp");
+function contentChange(id){
+	$.ajax({
+		url : "/seoulImageBody",
+		type : "get",
+		data : {id:id},
+		success : function(){
+			location.href="/seoulImageBody?id="+id;
+			
+		},
+		error : function(){
+			console.log("실패");
+		}
+	});
+
 	
 	
 }
@@ -113,12 +120,12 @@ function insert(){
   </div>
   <input type="submit" class="btn btn-primary" value="검색">
   <div class="keyword-recommend">
-					<a href="#">광화문광장</a>
-					<a href="#">경복궁</a>
-					<a href="#">동대문디자인플라자</a>
-					<a href="#">문화역서울284</a>
-					<a href="#">삼청동</a>
-					<a href="#">북악스카이웨이</a>
+					<a href="/seoulImageSearch?search=광화문광장">광화문광장</a>
+					<a href="/seoulImageSearch?search=경복궁">경복궁</a>
+					<a href="/seoulImageSearch?search=동대문디자인플라자">동대문디자인플라자</a>
+					<a href="/seoulImageSearch?search=문화역서울284">문화역서울284</a>
+					<a href="/seoulImageSearch?search=삼청동">삼청동</a>
+					<a href="/seoulImageSearch?search=북악스카이웨이">북악스카이웨이</a>
 					</div>
   
   </div>
@@ -127,25 +134,39 @@ function insert(){
 <div id="div1" style="width:100%; height:700px; display:none;"></div>
   	
 	<div id="imagechange" class="container"> 
- <h1> 서울 관광 이미지  </h1>
+ <h1> 서울 관광 이미지   </h1>
  <botton class="btn btn-primary" onclick="insert();">등록</botton>총<%=sipd.getRecordTotalCount()%>
+
  <div class="row">
-    <%for(SeoulImageFile sif:list){ %>
-    <div class="col-sm-6 col-md-3">
+     <%for(SeoulImageFile sif:list){ %>
+    <div class="col-sm-5 col-md-3">
       <div class="thumbnail">
         <img src="<%=sif.getImageViewPath()%>" alt="...">
           <div class="caption">
             <h3><%=sif.getTitle()%> </h3>
           
             <p><a href="/seoulImageDown?imageNo=<%=sif.getImageN0()%>" class="btn btn-primary" role="button">다운로드</a> 
-            <a href="#" onclick="contentChange();" class="btn btn-default" role="button">보기</a></p>
+            <a href="#" onclick="contentChange(<%=sipd.getCurrentPage()%>);" class="btn btn-default" role="button">보기</a></p>
         </div>
       </div>
     </div> 
-    <%} %>
+   
+	
+	
 
-
+<%} %>
 </div>
+ 
+	<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
+		
+					<%for(int i=sipd.getStartNavi(); i<=sipd.getEndNavi();i++){ 
+					if(i==sipd.getCurrentPage()){%>
+						<a class="btn btn-primary btn-lg" href='/seoulImage?currentPage=<%=i%>'><%=i%></a>
+					<%}else{ %>
+						<a class="btn btn-primary btn-lg" href='/seoulImage?currentPage=<%=i%>'><%=i%></a>
+					<%} %>
+				<%} %>
+				</div>
 </div>
 			
 

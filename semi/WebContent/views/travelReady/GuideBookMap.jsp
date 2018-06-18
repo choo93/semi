@@ -143,7 +143,7 @@
 				<section id="content">
 					<div class="dis" style="height:200px;">
 						<div id="guidebookrequest">
-						<a href="/views/travelReady/GuideBookRequest.jsp">
+						<a href="/views/travelReady/GuideBookRequest2.jsp">
 							<strong style="font-size:25px;">무료가이드북 & 지도</strong>
 							<br>
 								<strong id="rq">신청하기</strong>
@@ -154,6 +154,9 @@
 					</div>
 					
 					<div class="dis" style="height:2000px; margin-top:32px;">
+					<form action="/adminGuideBookRequest">
+						<input type="submit" value="신청목록확인">
+					</form>
 					<%for(GuideBookDown gbd : list) {%>
 						<div class="item">
 							<div class="img" style="<%=gbd.getGuideBookImagePath()%>"></div>

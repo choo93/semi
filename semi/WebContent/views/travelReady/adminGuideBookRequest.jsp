@@ -6,6 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../css/travelReady/main.css">
+	<link href="../../css/bootstrap.min.css" rel="stylesheet">
+ 
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
@@ -99,6 +107,7 @@ function deliveryBefore() {
 function test(){
 	var f=document.getElementsByName("check");
 	var no=document.getElementsByName("tdorderNo");
+	var deletechk=new Array();
 
 	var count=0;
 	  for(var i=0; i<f.length; i++){
@@ -113,18 +122,20 @@ function test(){
 	        	
 	        	for(var i=0; i<f.length; i++){
 	        		if(f[i].checked==true){
-	        			
-	        			
-	        		
+	        			deletechk.push(no[i].innerHTML);
+
 	        		}	
 	        	}
 	            
 	        }
+	        location.href="/adminDeliveryDelete?orderNo="+deletechk;
 	    }
 	    else
 	        {
 	        alert("선택된 항목이 없습니다.");
 	        }
+	    
+	   
 	}
 
 </script>
@@ -152,37 +163,45 @@ function test(){
 	#content ul a{
 	    text-decoration: none;
 	}
+	a{
+	color:black;
+	}
 	
 </style>
-	<div style="position:relative; z-index:1; margin-left:100px;" >
-	<div id="content">
-		<ul>
-			<li><a href="#" onclick="checkAll();">전체 선택</a></li>
-			<li><a href="#" onclick="deliveryAfter();">배송 완료 목록 선택</a></li>
-			<li><a href="#" onclick="deliveryBefore();">배송 전 목록 선택</a></li>
-			<li><a href="#" onclick="checkDelete();">선택 해제</a></li>
-		</ul>
-	</div>
-	
-<table border="1px">
-<tr>
-	<th><input type="checkBox" id="checkall">
-	<div id="toggleButton">
-		<button id="btn1">1</button>
-	</div>
-
-	
-	</th>
-	<th>orderNo</th>
-	<th>name</th>
-	<th>email</th>
-	<th>phone</th>
-	<th>address</th>
-	<th>guidebooknum</th>
-	<th>mapnum</th>
-	<th>orderdate</th>
-	<th>deliverycheck</th>
-</tr>
+<%@ include file="/views/main/header.jsp" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">
+     <ul class="nav nav-pills">
+         <li class="dropdown">
+               <a data-toggle="dropdown" data-target="#" href="dropdown.html" style="color:black;">메뉴 2 <span class="caret"></span></a>
+               <ul class="dropdown-menu" role="menu">
+                <li><a role="menuitem" href="#" onclick="checkAll();" >전체 선택</a></li>
+                <li><a role="menuitem" href="#" onclick="deliveryAfter();">배송 완료 목록 선택</a></li>
+                <li><a role="menuitem" href="#"  onclick="deliveryBefore();">배송 전 목록 선택</a></li>
+                <li><a role="menuitem" href="#" onclick="checkDelete();">선택 해제 </a></li>
+              </ul>
+         </li>
+     </ul>
+      
+      
+      </th>
+  
+      <th scope="col">orderNo</th>
+      <th scope="col">name</th>
+      <th scope="col">email</th>
+      <th scope="col">phone</th>
+      <th scope="col">address</th>
+      <th scope="col">guidebooknum</th>
+      <th scope="col">mapnum</th>
+      <th scope="col">orderdate</th>
+      <th scope="col">deliverycheck</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
 <form id="delete" name="delete" action="/requestDelete">
 <c:forEach items="${guidebookRequest}" var="g">
 <tr>
@@ -204,10 +223,9 @@ function test(){
 		 
 </tr>
 </c:forEach>
+
+  </tbody>
 </table>
-
-		<button onclick="test()">삭제</button>
-</div>
-
+<%@ include file="/views/main/footer.jsp"%>
 </body>
 </html>

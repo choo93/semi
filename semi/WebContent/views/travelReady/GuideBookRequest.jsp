@@ -243,7 +243,7 @@ legend, .blind {
 								</ul>
 								<pre>
 <label class="font">성명</label> 			<input type="text" name="name" class="input" style="width:100px;"><br><br><br>
-<label class="font">email</label>				<input type="email" name="email" class="input"><br><br><br>
+<label class="font">이메일</label>			<input type="email" name="email" class="input"><br><br><br>
 <label class="font">전화번호</label> 		<input type="text" name="phone" class="input"><br><br><br>
 <label class="font">우편번호</label>		<input type="text" name="addrnum" style="width:100px;" class="input"> <button class="btn">주소검색</button><br><br><br>
 <label class="font">기본주소</label>		<input type="text" name="addr" style="width:300px;" class="input"><br><br><br>
