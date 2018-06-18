@@ -60,12 +60,12 @@ public class HotelService {
 		return result;
 	}
 
-	public RoomInfo hotelRoomInfo() {
+	public ArrayList<RoomInfo> hotelRoomInfo(int roomCode) {
 		Connection conn = JDBCTemplate.getConnection();
-		RoomInfo hi = new HotelDAO().hotelRoomInfo(conn);
+		ArrayList<RoomInfo> list = new HotelDAO().hotelRoomInfo(conn,roomCode);
 		JDBCTemplate.close(conn);
 		
-		return hi;
+		return list;
 		
 	}
 

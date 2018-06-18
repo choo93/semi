@@ -33,6 +33,10 @@ input[type=password]:not(.browser-default):focus:not([readonly]){
 	border-bottom:1px solid #b43029;
 	box-shadow:0 1px 0 0 #b43029;
 }
+input[type=search]:not(.browser-default):focus:not([readonly]){
+	border-bottom:1px solid #b43029;
+	box-shadow:0 1px 0 0 #b43029;
+}
 input[type=text]:not(.browser-default):focus:not([readonly])+label{
 	color:#b43029;
 }
@@ -49,103 +53,121 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			<img src="/image/main/menu.png" id="main_icon" onclick="menu();">
 			<a href="http://localhost"><img
 				src="/image/main/logo.png" id="main_logo"></a>
-				
-	
-				
-				
-			<!-- Tablet Category -->
-			<ul id="main_category">
-				<li class="category_title"><a href="">하이라이트</a>
-				<ul class="category_sub_menu" style="display:none;">
-				    <li><a href="">Top 10</a></li>
-				    <li><a href="">축제&amp;행사</a></li>
-				    <li><a href="">서울 특화관광</a></li>
-				    <li><a href="">한류관광</a></li>
-				    <li><a href="">글로벌 서울 메이트</a></li>
-				</ul>
-				</li>
-				<li class="category_title"><a href="">서울즐기기</a>
-	            <ul class="category_sub_menu" style="display:none;">
-				    <li><a href="">추천코스</a></li>
-				    <li><a href="">명소</a></li>
-				    <li><a href="">쇼핑</a></li>
-				    <li><a href="">숙박</a></li>
-				    <li><a href="">음식점</a></li>
-				    <li><a href="">캘린더</a></li>
-				</ul>			
-				</li>
-				<li class="category_title"><a href="">예약하기</a>
-	            <ul class="category_sub_menu" style="display:none;">
-				    <li><a href="">공연예약</a></li>
-				    <li><a href="">호텔예약</a></li>
-				    <li><a href="">서울도보관광예약</a></li>
-				</ul>			
-				</li>
-				<li class="category_title"><a href="">여행준비</a>
-				<ul class="category_sub_menu" style="display:none;">
-				    <li><a href="">가이드북&amp;지도</a></li>
-				    <li><a href="">여행필수정보</a></li>
-				    <li><a href="">서비스 안내</a></li>
-				    <li><a href="">비즈니스&amp;파트너</a></li>
-				    <li><a href="">서울관광 이미지 다운로드</a></li>
-				    <li><a href="">FAQ</a></li>
-				    <li><a href="">공지사항</a></li>
-				</ul>
-				</li>
-			</ul>
-			<!-- Desktop Category -->
-			<ul class="collapsible" id="desktop_category">
-				<li>
-			    	<div class="collapsible-header">하이라이트</div>
-			      	<div class="collapsible-body">
-			      	<ul>
-			      		<li><a href="">Top 10</a></li>
-			      		<li><a href="">축제&amp;행사</a></li>
-						<li><a href="">서울 특화관광</a></li>
-						<li><a href="">한류관광</a></li>
-						<li><a href="">글로벌 서울 메이트</a></li>
-			      	</ul>
-			      	</div>
-			    </li>
-				<li>
-			    	<div class="collapsible-header">서울즐기기</div>
-			      	<div class="collapsible-body">
-			      	<ul>
-			      		<li><a href="">추천코스</a></li>
-						<li><a href="">명소</a></li>
-						<li><a href="">쇼핑</a></li>
-						<li><a href="">숙박</a></li>
-						<li><a href="">음식점</a></li>
-						<li><a href="">캘린더</a></li>
-			      	</ul>
-			      	</div>
-			    </li>
-			    <li>
-			    	<div class="collapsible-header">예약하기</div>
-			      	<div class="collapsible-body">
-			      	<ul>
-			      		<li><a href="">공연예약</a></li>
-						<li><a href="">호텔예약</a></li>
-						<li><a href="">서울도보관광예약</a></li>
-			      	</ul>
-			      	</div>
-			    </li>
-			    <li>
-			    	<div class="collapsible-header">여행준비</div>
-			      	<div class="collapsible-body">
-			      	<ul>
-			      		<li><a href="">가이드북&amp;지도</a></li>
-						<li><a href="">여행필수정보</a></li>
-						<li><a href="">서비스 안내</a></li>
-						<li><a href="">비즈니스&amp;파트너</a></li>
-						<li><a href="">FAQ</a></li>
-						<li><a href="">공지사항</a></li>
-			      	</ul>
-			      	</div>
-			    </li>			    
-			</ul>		
-		</div>
 
+        <% if(user==null){ %>
+        <div id="login_join">
+        	<p class="login_before login_left"><a href="/views/main/login.jsp">로그인</a></p>
+        	<p class="login_before login_right"><a href="/views/main/joinus.jsp">회원가입</a></p>
+        </div>    
+        <% } else { %>
+        <div id="login_join" class="login_after">	
+			<% if(user.getUserId().equals("admin")){ %>
+				<p><%=user.getUserName()%> 페이지 입니다</p>
+				<a href="/allUser">전체회원조회</a>
+			<% } else { %>
+				<p><span><%=user.getUserName()%></span>님 환영합니다</p>
+				<label onclick="myInfo();" id="infoBtn">마이페이지</label>
+				<form action="myPage" method="post" style="display:none;" id="myInfo">
+					<label style="color:red;">비밀번호 입력 : </label>
+					<input type="password" name="userPwd">
+					<div class="btn"><input type="submit" value="확인"></div>	
+				</form>
+			<% } %>
+			<a href="/logout">로그아웃</a><br>
+        </div>
+        <% } %>	
+        
+        <form action="/search" method="get" class="search-wrapper">
+        	<input type="search" placeholder="Search" style="width:200px;margin-left:10px;">
+        	<img src="/image/main/search.png" onclick="search();" class="main_search">
+        </form>
+        
+        <style>
+        	.scroll .search-wrapper{
+        		display:none;
+        	}
+        </style>
+        
+        <!-- desktop category -->
+        <div id="main_category">
+        	<div id="main_category_one" class="main_category">하이라이트</div>
+        	<ul style="display:none;" id="sub_category_one" class="main_sub_category">
+        		<li><a href="">Top 10</a></li>
+        		<li><a href="">축제&amp;행사</a></li>
+        		<li><a href="">서울 특화관광</a></li>
+        		<li><a href="">한류관광</a></li>
+        		<li><a href="">글로벌 서울 메이트
+        		</a></li>
+        	</ul>
+			<div id="main_category_two" class="main_category">서울즐기기</div>
+        	<ul style="display:none;" id="sub_category_two" class="main_sub_category">
+        		<li><a href="/enjoyList?type=type1">추천코스</a></li>
+				<li><a href="/enjoyList?type=type2">명소</a></li>
+				<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+				<li><a href="/enjoyList?type=type4">숙박</a></li>
+				<li><a href="/enjoyList?type=type5">음식점</a></li>
+				<li><a href="/enjoyList?type=type6">캘린더</a></li>
+        	</ul>
+			<div id="main_category_three" class="main_category">예약하기</div>
+        	<ul style="display:none;" id="sub_category_three" class="main_sub_category">
+        		<li><a href="/concerList">공연예약</a></li>
+				<li><a href="/hotelList">호텔예약</a></li>
+				<li><a href="/doboList">서울도보관광예약</a></li>
+        	</ul>  
+			<div id="main_category_four" class="main_category">여행준비</div>
+        	<ul style="display:none;" id="sub_category_four" class="main_sub_category">
+        		<li><a href="">가이드북&amp;지도</a></li>
+        		<li><a href="">여행필수정보</a></li>
+        		<li><a href="">서비스 안내</a></li>
+        		<li><a href="">비즈니스&amp;파트너</a></li>
+        		<li><a href="">FAQ</a></li>
+        		<li><a href="">공지사항</a></li>
+        	</ul>          	        	        	
+        </div>
+        
+        <!-- Tablet Category -->
+		<ul id="tablet_category">
+			<li class="category_title"><a href="">하이라이트</a>
+			<ul class="category_sub_menu" style="display:none;">
+			    <li><a href="">Top 10</a></li>
+			    <li><a href="">축제&amp;행사</a></li>
+			    <li><a href="">서울 특화관광</a></li>
+			    <li><a href="">한류관광</a></li>
+			    <li><a href="">글로벌 서울 메이트</a></li>
+			</ul>
+			</li>
+			<li class="category_title"><a href="/views/enjoy/enjoyPhoto.jsp">서울즐기기</a>
+            <ul class="category_sub_menu" style="display:none;">
+			    <li><a href="/enjoyList?type=type1">추천코스</a></li>
+				<li><a href="/enjoyList?type=type2">명소</a></li>
+				<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+				<li><a href="/enjoyList?type=type4">숙박</a></li>
+				<li><a href="/enjoyList?type=type5">음식점</a></li>
+				<li><a href="/enjoyList?type=type6">캘린더</a></li>
+			</ul>			
+			</li>
+			<li class="category_title"><a href="">예약하기</a>
+            <ul class="category_sub_menu" style="display:none;">
+			    <li><a href="/concerList">공연예약</a></li>
+				<li><a href="/hotelList">호텔예약</a></li>
+				<li><a href="/doboList">서울도보관광예약</a></li>
+			</ul>			
+			</li>
+			<li class="category_title"><a href="">여행준비</a>
+			<ul class="category_sub_menu" style="display:none;">
+			    <li><a href="">가이드북&amp;지도</a></li>
+			    <li><a href="">여행필수정보</a></li>
+			    <li><a href="">서비스 안내</a></li>
+			    <li><a href="">비즈니스&amp;파트너</a></li>
+			    <li><a href="">서울관광 이미지 다운로드</a></li>
+			    <li><a href="">FAQ</a></li>
+			    <li><a href="">공지사항</a></li>
+			</ul>
+			</li>
+		</ul>
+        
+		</div>
+	
 		<!-- responsive - mobile -->
 		<div id="slide-out" class="sidenav">
 			<%
@@ -179,7 +201,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 				<a href="/logout">로그아웃</a>
 			</p>
 			<style>
-			.collapsible{
+			.mobile_category{
 				display: none;
 			}
 			</style>
@@ -196,56 +218,76 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			<%
 				}
 			%>
-			<ul class="collapsible">
-				<li>
-			    	<div class="collapsible-header">하이라이트</div>
-			      	<div class="collapsible-body">
-			      	<ul>
-			      		<li><a href="">Top 10</a></li>
-			      		<li><a href="">축제&amp;행사</a></li>
-						<li><a href="">서울 특화관광</a></li>
-						<li><a href="">한류관광</a></li>
-						<li><a href="">글로벌 서울 메이트</a></li>
-			      	</ul>
-			      	</div>
-			    </li>
-				<li>
-			    	<div class="collapsible-header">서울즐기기</div>
-			      	<div class="collapsible-body">
-			      	<ul>
-			      		<li><a href="">추천코스</a></li>
-						<li><a href="">명소</a></li>
-						<li><a href="">쇼핑</a></li>
-						<li><a href="">숙박</a></li>
-						<li><a href="">음식점</a></li>
-						<li><a href="">캘린더</a></li>
-			      	</ul>
-			      	</div>
-			    </li>
-			    <li>
-			    	<div class="collapsible-header">예약하기</div>
-			      	<div class="collapsible-body">
-			      	<ul>
-			      		<li><a href="">공연예약</a></li>
-						<li><a href="">호텔예약</a></li>
-						<li><a href="">서울도보관광예약</a></li>
-			      	</ul>
-			      	</div>
-			    </li>
-			    <li>
-			    	<div class="collapsible-header">여행준비</div>
-			      	<div class="collapsible-body">
-			      	<ul>
-			      		<li><a href="">가이드북&amp;지도</a></li>
-						<li><a href="">여행필수정보</a></li>
-						<li><a href="">서비스 안내</a></li>
-						<li><a href="">비즈니스&amp;파트너</a></li>
-						<li><a href="">FAQ</a></li>
-						<li><a href="">공지사항</a></li>
-			      	</ul>
-			      	</div>
-			    </li>			    
-			</ul>
+			
+			<div>
+	        	<div id="mobile_category_one" class="mobile_category">하이라이트</div>
+	        	<ul style="display:none;" id="mobile_one">
+	        		<li><a href="">Top 10</a></li>
+	        		<li><a href="">축제&amp;행사</a></li>
+	        		<li><a href="">서울 특화관광</a></li>
+	        		<li><a href="">한류관광</a></li>
+	        		<li><a href="">글로벌 서울 메이트
+	        		</a></li>
+	        	</ul>
+				<div id="mobile_category_two" class="mobile_category">서울즐기기</div>
+	        	<ul style="display:none;" id="mobile_two">
+	        		<li><a href="/enjoyList?type=type1">추천코스</a></li>
+					<li><a href="/enjoyList?type=type2">명소</a></li>
+					<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+					<li><a href="/enjoyList?type=type4">숙박</a></li>
+					<li><a href="/enjoyList?type=type5">음식점</a></li>
+					<li><a href="/enjoyList?type=type6">캘린더</a></li>
+	        	</ul>
+				<div id="mobile_category_three" class="mobile_category">예약하기</div>
+	        	<ul style="display:none;" id="mobile_three">
+	        		<li><a href="/concerList">공연예약</a></li>
+					<li><a href="/hotelList">호텔예약</a></li>
+					<li><a href="/doboList">서울도보관광예약</a></li>
+	        	</ul>  
+				<div id="mobile_category_four" class="mobile_category">여행준비</div>
+	        	<ul style="display:none;" id="mobile_four">
+	        		<li><a href="">가이드북&amp;지도</a></li>
+	        		<li><a href="">여행필수정보</a></li>
+	        		<li><a href="">서비스 안내</a></li>
+	        		<li><a href="">비즈니스&amp;파트너</a></li>
+	        		<li><a href="">FAQ</a></li>
+	        		<li><a href="">공지사항</a></li>
+	        	</ul>          	        	        	
+        	</div>
+        	<script>
+        	$("#mobile_category_one").click(function(){
+        		$(this).next("ul").slideToggle('slow',function(){
+        			
+        		});
+        		$('#mobile_two').css('display','none');
+        		$('#mobile_three').css('display','none');
+        		$('#mobile_four').css('display','none');
+        	});
+        	$("#mobile_category_two").click(function(){
+        		$(this).next("ul").slideToggle('slow',function(){
+        			location.href="/views/enjoy/enjoyPhoto.jsp";
+        		});
+        		$('#mobile_one').css('display','none');
+        		$('#mobile_three').css('display','none');
+        		$('#mobile_four').css('display','none');
+        	});
+        	$("#mobile_category_three").click(function(){
+        		$(this).next("ul").slideToggle('slow',function(){
+        			
+        		});
+        		$('#mobile_two').css('display','none');
+        		$('#mobile_one').css('display','none');
+        		$('#mobile_four').css('display','none');
+        	});
+        	$("#mobile_category_four").click(function(){
+        		$(this).next("ul").slideToggle('slow',function(){
+        			location.href="/views/travelReady/travelReady.jsp";
+        		});
+        		$('#mobile_two').css('display','none');
+        		$('#mobile_three').css('display','none');
+        		$('#mobile_one').css('display','none');
+        	});        	
+        	</script>
 		</div>
 	</header>
 
@@ -267,7 +309,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 	            <h2>추천코스</h2>
 	            <hr class="border_top">
 	            <p>고궁, 엔터테인먼트, 호텔, 레스토랑, 스포츠&amp;아웃도어, 바, 카페, 면세점, 뷰티&amp;스파 등 인기 장소 추천!</p>
-	            <a href="">서울즐기기 바로가기</a>
+	            <a href="/views/enjoy/enjoyPhoto.jsp">서울즐기기 바로가기</a>
 	            <hr class="border_bottom">
 	        </div>       
         </div>

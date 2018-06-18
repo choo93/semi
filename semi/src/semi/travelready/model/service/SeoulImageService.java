@@ -34,7 +34,7 @@ public class SeoulImageService {
 	public SeoulImagePageData imageAll(int currentPage) {
 Connection conn=JDBCTemplate.getConnection();
 		
-		int recordCountPerPage=10;
+		int recordCountPerPage=12;
 		int naviCountPerPage=5;
 		
 		ArrayList<SeoulImageFile> list=new SeoulImageDao().getCurrentPage(conn,currentPage,recordCountPerPage);

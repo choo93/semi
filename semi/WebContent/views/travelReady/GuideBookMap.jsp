@@ -133,17 +133,12 @@
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
 	<section>
-			<div id="pagetitle">
-			<div id="title">
-				<p style="height:50px;">현재위치  : 여행준비 > 가이드북 & 지도</p>
-				<h3 style="font-size:50px;">가이드북&지도</h3>
-			</div>
-			</div>
+
 			<div id="pagecontent">
 				<section id="content">
 					<div class="dis" style="height:200px;">
 						<div id="guidebookrequest">
-						<a href="/views/travelReady/GuideBookRequest.jsp">
+						<a href="/views/travelReady/GuideBookRequest2.jsp">
 							<strong style="font-size:25px;">무료가이드북 & 지도</strong>
 							<br>
 								<strong id="rq">신청하기</strong>

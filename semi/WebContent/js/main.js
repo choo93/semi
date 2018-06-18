@@ -13,51 +13,7 @@ $(document).ready(function(){
        }); 
 });
 
-/* scrolling */
-$(window).scroll(function() {
-  $el = $('#scroll');
-  
-  if($(this).scrollTop() >= 60){
-      $('.sub_menu_one').css('display','none');
-      $('.sub_menu_two').css('display','none');
-      $('.sub_menu_three').css('display','none');
-      $('.sub_menu_four').css('display','none');  
-   $el.addClass('scroll');
-  }
-  else{
-      $el.removeClass('scroll');
-  }
-});
 
-function menu(){
-    $('#scroll').removeClass('scroll');
-}
 
-/* menu slideToggle */
-$(document).ready(function(){
-   $('.menu_one').click(function(){
-      $('.sub_menu_one').slideToggle(800); 
-      $('.sub_menu_two').css('display','none');
-      $('.sub_menu_three').css('display','none');
-      $('.sub_menu_four').css('display','none');       
-   });
-   $('.menu_two').click(function(){
-      $('.sub_menu_two').slideToggle(800);
-      $('.sub_menu_one').css('display','none');
-      $('.sub_menu_three').css('display','none');
-      $('.sub_menu_four').css('display','none');       
-   }); 
-   $('.menu_three').click(function(){
-      $('.sub_menu_three').slideToggle(800);        
-      $('.sub_menu_one').css('display','none');
-      $('.sub_menu_two').css('display','none');
-      $('.sub_menu_four').css('display','none');         
-   }); 
-   $('.menu_four').click(function(){
-      $('.sub_menu_four').slideToggle(800);        
-      $('.sub_menu_two').css('display','none');
-      $('.sub_menu_three').css('display','none');
-      $('.sub_menu_one').css('display','none');        
-   });    
-});
+
 
