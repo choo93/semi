@@ -4,9 +4,10 @@
 
 
 <%
-	HotelPageData hpd = (HotelPageData) request.getAttribute("HotelPageData");
+	HotelPageData hpd = (HotelPageData)request.getAttribute("HotelPageData");
 	ArrayList<HotelInfo> list = hpd.getHotelList();
 	String pageNavi = hpd.getPageNavi();
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -162,6 +163,7 @@
 
 	<script>
 		function hotelInfo(index) {
+
 			location.href = "/hotelInfo?indexNum="+index;
 		}
 	</script> 
