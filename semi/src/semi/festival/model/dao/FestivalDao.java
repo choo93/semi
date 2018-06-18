@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import semi.festival.model.vo.Festival;
+import semi.festival.model.vo.FestivalComment;
 import semi.festival.model.vo.FestivalDetail;
 
 
@@ -172,19 +173,19 @@ public class FestivalDao {
 		
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<li> <a href='/festivalList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&season="+season+  "'> « </a> </li>");
+			sb.append("<li> <a href='/festivalList?currentPage=" + (startNavi - 1) +"&season="+season+  "'> « </a> </li>");
 		} else { // 시작 페이지가 1페이지라면 !
 			sb.append("<li class='disabled'> <span>«</span> </li>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<li class='active'><a href='/festivalList?currentPage=" + i +"&serarch="+search+"&season="+season+ "'>" + i + "</a></li>");
+				sb.append("<li class='active'><a href='/festivalList?currentPage=" + i +"&season="+season+ "'>" + i + "</a></li>");
 			} else {
-				sb.append("<li> <a href='/festivalList?currentPage=" + i +"&serarch="+search+"&season="+season+  "'> " + i + " </a> </li>");
+				sb.append("<li> <a href='/festivalList?currentPage=" + i +"&season="+season+  "'> " + i + " </a> </li>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<li><a href='/festivalList?currentPage?currentPage=" + (endNavi + 1) +"&serarch="+search+"&season="+season+  "'> » </a></li>");
+			sb.append("<li><a href='/festivalList?currentPage=" + (endNavi + 1) +"&season="+season+  "'> » </a></li>");
 		}else {
 			sb.append("<li class='disabled'> <span>»</span> </li>");
 		}
@@ -234,6 +235,62 @@ public class FestivalDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return f;
+	}
+
+	public int insertComment(Connection conn, FestivalComment fc) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query="INSERT INTO ELEMENT_INDEX_REVIEW VALUES(?,?,?,NULL,?,ELEMENT_INDEX_REVIEW_SEQ.NEXTVAL,SYSDATE)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, fc.getTitleNo());
+			pstmt.setString(2, fc.getTitle());
+			pstmt.setString(3, fc.getUserId());
+			pstmt.setString(4, fc.getUserComment());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public ArrayList<FestivalComment> selectComment(Connection conn, int titleNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<FestivalComment> list = new ArrayList<FestivalComment>();
+		String query="SELECT * FROM ELEMENT_INDEX_REVIEW WHERE SEQ_INDEX_TITLENO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, titleNo);
+			rset = pstmt.executeQuery();
+			
+			while (rset.next())
+			{
+				FestivalComment fc = new FestivalComment();
+				fc.setTitleNo(rset.getInt("SEQ_INDEX_TITLENO"));
+				fc.setTitle(rset.getString("INDEX_TITLE"));
+				fc.setUserId(rset.getString("USER_ID"));
+				fc.setUserImage(rset.getString("USER_IMAGE"));
+				fc.setUserComment(rset.getString("USER_COMMENT"));
+				fc.setReviewNo(rset.getInt("SEQ_REVIEW"));
+				fc.setWriteDate(rset.getDate("WRITE_DATE"));
+				
+				list.add(fc);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
 	}
 
 }

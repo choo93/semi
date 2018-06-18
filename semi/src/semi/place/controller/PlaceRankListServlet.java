@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import semi.place.model.service.PlaceService;
-import semi.place.model.vo.PageData;
+import semi.place.model.vo.PlacePageData;
 import semi.place.model.vo.RankListData;
 
 /**
@@ -62,7 +62,7 @@ public class PlaceRankListServlet extends HttpServlet {
 		}
 
 		// 페이지값 셋팅
-		PageData pd = new PlaceService().getListData(currentPage, search, type);
+		PlacePageData pd = new PlaceService().getListData(currentPage, search, type);
 		// 비지니스 로직
 		
 		
