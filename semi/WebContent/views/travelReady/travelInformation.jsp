@@ -66,7 +66,7 @@
 					
 					<div style="height:1900px; margin-top:20px;">
 						
-					<div class="item" style="background-color:black;">
+					<div class="item" style="background:url(http://korean.visitseoul.net/media/img/Essential_Information?srvcId=MEDIA&parentSn=116&fileTy=MEDIA&fileNo=1);">
 						
 					</div>
 					
