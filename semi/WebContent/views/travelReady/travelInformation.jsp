@@ -45,6 +45,16 @@
 	background-repeat:no-repeat;
 	background-size:100% 100%;
     }
+    
+    .divimg{
+   	 	width:100%; 
+   		height:85%;
+    }
+    .imgfont
+    {
+    width:100%; 
+    height:15%;
+    }
 </style>
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
@@ -61,50 +71,116 @@
 					</div>
 					
 					<div style="height:1900px; margin-top:20px;">
-						
-					<div class="item" 
-					style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=123&fileTy=ATTACH&fileNo=1&thumbTy=L); 	
-					background-repeat:no-repeat;
-					background-size:100% 100%;">
-					</div>
-					dfsfsdafs
 					
-					<div class="item" style="background-color:green;">
-						
+					<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=123&fileTy=ATTACH&fileNo=1&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
 					</div>
 					
-						<div class="item" style="background-color:green;">
-						
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=131&fileTy=ATTACH&fileNo=1&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
 					</div>
 					
-						<div class="item" style="background-color:green;">
-						
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=132&fileTy=ATTACH&fileNo=1&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
 					</div>
 					
-						<div class="item" style="background-color:green;">
-						
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=133&fileTy=ATTACH&fileNo=1&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
 					</div>
 					
-						<div class="item" style="background-color:green;">
-						
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=135&fileTy=ATTACH&fileNo=1&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
 					</div>
 					
-						<div class="item" style="background-color:green;">
-						
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=136&fileTy=ATTACH&fileNo=1&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
 					</div>
 					
-						<div class="item" style="background-color:green;">
-						
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=134&fileTy=ATTACH&fileNo=1&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
 					</div>
 					
-						<div class="item" style="background-color:green;">
-						
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=137&fileTy=ATTACH&fileNo=1&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
 					</div>
 					
-						<div class="item" style="background-color:green;">
-						
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=138&fileTy=ATTACH&fileNo=2&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
 					</div>
-						
+					
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=139&fileTy=ATTACH&fileNo=2&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
+					</div>
+					
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=1037&fileTy=ATTACH&fileNo=1&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
+					</div>
+					
+							<div class="item">
+					<div class="divimg" style="background:url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=777&fileTy=ATTACH&fileNo=1&thumbTy=L);
+											background-repeat:no-repeat;
+											background-size:100% 100%;">
+											</div>
+					<div class="imgfont"></div>
+			
+					</div>
+					
+			
 					
 					</div>
 		
