@@ -35,20 +35,74 @@
     	padding-left:51px;
     	margin:o auto;
     }
+    
+     .item
+    {
+    	float:left;
+    	width:48%;
+    	height:350px;
+    	margin:1%;
+    }
 </style>
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
 	<section>
-
-			<div id="pagecontent">
-				<section id="content">
+	<div id="pagecontent">
+				<section id="content">					
+					
+			
 					<div class="dis" style="height:200px; background-color:red;">
+		
 						
 					</div>
 					
+					<div class="dis" style="height:1900px; margin-top:32px; background-color:blue;">
+						
+					<div class="item" style="background-color:black;">
+						
+					</div>
 					
-				</section>
+					<div class="item" style="background-color:green;">
+						
+					</div>
+					
+						<div class="item" style="background-color:green;">
+						
+					</div>
+					
+						<div class="item" style="background-color:green;">
+						
+					</div>
+					
+						<div class="item" style="background-color:green;">
+						
+					</div>
+					
+						<div class="item" style="background-color:green;">
+						
+					</div>
+					
+						<div class="item" style="background-color:green;">
+						
+					</div>
+					
+						<div class="item" style="background-color:green;">
+						
+					</div>
+					
+						<div class="item" style="background-color:green;">
+						
+					</div>
+					
+						<div class="item" style="background-color:green;">
+						
+					</div>
+						
+					
+					</div>
+		
 			
+				</section>
 			</div>
 		</section>
 <%@ include file="/views/main/footer.jsp" %>
