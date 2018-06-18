@@ -11,12 +11,11 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>bootstrap template</title>
-<link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/login/login.css">
 <link rel="stylesheet" href="../../css/travelReady/materialize.min.css">
 
-
 <script src="../../js/login/materialize.min.js"></script>
+
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
@@ -24,22 +23,12 @@
 
   </head>
   
-  <body id="scroll">
+
   <style>
 
-    
-    #title
-    {
-    	position:relative;
-    	width:94%;
-    	height:120px;
-    	margin-left:3%;
-    	margin-right:3%;
-    	line-height:70px;
-    	overflow-x:hidden;
-		overflow-y:hidden;
-    }
-    
+*{margin:0; padding:0;font-family: 'Nanum Gothic', sans-serif; font-size:0.9rem;}
+a
+{text-decoration:none!important;color:black;}
     #pagecontent
     {
     min-height:1000px;
@@ -175,9 +164,9 @@ legend, .blind {
   	}
   </script>
 	
-
+  <body id="scroll">
       <section>
-      <%@ include file="/views/main/header.jsp" %>
+
 			
 			<div id="pagecontent">
 				<section id="content">
