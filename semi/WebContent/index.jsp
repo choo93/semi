@@ -49,10 +49,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			<img src="/image/main/menu.png" id="main_icon" onclick="menu();">
 			<a href="http://localhost"><img
 				src="/image/main/logo.png" id="main_logo"></a>
-				
-	
-				
-				
+
 			<!-- Tablet Category -->
 			<ul id="main_category">
 				<li class="category_title"><a href="">하이라이트</a>
@@ -66,19 +63,19 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 				</li>
 				<li class="category_title"><a href="">서울즐기기</a>
 	            <ul class="category_sub_menu" style="display:none;">
-				    <li><a href="">추천코스</a></li>
-				    <li><a href="">명소</a></li>
-				    <li><a href="">쇼핑</a></li>
-				    <li><a href="">숙박</a></li>
-				    <li><a href="">음식점</a></li>
-				    <li><a href="">캘린더</a></li>
+				    <li><a href="/enjoyList?type=type1">추천코스</a></li>
+					<li><a href="/enjoyList?type=type2">명소</a></li>
+					<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+					<li><a href="/enjoyList?type=type4">숙박</a></li>
+					<li><a href="/enjoyList?type=type5">음식점</a></li>
+					<li><a href="/enjoyList?type=type6">캘린더</a></li>
 				</ul>			
 				</li>
 				<li class="category_title"><a href="">예약하기</a>
 	            <ul class="category_sub_menu" style="display:none;">
-				    <li><a href="">공연예약</a></li>
-				    <li><a href="">호텔예약</a></li>
-				    <li><a href="">서울도보관광예약</a></li>
+				    <li><a href="/concerList">공연예약</a></li>
+					<li><a href="/hotelList">호텔예약</a></li>
+					<li><a href="/doboList">서울도보관광예약</a></li>
 				</ul>			
 				</li>
 				<li class="category_title"><a href="">여행준비</a>
@@ -99,8 +96,8 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			    	<div class="collapsible-header">하이라이트</div>
 			      	<div class="collapsible-body">
 			      	<ul>
-			      		<li><a href="">Top 10</a></li>
-			      		<li><a href="">축제&amp;행사</a></li>
+			      		<li><a href="/views/placeRank/place_photo.jsp">Top 10</a></li>
+			      		<li><a href="/views/festival/festivalphoto.jsp">축제&amp;행사</a></li>
 						<li><a href="">서울 특화관광</a></li>
 						<li><a href="">한류관광</a></li>
 						<li><a href="">글로벌 서울 메이트</a></li>
@@ -111,12 +108,12 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			    	<div class="collapsible-header">서울즐기기</div>
 			      	<div class="collapsible-body">
 			      	<ul>
-			      		<li><a href="">추천코스</a></li>
-						<li><a href="">명소</a></li>
-						<li><a href="">쇼핑</a></li>
-						<li><a href="">숙박</a></li>
-						<li><a href="">음식점</a></li>
-						<li><a href="">캘린더</a></li>
+			      		<li><a href="/enjoyList?type=type1">추천코스</a></li>
+						<li><a href="/enjoyList?type=type2">명소</a></li>
+						<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+						<li><a href="/enjoyList?type=type4">숙박</a></li>
+						<li><a href="/enjoyList?type=type5">음식점</a></li>
+						<li><a href="/enjoyList?type=type6">캘린더</a></li>
 			      	</ul>
 			      	</div>
 			    </li>
@@ -124,14 +121,14 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			    	<div class="collapsible-header">예약하기</div>
 			      	<div class="collapsible-body">
 			      	<ul>
-			      		<li><a href="">공연예약</a></li>
-						<li><a href="">호텔예약</a></li>
-						<li><a href="">서울도보관광예약</a></li>
+			      		<li><a href="/concerList">공연예약</a></li>
+						<li><a href="/hotelList">호텔예약</a></li>
+						<li><a href="/doboList">서울도보관광예약</a></li>
 			      	</ul>
 			      	</div>
 			    </li>
 			    <li>
-			    	<div class="collapsible-header">여행준비</div>
+			    	<div class="collapsible-header"><a href="/views/travelReady/travelReady.jsp">여행준비</a></div>
 			      	<div class="collapsible-body">
 			      	<ul>
 			      		<li><a href="">가이드북&amp;지도</a></li>
@@ -197,12 +194,12 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 				}
 			%>
 			<ul class="collapsible">
-				<li>
+				<li class="collapsible_list">
 			    	<div class="collapsible-header">하이라이트</div>
 			      	<div class="collapsible-body">
 			      	<ul>
-			      		<li><a href="">Top 10</a></li>
-			      		<li><a href="">축제&amp;행사</a></li>
+			      		<li><a href="/views/placeRank/place_photo.jsp">Top 10</a></li>
+			      		<li><a href="/views/festival/festivalphoto.jsp">축제&amp;행사</a></li>
 						<li><a href="">서울 특화관광</a></li>
 						<li><a href="">한류관광</a></li>
 						<li><a href="">글로벌 서울 메이트</a></li>
@@ -213,12 +210,12 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			    	<div class="collapsible-header">서울즐기기</div>
 			      	<div class="collapsible-body">
 			      	<ul>
-			      		<li><a href="">추천코스</a></li>
-						<li><a href="">명소</a></li>
-						<li><a href="">쇼핑</a></li>
-						<li><a href="">숙박</a></li>
-						<li><a href="">음식점</a></li>
-						<li><a href="">캘린더</a></li>
+			      		<li><a href="/enjoyList?type=type1">추천코스</a></li>
+						<li><a href="/enjoyList?type=type2">명소</a></li>
+						<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+						<li><a href="/enjoyList?type=type4">숙박</a></li>
+						<li><a href="/enjoyList?type=type5">음식점</a></li>
+						<li><a href="/enjoyList?type=type6">캘린더</a></li>
 			      	</ul>
 			      	</div>
 			    </li>
@@ -226,9 +223,9 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			    	<div class="collapsible-header">예약하기</div>
 			      	<div class="collapsible-body">
 			      	<ul>
-			      		<li><a href="">공연예약</a></li>
-						<li><a href="">호텔예약</a></li>
-						<li><a href="">서울도보관광예약</a></li>
+			      		<li><a href="/concerList">공연예약</a></li>
+						<li><a href="/hotelList">호텔예약</a></li>
+						<li><a href="/doboList">서울도보관광예약</a></li>
 			      	</ul>
 			      	</div>
 			    </li>

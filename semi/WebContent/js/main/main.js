@@ -25,6 +25,7 @@ $(document).ready(function(){
 /*responsive - mobile - category */
 $(document).ready(function(){
 	$('.collapsible').collapsible();
+	$('.collapsible_list').css('border','none');
 });
 
 /* scrolling */

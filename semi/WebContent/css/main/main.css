@@ -27,7 +27,7 @@ a{color:black;}
 	width:100%;
 	background-color:#b43029;
 }
-.btn:hover{
+.btn:link, .btn:visited, .btn:hover, .btn:active{
 	background-color:#b43029;
 }
 .main_admin_page a{
@@ -319,11 +319,11 @@ footer{
     }
     .red_box{
     	width:700px;
-    	height:400px;
+    	height:330px;
     	background-color:#b43029;
     	position:absolute;
     	right:0px;
-    	bottom:150px;
+    	bottom:210px;
     	color:white;
     }
     .red_box .border_top{
@@ -335,6 +335,21 @@ footer{
     .red_box .border_bottom{
     	background-color:white;
     }
+    .white_box{
+    	width:377px;
+    	height:400px;
+    	position:absolute;
+    	top:97px;
+    	left:17px;
+    }
+    .section3{
+    	background-image:url(../../image/main/main2.jpg);
+    	background-size:cover;
+    	background-position:center;
+    	background-attachment:fixed;
+    	height:800px;
+    }
+    
 
 }
 
