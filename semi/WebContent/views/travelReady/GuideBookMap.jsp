@@ -133,17 +133,12 @@
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
 	<section>
-			<div id="pagetitle">
-			<div id="title">
-				<p style="height:50px;">현재위치  : 여행준비 > 가이드북 & 지도</p>
-				<h3 style="font-size:50px;">가이드북&지도</h3>
-			</div>
-			</div>
+
 			<div id="pagecontent">
 				<section id="content">
 					<div class="dis" style="height:200px;">
 						<div id="guidebookrequest">
-						<a href="/views/travelReady/GuideBookRequest.jsp">
+						<a href="/views/travelReady/GuideBookRequest2.jsp">
 							<strong style="font-size:25px;">무료가이드북 & 지도</strong>
 							<br>
 								<strong id="rq">신청하기</strong>
@@ -153,14 +148,14 @@
 						
 					</div>
 					
-					<div class="dis" style="height:1000px; margin-top:32px;">
+					<div class="dis" style="height:2000px; margin-top:32px;">
 					<%for(GuideBookDown gbd : list) {%>
 						<div class="item">
 							<div class="img" style="<%=gbd.getGuideBookImagePath()%>"></div>
 							<div class="name"><%=gbd.getGuideName()%></div>
 							<form action="/pdfDown" method="post">
 							<input type="hidden" name="orderNo" value="<%=gbd.getGuideNo()%>" >
-							<div class="button">PDF View<br>(75MB)<input type="submit" id="btn" value="다운로드"></div>
+							<div class="button">PDF View<br>(<%=gbd.getFileSize()%>)<input type="submit" id="btn" value="다운로드"></div>
 							</form>
 						</div>
 						<%} %>

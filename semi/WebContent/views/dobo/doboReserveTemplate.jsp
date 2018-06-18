@@ -33,7 +33,7 @@
 						<div>제목</div>
 						<div>
 							<div>
-								<label>예약 일</label> <input id="date" type="date" name="date">
+								<label>예약 날짜</label> <input id="date" type="date" name="date">
 							</div>
 							<div>
 								<label>예약 시간</label> 

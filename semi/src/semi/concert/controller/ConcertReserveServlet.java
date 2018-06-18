@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import semi.concert.model.service.ConcertService;
 import semi.concert.model.vo.ConcertReserve;
+import semi.login.model.vo.SeoulUser;
 
 @WebServlet(name = "ConcertReserve", urlPatterns = { "/concertReserve" })
 public class ConcertReserveServlet extends HttpServlet {
@@ -48,8 +49,7 @@ public class ConcertReserveServlet extends HttpServlet {
 		ConcertReserve cr = new ConcertReserve();
 		cr.setConcertCode(request.getParameter("concertCode"));
 		HttpSession session = request.getSession(false);
-		//cr.setUserNo(((Member)session.getAttribute("user")).getUserNo());
-		cr.setUserNo("1");
+		cr.setUserNo(((SeoulUser)session.getAttribute("user")).getUserNo());
 		cr.setConcertPrice(Integer.parseInt(request.getParameter("price")));
 		cr.setConcertReserveDate(request.getParameter("date"));
 		cr.setConcertReserveTime(request.getParameter("time"));

@@ -24,11 +24,10 @@
         <div id="seat">
             <%for(int i=0;i<6;i++){ %>
             	<%for(int j=0;j<10;j++){ %>
-            		<div id="<%=i*10+j+1%>" onclick="select(this);"><%=i*10+j+1%>석</div>
+            		<div id="<%=i*10+j+1%>" onclick="select(this);"><%=(char)(i+65) %><%=j+1%>석</div>
             	<%
             	}
             	%>
-            	<br>
             <%
             }
             %>
@@ -38,6 +37,20 @@
         <input type="hidden" name="price" value="<%=cr.getConcertPrice() %>">
         <input type="hidden" name="date" value="<%=cr.getConcertReserveDate() %>">
         <input type="hidden" name="time" value="<%=cr.getConcertReserveTime() %>">
+        <div id="info">
+        	<div>
+        		<div id="blue"></div>
+        		<div>선택 가능 좌석</div>
+        	</div>
+        	<div>
+        		<div id="green"></div>
+        		<div>선택한 좌석</div>
+        	</div>
+        	<div>
+        		<div id="gray"></div>
+        		<div>사용중인 좌석</div>
+        	</div>
+        </div>
     </div>
     	<button id="payy" type="button" onclick="selBool();">결제하기</button>
     	<input id="submit" type="submit" value="예약 완료" style="display:none;">

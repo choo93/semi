@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import semi.festival.model.dao.FestivalDao;
 import semi.festival.model.vo.Festival;
+import semi.festival.model.vo.FestivalComment;
 import semi.festival.model.vo.FestivalDetail;
 import semi.festival.model.vo.FestivalPageData;
 import semi.place.model.dao.PlaceDao;
-import semi.place.model.vo.PageData;
+import semi.place.model.vo.PlacePageData;
 import semi.place.model.vo.PlaceDetailData;
 
 public class FestivalService {
@@ -46,12 +47,34 @@ public class FestivalService {
 	}
 
 
-	public FestivalDetail festivalSelect(int titleNo) {
+	public Festival festivalSelect(int titleNo) {
 		Connection conn = JDBCTemplate.getConnection();
-		FestivalDetail fd = new FestivalDao().festivalSelect(conn,titleNo);
+		Festival f = new FestivalDao().festivalSelect(conn,titleNo);
 		
 		JDBCTemplate.close(conn);
-		return fd;
+		return f;
+	}
+
+
+	public int insertComment(FestivalComment fc) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new FestivalDao().insertComment(conn,fc);
+		if(result>0) 
+		{
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+ 		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+	public ArrayList<FestivalComment> selectComment(int titleNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<FestivalComment> list = new FestivalDao().selectComment(conn,titleNo);
+		JDBCTemplate.close(conn);
+		return list;
 	}
 	
 }

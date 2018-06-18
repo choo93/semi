@@ -15,6 +15,7 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="../../css/main.css">
 	<link rel="stylesheet" href="../../css/concert/concertList.css">
+	<link rel="stylesheet" href="../../css/moreBtn.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
 	<script src="../../js/dobo/doboList.js"></script>
@@ -35,9 +36,15 @@
         			<%=di.getDoboTitle() %>
         		</div>
         		<div id="concertSummary">
-        			<%=di.getDoboSummary() %>
+        			<%if(di.getDoboSummary()!=null){ %>
+        				<%=di.getDoboSummary() %>
+        			<%}else{ %>
+        				
+        			<%} %>
         		</div>
-        		
+        		<div id="btn">
+        			<button id="button" onclick="doboInfo(<%=di.getIndexNo() %>);">자세히</button>
+        		</div>
         	</div>
     	</div>
     	

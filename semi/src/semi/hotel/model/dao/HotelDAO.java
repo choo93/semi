@@ -10,6 +10,7 @@ import common.JDBCTemplate;
 import semi.hotel.model.vo.HotelInfo;
 import semi.hotel.model.vo.HotelListData;
 import semi.hotel.model.vo.HotelReserve;
+import semi.hotel.model.vo.RoomInfo;
 
 public class HotelDAO {
 
@@ -44,8 +45,10 @@ public class HotelDAO {
 				hi.setHotelCheckInOut(rset.getString("hotelCheckInOut"));
 				hi.setHotelLatitude(rset.getDouble("hotelLatitude"));
 				hi.setHotelLongtitude(rset.getDouble("hotelLongtitude"));
-				
+				hi.setHotelRoomCode(rset.getString("roomcode"));
+							
 			}
+				
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -99,8 +102,11 @@ public class HotelDAO {
 				hi.setHotelCheckInOut(rset.getString("hotelCheckInOut"));
 				hi.setHotelLatitude(rset.getDouble("hotelLatitude"));
 				hi.setHotelLongtitude(rset.getDouble("hotelLongtitude"));
+				hi.setHotelRoomCode(rset.getString("roomCode"));
 				list.add(hi);
+				System.out.println(hi.getHotelRoomCode());
 			}
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -262,6 +268,66 @@ public class HotelDAO {
 		}
 		
 		return result;
+	}
+
+
+	public ArrayList<RoomInfo> hotelRoomInfo(Connection conn, int roomCode) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		
+		String query ="";
+		if(roomCode==1) {
+			query="select * from roomInfo where RoomCode in ('1','2','3','4')";
+			
+		}else if(roomCode==2) {
+			query="select * from roomInfo where RoomCode in ('2','3','4','5')";
+		}
+		else if(roomCode==3) {
+			query="select * from roomInfo where RoomCode in ('3','4','5','6')";
+		}
+		else if(roomCode==4) {
+			query="select * from roomInfo where RoomCode in ('4','5','6','1')";
+		}
+		else if(roomCode==5) {
+			query="select * from roomInfo where RoomCode in ('5','6','1','2')";
+		}
+		else if(roomCode==6) {
+			query="select * from roomInfo where RoomCode in ('6','1','2','3')";
+		}
+		
+		
+		
+		ArrayList<RoomInfo> list = new ArrayList<RoomInfo>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				RoomInfo ri = new RoomInfo();
+				ri.setRoomCode(rset.getString("roomCode"));
+				ri.setRoomTitle(rset.getString("roomTitle"));
+				ri.setRoomExplain(rset.getString("roomExplain"));
+				ri.setRoomCapacity(rset.getInt("roomCapacity"));
+				ri.setRoomPrice(rset.getString("roomPrice"));
+				
+				
+				
+				list.add(ri);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return list;
+		
 	}
 
 }

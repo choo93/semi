@@ -116,7 +116,7 @@ public class GuideBookRequestDao {
 				GuideBookDown gbd=new GuideBookDown();
 				
 				gbd.setGuideNo(rset.getInt("guideno"));
-				gbd.setGuideName(rset.getString("guidename"));
+				gbd.setGuideName(rset.getString("guidebookname"));
 				gbd.setGuideBookImagePath(rset.getString("guidebookimagepath"));
 				gbd.setGuidePDFPath(rset.getString("guidepdfpath"));
 				gbd.setFileSize(rset.getString("filesize"));
@@ -153,11 +153,11 @@ public class GuideBookRequestDao {
 			while(rset.next()) {
 			gbd=new GuideBookDown();
 			gbd.setGuideNo(rset.getInt("guideno"));
-			gbd.setGuideName(rset.getString("guidename"));
+			gbd.setGuideName(rset.getString("guidebookname"));
 			gbd.setGuideBookImagePath(rset.getString("guidebookimagepath"));
 			gbd.setGuidePDFPath(rset.getString("guidepdfpath"));
 			gbd.setFileSize(rset.getString("filesize"));
-			gbd.setGuideBookName(rset.getString("guidebookName"));
+			
 			
 			}
 			
@@ -169,6 +169,31 @@ public class GuideBookRequestDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return gbd;
+	}
+
+	public int requestDelete(Connection conn, String[] orderNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		String query="delete from GUIDEBOOKREQUEST where orderno=?";
+		
+		try {
+			for(int i=0; i<orderNo.length; i++) {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, Integer.parseInt(orderNo[i]));
+			result+=pstmt.executeUpdate();
+			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+		
 	}
 
 }

@@ -35,6 +35,13 @@ int index = 0;
         <script src="../../js/jquery-3.3.1.min.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
         <script src="../../js/main.js"></script>
+        <script>
+        	
+               function send(index) {
+                   location.href = "/festivalSelect?titleNo="+index;
+               };
+            
+        </script>
 
     </head>
     <style>
@@ -116,7 +123,7 @@ int index = 0;
                 <!-- 내용물 -->
               
                 <div class="container">
-                  <form action ="/festivalSelect" method="get">
+
                     <!-- 첫번째 컨텐츠 -->
                     <%for(Festival f : list) { %>
                     <div class="row">
@@ -124,7 +131,7 @@ int index = 0;
                             <!-- 첫번째 내용 -->
                             <div class="row">
                                 <!-- 첫번째 사진 -->
-                                <div class="col-xs-3 photo" style="background-image: <%=f.getFestivalMainImg()%>"></div>
+                                <div class="col-xs-3 photo" style="background-image: url(<%=f.getFestivalMainImg()%>)"></div>
 
                                 <div class="col-xs-6 col-xs-offset-3 info">
                                     <!-- 첫번째 컨텐츠 제목 -->
@@ -148,14 +155,13 @@ int index = 0;
                                                                 <%} %>
                                         </div>
                                     </div>
-                                    <input type="hidden" value="<%=f.getTitleNo()%>" name="titleNo" />
-                                    <input type="submit" value="자세히" class="btn pull-right" id="button" />
+                                    <button class="btn pull-right" id="button" onclick="send(<%=f.getTitleNo()%>);">자세히</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <%index++; } %>
-                    </form>
+                 
 
                <!--      두번째 컨텐츠
                     <div class="row">

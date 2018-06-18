@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi.concert.model.service.ConcertService;
 import semi.concert.model.vo.ConcertInfo;
+import semi.enjoy.model.service.EnjoyService;
+import semi.enjoy.model.vo.CommentData;
 
 @WebServlet(name = "ConcertInfo", urlPatterns = { "/concertInfo" })
 public class ConcertInfoServlet extends HttpServlet {
@@ -24,10 +26,34 @@ public class ConcertInfoServlet extends HttpServlet {
 		int indexNo = Integer.parseInt(request.getParameter("indexNo"));
 		
 		ConcertInfo ci = new ConcertService().selectAllInfo(indexNo);
+		
+		String search = "";
+		if(request.getParameter("search")!=null)
+		{
+			search = request.getParameter("search");
+		}
+		else 
+		{
+			search = "";
+		}
+		
+		int currentPage; 
+		if(request.getParameter("currentPage")==null)
+		{
+			currentPage=1;
+		}
+		else 
+		{
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+
+		//페이징처리한 대상가져오기
+		CommentData cd = new ConcertService().getListCommentData(currentPage,search,indexNo);
 
 		if(ci!=null) {
 			RequestDispatcher view = request.getRequestDispatcher("/views/concert/concertInfoTemplate.jsp");
 			request.setAttribute("concertInfo", ci);
+			request.setAttribute("commentData", cd);
 			view.forward(request, response);
 		}
 		

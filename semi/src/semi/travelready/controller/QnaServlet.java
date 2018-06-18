@@ -54,6 +54,10 @@ int currentPage;
 			request.setAttribute("qnaPageData", qpd);
 			view.forward(request, response);
 		}
+		else
+		{
+			response.sendRedirect("/views/travelReady/QnaFail.jsp");
+		}
 		
 	}
 

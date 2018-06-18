@@ -64,7 +64,7 @@ dt {
 }
 
 dd {
-	width: 200px;
+	width: 300px;
 	height: 40px;
 	display: block;
 	padding-left: 100px;
@@ -141,7 +141,6 @@ dl>hr {
 
 #basicInfoContent {
 	width: 635px;
-	height: 200px;
 	font-weight: bold;
 	display: none;
 	padding-top: 10px;
@@ -175,21 +174,80 @@ dl>hr {
 	padding-right: 10px;
 }
 
+#phone{
+	width:100%;
+	height:20%;
+}
+
+#basicInfoContent>div>div{
+	float:left;
+}
+
+#basicInfoContent>div{
+	border-top:0.5px solid lightgrey;
+}
+
+#basicInfoContent>pre:first-child{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#basicInfoContent>div>div:first-child{
+	width:30%;
+	height:100%;
+	background-color:rgb(245,245,245);
+	text-align:center;
+	line-height:300%;
+}
+
+#phone{
+	width:100%;
+	height:50px;
+}
+
+#site{
+	width:100%;	height:50px;
+}
+
+
+
+#traffic{
+	width:100%;	height:200px;
+}
+
+#basicInfoContent>div>div:last-child{
+	padding-left:20px;
+	line-height:350%;
+}
+
+
 #map>div {
 	float: right;
 	padding-right: 10px;
+}
+
+
+#commentt{
+	margin-top: 30px;
+	width: 635px;
+	height: 65px;
+	font-size: 25px;
+	line-height: 40px;
+	padding-left: 10px;
+	background-color: RGB(245, 245, 245);
+	border-top:3px solid black;
 }
 
 #comment {
 	width: 635px;
 	height: 240px;
 	background-color: RGB(245, 245, 245);
-	margin-top: 30px;
+	
 }
 
 textarea {
 	margin-left: 50px;
-	margin-top: 20px;
+	/* margin-top: 20px; */
 	width: 530px;
 	height: 180px;
 	display: block;
@@ -203,15 +261,54 @@ textarea {
 	margin-right: 50px;
 }
 
-#topFooter {
-	width: 950px;
-	height: 190px;
-	margin: auto;
-	border-top: 3px solid black;
+#commentList{
+	width: 635px;
+	margin-top:50px;
+	margin-bottom:50px;
+	border-top:1px solid lightgrey;
+	border-bottom:1px solid lightgrey;
+	padding:30px;
+	overflow:auto;
 }
 
-#bottomFooter {
-	width: 100%;
-	height: 150px;
-	background-color: RGB(244, 242, 242);
+#commentList>div:not(#noComment){
+	width:90%;	height:100px;	margin:auto;
+	border-bottom:1px solid lightgrey;
+	margin-bottom:20px;
+}
+#commentTitle{
+	width:100%;
+	height:20%;
+}
+#commentTitle>div:first-child{
+	width:15%;	height:100%;
+	float:left;
+	font-weight:bold;
+}
+
+#commentTitle>div:last-child{
+	width:85%;	height:100%;
+	float:left;
+	color:grey;
+}
+
+#commentContent{
+	width:100%;	height:80%;
+	padding-top:10px;
+	overflow:auto;
+}
+
+#noComment{
+	font-size:40px;
+	text-align:center;
+}
+
+#navi {
+	margin-left: 40%;
+}
+#navi>a{
+	font-size:20px;
+}
+#navi>a>b{
+	font-size:20px;
 }

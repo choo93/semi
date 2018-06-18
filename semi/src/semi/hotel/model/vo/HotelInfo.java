@@ -18,6 +18,7 @@ public class HotelInfo {
 	private String hotelCheckInOut;
 	private Double hotelLatitude;
 	private Double hotelLongtitude;
+	private String hotelRoomCode;
 	
 	
 
@@ -29,7 +30,7 @@ public class HotelInfo {
 	public HotelInfo(int indexNum, String hotelCode, String hotelName, String hotelListMainPhoto, String hotelMainPhoto,
 			String hotelSubPhoto1, String hotelSubPhoto2, String hotelSubPhoto3, String hotelSubPhoto4,
 			String hotelAddress, String hotelPhone, String hotelExplain, String hotelBriefDescription,
-			String hotelRoomPriceExplain, String hotelCheckInOut, Double hotelLatitude, Double hotelLongtitude) {
+			String hotelRoomPriceExplain, String hotelCheckInOut, Double hotelLatitude, Double hotelLongtitude, String hotelRoomCode) {
 		super();
 		this.indexNum = indexNum;
 		this.hotelCode = hotelCode;
@@ -48,6 +49,7 @@ public class HotelInfo {
 		this.hotelCheckInOut = hotelCheckInOut;
 		this.hotelLatitude = hotelLatitude;
 		this.hotelLongtitude = hotelLongtitude;
+		this.hotelRoomCode = hotelRoomCode;
 	}
 
 
@@ -161,6 +163,12 @@ public class HotelInfo {
 
 	public void setHotelListMainPhoto(String hotelListMainPhoto) {
 		this.hotelListMainPhoto = hotelListMainPhoto;
+	}
+	public String getHotelRoomCode() {
+		return hotelRoomCode;
+	}
+	public void setHotelRoomCode(String hotelRoomCode) {
+		this.hotelRoomCode = hotelRoomCode;
 	}
 	
 }

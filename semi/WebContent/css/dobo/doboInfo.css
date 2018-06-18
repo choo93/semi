@@ -23,6 +23,7 @@ div {
 	font-size: 40px;
 	padding-left: 50px;
 	line-height: 80px;
+	font-weight:bold;
 }
 
 #contentTop {
@@ -48,8 +49,11 @@ div {
 	height: 70px;
 	background-color: RGB(229, 242, 249);
 	color: RGB(0, 125, 195);
-	padding: 20px;
+	padding-top:10px;
+	padding-left: 20px;
 	margin-bottom: 50px;
+	font-size:18px;
+	line-height:250%;
 }
 
 #mainInfo {
@@ -69,6 +73,11 @@ div {
 #mainInfo>div:last-child {
 	width: 60%;
 	height: 100%;
+	padding-top:10px;
+	padding-left:20px;
+	font-size:15px;
+	line-height:23px;
+	text-indent: 10px;
 }
 
 #reserve {
@@ -115,6 +124,8 @@ div {
 #courseInfo>div {
 	margin-bottom: 20px;
 	font-size: 14px;
+	text-indent: 10px;
+	line-height:20px;
 }
 
 #contentTop2>p:last-child {
@@ -162,6 +173,11 @@ div {
 	width: 60%;
 	height: 100%;
 	float: left;
+	padding-left:20px;
+	padding-top:10px;
+	font-size:15px;
+	text-indent: 10px;
+	line-height:23px;
 }
 
 #additional {
@@ -171,17 +187,29 @@ div {
 	/* margin-bottom: 50px; */
 }
 
+
+#commentt{
+	margin:auto;
+	margin-top: 30px;
+	width: 700px;
+	height: 65px;
+	font-size: 25px;
+	line-height: 40px;
+	padding-left: 10px;
+	background-color: RGB(245, 245, 245);
+	border-top:3px solid black;
+	
+}
+
 #comment {
 	width: 700px;
 	height: 240px;
 	margin: auto;
 	background-color: RGB(245, 245, 245);
-	margin-top: 30px;
 }
 
 textarea {
 	margin: auto;
-	margin-top: 20px;
 	width: 530px;
 	height: 180px;
 	display: block;
@@ -193,4 +221,60 @@ textarea {
 	float: right;
 	margin-top: 5px;
 	margin-right: 85px;
+}
+
+
+#commentList{
+	width: 635px;
+	margin:auto;
+	margin-top:50px;
+	margin-bottom:50px;
+	border-top:1px solid lightgrey;
+	border-bottom:1px solid lightgrey;
+	padding:30px;
+	overflow:auto;
+	
+}
+
+#commentList>div:not(#noComment){
+	width:90%;	height:100px;	margin:auto;
+	border-bottom:1px solid lightgrey;
+	margin-bottom:20px;
+}
+#commentTitle{
+	width:100%;
+	height:20%;
+}
+#commentTitle>div:first-child{
+	width:15%;	height:100%;
+	float:left;
+	font-weight:bold;
+}
+
+#commentTitle>div:last-child{
+	width:85%;	height:100%;
+	float:left;
+	color:grey;
+}
+
+#commentContent{
+	width:100%;	height:80%;
+	padding-top:10px;
+	overflow:auto;
+}
+
+#noComment{
+	font-size:40px;
+	text-align:center;
+}
+
+
+#navi {
+	margin-left: 40%;
+}
+#navi>a{
+	font-size:20px;
+}
+#navi>a>b{
+	font-size:20px;
 }
