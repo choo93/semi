@@ -8,6 +8,10 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="icon" href="../../image/main/favicon.ico">
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes"
+	rel="stylesheet">
 <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
 <script
 	src="https://connect.facebook.net/signals/config/1060656730737720?v=2.8.16&amp;r=stable"
@@ -23,9 +27,10 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes"
 	rel="stylesheet">
-<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/main/materialize.min.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
-<script src="../../js/main.js"></script>
+<script src="../../js/main/materialize.min.js"></script>
+<script src="../../js/main/main.js"></script>
 </head>
 <style>
 #main .menu {
