@@ -124,7 +124,7 @@
     </section>
 	<%@ include file="/views/main/footer.jsp" %>
 	
-	
+<!-- 달력 가져오기 -->	
 	<script>
   $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd',
@@ -139,12 +139,29 @@
     yearSuffix: '년'
   });
 
+  
   $(function() {
-    $("#datepicker1").datepicker();
+    $("#datepicker1").datepicker({maxDate: '+2y', minDate: '-2y', beforeShowDay: noPreviousdate});
+  
   });
+  
+  
+</script>
+ 
+<!-- 이전 날짜 선택 못하게 막기 -->
+<script>
+function noPreviousdate(date){ 
+	 
+    if (date < new Date()) 
+ 
+        return [false]; 
+ 
+    return [true]; 
+ 
+} 
 
 </script>
-
+<!-- 여기 까지 달력 가져오기 -->
 
 <script>
 	
