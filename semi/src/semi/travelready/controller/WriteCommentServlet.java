@@ -36,7 +36,7 @@ public class WriteCommentServlet extends HttpServlet {
 	int result=new SeoulInformationService().commentInsert(content);
 	
 	if(result>0) {
-		response.sendRedirect("/views/travelReady/Seoulvisit.jsp");
+		response.sendRedirect("/seoulInformationComment");
 	}
 	}
 

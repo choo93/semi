@@ -52,6 +52,10 @@ public class SeoulInformationCommentServlet extends HttpServlet {
 			request.setAttribute("SeoulInformationCommentPageData", sicpd);
 			view.forward(request, response);
 		}
+		else
+		{
+			response.sendRedirect("/views/travelReady/SeoulvisitFail.jsp");
+		}
 	}
 
 	/**

@@ -58,6 +58,7 @@
     {
     	border-radius:10px;
     }
+
     </style>
 
 <body id="scroll">
@@ -207,26 +208,9 @@
 					</ul>
 					</div>
 					
-					<%if(list==null){ %>
-					<div style="width:100%; height:200px; border-bottom:1px solid black; padding:10px; display:none;">
-						
-						<div style="width:100%; height:100%; background-color:red;">
-						
-							<div style="width:80px; height:60px; background-color:blue; float:left; margin-top:30px;"></div>
-							<div style="width:90%; height:100%; margin-left:10%; background-color:pink;">
-							<ul>
-								<li>1</li>
-								<li style="height:100px; padding-top:20px;">2</li>
-								<li>3</li>
-							</ul>
-							
-							</div>
-					
-						</div>
-					</div>
-					<%}else{ %>
+
 					<%for(SeoulInformationComment sic : list){ %>
-							<div style="width:100%; height:200px; border-bottom:1px solid black; padding:10px;">
+							<div style="width:100%; height:auto; border-bottom:1px solid black; padding:10px;">
 						
 						<div style="width:100%; height:100%;">
 						
@@ -240,14 +224,29 @@
 									</ul>
 								</li>
 								<li style="height:100px; padding-top:40px;"><%=sic.getContent()%></li>
-								<li>3</li>
+								<li style="height:30px;">
+								<ul style="list-style:none;">
+									<li style="float:left;"><button style="cursor: pointer;background-color:white;border:none;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;">
+									댓글달기</span></button></li>
+									<li style="float:left;"><button style="cursor: pointer;background-color:white;border:none;"><span style="margin-left:10px; padding-left:20px; 
+									background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;
+									background-position: 4px -151px;">
+									신고</span></button></li>
+									<li><button style="cursor: pointer;background-color:white;border:none;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;
+									    background-position: 4px -26px;">
+									    삭제</span></button></li>
+								</ul>
+								
+								</li>
+								<div style="width:100%; height:100px; background-color:red; display:none;"></div>
+								<div style="width:100%; height:100px; background-color:blue;"></div>
+								
 							</ul>
 							
 							</div>
 					
 						</div>
 					</div>
-					<%} %>
 					<%} %>
 					
 					

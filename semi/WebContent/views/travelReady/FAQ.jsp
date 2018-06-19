@@ -31,7 +31,7 @@ a
 {text-decoration:none!important;color:black;}
      #pagecontent
     {
-    	min-height:1000px;
+    	height:auto;
     	margin-left:3%;
     	margin-right:3%;
     	padding-left:51px;
@@ -42,7 +42,7 @@ a
     {
     margin:0 auto;
     width:960px;
-    min-height:1000px;
+    min-height:auto;
     padding-left:0px;
     }
     #faqtitle
@@ -92,7 +92,7 @@ fieldset{
 {
 	margin-top:2%;
 	width:100%;
-	height:98%;
+	height:auto;
 
 }
 dt
@@ -126,34 +126,9 @@ var toggleText1 = false;
 var toggleText2 = false;
 var index=0;
 function test(id){
-	
-	
-	
-	var answer=document.getElementsByName('ans');
-	
-	if(index==0){
-	for(var i=0; i<answer.length; i++){
-		answer[i].style.display="none";
 
-	}
-	
 	$('#'+id).toggle('display');
-	if(toggleText1==true)
-	{
-		toggleText1 = false;
-		index++;
-	}
-	else{
 
-		toggleText1 = true;
-		index++;
-	}
-	}else{
-		for(var i=0; i<answer.length; i++){
-			answer[i].style.display="none";
-		}
-	index=0;
-	}
 }
 </script>
 
@@ -199,7 +174,7 @@ function test(id){
 					</ul>
 				</div>
 				
-				<div style="width:100%; height:780px;">
+				<div style="width:100%; height:auto;">
 					<h3 style="font-size:24px; float:left; margin-right:50px;">FAQ</h3>				
 				<form action="/views/travelReady/FAQAnswer.jsp">
 				<input type="submit" value="등록" class="btn btn-primary">
@@ -214,6 +189,12 @@ function test(id){
 				
 
 				
+			
+		
+			</section>
+			
+			</div>
+			
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
 				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 
 					if(i==fpd.getCurrentPage()){%>
@@ -223,10 +204,6 @@ function test(id){
 					<%} %>
 				<%} %>
 				</div>
-		
-			</section>
-			
-			</div>
 
 			
 			</section>
