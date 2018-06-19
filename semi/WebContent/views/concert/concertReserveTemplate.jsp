@@ -27,6 +27,14 @@
             		<option value="13:00">21:00</option>
         		</select>
         	</div>
+        	<div>
+        		<label>인원 선택</label>
+				<select id="people" name="people">
+            		<option value="1">1명</option>
+            		<option value="2">2명</option>
+            		<option value="3">3명</option>
+        		</select>
+        	</div>
 			<input type="hidden" name="indexNo" value="<%=request.getParameter("indexNo")%>">
 			<input type="hidden" name="concertCode" value="<%=request.getParameter("concertCode")%>">
 			<div id="priced">

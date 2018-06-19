@@ -14,6 +14,8 @@
 	%>
 		<script>
 			alert('예약 성공!');
+			<%System.out.println(request.getParameter("indexNo")); %>
+			opener.location.href="/hotelInfo?indexNum="+<%=request.getParameter("indexNo") %>;
 			window.close();
 		</script>	
 	<%
@@ -21,6 +23,7 @@
 	%>	
 			<script>
 				alert('예약 실패...');
+				opener.location.href="/hotelInfo?indexNum="+<%=request.getParameter("indexNo") %>;
 				window.close();
 			</script>
 	<%	}

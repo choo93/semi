@@ -14,10 +14,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="../../css/main.css">
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../../css/concert/concertList.css">
 	<link rel="stylesheet" href="../../css/moreBtn.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
 	<script src="../../js/dobo/doboList.js"></script>
 </head>
 <body id="scroll">
@@ -50,7 +52,9 @@
     	
     	<%} %>
 		
-		<label id="navi"><%= pageNavi %></label>
+		<div class = "container" style="text-align:center;">
+			<ul class="pagination pagination-lg"><%= pageNavi %></ul>
+		</div>
 	</section>
 	<%@ include file="/views/main/footer.jsp" %>
 </body>

@@ -37,7 +37,7 @@ public class FestivalSelectServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		int titleNo = Integer.parseInt(request.getParameter("titleNo"));
-		System.out.println(titleNo);
+
 		Festival f = new FestivalService().festivalSelect(titleNo);
 		
 		ArrayList<FestivalComment> list = new FestivalService().selectComment(titleNo);

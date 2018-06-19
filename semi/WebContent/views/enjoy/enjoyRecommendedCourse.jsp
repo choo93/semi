@@ -29,6 +29,7 @@
 	<div id="enjoyRecommendedCoursePage" style="width: 100%;">
 
 	<!-- 코스대표사진 -->
+
 	  <div id="aboutRecommendedCourse" style="width: 80%; margin-top: 5%; margin-left: 10%;">
       <div class="photo" style="width: 700px; height: 500px; margin:0 auto; border-radius: 12px;" >
 		<img src="<%=EID.getIndex_List_IntroImage()%>">
@@ -40,10 +41,12 @@
 			<p style="font: 1.3rem 나눔스퀘어; color: #4F4B63;">
 			<%=EID.getIndex_in_mainText() %>
 			</p>
+
 			<!-- P 태그 안 내용 지우고 내용 집어넣기 -->
 		</div>
 	</div>
 	<!-- 탐방코스 -->
+
 	<%if(EID.getIndex_First_Course_title()!=null&&EID.getIndex_first_course_comment()!=null){ %>
 	<div id="aboutCourse" style="width: 50%; height: 80px; margin-top: 3%; margin-left: 25%; background-color: #DFDCF1; border: 5px solid #6D5B97; border-style: outset;">
 		      <span style="color: #453188; font: bold 1.6rem 나눔스퀘어; position: relative; top: 15px; left: 15px;">
@@ -52,6 +55,7 @@
 		      <p style="color: #6D5B97; font: 1.2rem 나눔스퀘어; position: relative; top: 17px; left: 15px;">
 		<%=EID.getIndex_first_course_comment() %>
 		</p>
+
 	</div>
 	<%} %>
 	
@@ -61,9 +65,11 @@
 	<!-- 코스 내용 담을 큰 DIV -->
 	<div id="coursePost" style="width: 80%; margin-top: 5%; margin-left: 10%;">
 		<!-- 코스 1~ 이미지 -->
+
 		<div id="courseNumImg" style="width: 73px; height: 100px; margin:0 auto;">
 		<img src="<%= EIDD.getIndex_CourseIcon() %>">
 		</div>
+
 			<!-- 코스 제목&부제 담을 DIV -->
 			<div id="bigCourseTitle" style="width: 40%; height: 80px; margin: 0 auto; text-align: center;">
 				<!-- 코스 제목 -->
@@ -78,6 +84,7 @@
 				<%} %>
 			</div>
 			<!-- 코스 이미지 -->
+
 			<div class="photo" style="width: 700px; height: 500px; margin:0 auto; border-radius: 12px;">
 			<img src="<%=EIDD.getIndex_Image()%>">
 			</div>
@@ -87,10 +94,12 @@
 				<p style="font: 1.3rem 나눔스퀘어;">
 				<%=EIDD.getIndex_content() %>
 				</p>
+
 				<!-- P 태그 안 내용 지우고 내용 집어넣기 -->
 			</div>
 	<!-- 코스 정보 -->
 	<div id="aboutCourseInfo" style="width: 80%; height: 150px; background-color: #DFDCF1; border: 5px solid #6D5B97; border-style: outset; margin-top: 3%; margin-left: 10%;">
+
 	
 	<!-- 이름 -->
 	<%if(EIDD.getIndex_utilly_title()!=null){ %>
@@ -116,7 +125,9 @@
 	<!-- 웹사이트 -->
 	<%if(EIDD.getIndex_utilly_weburl()!=null){ %>
 	<p style="position: relative; top: 17px; left: 15px;">
+
 	<a href="<%=EIDD.getIndex_utilly_weburl() %> %>"  style="font: italic bold 1.2rem 나눔스퀘어; color: #6D5B97;">웹사이트 보기</a>
+
 	</p>
 	<%} %>
 	</div>
@@ -127,6 +138,7 @@
 	<%if(EID.getIndex_LastIamge()!=null){ %>
 	<!-- 지도랑 멘트 담을 DIV -->
 	<div id="mapAndComment" style="width: 80%; margin-top: 3%; margin-left: 10%;">
+
 	
 	<!-- 지도 이미지 -->
 	<div class="photo" style="width: 700px; height: 565px; margin:0 auto;">
@@ -158,7 +170,7 @@
 		 <div style="width: 100%; height: 2px; background: #ddd; margin-top: 3%; margin-bottom: 3%;"></div>
 
 	</div>
-	<!-- 덧글 부분 -->
+	
 	
 	</div>
 		

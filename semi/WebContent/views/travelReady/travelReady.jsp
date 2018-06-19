@@ -5,30 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="icon" href="../../image/main/favicon.ico">
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes"
-	rel="stylesheet">
-<script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
-<script
-	src="https://connect.facebook.net/signals/config/1060656730737720?v=2.8.16&amp;r=stable"
-	async=""></script>
-<script type="text/javascript" async=""
-	src="https://www.gstatic.com/recaptcha/api2/v1528135568984/recaptcha__en.js"></script>
-<script type="text/javascript"
-	src="//m.addthis.com/live/red_lojson/300lo.json?si=5b1b51dbeec25191&amp;bkl=0&amp;bl=1&amp;pdt=1095&amp;sid=5b1b51dbeec25191&amp;pub=ra-591e10580b7aca4f&amp;rev=v8.3.20-wp&amp;ln=en&amp;pc=men&amp;cb=0&amp;ab=-&amp;dp=www.ipgmediabrands.be&amp;fp=services&amp;fr=&amp;of=0&amp;pd=0&amp;irt=1&amp;vcl=1&amp;md=0&amp;ct=1&amp;tct=0&amp;abt=0&amp;cdn=0&amp;pi=1&amp;rb=0&amp;gen=100&amp;chr=UTF-8&amp;colc=1528517084078&amp;jsl=1&amp;uvs=5b1b4b27ba88d234001&amp;skipb=1&amp;callback=addthis.cbs.oln9_56123815837436860"></script>
-<script type="text/javascript"
-	src="//m.addthisedge.com/live/boost/ra-591e10580b7aca4f/_ate.track.config_resp"></script>
 
-<link rel="stylesheet" href="../../css/main.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main/materialize.min.js"></script>
 <script src="../../js/main/main.js"></script>
 </head>
 <style>
+*{margin:0; padding:0;font-family: 'Nanum Gothic', sans-serif; font-size:0.9rem;}
+a
+{text-decoration:none!important;color:black;}
 #main .menu {
 	width: 50%;
 	height: 400px;
