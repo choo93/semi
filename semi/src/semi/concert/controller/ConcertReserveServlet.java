@@ -32,15 +32,22 @@ public class ConcertReserveServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 
 		if(session.getAttribute("user")!=null) {
-			ConcertReserve cr = new ConcertReserve();
-			cr.setConcertCode(request.getParameter("concertCode"));
-			cr.setUserNo(((SeoulUser)session.getAttribute("user")).getUserNo());
-			cr.setConcertPrice(Integer.parseInt(request.getParameter("price")));
-			cr.setConcertReserveDate(request.getParameter("date"));
-			cr.setConcertReserveTime(request.getParameter("time"));
-			cr.setSeatNo(Integer.parseInt(request.getParameter("seatNo0")));
-
-			int result = new ConcertService().addReserve(cr);
+			int people = Integer.parseInt(request.getParameter("people"));
+			
+			int result=0;
+			
+			for(int i=0;i<people;i++) {
+				ConcertReserve cr = new ConcertReserve();
+				cr.setConcertCode(request.getParameter("concertCode"));
+				cr.setUserNo(((SeoulUser)session.getAttribute("user")).getUserNo());
+				cr.setConcertPrice(Integer.parseInt(request.getParameter("price")));
+				cr.setConcertReserveDate(request.getParameter("date"));
+				cr.setConcertReserveTime(request.getParameter("time"));
+				cr.setSeatNo(Integer.parseInt(request.getParameter("seatNo"+i)));
+				
+				result = new ConcertService().addReserve(cr);
+			}
+			
 
 			RequestDispatcher view = request.getRequestDispatcher("/views/concert/reserve.jsp");
 			if(result>0) {
