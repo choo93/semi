@@ -1,15 +1,19 @@
 package semi.place.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import semi.place.model.service.PlaceService;
-import semi.place.model.vo.PlaceDetailData;
+import semi.place.model.vo.PlaceRank;
+import semi.place.model.vo.PlaceRankComment;
 
 /**
  * Servlet implementation class PlaceSelectServlet
@@ -34,7 +38,20 @@ public class PlaceSelectServlet extends HttpServlet {
 		
 		int titleNo = Integer.parseInt(request.getParameter("titleNo"));
 		
-		PlaceDetailData pdd = new PlaceService().placeSelect(titleNo);
+		PlaceRank pr = new PlaceService().placeSelect(titleNo);
+		ArrayList<PlaceRankComment> list = new PlaceService().selectComment(titleNo);
+		HttpSession session = request.getSession(false);
+		if(pr!=null)
+		{
+			RequestDispatcher view = request.getRequestDispatcher("/views/placerank/place_Info.jsp");
+			request.setAttribute("place", pr);
+			request.setAttribute("comment", list);
+			view.forward(request, response);
+		}else
+		{
+			
+		}
+
 	}
 
 	/**

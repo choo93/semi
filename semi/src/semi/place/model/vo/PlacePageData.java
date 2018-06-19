@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class PlacePageData {
-	private ArrayList<RankListData> placeList;
+	private ArrayList<PlaceRank> placeList;
 	private String pageNavi;
 	
 	public PlacePageData() {
@@ -13,17 +13,17 @@ public class PlacePageData {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PlacePageData(ArrayList<RankListData> placeList, String pageNavi) {
+	public PlacePageData(ArrayList<PlaceRank> placeList, String pageNavi) {
 		super();
 		this.placeList = placeList;
 		this.pageNavi = pageNavi;
 	}
 
-	public ArrayList<RankListData> getPlaceList() {
+	public ArrayList<PlaceRank> getPlaceList() {
 		return placeList;
 	}
 
-	public void setPlaceList(ArrayList<RankListData> placeList) {
+	public void setPlaceList(ArrayList<PlaceRank> placeList) {
 		this.placeList = placeList;
 	}
 

@@ -6,32 +6,30 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import semi.place.model.dao.PlaceDao;
 import semi.place.model.vo.PlacePageData;
-import semi.place.model.vo.PlaceDetailData;
-import semi.place.model.vo.RankListData;
+import semi.place.model.vo.PlaceRank;
+import semi.place.model.vo.PlaceRankComment;
 
 public class PlaceService {
-
-
-
-	public PlacePageData getListData(int currentPage, String search, String type) {
+	public PlacePageData getListData(int currentPage, String search, int type) {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		
 		int recordCountPerPage  = 10;  // 한페이지에 보일 개시물의 갯수
 		int naviCountPerPage = 5; // 네비게이터의 범위 (1~5) (6~10)
 		
-		ArrayList<RankListData> list = new PlaceDao().getListData(conn,recordCountPerPage,currentPage,search,type);
+		ArrayList<PlaceRank> list = new PlaceDao().getListData(conn,recordCountPerPage,currentPage,search,type);
 		
 		
 		String PageNavi = new PlaceDao().getPageNavi(conn,naviCountPerPage,recordCountPerPage,currentPage,search,type);
 		
+		System.out.println(list.isEmpty());
+		System.out.println(PageNavi.isEmpty());
 		
-		
-		PlacePageData pd =null;
+		PlacePageData ppd =null;
 		if(!list.isEmpty() &&!PageNavi.isEmpty()) {
-			pd = new PlacePageData();
-			pd.setPlaceList(list);
-			pd.setPageNavi(PageNavi);
+			ppd = new PlacePageData();
+			ppd.setPlaceList(list);
+			ppd.setPageNavi(PageNavi);
 		}
 		
 		
@@ -39,15 +37,23 @@ public class PlaceService {
 		
 		
 		
-		return pd;
+		return ppd;
 	}
 
-	public PlaceDetailData placeSelect(int titleNo) {
+	public PlaceRank placeSelect(int titleNo) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		PlaceDetailData pdd = new PlaceDao().placeSelect(conn,titleNo);
+		PlaceRank pr = new PlaceDao().placeSelect(conn,titleNo);
 		
-		return null;
+		JDBCTemplate.close(conn);
+		return pr;
+	}
+
+	public ArrayList<PlaceRankComment> selectComment(int titleNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<PlaceRankComment> list = new PlaceDao().selectComment(conn,titleNo);
+		JDBCTemplate.close(conn);
+		return list;
 	}
 	
 }
