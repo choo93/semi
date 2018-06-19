@@ -123,7 +123,7 @@ box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 			</div>
 			<div id="photo4" style="width: 50%; height: 350px; float: left;">
 				
-				<a href="/enjoyList?type=type4"><img class="photo4"
+				<a href="/hotelList"><img class="photo4"
 					src="../../image/enjoy/SEOUL4.png"
 					style="width: 100%; height: 100%;"></a>
 
