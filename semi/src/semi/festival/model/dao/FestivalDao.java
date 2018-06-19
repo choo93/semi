@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import semi.festival.model.vo.Festival;
 import semi.festival.model.vo.FestivalComment;
-import semi.festival.model.vo.FestivalDetail;
 
 
 public class FestivalDao {
@@ -25,7 +24,7 @@ public class FestivalDao {
 		// 끝 게시물 계산
 		int end = currentPage * recordCountPerPage;
 
-		String query = "select * from (select festival.*,row_number() over(order by seq_Index_titleNo)as num from festival where festival_season = ?) where num between ? and ?";
+		String query = "select * from (select festival.*,row_number() over(order by Index_titleNo)as num from festival where festival_season = ?) where num between ? and ?";
 
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -38,7 +37,7 @@ public class FestivalDao {
 				f.setFestivalNo(rset.getInt("festival_index"));
 				f.setFestivalSeason(rset.getString("festival_season"));
 				f.setFestivalTitle(rset.getString("festival_title"));
-				f.setTitleNo(rset.getInt("SEQ_Index_TitleNo"));
+				f.setTitleNo(rset.getInt("Index_TitleNo"));
 				f.setFestivalBasicInfo(rset.getString("festival_basicinfo"));
 				f.setFestivalDetailInfo(rset.getString("festival_detailinfo"));
 				f.setFestivalWriteDate(rset.getDate("festival_writeDate"));
@@ -196,7 +195,7 @@ public class FestivalDao {
 	public Festival festivalSelect(Connection conn, int titleNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from festival where seq_index_titleno = ?";
+		String query = "select * from festival where index_titleno = ?";
 		Festival f = null;
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -209,7 +208,7 @@ public class FestivalDao {
 				f.setFestivalNo(rset.getInt("festival_index"));
 				f.setFestivalSeason(rset.getString("festival_season"));
 				f.setFestivalTitle(rset.getString("festival_title"));
-				f.setTitleNo(rset.getInt("SEQ_Index_TitleNo"));
+				f.setTitleNo(rset.getInt("Index_TitleNo"));
 				f.setFestivalBasicInfo(rset.getString("festival_basicinfo"));
 				f.setFestivalDetailInfo(rset.getString("festival_detailinfo"));
 				f.setFestivalWriteDate(rset.getDate("festival_writeDate"));
@@ -262,7 +261,7 @@ public class FestivalDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<FestivalComment> list = new ArrayList<FestivalComment>();
-		String query="SELECT * FROM ELEMENT_INDEX_REVIEW WHERE SEQ_INDEX_TITLENO=?";
+		String query="SELECT * FROM ELEMENT_INDEX_REVIEW WHERE INDEX_TITLENO=?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -272,7 +271,7 @@ public class FestivalDao {
 			while (rset.next())
 			{
 				FestivalComment fc = new FestivalComment();
-				fc.setTitleNo(rset.getInt("SEQ_INDEX_TITLENO"));
+				fc.setTitleNo(rset.getInt("INDEX_TITLENO"));
 				fc.setTitle(rset.getString("INDEX_TITLE"));
 				fc.setUserId(rset.getString("USER_ID"));
 				fc.setUserImage(rset.getString("USER_IMAGE"));
