@@ -15,37 +15,17 @@
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
-	<link rel="stylesheet" href="../../css/main.css">
+
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
 
 		
 
 <style>
-#pagetitle
-	{
-	position:relative;
- 	padding-left:3%;
- 	padding-right:3%;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #d6d6d6;
-    width:94%;
-    height:120px;
-    margin-bottom:35px;
-    }
-    
-    #title
-    {
-    	position:relative;
-    	width:94%;
-    	height:120px;
-    	margin-left:3%;
-    	margin-right:3%;
-    	line-height:70px;
-    	overflow-x:hidden;
-		overflow-y:hidden;
-    }
+*{margin:0; padding:0;font-family: 'Nanum Gothic', sans-serif; font-size:0.9rem;}
+a
+{text-decoration:none!important;color:black;}
+
      #pagecontent
     {
     	min-height:1000px;
@@ -134,12 +114,7 @@ else self.name = '';
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
 <section>
-  		<div id="pagetitle">
-			<div id="title">
-				<p style="height:50px;">현재위치  : 여행준비 > 질문 & 답변</p>
-				<h3 style="font-size:50px;">질문 & 답변</h3>
-			</div>
-			</div>
+
 			
 			<div id="pagecontent">
 			<section id="content">

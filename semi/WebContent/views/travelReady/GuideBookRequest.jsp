@@ -12,12 +12,6 @@
 
     <title>bootstrap template</title>
 
-
-
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes"
-	rel="stylesheet">
-    
      <link rel="stylesheet" href="../../css/main.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>	
@@ -184,13 +178,7 @@ legend, .blind {
 
       <section>
       <%@ include file="/views/main/header.jsp" %>
-      
-      		<div id="pagetitle">
-			<div id="title">
-				<p style="height:50px;">현재위치  : 여행준비 > 가이드북&지도</p>
-				<h3 style="font-size:50px;">가이드북&지도 신청하기</h3>
-			</div>
-			</div>
+
 			
 			<div id="pagecontent">
 				<section id="content">

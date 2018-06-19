@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,12 +14,11 @@
 <link rel="stylesheet" href="../../css/login/login.css">
 <link rel="stylesheet" href="../../css/travelReady/materialize.min.css">
 
-
 <script src="../../js/login/materialize.min.js"></script>
+
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>	
 
   </head>
   
@@ -177,7 +175,6 @@ legend, .blind {
 	
 
       <section>
-      <%@ include file="/views/main/header.jsp" %>
 			
 			<div id="pagecontent">
 				<section id="content">

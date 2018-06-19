@@ -15,13 +15,12 @@
 
 <link href="../../css/bootstrap.min.css" rel="stylesheet">
 <link href="../../css/kfonts2.css" rel="stylesheet">
-	<link rel="stylesheet" href="../../css/travelReady/main.css">
+<link rel="stylesheet" href="../../css/travelReady/main.css">
 
 <link rel="stylesheet" type="text/css" href="/css/travelReady/slider-pro.min.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="css/travelReady/examples.css" media="screen"/>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
 
-	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
 
