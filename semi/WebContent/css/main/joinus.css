@@ -1,0 +1,133 @@
+.wrapper{
+	width:960px;
+	margin:0 auto;
+}
+h4{
+	text-align:center;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.step_design{
+	padding-top:20px;
+	padding-left:193px;
+	padding-bottom:20px;
+	overflow:hidden;
+}
+.step_circle{
+	height:70px;
+	width:70px;
+	background-color:#b43029;
+	border-radius:50%;
+	display:inline-block;
+	float:left;
+}
+.step_write{
+	display:inline-block;
+	margin-left:10px;
+	height:70px;
+	float:left;
+	margin-right:85px;
+}
+.step_write>h6{
+	color:#b43029;
+}
+
+.authorized_box{
+	clear:both;
+	background-color:#f5f5f5;
+	margin-top:20px;
+	padding-top:40px;
+	margin-bottom:20px;
+}
+.authorized_box>label{
+	background-color:white;
+	padding:20px;
+	margin-left:30px;
+	padding-right:404px;
+}
+.authorized_box>label>span{
+	color:black;
+}
+.authorized_white{
+	background-color:white;
+	margin-top:40px;
+	margin-left:29px;
+	margin-right:29px;
+	padding:20px;
+}
+h5{
+	text-align:center;
+}
+.authorized_white>h6{
+	margin-top:20px;
+	font-weight:bold;
+	margin-bottom:15px;
+}
+h6>span{
+	color:red;
+}
+.authorized_content{
+	border:1px solid #ddd;
+	height:200px;
+	overflow:auto;
+	padding:20px;
+}
+.authorized_content_title{
+	font-weight:bold;
+	line-height:2;
+}
+.authorized_content_subject{
+	font-size:0.9rem;
+	line-height:2;
+	font-weight:bold;
+}
+.authorized_content_text{
+	font-size:0.9rem;
+	line-height:2;
+}
+.authorized_white>div>label>span{
+	color:black;
+}
+.authorized_content_check{
+	font-size:0.9rem;
+	color:#999;
+	margin-top:2px;
+}
+@media (min-width:1200px){
+	.authorized_box>label{
+		padding-right:390px;
+	}
+}
+button{
+	background-color:#b43029;
+	border:none;
+	color:white;
+	width:100px;
+	height:50px;
+	margin-top:200px;
+	left-left:200px;
+	position:relative;
+	left:410px;
+}
+button:focus{
+	background-color:#b43029!important;
+}
+
+/* joinus two page */
+.joinus_box{
+	clear:both;
+	background-color:#f5f5f5;
+	padding-top:40px;
+	margin-bottom:20px;
+	/*background-color:orange;*/
+}
+.joinus_box>label>span{
+	color:black;
+	margin-left:30px;
+	font-size:1rem;
+	font-weight:bold;
+}
+.joinus_box>label>input{
+	margin-left:12px!important;
+	width:200px!important;
+}
