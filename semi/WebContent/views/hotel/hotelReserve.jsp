@@ -14,7 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="../../css/hotel/hotelReserve.css">
+<link rel="stylesheet" href="../../css/hotel/hotelReserve.css?ver=1">
 <link rel="stylesheet" href="/lib/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -28,7 +28,7 @@
 
 
 
-<%@ include file="/views/main/header.jsp" %>
+
 	<section>
 	
 	<div style="width: 1200px; height: 1400px; margin-left:15%;">
@@ -55,7 +55,7 @@
 	    <div id="hotelRoom1Price"><%=ri.get(0).getRoomPrice() %></div>
 	    <div id="hotelRoom1Choice">
 	
-	    <input type="radio" name="hotelPrice" style="width:20px; height:20px;" value=<%=ri.get(0).getRoomPrice()%>>
+	    <input type="radio" id="room1" name="hotelPrice" onclick="roomPrice(1);" style="width:20px; height:20px;" value=<%=ri.get(0).getRoomPrice()%>>
 	   
 	    </div>
 	    </div>
@@ -69,7 +69,7 @@
 	    <div id="hotelRoom2Price"><%=ri.get(1).getRoomPrice() %></div>
 	    <div id="hotelRoom2Choice">
 	    
-	     <input type="radio" name="hotelPrice" style="width:20px; height:20px;" value=<%=ri.get(1).getRoomPrice()%>>
+	     <input type="radio" id="room2" name="hotelPrice" onclick="roomPrice(2);" style="width:20px; height:20px;" value=<%=ri.get(1).getRoomPrice()%>>
 	    
 	    </div>
 	    </div>
@@ -83,7 +83,7 @@
 	    <div id="hotelRoom3Price"><%=ri.get(2).getRoomPrice() %></div>
 	    <div id="hotelRoom3Choice">
 	     
-	      <input type="radio" name="hotelPrice" style="width:20px; height:20px;" value=<%=ri.get(2).getRoomPrice()%>>
+	      <input type="radio" id="room3" name="hotelPrice" onclick="roomPrice(3);" style="width:20px; height:20px;" value=<%=ri.get(2).getRoomPrice()%>>
 	     
 	    </div>
 	    </div>
@@ -97,7 +97,7 @@
 	    <div id="hotelRoom4Price"><%=ri.get(3).getRoomPrice() %></div>
 	    <div id="hotelRoom4Choice">
 	  
-	    <input type="radio" name="hotelPrice" style="width:20px; height:20px;" value=<%=ri.get(3).getRoomPrice()%>>
+	    <input type="radio" id="room4" name="hotelPrice" onclick="roomPrice(4);" style="width:20px; height:20px;" value=<%=ri.get(3).getRoomPrice()%>>
 	  
 	    </div>
 	    </div>
@@ -107,10 +107,10 @@
 		
 		<div id="hotelPayment">
 		<div id="hotelPaymentTitle"></div>
-		<div id="hotelPaymentContent" style="width:100%; height:200px; text-align:center; margin-top:10%;">
-		 객실 요금<br>
-		
-		<br><br>
+		<div id="hotelPaymentContent" style="width:100%; height:300px; text-align:center; margin-top:10%;">
+		<div id="hotelPriceInfo">객실 요금</div>
+		<div id="hotelPaymentTotal"></div>
+		<div id="hotelPayment-1">		
 		<button type= "button" onclick = "payment();">결제 하기</button>
 		</div><br><br>
 		<div id="#hotelReserveDate">
@@ -152,6 +152,24 @@
 </script>
 
 
+<script>
+	
+	function roomPrice(val){
+		if(val==1){
+			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room1').value;
+		}
+		else if(val==2){
+			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room2').value;
+		}
+		else if(val==3){
+			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room3').value;
+		}
+		else{
+			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room4').value;
+		}
+	}
+	
+</script>
 
 	
 </body>
