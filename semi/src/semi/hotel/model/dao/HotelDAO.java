@@ -104,7 +104,7 @@ public class HotelDAO {
 				hi.setHotelLongtitude(rset.getDouble("hotelLongtitude"));
 				hi.setHotelRoomCode(rset.getString("roomCode"));
 				list.add(hi);
-				System.out.println(hi.getHotelRoomCode());
+				
 			}
 			
 			
