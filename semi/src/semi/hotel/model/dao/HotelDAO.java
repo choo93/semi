@@ -197,7 +197,7 @@ public class HotelDAO {
 		{
 			if(i==currentPage)
 			{
-				sb.append("<li class='active'><a href='/hotelList?currentPage="+i+"'>  "+i+" </a></li>");
+				sb.append("<li class='active'><a href='/hotelList?currentPage="+i+"'> "+i+" </a></li>");
 			}
 			else
 			{
@@ -210,7 +210,7 @@ public class HotelDAO {
 		}
 		else
 		{
-			sb.append("<li class='disabled'> <sapn>»</span> </li>");
+			sb.append("<li class='disabled'> <span>»</span></li>");
 		}
 		return sb.toString();
 	}

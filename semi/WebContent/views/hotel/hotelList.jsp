@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="/lib/w3.css">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
-<link rel="stylesheet" href="../../css/hotel/hotelList.css">
+<link rel="stylesheet" href="../../css/hotel/hotelList.css?ver=1">
 <link rel="stylesheet" href="../../css/moreBtn.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes"
@@ -52,8 +52,8 @@
 					style="background-image:url<%=hl.getHotelListMainPhoto()%>"></div>
 
 				<div id="hotelExplain">
-					<div id="hotelTitle" style="font: bold 30pt 나눔스퀘어;" onclick="hotelInfo(<%=hl.getIndexNum() %>);"><%=hl.getHotelName()%></div>
-					<div id="hotelTotalExplain" style="font-size:15px;"><%=hl.getHotelBriefDescription()%></div>
+					<div id="hotelTitle" onclick="hotelInfo(<%=hl.getIndexNum() %>);"><%=hl.getHotelName()%></div>
+					<div id="hotelTotalExplain"><%=hl.getHotelBriefDescription()%></div>
 					
 					<button id="button" onclick="hotelInfo(<%=hl.getIndexNum() %>);"
 						style="margin-left: 80%;">자세히</button>
