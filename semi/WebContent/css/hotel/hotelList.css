@@ -18,6 +18,8 @@
 	background-color: RGB(0, 125, 195);
 	font-size: 40px;
 	color: white;
+	margin-top:5%;
+	margin-left:3%;
 }
 
 #hotelTotalList{
@@ -53,11 +55,13 @@
 	width:100%;
 	height:30%;
 	cursor:pointer;
+	font:bold 30pt 나눔스퀘어;
 }
 
 #hotelTotalExplain{
 	width:100%;
 	height:50%;
+	font-size:15px;
 }
 
 

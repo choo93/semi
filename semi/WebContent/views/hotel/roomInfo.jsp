@@ -42,10 +42,10 @@
 		
 	    <div id="hotelRoom1Info">
 	    <div id="hotelRoom1Type">
-	    <div id="hotelRoomTitle" style="padding-top:10%;"><%=ri.get(0).getRoomTitle() %></div>
-	    <div id="hotelRoom1Type-1" style="padding-top:10%;"><%=ri.get(0).getRoomExplain() %></div>
+	    <div id="hotelRoomTitle"><%=ri.get(0).getRoomTitle() %></div>
+	    <div id="hotelRoom1Type-1"><%=ri.get(0).getRoomExplain() %></div>
 	    </div>
-	    <div id="hotelRoom1Capacity" style="padding-top:13%; font-size:15px"><%=ri.get(0).getRoomCapacity() %></div>
+	    <div id="hotelRoom1Capacity"><%=ri.get(0).getRoomCapacity() %></div>
 	    <div id="hotelRoom1Price"><%=ri.get(0).getRoomPrice() %></div>
 	    <div id="hotelRoom1Choice">
 	
@@ -56,10 +56,10 @@
 	    
 	    <div id="hotelRoom2Info">
 	    <div id="hotelRoom2Type">
-	    <div id="hotelRoomTitle2" style="padding-top:10%;"><%=ri.get(1).getRoomTitle() %></div>
-	    <div id="hotelRoom2Type-1" style="padding-top:10%;"><%=ri.get(1).getRoomExplain() %></div>
+	    <div id="hotelRoomTitle2"><%=ri.get(1).getRoomTitle() %></div>
+	    <div id="hotelRoom2Type-1"><%=ri.get(1).getRoomExplain() %></div>
 	    </div>
-	    <div id="hotelRoom2Capacity" style="padding-top:13%; font-size:15px"><%=ri.get(1).getRoomCapacity() %></div>
+	    <div id="hotelRoom2Capacity"><%=ri.get(1).getRoomCapacity() %></div>
 	    <div id="hotelRoom2Price"><%=ri.get(1).getRoomPrice() %></div>
 	    <div id="hotelRoom2Choice">
 	    
@@ -70,10 +70,10 @@
 	    
 	    <div id="hotelRoom3Info">
 	    <div id="hotelRoom3Type">
-	    <div id="hotelRoomTitle3" style="padding-top:10%;"><%=ri.get(2).getRoomTitle() %> </div>
-	    <div id="hotelRoom3Type-1" style="padding-top:10%;"><%=ri.get(2).getRoomExplain() %></div>
+	    <div id="hotelRoomTitle3"><%=ri.get(2).getRoomTitle() %> </div>
+	    <div id="hotelRoom3Type-1"><%=ri.get(2).getRoomExplain() %></div>
 	    </div>
-	    <div id="hotelRoom3Capacity" style="padding-top:13%; font-size:15px"><%=ri.get(2).getRoomCapacity() %></div>
+	    <div id="hotelRoom3Capacity"><%=ri.get(2).getRoomCapacity() %></div>
 	    <div id="hotelRoom3Price"><%=ri.get(2).getRoomPrice() %></div>
 	    <div id="hotelRoom3Choice">
 	     
@@ -84,10 +84,10 @@
 	    
 	    <div id="hotelRoom4Info">
 	    <div id="hotelRoom4Type">
-	    <div id="hotelRoomTitle4" style="padding-top:10%;"><%=ri.get(3).getRoomTitle() %></div>
-	    <div id="hotelRoom4Type-1" style="padding-top:10%;"><%=ri.get(3).getRoomExplain() %></div>
+	    <div id="hotelRoomTitle4"><%=ri.get(3).getRoomTitle() %></div>
+	    <div id="hotelRoom4Type-1"><%=ri.get(3).getRoomExplain() %></div>
 	    </div>
-	    <div id="hotelRoom4Capacity" style="padding-top:13%; font-size:15px"><%=ri.get(3).getRoomCapacity() %></div>
+	    <div id="hotelRoom4Capacity"><%=ri.get(3).getRoomCapacity() %></div>
 	    <div id="hotelRoom4Price"><%=ri.get(3).getRoomPrice() %></div>
 	    <div id="hotelRoom4Choice">
 	  
