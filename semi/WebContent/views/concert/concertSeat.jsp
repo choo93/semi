@@ -62,6 +62,8 @@
     	<input id="submit" type="submit" value="예약 완료" style="display:none;">
     </form>
     <script>
+    	var maxNum = <%=people%>;
+    	
 		window.onload=function(){
 			<%
 			for(int i=0;i<list.size();i++){%>
@@ -99,13 +101,10 @@
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					result = true;
 
-					alert("seatNo<%=people%>");
 					var seatNoStr = "";
 					for(var i=0;i<<%=people %>;i++){
 						seatNoStr += "&seatNo" + i + "=" + document.getElementById('seatNo'+i).value;
 					}
-					alert(222);
-					
 					var concertCode = document.getElementById('concertCode').value;
 					var price = document.getElementById('price').value;
 					var date = document.getElementById('date').value;
