@@ -1,7 +1,6 @@
 package semi.enjoy.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import semi.enjoy.model.service.EnjoyService;
-import semi.enjoy.model.vo.EnjoyListData;
 import semi.enjoy.model.vo.PageData;
+import semi.enjoy.model.vo.PageDataRefer;
 
 /**
  * Servlet implementation class EnjoyListServlet
@@ -97,9 +96,14 @@ public class EnjoyListServlet extends HttpServlet {
 		// 페이지값 셋팅
 		
 		// 비지니스 로직
-		
-		PageData pd = new EnjoyService().getListData(currentPage,search,type,option);
-		
+		PageData pd = null;
+		PageDataRefer pd2 = null;
+		if(!type.equals("type1")) { // 추천코스가 아닌녀석들
+		 pd = new EnjoyService().getListData(currentPage,search,type,option);
+		}
+		else { // 분류대상이 초기에 추천코스인녀석들 (type1)
+		 pd2 = new EnjoyService().getListData2(currentPage,search,type,option);
+		}
 		
 //		ArrayList<EnjoyListData> list  = new EnjoyService().getAllData();
 		HttpSession session = request.getSession(false);
@@ -113,9 +117,13 @@ public class EnjoyListServlet extends HttpServlet {
 				view.forward(request, response);
 			
 		}
-		else 
+		else if(pd==null&& pd2!=null)
 		{
-			// 리스트가 없을경우도있나근데..? 우선 데이터를 넣긴해야지..음..
+			RequestDispatcher view = request.getRequestDispatcher("/views/enjoy/border_List.jsp");
+			
+			request.setAttribute("pageData2", pd2);
+			request.setAttribute("type", type);
+			view.forward(request, response);
 			
 		}
 		
