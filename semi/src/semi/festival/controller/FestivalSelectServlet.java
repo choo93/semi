@@ -1,6 +1,7 @@
 package semi.festival.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import semi.festival.model.service.FestivalService;
 import semi.festival.model.vo.Festival;
+import semi.festival.model.vo.FestivalComment;
 
 /**
  * Servlet implementation class FestivalSelectServlet
@@ -38,12 +40,13 @@ public class FestivalSelectServlet extends HttpServlet {
 		System.out.println(titleNo);
 		Festival f = new FestivalService().festivalSelect(titleNo);
 		
-		System.out.println(f.getFestivalAddr());
+		ArrayList<FestivalComment> list = new FestivalService().selectComment(titleNo);
 		HttpSession session = request.getSession(false);
 		if(f!=null)
 		{
 			RequestDispatcher view = request.getRequestDispatcher("/views/festival/festival_info.jsp");
 			request.setAttribute("festival", f);
+			request.setAttribute("comment", list);
 			view.forward(request, response);
 		}else
 		{

@@ -45,8 +45,10 @@ public class HotelDAO {
 				hi.setHotelCheckInOut(rset.getString("hotelCheckInOut"));
 				hi.setHotelLatitude(rset.getDouble("hotelLatitude"));
 				hi.setHotelLongtitude(rset.getDouble("hotelLongtitude"));
-				
+				hi.setHotelRoomCode(rset.getString("roomcode"));
+							
 			}
+				
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -100,8 +102,11 @@ public class HotelDAO {
 				hi.setHotelCheckInOut(rset.getString("hotelCheckInOut"));
 				hi.setHotelLatitude(rset.getDouble("hotelLatitude"));
 				hi.setHotelLongtitude(rset.getDouble("hotelLongtitude"));
+				hi.setHotelRoomCode(rset.getString("roomCode"));
 				list.add(hi);
+				
 			}
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -266,46 +271,53 @@ public class HotelDAO {
 	}
 
 
-	public RoomInfo hotelRoomInfo(Connection conn) {
+	public ArrayList<RoomInfo> hotelRoomInfo(Connection conn, int roomCode) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		int a =1;
 		
-		if(a==1) {
-			String query="select * from hotelRoomInfo where roomCode = ?";
+		String query ="";
+		if(roomCode==1) {
+			query="select * from roomInfo where RoomCode in ('1','2','3','4')";
 			
-		}else if(a==2) {
-			String query="select * from hotelRoomInfo where roomCode = ?";
+		}else if(roomCode==2) {
+			query="select * from roomInfo where RoomCode in ('2','3','4','5')";
 		}
-		else if(a==3) {
-			String query="select * from hotelRoomInfo where roomCode = ?";
+		else if(roomCode==3) {
+			query="select * from roomInfo where RoomCode in ('3','4','5','6')";
 		}
-		else if(a==4) {
-			String query="select * from hotelRoomInfo where roomCode = ?";
+		else if(roomCode==4) {
+			query="select * from roomInfo where RoomCode in ('4','5','6','1')";
 		}
-		else if(a==5) {
-			String query="select * from hotelRoomInfo where roomCode = ?";
+		else if(roomCode==5) {
+			query="select * from roomInfo where RoomCode in ('5','6','1','2')";
 		}
-		else if(a==6) {
-			String query="select * from hotelRoomInfo where roomCode = ?";
+		else if(roomCode==6) {
+			query="select * from roomInfo where RoomCode in ('6','1','2','3')";
 		}
 		
-		String query="select * from hotelRoomInfo where roomCode = ?";
 		
-		RoomInfo ri = null;
+		
+		ArrayList<RoomInfo> list = new ArrayList<RoomInfo>();
 		
 		try {
 			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
 			
-			
-			if(rset.next())
+			while(rset.next())
 			{
+				RoomInfo ri = new RoomInfo();
 				ri.setRoomCode(rset.getString("roomCode"));
-				ri.setRoomPrice(rset.getInt("roomPrice"));
+				ri.setRoomTitle(rset.getString("roomTitle"));
 				ri.setRoomExplain(rset.getString("roomExplain"));
-				ri.setRoomFixedNumber(rset.getString("roomFixedNumber"));
+				ri.setRoomCapacity(rset.getInt("roomCapacity"));
+				ri.setRoomPrice(rset.getString("roomPrice"));
+				
+				
+				
+				list.add(ri);
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -314,7 +326,7 @@ public class HotelDAO {
 		}
 		
 		
-		return ri;
+		return list;
 		
 	}
 

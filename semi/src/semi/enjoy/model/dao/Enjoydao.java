@@ -213,18 +213,25 @@ public class Enjoydao {
 		StringBuilder sb = new StringBuilder(); // 오랜만이야..
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&option="+option+"'> < </a>");
+			sb.append("<li><a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&option="+option+"'> « </a></li>");
+		}
+		else { // 시작 페이지가 1페이지라면 !
+			sb.append("<li class='disabled'> <span>«</span> </li>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "&option="+option+"'><B> " + i + " </B></a>");
+				sb.append("<li class='active'><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "&option="+option+"'> " + i + " </a></li>");
 			} else {
-				sb.append("<a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&option="+option+"'> " + i + " </a>");
+				sb.append("<li><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&option="+option+"'> " + i + " </a></li>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&option="+option+"'> > </a>");
+			sb.append("<li><a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&option="+option+"'> » </a></li>");
+		}else {
+			sb.append("<li class='disabled'> <span>»</span> </li>");
 		}
+		
+		
 
 		return sb.toString();
 	}
@@ -476,19 +483,24 @@ public class Enjoydao {
 
 				
 				if (needPrev) { // 시작이 1페이지가 아니라면!
-					sb.append("<a href='/enjoySelect?currentPage=" + (startNavi - 1) +"&serarch="+search+"&IndexNo="+indexNo+  "'> < </a>");
+					sb.append("<li> <a href='/enjoyCommentList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&IndexNo="+indexNo+  "'> « </a> </li>");
+				}else { // 시작 페이지가 1페이지라면 !
+					sb.append("<li class='disabled'> <span>«</span> </li>");
 				}
+				
 				for (int i = startNavi; i <= endNavi; i++) {
 					if (i == currentPage) {
-						sb.append("<a href='/enjoySelect?currentPage=" + i +"&serarch="+search+"&IndexNo="+indexNo+ "'><B> " + i + " </B></a>");
+						sb.append("<li class='active'><a href='/enjoyCommentList?currentPage=" + i +"&serarch="+search+"&IndexNo="+indexNo+ "'>" + i + " </a></li>");
 					} else {
-						sb.append("<a href='/enjoySelect?currentPage=" + i +"&serarch="+search+"&IndexNo="+indexNo+  "'> " + i + " </a>");
+						sb.append("<li><a href='/enjoyCommentList?currentPage=" + i +"&serarch="+search+"&IndexNo="+indexNo+  "'> " + i + " </a></li>");
 					}
 				}
 				if (needNext) { // 끝페이지가 아니라면!
-					sb.append("<a href='/enjoyCommentList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&IndexNo="+indexNo+  "'> > </a>");
+					sb.append("<li><a href='/enjoyCommentList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&IndexNo="+indexNo+  "'> » </a></li>");
+				}else {
+					sb.append("<li class='disabled'> <span>»</span> </li>");
 				}
-
+//				System.out.println(sb.toString());
 				return sb.toString();
 			}
 
@@ -567,128 +579,31 @@ public class Enjoydao {
 	      
 	   }
 
-	public int insertCrawlerBasicInfor(Connection conn, String currentTypeElement, String titleName, String bid,
-			String writeDate, String tags, String mainsrc) {
-		// TODO Auto-generated method stub
+
+	public EnjoyComment searchOneComment(Connection conn, int commentNo) {
+		EnjoyComment EC = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		
-		PreparedStatement pstmt=  null;
-		int result = 0;
-		String Query ="Insert into list_Element values(?,list_Element_SEQ.nextval,?,?,?,?,?) ";
+		String query = "select User_Comment from Element_Index_Review where Seq_Review=?";
 		try {
-			pstmt = conn.prepareStatement(Query);
-			pstmt.setString(1, currentTypeElement);
-			pstmt.setString(2, titleName);
-			pstmt.setString(3, bid);
-			pstmt.setString(4, writeDate);
-			pstmt.setString(5, tags);
-			pstmt.setString(6, mainsrc);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, commentNo);
+			rset = pstmt.executeQuery();
 			
-			result = pstmt.executeUpdate();
-			
-			
+			if(rset.next()) {
+				EC = new EnjoyComment();
+				EC.setUSER_COMMNET(rset.getString("User_Comment"));
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
+			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
 		
-		
-		return result;
-		
-	}
-
-	public int insertCrawlerDefailInfor(Connection conn, String currentTypeElement, String addr, String phone,
-			String weburl, String ontime, String offday, String onday, String notice, String payment, String disabled,
-			String utilly) {
-
-		
-		PreparedStatement pstmt=  null;
-		int result = 0;
-		String Query ="Insert into Element_Index_detail values(list_Element_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
-		try {
-			pstmt = conn.prepareStatement(Query);
-			pstmt.setString(1, currentTypeElement);
-			pstmt.setString(2, addr);
-			pstmt.setString(3, phone);
-			pstmt.setString(4, weburl);
-			pstmt.setString(5, ontime);
-			pstmt.setString(6, offday);
-			pstmt.setString(7, onday);
-			pstmt.setString(8, notice);
-			pstmt.setString(9, payment);
-			pstmt.setString(10, disabled);
-			pstmt.setString(11, utilly);
-			
-			
-			result = pstmt.executeUpdate();
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(pstmt);
-		}
-		
-		
-		return result;
-		
-	}
-
-	public int insertCrawlerTotal(Connection conn, String currentTypeElement, String addr, String phone, String weburl,
-			String ontime, String offday, String onday, String notice, String payment, String disabled, String utilly,
-			String titleName, String bid, String writeDate, String tags, String subImage) {
-		// TODO Auto-generated method stub
-		
-		
-		PreparedStatement pstmt=  null;
-		
-		int result = 0;
-		int result2 = 0;
-		String Query ="Insert into list_Element values(?,list_Element_SEQ.nextval,?,?,?,?,?) ";
-		String Query2 ="Insert into Element_Index_detail values(list_Element_SEQ.currval,?,?,?,?,?,?,?,?,?,?,?)";
-		try {
-			pstmt = conn.prepareStatement(Query);
-			pstmt.setString(1, currentTypeElement);
-			pstmt.setString(2, titleName);
-			pstmt.setString(3, bid);
-			pstmt.setString(4, writeDate);
-			pstmt.setString(5, tags);
-			pstmt.setString(6, subImage);
-			result = pstmt.executeUpdate();
-			
-			pstmt = conn.prepareStatement(Query2);
-			pstmt.setString(1, currentTypeElement);
-			pstmt.setString(2, addr);
-			pstmt.setString(3, phone);
-			pstmt.setString(4, weburl);
-			pstmt.setString(5, ontime);
-			pstmt.setString(6, offday);
-			pstmt.setString(7, onday);
-			pstmt.setString(8, notice);
-			pstmt.setString(9, payment);
-			pstmt.setString(10, disabled);
-			pstmt.setString(11, utilly);
-			
-			
-			result2 = pstmt.executeUpdate();
-			
-			
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(pstmt);
-		}
-		
-		return result*result2;
-	
-
-		
-
+		return EC;
 	}
 	
 }

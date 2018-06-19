@@ -132,7 +132,7 @@
 
 							</div>
 						</a>
-						<a href="#">
+						<a href="/placeRankList?type=type2">
 							<div class="col-xs-6 picture photo2">
 
 									<h2 class="font">Top 10 나이트라이프<div class="under-bar"></div>	</h2>
@@ -143,14 +143,14 @@
 					</div>
 
 					<div class="row">
-						<a href="#">
+						<a href="/placeRankList?type=type3">
 							<div class="col-xs-6 picture photo3">
 
 									<h2 class="font">Top 10 전통<div class="under-bar"></div>	</h2>
 
 							</div>
 						</a>
-						<a href="#">
+						<a href="/placeRankList?type=type4">
 							<div class="col-xs-6 picture photo4">
 
 									<h2 class="font">Top 10 쇼핑<div class="under-bar"></div>	</h2>
@@ -161,7 +161,7 @@
 					</div>
 
 					<div class="row">
-						<a href="#">
+						<a href="/placeRankList?type=type5">
 							<div class="col-xs-6 picture photo5">
 
 									<h2 class="font">Top 10 한류
@@ -171,7 +171,7 @@
 
 							</div>
 						</a>
-						<a href="#">
+						<a href="/placeRankList?type=type6">
 							<div class="col-xs-6 picture photo6">
 
 									<h2 class="font">Top 10 가족여행<div class="under-bar"></div>	</h2>

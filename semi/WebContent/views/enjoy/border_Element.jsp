@@ -34,44 +34,72 @@
 <link rel="stylesheet" href="../../css/enjoy/ReviewBox.css">
 <link rel="stylesheet" href="../../css/enjoy/reviewInput.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
+<link rel="stylesheet" href="../../css/enjoy/pagination.css">
+<link rel="stylesheet" href="../../css/enjoy/writeReviewBox.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
 <script src="../../js/bootstrap.js"></script>
 <script src="../../js/bordertoogle.js"></script>
 </head>
+<style>
+ .carousel-inner {
+                width: 100%;
+                height: 500px;
+            }
+
+            .carousel-inner div img {
+                width: 100%;
+                height: 500px;
+            }
+
+            .carousel-caption {
+                bottom: 85%;
+            }
+
+</style>
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp"%>
 	<section>
 
-		<div style="width: 100%; height: 2000px;">
+		<div style="width: 100%;">
 			<div style="width: 100%; height: 100%;">
 				<!--▼ 메인이미지 -->
-				<div
-					style="width: 100%; height: 20%; margin-bottom: 5%; position: relative;">
-					<div
-						style="width: 5%; height: 100%; background-color: rgb(155, 155, 155); float: left;">
-						<a class="w3-btn-floating"
-							style="line-height: 300px; margin-left: 50%;"
-							onclick="plusDivs(-1)"> < </a>
-					</div>
-					<div style="width: 90%; height: 100%; float: left;">
-						<img class="mySlides" src="/image/bg1.jpg" height="100%"
-							width="100%">
-						<%-- <% ELD.getIndex_Image(); %> --%>
-						<img class="mySlides" src="/image/bg2.jpg" height="100%"
-							width="100%"> <img class="mySlides" src="/image/bg3.jpg"
-							height="100%" width="100%"> <img class="mySlides"
-							src="/image/menu.png" height="100%" width="100%">
-					</div>
-					<div
-						style="width: 5%; height: 100%; background-color: rgb(155, 155, 155); float: left;">
-						<a class="w3-btn-floating"
-							style="line-height: 300px; margin-left: 50%;"
-							onclick="plusDivs(1)"> > </a>
-					</div>
+				<%StringTokenizer STImage = new StringTokenizer(ELD.getIndex_Image(),"##");
+				int STImageSu = STImage.countTokens();%>
+				
+				<div id="carousel-generic" class="carousel slide">
+				<ol class="carousel-indicators">
+				<li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
+				<%for(int i=1;i<STImageSu;i++){ %>
+                            <li data-target="#carousel-generic" data-slide-to="<%=STImageSu%>"></li>
+                <%} %>
+				</ol>
+				 <!-- 캐러셀 이미지 부분 -->
+                        <div class="carousel-inner">
+                        	
+                            <div class="item active">
+                            	<img src="<%=STImage.nextToken()%>">
+                            </div>
+                            <%
+                            
+                            for(int i=1;i<STImageSu;i++){
+                            %>
+                            <div class="item">
+                                <img src="<%=STImage.nextToken()%>">
+                            </div>
+                            <%} %>
+                        </div>
+				<!-- 컨트롤러 부분 -->
+                        <a href="#carousel-generic" class="left carousel-control" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a href="#carousel-generic" class="right carousel-control" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+
 				</div>
-
-
+				<%if(ELD!=null) {%>
+				
 				<!--▼ 기초내용 -->
 				<div style="width: 100%; height: 3%;">
 
@@ -92,17 +120,21 @@
 					<hr>
 					<!-- 내용넣을곳 -->
 					<div style="width: 100%; height: 60%;">
-
+						<%if(ELD.getIndex_BasicInfo()!=null) {%>
+						
 						<div>
-							<%=ELD.getIndex_BasicInfo()%>
+							<%=ELD.getIndex_BasicInfo() %>
 							<!-- 1980년에 첫 면세점을 열어, 현재는 전국적으로 지점이 8개가 있다. 롯데면세는 루이뷔통을 처음으로 국내에 소개한 이래로, 샤넬·구찌·프라다·헤르메스·불가리 등 400개 이상의 해외 브랜드를 판매하고 있다. -->
 						</div>
-
+						<%} %>
+						<%if(ELD.getIndex_Ondate()!=null) {%>
+						
 						<p>
 							작성일 :
 							<%=ELD.getIndex_Ondate()%>
 							<!-- 2018.02.09 작성일 / 2018.02.09 발행일] -->
 						</p>
+						<%} %>
 
 					</div>
 
@@ -110,7 +142,8 @@
 					<div style="width: 100%; height: 10%;"></div>
 
 					<div style="width: 100%; height: 30%;">
-
+						<%if(ELD.getIndex_Tags()!=null) {%>
+						
 						<p style="display: inline; height: 100%;">태그</p>
 						<div style="display: inline;">
 							<!-- 	<a href="#">#롯데면세점</a>
@@ -126,15 +159,17 @@
 							<%
 								}
 							%>
-
+						
 						</div>
+						<%} %>
 					</div>
 				</div>
+				<%} %>
 
-
+				<%if(edd1!=null) {%>
 				<!--▼ 상세정보-->
 				<div style="width: 100%; height: 3%;">
-
+					
 					<div id="detail_toggle"
 						style="width: 100%; height: 100%; border-top: solid black 3px;">
 						<div style="width: 80%; height: 100%; float: left;">
@@ -153,13 +188,15 @@
 
 					<hr>
 					<table style="height: 100%; width: 100%;">
-
+						<%if(edd1.getDetail_addr()!=null) {%>
 						<tr>
 							<td>주소</td>
 							<td>
 								<!-- 03131 서울 종로구 삼일대로 464(윤현궁) --> <%=edd1.getDetail_addr()%>
 							</td>
 						</tr>
+						<%} %>
+						<%if(edd1.getDetail_tell()!=null){ %>
 						<tr>
 							<td>전화번호</td>
 							<td>
@@ -167,7 +204,8 @@
 							</td>
 						</tr>
 
-
+						<%} %>
+						<%if(edd1.getDetail_url()!=null){ %>
 						<tr>
 							<td>웹사이트</td>
 							<td>
@@ -175,6 +213,8 @@
 								href="<%=edd1.getDetail_url()%>">웹사이트 보기</a>
 							</td>
 						</tr>
+						<%} %>
+						<%if(edd1.getDetail_onTime()!=null){ %>
 						<tr>
 							<td>이용시간</td>
 							<td>
@@ -183,18 +223,24 @@
 										4 ~ 10월 09:00 ~ 19:00 --> <%=edd1.getDetail_onTime()%>
 							</td>
 						</tr>
+						<%} %>
+						<%if(edd1.getDetail_offday()!=null){ %>
 						<tr>
 							<td>휴무일</td>
 							<td>
 								<!-- 매주 월요일(월요일이 국가 지정 공휴일인 경우 해당 날짜에 개관) --> <%=edd1.getDetail_offday()%>
 							</td>
 						</tr>
+						<%} %>
+						<%if(edd1.getDetail_onday()!=null){ %>
 						<tr>
 							<td>운영 요일</td>
 							<td>
 								<!-- 화수목금토일 --> <%=edd1.getDetail_onday()%>
 							</td>
 						</tr>
+						<%} %>
+						<%if(edd1.getDetail_disabled()!=null){ %>
 						<tr>
 							<td>장애인 편의시설</td>
 							<td>
@@ -202,18 +248,10 @@
 										<br>장애인화장실 --> <%=edd1.getDetail_disabled()%>
 							</td>
 						</tr>
+						<%} %>
+						<%if(edd1.getDetail_notice()!=null){ %>
 						<tr>
-							<td>규모</td>
-							<td>
-								<!-- 서울 종로구 운니동에 있는 조선 후기 흥선대원군의 사가.
-										<br> 고종이 이곳에서 열두 살 때까지 자라다 왕이 됐으며 생부(生父) 이하응은 흥선대원군이 됐다.
-										<br> 운현궁(雲峴宮)에서 대원군은 서원 철폐, 경복궁 중건, 세제 개혁 등 많은 사업을 추진했다.
-										<br> 원래는 궁궐에 견줄 만큼 크고 웅장하였다고 전해지나 현재는 사랑채 노안당, 안채 이로당과 노락당만이 남아 있다.
-										<br> 정원 등은 잘 보존되어 있으며 인기 드라마 궁의 촬영지로도 쓰인 양관이 가까이에 있다. -->
-							</td>
-						</tr>
-						<tr>
-							<td>이것만은 꼭!</td>
+							<td>안내사항</td>
 							<td>
 								<!-- 운현궁 양관 : 본래 흥선대원군의 손자인 이준용을 위해 지은 건물로 양관이라고 불린다.
 										<br> 프렌치 르네상스 풍의 석재를 혼용한 벽돌 2층 저택에 16개의 천장 문양이 모두 다르다.
@@ -221,10 +259,14 @@
 										<br> 인기 드라마 궁의 촬영 장소로 사용되기도 했다. --> <%=edd1.getDetail_notice()%>
 							</td>
 						</tr>
+						<%} %>
+						<%if(edd1.getDetail_payment()!=null){ %>
 						<tr>
 							<td>이용요금</td>
 							<td><%=edd1.getDetail_payment()%></td>
 						</tr>
+						<%} %>
+						<%if(edd1.getDetail_utility()!=null){ %>
 						<tr>
 							<td>이용시설안내</td>
 							<td>
@@ -233,8 +275,11 @@
 										<br> - 대원군행차체험 --> <%=edd1.getDetail_utility()%>
 							</td>
 						</tr>
+						<%} %>
 					</table>
+					
 				</div>
+				<%} %>
 				<!--▼ 지도&교통편-->
 				<div style="width: 100%; height: 3%;">
 					<!-- 지도&교통바 -->
@@ -251,9 +296,9 @@
 				<div id="map_info" style="width: 100%; height: 15%; display: none;">
 					<hr>
 					<!-- 지도교통 내용 넣을곳 -->
-					   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap">
-   </script>
-						<script>
+				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap">
+   				</script>
+		<script>
         // 이거는 자바 스크립트 선언에서 가져오는 듯
         function initMap() {
            var uluru = {
@@ -391,7 +436,11 @@
 							</div>
 						</div>
 						<%} %>
+						<div class="container" style="text-align: center ">
+                        <ul class="pagination pagination-lg">
 						<%=pageNavi %>
+						</ul>
+						</div>
 						<%
 				} else {
 			%>
@@ -406,36 +455,45 @@
 						<!-- 댓글 입력폼 -->
 						<div class="review" align="center" style="width: 50%">
 							<form action="/review" method="post">
-								<!-- if(((Member)session.getAttribute("user"))==null) {%> -->
-								<div id="notWriteReview">
-									<input type="text" name="Not_Index_Title" readonly
-										placeholder="로그인 한 사용자만 작성이 가능합니다" maxlength="60"
-										style="width: 820px; height: 30px; background-color: #8490C7; color: #FFFFFF; font: 12pt 나눔스퀘어; padding-top: 5px; margin-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; text-indent: 10px;">
+                        
+                        <!-- 밑에 주석 풀어야해요 -->
+                        <%--<%if(((SeoulUser)session.getAttribute("user"))==null) {--%>
+                        <div class="cantWriteBox" style="width: 70%; height: 100px; padding: 5px; margin-top: 40px; position: relative;">
+                        <div id="notWriteReview">
+                           <input type="text" name="Not_Index_Title" readonly
+                           style="width: 100%; height: 100%; border: transparent; background-color: transparent; font: 12pt 나눔스퀘어; padding-top: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
-									<textarea name="Not_User_Comment" readonly
-										placeholder="로그인 한 사용자만 작성이 가능합니다" rows="10" cols="100"
-										style="resize: none; border: 1px solid #8490C7; background-color: #FFFFFF; color: #8490C7; font: 12pt 나눔스퀘어; margin-left: 10px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; text-indent: 10px;"></textarea>
-								</div>
-								<!-- }else{ %>-->
-								<div id="writeReview">
-									<input autocomplete="off" type="text" name="Index_Title"
-										placeholder="제목을 입력하세요" maxlength="60"
-										style="width: 820px; height: 30px; background-color: #8490C7; color: #FFFFFF; font: 12pt 나눔스퀘어; padding-top: 5px; margin-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; text-indent: 10px;">
+                           <textarea name="Not_User_Comment" readonly placeholder="로그인 한 사용자만 덧글 작성이 가능합니다"
+                           style="resize: none; width: 100%; height: 200px; border: transparent; background-color: transparent; font: 12pt 나눔스퀘어; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></textarea>
+                        </div>
+                        </div>
+                        
+                        <br><br><br>
+                        
+                        <!-- 밑에주석풀어야해요 -->
+                        <%--<%}else{ --%>
+                        
+                        <div class="writeBox" style="width: 70%; height: 250px; padding: 5px; position: relative;">
+                        <div id="writeBox">
+                           <input autocomplete="off" type="text" name="Index_Title"
+                              placeholder="제목을 입력하세요" maxlength="100"
+                              style="width: 100%; height: 100%; border: 1px solid #9B95C9; background-color: transparent; color: #FFFFFF; font: 12pt 나눔스퀘어; padding-top: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; text-indent: 10px;">
 
-									<textarea autocomplete="off" name="User_Comment"
-										placeholder="내용을 입력하세요" rows="10" cols="100"
-										style="resize: none; border: 1px solid #8490C7; background-color: #FFFFFF; color: #8490C7; font: 12pt 나눔스퀘어; margin-left: 10px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; text-indent: 10px;"></textarea>
-								</div>
-								<div id="reviewBtn" style="margin-top: 10px;">
-									<input type="submit" value="댓글작성" id="reviewButton" />
-								</div>
-								<!-- }%> -->
+                           <textarea autocomplete="off" name="User_Comment" placeholder="내용을 입력하세요" maxlength="1000"
+                           style="resize: none; width: 100%; height: 200px; border: 1px solid #9B95C9; background-color: transparent; color: #FFFFFF; font: 12pt 나눔스퀘어; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; text-indent: 10px;"></textarea>
+                        </div>
+                        </div>
+                        <div id="reviewBtn" style="padding: 5px; margin-top: 40px;">
+                           <input type="submit" value="댓글작성" id="reviewButton" />
+                        </div>
 
-								<input type="hidden" value="" name="">
-								<!-- 유저 ID?? 이걸로넘겨야하나 세션으로넘겨야하나? 세션이맞나..? -->
-								<input type="hidden" value="<%=edd1.getSEQ_Index_TitleNo()%>"
-									name="index_titleNo">
-							</form>
+                        <input type="hidden" value="" name="">
+                        <!-- 유저 ID?? 이걸로넘겨야하나 세션으로넘겨야하나? 세션이맞나..? -->
+                        <input type="hidden" value="<%=edd1.getSEQ_Index_TitleNo()%>" name="index_titleNo">
+                        
+                        
+                        <!-- 밑에주석풀어야해요 -->
+                        <%--<%}--%>
 						</div>
 
 					</div>

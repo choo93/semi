@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="semi.login.model.vo.*"	import="semi.enjoy.model.vo.*"
+    import="semi.login.model.vo.*"	import="semi.enjoy.model.vo.*"	import="semi.concert.model.vo.*"
     import="java.util.*"
     %>
 <% String reserve = (String)request.getAttribute("reserve"); 
@@ -11,6 +11,7 @@
 		commentList = cd.getCommentList();
 		navi = cd.getPageNavi();
 	}
+	ConcertInfo ci = (ConcertInfo)request.getAttribute("concertInfo");
 %>    
 <!DOCTYPE html>
 <html>
@@ -115,11 +116,34 @@
                 		<div id="toggleBtn1">▼</div>
                 	</div>
                 	<div id="basicInfoContent">
-                		${requestScope.concertInfo.concertExplain }
+                		<%if(ci.getConcertExplain()!=null){ %>
+                			<pre>${requestScope.concertInfo.concertExplain }</pre>
+                		<%
+                		}
+                		if(ci.getConcertPhone()!=null){ %>
+                		<div id="phone">
+                			<div>전화번호</div>
+                			<div>${requestScope.concertInfo.concertPhone }</div>
+                		</div>
+                		<%}
+                		if(ci.getConcertSite()!=null){
+                		%>
+                		<div id="site">
+                			<div>웹사이트</div>
+                			<div>${requestScope.concertInfo.concertSite }</div>
+                		</div>
+                		<%}
+                		if(ci.getConcertTraffic()!=null){
+                		%>
+                		<div id="traffic">
+                			<div>교통안내</div>
+                			<pre>${requestScope.concertInfo.concertTraffic}</pre>
+                		</div>
+                		<%} %>
                 	</div>
                 </div>
                 <div>
-                	<div id="map">지도 & 교통편
+                	<div id="map">지도
                 		<div id="toggleBtn2">▼</div>
                 	</div>
                 	<div id="mapContent" style="width:635px; height:300px;">

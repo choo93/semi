@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8" import="semi.hotel.model.vo.*"
 	import="java.util.*"%>
 <%
-	HotelInfo hi = (HotelInfo)request.getAttribute("hotelInfo");
-
+		HotelInfo hi = (HotelInfo)request.getAttribute("hotelInfo");
+	
 %>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -157,7 +157,7 @@
 		
 		<div id="button">
 		<div id="reserve">
-		<button onclick="hotelReserve();">예약하기</button>  
+		<button onclick="roomInfo(<%=hi.getIndexNum() %>,<%=hi.getHotelRoomCode() %>);">예약하기</button> 
 		</div>
 		<div id="back">
 		 <button onclick="back();">호텔 목록페이지</button>
@@ -174,13 +174,15 @@
 	<script>
 		function back()
 		{
-			//history.go(-1);
+			history.go(-1);
 		}
 	</script>
 	
+	
+	
 	<script>
-		function hotelReserve(){
-			location.href="/views/hotel/hotelReserve.jsp";
+		function roomInfo(index,roomCode){
+			location.href = "/roomInfo?indexNum="+index+"&roomCode="+roomCode;
 		}
 	</script>
 	

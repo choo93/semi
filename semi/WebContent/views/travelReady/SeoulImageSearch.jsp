@@ -101,12 +101,12 @@ function insert(){
   </div>
   <input type="submit" class="btn btn-primary" value="검색">
   <div class="keyword-recommend">
-					<a href="#">광화문광장</a>
-					<a href="#">경복궁</a>
-					<a href="#">동대문디자인플라자</a>
-					<a href="#">문화역서울284</a>
-					<a href="#">삼청동</a>
-					<a href="#">북악스카이웨이</a>
+					<a href="/seoulImageSearch?search=광화문광장">광화문광장</a>
+					<a href="/seoulImageSearch?search=경복궁">경복궁</a>
+					<a href="/seoulImageSearch?search=동대문디자인플라자">동대문디자인플라자</a>
+					<a href="/seoulImageSearch?search=문화역서울284">문화역서울284</a>
+					<a href="/seoulImageSearch?search=삼청동">삼청동</a>
+					<a href="/seoulImageSearch?search=북악스카이웨이">북악스카이웨이</a>
 					</div>
   
   </div>
@@ -119,7 +119,7 @@ function insert(){
  <botton class="btn btn-primary" onclick="insert();">등록</botton>총<%=sipd.getRecordTotalCount()%>
  <div class="row">
     <%for(SeoulImageFile sif:list){ %>
-    <div class="col-sm-6 col-md-3">
+    <div class="col-sm-5 col-md-3">
       <div class="thumbnail">
         <img src="<%=sif.getImageViewPath()%>" alt="...">
           <div class="caption">
@@ -134,6 +134,20 @@ function insert(){
 
 
 </div>
+
+ 
+	<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
+					<%for(int i=sipd.getStartNavi(); i<=sipd.getEndNavi();i++){ 
+					if(i==sipd.getCurrentPage()){%>
+						<a class="btn btn-primary btn-lg" href='/seoulImage?currentPage=<%=i%>'><%=i%></a>
+					<%}else{ %>
+						<a class="btn btn-primary btn-lg" href='/seoulImage?currentPage=<%=i%>'><%=i%></a>
+					<%} %>
+				<%} %>
+				</div>
+
+
+
 </div>
 			
 

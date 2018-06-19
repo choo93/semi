@@ -67,4 +67,20 @@ public class GuideBookRequestService {
 		
 	}
 
+	public int requestDelete(String[] orderNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new GuideBookRequestDao().requestDelete(conn,orderNo);
+		JDBCTemplate.close(conn);
+		
+		if(result>0) {
+			JDBCTemplate.close(conn);
+		}
+		else
+		{
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
+	}
+
 }
