@@ -3,7 +3,9 @@
     import = "java.util.*"	import="semi.concert.model.vo.*"
 %>
 <%ArrayList<String> list = (ArrayList<String>)request.getAttribute("seat");%>
-<%ConcertReserve cr = (ConcertReserve)request.getAttribute("reserve"); %>
+<%ConcertReserve cr = (ConcertReserve)request.getAttribute("reserve"); 
+	int people = Integer.parseInt(request.getParameter("people"));
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,8 +34,10 @@
             }
             %>
         </div>
-        
-        <input id="seatNo" type="hidden" name="seatNo">
+        <%for(int i=0;i<people;i++){ %>
+        	<input id="seatNo<%=i %>" type="hidden" name="seatNo<%=i%>">
+        <%} %>
+        <input id="people" type="hidden" name="people" value="<%=people %>">
         <input id="concertCode" type="hidden" name="concertCode" value="<%=cr.getConcertCode() %>">
         <input id="price" type="hidden" name="price" value="<%=cr.getConcertPrice() %>">
         <input id="date" type="hidden" name="date" value="<%=cr.getConcertReserveDate() %>">
@@ -70,7 +74,6 @@
 		var result = false;
 		
 		function pay() {
-			
 			var IMP = window.IMP; // 생략가능
 			IMP.init('imp15333677'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 			
@@ -79,7 +82,7 @@
 				pay_method : 'card',
 				merchant_uid : 'merchant_' + new Date().getTime(),
 				name : '주문명:결제테스트',
-				amount : <%=request.getParameter("price") %>,
+				amount : <%=request.getParameter("price") %>/10,
 				buyer_email : 'iamport@siot.do',
 				buyer_name : '구매자이름',
 				buyer_tel : '010-1234-5678',
@@ -88,21 +91,29 @@
 				m_redirect_url : 'https://www.yourdomain.com/payments/complete'
 			}, function(rsp) {
 				if (rsp.success) {
+
 					var msg = '결제가 완료되었습니다.';
 					msg += '고유ID : ' + rsp.imp_uid;
 					msg += '상점 거래ID : ' + rsp.merchant_uid;
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					result = true;
+
+					alert("seatNo<%=people%>");
+					var seatNoStr = "";
+					for(var i=0;i<<%=people %>;i++){
+						seatNoStr += "&seatNo" + i + "=" + document.getElementById('seatNo'+i).value;
+					}
+					alert(222);
 					
-					var seatNo = document.getElementById('seatNo').value;
 					var concertCode = document.getElementById('concertCode').value;
 					var price = document.getElementById('price').value;
 					var date = document.getElementById('date').value;
 					var time = document.getElementById('time').value;
+					var people = document.getElementById('people').value;
 					
-					location.href = "/concertReserve?seatNo=" + seatNo + "&concertCode=" + concertCode + "&price=" + price + 
-							"&date=" + date + "&time=" + date;
+					location.href = "/concertReserve?concertCode=" + concertCode + "&price=" + price + 
+							"&date=" + date + "&time=" + date + seatNoStr;
 					
 				} else {
 					var msg = '결제에 실패하였습니다.';
