@@ -157,10 +157,10 @@
 		
 		<div id="button">
 		<div id="reserve">
-		<button onclick="roomInfo(<%=hi.getIndexNum() %>,<%=hi.getHotelRoomCode() %>);">예약하기</button> 
+		<button onclick="roomInfo(<%=hi.getIndexNum() %>,<%=hi.getHotelRoomCode() %>);" style="cursor:pointer">예약하기</button> 
 		</div>
 		<div id="back">
-		 <button onclick="back();">호텔 목록페이지</button>
+		 <button onclick="back();" style="cursor:pointer">호텔 목록페이지</button>
 		 </div>
 		 </div>
 	</div>
@@ -182,7 +182,11 @@
 	
 	<script>
 		function roomInfo(index,roomCode){
-			location.href = "/roomInfo?indexNum="+index+"&roomCode="+roomCode;
+			<%if(session.getAttribute("user")!=null){ %>
+				location.href = "/roomInfo?indexNum="+index+"&roomCode="+roomCode+"&hotelCode="+<%=hi.getHotelCode() %>;
+			<%}else{ %>
+				alert('로그인후 이용해 주세요');
+			<%} %>
 		}
 	</script>
 	

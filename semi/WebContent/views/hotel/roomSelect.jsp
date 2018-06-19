@@ -38,7 +38,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
         <input type="hidden" name="price" value="<%=hr.getPrice() %>">
         <input type="hidden" name="date" value="<%=hr.getReserveDate() %>">
         <input type="hidden" name="roomCode" value="<%=hr.getRoomCode() %>">
-        
+        <input type="hidden" name="indexNo" value="<%=request.getParameter("indexNo") %>" >
         <div id="info">
         	<div>
         		<div id="blue"></div>

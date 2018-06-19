@@ -52,7 +52,7 @@
 					style="background-image:url<%=hl.getHotelListMainPhoto()%>"></div>
 
 				<div id="hotelExplain">
-					<div id="hotelTitle" style="font: bold 30pt 나눔스퀘어;"><%=hl.getHotelName()%></div>
+					<div id="hotelTitle" style="font: bold 30pt 나눔스퀘어;" onclick="hotelInfo(<%=hl.getIndexNum() %>);"><%=hl.getHotelName()%></div>
 					<div id="hotelTotalExplain" style="font-size:15px;"><%=hl.getHotelBriefDescription()%></div>
 					
 					<button id="button" onclick="hotelInfo(<%=hl.getIndexNum() %>);"

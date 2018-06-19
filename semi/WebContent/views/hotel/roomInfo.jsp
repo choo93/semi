@@ -3,9 +3,7 @@
 	import="java.util.*"%>
     
 <%
-	
       ArrayList<RoomInfo> ri = (ArrayList<RoomInfo>)request.getAttribute("roomInfo");
-	
 %> 
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="../../css/hotel/hotelReserve.css?ver=1">
+<link rel="stylesheet" href="../../css/hotel/roomInfo.css?ver=1">
 <link rel="stylesheet" href="/lib/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -24,10 +22,6 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body id="scroll">
-
-
-
-
 
 	<section>
 	
@@ -111,12 +105,18 @@
 		<div id="hotelPriceInfo">객실 요금</div>
 		<div id="hotelPaymentTotal"></div>
 		<div id="hotelPayment-1">		
-		<button type= "button" onclick = "payment();">결제 하기</button>
-		</div><br><br>
+		</div>
 		<div id="#hotelReserveDate">
-		<p style = text-align:center;>날짜 조회:
-        <input type="text" id="datepicker1">
+		<input id="price" type="hidden" name="price">
+		<div id="dated">
+			<p>날짜 조회</p>
+        	<input type="text" id="datepicker1" name="date">
+		</div>
+        <input type="hidden" name="hotelCode" value="<%=request.getParameter("hotelCode") %>">
+        <input id="roomCode" type="hidden" name="roomCode">
+        <button id="submit" onclick="payy();">방 선택</button>
         </div>
+		</div>
 		</div>
 	
 </div>
@@ -145,30 +145,49 @@
 
 </script>
 
-<script>
-	function payment(){	
-		window.open("hotelPayment.jsp","payment", "width=700,height=700,scrollbars=no,resizable=no,left=800,top=200");
-	}
-</script>
-
 
 <script>
 	
 	function roomPrice(val){
 		if(val==1){
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room1').value;
+			document.getElementById('price').value = document.getElementById('room1').value;
+			document.getElementById('roomCode').value = "1";
 		}
 		else if(val==2){
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room2').value;
+			document.getElementById('price').value = document.getElementById('room2').value;
+			document.getElementById('roomCode').value = "2";
 		}
 		else if(val==3){
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room3').value;
+			document.getElementById('price').value = document.getElementById('room3').value;
+			document.getElementById('roomCode').value = "3";
 		}
 		else{
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room4').value;
+			document.getElementById('price').value = document.getElementById('room4').value;
+			document.getElementById('roomCode').value = "4";
 		}
 	}
 	
+	
+	function payy(){
+		var price = document.getElementById('price').value/100;
+		var date = document.getElementById('datepicker1').value;
+		var hotelCode = <%=request.getParameter("hotelCode") %>;
+		var roomCode = document.getElementById('roomCode').value;
+		var indexNo = <%=request.getParameter("indexNo") %>;
+		
+		if(price==""){
+			alert('객실을 선택해 주세요');
+		}else if(date==""){
+			alert('날짜를 선택해 주세요');
+		}else{
+			window.open("/roomSelect?price="+price+"&date="+date+"&hotelCode="+hotelCode+"&roomCode="+roomCode+"&indexNo="+indexNo,"_blank","width=800px,height=750px;");
+		}
+		
+	}
 </script>
 
 	
