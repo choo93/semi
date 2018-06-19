@@ -32,11 +32,13 @@
             }
             %>
         </div>
+        
         <input id="seatNo" type="hidden" name="seatNo">
-        <input type="hidden" name="concertCode" value="<%=cr.getConcertCode() %>">
-        <input type="hidden" name="price" value="<%=cr.getConcertPrice() %>">
-        <input type="hidden" name="date" value="<%=cr.getConcertReserveDate() %>">
-        <input type="hidden" name="time" value="<%=cr.getConcertReserveTime() %>">
+        <input id="concertCode" type="hidden" name="concertCode" value="<%=cr.getConcertCode() %>">
+        <input id="price" type="hidden" name="price" value="<%=cr.getConcertPrice() %>">
+        <input id="date" type="hidden" name="date" value="<%=cr.getConcertReserveDate() %>">
+        <input id="time" type="hidden" name="time" value="<%=cr.getConcertReserveTime() %>">
+        
         <div id="info">
         	<div>
         		<div id="blue"></div>
@@ -92,8 +94,16 @@
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					result = true;
-					document.getElementById('payy').style.display = 'none';
-					document.getElementById('submit').style.display = 'block';
+					
+					var seatNo = document.getElementById('seatNo').value;
+					var concertCode = document.getElementById('concertCode').value;
+					var price = document.getElementById('price').value;
+					var date = document.getElementById('date').value;
+					var time = document.getElementById('time').value;
+					
+					location.href = "/concertReserve?seatNo=" + seatNo + "&concertCode=" + concertCode + "&price=" + price + 
+							"&date=" + date + "&time=" + date;
+					
 				} else {
 					var msg = '결제에 실패하였습니다.';
 					msg += '에러내용 : ' + rsp.error_msg;
