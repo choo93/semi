@@ -77,7 +77,7 @@
 											background-repeat:no-repeat;
 											background-size:100% 100%;">
 											</div>
-					<div class="imgfont"><a href="/views/travelReady/Seoulvisit.jsp">서울 방문</a></div>
+					<div class="imgfont"><a href="/seoulInformationComment">서울 방문</a></div>
 			
 					</div>
 					

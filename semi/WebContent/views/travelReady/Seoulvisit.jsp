@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+    <%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
+<%
+	SeoulInformationCommentPageData sicpd=(SeoulInformationCommentPageData)request.getAttribute("SeoulInformationCommentPageData");
+	ArrayList<SeoulInformationComment> list=sicpd.getNoticelist();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -170,8 +177,8 @@
 					<div id="comment" style="background-color:transparent; border:1px solid #f2f2f2">
 						<div style="width:100%; height:20%; font-weight:700"><span>소셜 로그인</span></div>
 						<div style="width:100%; height:70%; margin-top:10px;">
-							<div style="width:100px; height:130px;float:left; background-color:red;"></div>
-							<form action="/seoulInformationComment">
+							<div style="width:100px; height:130px;float:left; background:url(/image/logo.png); background-repeat:no-repeat; background-size:100%;"></div>
+							<form action="/writeComment">
 							<div style="width:85%; height:100%; margin-left:15%;">
 								<ul style="border-radius:10px;">
 									<li><textarea placeholder="소셜 계정으로 작성하세요" rows="1" readonly></textarea></li>
@@ -200,6 +207,7 @@
 					</ul>
 					</div>
 					
+					<%if(list==null){ %>
 					<div style="width:100%; height:200px; border-bottom:1px solid black; padding:10px; display:none;">
 						
 						<div style="width:100%; height:100%; background-color:red;">
@@ -216,6 +224,35 @@
 					
 						</div>
 					</div>
+					<%}else{ %>
+					<%for(SeoulInformationComment sic : list){ %>
+							<div style="width:100%; height:200px; border-bottom:1px solid black; padding:10px;">
+						
+						<div style="width:100%; height:100%;">
+						
+							<div style="width:80px; height:60px; float:left; margin-top:30px; background-color:#dd4b39;color:white; text-align:center;"><%=sic.getUserName()%></div>
+							<div style="width:90%; height:100%; margin-left:10%;">
+							<ul>
+								<li>
+									<ul style="list-style:none;">
+									<li style="float:left;"><%=sic.getUserName()%></li>
+									<li style="float:right;"><%=sic.getWriteDate()%></li>
+									</ul>
+								</li>
+								<li style="height:100px; padding-top:40px;"><%=sic.getContent()%></li>
+								<li>3</li>
+							</ul>
+							
+							</div>
+					
+						</div>
+					</div>
+					<%} %>
+					<%} %>
+					
+					
+					
+					
 				</section>
 			</div>
 		</section>

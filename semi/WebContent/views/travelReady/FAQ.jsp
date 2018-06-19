@@ -124,16 +124,35 @@ background-color:gray;
 <script>
 var toggleText1 = false;
 var toggleText2 = false;
+var index=0;
 function test(id){
-	console.log(id);
+	
+	
+	
+	var answer=document.getElementsByName('ans');
+	
+	if(index==0){
+	for(var i=0; i<answer.length; i++){
+		answer[i].style.display="none";
+
+	}
+	
 	$('#'+id).toggle('display');
 	if(toggleText1==true)
 	{
 		toggleText1 = false;
+		index++;
 	}
 	else{
 
 		toggleText1 = true;
+		index++;
+	}
+	}else{
+		for(var i=0; i<answer.length; i++){
+			answer[i].style.display="none";
+		}
+	index=0;
 	}
 }
 </script>
@@ -188,7 +207,7 @@ function test(id){
 					<dl id="faqcontent">
 					<%for(Faq f:list){ %>
 						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#none" onclick="test(<%=f.getFaqNo()%>);">[<%=f.getCategory()%>]<br><%=f.getTitle() %></a></dt>
-						<dd id="<%=f.getFaqNo()%>"><%=f.getAnswer()%></dd>
+						<dd name="ans" id="<%=f.getFaqNo()%>"><%=f.getAnswer()%></dd>
 					<%} %>
 					</dl>					
 				</div>

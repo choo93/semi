@@ -15,7 +15,7 @@ import semi.travelready.model.vo.QnaPageData;
 public class QnaService {
 
 	public QnaPageData QnaAll(int currentPage) {
-Connection conn=JDBCTemplate.getConnection();
+		Connection conn=JDBCTemplate.getConnection();
 		
 		int recordCountPerPage=10;
 		int naviCountPerPage=5;
