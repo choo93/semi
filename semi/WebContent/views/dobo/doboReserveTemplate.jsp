@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes"
+	rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
@@ -11,14 +13,19 @@
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
 <script src="/js/dobo/doboReserve.js"></script>
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
 </head>
 <body id="scroll">
-	<%@ include file="/views/main/header.jsp"%>
+	<%-- <%@ include file="/views/main/header.jsp"%> --%>
 	<section>
-	<%System.out.println(request.getParameter("doboCode")); %>
-
 		<form action="/doboReserve" method="get">
-			<input type="hidden" value="<%=request.getParameter("doboCode") %>" name="doboCode">
+			<input type="hidden" value="<%=request.getParameter("doboCode")%>"
+				name="doboCode">
 			<div id="wrap">
 				<div id="top">
 					<div>
@@ -33,14 +40,14 @@
 						<div>제목</div>
 						<div>
 							<div>
-								<label>예약 날짜</label> <input id="date" type="date" name="date">
+								<label>예약 날짜</label> <input id="datepicker1" type="text"
+									name="date">
 							</div>
 							<div>
-								<label>예약 시간</label> 
-								<select id="time" name="time">
-            						<option value="09:00">09:00</option>
-            						<option value="13:00">13:00</option>
-        						</select>
+								<label>예약 시간</label> <select id="time" name="time">
+									<option value="09:00">09:00</option>
+									<option value="13:00">13:00</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -69,17 +76,21 @@
 					<div id="form">
 
 						<div>
-							<label>이름*</label> <input id="name" type="text" id="name" name="name">
+							<label>이름*</label> <input id="name" type="text" id="name"
+								name="name">
 						</div>
 						<div>
-							<label>성별*</label> <input type="radio" name="gender" value="M" checked><label>남성</label>
-							<input type="radio" name="gender" value="F"> <label>여성</label>
+							<label>성별*</label> <input type="radio" name="gender" value="M"
+								checked><label>남성</label> <input type="radio"
+								name="gender" value="F"> <label>여성</label>
 						</div>
 						<div>
-							<label>국적*</label> <input id="nation" type="text" id="nation" name="nation">
+							<label>국적*</label> <input id="nation" type="text" id="nation"
+								name="nation">
 						</div>
 						<div>
-							<label>휴대전화*</label> <input id="phone" type="text" id="phone" name="phone">
+							<label>휴대전화*</label> <input id="phone" type="text" id="phone"
+								name="phone">
 						</div>
 						<div>
 							<label>하고싶은 말</label>
@@ -114,5 +125,28 @@
 
 	</section>
 	<%@ include file="/views/main/footer.jsp"%>
+	<script>
+		$.datepicker.setDefaults({
+			dateFormat : 'yy-mm-dd',
+			prevText : '이전 달',
+			nextText : '다음 달',
+			monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+					'9월', '10월', '11월', '12월' ],
+			monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+					'9월', '10월', '11월', '12월' ],
+			dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+			dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+			dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+			showMonthAfterYear : true,
+			yearSuffix : '년'
+		});
+
+		$(function() {
+			$("#datepicker1").datepicker({
+				minDate : 0
+			});
+		});
+	</script>
+
 </body>
 </html>

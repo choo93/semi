@@ -5,7 +5,7 @@ public class ConcertReserve {		// 예약 VO에는 DB에 넣을 때 필요한 정
 	private String concertCode;
 	private String concertTitle;
 	private int userNo;
-	private int concertPrice;
+	private String concertPrice;
 	private String concertReserveTime;
 	private String concertReserveDate;
 	private String concertAddress;
@@ -75,11 +75,11 @@ public class ConcertReserve {		// 예약 VO에는 DB에 넣을 때 필요한 정
 		this.concertCode = concertCode;
 	}
 
-	public int getConcertPrice() {
+	public String getConcertPrice() {
 		return concertPrice;
 	}
 
-	public void setConcertPrice(int concertPrice) {
+	public void setConcertPrice(String concertPrice) {
 		this.concertPrice = concertPrice;
 	}
 

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import semi.place.model.service.PlaceService;
 import semi.place.model.vo.PlacePageData;
-import semi.place.model.vo.RankListData;
+import semi.place.model.vo.PlaceRank;
 
 /**
  * Servlet implementation class PlaceRankListServlet
@@ -53,26 +53,26 @@ public class PlaceRankListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		// 화면구성시 분류가져오기
-		String type = "";
+		int type = 0;
 		if (request.getParameter("type") != null) {
-			type = request.getParameter("type");
+			type = Integer.parseInt(request.getParameter("type"));
 
 		} else {
-			type = "";
+			type = 0;
 		}
 
 		// 페이지값 셋팅
-		PlacePageData pd = new PlaceService().getListData(currentPage, search, type);
+		PlacePageData ppd = new PlaceService().getListData(currentPage, search, type);
 		// 비지니스 로직
 		
 		
 		HttpSession session = request.getSession(false);
 		// ★ 회원정보 섹션에대한 처리를 따로아직안했음.
-		if(pd!=null) 
+		if(ppd!=null) 
 		{// 정보가 제대로 있을경우 처리
 				RequestDispatcher view = request.getRequestDispatcher("/views/placerank/place_List.jsp");
 				
-				request.setAttribute("pageData", pd);
+				request.setAttribute("pageData", ppd);
 				view.forward(request, response);
 			
 		}

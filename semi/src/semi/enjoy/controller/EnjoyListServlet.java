@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import semi.enjoy.model.service.EnjoyService;
-import semi.enjoy.model.vo.EnjoyListData;
 import semi.enjoy.model.vo.PageData;
+import semi.enjoy.model.vo.PageDataRefer;
 
 /**
  * Servlet implementation class EnjoyListServlet
@@ -34,14 +34,9 @@ public class EnjoyListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
 		request.setCharacterEncoding("utf-8");
-		
-		//▼페이징처리
-		
-		
+
+		//▼페이징처리		
 		String search = "";
 		if(request.getParameter("search")!=null)
 		{
@@ -61,12 +56,13 @@ public class EnjoyListServlet extends HttpServlet {
 		{
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
+		
+		
 		// 화면구성시 분류가져오기
 		String type = "";
 		if(request.getParameter("type")!=null)
 		{
 			type = request.getParameter("type");
-
 		}
 		else
 		{
@@ -75,47 +71,55 @@ public class EnjoyListServlet extends HttpServlet {
 		
 		
 		// 정렬하기
-		
-		
 		String option ="";
-		if(request.getParameter("option")!=null)
+		if(request.getParameter("sort")!=null) //select
 		{
-			option = request.getParameter("option");
+			option = request.getParameter("sort"); //value
+			type = request.getParameter("type"); //type
 		}
 		else {
 			option ="";
+			System.out.println("초기 상태");
 		}
-		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		// 페이지값 셋팅
 		
 		// 비지니스 로직
+		PageData pd = null;
+		PageDataRefer pd2 = null;
 		
-		PageData pd = new EnjoyService().getListData(currentPage,search,type,option);
+		if(!type.equals("type1")) { // 추천코스가 아닌녀석들
+		 pd = new EnjoyService().getListData(currentPage,search,type,option);
+		}
 		
+		else { // 분류대상이 초기에 추천코스인녀석들 (type1)
+		 pd2 = new EnjoyService().getListData2(currentPage,search,type,option);
+		}
 		
 //		ArrayList<EnjoyListData> list  = new EnjoyService().getAllData();
 		HttpSession session = request.getSession(false);
 		// ★ 회원정보 섹션에대한 처리를 따로아직안했음.
-		if(pd!=null) 
-		{// 정보가 제대로 있을경우 처리
+		
+		if(pd!=null) {//리스트에 정보가 제대로 있을 경우 처리
+	
+				System.out.println("X");
 				RequestDispatcher view = request.getRequestDispatcher("/views/enjoy/border_List.jsp");
 				
 				request.setAttribute("pageData", pd);
 				request.setAttribute("type", type);
+				request.setAttribute("option", option);
 				view.forward(request, response);
 			
 		}
-		else 
+		else if(pd==null&& pd2!=null)
 		{
-			// 리스트가 없을경우도있나근데..? 우선 데이터를 넣긴해야지..음..
+			RequestDispatcher view = request.getRequestDispatcher("/views/enjoy/border_List.jsp");
+			
+			request.setAttribute("pageData2", pd2);
+			request.setAttribute("type", type);
+			request.setAttribute("option", option);
+			view.forward(request, response);
 			
 		}
 		

@@ -3,26 +3,26 @@
 	display: inline-block;
 	position: relative;
 	background: #C7C4E2;
-	border: 2px solid #9B95C9;
+	border: 5px solid #9B95C9;
 	border-radius: 10px;
 }
 .writeBox:after{
 	content: '';
 	position: absolute;
-	border-top: 35px solid #C7C4E2;
-	border-right: 20px solid transparent;
-	border-left: 20px solid transparent;
-	bottom: -33px;
-	left: 300px;
+	border-top: 45px solid #C7C4E2;
+	border-right: 23px solid transparent;
+	border-left: 23px solid transparent;
+	bottom: -40px;
+	text-align: center;
 }
 .writeBox:before{
 	content: '';
 	position: absolute;
-	border-top: 48px solid #9B95C9;
-	border-right: 25px solid transparent;
-	border-left: 25px solid transparent;
+	border-top: 47px solid #9B95C9;
+	border-right: 24px solid transparent;
+	border-left: 24px solid transparent;
 	bottom: -45px;
-	left: 298px;
+	text-align: center;
 	z-index: -1;
 }
 .cantWriteBox{

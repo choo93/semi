@@ -126,7 +126,7 @@
 	</style>
 
 	<body id="scroll">
-		<%@ include file="/views/main/header.jsp"%>
+<%-- 		<%@ include file="/views/main/header.jsp"%> --%>
 
 			<section>
 				<div class="container-fluid">

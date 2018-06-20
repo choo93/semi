@@ -5,16 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<style>
-	footer{
-	    padding-left:60px;
-	    padding-top:10px;
-	    padding-bottom:15px;
-	    background-color:black;
-	    color:white;
-	    transition:padding 0.8s;
-	}
-	</style>
+	<link rel="stylesheet" href="../../css/main/main.css">
 </head>
 <body>
 	<footer>© 2018 SEOULAIM. ALL RIGHTS RESERVED.</footer>

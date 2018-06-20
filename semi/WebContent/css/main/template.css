@@ -95,3 +95,11 @@ section{
 		display:none;
 	}
 }
+
+/* footer */
+footer{
+	background-color:black;
+	color:white;
+	padding:5px;
+	text-align:Center;
+}

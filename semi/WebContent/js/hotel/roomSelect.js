@@ -2,6 +2,7 @@
 
 var sel = false;
 function select(me){
+	alert(12);
 	if(!sel){
 		sel = true;
 		me.style.backgroundColor = "red";

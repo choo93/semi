@@ -8,7 +8,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="/css/hotel/roomSelect.css">
+<link rel="stylesheet" href="/css/hotel/roomSelect.css?ver=1">
 <script src="/js/hotel/roomSelect.js"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -18,7 +18,6 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 </head>
 
 <body>
-	<form action="/hotelReserve">
 	<div id="wrap">
 		<div id="title">호실 선택</div>
         <div id="room">
@@ -34,11 +33,11 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
             %>
         </div>
         <input id="roomNo" type="hidden" name="roomNo">
-        <input type="hidden" name="hotelCode" value="<%=hr.getHotelCode() %>">
-        <input type="hidden" name="price" value="<%=hr.getPrice() %>">
-        <input type="hidden" name="date" value="<%=hr.getReserveDate() %>">
-        <input type="hidden" name="roomCode" value="<%=hr.getRoomCode() %>">
-        
+        <input id="hotelCode"type="hidden" name="hotelCode" value="<%=hr.getHotelCode() %>">
+        <input id="price" type="hidden" name="price" value="<%=hr.getPrice() %>">
+        <input id="date" type="hidden" name="date" value="<%=hr.getReserveDate() %>">
+        <input id="roomCode" type="hidden" name="roomCode" value="<%=hr.getRoomCode() %>">
+        <input id="indexNo" type="hidden" name="indexNo" value="<%=request.getParameter("indexNo") %>" >
         <div id="info">
         	<div>
         		<div id="blue"></div>
@@ -55,12 +54,71 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
         </div>
         
         <button id="payy" type="button" onclick="selBool();">결제하기</button>
-    	<input id="submit" type="submit" value="예약 완료" style="display:none;">
     </div>
     	
-    </form>
     <script>
 		window.onload=function(){
+			<%
+			for(int i=1;i<=80;i++){
+				if(hr.getRoomCode().equals("1")){
+					if(!(57<=i && i<=64)){
+			%>
+						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).onclick = "";
+						document.getElementById(<%=i%>).style.cursor = 'auto';
+			<%
+					}
+			
+				}else if(hr.getRoomCode().equals("2")){
+					if(!(65<=i && i<=80)){
+			%>
+						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).onclick = "";
+						document.getElementById(<%=i%>).style.cursor = 'auto';
+			<%
+					}
+			
+				}else if(hr.getRoomCode().equals("3")){
+					if(!(25<=i && i<=40)){
+			%>
+						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).onclick = "";
+						document.getElementById(<%=i%>).style.cursor = 'auto';
+			<%
+					}
+			
+				}else if(hr.getRoomCode().equals("4")){
+					if(!(9<=i && i<=24)){
+			%>
+						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).onclick = "";
+						document.getElementById(<%=i%>).style.cursor = 'auto';
+			<%
+					}
+			
+				}else if(hr.getRoomCode().equals("5")){
+					if(!(1<=i && i<=8)){
+			%>
+						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).onclick = "";
+						document.getElementById(<%=i%>).style.cursor = 'auto';
+			<%
+					}
+			
+				}else if(hr.getRoomCode().equals("6")){
+					if(!(41<=i && i<=56)){
+			%>
+						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).onclick = "";
+						document.getElementById(<%=i%>).style.cursor = 'auto';
+			<%
+					}
+				}
+			}
+			
+			%>
+			
+			
 			<%
 			for(int i=0;i<list.size();i++){
 			%>
@@ -97,8 +155,16 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					result = true;
-					document.getElementById('payy').style.display = 'none';
-					document.getElementById('submit').style.display = 'block';
+					
+					var roomNo = document.getElementById('roomNo').value;
+					var hotelCode = document.getElementById('hotelCode').value;
+					var price = document.getElementById('price').value;
+					var date = document.getElementById('date').value;
+					var roomCode = document.getElementById('roomCode').value;
+					var indexNo = document.getElementById('indexNo').value;
+					
+					location.href="/hotelReserve?roomNo=" + roomNo + "&hotelCode=" + hotelCode + 
+							"&price=" + price + "&date=" + date + "&roomCode=" + roomCode + "&indexNo=" + indexNo;
 				} else {
 					var msg = '결제에 실패하였습니다.';
 					msg += '에러내용 : ' + rsp.error_msg;
@@ -109,7 +175,6 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 				
 			});
 		}
-		
 		
 </script>
 </body>

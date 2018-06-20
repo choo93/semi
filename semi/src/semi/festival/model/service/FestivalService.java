@@ -7,12 +7,7 @@ import common.JDBCTemplate;
 import semi.festival.model.dao.FestivalDao;
 import semi.festival.model.vo.Festival;
 import semi.festival.model.vo.FestivalComment;
-import semi.festival.model.vo.FestivalDetail;
 import semi.festival.model.vo.FestivalPageData;
-import semi.place.model.dao.PlaceDao;
-import semi.place.model.vo.PlacePageData;
-import semi.place.model.vo.PlaceDetailData;
-
 public class FestivalService {
 
 

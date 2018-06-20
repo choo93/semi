@@ -30,13 +30,14 @@ public class JoinusServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		
 		SeoulUser su = new SeoulUser();
-		su.setUserId(request.getParameter("userId"));
-		su.setUserPwd(request.getParameter("userPwd"));
-		su.setUserName(request.getParameter("userName"));
+		su.setUserId(request.getParameter("id"));
+		su.setUserPwd(request.getParameter("pwd"));
+		su.setUserName(request.getParameter("name"));
+		su.setUserEmail(request.getParameter("email"));
+		su.setUserPhone("010-"+request.getParameter("phone")+"-"+request.getParameter("phone2"));
 		su.setUserAddr(request.getParameter("userAddr"));
-		su.setUserEmail(request.getParameter("userEmail"));
-		su.setUserPhone(request.getParameter("userPhone"));
 		su.setUserActive("Y");
 		int result = new UserService().insertUser(su);
 		if(result>0) {

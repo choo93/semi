@@ -9,7 +9,7 @@ public class EnjoyElementData {
 	private EnjoyListData ELD;		
 	private EnjoyDetailData1 edd1;
 	private CommentData cd ;
-	
+	private String count;
 	public EnjoyListData getELD() {
 		return ELD;
 	}
@@ -28,16 +28,24 @@ public class EnjoyElementData {
 	public void setCd(CommentData cd) {
 		this.cd = cd;
 	}
-	public EnjoyElementData(EnjoyListData eLD, EnjoyDetailData1 edd1, CommentData cd) {
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
+	}
+	public EnjoyElementData(EnjoyListData eLD, EnjoyDetailData1 edd1, CommentData cd, String count) {
 		super();
 		ELD = eLD;
 		this.edd1 = edd1;
 		this.cd = cd;
+		this.count = count;
 	}
 	public EnjoyElementData() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	
 	
 	

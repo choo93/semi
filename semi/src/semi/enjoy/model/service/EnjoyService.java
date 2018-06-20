@@ -9,8 +9,11 @@ import semi.enjoy.model.vo.CommentData;
 import semi.enjoy.model.vo.EnjoyComment;
 import semi.enjoy.model.vo.EnjoyDetailData1;
 import semi.enjoy.model.vo.EnjoyFestival;
+import semi.enjoy.model.vo.EnjoyInforData;
+import semi.enjoy.model.vo.EnjoyInforDataDetail;
 import semi.enjoy.model.vo.EnjoyListData;
 import semi.enjoy.model.vo.PageData;
+import semi.enjoy.model.vo.PageDataRefer;
 
 public class EnjoyService {
 	
@@ -163,68 +166,72 @@ public class EnjoyService {
 		      
 		   }
 
-
-
-
-	public int insertCrawlerBasicInfor(String currentTypeElement, String titleName, String bid, String writeDate,
-			String tags, String mainsrc) {
-
-	Connection conn = JDBCTemplate.getConnection();
-		
-		int result = new Enjoydao().insertCrawlerBasicInfor(conn,currentTypeElement, titleName, bid,writeDate,tags,mainsrc);
-		
-		JDBCTemplate.close(conn);
-		if(result>0)
-		{
-			JDBCTemplate.commit(conn);
+		public EnjoyComment searchOneComment(int commentNo) {
+			Connection conn = JDBCTemplate.getConnection();
+			EnjoyComment EC = new Enjoydao().searchOneComment(conn,commentNo);
+			JDBCTemplate.close(conn);
+			return EC;
 		}
-		else {
-			JDBCTemplate.rollback(conn);
-		}
-		
-		return result;
-	}
 
 
-	public int insertCrawlerDefailInfor(String currentTypeElement, String addr, String phone, String weburl,
-			String ontime, String offday, String onday, String notice, String payment, String disabled, String utilly) {
-		// TODO Auto-generated method stub
-	Connection conn = JDBCTemplate.getConnection();
-		
-		int result = new Enjoydao().insertCrawlerDefailInfor(conn,currentTypeElement,addr, phone, weburl, ontime,offday,onday,notice,payment,disabled,utilly);
-		
-		JDBCTemplate.close(conn);
-		if(result>0)
-		{
-			JDBCTemplate.commit(conn);
+		public PageDataRefer getListData2(int currentPage, String search, String type, String option) {
+			Connection conn = JDBCTemplate.getConnection();
+			
+			// 추천코스에 불러오기
+			int recordCountPerPage  = 10;  // 한페이지에 보일 개시물의 갯수
+			int naviCountPerPage = 5; // 네비게이터의 범위 (1~5) (6~10)
+			
+//			ArrayList<EnjoyListData> list = new Enjoydao().getAllData(conn);
+			ArrayList<EnjoyInforData> list = new Enjoydao().getListData2(conn,recordCountPerPage,currentPage,search,type,option);
+			
+			String PageNavi = new Enjoydao().getPageNavi2(conn,naviCountPerPage,recordCountPerPage,currentPage,search,type,option);
+			
+			
+			
+			PageDataRefer pd =null;
+			if(!list.isEmpty() &&!PageNavi.isEmpty()) {
+				pd = new PageDataRefer();
+				pd.setEnjoyInforData(list);
+				pd.setPageNavi(PageNavi);
+			}
+			
+			
+			JDBCTemplate.close(conn);
+			
+			
+			
+			return pd;
 		}
-		else {
-			JDBCTemplate.rollback(conn);
-		}
-		
-		return result;
-	}
 
 
-	public int insertCrawlerTotal(String currentTypeElement, String addr, String phone, String weburl, String ontime,
-			String offday, String onday, String notice, String payment, String disabled, String utilly,
-			String titleName, String bid, String writeDate, String tags, String subImage) {
+		public EnjoyInforData getOneData2(int sEQ_Index_TitleNo) {
+			
+			Connection conn = JDBCTemplate.getConnection();
+			
+			EnjoyInforData EID = new Enjoydao().getOneData2(sEQ_Index_TitleNo,conn);
+			
+			
+			
+			return EID;
+		}
 
-		Connection conn = JDBCTemplate.getConnection();
-		
-		int result = new Enjoydao().insertCrawlerTotal(conn,currentTypeElement,addr, phone, weburl, ontime,offday,onday,notice,payment,disabled,utilly,titleName,bid,writeDate,tags,subImage);
-		
-		JDBCTemplate.close(conn);
-		if(result>0)
-		{
-			JDBCTemplate.commit(conn);
-		}
-		else {
-			JDBCTemplate.rollback(conn);
+
+		public ArrayList<EnjoyInforDataDetail> getOneDetailData2(int IndexNo) {
+			Connection conn = JDBCTemplate.getConnection();
+			
+			ArrayList<EnjoyInforDataDetail> list = new Enjoydao().getOneDetailData2(IndexNo,conn);
+
+			JDBCTemplate.close(conn);
+			
+			return list;
 		}
 		
-		return result;
-		
-	}
+		public String countComment(int indexNo) {
+			Connection conn = JDBCTemplate.getConnection();
+			String count = new Enjoydao().countComment(indexNo, conn);
+			JDBCTemplate.close(conn);
+			return count;
+		}
+
 	
 }

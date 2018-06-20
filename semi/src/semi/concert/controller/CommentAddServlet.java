@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import semi.enjoy.model.service.EnjoyService;
+import semi.login.model.vo.SeoulUser;
 
 @WebServlet(name = "CommentAdd", urlPatterns = { "/commentAdd" })
 public class CommentAddServlet extends HttpServlet {
@@ -22,28 +23,28 @@ public class CommentAddServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession(false);
 
+		if(session.getAttribute("user")!=null) {
+			String reviewTitle = request.getParameter("Index_Title");
+			String reviewContents = request.getParameter("User_Comment");
+			int indexNo = Integer.parseInt(request.getParameter("index_titleNo"));
+			String userId = ((SeoulUser)session.getAttribute("user")).getUserId();
+			
+			int result = new EnjoyService().insertReview(reviewTitle, reviewContents,indexNo);
+			String type = request.getParameter("type");
 
-		String reviewTitle = request.getParameter("Index_Title");
-		String reviewContents = request.getParameter("User_Comment");
-		int indexNo = Integer.parseInt(request.getParameter("index_titleNo"));
-		//String userId = ((Member)session.getAttribute("user")).getUserId(); 유저 아이디 갖고오기
+			if(result>0) //리뷰 작성 성공
+			{
+				if(type.equals("concert")) {
+					response.sendRedirect("/concertInfo?indexNo="+indexNo);
+				}else if(type.equals("dobo")) {
+					response.sendRedirect("/doboInfo?indexNo="+indexNo);
+				}
 
-		//		System.out.println(reviewTitle);
-		//		System.out.println(reviewContents);
-		//if(session.getAttribute("user")!=null) {
-		int result = new EnjoyService().insertReview(reviewTitle, reviewContents,indexNo);
-		String type = request.getParameter("type");
-
-		if(result>0) //리뷰 작성 성공
-		{
-			if(type.equals("concert")) {
-				response.sendRedirect("/concertInfo?indexNo="+indexNo);
-			}else if(type.equals("dobo")) {
-				response.sendRedirect("/doboInfo?indexNo="+indexNo);
+			}else { //리뷰 작성 실패
+				response.sendRedirect("/concertList");
 			}
-
-		}else { //리뷰 작성 실패
-			response.sendRedirect("/concertList");
+		}else {		// 권한이 없을 때
+			response.sendRedirect("/wrongPath.html");
 		}
 
 	}

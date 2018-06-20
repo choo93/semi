@@ -1,140 +1,173 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-    <%@ page import="semi.place.model.vo.*" import="java.util.*" %>
-        <% 	
-PlacePageData pd = (PlacePageData)request.getAttribute("pageData");
-ArrayList<RankListData> list = pd.getPlaceList();
-String pageNavi = pd.getPageNavi();
+	pageEncoding="UTF-8"%>
+<%@ page import="semi.place.model.vo.*" import="java.util.*"%>
+<%
+	PlacePageData pd = (PlacePageData) request.getAttribute("pageData");
+	ArrayList<PlaceRank> list = pd.getPlaceList();
+	String pageNavi = pd.getPageNavi();
+	String title = null;
+	switch(list.get(0).getPlaceType())
+	{
+	case 1: title = "관광명소 Top10"; break;
+	case 2: title = "나이트라이프 Top10"; break;
+	case 3: title = "전통 Top10"; break;
+	case 4: title = "쇼핑 Top10"; break;
+	case 5: title = "한류 Top10"; break;
+	case 6: title = "가족여행 Top10"; break;
+	}
 
-int index = 0;%>
-            <!DOCTYPE html>
-            <html>
+%>
+<!DOCTYPE html>
+<html>
 
-            <head>
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <title>Insert title here</title>
-                <link rel="stylesheet" href="../../css/bootstrap.min.css">
-                <!-- 부트스트랩 CSS -->
-                <link rel="stylesheet" href="../../css/moreBtn.css">
-                <!-- 버튼 CSS -->
-                <link rel="stylesheet" href="../../css/festival/pagination.css">
-                <!-- 페이징 CSS (부트스트랩) -->
-                <link rel="stylesheet" href="../../css/main.css">
-                <!-- main header CSS -->
-                <script src="../../js/jquery-3.3.1.min.js"></script>
-                <script src="../../js/bootstrap.min.js"></script>
-                <script src="../../js/main.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<!-- 부트스트랩 CSS -->
+<link rel="stylesheet" href="../../css/moreBtn.css">
+<!-- 버튼 CSS -->
+<link rel="stylesheet" href="../../css/festival/pagination.css">
+<!-- 페이징 CSS (부트스트랩) -->
 
-            </head>
-            <style>
-                .photo {
-                    background-repeat: no-repeat;
-                    background-size: 100% 100%;
-                    height: 200px;
-                    border-radius: 12px;
-                }
+<script src="../../js/jquery-3.3.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/main.js"></script>
+<script> 	
+	function send(index) {
+		location.href = "/placeSelect?titleNo="+index;
+	};
+            
+        </script>
+</head>
+<style>
+.photo {
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 200px;
+	border-radius: 12px;
+}
 
-                .info {
-                    width: 800px;
-                    height: 200px;
-                    margin-left: 20px;
-                    border: 1px solid #9B95C9;
-                    border-width: 2px 20px 2px 2px;
-                }
+.info {
+	width: 800px;
+	height: 200px;
+	margin-left: 20px;
+	border: 1px solid #9B95C9;
+	border-width: 2px 20px 2px 2px;
+}
 
-                .title {
-                    font: bold 30pt 나눔스퀘어;
-                    margin-top: 10px;
-                    margin-left: 10px;
-                }
+.title {
+	font: bold 30pt 나눔스퀘어;
+	margin-top: 10px;
+	margin-left: 10px;
+}
 
-                .content {
-                    padding: 20px;
-                    clear: left;
-                }
+.content {
+	padding: 20px;
+	clear: left;
+}
 
-                .contents {
-                    padding: 5px;
-                    margin-top: 10px;
-                    margin-left: 10px;
-                }
+.contents {
+	padding: 5px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
 
-                .tags {
-                    padding: 5px;
-                    margin-top: 10px;
-                    margin-left: 10px;
-                    display: inline-block;
-                }
+.tags {
+	padding: 5px;
+	margin-top: 10px;
+	margin-left: 10px;
+	display: inline-block;
+}
 
-                .ptags {
-                    display: inline;
-                }
+.ptags {
+	display: inline;
+}
 
-                #button {
-                    margin-top: 20px;
-                }
+#button {
+	margin-top: 20px;
+}
 
-                hr {
-                    margin-top: 10px;
-                    margin-bottom: 10px;
-                }
-            </style>
+hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.font {
+			color: #9B95C9;
+			text-shadow: 1px -1px 1px #F6C467, -1px 2px 2px white;
+			height: 60px;
+			margin-bottom: 10px;
+			font: italic bold 3.3rem "나눔스퀘어";
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+</style>
 
-            <body id="scroll">
-                <%@ include file="/views/main/header.jsp"%>
-                    <section>
+<body id="scroll">
+	<%@ include file="/views/main/header.jsp"%>
+	<section>
+		<div id="head" class="container-fulid">
+                <h1 class="font" style="text-align: center;"><%=title %></h1>
+        </div>
+        <hr>
+		<div id="line" style="margin-left: 10%; padding: 20px;">
+			<select name="list">
+				<option value="">정렬하기</option>
+				<option value="title">제목</option>
+				<option value="dayOfIssue">발행일</option>
+			</select>
+		</div>
 
-                        <div id="line" style="margin-left: 10%; padding: 20px;">
-                            <select name="list">
-                                <option value="">정렬하기</option>
-                                <option value="title">제목</option>
-                                <option value="dayOfIssue">발행일</option>
-                            </select>
-                        </div>
-
-                        <!-- 내용물 -->
-                        <div class="container">
-                            <!-- 첫번째 컨텐츠 -->
-                            <%for(RankListData rld : list) { %>
-                                <form action="/placeSelect" method="POST">
-                                    <input type="hidden" name="titleNo" value="<%=rld.getIndex_TitleNo()%>" />
-                                    <div class="row">
-                                        <div class="col-xs-12 content" id="list<%=index+1 %>">
-                                            <!-- 첫번째 내용 -->
-                                            <div class="row">
-                                                <!-- 첫번째 사진 -->
-                                                <div class="col-xs-3 photo" style="background-image:<%=rld.getIndex_Image()%>"></div>
-
-                                                <div class="col-xs-6 col-xs-offset-3 info">
-                                                    <!-- 첫번째 컨텐츠 제목 -->
-                                                    <div class="title">
-                                                        <%=rld.getIndex_Title() %>
-                                                    </div>
-                                                    <hr>
-                                                    <!-- 첫번째 컨텐츠 설명 -->
-                                                    <div class="contents">
-                                                        <%=rld.getIndex_BasicInfo() %>
-                                                    </div>
-                                                    <!-- 첫번째 컨텐츠 태그 -->
-                                                    <div class="tags">
-                                                        <p class="ptags">태그</p>
-                                                        <div style="display: inline;">
-                                                            <%StringTokenizer sT = new StringTokenizer(rld.getIndex_Tags(),"#");
-                                                                while(sT.hasMoreTokens()) { %>
-                                                                <a href="#">#
-                                                                    <%=sT.nextToken() %>
-                                                                </a>
-                                                                <%} %>
-                                                        </div>
-                                                    </div>
-                                                    <input type="submit" class="btn pull-right" id="button">자세히</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <%} %>
-                                    <!-- 
+		<!-- 내용물 -->
+		<div class="container">
+			<!-- 첫번째 컨텐츠 -->
+			<%for (PlaceRank pr : list) {%>
+			<div class="row">
+					<div class="col-xs-12 content" id="list">
+						<!-- 첫번째 내용 -->
+						<div class="row">
+							<!-- 첫번째 사진 -->
+							<div class="col-xs-3 photo"	style="background-image:url(<%=pr.getPlaceMainImg()%>)"></div>
+							<div class="col-xs-6 col-xs-offset-3 info">
+								<!-- 첫번째 컨텐츠 제목 -->
+								<div class="title">
+									<%=pr.getPlaceTitle()%>
+								</div>
+								<hr>
+								<!-- 첫번째 컨텐츠 설명 -->
+								<div class="contents">
+								 <%int contentsu=pr.getPlaceBasicInfo().length();%>
+                                        <%if(contentsu>100) {%>
+                                            <%=pr.getPlaceBasicInfo().substring(0,100)%>.....
+                                            
+                                        <%}else{%>
+                                            <%=pr.getPlaceBasicInfo()%>
+                                        <%}%>
+								</div>
+								<!-- 첫번째 컨텐츠 태그 -->
+								<div class="tags">
+									<p class="ptags">태그</p>
+									<div style="display: inline;">
+										<%StringTokenizer sT = new StringTokenizer(pr.getPlaceTag(), "#");%>
+                                        <%int su1 = sT.countTokens();%>
+                                        <%if(su1<6){ %>                                
+                                            <%for(int i=0;i<su1;i++){ %>
+                                             <a href="#">#<%=sT.nextToken() %></a>
+                                         	<%}%>
+                                        <%}else{%>
+                                        <%for(int i=0;i<6;i++){%>
+                                        <a href="#">#<%=sT.nextToken() %></a>
+										<%}
+                                        }%>     
+									</div>
+								</div>
+								 <button class="btn pull-right" id="button" onclick="send(<%=pr.getTitleNo()%>);">자세히</button>
+							</div>
+						</div>
+					</div>
+				</div>
+<% }%>
+			<!-- 
                     두번째 컨텐츠
                     <div class="row">
                         <div class="col-xs-12 content" id="list_2">
@@ -231,12 +264,12 @@ int index = 0;%>
 -->
 
 
-                                    <!-- 페이징 처리 시작 -->
+			<!-- 페이징 처리 시작 -->
 
-                                    <div class="container" style="text-align: center ">
-                                        <ul class="pagination pagination-lg">
-                                            <%=pageNavi %>
-                                                <!--    <li class="disabled">
+			<div class="container" style="text-align: center">
+				<ul class="pagination pagination-lg">
+					<%=pageNavi%>
+					<!--    <li class="disabled">
                                 <span>«</span>
                             </li>
                             <li class="active">
@@ -258,14 +291,14 @@ int index = 0;%>
                             <li>
                                 <a href="#">»</a>
                             </li> -->
-                                        </ul>
+				</ul>
 
-                                    </div>
-                        </div>
+			</div>
+		</div>
 
 
-                    </section>
-                    <%@ include file="/views/main/footer.jsp"%>
-            </body>
+	</section>
+	<%@ include file="/views/main/footer.jsp"%>
+</body>
 
-            </html>
+</html>

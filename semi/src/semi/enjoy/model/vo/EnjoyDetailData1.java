@@ -15,6 +15,10 @@ public class EnjoyDetailData1 {
 	private String detail_payment;   
 	private String detail_disabled;    
 	private String detail_utility;
+	private String detail_traficAddress;
+	private String detail_traficRoot;
+	private double detail_Latitue;
+	private double detail_Longitude;
 	public int getSEQ_Index_TitleNo() {
 		return SEQ_Index_TitleNo;
 	}
@@ -87,9 +91,36 @@ public class EnjoyDetailData1 {
 	public void setDetail_utility(String detail_utility) {
 		this.detail_utility = detail_utility;
 	}
+	
+	
+	public String getDetail_traficAddress() {
+		return detail_traficAddress;
+	}
+	public void setDetail_traficAddress(String detail_traficAddress) {
+		this.detail_traficAddress = detail_traficAddress;
+	}
+	public String getDetail_traficRoot() {
+		return detail_traficRoot;
+	}
+	public void setDetail_traficRoot(String detail_traficRoot) {
+		this.detail_traficRoot = detail_traficRoot;
+	}
+	public double getDetail_Latitue() {
+		return detail_Latitue;
+	}
+	public void setDetail_Latitue(double detail_Latitue) {
+		this.detail_Latitue = detail_Latitue;
+	}
+	public double getDetail_Longitude() {
+		return detail_Longitude;
+	}
+	public void setDetail_Longitude(double detail_Longitude) {
+		this.detail_Longitude = detail_Longitude;
+	}
 	public EnjoyDetailData1(int sEQ_Index_TitleNo, String index_type, String detail_addr, String detail_tell,
 			String detail_url, String detail_onTime, String detail_offday, String detail_onday, String detail_notice,
-			String detail_payment, String detail_disabled, String detail_utility) {
+			String detail_payment, String detail_disabled, String detail_utility, String detail_traficAddress,
+			String detail_traficRoot, double detail_Latitue, double detail_Longitude) {
 		super();
 		SEQ_Index_TitleNo = sEQ_Index_TitleNo;
 		this.index_type = index_type;
@@ -103,11 +134,17 @@ public class EnjoyDetailData1 {
 		this.detail_payment = detail_payment;
 		this.detail_disabled = detail_disabled;
 		this.detail_utility = detail_utility;
+		this.detail_traficAddress = detail_traficAddress;
+		this.detail_traficRoot = detail_traficRoot;
+		this.detail_Latitue = detail_Latitue;
+		this.detail_Longitude = detail_Longitude;
 	}
 	public EnjoyDetailData1() {
 		super();
 		// TODO Auto-generated constructor stub
-	}       
+	}
+	
+	
 	
 	
 }
