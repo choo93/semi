@@ -28,7 +28,10 @@ public class DoboReserveServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		dr.setDoboCode(request.getParameter("doboCode"));
-		dr.setUserNo(((SeoulUser)session.getAttribute("user")).getUserNo());
+		if(session.getAttribute("user")!=null) {
+			dr.setUserNo(((SeoulUser)session.getAttribute("user")).getUserNo());
+		}
+		
 		dr.setDate(request.getParameter("date"));
 		dr.setTime(request.getParameter("time"));
 		dr.setReserveName(request.getParameter("name"));

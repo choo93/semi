@@ -43,7 +43,6 @@ ArrayList<HotelReserve> hoteltList = (ArrayList<HotelReserve>)request.getAttribu
 		width:100%;	height:500px;
 		margin-top:30px;
 		margin-bottom:50px;
-		/* overflow:auto; */
 	}
 	
 	#wrap>div:nth-child(even)>div:first-child{
