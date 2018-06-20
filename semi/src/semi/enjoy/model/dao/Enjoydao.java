@@ -83,7 +83,7 @@ public class Enjoydao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			if(option.equals("")) {pstmt.setString(1, type);}
-			else {pstmt.setString(1, option);}
+			else {pstmt.setString(1, type);}
 			pstmt.setInt(2, start);
 			pstmt.setInt(3, end);	
 			rset = pstmt.executeQuery();
@@ -214,20 +214,20 @@ public class Enjoydao {
 		StringBuilder sb = new StringBuilder(); // 오랜만이야..
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<li><a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&option="+option+"'> « </a></li>");
+			sb.append("<li><a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&sort="+option+"'> « </a></li>");
 		}
 		else { // 시작 페이지가 1페이지라면 !
 			sb.append("<li class='disabled'> <span>«</span> </li>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<li class='active'><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "&option="+option+"'> " + i + " </a></li>");
+				sb.append("<li class='active'><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "&sort="+option+"'> " + i + " </a></li>");
 			} else {
-				sb.append("<li><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&option="+option+"'> " + i + " </a></li>");
+				sb.append("<li><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&sort="+option+"'> " + i + " </a></li>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<li><a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&option="+option+"'> » </a></li>");
+			sb.append("<li><a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&sort="+option+"'> » </a></li>");
 		}else {
 			sb.append("<li class='disabled'> <span>»</span> </li>");
 		}
@@ -488,20 +488,20 @@ public class Enjoydao {
 
 				
 				if (needPrev) { // 시작이 1페이지가 아니라면!
-					sb.append("<li> <a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&IndexNo="+indexNo+  "'> « </a> </li>");
+					sb.append("<li> <a href='/enjoySelect?currentPage=" + (startNavi - 1) +"&serarch="+search+"&IndexNo="+indexNo+  "'> « </a> </li>");
 				}else { // 시작 페이지가 1페이지라면 !
 					sb.append("<li class='disabled'> <span>«</span> </li>");
 				}
 				
 				for (int i = startNavi; i <= endNavi; i++) {
 					if (i == currentPage) {
-						sb.append("<li class='active'><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&IndexNo="+indexNo+ "'>" + i + " </a></li>");
+						sb.append("<li class='active'><a href='/enjoySelect?currentPage=" + i +"&serarch="+search+"&IndexNo="+indexNo+ "'>" + i + " </a></li>");
 					} else {
-						sb.append("<li><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&IndexNo="+indexNo+  "'> " + i + " </a></li>");
+						sb.append("<li><a href='/enjoySelect?currentPage=" + i +"&serarch="+search+"&IndexNo="+indexNo+  "'> " + i + " </a></li>");
 					}
 				}
 				if (needNext) { // 끝페이지가 아니라면!
-					sb.append("<li><a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&IndexNo="+indexNo+  "'> » </a></li>");
+					sb.append("<li><a href='/enjoySelect?currentPage=" + (endNavi + 1) +"&serarch="+search+"&IndexNo="+indexNo+  "'> » </a></li>");
 				}else {
 					sb.append("<li class='disabled'> <span>»</span> </li>");
 				}
@@ -626,7 +626,7 @@ public class Enjoydao {
 		
 		if(option.equals("title"))
 		{
-		query = "select * from (select Refer_List_Main.*,row_number() over(order by INDEX_TITLE)as num from Refer_List_Main where List_Element = ?) where num between ? and ?";
+		query = "select * from (select Refer_List_Main.*,row_number() over(order by INDEX_LIST_TITLE)as num from Refer_List_Main where List_Element = ?) where num between ? and ?";
 		}
 		else if(option.equals("dayOfIssue")) 
 		{
@@ -640,7 +640,7 @@ public class Enjoydao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			if(option.equals("")) {pstmt.setString(1, type);}
-			else {pstmt.setString(1, option);}
+			else {pstmt.setString(1, type);}
 			pstmt.setInt(2, start);
 			pstmt.setInt(3, end);	
 			rset = pstmt.executeQuery();
@@ -775,20 +775,20 @@ public class Enjoydao {
 		StringBuilder sb = new StringBuilder(); // 오랜만이야..
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<li><a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&option="+option+"'> « </a></li>");
+			sb.append("<li><a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&sort="+option+"'> « </a></li>");
 		}
 		else { // 시작 페이지가 1페이지라면 !
 			sb.append("<li class='disabled'> <span>«</span> </li>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<li class='active'><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "&option="+option+"'> " + i + " </a></li>");
+				sb.append("<li class='active'><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "&sort="+option+"'> " + i + " </a></li>");
 			} else {
-				sb.append("<li><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&option="+option+"'> " + i + " </a></li>");
+				sb.append("<li><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&sort="+option+"'> " + i + " </a></li>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<li><a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&option="+option+"'> » </a></li>");
+			sb.append("<li><a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&sort="+option+"'> » </a></li>");
 		}else {
 			sb.append("<li class='disabled'> <span>»</span> </li>");
 		}
@@ -877,10 +877,32 @@ public class Enjoydao {
 			JDBCTemplate.close(pstmt);
 		
 		}
-		
-		
-		
+
 		return list;
+	}
+	
+	public String countComment(int indexNo, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String count = null;
+		
+		String query = "SELECT count(*)AS totalCount FROM(select * from Element_Index_Review where SEQ_INDEX_TITLENO=?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, indexNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getString("totalCount");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return count;
 	}
 	
 }
