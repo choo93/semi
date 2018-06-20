@@ -109,7 +109,7 @@
 
 					<section>
 						<div class="container">
-							<div class="container-fulid">
+							<div class="container-fluid">
 								<div class="head" style="text-align: center">
 									<p class="font">
 										<%=pr.getPlaceTitle()%>

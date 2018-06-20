@@ -16,7 +16,6 @@
 	case 6: title = "가족여행 Top10"; break;
 	}
 
-	int index1 = 0;
 %>
 <!DOCTYPE html>
 <html>
@@ -124,7 +123,7 @@ hr {
 			<!-- 첫번째 컨텐츠 -->
 			<%for (PlaceRank pr : list) {%>
 			<div class="row">
-					<div class="col-xs-12 content" id="list<%=index1+1%>">
+					<div class="col-xs-12 content" id="list">
 						<!-- 첫번째 내용 -->
 						<div class="row">
 							<!-- 첫번째 사진 -->
@@ -167,7 +166,7 @@ hr {
 						</div>
 					</div>
 				</div>
-			<%index1++; }%>
+<% }%>
 			<!-- 
                     두번째 컨텐츠
                     <div class="row">
