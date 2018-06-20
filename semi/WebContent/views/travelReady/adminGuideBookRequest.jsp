@@ -11,10 +11,9 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="../../css/travelReady/main.css">
+
 	<link href="../../css/bootstrap.min.css" rel="stylesheet">
  
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
 </head>
@@ -169,6 +168,7 @@ function test(){
 	
 </style>
 <%@ include file="/views/main/header.jsp" %>
+<section>
 <table class="table">
   <thead>
     <tr>
@@ -205,7 +205,7 @@ function test(){
 <form id="delete" name="delete" action="/requestDelete">
 <c:forEach items="${guidebookRequest}" var="g">
 <tr>
-	<td><input type="checkBox" name="check" value="${g.deliveryCheck}"></td>
+	<td><input type="checkBox" name="check" value="${g.deliveryCheck}" style="opacity:1;"></td>
 	<td name="tdorderNo" value="${g.orderNo}">${g.orderNo}</td>
 	<td>${g.name}</td>
 	<td>${g.email}</td>
@@ -226,6 +226,7 @@ function test(){
 
   </tbody>
 </table>
+</section>
 <%@ include file="/views/main/footer.jsp"%>
 </body>
 </html>

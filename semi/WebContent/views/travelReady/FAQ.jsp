@@ -196,12 +196,18 @@ function test(id){
 			</div>
 			
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
+				
+				
 				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 
+					
+					
 					if(i==fpd.getCurrentPage()){%>
 						<a class="btn btn-primary btn-lg" href='/faq?currentPage=<%=i%>'><%=i%></a>
 					<%}else{ %>
 						<a class="btn btn-primary btn-lg" href='/faq?currentPage=<%=i%>'><%=i%></a>
 					<%} %>
+					
+					
 				<%} %>
 				</div>
 

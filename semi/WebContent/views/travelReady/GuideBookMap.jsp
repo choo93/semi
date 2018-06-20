@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<title>Insert title here</title>
+<title>Insert title here</title> 
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>	
 </head>
@@ -123,7 +123,7 @@
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
 	<section>
-
+		
 			<div id="pagecontent">
 				<section id="content">
 					<div class="dis" style="height:200px;">
@@ -138,6 +138,9 @@
 						</div>
 						
 					</div>
+					<form action="/adminGuideBookRequest">
+						<input type="submit" value="배송확인">
+					</form>
 					
 					<div class="dis" style="height:2000px; margin-top:32px;">
 					<%for(GuideBookDown gbd : list) {%>
