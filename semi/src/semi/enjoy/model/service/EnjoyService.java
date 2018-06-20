@@ -232,6 +232,18 @@ public class EnjoyService {
 			JDBCTemplate.close(conn);
 			return count;
 		}
+		
+		public int countHits(int indexNo) {
+			Connection conn = JDBCTemplate.getConnection();
+			int result = new Enjoydao().countHits(indexNo, conn);
+			if(result>0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+			JDBCTemplate.close(conn);
+			return result;
+		}
 
 	
 }
