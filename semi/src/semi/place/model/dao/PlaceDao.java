@@ -58,9 +58,7 @@ public class PlaceDao {
 				list.add(pr);
 			}
 
-		} catch (
-
-		SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
