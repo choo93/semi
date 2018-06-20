@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 				if(result==true) {
 					response.sendRedirect("/views/login/passwordChange.jsp");
 				}else {
-					response.sendRedirect("/views/login/login.jsp");
+					response.sendRedirect("/index.jsp");
 				}
 			}
 		}else {

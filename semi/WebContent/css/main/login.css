@@ -1,0 +1,32 @@
+.wrapper{
+	width:800px;
+	margin:0 auto;
+}
+h4{
+	text-align:center;
+	padding-top:150px;
+	padding-bottom:60px;
+	margin:0!important;
+}
+hr{
+	margin-bottom:30px;
+}
+.input-field{
+	margin-bottom:30px;
+}
+.btn{
+	margin-top:30px;
+	width:100%;
+	background-color:#b43029!important;
+	height:50px!important;
+	font-size:1.3rem!important;
+}
+.row{
+	margin-top:20px;
+}
+.row>div:nth-child(1){
+	text-align:right;
+}
+.row>div:nth-child(2){
+	text-align:center;
+}

@@ -166,3 +166,9 @@ button:focus{
 	top:-33px!important;
 	left:135px!important;
 }
+.joinus_final{
+	clear:both;
+	border:1px solid #ddd;
+	height:400px;
+	width:100%;
+}
