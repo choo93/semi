@@ -28,3 +28,7 @@ function next(){
 		alert("체크하지 않은 항목이 있습니다");
 	}
 }
+
+$(document).ready(function(){
+    $('select').formSelect();
+  });
