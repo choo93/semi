@@ -194,13 +194,14 @@ function test(id){
 			</section>
 			
 			</div>
-			
+				
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
-				
-				
+					<%if(fpd.getCurrentPage()>1){ %>
+					<a class="btn btn-primary btn-lg" href="/faq?currentPage=<%=fpd.getCurrentPage()-1%>"> < </a>
+					<%} %>
+			
 				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 
-					
-					
+
 					if(i==fpd.getCurrentPage()){%>
 						<a class="btn btn-primary btn-lg" href='/faq?currentPage=<%=i%>'><%=i%></a>
 					<%}else{ %>
@@ -208,6 +209,9 @@ function test(id){
 					<%} %>
 					
 					
+				<%} %>
+				<%if(fpd.getCurrentPage()<fpd.getPageTotalCount()){ %>
+					<a class="btn btn-primary btn-lg" href="/faq?currentPage=<%=fpd.getCurrentPage()+1%>"> > </a>
 				<%} %>
 				</div>
 
