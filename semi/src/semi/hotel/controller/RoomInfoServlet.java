@@ -34,14 +34,14 @@ public class RoomInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int indexNum = Integer.parseInt(request.getParameter("indexNum"));
 		int roomCode = Integer.parseInt(request.getParameter("roomCode"));
-
+		String hotelCode = request.getParameter("hotelCode");
 		
 		
 		ArrayList<RoomInfo> list = new HotelService().hotelRoomInfo(roomCode);
 		
 		
 		if(!list.isEmpty()) {
-			RequestDispatcher view = request.getRequestDispatcher("/views/hotel/hotelReserve.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/views/hotel/roomInfo.jsp?hotelCode="+hotelCode+"&indexNo="+indexNum);
 			request.setAttribute("roomInfo", list);
 			view.forward(request, response);
 		}

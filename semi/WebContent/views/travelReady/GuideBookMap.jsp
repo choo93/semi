@@ -10,10 +10,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
-	<link rel="stylesheet" href="../../css/main.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>	
 </head>
@@ -70,15 +68,7 @@
     background:url(
 				http://korean.visitseoul.net/humanframe/theme/visitseoul/assets/images/content/guidebook.png);
 	background-repeat:no-repeat;
-	background-size:80% 120%;
-    }
-    #guidebookrequest>a
-    {
-    	width:30%;
-    	height:95%;
-    	padding-left:70%;
-    	padding-top:5%;
-    	display:inline-block;
+	background-size:100% 100%;
     }
    #rq{
    margin-left:55px; 
@@ -139,10 +129,11 @@
 					<div class="dis" style="height:200px;">
 						<div id="guidebookrequest">
 						<a href="/views/travelReady/GuideBookRequest2.jsp">
+						<div style="padding-left:700px; padding-top:70px;">
 							<strong style="font-size:25px;">무료가이드북 & 지도</strong>
 							<br>
 								<strong id="rq">신청하기</strong>
-
+						</div>
 							</a>
 						</div>
 						
@@ -155,7 +146,7 @@
 							<div class="name"><%=gbd.getGuideName()%></div>
 							<form action="/pdfDown" method="post">
 							<input type="hidden" name="orderNo" value="<%=gbd.getGuideNo()%>" >
-							<div class="button">PDF View<br>(<%=gbd.getFileSize()%>)<input type="submit" id="btn" value="다운로드"></div>
+							<div class="button" style="font-family:'Nanum Gothic', sans-serif; font-size:0.9rem;">PDF View<br>(<%=gbd.getFileSize()%>)<input type="submit" id="btn" value="다운로드"></div>
 							</form>
 						</div>
 						<%} %>

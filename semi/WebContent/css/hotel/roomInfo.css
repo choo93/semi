@@ -127,7 +127,7 @@
 	height:30%;
 	text-align:center;
 	font-size:15px;
-	
+	padding-top:10%;
 	
 }
 
@@ -136,7 +136,7 @@
 	height:70%;
 	text-align:center;
 	font-size:15px;
-	
+	padding-top:10%;
 }
 
 
@@ -146,7 +146,8 @@
 	border:1px solid black;
 	float:left;
 	text-align:center;
-	
+	padding-top:13%;
+	font-size:15px;
 }
 #hotelRoom1Price{
 	width:25%;
@@ -187,13 +188,15 @@
 	height:30%;
 	text-align:center;
 	font-size:15px;
+	padding-top:10%
 }
 
 #hotelRoom2Type-1{
 	width:100%;
 	height:70%;
 	text-align:center;
-	font-size:15px;	
+	font-size:15px;
+	padding-top:10%	
 }
 
 
@@ -204,6 +207,7 @@
 	float:left;
 	text-align:center;
 	font-size:15px;
+	padding-top:13%
 }
 #hotelRoom2Price{
 	width:25%;
@@ -243,13 +247,15 @@
 	height:30%;
 	text-align:center;
 	font-size:15px;
+	padding-top:10%;
 }
 
 #hotelRoom3Type-1{
 	width:100%;
 	height:70%;
 	text-align:center;
-	font-size:15px;	
+	font-size:15px;
+	padding-top:10%;	
 }
 
 
@@ -260,6 +266,7 @@
 	float:left;
 	text-align:center;
 	font-size:15px;
+	padding-top:13%;
 }
 #hotelRoom3Price{
 	width:25%;
@@ -300,13 +307,15 @@
 	height:30%;
 	text-align:center;
 	font-size:15px;
+	padding-top:10%;
 }
 
 #hotelRoom4Type-1{
 	width:100%;
 	height:70%;
 	text-align:center;
-	font-size:15px;	
+	font-size:15px;
+	padding-top:10%;	
 }
 
 
@@ -317,6 +326,7 @@
 	float:left;
 	text-align:center;
 	font-size:15px;
+	padding-top:13%;
 }
 #hotelRoom4Price{
 	width:25%;
@@ -357,4 +367,44 @@
 	height:50px;
 	 text-align:center;
 	 font-size:40px;
+}
+
+#dated{
+	width:80%;	height:50px;
+	margin:auto;
+}
+
+#dated>*{
+	float:left;
+}
+
+#dated>p{
+	width:40%;	height:100%;
+	font-size:30px;
+	text-align:center;
+	line-height:150%;
+}
+
+#datepicker1{
+	width:55%;	height:100%;
+	margin-left:5%;
+	font-size:30px;
+	text-align:center;
+	color:lightgrey;
+}
+
+#submit{
+	width:150px; height:50px;
+	margin-top:50px;
+	font-size:20px;
+	background-color:RGB(0, 125, 195);
+	cursor:pointer;
+	border:1px solid RGB(0, 125, 195);
+	border-radius:10px;
+	color:white;
+}
+
+#hotelPaymentTotal::before, #hotelRoom1Price::before,
+#hotelRoom2Price::before,  #hotelRoom3Price::before, #hotelRoom4Price::before{
+	content:"\\";
 }

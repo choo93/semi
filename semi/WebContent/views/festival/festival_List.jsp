@@ -14,7 +14,7 @@ case "fall" : seasons = "가을 축제"; break;
 case "winter" : seasons = "겨울 축제"; break;
 }
 
-int index = 0;
+int index1 = 0;
 %>
 
     <!DOCTYPE html>
@@ -25,7 +25,7 @@ int index = 0;
         <title>Insert title here</title>
         <link rel="stylesheet" href="../../css/bootstrap.min.css">
         <!-- 부트스트랩 CSS -->
-        <link rel="stylesheet" href="../../css/main.css">
+ <!--        <link rel="stylesheet" href="../../css/main.css"> -->
         <!-- main header CSS -->
         <link rel="stylesheet" href="../../css/moreBtn.css">
         <!-- 버튼 CSS -->
@@ -127,7 +127,7 @@ int index = 0;
                     <!-- 첫번째 컨텐츠 -->
                     <%for(Festival f : list) { %>
                     <div class="row">
-                        <div class="col-xs-12 content" id="list_<%=index+1%>">
+                        <div class="col-xs-12 content" id="list_<%=index1+1%>">
                             <!-- 첫번째 내용 -->
                             <div class="row">
                                 <!-- 첫번째 사진 -->
@@ -141,18 +141,29 @@ int index = 0;
                                     <hr>
                                     <!-- 첫번째 컨텐츠 설명 -->
                                     <div class="contents">
-                                        <%=f.getFestivalBasicInfo() %>
+                                        <%int contentsu=f.getFestivalBasicInfo().length();%>
+                                        <%if(contentsu>100) {%>
+                                            <%=f.getFestivalBasicInfo().substring(0,100)%>.....
+                                            
+                                        <%}else{%>
+                                            <%=f.getFestivalBasicInfo()%>
+                                        <%}%>
                                     </div>
                                     <!-- 첫번째 컨텐츠 태그 -->
                                     <div class="tags">
                                         <p class="ptags">태그</p>
                                         <div style="display: inline;">
-                                           <%StringTokenizer sT = new StringTokenizer(f.getFestivalTag(),"#");
-                                                                while(sT.hasMoreTokens()) { %>
-                                                                <a href="#">#
-                                                                    <%=sT.nextToken() %>
-                                                                </a>
-                                                                <%} %>
+                                        <%StringTokenizer sT = new StringTokenizer(f.getFestivalTag(),"#");%>
+                                        <%int su1 = sT.countTokens();%>
+                                        <%if(su1<6){ %>                                
+                                            <%for(int i=0;i<su1;i++){ %>
+                                             <a href="#">#<%=sT.nextToken() %></a>
+                                         	<%}%>
+                                        <%}else{%>
+                                        <%for(int i=0;i<6;i++){%>
+                                        <a href="#">#<%=sT.nextToken() %></a>
+										<%}
+                                        }%>                   
                                         </div>
                                     </div>
                                     <button class="btn pull-right" id="button" onclick="send(<%=f.getTitleNo()%>);">자세히</button>
@@ -160,7 +171,7 @@ int index = 0;
                             </div>
                         </div>
                     </div>
-                    <%index++; } %>
+                    <%index1++; } %>
                  
 
                <!--      두번째 컨텐츠

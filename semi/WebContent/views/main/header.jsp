@@ -151,7 +151,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 	        	</ul>
 				<div id="main_category_three" class="main_category">예약하기</div>
 	        	<ul style="display:none;" id="sub_category_three" class="main_sub_category">
-	        		<li><a href="/concerList">공연예약</a></li>
+	        		<li><a href="/concertList">공연예약</a></li>
 					<li><a href="/hotelList">호텔예약</a></li>
 					<li><a href="/doboList">서울도보관광예약</a></li>
 	        	</ul>  

@@ -125,14 +125,14 @@
 			<section>
 				<div class="container-fluid">
 					<div class="row">
-						<a href="/placeRankList?type=type1">
+						<a href="/placeRankList?type=1">
 							<div class="col-xs-6 picture photo1">
 
 									<h2 class="font">Top 10 관광명소<div class="under-bar"></div>	</h2>
 
 							</div>
 						</a>
-						<a href="/placeRankList?type=type2">
+						<a href="/placeRankList?type=2">
 							<div class="col-xs-6 picture photo2">
 
 									<h2 class="font">Top 10 나이트라이프<div class="under-bar"></div>	</h2>
@@ -143,14 +143,14 @@
 					</div>
 
 					<div class="row">
-						<a href="/placeRankList?type=type3">
+						<a href="/placeRankList?type=3">
 							<div class="col-xs-6 picture photo3">
 
 									<h2 class="font">Top 10 전통<div class="under-bar"></div>	</h2>
 
 							</div>
 						</a>
-						<a href="/placeRankList?type=type4">
+						<a href="/placeRankList?type=4">
 							<div class="col-xs-6 picture photo4">
 
 									<h2 class="font">Top 10 쇼핑<div class="under-bar"></div>	</h2>
@@ -161,7 +161,7 @@
 					</div>
 
 					<div class="row">
-						<a href="/placeRankList?type=type5">
+						<a href="/placeRankList?type=5">
 							<div class="col-xs-6 picture photo5">
 
 									<h2 class="font">Top 10 한류
@@ -171,7 +171,7 @@
 
 							</div>
 						</a>
-						<a href="/placeRankList?type=type6">
+						<a href="/placeRankList?type=6">
 							<div class="col-xs-6 picture photo6">
 
 									<h2 class="font">Top 10 가족여행<div class="under-bar"></div>	</h2>

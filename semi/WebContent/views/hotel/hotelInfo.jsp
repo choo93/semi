@@ -12,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="../../css//hotel/hotelInfo.css">
+<link rel="stylesheet" href="../../css//hotel/hotelInfo.css?ver=1">
 <link rel="stylesheet" href="/lib/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -45,15 +45,15 @@
 		<div id="hotelPhoto">
 			<div id="hotelMainPhoto"  >
 		
-				<img class="mySlides" src="<%=hi.getHotelMainPhoto() %>" height="300px" width="600px">
+				<img class="mySlides" src="<%=hi.getHotelMainPhoto() %>" style= "height:300px; width:600px ">
 		      
-				<img class="mySlides" src="<%=hi.getHotelSubPhoto1() %>" height="300px" width="600px">
+				<img class="mySlides" src="<%=hi.getHotelSubPhoto1() %>" style= "height:300px; width:600px">
 		
-			    <img class="mySlides"src="<%=hi.getHotelSubPhoto2() %>" height="300px" width="600px"> 
+			    <img class="mySlides"src="<%=hi.getHotelSubPhoto2() %>" style= "height:300px; width:600px"> 
 			    
-			    <img class="mySlides" src="<%=hi.getHotelSubPhoto3() %>" height="300px" width="600px">
+			    <img class="mySlides" src="<%=hi.getHotelSubPhoto3() %>" style= "height:300px; width:600px">
 				
-				<img class="mySlides" src="<%=hi.getHotelSubPhoto4() %>" height="300px" width="600px">
+				<img class="mySlides" src="<%=hi.getHotelSubPhoto4() %>" style= "height:300px; width:600px">
 			    
 			    			    
 			</div>
@@ -61,23 +61,23 @@
 			<div id="hotelInfoSubPhoto">
 				<div id="hotelSubPhoto1">
 					<img class="demo w3-border w3-hover-shadow"  src="<%=hi.getHotelMainPhoto() %>"
-						height="100%" width="100%" onclick="currentDiv(1)">
+						style = "height:100%; width:100%" onclick="currentDiv(1)">
 				</div>
 				<div id="hotelSubPhoto2">
 					<img class="demo w3-border w3-hover-shadow" src="<%=hi.getHotelSubPhoto1() %>"
-						height="100%" width="100%" ; onclick="currentDiv(2)">
+						style = "height:100%; width:100%"  onclick="currentDiv(2)">
 				</div>
 				<div id="hotelSubPhoto3">
 					<img class="demo w3-border w3-hover-shadow" src="<%=hi.getHotelSubPhoto2() %>"
-						height="100%" width="100%" onclick="currentDiv(3)">
+						style = "height:100%; width:100%" onclick="currentDiv(3)">
 				</div>
 				<div id="hotelSubPhoto4">
 					<img class="demo w3-border w3-hover-shadow" src="<%=hi.getHotelSubPhoto3() %>"
-						height="100%" width="100%" onclick="currentDiv(4)">
+						style = "height:100%; width:100%" onclick="currentDiv(4)">
 				</div>
 				<div id="hotelSubPhoto5">
 					<img class="demo w3-border w3-hover-shadow" src="<%=hi.getHotelSubPhoto4() %>"
-						height="100%" width="100%" onclick="currentDiv(5)">
+						style = "height:100%; width:100%" onclick="currentDiv(5)">
 				</div>
 
 
@@ -129,9 +129,9 @@
 			style="width: 100%; height: 10%; ">
 			<hr>
 			<div style="height: 100%; width: 100%; ">
-			<div id = "hotelRoomPriceExplain"style="height:50%; width: 100%;">
+			<div id = "hotelRoomPriceExplain"">
 			       <%=hi.getHotelRoomPriceExplain() %></div>
-			<div id = "hotelCheckInOut"style="height:50%; width:100%;">	 
+			<div id = "hotelCheckInOut">	 
 				<%=hi.getHotelCheckInOut() %> </div>
 				 </div>
 				 
@@ -157,10 +157,10 @@
 		
 		<div id="button">
 		<div id="reserve">
-		<button onclick="roomInfo(<%=hi.getIndexNum() %>,<%=hi.getHotelRoomCode() %>);">예약하기</button> 
+		<button onclick="roomInfo(<%=hi.getIndexNum() %>,<%=hi.getHotelRoomCode() %>);" style="cursor:pointer">예약하기</button> 
 		</div>
 		<div id="back">
-		 <button onclick="back();">호텔 목록페이지</button>
+		 <button onclick="back();" style="cursor:pointer">호텔 목록페이지</button>
 		 </div>
 		 </div>
 	</div>
@@ -182,7 +182,11 @@
 	
 	<script>
 		function roomInfo(index,roomCode){
-			location.href = "/roomInfo?indexNum="+index+"&roomCode="+roomCode;
+			<%if(session.getAttribute("user")!=null){ %>
+				location.href = "/roomInfo?indexNum="+index+"&roomCode="+roomCode+"&hotelCode="+<%=hi.getHotelCode() %>;
+			<%}else{ %>
+				alert('로그인후 이용해 주세요');
+			<%} %>
 		}
 	</script>
 	
@@ -192,8 +196,8 @@
         // 이거는 자바 스크립트 선언에서 가져오는 듯
         function initMap() {
         	var uluru = {
-                    lat: ${37.5606449}, 
-                lng: ${126.99718819999998}
+                    lat: <%=hi.getHotelLatitude()%>,
+                lng: <%=hi.getHotelLongtitude()%>
             };
             var map = new google.maps.Map(document.getElementById('hotelMapInfo'), {
                 zoom: 18,

@@ -38,8 +38,9 @@ div {
 	margin-bottom:1%;
 	text-align:center;
 	line-height:270%;
-	cursor:pointer;
-	background-color:RGB(0, 125, 195);
+	/* cursor:pointer; */
+	/* background-color:RGB(0, 125, 195); */
+	background-color:yellow;
 	border-radius:5px;
 }
 
@@ -88,18 +89,6 @@ div {
 }
 
 #submit{
-	width:100px;	height:5%;
-	margin:auto;
-	margin-left:350px;
-	background-color:RGB(0, 125, 195);
-	cursor:pointer;
-	border:1px solid RGB(0, 125, 195);
-	border-radius:10px;
-	color:white;
-	font-size:16px;
-}
-
-#payy{
 	width:100px;	height:5%;
 	margin:auto;
 	margin-left:350px;

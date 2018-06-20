@@ -3,9 +3,7 @@
 	import="java.util.*"%>
     
 <%
-	
       ArrayList<RoomInfo> ri = (ArrayList<RoomInfo>)request.getAttribute("roomInfo");
-	
 %> 
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="../../css/hotel/hotelReserve.css?ver=1">
+<link rel="stylesheet" href="../../css/hotel/roomInfo.css?ver=1">
 <link rel="stylesheet" href="/lib/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -24,10 +22,6 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body id="scroll">
-
-
-
-
 
 	<section>
 	
@@ -48,56 +42,56 @@
 		
 	    <div id="hotelRoom1Info">
 	    <div id="hotelRoom1Type">
-	    <div id="hotelRoomTitle" style="padding-top:10%;"><%=ri.get(0).getRoomTitle() %></div>
-	    <div id="hotelRoom1Type-1" style="padding-top:10%;"><%=ri.get(0).getRoomExplain() %></div>
+	    <div id="hotelRoomTitle"><%=ri.get(0).getRoomTitle() %></div>
+	    <div id="hotelRoom1Type-1"><%=ri.get(0).getRoomExplain() %></div>
 	    </div>
-	    <div id="hotelRoom1Capacity" style="padding-top:13%; font-size:15px"><%=ri.get(0).getRoomCapacity() %></div>
+	    <div id="hotelRoom1Capacity"><%=ri.get(0).getRoomCapacity() %></div>
 	    <div id="hotelRoom1Price"><%=ri.get(0).getRoomPrice() %></div>
 	    <div id="hotelRoom1Choice">
 	
-	    <input type="radio" id="room1" name="hotelPrice" onclick="roomPrice(1);" style="width:20px; height:20px;" value=<%=ri.get(0).getRoomPrice()%>>
+	    <input type="radio" id="room1" name="hotelPrice" onclick="roomPrice(<%=ri.get(0).getRoomCode() %>);" style="width:20px; height:20px;" value=<%=ri.get(0).getRoomPrice()%>>
 	   
 	    </div>
 	    </div>
 	    
 	    <div id="hotelRoom2Info">
 	    <div id="hotelRoom2Type">
-	    <div id="hotelRoomTitle2" style="padding-top:10%;"><%=ri.get(1).getRoomTitle() %></div>
-	    <div id="hotelRoom2Type-1" style="padding-top:10%;"><%=ri.get(1).getRoomExplain() %></div>
+	    <div id="hotelRoomTitle2"><%=ri.get(1).getRoomTitle() %></div>
+	    <div id="hotelRoom2Type-1"><%=ri.get(1).getRoomExplain() %></div>
 	    </div>
-	    <div id="hotelRoom2Capacity" style="padding-top:13%; font-size:15px"><%=ri.get(1).getRoomCapacity() %></div>
+	    <div id="hotelRoom2Capacity"><%=ri.get(1).getRoomCapacity() %></div>
 	    <div id="hotelRoom2Price"><%=ri.get(1).getRoomPrice() %></div>
 	    <div id="hotelRoom2Choice">
 	    
-	     <input type="radio" id="room2" name="hotelPrice" onclick="roomPrice(2);" style="width:20px; height:20px;" value=<%=ri.get(1).getRoomPrice()%>>
+	     <input type="radio" id="room2" name="hotelPrice" onclick="roomPrice(<%=ri.get(1).getRoomCode() %>);" style="width:20px; height:20px;" value=<%=ri.get(1).getRoomPrice()%>>
 	    
 	    </div>
 	    </div>
 	    
 	    <div id="hotelRoom3Info">
 	    <div id="hotelRoom3Type">
-	    <div id="hotelRoomTitle3" style="padding-top:10%;"><%=ri.get(2).getRoomTitle() %> </div>
-	    <div id="hotelRoom3Type-1" style="padding-top:10%;"><%=ri.get(2).getRoomExplain() %></div>
+	    <div id="hotelRoomTitle3"><%=ri.get(2).getRoomTitle() %> </div>
+	    <div id="hotelRoom3Type-1"><%=ri.get(2).getRoomExplain() %></div>
 	    </div>
-	    <div id="hotelRoom3Capacity" style="padding-top:13%; font-size:15px"><%=ri.get(2).getRoomCapacity() %></div>
+	    <div id="hotelRoom3Capacity"><%=ri.get(2).getRoomCapacity() %></div>
 	    <div id="hotelRoom3Price"><%=ri.get(2).getRoomPrice() %></div>
 	    <div id="hotelRoom3Choice">
 	     
-	      <input type="radio" id="room3" name="hotelPrice" onclick="roomPrice(3);" style="width:20px; height:20px;" value=<%=ri.get(2).getRoomPrice()%>>
+	      <input type="radio" id="room3" name="hotelPrice" onclick="roomPrice(<%=ri.get(2).getRoomCode() %>);" style="width:20px; height:20px;" value=<%=ri.get(2).getRoomPrice()%>>
 	     
 	    </div>
 	    </div>
 	    
 	    <div id="hotelRoom4Info">
 	    <div id="hotelRoom4Type">
-	    <div id="hotelRoomTitle4" style="padding-top:10%;"><%=ri.get(3).getRoomTitle() %></div>
-	    <div id="hotelRoom4Type-1" style="padding-top:10%;"><%=ri.get(3).getRoomExplain() %></div>
+	    <div id="hotelRoomTitle4"><%=ri.get(3).getRoomTitle() %></div>
+	    <div id="hotelRoom4Type-1"><%=ri.get(3).getRoomExplain() %></div>
 	    </div>
-	    <div id="hotelRoom4Capacity" style="padding-top:13%; font-size:15px"><%=ri.get(3).getRoomCapacity() %></div>
+	    <div id="hotelRoom4Capacity"><%=ri.get(3).getRoomCapacity() %></div>
 	    <div id="hotelRoom4Price"><%=ri.get(3).getRoomPrice() %></div>
 	    <div id="hotelRoom4Choice">
 	  
-	    <input type="radio" id="room4" name="hotelPrice" onclick="roomPrice(4);" style="width:20px; height:20px;" value=<%=ri.get(3).getRoomPrice()%>>
+	    <input type="radio" id="room4" name="hotelPrice" onclick="roomPrice(<%=ri.get(3).getRoomCode() %>);" style="width:20px; height:20px;" value=<%=ri.get(3).getRoomPrice()%>>
 	  
 	    </div>
 	    </div>
@@ -111,12 +105,18 @@
 		<div id="hotelPriceInfo">객실 요금</div>
 		<div id="hotelPaymentTotal"></div>
 		<div id="hotelPayment-1">		
-		<button type= "button" onclick = "payment();">결제 하기</button>
-		</div><br><br>
+		</div>
 		<div id="#hotelReserveDate">
-		<p style = text-align:center;>날짜 조회:
-        <input type="text" id="datepicker1">
+		<input id="price" type="hidden" name="price">
+		<div id="dated">
+			<p>날짜 조회</p>
+        	<input type="text" id="datepicker1" name="date">
+		</div>
+        <input type="hidden" name="hotelCode" value="<%=request.getParameter("hotelCode") %>">
+        <input id="roomCode" type="hidden" name="roomCode">
+        <button id="submit" onclick="payy();">방 선택</button>
         </div>
+		</div>
 		</div>
 	
 </div>
@@ -124,7 +124,7 @@
     </section>
 	<%@ include file="/views/main/footer.jsp" %>
 	
-	
+<!-- 달력 가져오기 -->	
 	<script>
   $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd',
@@ -139,36 +139,72 @@
     yearSuffix: '년'
   });
 
+  
   $(function() {
-    $("#datepicker1").datepicker();
+    $("#datepicker1").datepicker({maxDate: '+2y', minDate: '-2y', beforeShowDay: noPreviousdate});
+  
   });
-
+  
+  
 </script>
-
+ 
+<!-- 이전 날짜 선택 못하게 막기 -->
 <script>
-	function payment(){	
-		window.open("hotelPayment.jsp","payment", "width=700,height=700,scrollbars=no,resizable=no,left=800,top=200");
-	}
-</script>
+function noPreviousdate(date){ 
+	 
+    if (date < new Date()) 
+ 
+        return [false]; 
+ 
+    return [true]; 
+ 
+} 
 
+</script>
+<!-- 여기 까지 달력 가져오기 -->
 
 <script>
 	
 	function roomPrice(val){
 		if(val==1){
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room1').value;
+			document.getElementById('price').value = document.getElementById('room1').value;
+			document.getElementById('roomCode').value = val;
 		}
 		else if(val==2){
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room2').value;
+			document.getElementById('price').value = document.getElementById('room2').value;
+			document.getElementById('roomCode').value = val;
 		}
 		else if(val==3){
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room3').value;
+			document.getElementById('price').value = document.getElementById('room3').value;
+			document.getElementById('roomCode').value = val;
 		}
 		else{
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room4').value;
+			document.getElementById('price').value = document.getElementById('room4').value;
+			document.getElementById('roomCode').value = val;
 		}
 	}
 	
+	
+	function payy(){
+		var price = document.getElementById('price').value/100;
+		var date = document.getElementById('datepicker1').value;
+		var hotelCode = <%=request.getParameter("hotelCode") %>;
+		var roomCode = document.getElementById('roomCode').value;
+		var indexNo = <%=request.getParameter("indexNo") %>;
+		
+		if(price==""){
+			alert('객실을 선택해 주세요');
+		}else if(date==""){
+			alert('날짜를 선택해 주세요');
+		}else{
+			window.open("/roomSelect?price="+price+"&date="+date+"&hotelCode="+hotelCode+"&roomCode="+roomCode+"&indexNo="+indexNo,"_blank","width=800px,height=750px;");
+		}
+		
+	}
 </script>
 
 	

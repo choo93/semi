@@ -4,14 +4,13 @@ public class ConcertInfo {
 	private int indexNo;
 	private String concertCode;
 	private String concertTitle;
-	private String concertSummary;
 	private String concertPhoto;
 	private String concertDate;
 	private String concertGanre;
 	private String concertAddress;
 	private String concertAge;
 	private String concertShowTime;
-	private int concertPrice;
+	private String concertPrice;
 	private String concertExplain;
 	private String concertPhone;
 	private String concertSite;
@@ -61,14 +60,8 @@ public class ConcertInfo {
 	}
 
 
-	public String getConcertSummary() {
-		return concertSummary;
-	}
 
 
-	public void setConcertSummary(String concertSummary) {
-		this.concertSummary = concertSummary;
-	}
 
 
 	public String getConcertPhoto() {
@@ -121,12 +114,12 @@ public class ConcertInfo {
 	}
 
 
-	public int getConcertPrice() {
+	public String getConcertPrice() {
 		return concertPrice;
 	}
 
 
-	public void setConcertPrice(int concertPrice) {
+	public void setConcertPrice(String concertPrice) {
 		this.concertPrice = concertPrice;
 	}
 
@@ -194,7 +187,7 @@ public class ConcertInfo {
 	@Override
 	public String toString() {
 		return "indexNo=" + indexNo + ", concertCode=" + concertCode + ", concertTitle=" + concertTitle
-				+ ", concertSummary=" + concertSummary + ", concertPhoto=" + concertPhoto + ", concertDate="
+				+ ", concertPhoto=" + concertPhoto + ", concertDate="
 				+ concertDate + ", concertGanre=" + concertGanre + ", concertAddress=" + concertAddress
 				+ ", concertAge=" + concertAge + ", concertPrice=" + concertPrice + ", concertExplain=" + concertExplain
 				+ ", concertPhone=" + concertPhone + ", concertSite=" + concertSite + ", concertTraffic="
