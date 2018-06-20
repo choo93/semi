@@ -142,7 +142,7 @@ function chk()
 	
 				
 				
-				<div id="QnA" style="width:100%; height:560px;">
+				<div id="QnA" style="width:100%; height:auto;">
 				
   <form action="/qnAWrite">
   

@@ -1,6 +1,7 @@
 package semi.travelready.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi.travelready.model.service.SeoulInformationService;
 import semi.travelready.model.vo.FaqPageData;
 import semi.travelready.model.vo.SeoulInformationCommentPageData;
-
+import semi.travelready.model.vo.CommentComment;
 /**
  * Servlet implementation class SeoulInformationCommentServlet
  */
@@ -46,11 +47,17 @@ public class SeoulInformationCommentServlet extends HttpServlet {
 		
 		
 		SeoulInformationCommentPageData sicpd=new SeoulInformationService().commentAll(currentPage);
+		ArrayList<CommentComment> list=new SeoulInformationService().commentCommentAll();
 		if(sicpd!=null)
 		{
 			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/Seoulvisit.jsp");
 			request.setAttribute("SeoulInformationCommentPageData", sicpd);
+			request.setAttribute("CommentComment", list);
 			view.forward(request, response);
+		}
+		else
+		{
+			response.sendRedirect("/views/travelReady/SeoulvisitFail.jsp");
 		}
 	}
 

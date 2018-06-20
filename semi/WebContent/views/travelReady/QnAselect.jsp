@@ -117,7 +117,7 @@ function back()
 	
 				
 				
-				<div id="QnA" style="width:100%; height:560px;">
+				<div id="QnA" style="width:100%; height:auto;">
 				<ul style="width:100%; height:100%;">
 				
 				<li style="border-top:2px solid gray; border-bottom:2px solid gray; height:100px;;">

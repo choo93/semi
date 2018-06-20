@@ -12,7 +12,6 @@
 
     <title>bootstrap template</title>
 
-     <link rel="stylesheet" href="../../css/main.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>	
 

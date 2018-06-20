@@ -143,7 +143,7 @@ else self.name = '';
 				</div>
 				
 				
-				<div id="QnA" style="width:100%; height:580px;">
+				<div id="QnA" style="width:100%; height:auto;">
 					<table class="table">
 						<tr>
 							<th style="width:10%;">번호</th><th style="width:50%; text-align:center;">제목</th><th style="width:15%;">글쓴이</th><th style="width:15%;">등록일</th><th style="width:10%;">조회수</th>
