@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import semi.concert.model.vo.ConcertReserve;
+import semi.dobo.model.vo.DoboReserve;
+import semi.hotel.model.vo.HotelReserve;
 import semi.login.model.dao.UserDao;
 import semi.login.model.vo.SeoulUser;
 
@@ -92,9 +95,8 @@ public class UserService {
 		return result;
 	}
 
-}
-  
-  public ArrayList<ConcertReserve> loadConcertReserve(int userNo) {
+
+	public ArrayList<ConcertReserve> loadConcertReserve(int userNo) {
 		Connection conn = JDBCTemplate.getConnection();
 		ArrayList<ConcertReserve> concertList = new UserDao().loadConcertReserve(conn,userNo);
 		JDBCTemplate.close(conn);
