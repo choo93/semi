@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.travelready.model.service.SeoulInformationService;
-import semi.travelready.model.vo.FaqPageData;
-import semi.travelready.model.vo.SeoulInformationCommentPageData;
 import semi.travelready.model.vo.CommentComment;
+import semi.travelready.model.vo.SeoulInformationCommentPageData;
+
 /**
- * Servlet implementation class SeoulInformationCommentServlet
+ * Servlet implementation class SeoulImageCommentArrayServlet
  */
-@WebServlet(name = "SeoulInformationComment", urlPatterns = { "/seoulInformationComment" })
-public class SeoulInformationCommentServlet extends HttpServlet {
+@WebServlet(name = "SeoulImageCommentArray", urlPatterns = { "/seoulImageCommentArray" })
+public class SeoulImageCommentArrayServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SeoulInformationCommentServlet() {
+    public SeoulImageCommentArrayServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,6 +34,9 @@ public class SeoulInformationCommentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		
+		String upDown=request.getParameter("upDown");
+		System.out.println(upDown);
 		int currentPage;
 		
 		if(request.getParameter("currentPage")==null)
@@ -46,7 +49,7 @@ public class SeoulInformationCommentServlet extends HttpServlet {
 		}
 		
 		
-		SeoulInformationCommentPageData sicpd=new SeoulInformationService().commentAll(currentPage);
+		SeoulInformationCommentPageData sicpd=new SeoulInformationService().commentArray(currentPage,upDown);
 		ArrayList<CommentComment> list=new SeoulInformationService().commentCommentAll();
 		if(sicpd!=null)
 		{
@@ -54,10 +57,6 @@ public class SeoulInformationCommentServlet extends HttpServlet {
 			request.setAttribute("SeoulInformationCommentPageData", sicpd);
 			request.setAttribute("CommentComment", list);
 			view.forward(request, response);
-		}
-		else
-		{
-			response.sendRedirect("/views/travelReady/SeoulvisitFail.jsp");
 		}
 	}
 

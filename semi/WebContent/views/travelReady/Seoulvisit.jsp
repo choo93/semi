@@ -6,6 +6,7 @@
 <%
 	SeoulInformationCommentPageData sicpd=(SeoulInformationCommentPageData)request.getAttribute("SeoulInformationCommentPageData");
 	ArrayList<SeoulInformationComment> list=sicpd.getNoticelist();
+	ArrayList<CommentComment> cList=(ArrayList<CommentComment>)request.getAttribute("CommentComment");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -60,6 +61,25 @@
     }
 
     </style>
+    
+    <script>
+    	var chk=false;
+    	function comment(id)
+    	{
+    		var a=<%=sicpd.getRecordTotalCount()%>;
+    		console.log(a);
+    		if(chk==false){
+    		document.getElementById(id).style.display="block";
+    		chk=true;
+    		}else
+    			{
+    			document.getElementById(id).style.display="none";
+    			chk=false;
+    			}
+    		
+    		
+    	}
+    </script>
 
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
@@ -182,8 +202,8 @@
 							<form action="/writeComment">
 							<div style="width:85%; height:100%; margin-left:15%;">
 								<ul style="border-radius:10px;">
-									<li><textarea placeholder="소셜 계정으로 작성하세요" rows="1" readonly></textarea></li>
-									<li><textarea name="content" rows="10" style="height:80px;"></textarea></li>
+									<li><textarea placeholder="소셜 계정으로 작성하세요" rows="1" readonly style="resize:none;"></textarea></li>
+									<li><textarea name="content" rows="10" style="height:80px; resize:none;"></textarea></li>
 									<li style="margin-bottom:10px;height:20px;">
 									<ul style="list-style:none; width:100%; height:20px; float:left;">
 										<li style="width:50%;list-style:none; float:left;"><button>사진</button></li>
@@ -200,11 +220,11 @@
 					</div>
 					
 					<div style="width:100%; height:30px;  border-bottom:1px solid black; margin-top:20px;">
-					전체댓글수<b>0</b>
+					전체댓글수<b><%=sicpd.getRecordTotalCount()%></b>
 					<ul style="list-style:none; float:right; width:200px; height:100%;">
+						<li style="width:33.3%;list-style:none; float:left;"><a href="/seoulImageCommentArray?upDown=up">공감순</a></li>
+						<li style="width:33.3%;list-style:none; float:left;"><a href="/seoulImageCommentArray?upDown=down">반대순</a></li>
 						<li style="width:33.3%;list-style:none; float:left;">최신순</li>
-						<li style="width:33.3%;list-style:none; float:left;">좋아요</li>
-						<li style="width:33.3%;list-style:none; float:left;">싫어요</li>
 					</ul>
 					</div>
 					
@@ -223,24 +243,92 @@
 									<li style="float:right;"><%=sic.getWriteDate()%></li>
 									</ul>
 								</li>
-								<li style="height:100px; padding-top:40px;"><%=sic.getContent()%></li>
+								<li style="height:100px; padding-top:40px;"><%=sic.getContent()%>
+									<ul style="list-style:none; float:right; width:200px; height:100%;">
+										<li style="width:50px; height:100%;list-style:none; float:left; text-align:center;">
+										<a href="/seoulInformationCommentUpDown?UpDown=up&Up=<%=sic.getUp()%>&commentNo=<%=sic.getCommentNo()%>"><button style="width:40px;height:30px; border-radius:7px; background-color:white;">
+										<span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
+									    background-position: 0px -93px;">
+									    <strong><%=sic.getUp()%></strong></span></button></a></li>
+										<li style="width:50px; height:100%;list-style:none; float:left; text-align:center;">
+										<a href="/seoulInformationCommentUpDown?UpDown=down&Down=<%=sic.getDown()%>&commentNo=<%=sic.getCommentNo()%>"><button style="width:40px;height:30px; border-radius:7px; background-color:white;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
+									    background-position: 0px -109px; ">
+									    <strong><%=sic.getDown()%></strong></span></button></a></li>
+									
+									</ul>
+									
+								</li>
 								<li style="height:30px;">
 								<ul style="list-style:none;">
-									<li style="float:left;"><button style="cursor: pointer;background-color:white;border:none;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;">
+									<li style="float:left;"><button onclick="comment(<%=sic.getCommentNo()%>);"style="cursor: pointer;background-color:white;border:none;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;">
 									댓글달기</span></button></li>
 									<li style="float:left;"><button style="cursor: pointer;background-color:white;border:none;"><span style="margin-left:10px; padding-left:20px; 
 									background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;
 									background-position: 4px -151px;">
 									신고</span></button></li>
+									<form action="/seoulInformationCommentDelete">
+									<input type="hidden" name="commentNo" value="<%=sic.getCommentNo()%>">
 									<li><button style="cursor: pointer;background-color:white;border:none;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;
 									    background-position: 4px -26px;">
 									    삭제</span></button></li>
+									</form>
 								</ul>
 								
 								</li>
-								<div style="width:100%; height:100px; background-color:red; display:none;"></div>
-								<div style="width:100%; height:100px; background-color:blue;"></div>
+								<!-- 댓글 쓰기 -->
+								<div id="<%=sic.getCommentNo()%>" style="width:100%; height:150px; display:none;">
+										<ul style="border-radius:10px;">
+									<form action="/CommentComment">
+									<input type="hidden" value="<%=sic.getCommentNo()%>" name="commentNo">
+									<li><textarea name="content" rows="10" style="height:80px; resize:none;"></textarea></li>
+									<li style="margin-bottom:10px;height:20px;">
+									<ul style="list-style:none; width:100%; height:20px; float:left;">
+										<li style="width:50%;list-style:none; float:left;"><button>사진</button></li>
+										<li style="padding-left:385px;width:50%;list-style:none; float:right;"><strong>0</strong><span>/250</span></li>
+									</ul>
+									
+									</li>
+									<li style="float:right;"><input type="submit" value="보내기"></li>
+									</form>
+								</ul>
+								</div>
 								
+								<!-- 댓글 출력 -->
+								<%for(CommentComment cc :cList){ %>
+								<%if(sic.getCommentNo()==cc.getCommentNo()){ %>
+								<div style="width:100%; height:150px; border-bottom:1px solid black; ">
+								
+									<div style="width:80px; height:60px; float:left; margin-top:30px; background-color:#dd4b39;color:white; text-align:center;"><%=cc.getUserName()%></div>
+							<div style="width:90%; height:100%; margin-left:10%;">
+							<ul>
+								<li>
+									<ul style="list-style:none;">
+									<li style="float:left;"><%=cc.getUserName()%></li>
+									<li style="float:right;"><%=cc.getWriteDate()%></li>
+									</ul>
+								</li>
+								<li style="height:100px; padding-top:40px;"><%=cc.getContent()%></li>
+								<li style="height:30px;">
+								<ul style="list-style:none;">
+									<li style="float:left;"><button style="cursor: pointer;background-color:white;border:none;"><span style="margin-left:10px; padding-left:20px; 
+									background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;
+									background-position: 4px -151px;">
+									신고</span></button></li>
+									<form action="/seoulInformationCommentCommentDelete">
+									<input type="hidden" value="<%=cc.getCommentNo()%>" name="commentNo">
+									<li><button style="cursor: pointer;background-color:white;border:none;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;
+									    background-position: 4px -26px;">
+									    삭제</span></button></li>
+									    </form>
+								</ul>
+								
+								</li>
+								</ul>
+								</div>
+								
+								</div>
+								<%} %>
+								<%} %>								
 							</ul>
 							
 							</div>
@@ -254,6 +342,16 @@
 					
 				</section>
 			</div>
+			<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
+				<%for(int i=sicpd.getStartNavi(); i<=sicpd.getEndNavi();i++){ 
+					if(i==sicpd.getCurrentPage()){%>
+						<a class="btn btn-primary btn-lg" href='/seoulInformationComment?currentPage=<%=i%>'><%=i%></a>
+					<%}else{ %>
+						<a class="btn btn-primary btn-lg" href='/seoulInformationComment?currentPage=<%=i%>'><%=i%></a>
+					<%} %>
+				<%} %>
+				</div>
+			
 		</section>
 <%@ include file="/views/main/footer.jsp" %>
 </body>
