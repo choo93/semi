@@ -38,10 +38,11 @@ public class PlaceSelectServlet extends HttpServlet {
 		
 		int titleNo = Integer.parseInt(request.getParameter("titleNo"));
 		
+		
 		PlaceRank pr = new PlaceService().placeSelect(titleNo);
 		ArrayList<PlaceRankComment> list = new PlaceService().selectComment(titleNo);
 		HttpSession session = request.getSession(false);
-		if(pr!=null)
+		if(pr.getPlaceAddr()!=null)
 		{
 			RequestDispatcher view = request.getRequestDispatcher("/views/placerank/place_Info.jsp");
 			request.setAttribute("place", pr);
@@ -49,7 +50,10 @@ public class PlaceSelectServlet extends HttpServlet {
 			view.forward(request, response);
 		}else
 		{
-			
+			RequestDispatcher view = request.getRequestDispatcher("/views/placerank/place_Info2.jsp");
+			request.setAttribute("place", pr);
+			request.setAttribute("comment", list);
+			view.forward(request, response);
 		}
 
 	}

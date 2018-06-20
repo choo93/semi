@@ -159,6 +159,7 @@
 					</div>
 				</div>
 			</div>
+			<div id="back"><button onclick="back();">목록으로</button></div>
 		</div>
 
 	</section>

@@ -38,7 +38,6 @@ public class EnjoyCalendarServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		ArrayList<EnjoyFestival> list = new EnjoyService().AllFestivalData();
-		
 		if(list.isEmpty()) {
 			System.out.println("오류");
 		}

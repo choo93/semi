@@ -38,9 +38,8 @@ div {
 	margin-bottom:1%;
 	text-align:center;
 	line-height:270%;
-	/* cursor:pointer; */
-	/* background-color:RGB(0, 125, 195); */
-	background-color:yellow;
+	cursor:pointer;
+	background-color:RGB(0, 125, 195);
 	border-radius:5px;
 }
 
@@ -88,10 +87,10 @@ div {
 	background-color:gray;
 }
 
-#submit{
-	width:100px;	height:5%;
-	margin:auto;
-	margin-left:350px;
+#payy{
+	display:block;
+	width:100px;	height:40px;
+	margin-left:40%;
 	background-color:RGB(0, 125, 195);
 	cursor:pointer;
 	border:1px solid RGB(0, 125, 195);

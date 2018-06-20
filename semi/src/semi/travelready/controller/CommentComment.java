@@ -8,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.travelready.model.service.SeoulInformationService;
-import semi.travelready.model.vo.SeoulInformationCommentPageData;
 
 /**
- * Servlet implementation class WriteCommentServlet
+ * Servlet implementation class CommentComment
  */
-@WebServlet(name = "WriteComment", urlPatterns = { "/writeComment" })
-public class WriteCommentServlet extends HttpServlet {
+@WebServlet("/CommentComment")
+public class CommentComment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WriteCommentServlet() {
+    public CommentComment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +30,17 @@ public class WriteCommentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
+		int commentNo=Integer.parseInt(request.getParameter("commentNo"));
+		
 		String content=request.getParameter("content");
 		
-	int result=new SeoulInformationService().commentInsert(content);
-	
-	if(result>0) {
-		response.sendRedirect("/seoulInformationComment");
-	}
+		int result=new SeoulInformationService().insertCommentComment(commentNo,content);
+		
+		if(result>0)
+		{
+			response.sendRedirect("/seoulInformationComment");
+			
+		}
 	}
 
 	/**

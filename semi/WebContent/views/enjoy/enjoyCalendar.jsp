@@ -3,11 +3,16 @@
 	import ="java.util.*" import = "semi.enjoy.model.vo.EnjoyFestival"
 	import ="java.text.SimpleDateFormat"
 	%>
-<% 
-ArrayList<EnjoyFestival> list = (ArrayList<EnjoyFestival>)request.getAttribute("list");
+	<% 
+ArrayList<EnjoyFestival> list = null; 
+if((ArrayList<EnjoyFestival>)request.getAttribute("list")!=null)
+	{
+	list = 	(ArrayList<EnjoyFestival>)request.getAttribute("list");
+	}
 SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
 Date currentTime = new Date ();
 String mTime = mSimpleDateFormat.format ( currentTime );
+
 %>
 <!DOCTYPE html>
 <html>
@@ -26,22 +31,11 @@ String mTime = mSimpleDateFormat.format ( currentTime );
 
 <script src="../../js/enjoy/moment.min.js"></script>
 <script src="../../js/enjoy/fullcalendar.min.js"></script>
+<script>
 
-
-
-
-</head>
-<body id="scroll">
-	<%@ include file="/views/main/header.jsp"%>
-	<section>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-    	
-    	   /* initialize the external events
-        -----------------------------------------------------------------*/
-
-        $('#external-events .fc-event').each(function() {
+  $(document).ready(function() {
+	<%-- var today = "<%=mTime%>"; --%>
+	  $('#external-events .fc-event').each(function() {
 
           // store data so the calendar knows to render an event upon drop
           $(this).data('event', {
@@ -57,52 +51,102 @@ String mTime = mSimpleDateFormat.format ( currentTime );
           });
 
         });    	    	
+	  
+	  
+    $('#calendar').fullCalendar({
     	
-    	
-        $("#calendar").fullCalendar({
-        	
-        	monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-        	monthNamesShort: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-        	dayNames: ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"],
-			dayNamesShort: ["일","월","화","수","목","금","토"],
-        	buttonText: {
-        	today : "오늘",
-			month : "월별",
-        	week : "주별",
-        	day : "일별",
-        	}, 
-        	header: {
-        	        left: 'prev,next today',
-        	        center: 'title',
-        	        right: 'month,agendaWeek,agendaDay'
-        	      },
-        	      navLinks: true, // can click day/week names to navigate views,
-        	      businessHours: true, // display business hours,
-              defaultDate : "<%= mTime %>"
-              
-              ,droppable: true
-            , editable : true
-            , eventLimit : true
-            , events: [
-            	<% for(EnjoyFestival EF : list) {%>
-            	
-            	
-            	  {
-                      title: '<%=EF.getFestival_title()%>',
-                      <% StringTokenizer ST = new StringTokenizer(EF.getFestival_ontime(), " ~ ");
-                      while(ST.hasMoreTokens()){%>
-                      start: '<%=ST.nextToken()%>' ,
-                      end : '<%=ST.nextToken()%>',
-                      <%}%>
-                      id : '<%=EF.getSEQ_Index_TitleNo()%>'
-                      
-                    }
-            	  <%}%>
-            	  ]
-              
-        });
+    	monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+    	monthNamesShort: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+    	dayNames: ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"],
+		dayNamesShort: ["일","월","화","수","목","금","토"],
+    	buttonText: {
+    	today : "오늘",
+		month : "월별",
+    	week : "주별",
+    	day : "일별",
+    	}, 
+    	header: {
+	        left: 'prev,next today',
+	        center: 'title',
+	        right: 'month,agendaWeek,agendaDay'
+	      },
+	      navLinks: true, // can click day/week names to navigate views,
+	      businessHours: true, // display business hours,
+      defaultDate: '<%=mTime%>',
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: [
+        {
+          title: 'All Day Event',
+          start: '2018-06-20'
+        },
+        {
+            title: 'Long Event',
+            start: '2018-06-24',
+            end: '2018-06-27'
+          },
+          {
+            id: 999,
+            title: 'Repeating Event',
+            start: '2018-06-01T16:00:00'
+          },
+          {
+            id: 989,
+            title: 'Repeating Event',
+            start: '2018-06-16T16:00:00'
+          },
+          {
+            title: 'Conference',
+            start: '2018-06-4',
+            end: '2018-06-17'
+          },
+          {
+            title: 'Meeting',
+            start: '2018-07-12T10:30:00',
+            end: '2018-07-18T12:30:00'
+          },
+          {
+            title: 'Lunch',
+            start: '2018-07-16T12:00:00'
+          },
+          {
+            title: 'Meeting',
+            start: '2018-05-12T14:30:00'
+          },
+          {
+            title: 'Happy Hour',
+            start: '2018-05-14T17:30:00'
+          },
+          {
+            title: 'Dinner',
+            start: '2018-05-10T20:00:00'
+          },
+          {
+            title: 'Birthday Party',
+            start: '2018-06-13T07:00:00'
+          },
+          {
+            title: 'Click for Google',
+            url: 'http://google.com/',
+            start: '2018-06-24'
+          }
+       	<%for(EnjoyFestival EF : list){%>
+        <% StringTokenizer ST = new StringTokenizer(EF.getFestival_period(), " ~ ");%>
+       	,{title : '<%=EF.getFestival_title() %>',
+        <%while(ST.hasMoreTokens()){%>
+		start : '<%=ST.nextToken()%>',
+		end : '<%=ST.nextToken()%>',
+		<%}%>
+		url: '<%=%>',
+		id : '<%=EF.getSEQ_Index_TitleNo()+EF.getFestival_title()%>'
+       	}
+       	<%}%>
+     
+      ]
     });
- 
+
+  });
+
 </script>
 
 
@@ -155,8 +199,11 @@ String mTime = mSimpleDateFormat.format ( currentTime );
         margin : 0 auto;
     }
 </style>
-
-   <div id='wrap'>
+</head>
+<body id="scroll">
+	<%-- <%@ include file="/views/main/header.jsp"%> --%>
+	<section>
+<div id='wrap'>
 
     <div id='external-events'>
       <h4>Draggable Events</h4>
@@ -176,7 +223,6 @@ String mTime = mSimpleDateFormat.format ( currentTime );
     <div style='clear:both'></div>
 
   </div>
-
 	</section>
 	<%@ include file="/views/main/footer.jsp"%>
 </body>

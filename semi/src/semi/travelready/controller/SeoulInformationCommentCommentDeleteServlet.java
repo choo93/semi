@@ -8,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.travelready.model.service.SeoulInformationService;
-import semi.travelready.model.vo.SeoulInformationCommentPageData;
 
 /**
- * Servlet implementation class WriteCommentServlet
+ * Servlet implementation class SeoulInformationCommentCommentDeleteServlet
  */
-@WebServlet(name = "WriteComment", urlPatterns = { "/writeComment" })
-public class WriteCommentServlet extends HttpServlet {
+@WebServlet(name = "SeoulInformationCommentCommentDelete", urlPatterns = { "/seoulInformationCommentCommentDelete" })
+public class SeoulInformationCommentCommentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WriteCommentServlet() {
+    public SeoulInformationCommentCommentDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +30,13 @@ public class WriteCommentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String content=request.getParameter("content");
+		int commentNo=Integer.parseInt(request.getParameter("commentNo"));
 		
-	int result=new SeoulInformationService().commentInsert(content);
-	
-	if(result>0) {
-		response.sendRedirect("/seoulInformationComment");
-	}
+		int result=new SeoulInformationService().deleteCommentComment(commentNo);
+		
+		if(result>0) {
+			response.sendRedirect("/seoulInformationComment");
+		}
 	}
 
 	/**

@@ -13,7 +13,6 @@ div {
 }
 #contents {
 	width: 100%;
-	margin-bottom: 50px;
 }
 
 #contentTitle {
@@ -228,7 +227,7 @@ textarea {
 	width: 635px;
 	margin:auto;
 	margin-top:50px;
-	margin-bottom:50px;
+	margin-bottom:20px;
 	border-top:1px solid lightgrey;
 	border-bottom:1px solid lightgrey;
 	padding:30px;
@@ -268,7 +267,6 @@ textarea {
 	text-align:center;
 }
 
-
 #navi {
 	margin-left: 40%;
 }
@@ -277,4 +275,20 @@ textarea {
 }
 #navi>a>b{
 	font-size:20px;
+}
+
+#back{
+	width:100%;
+	height:50px;
+}
+#back>button{
+	width:100px;
+	height:40px;
+	margin-left:45%;
+	background-color:RGB(0, 125, 195);
+	border:0;
+	color:white;
+	font-size:15px;
+	border-radius:5px;
+	cursor:pointer;
 }

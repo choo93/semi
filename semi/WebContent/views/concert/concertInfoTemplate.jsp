@@ -22,8 +22,6 @@
 	<link rel="stylesheet" href="../../css/main.css">
 	<link rel="stylesheet" href="/css/concert/concertInfo.css">
 	
-<link rel="stylesheet" href="../../css/enjoy/ReviewBox.css">
-<link rel="stylesheet" href="../../css/enjoy/reviewInput.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
 	<script src="/js/concert/concertInfo.js"></script>
@@ -62,7 +60,7 @@
     </script>
 </head>
 <body id="scroll">
-	<jsp:include page="/views/main/header.jsp" />
+	<%-- <jsp:include page="/views/main/header.jsp" /> --%>
 	<section>
 		<div id="wrap">
         <div id="contents">
@@ -103,7 +101,7 @@
                     <div id="reserveBtn">
                     	<%
                     	if(session.getAttribute("user")!=null){ %>                    
-                        	<button onclick="reserve(${requestScope.concertInfo.indexNo },${requestScope.concertInfo.concertCode }, ${requestScope.concertInfo.concertPrice });">예약하기</button>
+                        	<button onclick="reserve(${requestScope.concertInfo.indexNo },${requestScope.concertInfo.concertCode }, '${requestScope.concertInfo.concertPrice }');">예약하기</button>
                         <%}else{ %>
                         	<button onclick="nologin();">예약하기</button>
                         <%} %>
@@ -194,6 +192,7 @@
 				
 				</div>
         </div>
+        <div id="back"><button onclick="back();">목록으로</button></div>
     </div>
 	</section>
 	<jsp:include page="/views/main/footer.jsp" />

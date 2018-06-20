@@ -9,6 +9,7 @@ public class SeoulUser {
 	private String userName;
 	private String userEmail;
 	private String userPhone;
+	private String userBirthday;
 	private String userAddr;
 	private Date userJoindate;
 	private String userActive;
@@ -17,13 +18,14 @@ public class SeoulUser {
 	public SeoulUser() {}
 
 	public SeoulUser(int userNo, String userId, String userPwd, String userName, String userEmail, String userPhone,
-			String userAddr, Date userJoindate, String userActive, Date userModified) {
+			String userBirthday, String userAddr, Date userJoindate, String userActive, Date userModified) {
 		this.userNo = userNo;
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userName = userName;
 		this.userEmail = userEmail;
 		this.userPhone = userPhone;
+		this.userBirthday = userBirthday;
 		this.userAddr = userAddr;
 		this.userJoindate = userJoindate;
 		this.userActive = userActive;
@@ -78,6 +80,14 @@ public class SeoulUser {
 		this.userPhone = userPhone;
 	}
 
+	public String getUserBirthday() {
+		return userBirthday;
+	}
+
+	public void setUserBirthday(String userBirthday) {
+		this.userBirthday = userBirthday;
+	}
+
 	public String getUserAddr() {
 		return userAddr;
 	}
@@ -113,10 +123,8 @@ public class SeoulUser {
 	@Override
 	public String toString() {
 		return "SeoulUser [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
-				+ ", userEmail=" + userEmail + ", userPhone=" + userPhone + ", userAddr=" + userAddr + ", userJoindate="
-				+ userJoindate + ", userActive=" + userActive + ", userModified=" + userModified + "]";
+				+ ", userEmail=" + userEmail + ", userPhone=" + userPhone + ", userBirthday=" + userBirthday
+				+ ", userAddr=" + userAddr + ", userJoindate=" + userJoindate + ", userActive=" + userActive
+				+ ", userModified=" + userModified + "]";
 	}
-	
-	
-
 }
