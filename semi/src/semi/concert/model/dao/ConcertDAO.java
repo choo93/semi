@@ -29,20 +29,19 @@ public class ConcertDAO {
 				ci.setIndexNo(rset.getInt(1));
 				ci.setConcertCode(rset.getString(2));
 				ci.setConcertTitle(rset.getString(3));
-				ci.setConcertSummary(rset.getString(4));
-				ci.setConcertPhoto(rset.getString(5));
+				ci.setConcertPhoto(rset.getString(4));
+				ci.setConcertGanre(rset.getString(5));
 				ci.setConcertDate(rset.getString(6));
-				ci.setConcertGanre(rset.getString(7));
-				ci.setConcertAddress(rset.getString(8));
-				ci.setConcertAge(rset.getString(9));
-				ci.setConcertShowTime(rset.getString(10));
-				ci.setConcertPrice(rset.getInt(11));
-				ci.setConcertExplain(rset.getString(12));
-				ci.setConcertPhone(rset.getString(13));
-				ci.setConcertSite(rset.getString(14));
-				ci.setConcertTraffic(rset.getString(15));
-				ci.setConcertLatitude(rset.getDouble(16));
-				ci.setConcertLongtitude(rset.getDouble(17));
+				ci.setConcertAddress(rset.getString(7));
+				ci.setConcertAge(rset.getString(8));
+				ci.setConcertShowTime(rset.getString(9));
+				ci.setConcertPrice(rset.getString(10));
+				ci.setConcertExplain(rset.getString(11));
+				ci.setConcertPhone(rset.getString(12));
+				ci.setConcertSite(rset.getString(13));
+				ci.setConcertTraffic(rset.getString(14));
+				ci.setConcertLatitude(rset.getDouble(15));
+				ci.setConcertLongtitude(rset.getDouble(16));
 			}
 
 		} catch (SQLException e) {
@@ -79,20 +78,19 @@ public class ConcertDAO {
 				ci.setIndexNo(rset.getInt(1));
 				ci.setConcertCode(rset.getString(2));
 				ci.setConcertTitle(rset.getString(3));
-				ci.setConcertSummary(rset.getString(4));
-				ci.setConcertPhoto(rset.getString(5));
+				ci.setConcertPhoto(rset.getString(4));
+				ci.setConcertGanre(rset.getString(5));
 				ci.setConcertDate(rset.getString(6));
-				ci.setConcertGanre(rset.getString(7));
-				ci.setConcertAddress(rset.getString(8));
-				ci.setConcertAge(rset.getString(9));
-				ci.setConcertShowTime(rset.getString(10));
-				ci.setConcertPrice(rset.getInt(11));
-				ci.setConcertExplain(rset.getString(12));
-				ci.setConcertPhone(rset.getString(13));
-				ci.setConcertSite(rset.getString(14));
-				ci.setConcertTraffic(rset.getString(15));
-				ci.setConcertLatitude(rset.getDouble(16));
-				ci.setConcertLongtitude(rset.getDouble(17));
+				ci.setConcertAddress(rset.getString(7));
+				ci.setConcertAge(rset.getString(8));
+				ci.setConcertShowTime(rset.getString(9));
+				ci.setConcertPrice(rset.getString(10));
+				ci.setConcertExplain(rset.getString(11));
+				ci.setConcertPhone(rset.getString(12));
+				ci.setConcertSite(rset.getString(13));
+				ci.setConcertTraffic(rset.getString(14));
+				ci.setConcertLatitude(rset.getDouble(15));
+				ci.setConcertLongtitude(rset.getDouble(16));
 
 				list.add(ci);
 			}

@@ -41,7 +41,7 @@
         			<%=ci.getConcertDate() %>
         		</div>
         		<div id="concertSummary">
-        			<%=ci.getConcertSummary() %>
+        			<!-- 생략 했어요 -->
         		</div>
         		<div id="btn">
         			<button id="button" onclick="concertInfo(<%=ci.getIndexNo() %>);">자세히</button>

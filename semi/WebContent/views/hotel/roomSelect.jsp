@@ -23,7 +23,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
         <div id="room">
             <%for(int i=0;i<10;i++){ %>
             	<%for(int j=0;j<8;j++){ %>
-            		<div id="<%=i*8+j+1%>" onclick="select(this);"><%=100*(10-i)+j+1%>호</div>
+            		<div id="<%=i*8+j+1%>" onclick=""><%=100*(10-i)+j+1%>호</div>
             	<%
             	}
             	%>
@@ -58,6 +58,61 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
     	
     <script>
 		window.onload=function(){
+			<%
+			if(hr.getRoomCode().equals("1")){
+			
+				for(int i = 57; i <= 64; i++){
+					%>
+					document.getElementById(<%=i%>).style.backgroundColor = "RGB(0, 125, 195)";
+					document.getElementById(<%=i%>).onclick = "select(this);";
+					document.getElementById(<%=i%>).style.cursor = 'pointer';
+					<%
+				}
+			}else if(hr.getRoomCode().equals("2")){
+				for(int i = 65; i <= 80; i++){
+					%>
+					document.getElementById(<%=i%>).style.backgroundColor = "RGB(0, 125, 195)";
+					document.getElementById(<%=i%>).onclick = "select(this);";
+					document.getElementById(<%=i%>).style.cursor = 'pointer';
+					<%
+				}
+			}else if(hr.getRoomCode().equals("3")){
+				for(int i = 25; i <= 40; i++){
+					%>
+					document.getElementById(<%=i%>).style.backgroundColor = "RGB(0, 125, 195)";
+					document.getElementById(<%=i%>).onclick = "select(this);";
+					document.getElementById(<%=i%>).style.cursor = 'pointer';
+					<%
+				}
+			}else if(hr.getRoomCode().equals("4")){
+				for(int i = 9; i <= 24; i++){
+					%>
+					document.getElementById(<%=i%>).style.backgroundColor = "RGB(0, 125, 195)";
+					document.getElementById(<%=i%>).onclick = "select(this);";
+					document.getElementById(<%=i%>).style.cursor = 'pointer';
+					<%
+				}
+			}else if(hr.getRoomCode().equals("5")){
+				for(int i = 1; i <= 8; i++){
+					%>
+					document.getElementById(<%=i%>).style.backgroundColor = "RGB(0, 125, 195)";
+					document.getElementById(<%=i%>).onclick = "select(this);";
+					document.getElementById(<%=i%>).style.cursor = 'pointer';
+					<%
+				}
+			}else if(hr.getRoomCode().equals("6")){
+				for(int i = 41; i < 56; i++){
+					%>
+					document.getElementById(<%=i%>).style.backgroundColor = "RGB(0, 125, 195)";
+					document.getElementById(<%=i%>).onclick = "select(this);";
+					document.getElementById(<%=i%>).style.cursor = 'pointer';
+					<%
+				}
+			}
+			%>
+			
+			
+			
 			<%
 			for(int i=0;i<list.size();i++){
 			%>

@@ -112,7 +112,7 @@
 					var people = document.getElementById('people').value;
 					
 					location.href = "/concertReserve?concertCode=" + concertCode + "&price=" + price + 
-							"&date=" + date + "&time=" + date + seatNoStr;
+							"&date=" + date + "&time=" + date + seatNoStr + "&people=" + <%=people%>;
 					
 				} else {
 					var msg = '결제에 실패하였습니다.';

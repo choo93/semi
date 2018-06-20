@@ -49,7 +49,7 @@
 	    <div id="hotelRoom1Price"><%=ri.get(0).getRoomPrice() %></div>
 	    <div id="hotelRoom1Choice">
 	
-	    <input type="radio" id="room1" name="hotelPrice" onclick="roomPrice(1);" style="width:20px; height:20px;" value=<%=ri.get(0).getRoomPrice()%>>
+	    <input type="radio" id="room1" name="hotelPrice" onclick="roomPrice(<%=ri.get(0).getRoomCode() %>);" style="width:20px; height:20px;" value=<%=ri.get(0).getRoomPrice()%>>
 	   
 	    </div>
 	    </div>
@@ -63,7 +63,7 @@
 	    <div id="hotelRoom2Price"><%=ri.get(1).getRoomPrice() %></div>
 	    <div id="hotelRoom2Choice">
 	    
-	     <input type="radio" id="room2" name="hotelPrice" onclick="roomPrice(2);" style="width:20px; height:20px;" value=<%=ri.get(1).getRoomPrice()%>>
+	     <input type="radio" id="room2" name="hotelPrice" onclick="roomPrice(<%=ri.get(1).getRoomCode() %>);" style="width:20px; height:20px;" value=<%=ri.get(1).getRoomPrice()%>>
 	    
 	    </div>
 	    </div>
@@ -77,7 +77,7 @@
 	    <div id="hotelRoom3Price"><%=ri.get(2).getRoomPrice() %></div>
 	    <div id="hotelRoom3Choice">
 	     
-	      <input type="radio" id="room3" name="hotelPrice" onclick="roomPrice(3);" style="width:20px; height:20px;" value=<%=ri.get(2).getRoomPrice()%>>
+	      <input type="radio" id="room3" name="hotelPrice" onclick="roomPrice(<%=ri.get(2).getRoomCode() %>);" style="width:20px; height:20px;" value=<%=ri.get(2).getRoomPrice()%>>
 	     
 	    </div>
 	    </div>
@@ -91,7 +91,7 @@
 	    <div id="hotelRoom4Price"><%=ri.get(3).getRoomPrice() %></div>
 	    <div id="hotelRoom4Choice">
 	  
-	    <input type="radio" id="room4" name="hotelPrice" onclick="roomPrice(4);" style="width:20px; height:20px;" value=<%=ri.get(3).getRoomPrice()%>>
+	    <input type="radio" id="room4" name="hotelPrice" onclick="roomPrice(<%=ri.get(3).getRoomCode() %>);" style="width:20px; height:20px;" value=<%=ri.get(3).getRoomPrice()%>>
 	  
 	    </div>
 	    </div>
@@ -169,22 +169,22 @@ function noPreviousdate(date){
 		if(val==1){
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room1').value;
 			document.getElementById('price').value = document.getElementById('room1').value;
-			document.getElementById('roomCode').value = "1";
+			document.getElementById('roomCode').value = val;
 		}
 		else if(val==2){
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room2').value;
 			document.getElementById('price').value = document.getElementById('room2').value;
-			document.getElementById('roomCode').value = "2";
+			document.getElementById('roomCode').value = val;
 		}
 		else if(val==3){
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room3').value;
 			document.getElementById('price').value = document.getElementById('room3').value;
-			document.getElementById('roomCode').value = "3";
+			document.getElementById('roomCode').value = val;
 		}
 		else{
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room4').value;
 			document.getElementById('price').value = document.getElementById('room4').value;
-			document.getElementById('roomCode').value = "4";
+			document.getElementById('roomCode').value = val;
 		}
 	}
 	
