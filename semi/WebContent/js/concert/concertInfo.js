@@ -40,3 +40,6 @@ function reserve(indexNo, concertCode, price){
 function nologin(){
 	alert("로그인후 이용해 주세요");
 }
+function back(){
+	location.href="/concertList";
+}

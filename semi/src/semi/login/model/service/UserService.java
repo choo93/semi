@@ -93,3 +93,26 @@ public class UserService {
 	}
 
 }
+  
+  public ArrayList<ConcertReserve> loadConcertReserve(int userNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<ConcertReserve> concertList = new UserDao().loadConcertReserve(conn,userNo);
+		JDBCTemplate.close(conn);
+		return concertList;
+	}
+
+	public ArrayList<DoboReserve> loadDoboReserve(int userNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<DoboReserve> doboList = new UserDao().loadDoboReserve(conn,userNo);
+		JDBCTemplate.close(conn);
+		return doboList;
+	}
+
+	public ArrayList<HotelReserve> loadHotelReserve(int userNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<HotelReserve> hotelList = new UserDao().loadHotelReserve(conn,userNo);
+		JDBCTemplate.close(conn);
+		return hotelList;
+	}
+
+}

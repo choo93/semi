@@ -30,7 +30,7 @@ public class SeatSelectServlet extends HttpServlet {
 			int indexNo = Integer.parseInt(request.getParameter("indexNo"));
 			ConcertReserve cr = new ConcertReserve();
 			cr.setConcertCode(request.getParameter("concertCode"));
-			cr.setConcertPrice(Integer.parseInt(request.getParameter("price")));
+			cr.setConcertPrice(request.getParameter("price"));
 			cr.setConcertReserveDate(request.getParameter("date"));
 			cr.setConcertReserveTime(request.getParameter("time"));
 			int people = Integer.parseInt(request.getParameter("people"));
@@ -41,6 +41,7 @@ public class SeatSelectServlet extends HttpServlet {
 			request.setAttribute("reserve", cr);
 			request.setAttribute("seat", list);
 			view.forward(request, response);
+			System.out.println("sdf");
 		}else {
 			response.sendRedirect("/wrongPath.html");
 		}

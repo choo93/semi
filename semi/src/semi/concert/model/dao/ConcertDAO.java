@@ -204,7 +204,7 @@ public class ConcertDAO {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, cr.getConcertCode());
 			pstmt.setInt(2, cr.getUserNo());
-			pstmt.setInt(3, cr.getConcertPrice());
+			pstmt.setString(3, cr.getConcertPrice());
 			pstmt.setString(4, cr.getConcertReserveDate());
 			pstmt.setString(5, cr.getConcertReserveTime());
 			pstmt.setInt(6, cr.getSeatNo());
@@ -313,7 +313,6 @@ public class ConcertDAO {
 				recordTotalCount = rset.getInt("totalCount");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rset);

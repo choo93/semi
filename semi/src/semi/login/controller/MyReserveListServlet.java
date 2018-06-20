@@ -1,4 +1,4 @@
-package ddelete;
+package semi.login.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import semi.concert.model.vo.ConcertReserve;
 import semi.dobo.model.vo.DoboReserve;
 import semi.hotel.model.vo.HotelReserve;
+import semi.login.model.service.UserService;
+import semi.login.model.vo.SeoulUser;
 
 @WebServlet(name = "MyReserveList", urlPatterns = { "/myReserveList" })
 public class MyReserveListServlet extends HttpServlet {
@@ -26,12 +28,11 @@ public class MyReserveListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		
-		//int userNo = ((MemberVO)session.getAttribute("user")).getUserNo();
-		int userNo = 1;
+		int userNo = ((SeoulUser)session.getAttribute("user")).getUserNo();
 		
-		ArrayList<ConcertReserve> concertList = new LoginService().loadConcertReserve(userNo);
-		ArrayList<DoboReserve> doboList = new LoginService().loadDoboReserve(userNo);
-		ArrayList<HotelReserve> hotelList = new LoginService().loadHotelReserve(userNo);
+		ArrayList<ConcertReserve> concertList = new UserService().loadConcertReserve(userNo);
+		ArrayList<DoboReserve> doboList = new UserService().loadDoboReserve(userNo);
+		ArrayList<HotelReserve> hotelList = new UserService().loadHotelReserve(userNo);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/ddelete/myReserveList.jsp");
 		request.setAttribute("concert", concertList);

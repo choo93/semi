@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"
     import = "java.util.*"	import="semi.concert.model.vo.*"
 %>
-<%ArrayList<String> list = (ArrayList<String>)request.getAttribute("seat");%>
+<%
+ArrayList<String> list = (ArrayList<String>)request.getAttribute("seat");%>
 <%ConcertReserve cr = (ConcertReserve)request.getAttribute("reserve"); 
 	int people = Integer.parseInt(request.getParameter("people"));
 %>
@@ -11,7 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/css/concert/concertSeat.css">
-<script src="/js/concert/seatSelect.js"></script>
+<script src="/js/concert/seatSelect.js?ver=1"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
@@ -112,7 +113,7 @@
 					var people = document.getElementById('people').value;
 					
 					location.href = "/concertReserve?concertCode=" + concertCode + "&price=" + price + 
-							"&date=" + date + "&time=" + date + seatNoStr + "&people=" + <%=people%>;
+							"&date=" + date + "&time=" + time + seatNoStr + "&people=" + <%=people%>;
 					
 				} else {
 					var msg = '결제에 실패하였습니다.';

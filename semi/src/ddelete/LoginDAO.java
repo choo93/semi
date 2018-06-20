@@ -33,7 +33,7 @@ public class LoginDAO {
 				cr.setConcertReserveDate(rset.getString(2));
 				cr.setConcertReserveTime(rset.getString(3));
 				cr.setSeatNo(rset.getInt(4));
-				cr.setConcertPrice(rset.getInt(5));
+				cr.setConcertPrice(rset.getString(5));
 				cr.setConcertAddress(rset.getString(6));
 				
 				list.add(cr);
