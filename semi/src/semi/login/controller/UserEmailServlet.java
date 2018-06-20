@@ -8,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.login.model.service.UserService;
-import semi.login.model.vo.SeoulUser;
 
 /**
- * Servlet implementation class JoinusServlet
+ * Servlet implementation class UserEmailServlet
  */
-@WebServlet(name = "Joinus", urlPatterns = { "/joinus" })
-public class JoinusServlet extends HttpServlet {
+@WebServlet(name = "UserEmail", urlPatterns = { "/userEmail" })
+public class UserEmailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JoinusServlet() {
+    public UserEmailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,22 +28,18 @@ public class JoinusServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		
-		SeoulUser su = new SeoulUser();
-		su.setUserId(request.getParameter("id"));
-		su.setUserPwd(request.getParameter("pwd"));
-		su.setUserName(request.getParameter("name"));
-		su.setUserEmail(request.getParameter("email"));
-		su.setUserPhone("010-"+request.getParameter("phone")+"-"+request.getParameter("phone2"));
-		su.setUserAddr(request.getParameter("userAddr"));
-		su.setUserActive("Y");
-		int result = new UserService().insertUser(su);
-		if(result>0) {
-			response.sendRedirect("/views/login/joinusSuccess.jsp");
+		String userEmail = request.getParameter("userEmail");
+		System.out.println("test."+userEmail);
+		boolean result = new UserService().emailCheck(userEmail);
+		System.out.println(result);
+		int chk=0;
+		if(result==true) {
+			chk=1;
 		}else {
-			response.sendRedirect("/views/login/error.html");
-		}
+			chk=2;
+		};
+		response.getWriter().print(chk);
+		response.getWriter().close();
 	}
 
 	/**

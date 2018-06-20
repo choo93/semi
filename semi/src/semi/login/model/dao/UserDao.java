@@ -8,9 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
-import semi.concert.model.vo.ConcertReserve;
-import semi.dobo.model.vo.DoboReserve;
-import semi.hotel.model.vo.HotelReserve;
 import semi.login.model.vo.SeoulUser;
 
 public class UserDao {
@@ -199,8 +196,52 @@ public class UserDao {
 		}
 		return result;
 	}
-	
-	public ArrayList<ConcertReserve> loadConcertReserve(Connection conn,int userNo) {
+
+	public boolean idCheck(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		boolean result = false;
+		String query = "select * from seoul_user where user_id=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public boolean emailCheck(Connection conn, String userEmail) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		boolean result = false;
+		String query = "select * from seoul_user where user_email=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userEmail);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+}
+
+public ArrayList<ConcertReserve> loadConcertReserve(Connection conn,int userNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String query = "select ci.concertTiltle, cr.concertreserveDate, cr.concertreserveTime, cr.seatNo, ci.concertPrice, ci.concertAddress from " + 
@@ -304,4 +345,3 @@ public class UserDao {
 		return list;
 	}
 
-}
