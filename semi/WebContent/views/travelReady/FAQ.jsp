@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
+<%@ page import="semi.travelready.model.vo.*" import="java.util.*" import="semi.login.model.vo.*"%>
 <%
 	FaqPageData fpd=(FaqPageData)request.getAttribute("faqPageData");
 	ArrayList<Faq> list=fpd.getNoticelist();
+	SeoulUser su=(SeoulUser)session.getAttribute("user");
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -175,10 +176,9 @@ function test(id){
 				</div>
 				
 				<div style="width:100%; height:auto;">
-					<h3 style="font-size:24px; float:left; margin-right:50px;">FAQ</h3>				
-				<form action="/views/travelReady/FAQAnswer.jsp">
-				<input type="submit" value="등록" class="btn btn-primary">
-				</form>
+					<h3 style="font-size:24px; margin-right:50px;">FAQ</h3>
+								
+				
 					<dl id="faqcontent">
 					<%for(Faq f:list){ %>
 						<dt style="border-bottom:1px solid #dcdcdc;"><a href="#none" onclick="test(<%=f.getFaqNo()%>);">[<%=f.getCategory()%>]<br><%=f.getTitle() %></a></dt>
@@ -186,7 +186,11 @@ function test(id){
 					<%} %>
 					</dl>					
 				</div>
-				
+				<form action="/views/travelReady/FAQAnswer.jsp">
+				<%if(su!=null && su.getUserId().equals("admin")){ %>
+				<input type="submit" value="등록" class="btn btn-primary">
+				<%} %>
+				</form>
 
 				
 			
@@ -201,7 +205,6 @@ function test(id){
 					<%} %>
 			
 				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 
-
 					if(i==fpd.getCurrentPage()){%>
 						<a class="btn btn-primary btn-lg" href='/faq?currentPage=<%=i%>'><%=i%></a>
 					<%}else{ %>
@@ -217,6 +220,6 @@ function test(id){
 
 			
 			</section>
-			<%@ include file="/views/main/footer.jsp"%>
+	
 </body>
 </html>

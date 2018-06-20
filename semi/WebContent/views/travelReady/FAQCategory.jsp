@@ -114,7 +114,7 @@ fieldset{
 {
 	margin-top:2%;
 	width:100%;
-	height:98%;
+	height:auto%;
 
 }
 dt
@@ -219,7 +219,7 @@ function answer(id){
 					</ul>
 				</div>
 				
-				<div style="width:100%; height:780px;">
+				<div style="width:100%; height:auto;">
 					<h3 style="font-size:24px;">FAQ<br><%=request.getAttribute("search")%>검색결과<%=fpd.getRecordTotalCount()%></h3>
 					<dl id="faqcontent">
 					<%for(Faq f:list){ %>

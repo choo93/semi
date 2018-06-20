@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
+<%@ page import="semi.travelready.model.vo.*" import="java.util.*"  import="semi.login.model.vo.*" %>
 <%
 	QnaPageData qpd=(QnaPageData)request.getAttribute("qnaPageData");
 	ArrayList<Qna> list=qpd.getNoticelist();
+	SeoulUser su=(SeoulUser)session.getAttribute("user");
+	
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -180,6 +182,6 @@ else self.name = '';
 
 			
 			</section>
-			<%@ include file="/views/main/footer.jsp"%>
+		
 </body>
 </html>
