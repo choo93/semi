@@ -436,6 +436,9 @@
 			<!-- 댓글 관련 전부 담는 DIV -->
 			<div id="review_info" align="center" style="width: 90%; margin-top: 3%; margin-left: 5%; margin-bottom: 3%; border: 1px solid #D1D0ED;">
 				
+				<!-- 전체 덧글 갯수 보려는 DIV -->
+				<div id="countComment" style="text-align: left; font: bold 2rem 나눔스퀘어; margin-top: 25px; margin-left: 25px; ">전체덧글 : <%=EED.getCount() %></div>
+				
 				<!-- 댓글 내용 부분만 담는 DIV -->
 				<div id="reviewContentInfo">
 				<!-- 댓글 내용 불러오깅 -->
@@ -500,9 +503,28 @@
 							
 							</div>
 							
-							<!-- 날짜  들어가는 DIV-->
-							<div style="float: left; width: 20%; height: 90%; color: #6C4371; text-align: center; line-height: 5;">
-								<span id="insertDate" style="color: #6C4371; font: bold 1.2rem 나눔스퀘어; margin: 15px;"><%=EC.getWrite_Date() %></span>
+							<!-- 날짜 / 따봉버튼  들어가는 DIV-->
+							<div style="float: left; width: 20%; height: 70%; color: #6C4371; text-align: center;">
+		
+								<!-- 날짜 들어가는 DIV -->
+								<div style="width: 100%; height: 30%; line-height: 3;">
+									<span id="insertDate" style="color: #6C4371; font: bold 1.2rem 나눔스퀘어; margin-left: 25px;"><%=EC.getWrite_Date() %></span>
+								</div>
+								
+								<!-- 따봉버튼 들어가는 DIV -->
+								<div style="width: 100%; height: 70%; ">
+									
+									<!-- 좋아요 버튼 위치 DIV-->
+									<div style="width: 50%; height: 100%; float: left; ">
+										<img src="/image/enjoy/GOOD.png" style="margin-top: 10px; margin-left: 40px; height: 60%; width: 60%; object-fit: contain">
+									</div>
+									
+									<!-- 싫어요 버튼 위치 DIV-->
+									<div style="width: 50%; height: 100%; float: right; ">
+										<img src="image/enjoy/BAD.png" style="margin-top: 10px; margin-left: 15px; height: 60%; width: 60%; object-fit: contain">
+									</div>
+								</div>
+								
 							</div>
 							
 							<!-- 삭제 버튼 DIV -->
@@ -568,7 +590,7 @@
 					<!-- 댓글 입력 DIV -->
 					<div class="review" align="center" style="width: 90%;">
 							<!-- 밑에 주석 풀어야해요 -->
-							<%if(((SeoulUser)session.getAttribute("user"))==null) {%>
+							<%-- <%if(((SeoulUser)session.getAttribute("user"))==null) {%> --%>
 							
 							<!-- 로그인 안한 경우 덧글 작성 불가능하게 하기 -->
 							<div class="cantWriteBox" style="width: 70%; height: 100px; padding: 5px; margin-top: 40px; margin-bottom: 40px;">
@@ -579,7 +601,7 @@
 							</div>
 
 							<!-- 밑에주석풀어야해요 -->
-							<%}else{ %>
+							<%-- <%}else{ %> --%>
 						<!-- 덧글 작성 기능 FORM -->
 						<form action="/review" method="post">
 						
@@ -600,7 +622,7 @@
 							</div>
 
 							<!-- 밑에주석풀어야해요 -->
-							<%}%>
+							<%-- <%}%> --%>
 
 						</form>
 						

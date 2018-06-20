@@ -220,17 +220,18 @@ public class EnjoyService {
 			Connection conn = JDBCTemplate.getConnection();
 			
 			ArrayList<EnjoyInforDataDetail> list = new Enjoydao().getOneDetailData2(IndexNo,conn);
-			
-			
-			
-				
-			
+
 			JDBCTemplate.close(conn);
 			
 			return list;
 		}
-
-
+		
+		public String countComment(int indexNo) {
+			Connection conn = JDBCTemplate.getConnection();
+			String count = new Enjoydao().countComment(indexNo, conn);
+			JDBCTemplate.close(conn);
+			return count;
+		}
 
 	
 }

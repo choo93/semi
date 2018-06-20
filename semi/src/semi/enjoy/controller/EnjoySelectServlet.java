@@ -77,7 +77,9 @@ public class EnjoySelectServlet extends HttpServlet {
 
 			// 페이징처리한 대상가져오기
 			CommentData cd = new EnjoyService().getListCommentData(currentPage, search, SEQ_Index_TitleNo);
-
+			
+			//각 게시물 당 전체 덧글 수 몇 개인지 가져옴
+			String count = new EnjoyService().countComment(SEQ_Index_TitleNo);
 			// System.out.println(cd.getPageNavi());
 
 			// ▼ 기본 내용을 가져오는 로직
@@ -85,7 +87,7 @@ public class EnjoySelectServlet extends HttpServlet {
 			// 세부사항을 가져오는 로직
 			EnjoyDetailData1 edd1 = new EnjoyService().getOneDetailData(SEQ_Index_TitleNo);
 
-			EnjoyElementData EED = new EnjoyElementData(ELD, edd1, cd);
+			EnjoyElementData EED = new EnjoyElementData(ELD, edd1, cd, count);
 
 			// 기본정보 ELD, 세부정보 edd1
 			if (ELD != null && edd1 != null) {

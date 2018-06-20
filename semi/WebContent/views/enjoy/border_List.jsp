@@ -3,6 +3,11 @@
 	import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%	
+	String option = "";
+	if((String) request.getAttribute("option")!=null)
+	{
+		option = (String) request.getAttribute("option");
+	}
 	String type = (String) request.getAttribute("type");
 	PageData pd = null;
 	ArrayList<EnjoyListData> list = null;
@@ -13,7 +18,6 @@
 	list = pd.getEnjoyList();
 	pageNavi = pd.getPageNavi();
 	}
-	
 %>
 
 <!DOCTYPE html>
@@ -31,8 +35,8 @@
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/main.js"></script>
-
 </head>
+
 <style>
 .photo {
 	background-repeat: no-repeat;
@@ -43,65 +47,80 @@
 	float: left;
 }
 </style>
+
 <body id="scroll">
+
 	<%-- <%@ include file="/views/main/header.jsp"%> --%>
+	
 	<section>
 
-		<!-- 내용물 -->
-		<div id="enjoyPage" style="width: 100%; height: 100%;">
+		<!-- 모든걸 감싸는 DIV -->
+		<div id="enjoyPage" style="width: 100%;">
 
+			<!-- 정렬하기 DIV -->
 			<div id="line" style="margin-left: 10%; padding: 20px;">
 
+				<script>
+					function sort1(value) {	
+						var type = "<%=type%>";
+						location.href = "/enjoyList?sort="+value+"&type="+type;
+					}
+				</script>
+				
+					
+				
+	 			<%if(option.equals("title")){ %>
+				<select name="option" id="sort" onchange="sort1(this.value);">
+					<option value="">정렬하기</option>
+					<option value="title" selected="selected">제목</option>
+					<option value="dayOfIssue">최신순</option>
+				</select>
+				<%} else if(option.equals("dayOfIssue")){%>
 				<select name="option" id="sort" onchange="sort1(this.value);">
 					<option value="">정렬하기</option>
 					<option value="title">제목</option>
+					<option value="dayOfIssue" selected="selected">최신순</option>
+				</select>
+				<%} else{ %>
+				<select name="option" id="sort" onchange="sort1(this.value);">
+					<option value="" selected="selected">정렬하기</option>
+					<option value="title">제목</option>
 					<option value="dayOfIssue">최신순</option>
 				</select>
+				<%} %>
 
-				<script>
-					function sort1(value) {
-						var sort = new Array();
-						sort[0] =  type;
-						sort[1] =  value;
-						location.href = "/enjoyList?sort=" + sort;
-					}
-				</script>
-
-	
-			</div>
-			<% if(!type.equals("type1")){ %>
-			
-			<%
-				for (EnjoyListData eld : list) {
-			%>
-			<form action="/enjoySelect?IndexNo=<%=eld.getIndex_TitleNo()%>&type=<%=type%>"
-				method="post">
 				
-				<div class="content" id="list_1"
-					style="margin-left: 10%; margin-bottom: 11%; padding: 20px;">
+			</div>
+			
+			<% if(!type.equals("type1")){ %>
+			<% for (EnjoyListData eld : list) { %>
+			<form action="/enjoySelect?IndexNo=<%=eld.getIndex_TitleNo()%>&type=<%=type%>" method="post">
+				
+				<div class="content" id="list_1" style="margin-left: 10%; margin-bottom: 11%; padding: 20px;">
 					<%
 						eld.getIndex_TitleNo();
-							eld.getList_Element();
-							StringTokenizer STImage = new StringTokenizer(eld.getIndex_Image(),"##");
-							
-								
+						eld.getList_Element();
+						StringTokenizer STImage = new StringTokenizer(eld.getIndex_Image(),"##");		
 					%>
-					<div class="photo"
-						style="float:left; width: 400px; height: 200px; border-radius: 12px; background-image: url(<%=STImage.nextToken()%>);">
-						<!--url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);  -->
-					</div>
+					
+					<!-- LIST 사진 DIV -->
+					<div class="photo" style="float:left; width: 400px; height: 200px; border-radius: 12px; background-image: url(<%=STImage.nextToken()%>);"></div>
 
-					<div id="info"
-						style="float: left; width: 800px; height: 200px; margin-left: 20px; border: 1px solid #9B95C9; border-width: 2px 20px 2px 2px; position: relative;">
+					<!-- INFO BOX DIV -->
+					<div id="info" style="float: left; width: 800px; height: 200px; margin-left: 20px; border: 1px solid #9B95C9; border-width: 2px 20px 2px 2px; position: relative;">
+						
+						<!-- 게시물 제목 -->
 						<div id="title" style="font: bold 30pt 나눔스퀘어; margin: 10px;">
+							<!-- word2 = 제목글자수 -->
 							<% int word2 = eld.getIndex_Title().length();
-							if(word2>14){ 
-							%>
-							<%=eld.getIndex_Title().substring(0,14)%>..
+							if(word2>20){ %>
+							<!-- 제목이 20글자가 넘어갈 시 21번째 글자부터 생략 후 ..으로 표시 -->
+							<%=eld.getIndex_Title().substring(0,20)%>..
 							<%}else{ %>
 							<%=eld.getIndex_Title()%><br>
 							<%} %>
 						</div>
+						
 						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden;">
 							<% int word1 = eld.getIndex_BasicInfo().length();
 							if(word1>400){ 
@@ -168,7 +187,8 @@
 				<div class="content" id="list_1"
 					style="margin-left: 10%; margin-bottom: 11%; padding: 20px;">
 					<div class="photo"
-						style="float:left; width: 400px; height: 200px; border-radius: 12px; background-image: url(<%=EID.getIndex_List_IntroImage()%>);">
+						style="float:left; width: 400px; height: 200px; border-radius: 12px;">
+						<img src="<%=EID.getIndex_List_IntroImage()%>" style="width:400px;">
 						<!--url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);  -->
 					</div>
 
