@@ -24,5 +24,6 @@
 		<input type="submit" value="수정하기"><button type="button" onclick="back();">취소</button>
 	</form>
 	<a href="/userDelete">회원탈퇴</a><br>
+	<a href="/myReserveList">예약 리스트</a>
 </body>
 </html>

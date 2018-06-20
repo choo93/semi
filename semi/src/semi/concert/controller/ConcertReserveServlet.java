@@ -40,7 +40,7 @@ public class ConcertReserveServlet extends HttpServlet {
 				ConcertReserve cr = new ConcertReserve();
 				cr.setConcertCode(request.getParameter("concertCode"));
 				cr.setUserNo(((SeoulUser)session.getAttribute("user")).getUserNo());
-				cr.setConcertPrice(Integer.parseInt(request.getParameter("price")));
+				cr.setConcertPrice(request.getParameter("price"));
 				cr.setConcertReserveDate(request.getParameter("date"));
 				cr.setConcertReserveTime(request.getParameter("time"));
 				cr.setSeatNo(Integer.parseInt(request.getParameter("seatNo"+i)));
