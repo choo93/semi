@@ -101,10 +101,11 @@ hr {
 			overflow: hidden;
 			text-overflow: ellipsis;
 		}
+
 </style>
 
 <body id="scroll">
-	<%@ include file="/views/main/header.jsp"%>
+<%-- 	<%@ include file="/views/main/header.jsp"%> --%>
 	<section>
 		<div id="head" class="container-fulid">
                 <h1 class="font" style="text-align: center;"><%=title %></h1>
@@ -119,7 +120,7 @@ hr {
 		</div>
 
 		<!-- 내용물 -->
-		<div class="container">
+		<div class="container list">
 			<!-- 첫번째 컨텐츠 -->
 			<%for (PlaceRank pr : list) {%>
 			<div class="row">
@@ -298,7 +299,7 @@ hr {
 
 
 	</section>
-	<%@ include file="/views/main/footer.jsp"%>
+	<%-- <%@ include file="/views/main/footer.jsp"%> --%>
 </body>
 
 </html>

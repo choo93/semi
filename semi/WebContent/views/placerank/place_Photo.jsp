@@ -8,7 +8,7 @@
 		<title>Insert title here</title>
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../../css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="../../css/main.css">
+<!-- 		<link rel="stylesheet" href="../../css/main.css"> -->
 		<script src="../../js/jquery-3.3.1.min.js"></script>
 		<script src="../../js/vegas/vegas.min.js"></script>
 		<script src="../../js/main.js"></script>
@@ -120,7 +120,7 @@
 	</style>
 
 	<body id="scroll">
-		<%@ include file="/views/main/header.jsp"%>
+		<%-- <%@ include file="/views/main/header.jsp"%> --%>
 
 			<section>
 				<div class="container-fluid">
@@ -184,7 +184,7 @@
 				</div>
 
 			</section>
-			<%@ include file="/views/main/footer.jsp"%>
+<%-- 			<%@ include file="/views/main/footer.jsp"%> --%>
 	</body>
 
 	</html>

@@ -113,7 +113,7 @@
 				</div>
 			</div>
 			<%if(pr.getPlaceLatitude()!=0&&pr.getPlaceLongtitude()!=0){ %>
-			<div class="container">
+			
 				<div class="panel panel-danger">
 					<div class="containner-fluid panel-heading">
 						<h2 class="panel-title">지도</h2>
@@ -123,9 +123,9 @@
 						<div id="mapContent" style="width: 635px; height: 300px;"></div>
 					</div>
 				</div>
-			</div>
+		
 			<%}%>
-			<div class="container">
+		
 				<div class="panel panel-danger">
 					<div class="panel-heading">
 						<h2 class="panel-title">댓글</h2>
@@ -172,7 +172,7 @@
 									%>
 
 								</table>
-							</div>
+							
 						</div>
 					</div>
 				</div>
