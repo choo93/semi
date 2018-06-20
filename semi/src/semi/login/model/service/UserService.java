@@ -78,4 +78,18 @@ public class UserService {
 		return result;
 	}
 
+	public boolean idCheck(String userId) {
+		Connection conn = JDBCTemplate.getConnection();
+		boolean result = new UserDao().idCheck(conn,userId);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	public boolean emailCheck(String userEmail) {
+		Connection conn = JDBCTemplate.getConnection();
+		boolean result = new UserDao().emailCheck(conn,userEmail);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
 }

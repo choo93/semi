@@ -119,15 +119,50 @@ button:focus{
 	background-color:#f5f5f5;
 	padding-top:40px;
 	margin-bottom:20px;
-	/*background-color:orange;*/
+	padding-bottom:40px;
+	margin-top:20px;
 }
-.joinus_box>label>span{
-	color:black;
+.label_text{
+	color:black!important;
 	margin-left:30px;
 	font-size:1rem;
-	font-weight:bold;
 }
 .joinus_box>label>input{
+	padding-left:10px!important;
+	border:1px solid #ddd!important;
+	background-color:white!important;
+	width:785px!important;
+	margin-left:103px!important;
+}
+.joinus_box>label:nth-child(1)>input{
+	margin-left:58px!important;
+}
+.joinus_box>label:nth-child(2)>input{
+	margin-left:44px!important;
+}
+.joinus_box>label:nth-child(3)>input{
 	margin-left:12px!important;
-	width:200px!important;
+}
+.joinus_box>label:nth-child(4)>input{
+	margin-left:73px!important;
+}
+.joinus_box>label:nth-child(5)>input{
+	margin-left:59px!important;
+}
+.joinus_box>label:nth-child(6)>input{
+	margin-left:44px!important;
+}
+.joinus_box>label:nth-child(7)>input{
+	margin-left:44px!important;
+}
+
+
+.helper-text{
+	display:block;
+	margin-left:103px;
+	margin-bottom:10px;
+}
+.select-wrapper{
+	top:-33px!important;
+	left:135px!important;
 }

@@ -38,6 +38,10 @@ input[type=text]:not(.browser-default):focus:not([readonly])+label{
 input[type=password]:not(.browser-default):focus:not([readonly])+label{
 	color:#b43029;
 }
+input[type="checkbox"]:checked+span:not (.lever ):before {
+	border-right: 2px solid #b43029;
+	border-bottom: 2px solid #b43029;
+}
 </style>
 </head>
 <body>
@@ -89,7 +93,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 					<input type="text" name="userId"> <label for="id">아이디</label>
 				</div>
 				<div class="input-field">
-					<input type="text" name="userPwd"> <label for="id">비밀번호</label>
+					<input type="password" name="userPwd"> <label for="id">비밀번호</label>
 				</div>
 				<input class="btn submit_button" type="submit" value="LOGIN">
 			</form>
