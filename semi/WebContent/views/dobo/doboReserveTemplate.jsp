@@ -9,10 +9,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="../../css/dobo/doboReserve.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
+<link rel="stylesheet" href="../../css/dobo/doboReserve.css?ver=1">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
-<script src="/js/dobo/doboReserve.js"></script>
+<script src="/js/dobo/doboReserve.js?ver=1"></script>
 
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -23,7 +24,7 @@
 <body id="scroll">
 	<%-- <%@ include file="/views/main/header.jsp"%> --%>
 	<section>
-		<form action="/doboReserve" method="get">
+		<form id="wrapp" action="/doboReserve" method="get">
 			<input type="hidden" value="<%=request.getParameter("doboCode")%>"
 				name="doboCode">
 			<div id="wrap">
@@ -37,10 +38,10 @@
 						<p>도보로 탐방하여 여행해보세요!</p>
 					</div>
 					<div id="sel">
-						<div>제목</div>
+						<div><%=request.getParameter("doboTitle") %></div>
 						<div>
 							<div>
-								<label>예약 날짜</label> <input id="datepicker1" type="text"
+								<label>예약 날짜</label> <input autocomplete="off" id="datepicker1" type="text"
 									name="date">
 							</div>
 							<div>
@@ -76,7 +77,7 @@
 					<div id="form">
 
 						<div>
-							<label>이름*</label> <input id="name" type="text" id="name"
+							<label>이름*</label> <input autocomplete="off" id="name" type="text" id="name"
 								name="name">
 						</div>
 						<div>
@@ -85,12 +86,12 @@
 								name="gender" value="F"> <label>여성</label>
 						</div>
 						<div>
-							<label>국적*</label> <input id="nation" type="text" id="nation"
+							<label>국적*</label> <input autocomplete="off" id="nation" type="text" id="nation"
 								name="nation">
 						</div>
 						<div>
-							<label>휴대전화*</label> <input id="phone" type="text" id="phone"
-								name="phone">
+							<label>휴대전화*</label> <input autocomplete="off" id="phone" type="text" id="phone"
+								name="phone" placeholder="- 제외 11 숫자" maxlength="11">
 						</div>
 						<div>
 							<label>하고싶은 말</label>

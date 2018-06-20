@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="../../css/dobo/doboInfo.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
-<script src="/js/dobo/doboInfo.js"></script>
+<script src="/js/dobo/doboInfo.js?ver=1"></script>
 </head>
 <body id="scroll">
 	<jsp:include page="/views/main/header.jsp" />
@@ -43,7 +43,7 @@
 							<div>${requestScope.doboInfo.doboMainExplain }</div>
 						</div>
 						<div id="reserve">
-							<button onclick="reserve(${requestScope.doboInfo.doboCode});">예약하기!</button>
+							<button onclick="reserve(${requestScope.doboInfo.doboCode},'<%=di.getDoboTitle() %>');">예약하기!</button>
 						</div>
 					</div>
 					<div id="contentTop2">
