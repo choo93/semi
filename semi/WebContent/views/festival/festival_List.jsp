@@ -106,7 +106,7 @@ int index1 = 0;
     </style>
 
     <body id="scroll">
-        <%@ include file="/views/main/header.jsp"%>
+  <%--       <%@ include file="/views/main/header.jsp"%> --%>
             <section>
                 <div id="head" class="container-fulid">
                 <h1 class="font" style="text-align: center;"><%=seasons %></h1>
@@ -305,7 +305,7 @@ int index1 = 0;
 
 
             </section>
-            <%@ include file="/views/main/footer.jsp"%>
+            <%-- <%@ include file="/views/main/footer.jsp"%> --%>
     </body>
 
     </html>

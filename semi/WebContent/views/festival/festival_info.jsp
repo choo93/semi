@@ -105,7 +105,7 @@
 			</head>
 
 			<body id="scroll">
-				<%@ include file="/views/main/header.jsp"%>
+	<%-- 			<%@ include file="/views/main/header.jsp"%> --%>
 
 					<section>
 						<div class="container">
@@ -117,6 +117,7 @@
 								</div>
 
 								<!-- 캐러셀 시작 -->
+								<%if(f.getFestivalSubImg1()!=null){ %>
 								<div id="carousel-generic" class="carousel slide">
 									<!-- 인디케이터 부분 -->
 									<ol class="carousel-indicators">
@@ -145,6 +146,28 @@
 										<span class="glyphicon glyphicon-chevron-right"></span>
 									</a>
 								</div>
+								<%}else{ %>
+								<div id="carousel-generic" class="carousel slide">
+									<!-- 인디케이터 부분 -->
+									<ol class="carousel-indicators">
+										<li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
+										</ol>
+									<!-- 캐러셀 이미지 부분 -->
+									<div class="carousel-inner">
+										<div class="item active">
+											<img src="<%=f.getFestivalMainImg()%>">
+
+										</div>
+										</div>
+									<!-- 컨트롤러 부분 -->
+									<a href="#carousel-generic" class="left carousel-control" data-slide="prev">
+										<span class="glyphicon glyphicon-chevron-left"></span>
+									</a>
+									<a href="#carousel-generic" class="right carousel-control" data-slide="next">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+									</a>
+								</div>
+								<%} %>
 							</div>
 							<br>
 							<!-- 설명 시작 -->
@@ -161,6 +184,7 @@
 										</div>
 									</div>
 								</div>
+								<%if(f.getFestivalAddr()!=null){ %>
 								<div class="panel panel-danger">
 									<div class="panel-heading">
 										<h4 class="panel-title">
@@ -261,6 +285,9 @@
 										</div>
 									</div>
 								</div>
+								<%} %>
+								
+								<%if(f.getFestivalLatitude()!=0){ %>
 								<div class="panel panel-danger">
 									<div class="panel-heading">
 										<h4 class="panel-title">
@@ -274,7 +301,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div><%} %>
 								<div class="panel panel-danger">
 									<div class="panel-heading">
 										<h4 class="panel-title">
@@ -335,7 +362,7 @@
 
 
 					</section>
-					<%@ include file="/views/main/footer.jsp"%>
+<%-- 					<%@ include file="/views/main/footer.jsp"%> --%>
 						<script>
 							$('.carousel').carousel();
 						</script>
