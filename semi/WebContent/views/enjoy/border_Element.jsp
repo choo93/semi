@@ -23,6 +23,13 @@
       CommentList = new ArrayList<EnjoyComment>();
 
    }
+   SeoulUser user = null;
+   if((SeoulUser)session.getAttribute("user")!=null)
+   {
+	   user = (SeoulUser)session.getAttribute("user");
+   }
+		   
+   
 %>
 <!DOCTYPE html>
 <html>
@@ -63,6 +70,13 @@
 
 		<!-- 모든 내용을 담는 DIV -->
 		<div id="bigDiv" style="width: 100%;">
+		
+		<!-- 헤더 DIV -->
+		<div class="header" style="width: 100%;">
+			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 10%; ">현재 위치 : 서울즐기기 > 명소</div>
+			<div id="enjoyText" style="color: #5F4B8B; font: bold 33pt 나눔스퀘어; margin-top: 20px; margin-left: 10%; ">명소</div>
+			<div style="width: 95%; height: 2px; background: linear-gradient(to right, #D1D0ED 55%, white); margin-top: 1%; margin-bottom: 2%; margin-left: 10%;"></div>
+		</div>
 		
 		<!-- 이미지 전부 다 들어가게 해야하며 크기가 전체 화면의 90% 정도.. ? -->
 			<!-- 메인이미지 -->
@@ -515,18 +529,22 @@
 								<div style="width: 100%; height: 70%; ">
 									
 									<!-- 좋아요 버튼 위치 DIV-->
-									<div style="width: 50%; height: 100%; float: left; ">
+									<div style="width: 50%; height: 100%; float: left;" >
 										<img src="/image/enjoy/GOOD.png" style="margin-top: 10px; margin-left: 40px; height: 60%; width: 60%; object-fit: contain">
+										<span style=" margin-left: 40px; font: 10pt 나눔스퀘어;">999+</span>
 									</div>
 									
 									<!-- 싫어요 버튼 위치 DIV-->
 									<div style="width: 50%; height: 100%; float: right; ">
 										<img src="image/enjoy/BAD.png" style="margin-top: 10px; margin-left: 15px; height: 60%; width: 60%; object-fit: contain">
+										<span style="margin-left: 17px; font: 10pt 나눔스퀘어;">97</span>
 									</div>
 								</div>
 								
 							</div>
 							
+								
+							<%if(user!=null && user.getUserId().equals(EC.getUSER_ID())){ %>
 							<!-- 삭제 버튼 DIV -->
 							<div style="width: 7%; height: 10%; float: right;">
 							
@@ -547,6 +565,8 @@
 							<div style="width: 7%; height: 10%; float: right;">
 								<button type="button" id="<%=EC.getSEQ_REIVEW()%>_btn" style="position: absolute; bottom: 15px; width: 40px; height: 20px;" onclick="update(<%=EC.getSEQ_REIVEW()%>);">수정</button>
 							</div>
+							
+							<%} %>
 							
 							<!-- 수정&삭제 버튼 눌렀을 경우 script -->
                            	<script>
@@ -583,15 +603,21 @@
 					
 				</div>
 				<!-- 댓글이 없을경우도 처리해야함.  -->
-				<% } else { %>
-					<div style="width: 100%; height: 200px; position: relative; padding: 30px;"> </div>
 				<% } %>
 				
 					<!-- 댓글 입력 DIV -->
 					<div class="review" align="center" style="width: 90%;">
 							<!-- 밑에 주석 풀어야해요 -->
-							<%-- <%if(((SeoulUser)session.getAttribute("user"))==null) {%> --%>
+							<%if(((SeoulUser)session.getAttribute("user"))==null) { if(CommentList.isEmpty()){%>
+							<!-- 로그인 안했고, 댓글창이 비어있을떄. -->
+							<div class="cantWriteBox" style="width: 70%; height: 100px; padding: 5px; margin-top: 40px; margin-bottom: 40px;">
+								<div id="notWriteReview">
+									<input type="text" name="Not_Index_Title" readonly style="width: 100%; height: 100%; border: transparent; background-color: transparent; font: 12pt 나눔스퀘어; padding-top: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+									<textarea name="Not_User_Comment" readonly placeholder="로그인후  첫번째 의견의  주인공이 되어주세요" style="resize: none; width: 100%; border: transparent; background-color: transparent; font: 12pt 나눔스퀘어; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></textarea>
+								</div>
+							</div>
 							
+							<%}else{ %>
 							<!-- 로그인 안한 경우 덧글 작성 불가능하게 하기 -->
 							<div class="cantWriteBox" style="width: 70%; height: 100px; padding: 5px; margin-top: 40px; margin-bottom: 40px;">
 								<div id="notWriteReview">
@@ -601,8 +627,31 @@
 							</div>
 
 							<!-- 밑에주석풀어야해요 -->
-							<%-- <%}else{ %> --%>
-						<!-- 덧글 작성 기능 FORM -->
+							<%}}else{%>
+								
+								<%if(CommentList.isEmpty()){%>
+												<!-- 덧글 작성 기능 FORM -->
+						<form action="/review" method="post">
+						
+							<!-- 로그인 한 경우 덧글 작성하는 DIV -->
+							<div class="writeBox" style="width: 70%; height: 250px; padding: 5px; position: relative;">
+								<div id="writeBox">
+									<input autocomplete="off" type="text" name="Index_Title" placeholder="첫번째 의견의 주인공이 되어주세요!, <%=user.getUserName() %>님" maxlength="100" style="width: 100%; height: 100%; border: 1px solid #9B95C9; background-color: transparent; color: #FFFFFF; font: 12pt 나눔스퀘어; padding-top: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; text-indent: 10px;">
+									<textarea autocomplete="off" name="User_Comment" placeholder="타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 단어는 지양해주시기 바랍니다." maxlength="1000" style="resize: none; width: 100%; height: 200px; border: 1px solid #9B95C9; background-color: transparent; color: #FFFFFF; font: 12pt 나눔스퀘어; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; text-indent: 10px;"></textarea>
+								</div>
+							</div>
+							
+							<!-- 게시물 번호 hidden, userid 값으로 갖고옴 -->
+							<input type="hidden" value="<%=edd1.getSEQ_Index_TitleNo()%>" name="index_titleNo">
+							<input type="hidden" value="<%=user.getUserId()%>" name="index_userID">
+							
+							<!-- 덧글 작성 버튼 -->
+							<div id="reviewBtnDiv" style="padding: 10px; margin-top: 40px;">
+								<input type="submit" value="댓글작성" id="reviewButton" />
+							</div>
+						</form>		
+								<% }else{%>
+								<!-- 덧글 작성 기능 FORM -->
 						<form action="/review" method="post">
 						
 							<!-- 로그인 한 경우 덧글 작성하는 DIV -->
@@ -613,18 +662,22 @@
 								</div>
 							</div>
 							
-							<!-- 게시물 번호 hidden 값으로 갖고옴 -->
+							<!-- 게시물 번호 hidden, userid 값으로 갖고옴 -->
 							<input type="hidden" value="<%=edd1.getSEQ_Index_TitleNo()%>" name="index_titleNo">
+							<input type="hidden" value="<%=user.getUserId()%>" name="index_userID">
 							
 							<!-- 덧글 작성 버튼 -->
 							<div id="reviewBtnDiv" style="padding: 10px; margin-top: 40px;">
 								<input type="submit" value="댓글작성" id="reviewButton" />
 							</div>
-
+						</form>		
+									
+								<%}%>
+						
 							<!-- 밑에주석풀어야해요 -->
-							<%-- <%}%> --%>
+							<%}%>
 
-						</form>
+						
 						
 					</div>
 				</div>

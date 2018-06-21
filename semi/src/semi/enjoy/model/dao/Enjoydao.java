@@ -74,6 +74,9 @@ public class Enjoydao {
 		else if(option.equals("dayOfIssue")) 
 		{
 			query = "select * from (select list_element.*,row_number() over(order by INDEX_ONDATE desc)as num from List_Element where List_Element = ?) where num between ? and ?";
+		}else if(option.equals("hits"))
+		{
+			query = "select * from (select list_element.*,row_number() over(order by INDEX_HITS desc)as num from List_Element where List_Element = ?) where num between ? and ?";
 		}
 		else
 		{
@@ -320,7 +323,7 @@ public class Enjoydao {
 		return edd1;
 	}
 
-	public int insertReview(Connection conn, String reviewTitle, String reviewContents, int indexNo) {
+	public int insertReview(Connection conn, String reviewTitle, String reviewContents, int indexNo, String userID) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -330,9 +333,9 @@ public class Enjoydao {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, indexNo);
 			pstmt.setString(2, reviewTitle);
-			/*pstmt.setString(3, );//유저id
-			pstmt.setString(4, );//유저이미지
-*/			pstmt.setString(3, reviewContents);
+			pstmt.setString(3, userID);//유저id
+			/*pstmt.setString(4, );//유저이미지
+*/			pstmt.setString(4, reviewContents);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
