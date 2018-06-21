@@ -18,6 +18,14 @@ public class UserService {
 		JDBCTemplate.close(conn);
 		return su;
 	}
+	
+	public SeoulUser myPage() {
+		Connection conn = JDBCTemplate.getConnection();
+		SeoulUser su = new UserDao().myPage(conn);
+		JDBCTemplate.close(conn);
+		return su;
+		
+	}
 
 	public boolean changePwdCheck(String userId) {
 		Connection conn = JDBCTemplate.getConnection();
@@ -115,6 +123,20 @@ public class UserService {
 		ArrayList<HotelReserve> hotelList = new UserDao().loadHotelReserve(conn,userNo);
 		JDBCTemplate.close(conn);
 		return hotelList;
+	}
+
+	public SeoulUser idFind(String userName, String userEmail) {
+		Connection conn = JDBCTemplate.getConnection();
+		SeoulUser su = new UserDao().idFind(conn,userName,userEmail);
+		JDBCTemplate.close(conn);
+		return su;
+	}
+
+	public SeoulUser pwdFind(String userId, String userName, String userEmail) {
+		Connection conn = JDBCTemplate.getConnection();
+		SeoulUser su = new UserDao().pwdFind(conn,userId,userName,userEmail);
+		JDBCTemplate.close(conn);
+		return su;
 	}
 
 }

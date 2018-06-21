@@ -9,6 +9,12 @@
 <link rel="icon" href="../../image/main/favicon.ico">
 <link rel="stylesheet" href="../../css/main/login.css">
 <script src="../../js/main/jquery-3.3.1.min.js"></script>
+<style>
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default){
+	width:790px!important;
+}
+</style>
 </head>
 <body>
 <%@ include file="/views/main/header.jsp" %>
@@ -34,15 +40,23 @@
 			<a href="/views/main/joinus.jsp">회원가입</a>
 		</div>
 		<div class="input-field col s4">
-			<a href="javascript:loginFind();">아이디 찾기</a>
+			<a href="javascript:idFind();">아이디 찾기</a>
 		</div>
 		<div class="input-field col s4">
-			<a href="">비밀번호 찾기</a>
+			<a href="javascript:pwdFind();">비밀번호 찾기</a>
 		</div>
 	</div>
+	<style>
+		.row>div>a:hover{
+			color:#b43029;
+		}
+	</style>
 	<script type="text/javascript">
-		function loginFind(){
-			window.open("/views/main/loginFind.jsp","","width=370,height=360,resizable=no,scrollbars=no,status=no");
+		function idFind(){
+			window.open("/views/main/idFind.jsp","","width=315,height=155,top=250,left=200,resizable=no,scrollbars=no,status=no");
+		}
+		function pwdFind(){
+			window.open("/views/main/pwdFind.jsp","","width=315,height=192,top=250,left=200,resizable=no,scrollbars=no,status=no");
 		}
 	</script>
 </div>

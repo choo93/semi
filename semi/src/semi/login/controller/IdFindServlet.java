@@ -1,26 +1,29 @@
 package semi.login.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import semi.login.model.service.UserService;
 import semi.login.model.vo.SeoulUser;
 
 /**
- * Servlet implementation class UserUpdateServlet
+ * Servlet implementation class IdFindServlet
  */
-@WebServlet(name = "UserUpdate", urlPatterns = { "/userUpdate" })
-public class UserUpdateServlet extends HttpServlet {
+@WebServlet(name = "IdFind", urlPatterns = { "/idFind" })
+public class IdFindServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserUpdateServlet() {
+    public IdFindServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,20 +33,21 @@ public class UserUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		SeoulUser su = new SeoulUser();
-		su.setUserId(request.getParameter("id"));
-		su.setUserPwd(request.getParameter("pwd"));
-		su.setUserPhone(request.getParameter("phone"));
-		su.setUserAddr(request.getParameter("addr"));
 		
-		int result = new UserService().updateUser(su);
+		String userName = request.getParameter("userName");
+		String userEmail = request.getParameter("userEmail");
 		
-		if(result>0) {
-			response.sendRedirect("/views/login/updateSuccess.jsp");
+		SeoulUser su = new UserService().idFind(userName,userEmail);
+		
+		if(su!=null) {
+			RequestDispatcher view = request.getRequestDispatcher("/views/main/idFindResult.jsp");
+			request.setAttribute("user", su);
+			view.forward(request, response);
 		}else {
-			response.sendRedirect("/views/login/error.html");
+			response.sendRedirect("/views/main/error.html");
 		}
-				
+
+		
 	}
 
 	/**
