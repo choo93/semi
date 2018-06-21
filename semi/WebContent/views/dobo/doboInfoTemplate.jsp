@@ -16,9 +16,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="image/main/favicon.ico">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>${requestScope.doboInfo.doboTitle }</title>
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/dobo/doboInfo.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -125,8 +126,8 @@
                 	<input type="hidden" value="ds" name="Index_Title">
                 	<div id="comment">
                 		<%if(session.getAttribute("user")!=null){ %>
-                			<textarea name="User_Comment"></textarea>
-                    		<input type="submit" value="작성">
+                			<textarea id="userComment" name="User_Comment"></textarea>
+                    		<input type="submit" value="작성" onclick="return commentCheck();">
                 		<%}else{ %>
                 			<textarea readonly placeholder="로그인 후 작성이 가능 합니다"></textarea>
                 			<input type="button" value="작성">

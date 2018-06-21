@@ -16,9 +16,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="image/main/favicon.ico">
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
+	<title>${requestScope.concertInfo.concertTitle }</title>
 	<link rel="stylesheet" href="../../css/main.css">
 	<link rel="stylesheet" href="/css/concert/concertInfo.css">
 	
@@ -60,7 +61,7 @@
     </script>
 </head>
 <body id="scroll">
-	<%-- <jsp:include page="/views/main/header.jsp" /> --%>
+	<jsp:include page="/views/main/header.jsp" />
 	<section>
 		<div id="wrap">
         <div id="contents">
@@ -87,7 +88,7 @@
                             <dd>${requestScope.concertInfo.concertShowTime }</dd>
                             <hr>
                             <dt>가격</dt>
-                            <dd>${requestScope.concertInfo.concertPrice }</dd>
+                            <dd id="pp">${requestScope.concertInfo.concertPrice }</dd>
                         </dl>
                     </div>
                 </div>
@@ -155,8 +156,8 @@
                 	<input type="hidden" value="ds" name="Index_Title">
                 	<div id="comment">
                 		<%if(session.getAttribute("user")!=null){ %>
-                			<textarea name="User_Comment"></textarea>
-                    		<input type="submit" value="작성">
+                			<textarea id="userComment" name="User_Comment"></textarea>
+                    		<input type="submit" value="작성" onclick="return commentCheck();">
                 		<%}else{ %>
                 			<textarea readonly placeholder="로그인 후 작성이 가능 합니다"></textarea>
                 			<input type="button" value="작성">

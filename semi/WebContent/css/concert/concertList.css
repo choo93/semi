@@ -16,7 +16,7 @@
 	font-size: 40px;
 	padding-left: 50px;
 	line-height: 140px;
-	background-color: RGB(0, 125, 195);
+	background-color: rgb(0,125,195);
 	color:white;
 }
 
@@ -39,13 +39,14 @@
 	width: 65%;
 	height: 100%;
 	float: left;
-	border: 3px solid RGB(0, 125, 195);
-	border-right : 20px solid RGB(0, 125, 195);
+	border: 3px solid rgb(0,125,195);
+	border-right : 20px solid rgb(0,125,195);
 }
 
 #concertTitle{
-	height: 30%;
+	height: 35%;
 	padding-left : 15px;
+	padding-top:10px;
 	font-size : 20px;
 	font-weight: bold;
 }
@@ -60,7 +61,7 @@
 }
 
 #concertSummary{
-	height: 35%;
+	height: 30%;
 	padding-left : 10px;
 	font-size : 15px;
 }
@@ -72,6 +73,6 @@
 #btn>button{
 	float:right;
 	margin-right:30px;
-	background-color:RGB(0, 125, 195);
+	background-color:RGBrgb(180,48,41);
 	font-wight:bold;
 }

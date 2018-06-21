@@ -57,7 +57,7 @@ public class ConcertReserveServlet extends HttpServlet {
 			}
 			view.forward(request, response);
 		}else {
-			response.sendRedirect("/wrongPath.html");
+			response.sendRedirect("/error/wrongPath.html");
 		}
 	}
 
