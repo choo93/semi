@@ -21,6 +21,8 @@ div {
 	font-size: 40px;
 	padding-left: 50px;
 	line-height: 80px;
+	background-color:rgb(0,125,195);
+	color:white;
 }
 
 #contentTop {
@@ -79,7 +81,7 @@ dl>hr {
 	width: 285px;
 	height: 100%;
 	float: right;
-	background-color: RGB(0, 125, 195);
+	background-color: rgb(0,125,195);
 }
 
 #reserve>div:first-child {
@@ -106,7 +108,7 @@ dl>hr {
 
 #reserveBtn>button {
 	color: white;
-	background-color:RGB(0, 125, 195);
+	background-color:rgb(0,125,195);
 	border: 2px solid white;
 	font-size: 40px;
 	padding: 10px;
@@ -270,6 +272,11 @@ textarea {
 	float: right;
 	margin-top: 5px;
 	margin-right: 50px;
+	background-color:rgb(0,125,195);
+	color:white;
+	border:0;
+	cursor:pointer;
+	border-radius:5px;
 }
 
 #commentList{
@@ -331,10 +338,14 @@ textarea {
 	width:100px;
 	height:40px;
 	margin-left:35%;
-	background-color:RGB(0, 125, 195);
+	background-color:rgb(0,125,195);
 	border:0;
 	color:white;
 	font-size:15px;
 	border-radius:5px;
 	cursor:pointer;
+}
+
+#pp::before{
+	content:"\\";
 }

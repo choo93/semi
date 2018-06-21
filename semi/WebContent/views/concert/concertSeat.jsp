@@ -11,13 +11,14 @@ ArrayList<String> list = (ArrayList<String>)request.getAttribute("seat");%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="/css/concert/concertSeat.css">
+<link rel="icon" href="image/main/favicon.ico">
+<link rel="stylesheet" href="/css/concert/concertSeat.css?ver=1">
 <script src="/js/concert/seatSelect.js?ver=1"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
 	src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<title>Insert title here</title>
+<title>좌석 선택</title>
 </head>
 
 <body>

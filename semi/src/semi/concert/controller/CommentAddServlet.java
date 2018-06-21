@@ -44,7 +44,7 @@ public class CommentAddServlet extends HttpServlet {
 				response.sendRedirect("/concertList");
 			}
 		}else {		// 권한이 없을 때
-			response.sendRedirect("/wrongPath.html");
+			response.sendRedirect("/error/wrongPath.html");
 		}
 
 	}

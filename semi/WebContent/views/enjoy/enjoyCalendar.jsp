@@ -137,7 +137,7 @@ String mTime = mSimpleDateFormat.format ( currentTime );
 		start : '<%=ST.nextToken()%>',
 		end : '<%=ST.nextToken()%>',
 		<%}%>
-		url: '<%=%>',
+		url: '/festivalSelect?titleNo=<%=EF.getSEQ_Index_TitleNo()%>',
 		id : '<%=EF.getSEQ_Index_TitleNo()+EF.getFestival_title()%>'
        	}
        	<%}%>

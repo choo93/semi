@@ -10,12 +10,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="image/main/favicon.ico">
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
+	<title>공연 예약</title>
 	<link rel="stylesheet" href="../../css/main.css">
 	<link rel="stylesheet" href="../../css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../css/concert/concertList.css">
+	<link rel="stylesheet" href="../../css/concert/concertList.css?ver=1">
 	<link rel="stylesheet" href="../../css/moreBtn.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
