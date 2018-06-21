@@ -195,6 +195,30 @@
         </div>
         <div id="back"><button onclick="back();">목록으로</button></div>
     </div>
+    <script>
+    	
+    	function pp(currentPage,indexNo){
+    		$.ajax({
+				url : "/commentTest?currentPage="+currentPage+"&indexNo=" + indexNo,
+				type : "get",
+				success : function(data){
+					alert('성공');
+					alert(data.pageNavi);
+					alert(data.aa);
+					//CommentData
+					
+					
+				},
+				error : function(){
+					alert('실패');
+				}
+			});
+    	};
+    
+    </script>
+    
+    
+    
 	</section>
 	<jsp:include page="/views/main/footer.jsp" />
 </body>

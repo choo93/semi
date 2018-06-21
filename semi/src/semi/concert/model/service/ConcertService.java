@@ -62,15 +62,15 @@ public class ConcertService {
 		return list;
 	}
 
-	public CommentData getListCommentData(int currentPage, String search, int indexNo) {
+	public CommentData getListCommentData(int currentPage, int indexNo) {
 		Connection conn = JDBCTemplate.getConnection();		
 		int recordCountPerPage  = 5;  // 한페이지에 보일 댓글의 갯수
 		int naviCountPerPage = 5; // 네비게이터의 범위 (1~5) (6~10)
 		
 		
-		ArrayList<EnjoyComment> list = new ConcertDAO().getListCommentData(conn,recordCountPerPage,currentPage,search,indexNo);
+		ArrayList<EnjoyComment> list = new ConcertDAO().getListCommentData(conn,recordCountPerPage,currentPage,indexNo);
 		
-		String PageNavi = new ConcertDAO().getPageNaviComment(conn,naviCountPerPage,recordCountPerPage,currentPage,search,indexNo);
+		String PageNavi = new ConcertDAO().getPageNaviComment(conn,naviCountPerPage,recordCountPerPage,currentPage,indexNo);
 		
 		
 		
