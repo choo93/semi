@@ -9,7 +9,7 @@
 #contents {
 	width: 100%;
 	height: 150px;
-	background-color: RGB(0, 125, 195);
+	background-color: RGB(0,125,195);
 }
 
 #contents-1 {
@@ -21,16 +21,18 @@
 #contentTitle {
 	width: 100%;
 	height: 50%;
-	background-color: RGB(0, 125, 195);
+	background-color: RGB(0,125,195);
 	font-size: 40px;
 	color: white;
+	padding-top:5%;
+	padding-left:5%;
 }
 
 #reserveRoomInfo
 {
      width:60%;
      height: 1000px;
-     border:1px solid black;
+     border:1px solid lightgrey;
      float:left;
 }
 
@@ -38,22 +40,22 @@
 {
 	width:100%;
 	height:100px;
-	border:1px solid black;
+	border:1px solid lightgrey;
 }
 #hotelPayment{
 	width:40%;
 	height:1000px;
 	float:left;
-	border:1px solid black;
+	border:1px solid lightgrey;
 }
 
 #hotelPaymentTitle{
 	width:100%;
 	height:100px;
-	background-color: RGB(0, 125, 175);
-	border-top:1px solid black;
-	border-bottom:1px solid black;
-	border-right:1px solid black;
+	background-color: RGB(0,125,175);
+	border-top:1px solid lightgrey;
+	border-bottom:1px solid lightgrey;
+	border-right:1px solid lightgrey;
 }
 #hotelPaymentContent{
 	width:100%;
@@ -67,45 +69,73 @@
 	width:100%;
 	height:500px;
 }
+#hotelRoomInfoBack{
+	width:100%;
+	height:100px;
+	background-color:blue;
+	
+}
+
+#btnBack{
+	width:150px; height:50px;
+	margin-top:50px;
+	font-size:20px;
+	background-color:RGB(0,125,195);
+	cursor:pointer;
+	border:1px solid RGB(0,125,195);
+	border-radius:10px;
+	color:white;
+}
 
 
 #roomType{
 	width:30%;
 	height:100%;
     border-right:1px solid black;
-	background-color: RGB(0, 125, 175);
+	background-color: RGB(0,125,175);
 	font-size:20px;
 	float:left;
 	color:white;
+	padding-top:5%;
+	text-align:center;
+	font:bold 20pt 나눔스퀘어;
 }
 
 #roomCapacity{
 	width:20%;
 	height:100%;
-    border-right:1px solid black; 
+    border-right:1px solid lightgrey; 
 	float:left;
-	background-color: RGB(0, 125, 175);
+	background-color: RGB(0,125,175);
 	font-size:20px;
 	color:white;
+	padding-top:5%;
+	text-align:center;
+	font:bold 20pt 나눔스퀘어;
 }
 
 #roomPrice{
 	width:25%;
 	height:100%;
-	border-right:1px solid black;
+	border-right:1px solid lightgrey;
 	float:left;
-	background-color: RGB(0, 125, 175);
-	font-size:20px;
+	background-color: RGB(0,125,175);
 	color:white;
+	padding-top:5%;
+	text-align:center;
+	font:bold 20pt 나눔스퀘어;
 }
 
 #roomChoice{
 	width:25%;
 	height:100%;
 	float:left;
-	background-color: RGB(0, 125, 175);
+	background-color: RGB(0,125,175);
 	font-size:20px;
 	color:white;
+	padding-top:5%;
+	text-align:center;
+	font:bold 20pt 나눔스퀘어;
 }
 
 #hotelRoom1Info{
@@ -116,7 +146,7 @@
 #hotelRoom1Type{
 	width:30%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
 	font-size:15px;
@@ -126,8 +156,9 @@
 	width:100%;
 	height:30%;
 	text-align:center;
-	font-size:15px;
+	font-size:25px;
 	padding-top:10%;
+	font:bold 20pt 나눔스퀘어;
 	
 }
 
@@ -135,7 +166,7 @@
 	width:100%;
 	height:70%;
 	text-align:center;
-	font-size:15px;
+	font:bold 11pt 나눔스퀘어;
 	padding-top:10%;
 }
 
@@ -143,25 +174,25 @@
 #hotelRoom1Capacity{
 	width:20%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
 	padding-top:13%;
-	font-size:15px;
+	font:bold 15pt 나눔스퀘어;
 }
 #hotelRoom1Price{
 	width:25%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
-	font-size:15px;
 	padding-top:13%;
+	font:bold 15pt 나눔스퀘어;
 }
 #hotelRoom1Choice{
 	width:25%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
 	font-size:15px;
@@ -177,7 +208,7 @@
 #hotelRoom2Type{
 	width:30%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
 	font-size:15px;
@@ -187,15 +218,16 @@
 	width:100%;
 	height:30%;
 	text-align:center;
-	font-size:15px;
-	padding-top:10%
+	font-size:25px;
+	padding-top:10%;
+	font:bold 20pt 나눔스퀘어;
 }
 
 #hotelRoom2Type-1{
 	width:100%;
 	height:70%;
 	text-align:center;
-	font-size:15px;
+	font:bold 11pt 나눔스퀘어;
 	padding-top:10%	
 }
 
@@ -203,25 +235,25 @@
 #hotelRoom2Capacity{
 	width:20%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
-	font-size:15px;
-	padding-top:13%
+	padding-top:13%;
+	font:bold 15pt 나눔스퀘어;
 }
 #hotelRoom2Price{
 	width:25%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
-	font-size:15px;
 	padding-top:13%;
+	font:bold 15pt 나눔스퀘어;
 }
 #hotelRoom2Choice{
 	width:25%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
 	font-size:15px;
@@ -237,24 +269,25 @@
 #hotelRoom3Type{
 	width:30%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
-	font-size:15px;
+	font:bold 11pt 나눔스퀘어;	
 }
 #hotelRoomTitle3{
 	width:100%;
 	height:30%;
 	text-align:center;
-	font-size:15px;
+	font-size:25px;
 	padding-top:10%;
+	font:bold 20pt 나눔스퀘어;
 }
 
 #hotelRoom3Type-1{
 	width:100%;
 	height:70%;
 	text-align:center;
-	font-size:15px;
+	font:bold 11pt 나눔스퀘어;
 	padding-top:10%;	
 }
 
@@ -262,25 +295,25 @@
 #hotelRoom3Capacity{
 	width:20%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
-	font-size:15px;
 	padding-top:13%;
+	font:bold 15pt 나눔스퀘어;
 }
 #hotelRoom3Price{
 	width:25%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
-	font-size:15px;
 	padding-top:13%;
+	font:bold 15pt 나눔스퀘어;
 }
 #hotelRoom3Choice{
 	width:25%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
 	font-size:15px;
@@ -296,25 +329,26 @@
 #hotelRoom4Type{
 	width:30%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
-	font-size:15px;
+	font:bold 15pt 나눔스퀘어;
 }
 
 #hotelRoomTitle4{
 	width:100%;
 	height:30%;
 	text-align:center;
-	font-size:15px;
+	font-size:25px;
 	padding-top:10%;
+	font:bold 20pt 나눔스퀘어;
 }
 
 #hotelRoom4Type-1{
 	width:100%;
 	height:70%;
 	text-align:center;
-	font-size:15px;
+	font:bold 11pt 나눔스퀘어;
 	padding-top:10%;	
 }
 
@@ -322,25 +356,25 @@
 #hotelRoom4Capacity{
 	width:20%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
-	font-size:15px;
 	padding-top:13%;
+	font:bold 15pt 나눔스퀘어;
 }
 #hotelRoom4Price{
 	width:25%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
-	font-size:15px;
 	padding-top:13%;
+	font:bold 15pt 나눔스퀘어;
 }
 #hotelRoom4Choice{
 	width:25%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid lightgrey;
 	float:left;
 	text-align:center;
 	font-size:15px;
@@ -397,9 +431,9 @@
 	width:150px; height:50px;
 	margin-top:50px;
 	font-size:20px;
-	background-color:RGB(0, 125, 195);
+	background-color:RGB(0,125,195);
 	cursor:pointer;
-	border:1px solid RGB(0, 125, 195);
+	border:1px solid RGB(0,125,195);
 	border-radius:10px;
 	color:white;
 }

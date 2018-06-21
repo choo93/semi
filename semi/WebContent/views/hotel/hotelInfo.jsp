@@ -19,6 +19,9 @@
 <script src="../../js/main.js"></script>
 <script src="/js/hotel/hotelInfoToogle.js"></script>
 
+<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+
+
 </head>
 
 <style>
@@ -33,7 +36,7 @@
 
 	<%@ include file="/views/main/header.jsp"%>
 	<section>
-	<div style="width: 1200px; height: 1800px; margin-left:15%;">
+	<div style="width: 1200px; height: 1900px; margin-left:15%;">
 		<div id="contents">
 			<div id="contents-1">
 				<div id="contentTitle"><%=hi.getHotelName() %></div>
@@ -84,15 +87,14 @@
 			</div>
 		</div>
 		
-		<div id="hotelName" style="border-top: 3px solid black;">호텔이름 : <%=hi.getHotelName() %></div>
-		<div id="#hotelPhone" style="padding-bottom:2%">연락처 : <%=hi.getHotelPhone() %></div>
+		<div id="hotelName">호텔이름 : <%=hi.getHotelName() %></div>
+		<div id="hotelPhone" style="padding-bottom:2%">연락처 : <%=hi.getHotelPhone() %></div>
 	
 		
 		<div style="width: 100%; height:3%;">
 
-			<div id="hotelExplainToggle"
-				style="width: 100%; height: 100%; border-top: 3px solid black;">
-				<div style="width: 80%; height: 100%; float: left; font-size:20px;">
+			<div id="hotelExplainToggle">
+				<div style="width: 80%; height: 100%; float: left; font-size:20px;padding-left:2%;padding-top:1%;font:bold 20pt 나눔스퀘어;">
 					호텔 설명
 				</div>
 				<div style="width: 20%; height: 100%; float: left;">
@@ -106,15 +108,14 @@
 			style="width: 100%; height: 10%; display: none;">
 			
 			
-			<div style="width: 100%; height: 90%;">
+			<div style="width: 100%; height: 90%; font-size:18px;">
 			<hr><%=hi.getHotelExplain() %></div>
 		</div>
 
 
 		<div style="width: 100%; height: 3%;">
-			<div id="hotelPriceToggle"
-				style="width: 100%; height: 100%; border-top: 3px solid black;">
-				<div style="width: 80%; height: 100%; float: left; font-size:20px;">
+			<div id="hotelPriceToggle" style = margin-top:2%;>
+				<div style="width: 80%; height: 100%; float: left; font-size:20px;padding-left:2%;padding-top:1%;font:bold 20pt 나눔스퀘어;">
 					호텔 가격 정보
 				</div>
 
@@ -130,7 +131,7 @@
 			<hr>
 			<div style="height: 100%; width: 100%; ">
 			<div id = "hotelRoomPriceExplain"">
-			       <%=hi.getHotelRoomPriceExplain() %></div>
+			      <pre> <%=hi.getHotelRoomPriceExplain() %></pre></div>
 			<div id = "hotelCheckInOut">	 
 				<%=hi.getHotelCheckInOut() %> </div>
 				 </div>
@@ -138,13 +139,12 @@
 		</div>
 
 		<div style="width: 100% height: 3%">
-			<div id="hotelMapToggle"
-				style="width: 100%; height: 100%; border-top: 3px solid black;">
-				<div style="width: 80%; height: 60px; float: left; font-size:20px; ">
+			<div id="hotelMapToggle" style="margin-top:2%;">
+				<div  style="width: 80%; height: 70px; float: left; font-size:20px; background-color: RGB(245, 245, 245); padding-left:2%;padding-top:1%;font:bold 20pt 나눔스퀘어;">
 					지도 보기
 
 				</div>
-				<div style="width: 20%; height: 100%; float: left;">
+				<div style="width: 20%; height: 100%; float: left; background-color: RGB(245, 245, 245);">
 					<h3 class="toggleText3" style="text-align: right; font-size:20px; ">▲</h3>
 				</div>
 			</div>

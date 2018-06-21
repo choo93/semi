@@ -9,7 +9,7 @@
 #contents {
 	width: 100%;
 	height: 150px;
-	background-color: RGB(0, 125, 195);
+	background-color: RGB(0,125,195);
 }
 
 #contents-1 {
@@ -21,17 +21,18 @@
 #contentTitle {
 	width: 100%;
 	height: 50%;
-	background-color: RGB(0, 125, 195);
-	font-size: 40px;
+	background-color: RGB(0,125,195);
+	font:bold 30pt 나눔스퀘어;
 	color: white;
 	margin-left:2%;
+	padding-top:2%;
 	
 }
 
 #hotelAddress {
 	width: 100%;
 	height: 50%;
-	background-color: RGB(0, 125, 195);
+	background-color: RGB(0,125,195);
 	font-size: 20px;
 	color: white;
 	margin-left:2%;
@@ -101,10 +102,15 @@
 #hotelName {
 	width: 100%;
 	height: 80px;
-	font-size: 20px;
 	padding-top: 1%;
 	margin-top: 1%;
-	
+	border-top: 3px solid black;
+	font:bold 20pt 나눔스퀘어;
+}
+
+#hotelPhone{
+	padding-bottom:2%;
+	font:bold 15pt 나눔스퀘어;
 }
 
 #button{
@@ -120,11 +126,11 @@
 }
 
 #reserve>button{
-    width: 80px;
-	height: 100%;
+    width: 110px;
+	height: 50px;
 	margin-left: 45%;
-	background-color: RGB(0, 125, 195);
-	border: RGB(0, 125, 195);
+	background-color: RGB(0,125,195);
+	border: RGB(0,125,195);
 	border-radius: 5px;
 	color: white;
 	font-weight: bold;
@@ -132,15 +138,17 @@
 
 #hotelRoomPriceExplain{
 	width:100%;
-	height:50%;
-	margin-top:2%;
-	font-size:20px;	
+	height:80%;
+
+	font:bold 13pt 나눔스퀘어;
 }
 
 #hotelCheckInOut{
 	width:100%;
-	height:50%;
-	font-size:15px;
+	height:20%;
+	font:bold 13pt 나눔스퀘어;
+	margin-top:2%;
+
 }
 
 #back{
@@ -150,12 +158,34 @@
 }
 
 #back>button{
-    width: 80px;
-	height: 100%;
-	margin-left: 45%;
-	background-color: RGB(0, 125, 195);
-	border: RGB(0, 125, 195);
+    width: 110px;
+	height: 50px;
+	margin-left: 30%;
+	background-color: RGB(0,125,195);
+	border: RGB(0,125,195);
 	border-radius: 5px;
 	color: white;
 	font-weight: bold;
 }
+#hotelExplainToggle{
+	background-color: RGB(245, 245, 245);
+	width:100%;
+	height:100%;
+	border-top: 3px solid black;
+}
+#hotelPriceToggle{
+	width:100%;
+	height:100%;
+	border-top:3px solid black;
+	background-color: RGB(245, 245, 245);	
+}
+#hotelMapToggle{
+	width:100%;
+	height:100%;
+	border-top: 3px solid black;
+		
+}
+
+
+
+
