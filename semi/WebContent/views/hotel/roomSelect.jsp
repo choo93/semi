@@ -8,7 +8,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="/css/hotel/roomSelect.css?ver=1">
+<link rel="stylesheet" href="/css/hotel/roomSelect.css">
 <script src="/js/hotel/roomSelect.js"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -51,6 +51,10 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
         		<div id="gray"></div>
         		<div>사용중인 좌석</div>
         	</div>
+        	<div>
+        		<div id="white"></div>
+        		<div>선택 불가 좌석</div>
+        	</div>
         </div>
         
         <button id="payy" type="button" onclick="selBool();">결제하기</button>
@@ -63,7 +67,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 				if(hr.getRoomCode().equals("1")){
 					if(!(57<=i && i<=64)){
 			%>
-						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).style.backgroundColor = "white";
 						document.getElementById(<%=i%>).onclick = "";
 						document.getElementById(<%=i%>).style.cursor = 'auto';
 			<%
@@ -72,7 +76,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 				}else if(hr.getRoomCode().equals("2")){
 					if(!(65<=i && i<=80)){
 			%>
-						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).style.backgroundColor = "white";
 						document.getElementById(<%=i%>).onclick = "";
 						document.getElementById(<%=i%>).style.cursor = 'auto';
 			<%
@@ -81,7 +85,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 				}else if(hr.getRoomCode().equals("3")){
 					if(!(25<=i && i<=40)){
 			%>
-						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).style.backgroundColor = "white";
 						document.getElementById(<%=i%>).onclick = "";
 						document.getElementById(<%=i%>).style.cursor = 'auto';
 			<%
@@ -90,7 +94,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 				}else if(hr.getRoomCode().equals("4")){
 					if(!(9<=i && i<=24)){
 			%>
-						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).style.backgroundColor = "white";
 						document.getElementById(<%=i%>).onclick = "";
 						document.getElementById(<%=i%>).style.cursor = 'auto';
 			<%
@@ -99,7 +103,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 				}else if(hr.getRoomCode().equals("5")){
 					if(!(1<=i && i<=8)){
 			%>
-						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).style.backgroundColor = "white";
 						document.getElementById(<%=i%>).onclick = "";
 						document.getElementById(<%=i%>).style.cursor = 'auto';
 			<%
@@ -108,7 +112,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 				}else if(hr.getRoomCode().equals("6")){
 					if(!(41<=i && i<=56)){
 			%>
-						document.getElementById(<%=i%>).style.backgroundColor = "yellow";
+						document.getElementById(<%=i%>).style.backgroundColor = "white";
 						document.getElementById(<%=i%>).onclick = "";
 						document.getElementById(<%=i%>).style.cursor = 'auto';
 			<%

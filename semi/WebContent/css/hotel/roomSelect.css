@@ -41,6 +41,7 @@ div {
 	cursor:pointer;
 	background-color:RGB(0, 125, 195);
 	border-radius:5px;
+	border: 1px solid black;
 }
 
 #room>hr{
@@ -58,18 +59,19 @@ div {
 }
 
 #info>div{
-	width:30%;	height:100%;
+	width:20%;	height:100%;
 	float:left;
-	margin-left:3.33%;
+	margin-left:5%;
 }
 
 #info>div>div:first-child{
-	width:15%;	height:100%;
-	margin-right:10%;
+	width:20%;	height:100%;
+	margin-right:5%;
 	float:left;
+	border: 1px solid black;
 }
 
-#info>div>div:last-child{
+#info>div>div:>div>div:last-child{
 	width:75%;	height:100%;
 	float:left;
 	line-height:150%;
@@ -85,6 +87,9 @@ div {
 
 #gray{
 	background-color:gray;
+}
+#white{
+	background-color:white;
 }
 
 #payy{
