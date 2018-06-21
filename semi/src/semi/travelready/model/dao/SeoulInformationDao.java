@@ -385,5 +385,41 @@ public class SeoulInformationDao {
 		
 		return sicpd;
 	}
+
+	public SeoulInformationComment selectOne(Connection conn, int commentNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		SeoulInformationComment sic=null;
+		String query="select * from seoulinformation where commentNo=?";
+		
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, commentNo);
+			
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				sic=new SeoulInformationComment();
+				sic.setCommentNo(rset.getInt("commentno"));
+				sic.setUserName(rset.getString("username"));
+				sic.setContent(rset.getString("content"));
+				sic.setWriteDate(rset.getDate("writedate"));
+				sic.setUp(rset.getInt("up"));
+				sic.setDown(rset.getInt("down"));
+			}
+			
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally
+		{
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return sic;
+		
+	}
 	
 }
