@@ -32,8 +32,10 @@ public class QnAWriteServlet extends HttpServlet {
 		
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
+		String userName=request.getParameter("userName");
+		String userId=request.getParameter("userId");
 		
-		int result=new QnaService().insertQna(title,content);
+		int result=new QnaService().insertQna(title,content,userName,userId);
 		
 		if(result>0)
 		{

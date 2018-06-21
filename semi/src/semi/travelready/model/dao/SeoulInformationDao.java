@@ -114,15 +114,15 @@ public class SeoulInformationDao {
 		
 	}
 
-	public int commentInsert(Connection conn, String content) {
+	public int commentInsert(Connection conn, String content, String userName) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String query="insert into seoulinformation values(seoulinformation_SEQ.nextval,'userName',?,sysdate,0,0)";
+		String query="insert into seoulinformation values(seoulinformation_SEQ.nextval,?,?,sysdate,0,0)";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
-			
-			pstmt.setString(1, content);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, content);
 ;
 			result=pstmt.executeUpdate();
 			

@@ -166,6 +166,6 @@ else self.name = '';
 
 			
 			</section>
-			<%@ include file="/views/main/footer.jsp"%>
+			
 </body>
 </html>

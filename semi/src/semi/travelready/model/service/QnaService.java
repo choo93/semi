@@ -97,9 +97,9 @@ public class QnaService {
 		return result;
 	}
 
-	public int insertQna(String title, String content) {
+	public int insertQna(String title, String content, String userName, String userId) {
 		Connection conn=JDBCTemplate.getConnection();
-		int result=new QnaDao().insertQna(conn,title,content);
+		int result=new QnaDao().insertQna(conn,title,content,userName,userId);
 		
 		if(result>0) {
 			JDBCTemplate.commit(conn);

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
+<%@ page import="semi.travelready.model.vo.*" import="java.util.*" import="semi.login.model.vo.*" %>
 <%
 	SeoulImagePageData sipd=(SeoulImagePageData)request.getAttribute("SeoulImagePageData");
 	ArrayList<SeoulImageFile> list=sipd.getNoticelist();
+	SeoulUser su=(SeoulUser)session.getAttribute("user");
 	int index = 0;
 %>
     
@@ -111,7 +112,8 @@ function insert(){
   	
 	<div id="imagechange" class="container"> 
  <h1> 서울 관광 이미지   </h1>
- <botton class="btn btn-primary" onclick="insert();">등록</botton>총<%=sipd.getRecordTotalCount()%>
+ <%if(su!=null && su.getUserId().equals("admin")) {%>
+ <botton class="btn btn-primary" onclick="insert();">등록</botton><%} %>총<%=sipd.getRecordTotalCount()%>
   <%for(SeoulImageFile sif:list){ 
   if(index<3){
 	  if(index==0){
@@ -155,7 +157,9 @@ function insert(){
  <%} %>
  </div>
 	<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
-		
+			<%if(sipd.getCurrentPage()>1){ %>
+					<a class="btn btn-primary btn-lg" href="/seoulImage?currentPage=<%=sipd.getCurrentPage()-1%>"> < </a>
+					<%} %>
 					<%for(int i=sipd.getStartNavi(); i<=sipd.getEndNavi();i++){ 
 					if(i==sipd.getCurrentPage()){%>
 						<a class="btn btn-primary btn-lg" href='/seoulImage?currentPage=<%=i%>'><%=i%></a>
@@ -163,13 +167,16 @@ function insert(){
 						<a class="btn btn-primary btn-lg" href='/seoulImage?currentPage=<%=i%>'><%=i%></a>
 					<%} %>
 				<%} %>
+				
+				<%if(sipd.getCurrentPage()<sipd.getPageTotalCount()){ %>
+					<a class="btn btn-primary btn-lg" href="/seoulImage?currentPage=<%=sipd.getCurrentPage()+1%>"> > </a>
+				<%} %>
 				</div>
 
 			
 
 			
 			</section>
-			<%@ include file="/views/main/footer.jsp"%>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   
     <script src="../../js/bootstrap.min.js"></script>

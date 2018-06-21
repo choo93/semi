@@ -226,7 +226,7 @@ function test(){
 
   </tbody>
 </table>
+<button onclick="test();">삭제</button>
 </section>
-<%@ include file="/views/main/footer.jsp"%>
 </body>
 </html>
