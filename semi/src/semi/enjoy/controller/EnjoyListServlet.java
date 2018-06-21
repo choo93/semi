@@ -79,7 +79,7 @@ public class EnjoyListServlet extends HttpServlet {
 		}
 		else {
 			option ="";
-			System.out.println("초기 상태");
+			System.out.println("정렬하기 X");
 		}
 
 		
@@ -102,8 +102,7 @@ public class EnjoyListServlet extends HttpServlet {
 		// ★ 회원정보 섹션에대한 처리를 따로아직안했음.
 		
 		if(pd!=null) {//리스트에 정보가 제대로 있을 경우 처리
-	
-				System.out.println("X");
+				System.out.println("리스트 정보 담김");
 				RequestDispatcher view = request.getRequestDispatcher("/views/enjoy/border_List.jsp");
 				
 				request.setAttribute("pageData", pd);
