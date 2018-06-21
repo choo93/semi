@@ -78,7 +78,7 @@ public class PlaceDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
-		String query = "SELECT count(*)AS totalCount FROM List_Element where place_type = ? ";
+		String query = "SELECT count(*)AS totalCount FROM placerank where place_type = ? ";
 		// String query = "SELECT count(*)AS totalCount FROM List_Element where contents
 		// like ?";
 
@@ -243,7 +243,7 @@ public class PlaceDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<PlaceRankComment> list = new ArrayList<PlaceRankComment>();
-		String query="SELECT * FROM ELEMENT_INDEX_REVIEW WHERE INDEX_TITLENO=?";
+		String query="SELECT * FROM ELEMENT_INDEX_REVIEW WHERE SEQ_INDEX_TITLENO=?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -253,7 +253,7 @@ public class PlaceDao {
 			while (rset.next())
 			{
 				PlaceRankComment prc = new PlaceRankComment();
-				prc.setTitleNo(rset.getInt("INDEX_TITLENO"));
+				prc.setTitleNo(rset.getInt("SEQ_INDEX_TITLENO"));
 				prc.setTitle(rset.getString("INDEX_TITLE"));
 				prc.setUserId(rset.getString("USER_ID"));
 				prc.setUserImage(rset.getString("USER_IMAGE"));

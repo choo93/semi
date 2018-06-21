@@ -49,13 +49,13 @@
 
 					.font {
 						color: white;
-						text-shadow: 1px -1px 1px rgb(233, 231, 109), -1px 2px 2px rgb(137, 31, 199);
+						text-shadow: 1px -1px 1px #3071a9, -1px 2px 2px #3071a9;
 						height: 60px;
 						margin-bottom: 10px;
-						font: italic bold 3.3rem "나눔스퀘어";
+						font: italic bold 4rem "나눔스퀘어";
 						overflow: hidden;
 						text-overflow: ellipsis;
-						padding-top: 10px;
+						padding-top: 8px;
 						margin: 0;
 					}
 
@@ -110,8 +110,8 @@
 					<section>
 						<div class="container">
 							<div class="container-fulid">
-								<div class="head" style="text-align: center">
-									<p class="font">
+								<div class="head " style="text-align: center">
+									<p class="font ">
 										<%=f.getFestivalTitle()%>
 									</p>
 								</div>
@@ -172,7 +172,7 @@
 							<br>
 							<!-- 설명 시작 -->
 							<div class="container-fluid">
-								<div class="panel panel-danger">
+								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-target="#collapseOne"> 기본정보 </a>
@@ -185,7 +185,7 @@
 									</div>
 								</div>
 								<%if(f.getFestivalAddr()!=null){ %>
-								<div class="panel panel-danger">
+								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-target="#collapseTwo"> 상세정보 </a>
@@ -195,7 +195,7 @@
 										<div class="panel-body">
 
 											<table style="height: 100%; width: 100%;">
-
+												<%if(f.getFestivalAddr()!=null){ %>
 												<tr>
 													<td>주소</td>
 													<td>
@@ -203,6 +203,7 @@
 														<%=f.getFestivalAddr()%>
 													</td>
 												</tr>
+												<%}if(f.getFestivalTell()!=null){ %>
 												<tr>
 													<td>전화번호</td>
 													<td>
@@ -210,7 +211,7 @@
 														<%=f.getFestivalTell()%>
 													</td>
 												</tr>
-
+												<%}if(f.getFestivalSite()!=null){ %>
 
 												<tr>
 													<td>웹사이트</td>
@@ -219,23 +220,25 @@
 														<a href="<%=f.getFestivalSite()%>">웹사이트 보기</a>
 													</td>
 												</tr>
+												<%}if(f.getFestivalOntime()!=null){ %>
 												<tr>
 													<td>이용시간</td>
 													<td>
 														<!-- 11 ~ 3월 09:00 ~ 18:00
 									<br>
 										4 ~ 10월 09:00 ~ 19:00 -->
-														<%=f.getFestivalPeriod()%>
+														<%=f.getFestivalOntime()%>
 													</td>
 												</tr>
-
+												<%}if(f.getFestivalPeriod()!=null){ %>
 												<tr>
 													<td>운영 요일</td>
 													<td>
 														<!-- 화수목금토일 -->
-														<%=f.getFestivalOntime()%>
+														<%=f.getFestivalPeriod()%>
 													</td>
 												</tr>
+												<%}if(f.getFestivalUtility()!=null){ %>
 												<tr>
 													<td>장애인 편의시설</td>
 													<td>
@@ -244,16 +247,8 @@
 														<%=f.getFestivalUtility()%>
 													</td>
 												</tr>
-												<tr>
-													<td>규모</td>
-													<td>
-														<!-- 서울 종로구 운니동에 있는 조선 후기 흥선대원군의 사가.
-										<br> 고종이 이곳에서 열두 살 때까지 자라다 왕이 됐으며 생부(生父) 이하응은 흥선대원군이 됐다.
-										<br> 운현궁(雲峴宮)에서 대원군은 서원 철폐, 경복궁 중건, 세제 개혁 등 많은 사업을 추진했다.
-										<br> 원래는 궁궐에 견줄 만큼 크고 웅장하였다고 전해지나 현재는 사랑채 노안당, 안채 이로당과 노락당만이 남아 있다.
-										<br> 정원 등은 잘 보존되어 있으며 인기 드라마 궁의 촬영지로도 쓰인 양관이 가까이에 있다. -->
-													</td>
-												</tr>
+												<%} %>
+												<%if(f.getFestivalNotice()!=null){ %>
 												<tr>
 													<td>이것만은 꼭!</td>
 													<td>
@@ -264,21 +259,15 @@
 														<%=f.getFestivalNotice()%>
 													</td>
 												</tr>
+												<%}if(f.getFestivalPayment()!=null){ %>
 												<tr>
 													<td>이용요금</td>
 													<td>
 														<%=f.getFestivalPayment()%>
 													</td>
 												</tr>
-												<tr>
-													<td>이용시설안내</td>
-													<td>
-														<!-- 운현궁 정례 행사, 운현궁 일요 예술마당, 고종 명성후 가례(국혼례) 행사 안내
-										<br> - 궁중의상체험
-										<br> - 대원군행차체험 -->
-														<%=f.getFestivalUtility()%>
-													</td>
-												</tr>
+												<%} %>
+												
 											</table>
 
 
@@ -288,7 +277,7 @@
 								<%} %>
 								
 								<%if(f.getFestivalLatitude()!=0){ %>
-								<div class="panel panel-danger">
+								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-target="#collapseThree"> 지도&교통
@@ -302,7 +291,7 @@
 										</div>
 									</div>
 								</div><%} %>
-								<div class="panel panel-danger">
+								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-target="#collapseFour"> 댓글 </a>
@@ -347,7 +336,7 @@
 										</div>
 									</div>
 								</div>
-								<button class="btn btn-danger pull-right" onclick="back();">목록</button>
+								<button class="btn btn-primary pull-right" onclick="back();">목록</button>
 								<br>
 								<br>
 								<br>

@@ -25,9 +25,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="../../css/moreBtn.css">
+<link rel="stylesheet" href="../../css/festival/moreBtn.css">
 <!-- 버튼 CSS -->
-<link rel="stylesheet" href="../../css/festival/pagination.css">
+<!-- <link rel="stylesheet" href="../../css/festival/pagination.css"> -->
 <!-- 페이징 CSS (부트스트랩) -->
 
 <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -52,12 +52,12 @@
 	width: 800px;
 	height: 200px;
 	margin-left: 20px;
-	border: 1px solid #9B95C9;
+	border: 1px solid #3071a9;
 	border-width: 2px 20px 2px 2px;
 }
 
 .title {
-	font: bold 30pt 나눔스퀘어;
+	font: bold 20pt 나눔스퀘어;
 	margin-top: 10px;
 	margin-left: 10px;
 }
@@ -93,8 +93,8 @@ hr {
 	margin-bottom: 10px;
 }
 .font {
-			color: #9B95C9;
-			text-shadow: 1px -1px 1px #F6C467, -1px 2px 2px white;
+			color: #3071a9;
+			text-shadow: 1px -1px 1px black, -1px 2px 2px white;
 			height: 60px;
 			margin-bottom: 10px;
 			font: italic bold 3.3rem "나눔스퀘어";
@@ -146,6 +146,7 @@ hr {
                                         <%}%>
 								</div>
 								<!-- 첫번째 컨텐츠 태그 -->
+								<%if(pr.getPlaceTag()!=null){ %>
 								<div class="tags">
 									<p class="ptags">태그</p>
 									<div style="display: inline;">
@@ -162,6 +163,7 @@ hr {
                                         }%>     
 									</div>
 								</div>
+								<%} %>
 								 <button class="btn pull-right" id="button" onclick="send(<%=pr.getTitleNo()%>);">자세히</button>
 							</div>
 						</div>
@@ -267,7 +269,7 @@ hr {
 
 			<!-- 페이징 처리 시작 -->
 
-			<div class="container" style="text-align: center">
+	<%-- 		<div class="container" style="text-align: center">
 				<ul class="pagination pagination-lg">
 					<%=pageNavi%>
 					<!--    <li class="disabled">
@@ -294,7 +296,7 @@ hr {
                             </li> -->
 				</ul>
 
-			</div>
+			</div> --%>
 		</div>
 
 

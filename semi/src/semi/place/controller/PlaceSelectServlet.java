@@ -42,20 +42,14 @@ public class PlaceSelectServlet extends HttpServlet {
 		PlaceRank pr = new PlaceService().placeSelect(titleNo);
 		ArrayList<PlaceRankComment> list = new PlaceService().selectComment(titleNo);
 		HttpSession session = request.getSession(false);
-		if(pr.getPlaceAddr()!=null)
+		if(pr!=null)
 		{
+			System.out.println("들어옴");
 			RequestDispatcher view = request.getRequestDispatcher("/views/placerank/place_Info.jsp");
 			request.setAttribute("place", pr);
 			request.setAttribute("comment", list);
 			view.forward(request, response);
-		}else
-		{
-			RequestDispatcher view = request.getRequestDispatcher("/views/placerank/place_Info2.jsp");
-			request.setAttribute("place", pr);
-			request.setAttribute("comment", list);
-			view.forward(request, response);
 		}
-
 	}
 
 	/**
