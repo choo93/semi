@@ -34,7 +34,7 @@ public class MyReserveListServlet extends HttpServlet {
 		ArrayList<DoboReserve> doboList = new UserService().loadDoboReserve(userNo);
 		ArrayList<HotelReserve> hotelList = new UserService().loadHotelReserve(userNo);
 		
-		RequestDispatcher view = request.getRequestDispatcher("/views/ddelete/myReserveList.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/login/myReserveList.jsp");
 		request.setAttribute("concert", concertList);
 		request.setAttribute("dobo", doboList);
 		request.setAttribute("hotel", hotelList);

@@ -1,30 +1,26 @@
 function check(){
 	
-	/*var name = document.getElementById('name');
-	var nation = document.getElementById('nation');
+	var name = document.getElementById('name');
 	var phone = document.getElementById('phone');
-	!regName.test(name.value)
 	var regName = /^[a-zA-Z가-힣]+$/;
-	var regNation ;
-	var regPhone;*/
+	var regPhone = /^[0-9]{11}$/;
 	
-	if(document.getElementById('date').value==""){
+	if(document.getElementById('datepicker1').value==""){
 		alert('날짜를 선택해 주세요');
 		return false;
 	}else if(document.getElementById('time').value ==""){
 		alert('시간을 선택해 주세요');
 		return false;
-	}else if(document.getElementById('name').value==""){
-		alert('올바른 이름을 입력해 주세요');
+	}else if(!regName.test(name.value)){
+		alert('올바른 이름을 입력해 주세요\n\(한글 혹은 영어\)');
 		return false;
 	}else if(document.getElementById('nation').value ==""){
 		alert('국적을 입력해 주세요');
 		return false;
-	}else if(document.getElementById('phone').value ==""){
-		alert('휴대전화 번호를 입력해 주세요');
+	}else if(!regPhone.test(phone.value)){
+		alert('휴대전화 번호를 입력해 주세요\n\(숫자 11개\)');
 		return false;
 	}
-	alert(111);
 	return true;
 	
 }
