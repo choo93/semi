@@ -52,6 +52,7 @@ public class PlaceService {
 	public ArrayList<PlaceRankComment> selectComment(int titleNo) {
 		Connection conn = JDBCTemplate.getConnection();
 		ArrayList<PlaceRankComment> list = new PlaceDao().selectComment(conn,titleNo);
+		System.out.println(list.isEmpty());
 		JDBCTemplate.close(conn);
 		return list;
 	}

@@ -14,7 +14,6 @@ case "fall" : seasons = "가을 축제"; break;
 case "winter" : seasons = "겨울 축제"; break;
 }
 
-int index1 = 0;
 %>
 
     <!DOCTYPE html>
@@ -27,9 +26,9 @@ int index1 = 0;
         <!-- 부트스트랩 CSS -->
  <!--        <link rel="stylesheet" href="../../css/main.css"> -->
         <!-- main header CSS -->
-        <link rel="stylesheet" href="../../css/moreBtn.css">
+        <link rel="stylesheet" href="../../css/festival/moreBtn.css">
         <!-- 버튼 CSS -->
-        <link rel="stylesheet" href="../../css/festival/pagination.css">
+  <!--       <link rel="stylesheet" href="../../css/festival/pagination.css"> -->
         <!-- 페이징 CSS (부트스트랩) -->
 
         <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -56,12 +55,12 @@ int index1 = 0;
             width: 800px;
             height: 200px;
             margin-left: 20px;
-            border: 1px solid #9B95C9;
+            border: 1px solid #3071a9;
             border-width: 2px 20px 2px 2px;
         }
 
         .title {
-            font: bold 30pt 나눔스퀘어;
+            font: bold 20pt 나눔스퀘어;
             margin-top: 10px;
             margin-left: 10px;
         }
@@ -94,8 +93,8 @@ int index1 = 0;
             margin-bottom: 10px;
         }
         .font {
-			color: #9B95C9;
-			text-shadow: 1px -1px 1px #F6C467, -1px 2px 2px white;
+			color: #3071a9;
+			text-shadow: 1px -1px 1px red, -1px 2px 2px white;
 			height: 60px;
 			margin-bottom: 10px;
 			font: italic bold 3.3rem "나눔스퀘어";
@@ -127,7 +126,7 @@ int index1 = 0;
                     <!-- 첫번째 컨텐츠 -->
                     <%for(Festival f : list) { %>
                     <div class="row">
-                        <div class="col-xs-12 content" id="list_<%=index1+1%>">
+                        <div class="col-xs-12 content" id="list">
                             <!-- 첫번째 내용 -->
                             <div class="row">
                                 <!-- 첫번째 사진 -->
@@ -136,7 +135,14 @@ int index1 = 0;
                                 <div class="col-xs-6 col-xs-offset-3 info">
                                     <!-- 첫번째 컨텐츠 제목 -->
                                     <div class="title">
-                                        <%=f.getFestivalTitle() %>
+                                     <%int titlesu=f.getFestivalTitle().length();%>
+                                        <%if(titlesu>25) {%>
+                                            <%=f.getFestivalTitle().substring(0,25)%>...
+                                            
+                                        <%}else{%>
+                                            <%=f.getFestivalTitle()%>
+                                        <%}%>
+                                        
                                     </div>
                                     <hr>
                                     <!-- 첫번째 컨텐츠 설명 -->
@@ -150,6 +156,7 @@ int index1 = 0;
                                         <%}%>
                                     </div>
                                     <!-- 첫번째 컨텐츠 태그 -->
+                                    <%if(f.getFestivalTag()!=null){ %>
                                     <div class="tags">
                                         <p class="ptags">태그</p>
                                         <div style="display: inline;">
@@ -166,12 +173,13 @@ int index1 = 0;
                                         }%>                   
                                         </div>
                                     </div>
+                                    <%} %>
                                     <button class="btn pull-right" id="button" onclick="send(<%=f.getTitleNo()%>);">자세히</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <%index1++; } %>
+                    <%} %>
                  
 
                <!--      두번째 컨텐츠
