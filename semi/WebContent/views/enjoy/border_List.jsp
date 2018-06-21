@@ -58,16 +58,43 @@ else self.name = '';
 </style>
 
 <body id="scroll">
-
-	<%-- <%@ include file="/views/main/header.jsp"%> --%>
 	
 	<section>
 
 		<!-- 모든걸 감싸는 DIV -->
 		<div id="enjoyPage" style="width: 100%;">
+		
+		<!-- 헤더 DIV -->
+		<div class="header" style="width: 100%;">
+			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 10%; ">현재 위치 : 서울즐기기 > 
+			<% String CurrentType ="";
+			switch(type){
+			case "type1" : CurrentType = "추천코스"; break;  
+			case "type2" : CurrentType = "명소"; break;
+			case "type3" : CurrentType = "쇼핑"; break;
+			case "type4" : CurrentType = "음식점"; break;
+			case "type5" : CurrentType = "숙박"; break;
+			case "type6" : CurrentType = "캘린더"; break;
+			} %>
+			<%=CurrentType %>
+			</div>
+			<div id="enjoyText" style="color: #5F4B8B; font: bold 33pt 나눔스퀘어; margin-top: 20px; margin-left: 10%; "><%=CurrentType %>
+			<%if(option!=""){ %>
+				<% String CurrentSort = ""; 
+				switch(option){
+				case "title" : CurrentSort="제목순"; break;
+				case "dayOfIssue" : CurrentSort="최신순"; break;
+				case "hits" : CurrentSort="조회수"; break;
+				} %> 
+				<span style="font: bold 25pt 나눔스퀘어;">: <%=CurrentSort %></span></div>
+			<%}else{%>
+				</div>
+			<%} %> 
+			<div style="width: 95%; height: 2px; background: linear-gradient(to right, #D1D0ED 55%, white); margin-top: 1%; margin-bottom: 2%; margin-left: 10%;"></div>
+		</div>
 
 			<!-- 정렬하기 DIV -->
-			<div id="line" style="margin-left: 10%; padding: 20px;">
+			<div id="line" style="margin-left: 12%; ">
 
 				<!-- 정렬 select 바꿀 때 마다 작동하는 스크립트 -->
 				<script>
@@ -81,20 +108,30 @@ else self.name = '';
 	 			<%if(option.equals("title")){ %>
 				<select name="option" id="sort" onchange="sort1(this.value);">
 					<option value="">정렬하기</option>
-					<option value="title" selected="selected">제목</option>
+					<option value="title" selected="selected">제목순</option>
 					<option value="dayOfIssue">최신순</option>
+					<option value="hits">조회수</option>
 				</select>
 				<%} else if(option.equals("dayOfIssue")){%>
 				<select name="option" id="sort" onchange="sort1(this.value);">
 					<option value="">정렬하기</option>
-					<option value="title">제목</option>
+					<option value="title">제목순</option>
 					<option value="dayOfIssue" selected="selected">최신순</option>
+					<option value="hits">조회수</option>
+				</select>
+				<%} else if(option.equals("hits")){ %>
+				<select name="option" id="sort" onchange="sort1(this.value);">
+					<option value="">정렬하기</option>
+					<option value="title">제목순</option>
+					<option value="dayOfIssue">최신순</option>
+					<option value="hits" selected="selected">조회수</option>
 				</select>
 				<%} else{ %>
 				<select name="option" id="sort" onchange="sort1(this.value);">
 					<option value="" selected="selected">정렬하기</option>
-					<option value="title">제목</option>
+					<option value="title">제목순</option>
 					<option value="dayOfIssue">최신순</option>
+					<option value="hits">조회수</option>
 				</select>
 				<%} %>
 				
@@ -136,25 +173,23 @@ else self.name = '';
 								<%} %>
 							</div>
 							
-							<div id="hits" style="position: relative; bottom: 45px; font: bold 15pt 나눔스퀘어; margin: 10px; float: right;">
+							<div id="hits" style="position: relative; bottom: 45px; font: bold 12pt 나눔스퀘어; margin: 10px; right: 17px; float: right;">
 								조회수 : <%=eld.getIndex_Hits() %>
 							</div>
 							
 						</div>
 						
-						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden;">
+						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden; font: 13pt 나눔스퀘어;">
 							<% int word1 = eld.getIndex_BasicInfo().length();
-							if(word1>400){ 
+							if(word1>200){ 
 							%>
-							<%=eld.getIndex_BasicInfo().substring(0,400)%>.....
+							<%=eld.getIndex_BasicInfo().substring(0,200)%>.....
 							<%}else{ %>
 							<%=eld.getIndex_BasicInfo()%><br>
 							<%} %>
 
 						</div>
-						<div id="tags"
-							style="position: absolute; margin: 10px; left: 5px; bottom: 1px; overflow:hidden;">
-
+						<div id="tags" style="position: absolute; margin: 10px; left: 5px; bottom: 1px; overflow:hidden;">
 
 							<div style="display: inline;">
 								<%
@@ -162,12 +197,12 @@ else self.name = '';
 									int su1 = Tag.countTokens();
 										if(su1<6){
 										for(int i=0;i<su1;i++) {
-								%><a href="#">#<%=Tag.nextToken()%></a>
+								%><a href="#" style="font: 11pt 나눔스퀘어;">#<%=Tag.nextToken()%></a>
 								<%
 										}}
 										else{
 											for(int i=0;i<6;i++){%>
-												<a href="#">#<%=Tag.nextToken()%></a>
+												<a href="#" style="font: 11pt 나눔스퀘어;">#<%=Tag.nextToken()%></a>
 											<%}
 												
 											
@@ -199,17 +234,15 @@ else self.name = '';
 			
 		%>
 		 
-		 <%
-				for (EnjoyInforData EID : list2) {
-			%>
+		 <!-- 추천명소 -->
+		 <% for (EnjoyInforData EID : list2) { %>
 			<form action="/enjoySelect?IndexNo=<%=EID.getIndex_TitleNo()%>&type=<%=type%>"
 				method="post">
 				
 				<div class="content" id="list_1"
 					style="margin-left: 10%; margin-bottom: 11%; padding: 20px;">
-					<div class="photo"
-						style="float:left; width: 400px; height: 200px; border-radius: 12px;">
-						<img src="<%=EID.getIndex_List_IntroImage()%>" style="width:400px;">
+					<div class="photo" style="float:left;">
+						<img src="<%=EID.getIndex_List_IntroImage()%>" style="width:400px; height: 200px; border-radius: 12px;">
 						<!--url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);  -->
 					</div>
 
