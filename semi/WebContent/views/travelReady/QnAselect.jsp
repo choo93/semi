@@ -120,7 +120,8 @@ function update(){
 	else{
 		var upTitle=document.getElementById("upT").value;
 		var upContent=document.getElementById("upC").innerHTML;
-		location.href="/qnaUpdate?title="+upTitle+"content="+upContent;
+		var questionNo=document.getElementById("uqnaNo").value;
+		location.href="/qnaUpdate?title="+upTitle+"&content="+upContent+"&questionNo="+questionNo;
 		
 	}
 
@@ -225,6 +226,7 @@ function update(){
 				
 				<li style="height:150px;border-bottom:2px solid gray;">
 				<dl><dt class="image" style="height:70px;  background-image:url(/views/travelReady/image/question.png);">
+					<input type="hidden" id="uqnaNo" value="<%=q.getQuestionNo()%>">
 					<dd class="answer" ><textarea  id="upC" row="5" style="width:500px; height:100px; display:none;"><%=q.getContent()%></textarea><label id="C"><%=q.getContent()%></label></dd>
 				</dt></dl>
 				</li>

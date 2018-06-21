@@ -32,8 +32,11 @@ public class QnaUpdateServlet extends HttpServlet {
 		
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
-		
-		new QnaService().updateQna(title,content);
+		int questionNo=Integer.parseInt(request.getParameter("questionNo"));
+		int result=new QnaService().updateQna(title,content,questionNo);
+		if(result>0) {
+			response.sendRedirect("/qnaSelectUpdate?questionNo="+questionNo);
+		}
 				
 	}
 

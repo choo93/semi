@@ -176,9 +176,9 @@ public class QnaService {
 		
 	}
 
-	public int updateQna(String title, String content) {
+	public int updateQna(String title, String content, int questionNo) {
 		Connection conn=JDBCTemplate.getConnection();
-		int result=new QnaDao().updateQna(conn,title,content);
+		int result=new QnaDao().updateQna(conn,title,content,questionNo);
 		
 		if(result>0) {
 			JDBCTemplate.commit(conn);

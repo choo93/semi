@@ -398,15 +398,16 @@ public class QnaDao {
 		return result;
 	}
 
-	public int updateQna(Connection conn, String title, String content) {
+	public int updateQna(Connection conn, String title, String content, int questionNo) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String query="update question set title=? , content=? where question=?";
+		String query="update question set title=? , content=? where questionNo=?";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1, title);
 			pstmt.setString(2,content);
+			pstmt.setInt(3, questionNo);
 			result=pstmt.executeUpdate();
 			
 			
