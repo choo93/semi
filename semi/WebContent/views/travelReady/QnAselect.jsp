@@ -109,6 +109,23 @@ function conf(){
 	}
 }
 
+function update(){
+	if(document.getElementById("update").innerHTML=="수정"){
+	document.getElementById("T").style.display="none";
+	document.getElementById("C").style.display="none";
+	document.getElementById("upT").style.display="block";
+	document.getElementById("upC").style.display="block";
+	document.getElementById("update").innerHTML="완료";
+	}
+	else{
+		var upTitle=document.getElementById("upT").value;
+		var upContent=document.getElementById("upC").innerHTML;
+		location.href="/qnaUpdate?title="+upTitle+"content="+upContent;
+		
+	}
+
+	
+}
 </script>
 
 <body id="scroll">
@@ -122,9 +139,7 @@ function conf(){
 				<div id="faqtitle">
 				<div id="faqtitleimg"></div>
 				<strong style="font-size:18px;">"서울 관광에 관해서 궁금하신 사항을 질문해주세요. 어떤 질문이든 환영하며, 신속하게 답변 드리겠습니다"</strong><br>
-				<form action="/faq">
-				<input type="submit" value="FAQ게시판">
-				</form>
+			
 				여행박사 상품 및 서비스에 대해 궁금하신 사항을 친절하게 안내해 드리겠습니다. <br>
 				질문을 하시기 전에 '자주 하시는 질문'을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				</div>
@@ -156,10 +171,9 @@ function conf(){
 				</div>
 				<button class="btn btn-primary" style="margin-top:20px;" onclick="back();">목록</button>
 				<%if(su!=null && q.getUserId().equals(su.getUserId())){ %>
-				<button class="btn btn-primary" style="margin-top:20px;" onclick="back();">수정</button>
-					<form  action="/deleteQna" onsubmit="return conf()">
+					<form  action="/deleteQna" style="display:inline;" onsubmit="return conf()">
 						<input type="hidden" name="questionNo" value="<%=q.getQuestionNo()%>">
-						<input type="submit" class="btn btn-primary" value="삭제" >
+						<input type="submit" style="margin-top:20px;" class="btn btn-primary" value="삭제" >
 					</form>
 				
 				
@@ -206,12 +220,12 @@ function conf(){
 				<ul style="width:100%; height:auto;">
 				
 				<li style="border-top:2px solid gray; border-bottom:2px solid gray; height:100px;;">
-				<dl><dt><%=q.getQuestionChk()%><dd style="width:50%;float:left;"><%=q.getTitle()%></dd><dd><%=q.getWriteDate()%></dd></dl>
+				<dl><dt><%=q.getQuestionChk()%><dd style="width:50%;float:left;"><input type="text" id="upT" style="width:300px; display:none;" value="<%=q.getTitle()%>"><label id="T"><%=q.getTitle()%></label></dd><dd><%=q.getWriteDate()%></dd></dl>
 				</li>
 				
 				<li style="height:150px;border-bottom:2px solid gray;">
 				<dl><dt class="image" style="height:70px;  background-image:url(/views/travelReady/image/question.png);">
-					<dd class="answer"><%=q.getContent()%></dd>
+					<dd class="answer" ><textarea  id="upC" row="5" style="width:500px; height:100px; display:none;"><%=q.getContent()%></textarea><label id="C"><%=q.getContent()%></label></dd>
 				</dt></dl>
 				</li>
 				</ul>
@@ -221,7 +235,9 @@ function conf(){
 		
 				<button class="btn btn-primary" style="margin-top:20px;" onclick="back();">목록</button>
 					<%if(su!=null && q.getUserId().equals(su.getUserId())){ %>
-				<button class="btn btn-primary" style="margin-top:20px;" onclick="back();">수정</button>
+					
+					
+				<button class="btn btn-primary" style="margin-top:20px;" id="update" onclick="update();">수정</button>
 				
 				
 				<form  action="/deleteQna" style="display:inline;" onsubmit="return conf()">
