@@ -114,7 +114,7 @@ border-bottom:1px solid #dcdcdc;
 width:100%; 
 padding : 10px 20px 10px 45px;
 line-height:22px;
-background-color:gray;
+background-color:#e3e3e3;
 }
 
 
@@ -139,23 +139,24 @@ function test(id){
 			
 			<div id="pagecontent">
 			<section id="content">
-				<h2 style="font-size:24px; font-weight:bold; color:#0080ff;">자주 하시는 질문</h2>
+				<h2 style="font-size:24px; font-weight:bold; color:#0069d9;">자주 하시는 질문</h2>
 				<div id="faqtitle">
 				<div id="faqtitleimg"></div>
 				<strong style="font-size:18px;">"FAQ를 통해서 원하시는 답변을 쉽고 빠르게 찾아보세요"</strong><br>
-				<a href="/qna">게시판</a>
+			
 
 				질문을 하기시 전 자주하시는 질문을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				원하는 내용을 찾지 못하실 경우 '질문과 답변' 게시판에 문의해 주시면 친절하게 안내해 드리겠습니다.<br>
 				</div>
-				
+				<a href="/qna" class="btn btn-outline-primary">질문과 답변 게시판 이동</a>
 				<fieldset>
 					<legend>게시물 검색</legend>
+					
 					<form action="/faqSearch">
 									<div class="input-group">
       <input type="text" class="form-control" name="search" placeholder="Search for..." aria-label="Search for...">
       <span class="input-group-btn">
-        <input type="submit" class="btn btn-secondary" value="검색"></button>
+        <input type="submit" class="btn btn-primary" value="검색"></button>
  
       </span>
       </div>

@@ -32,8 +32,10 @@ public class WriteCommentServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String content=request.getParameter("content");
+		String userName=request.getParameter("userName");
+		System.out.println(userName);
 		
-	int result=new SeoulInformationService().commentInsert(content);
+	int result=new SeoulInformationService().commentInsert(content,userName);
 	
 	if(result>0) {
 		response.sendRedirect("/seoulInformationComment");

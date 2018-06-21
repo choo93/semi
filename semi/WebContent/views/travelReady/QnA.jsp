@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="semi.travelready.model.vo.*" import="java.util.*"  import="semi.login.model.vo.*" %>
+<%@ page import="semi.travelready.model.vo.*" import="java.util.*"  import="semi.login.model.vo.*"%>
 <%
 	QnaPageData qpd=(QnaPageData)request.getAttribute("qnaPageData");
 	ArrayList<Qna> list=qpd.getNoticelist();
@@ -113,10 +113,14 @@ if (self.name != 'reload') {
     self.location.reload(true);
 }
 else self.name = '';
+
+
+function logout(){
+	alert("로그인시 이용가능한 서비스입니다.");
+}
 </script>
 
 <body id="scroll">
-<%@ include file="/views/main/header.jsp" %>
 <section>
 			
 			<div id="pagecontent" >
@@ -125,9 +129,7 @@ else self.name = '';
 				<div id="faqtitle">
 				<div id="faqtitleimg"></div>
 				<strong style="font-size:18px;">"서울 관광에 관해서 궁금하신 사항을 질문해주세요. 어떤 질문이든 환영하며, 신속하게 답변 드리겠습니다"</strong><br>
-				<form action="/faq">
-				<input type="submit" value="FAQ게시판">
-				</form>
+				
 				여행박사 상품 및 서비스에 대해 궁금하신 사항을 친절하게 안내해 드리겠습니다. <br>
 				질문을 하시기 전에 '자주 하시는 질문'을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				</div>
@@ -139,6 +141,7 @@ else self.name = '';
 				
 						<a href="/qnaCategory?search=확인완료" class="btn btn-outline-primary">해결된 질문</a>
 						<a href="/qnaCategory?search=확인전" class="btn btn-outline-primary">미해결된 질문</a>
+						<a href="/faq" class="btn btn-outline-primary">자무 묻는 질문 게시판 이동</a>
 
 						
 					</fieldset>
@@ -161,18 +164,30 @@ else self.name = '';
 						<%} %>
 						
 					</table>
+					<%if(su!=null){ %>
 					<form action="/views/travelReady/QnAWrite.jsp">
 					<input type="submit" value="글쓰기" class="btn btn-primary">
 				</form>
+				<%} %>
+				<%if(su==null){ %>
+					<button onclick="logout();" class="btn btn-primary">글쓰기</button>
+				<%} %>
 				</div>
 				
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
+					<%if(qpd.getCurrentPage()>1){ %>
+					<a class="btn btn-primary btn-lg" href="/qna?currentPage=<%=qpd.getCurrentPage()-1%>"> < </a>
+					<%} %>
+					
 					<%for(int i=qpd.getStartNavi(); i<=qpd.getEndNavi();i++){ 
 					if(i==qpd.getCurrentPage()){%>
 						<a class="btn btn-primary btn-lg" href='/qna?currentPage=<%=i%>'><%=i%></a>
 					<%}else{ %>
 						<a class="btn btn-primary btn-lg" href='/qna?currentPage=<%=i%>'><%=i%></a>
 					<%} %>
+				<%} %>
+					<%if(qpd.getCurrentPage()<qpd.getPageTotalCount()){ %>
+					<a class="btn btn-primary btn-lg" href="/qna?currentPage=<%=qpd.getCurrentPage()+1%>"> > </a>
 				<%} %>
 				</div>
 		 

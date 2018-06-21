@@ -115,7 +115,7 @@ else self.name = '';
 </script>
 
 <body id="scroll">
-<%@ include file="/views/main/header.jsp" %>
+
 <section>
 
 			
@@ -182,6 +182,5 @@ else self.name = '';
 
 			
 			</section>
-			<%@ include file="/views/main/footer.jsp"%>
 </body>
 </html>

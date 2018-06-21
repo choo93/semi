@@ -1,6 +1,8 @@
 package semi.travelready.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +35,8 @@ public class GuideBookRequestServlet extends HttpServlet {
 		
 		String guideBookNum=request.getParameter("guidebooknum");
 		String mapNum=request.getParameter("mapnum");
-		
+		System.out.println(guideBookNum);
+		System.out.println(mapNum);
 		if(guideBookNum.equals("선택")) {
 			guideBookNum="0권";
 		}
@@ -49,11 +52,18 @@ public class GuideBookRequestServlet extends HttpServlet {
 		
 		gbr.setName(request.getParameter("name"));
 		gbr.setEmail(request.getParameter("email"));
-		gbr.setPhone(request.getParameter("phone"));
-		gbr.setAddr(request.getParameter("addrnum")+request.getParameter("addr")+request.getParameter("addr2"));
+		gbr.setPhone("010-"+request.getParameter("phone")+"-"+request.getParameter("phone2"));
+		gbr.setAddr(request.getParameter("addr")+request.getParameter("addr2"));
 		gbr.setGuideBookNum(Integer.parseInt(guideBookNum));
 		gbr.setMapNum(Integer.parseInt(mapNum));
 		int result=new GuideBookRequestService().infoInsert(gbr);
+		
+		if(result>0)
+		{
+			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/GuideBookRequestComplete.jsp");
+			request.setAttribute("GuideBookRequest", gbr);
+			view.forward(request, response);
+		}
 	}
 
 	/**

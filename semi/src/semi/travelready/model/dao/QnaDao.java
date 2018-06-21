@@ -227,16 +227,17 @@ public class QnaDao {
 		
 	}
 
-	public int insertQna(Connection conn, String title, String content) {
+	public int insertQna(Connection conn, String title, String content, String userName, String userId) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String query="insert into question values(Question_SEQ.nextval,sysdate,0,'userName',?,?,'userId','확인전')";
+		String query="insert into question values(Question_SEQ.nextval,sysdate,0,?,?,?,?,'확인전')";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
-			
-			pstmt.setString(1, title);
-			pstmt.setString(2, content);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			pstmt.setString(4, userId);
 			result=pstmt.executeUpdate();
 			
 			
@@ -252,7 +253,7 @@ public class QnaDao {
 	public int answerWrite(Connection conn, String answer, int questionNo) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String query="insert into answer values(Answer_SEQ.nextval,?,'username',sysdate,?)";
+		String query="insert into answer values(Answer_SEQ.nextval,?,'admin',sysdate,?)";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
