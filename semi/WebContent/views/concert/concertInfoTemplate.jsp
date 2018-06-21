@@ -202,11 +202,45 @@
 				url : "/commentTest?currentPage="+currentPage+"&indexNo=" + indexNo,
 				type : "get",
 				success : function(data){
-					alert('성공');
-					alert(data.pageNavi);
-					alert(data.aa);
-					//CommentData
 					
+					var userId = new Array(data.size);
+					var date = new Array(data.size);
+					var content = new Array(data.size);
+					
+					for(var i=0;i<data.size;i++){
+						userId[i] = "data.userId"+i;
+						date[i] = "data.date"+i;
+						content[i] = "data.content"+i;
+					}
+					
+					 $('#commentList').html("");
+					
+					for(var i=0;i<data.size;i++){
+						var commentDiv = $("<div>");	// 제일 큰거
+						var titleDiv = $("<div>");
+						var idDiv = $("<div>").html(userId[i]);
+						var dateDiv = $("<div>").html(date[i]);
+						var contentDiv = $("<div>");
+						var pre = $("<pre>").html(content[i]);
+						
+						titleDiv.attr("id","commentTitle");
+						contentDiv.attr("id","commentContent");
+						
+						titleDiv.append(idDiv);
+						titleDiv.append(dateDiv);
+						
+						contentDiv.append(pre);
+
+						commentDiv.append(titleDiv);
+						commentDiv.append(contentDiv);
+						
+						$('#commentList').append(commentDiv);
+					}
+					var navi = $("<label>").html(data.pageNavi);
+					
+					navi.attr("id","navi");
+					
+					$('#commentList').append(navi);
 					
 				},
 				error : function(){

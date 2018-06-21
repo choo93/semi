@@ -30,12 +30,12 @@ public class CommentTestServlet extends HttpServlet {
 		JSONObject result = new JSONObject();	// JSON 객체 생성
 		// JSON 객체는 MAP 형태로 사용 (키,값)
 		
-		
-			result.put("userId", cd.getCommentList().get(0).getUSER_ID());
-			result.put("date", cd.getCommentList().get(0).getWrite_Date());
-			result.put("content", cd.getCommentList().get(0).getUSER_COMMNET());
-		
-		
+		for(int i=0;i<cd.getCommentList().size();i++) {
+			result.put("userId"+i, cd.getCommentList().get(i).getUSER_ID());
+			result.put("date"+i, cd.getCommentList().get(i).getWrite_Date().toString());
+			result.put("content"+i, cd.getCommentList().get(i).getUSER_COMMNET());
+		}
+		result.put("size", cd.getCommentList().size());
 		result.put("pageNavi", cd.getPageNavi());
 		
 		response.setContentType("application/json");
