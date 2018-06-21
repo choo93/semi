@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="../../css/main/materialize.min.css">
 <script src="../../js/main/jquery-3.3.1.min.js"></script>
 <script src="../../js/main/joinus.js"></script>
-
 <style>
 [type="checkbox"]:checked+span:not (.lever ):before {
 	border-right: 2px solid #b43029!important;
@@ -157,7 +156,7 @@
 				</div>
 				<div style="background-color:#f5f5f5;height:25px;"></div>
 			</div>
-			<button id="next_button" onclick="next();">다음</button>
+			<button id="next_button" onclick="next();" style="cursor:pointer;">다음</button>
 			
 		</div>
 		<div style="background-color:white;height:20px;"></div>
