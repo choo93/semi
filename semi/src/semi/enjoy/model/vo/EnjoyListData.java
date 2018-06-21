@@ -11,6 +11,7 @@ public class EnjoyListData {
 	private Date index_Ondate; // 작성일
 	private String index_Tags;// 태그
 	private String index_Image;// 게시물 사진(주소)/
+	private int index_Hits; //조회수
 	public String getList_Element() {
 		return list_Element;
 	}
@@ -53,8 +54,14 @@ public class EnjoyListData {
 	public void setIndex_Image(String index_Image) {
 		this.index_Image = index_Image;
 	}
+	public int getIndex_Hits() {
+		return index_Hits;
+	}
+	public void setIndex_Hits(int index_Hits) {
+		this.index_Hits = index_Hits;
+	}
 	public EnjoyListData(String list_Element, int index_TitleNo, String index_Title, String index_BasicInfo,
-			Date index_Ondate, String index_Tags, String index_Image) {
+			Date index_Ondate, String index_Tags, String index_Image, int index_Hits) {
 		super();
 		this.list_Element = list_Element;
 		this.index_TitleNo = index_TitleNo;
@@ -63,6 +70,7 @@ public class EnjoyListData {
 		this.index_Ondate = index_Ondate;
 		this.index_Tags = index_Tags;
 		this.index_Image = index_Image;
+		this.index_Hits = index_Hits;
 	}
 	public EnjoyListData() {
 		super();
