@@ -35,6 +35,15 @@
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/main.js"></script>
+
+<script>
+if (self.name != 'reload') {
+    self.name = 'reload';
+    self.location.reload(true);
+}
+else self.name = '';
+</script>
+
 </head>
 
 <style>
@@ -60,15 +69,15 @@
 			<!-- 정렬하기 DIV -->
 			<div id="line" style="margin-left: 10%; padding: 20px;">
 
+				<!-- 정렬 select 바꿀 때 마다 작동하는 스크립트 -->
 				<script>
 					function sort1(value) {	
 						var type = "<%=type%>";
 						location.href = "/enjoyList?sort="+value+"&type="+type;
 					}
 				</script>
-				
-					
-				
+
+				<!-- 정렬 select -->
 	 			<%if(option.equals("title")){ %>
 				<select name="option" id="sort" onchange="sort1(this.value);">
 					<option value="">정렬하기</option>
@@ -88,14 +97,17 @@
 					<option value="dayOfIssue">최신순</option>
 				</select>
 				<%} %>
-
 				
 			</div>
 			
+			<!-- 추천명소가 아닌 경우 -->
 			<% if(!type.equals("type1")){ %>
+			
+			<!-- list 갯수만큼 for문 빙글빙글 -->
 			<% for (EnjoyListData eld : list) { %>
 			<form action="/enjoySelect?IndexNo=<%=eld.getIndex_TitleNo()%>&type=<%=type%>" method="post">
 				
+				<!-- list 간격 주려고? -->
 				<div class="content" id="list_1" style="margin-left: 10%; margin-bottom: 11%; padding: 20px;">
 					<%
 						eld.getIndex_TitleNo();
@@ -109,16 +121,25 @@
 					<!-- INFO BOX DIV -->
 					<div id="info" style="float: left; width: 800px; height: 200px; margin-left: 20px; border: 1px solid #9B95C9; border-width: 2px 20px 2px 2px; position: relative;">
 						
-						<!-- 게시물 제목 -->
-						<div id="title" style="font: bold 30pt 나눔스퀘어; margin: 10px;">
-							<!-- word2 = 제목글자수 -->
-							<% int word2 = eld.getIndex_Title().length();
-							if(word2>20){ %>
-							<!-- 제목이 20글자가 넘어갈 시 21번째 글자부터 생략 후 ..으로 표시 -->
-							<%=eld.getIndex_Title().substring(0,20)%>..
-							<%}else{ %>
-							<%=eld.getIndex_Title()%><br>
-							<%} %>
+						<!-- 게시물 제목/조회수 부분 큰 DIV -->
+						<div id="titleAndHits">
+						
+							<!-- 게시물 제목 DIV -->
+							<div id="title" style="font: bold 30pt 나눔스퀘어; margin: 10px;">
+								<!-- word2 = 제목글자수 -->
+								<% int word2 = eld.getIndex_Title().length();
+								if(word2>20){ %>
+								<!-- 제목이 20글자가 넘어갈 시 21번째 글자부터 생략 후 ..으로 표시 -->
+								<%=eld.getIndex_Title().substring(0,20)%>..
+								<%}else{ %>
+								<%=eld.getIndex_Title()%><br>
+								<%} %>
+							</div>
+							
+							<div id="hits" style="position: relative; bottom: 45px; font: bold 15pt 나눔스퀘어; margin: 10px; float: right;">
+								조회수 : <%=eld.getIndex_Hits() %>
+							</div>
+							
 						</div>
 						
 						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden;">

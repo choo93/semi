@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="../../css/moreBtn.css">
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
-	<script src="../../js/concert/concertList.js"></script>
+	<script src="../../js/concert/concertList.js?ver=1"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 </head>
 <body id="scroll">

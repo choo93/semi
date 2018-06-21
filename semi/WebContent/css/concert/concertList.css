@@ -46,7 +46,7 @@
 #concertTitle{
 	height: 30%;
 	padding-left : 15px;
-	font-size : 30px;
+	font-size : 20px;
 	font-weight: bold;
 }
 #concertTitle:hover{
@@ -71,4 +71,7 @@
 
 #btn>button{
 	float:right;
+	margin-right:30px;
+	background-color:RGB(0, 125, 195);
+	font-wight:bold;
 }

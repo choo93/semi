@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="semi.place.model.vo.*" import="java.util.*"%>
+	<%@ page import="semi.festival.model.vo.*" import="java.util.*"%>
 		<%
-	PlaceRank pr = (PlaceRank) request.getAttribute("place");
-	ArrayList<PlaceRankComment> list = (ArrayList<PlaceRankComment>) request.getAttribute("comment");
+	Festival f = (Festival) request.getAttribute("festival");
+	ArrayList<FestivalComment> list = (ArrayList<FestivalComment>) request.getAttribute("comment");
 %>
 			<!DOCTYPE html>
 			<html>
@@ -18,7 +18,7 @@
 				<script src="../../js/bootstrap.min.js"></script>
 <!-- 				<link rel="stylesheet" href="../../css/main.css"> -->
 				<script src="../../js/main.js"></script>
-				<!-- <link rel="stylesheet" href="../../css/PlaceFont.css"> -->
+				<!-- <link rel="stylesheet" href="../../css/festivalFont.css"> -->
 
 				<style>
 					.container-fluid {
@@ -52,7 +52,7 @@
 						text-shadow: 1px -1px 1px rgb(233, 231, 109), -1px 2px 2px rgb(137, 31, 199);
 						height: 60px;
 						margin-bottom: 10px;
-						font: italic bold 2.5rem "나눔스퀘어";
+						font: italic bold 3.3rem "나눔스퀘어";
 						overflow: hidden;
 						text-overflow: ellipsis;
 						padding-top: 10px;
@@ -73,10 +73,10 @@
 					function initMap() {
 						var uluru = {
 							lat:
-<%=pr.getPlaceLatitude() %>
+<%=f.getFestivalLatitude() %>
 	,
 							lng:
-<%=pr.getPlaceLongtitude() %>
+<%=f.getFestivalLongtitude() %>
 	};
 						var map = new google.maps.Map(document.getElementById('mapContent'), {
 							zoom: 18,
@@ -109,10 +109,10 @@
 
 					<section>
 						<div class="container">
-							<div class="container-fluid">
+							<div class="container-fulid">
 								<div class="head" style="text-align: center">
 									<p class="font">
-										<%=pr.getPlaceTitle()%>
+										<%=f.getFestivalTitle()%>
 									</p>
 								</div>
 
@@ -127,14 +127,14 @@
 									<!-- 캐러셀 이미지 부분 -->
 									<div class="carousel-inner">
 										<div class="item active">
-											<img src="<%=pr.getPlaceMainImg()%>">
+											<img src="<%=f.getFestivalMainImg()%>">
 
 										</div>
 										<div class="item">
-											<img src="<%=pr.getPlaceSubImg1()%>">
+											<img src="<%=f.getFestivalSubImg1()%>">
 										</div>
 										<div class="item">
-											<img src="<%=pr.getPlaceSubImg2()%>">
+											<img src="<%=f.getFestivalSubImg2()%>">
 										</div>
 									</div>
 									<!-- 컨트롤러 부분 -->
@@ -157,7 +157,7 @@
 									</div>
 									<div id="collapseOne" class="panel-collapse collapse in">
 										<div class="panel-body">
-											<%=pr.getPlaceDetailInfo()%>
+											<%=f.getFestivalDetailInfo()%>
 										</div>
 									</div>
 								</div>
@@ -176,14 +176,14 @@
 													<td>주소</td>
 													<td>
 														<!-- 03131 서울 종로구 삼일대로 464(윤현궁) -->
-														<%=pr.getPlaceAddr()%>
+														<%=f.getFestivalAddr()%>
 													</td>
 												</tr>
 												<tr>
 													<td>전화번호</td>
 													<td>
 														<!-- 02-766-9090 -->
-														<%=pr.getPlaceTell()%>
+														<%=f.getFestivalTell()%>
 													</td>
 												</tr>
 
@@ -192,7 +192,7 @@
 													<td>웹사이트</td>
 													<td>
 														<!-- <a href="http://www.naver.com/">웹사이트 보기</a> -->
-														<a href="<%=pr.getPlaceSite()%>">웹사이트 보기</a>
+														<a href="<%=f.getFestivalSite()%>">웹사이트 보기</a>
 													</td>
 												</tr>
 												<tr>
@@ -201,7 +201,7 @@
 														<!-- 11 ~ 3월 09:00 ~ 18:00
 									<br>
 										4 ~ 10월 09:00 ~ 19:00 -->
-														<%=pr.getPlacePeriod()%>
+														<%=f.getFestivalPeriod()%>
 													</td>
 												</tr>
 
@@ -209,7 +209,7 @@
 													<td>운영 요일</td>
 													<td>
 														<!-- 화수목금토일 -->
-														<%=pr.getPlaceOntime()%>
+														<%=f.getFestivalOntime()%>
 													</td>
 												</tr>
 												<tr>
@@ -217,7 +217,7 @@
 													<td>
 														<!-- 접근가능
 										<br>장애인화장실 -->
-														<%=pr.getPlaceUtility()%>
+														<%=f.getFestivalUtility()%>
 													</td>
 												</tr>
 												<tr>
@@ -237,16 +237,24 @@
 										<br> 프렌치 르네상스 풍의 석재를 혼용한 벽돌 2층 저택에 16개의 천장 문양이 모두 다르다.
 										<br> 1948년 덕성여자대학교에 매각되어 한때 교사로 쓰였고 지금도 평생교육원으로 쓰인다.
 										<br> 인기 드라마 궁의 촬영 장소로 사용되기도 했다. -->
-														<%=pr.getPlaceNotice()%>
+														<%=f.getFestivalNotice()%>
 													</td>
 												</tr>
 												<tr>
 													<td>이용요금</td>
 													<td>
-														<%=pr.getPlacePayment()%>
+														<%=f.getFestivalPayment()%>
 													</td>
 												</tr>
-												
+												<tr>
+													<td>이용시설안내</td>
+													<td>
+														<!-- 운현궁 정례 행사, 운현궁 일요 예술마당, 고종 명성후 가례(국혼례) 행사 안내
+										<br> - 궁중의상체험
+										<br> - 대원군행차체험 -->
+														<%=f.getFestivalUtility()%>
+													</td>
+												</tr>
 											</table>
 
 
@@ -275,12 +283,12 @@
 									</div>
 									<div id="collapseFour" class="panel-collapse collapse">
 										<div class="panel-body" class="form-horizontal">
-											<form action="/PlaceComment">
+											<form action="/festivalComment">
 												<div class="row form-group">
 													<label class="col-sm-1 control-label" style="padding-top:7px;">아이디</label>
 													<input type="hidden" class="form-control" value="아이디" name="userId"/>
-													<input type="hidden" class="form-control" value="<%=pr.getPlaceTitle() %>" name="title"/>
-													<input type="hidden" class="form-control" value="<%=pr.getTitleNo() %>" name="titleNo"/>
+													<input type="hidden" class="form-control" value="<%=f.getFestivalTitle() %>" name="title"/>
+													<input type="hidden" class="form-control" value="<%=f.getTitleNo() %>" name="titleNo"/>
 													<div class="col-xs-9 col-xs-offset-1">
 														<input type="text" class="form-control" placeholder="댓글내용" name="comment"/>
 													</div>
@@ -298,11 +306,11 @@
 															<th>작성일</th>
 														</tr>
 														
-														<%for(PlaceRankComment prc : list) { %>
+														<%for(FestivalComment fc : list) { %>
 														<tr>
-															<td><%=prc.getUserId() %></td>
-															<td><%=prc.getUserComment() %><a href="/commentDelete"><span class="glyphicon glyphicon-trash pull-right"></span></a></td>
-															<td><%=prc.getWriteDate() %></td>
+															<td><%=fc.getUserId() %></td>
+															<td><%=fc.getUserComment() %><a href="/commentDelete"><span class="glyphicon glyphicon-trash pull-right"></span></a></td>
+															<td><%=fc.getWriteDate() %></td>
 														</tr>
 														<%} %>
 														
@@ -319,7 +327,7 @@
 								<br>
 								<script>
 									function back(){
-										location.href="/placeRankList?type=<%=pr.getPlaceType()%>";
+										location.href="/festivalList?season=<%=f.getFestivalSeason()%>";
 									}
 								</script>
 							</div>
@@ -327,7 +335,7 @@
 
 
 					</section>
-					<%-- <%@ include file="/views/main/footer.jsp"%> --%>
+<%-- 					<%@ include file="/views/main/footer.jsp"%> --%>
 						<script>
 							$('.carousel').carousel();
 						</script>

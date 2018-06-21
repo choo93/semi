@@ -5,6 +5,7 @@
 <%
 	Qna q=(Qna)request.getAttribute("qna");
 	Answer an=(Answer)request.getAttribute("answer");
+	SeoulUser su=(SeoulUser)session.getAttribute("user");
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -118,7 +119,7 @@ function back()
 				
 				
 				<div id="QnA" style="width:100%; height:auto;">
-				<ul style="width:100%; height:100%;">
+				<ul style="width:100%; height:auto;">
 				
 				<li style="border-top:2px solid gray; border-bottom:2px solid gray; height:100px;;">
 				<dl><dt><%=q.getQuestionChk()%><dd style="width:50%;float:left;"><%=q.getTitle()%></dd><dd><%=q.getWriteDate()%></dd></dl>
@@ -136,7 +137,7 @@ function back()
 					<dd class="answer"><%=an.getContent()%></dd>
 				</dt></dl>
 				</li>
-				<%}else{%>
+				<%}else if(su!=null && su.getUserId().equals("admin")){%>
 				<form action="/answerWrite">
 				<li style="height:310px;border-bottom:2px solid gray;">
 					  <div class="form-group">
@@ -145,6 +146,7 @@ function back()
     		
   				</div>
 				</li>
+				<button class="btn btn-primary" style="margin-top:20px;" onclick="back();">목록</button>
 				<%} %>
 				
 				
@@ -152,10 +154,13 @@ function back()
 					
 				
 				</div>
+				
+				<%if(su==null||an==null){ %>
 				<button class="btn btn-primary" style="margin-top:20px;" onclick="back();">목록</button>
-				<%if(an==null){ %>
+					<%if( su.getUserId().equals("admin")){ %>
 					<input type="hidden" name="questionNo" value="<%=q.getQuestionNo()%>">
 				<input type="submit"class="btn btn-primary" style="margin-top:20px;" value="답변 등록">
+				<%} %>
 				</form>
 				<%} %>
 
@@ -166,6 +171,5 @@ function back()
 
 			
 			</section>
-			<%@ include file="/views/main/footer.jsp"%>
 </body>
 </html>

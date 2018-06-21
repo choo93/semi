@@ -125,7 +125,7 @@ public class UserDao {
 	public int insertUser(Connection conn, SeoulUser su) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "insert into seoul_user values(sequence_user.nextval,?,?,?,?,?,?,sysdate,'Y',sysdate)";
+		String query = "insert into seoul_user values(sequence_user.nextval,?,?,?,?,?,?,?,sysdate,'Y',sysdate)";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, su.getUserId());
@@ -133,7 +133,8 @@ public class UserDao {
 			pstmt.setString(3, su.getUserName());
 			pstmt.setString(4, su.getUserEmail());
 			pstmt.setString(5, su.getUserPhone());
-			pstmt.setString(6, su.getUserAddr());
+			pstmt.setString(6, su.getUserBirthday());
+			pstmt.setString(7, su.getUserAddr());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

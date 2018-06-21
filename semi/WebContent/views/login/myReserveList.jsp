@@ -11,6 +11,7 @@ ArrayList<HotelReserve> hoteltList = (ArrayList<HotelReserve>)request.getAttribu
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
@@ -23,60 +24,175 @@ ArrayList<HotelReserve> hoteltList = (ArrayList<HotelReserve>)request.getAttribu
 		box-sizing:border-box;
 	}
 	div{
-		border:0.5px solid black;
+	
 	}
 	#wrap{
-		width:100%;
-		padding:5%;
+		width:1400px;
+		padding:50px;
 	}
 	
-	#wrap>div{
-		width:90%;
-		height:400px;
+	.title{
+		width:100%;
+		height:60px;
+		font-size:25px;
+		text-align:center;
+		line-height:200%;
+		margin-top:30px;
+		border-bottom:1px solid lightgrey;
+		border-top:1px solid lightgrey;
+		background-color:rgb(180,48,41);
+		font-weight:bold;
+		color:white;
+	}
+	
+	#wrap>div:nth-child(even){
+		width:100%;	height:500px;
+		margin-top:30px;
 		margin-bottom:50px;
-		padding:3%;
+	}
+	
+	#wrap>div:nth-child(even)>div:first-child{
+		width:100%;	height:10%;
+		
+	}
+	#wrap>div:nth-child(even)>div:last-child{
+		width:100%;	height:90%;
 		overflow:auto;
 	}
-	#wrap>div>div{
-		width:94%;
+	
+	#wrap>div:nth-child(even)>div:first-child>div{
+		float:left;
+		text-align:center;
+		line-height:40px;
+		font-size:20px;
+		font-weight:bold;
+	}
+	
+	#wrap>div:nth-child(even)>div:last-child>div{
+		width:100%;	height:50px;
+	}
+	
+	#concertTitle>div:first-child{
+		width:25%;	height:100%;
+	}
+	#concertTitle>div:nth-child(2){
+		width:10%;	height:100%;
+	}
+	#concertTitle>div:nth-child(3){
+		width:10%;	height:100%;
+	}
+	#concertTitle>div:nth-child(4){
+		width:10%;	height:100%;
+	}
+	#concertTitle>div:nth-child(5){
+		width:10%;	height:100%;
+	}
+	#concertTitle>div:last-child{
+		width:35%;	height:100%;
+	}
+	
+	#wrap>div:nth-child(even)>div:last-child>div>div{
+		float:left;
 		text-align:center;
 	}
 	
-	#wrap>div>div:not(:first-child){
-		line-height:300%;
+	#concertContent>div:first-child{
+		width:25%;	height:100%;
+	}
+	#concertContent>div:nth-child(2){
+		width:10%;	height:100%;
+	}
+	#concertContent>div:nth-child(3){
+		width:10%;	height:100%;
+	}
+	#concertContent>div:nth-child(4){
+		width:10%;	height:100%;
+	}
+	#concertContent>div:nth-child(5){
+		width:10%;	height:100%;
+	}
+	#concertContent>div:last-child{
+		width:35%;	height:100%;
 	}
 	
-	
-	#wrap>div>div:last-child{
-		heigh:80%;
+	#hotelTitle>div:first-child{
+		width:20%;	height:100%;
 	}
-	#wrap>div>div:not(:first-child)>div{
-		float:left;
+	#hotelTitle>div:nth-child(2){
+		width:15%;	height:100%;
+	}
+	#hotelTitle>div:nth-child(3){
+		width:50%;	height:100%;
+	}
+	#hotelTitle>div:last-child{
+		width:15%;	height:100%;
 	}
 	
-	#wrap>div>div:first-child{
-		height: 60px;
-		font-size:30px;
+	#hotelContent>div:first-child{
+		width:20%;	height:100%;
+	}
+	#hotelContent>div:nth-child(2){
+		width:15%;	height:100%;
+	}
+	#hotelContent>div:nth-child(3){
+		width:50%;	height:100%;
+	}
+	#hotelContent>div:last-child{
+		width:15%;	height:100%;
+	}
+	
+	#doboTitle>div:first-child{
+		width:30%;	height:100%;
+	}
+	
+	#doboTitle>div:nth-child(2){
+		width:15%;	height:100%;
+	}
+	
+	#doboTitle>div:nth-child(3){
+		width:15%;	height:100%;
+	}
+	
+	#doboTitle>div:last-child{
+		width:40%;	height:100%;
+	}
+	
+	#doboContent>div:first-child{
+		width:30%;	height:100%;
+	}
+	#doboContent>div:nth-child(2){
+		width:15%;	height:100%;
+	}
+	#doboContent>div:nth-child(3){
+		width:15%;	height:100%;
+	}
+	#doboContent>div:last-child{
+		width:40%;	height:100%;
+	}
+	
+	.noList{
+		width:100%;
+		height:400px !important;
+		text-align:center;
+		font-size:50px;
+		line-height:200px;
+		color:lightgrey;
+	}
+	
+	#back{
+		width:100%;	height:70px;
+	}
+	
+	#back>button{
+		width:100px;	height:40px;
+		margin-left:40%;
+		margin-top:30px;
+		font-size:16px;
+		background-color:rgb(180,48,41);
+		font-weight:bold;
+		color:white;
 		border:0;
-	}
-	#wrap>div>div>div{
-		float:left;
-		overflow: hidden;
-	}
-	#wrap>div>div:not(:first-child){
-		height:50px;
-	}
-	
-	#concert>div>div{
-		width:16.66%;	height:100%;
-	}
-	
-	#dobo>div>div{
-		width:25%;	height:100%;
-	}
-	
-	#hotel>div>div{
-		width:25%;	height:100%;
+		cursor:pointer;
 	}
 	
 </style>
@@ -84,47 +200,84 @@ ArrayList<HotelReserve> hoteltList = (ArrayList<HotelReserve>)request.getAttribu
 	<%@ include file="/views/main/header.jsp"%>
 	<section>
 		<div id="wrap">
-			<div id="concert">
-				<div>공연 예약 목록</div>
-				<div>
+			<div class="title">공연 예약 목록</div>
+			<div>
+				<div id="concertTitle">
 					<div>공연 이름</div><div>날짜</div><div>시간</div><div>좌석</div><div>가격</div><div>주소</div>
 				</div>
+				<div id="concert">
 				<%
 				for(ConcertReserve cr : concertList){ %>
-					<div>
+					<div  id="concertContent">
 						<div><%=cr.getConcertTitle() %></div><div><%=cr.getConcertReserveDate() %></div><div><%=cr.getConcertReserveTime() %></div>
 						<div>
 							<%=(char)(65+(cr.getSeatNo()/10)) %><%=cr.getSeatNo()%10 %>석
 						</div>
 						<div><%=cr.getConcertPrice() %></div><div><%=cr.getConcertAddress() %></div>
 					</div>
-				<%} %>
+				<%}
+				%>
+				</div>
+				<%
+				if(concertList.size()==0){
+					%>
+						<div class="noList">예약된 목록이 없습니다.</div>
+					<%	
+					}
+				
+				%>
 			</div>
-			<div id="hotel">
-				<div>호텔 예약 목록</div>
-				<div>
+			<div class="title">호텔 예약 목록</div>
+			<div>
+				<div id="hotelTitle">
 					<div>호텔 이름</div><div>날짜</div><div>주소</div><div>호실</div>
 				</div>
+				<div>
 				<%for(HotelReserve hr : hoteltList){ %>
-					<div>
+					<div id="hotelContent">
 						<div><%=hr.getHotelName() %></div><div><%=hr.getReserveDate() %></div>
 						<div><%=hr.getAddress() %></div><div><%=(100*(10-((hr.getRoomNo()-1)/8)))+((hr.getRoomNo()-1)%8)+1 %>호실</div>
 					</div>
 				<%} %>
+				</div>
+				<%
+				if(hoteltList.size()==0){
+				%>
+					<div class="noList">예약된 목록이 없습니다.</div>
+				<%	
+				}
+				
+				%>
 			</div>
-			<div id="dobo">
-				<div>도보 관광 예약 목록</div>
-				<div>
+			<div class="title">도보 관광 예약 목록</div>
+			<div>
+				<div id="doboTitle">
 					<div>도보관광</div><div>날짜</div><div>시간</div><div>만남장소</div>
 				</div>
+				<div>
 				<%for(DoboReserve dr : doboList){ %>
-					<div>
+					<div id="doboContent">
 						<div><%=dr.getDoboTitle() %></div><div><%=dr.getDate() %></div><div><%=dr.getTime() %></div><div><%=dr.getDoboMeet() %></div>
 					</div>
 				<%} %>
+				</div>
+				<%
+				if(doboList.size()==0){
+					%>
+						<div class="noList">예약된 목록이 없습니다.</div>
+					<%	
+					}
+				
+				%>
 			</div>
+			<div id="back"><button onclick="back()">마이페이지</button></div>
 		</div>
 	</section>
 	<%@ include file="/views/main/footer.jsp"%>
 </body>
+<script>
+	function back(){
+		history.go(-1);
+	}
+</script>
 </html>

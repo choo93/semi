@@ -96,6 +96,7 @@ public class Enjoydao {
 				ELD.setIndex_TitleNo(rset.getInt("index_TitleNo"));
 				ELD.setIndex_Tags(rset.getString("index_Tags"));
 				ELD.setList_Element(rset.getString("list_Element"));
+				ELD.setIndex_Hits(rset.getInt("Index_Hits"));
 
 				list.add(ELD);
 			}
@@ -552,6 +553,7 @@ public class Enjoydao {
 		}
 		return result;
 	}
+	
 	public ArrayList<EnjoyFestival> AllFestivalData(Connection conn) {
 	      PreparedStatement pstmt = null;
 	      ResultSet rset = null;
@@ -907,6 +909,25 @@ public class Enjoydao {
 		}
 		return count;
 	}
+
+	public int countHits(int indexNo, Connection conn) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query="update List_Element set Index_Hits=Index_Hits+1 where Index_TitleNo=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, indexNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
 	
 }
 

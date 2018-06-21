@@ -11,6 +11,10 @@ div {
 	
 }
 
+#wrapp{
+	width:1300px;
+}
+
 #wrap {
 	width: 95%;
 	margin: auto;
@@ -215,6 +219,7 @@ div {
 	margin-top: 8px;
 	height: 35px;
 	border: 1px solid grey;
+	text-align:center;
 }
 
 #form>div>input:last-child {

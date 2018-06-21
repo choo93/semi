@@ -37,7 +37,8 @@ public class JoinusServlet extends HttpServlet {
 		su.setUserName(request.getParameter("name"));
 		su.setUserEmail(request.getParameter("email"));
 		su.setUserPhone("010-"+request.getParameter("phone")+"-"+request.getParameter("phone2"));
-		su.setUserAddr(request.getParameter("userAddr"));
+		su.setUserBirthday(request.getParameter("year")+request.getParameter("month")+request.getParameter("day"));
+		su.setUserAddr(request.getParameter("addr")+request.getParameter("addr2"));
 		su.setUserActive("Y");
 		int result = new UserService().insertUser(su);
 		if(result>0) {

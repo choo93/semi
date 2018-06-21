@@ -80,6 +80,14 @@ public class EnjoySelectServlet extends HttpServlet {
 			
 			//각 게시물 당 전체 덧글 수 몇 개인지 가져옴
 			String count = new EnjoyService().countComment(SEQ_Index_TitleNo);
+			
+			//각 게시물 조회수 몇 개인지
+			int countHits = new EnjoyService().countHits(SEQ_Index_TitleNo);
+			if(countHits>0) {
+				System.out.println("조회수 늘어나야됨");
+			}else {
+				response.sendRedirect("/views/enjoy/sojung.jsp");
+			}
 			// System.out.println(cd.getPageNavi());
 
 			// ▼ 기본 내용을 가져오는 로직

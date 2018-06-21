@@ -21,7 +21,7 @@ public class PlaceService {
 		
 		
 		String PageNavi = new PlaceDao().getPageNavi(conn,naviCountPerPage,recordCountPerPage,currentPage,search,type);
-		
+		System.out.println(type);
 		System.out.println(list.isEmpty());
 		System.out.println(PageNavi.isEmpty());
 		
