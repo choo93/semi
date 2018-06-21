@@ -7,10 +7,11 @@
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes"
 	rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>도보 관광 예약</title>
 <link rel="stylesheet" href="../../css/main.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <link rel="stylesheet" href="../../css/dobo/doboReserve.css?ver=1">
+<link rel="icon" href="image/main/favicon.ico">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
 <script src="/js/dobo/doboReserve.js?ver=1"></script>
