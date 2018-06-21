@@ -53,7 +53,7 @@ input[type="checkbox"]:checked+span:not (.lever ):before {
 		<div id="slide-out" class="sidenav">
 			<!-- desktop -->
 			<a href="http://localhost"><img
-				src="/image/main/logo.png" id="main_logo"></a>
+				src="/image/main/logo.png" id="main_logo" style="width:83%;"></a>
 				
 			<% if(user==null){ %>
 	        <div id="login_join">
@@ -62,21 +62,22 @@ input[type="checkbox"]:checked+span:not (.lever ):before {
 	        </div>    
 	        <% } else { %>
 	        <div id="login_join" class="login_after">	
-				<% if(user.getUserId().equals("admin")){ %>
-					<p><%=user.getUserName()%> 페이지 입니다</p>
-					<a href="/allUser">전체회원조회</a>
-				<% } else { %>
-					<p><span><%=user.getUserName()%></span>님 환영합니다</p>
-					<label onclick="myInfo();" id="infoBtn">마이페이지</label>
-					<form action="myPage" method="post" style="display:none;" id="myInfo">
-						<label style="color:red;">비밀번호 입력 : </label>
-						<input type="password" name="userPwd">
-						<div class="btn"><input type="submit" value="확인"></div>	
-					</form>
-				<% } %>
-				<a href="/logout">로그아웃</a><br>
+			<% if(user.getUserId().equals("admin")){ %>
+				<p><%=user.getUserName()%> 페이지 입니다</p>
+				<a href="/allUser">전체회원조회</a>
+			<% } else { %>
+				<p style="margin-bottom:4px;margin-left:73px;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
+				<a href="/myPage" style="margin-left:64px;margin-right:15px;">마이페이지</a>
+			<% } %>
+			<a href="/logout">로그아웃</a><br>
 	        </div>
-	        <% } %>
+	        <% } %>	
+	        
+	        <style>
+	        	a:hover{
+	        		color:#b43029;
+	        	}
+	        </style>
 	        <form action="/search" method="get" class="search-wrapper">
 	        	<input type="search" placeholder="Search" style="width:280px;margin-left:10px;">
 	        	<img src="/image/main/search.png" onclick="search();" class="main_search">

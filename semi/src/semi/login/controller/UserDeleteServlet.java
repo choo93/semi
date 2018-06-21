@@ -6,10 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import semi.login.model.service.UserService;
-import semi.login.model.vo.SeoulUser;
 
 /**
  * Servlet implementation class UserDeleteServlet
@@ -30,19 +26,8 @@ public class UserDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		String userId = ((SeoulUser)session.getAttribute("user")).getUserId();
-		String userPwd = ((SeoulUser)session.getAttribute("user")).getUserPwd();
-		System.out.println(userPwd);
-		System.out.println(userId);
-		int result = new UserService().deleteUser(userId,userPwd);
-		if(result>0) {
-			session.invalidate();
-			response.sendRedirect("/views/login/deleteSuccess.jsp");
-		}else {
-			response.sendRedirect("/views/login/error.html");
-		}
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

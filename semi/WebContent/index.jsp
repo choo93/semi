@@ -21,7 +21,6 @@
 <script src="js/main/vegas.min.js"></script>
 <script src="js/main/materialize.min.js"></script>
 <script src="js/main/main.js"></script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <style>
 /* materialize !important */
@@ -65,17 +64,18 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 				<p><%=user.getUserName()%> 페이지 입니다</p>
 				<a href="/allUser">전체회원조회</a>
 			<% } else { %>
-				<p><span><%=user.getUserName()%></span>님 환영합니다</p>
-				<label onclick="myInfo();" id="infoBtn">마이페이지</label>
-				<form action="myPage" method="post" style="display:none;" id="myInfo">
-					<label style="color:red;">비밀번호 입력 : </label>
-					<input type="password" name="userPwd">
-					<div class="btn"><input type="submit" value="확인"></div>	
-				</form>
+				<p style="margin-bottom:4px;margin-left:35px;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
+				<a href="/myPage" style="margin-left:20px;margin-right:15px;">마이페이지</a>
 			<% } %>
 			<a href="/logout">로그아웃</a><br>
         </div>
         <% } %>	
+        
+        <style>
+        	a:hover{
+        		color:#b43029;
+        	}
+        </style>
         
         <form action="/search" method="get" class="search-wrapper">
         	<input type="search" placeholder="Search" style="width:200px;margin-left:10px;">
@@ -209,7 +209,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 				} else {
 			%>
 			<p id="main_login_page">
-				<span><%=user.getUserName()%></span>님 환영합니다<br>
+				<span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다<br>
 				<a href="/myPage" style="padding-right:10px;">마이페이지</a> <a href="/logout" style="padding-left:10px;">로그아웃</a>
 			</p>
 			<%

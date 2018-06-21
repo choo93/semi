@@ -39,7 +39,7 @@ public class UserActiveServlet extends HttpServlet {
 		if(result>0) {
 			response.sendRedirect("/allUser");
 		}else {
-			response.sendRedirect("/views/login/error.html");
+			response.sendRedirect("/views/main/error.html");
 		}
 	}
 
