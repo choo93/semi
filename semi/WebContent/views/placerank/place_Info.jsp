@@ -1,4 +1,3 @@
-<%@page import="com.sun.scenario.effect.impl.prism.PrCropPeer"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ page import="semi.place.model.vo.*" import="java.util.*" import="semi.login.model.vo.*"%>
@@ -69,6 +68,23 @@
 						padding-top: 30px;
 					}
 				</style>
+																<script>
+												function insertComment(){
+													var title = $('#title').val();
+													var userId = $('#userId').val();
+													var titleNo = $('#titleNo').val();
+													var comment = $('#comment').val();
+													
+													$.ajax({
+														url : "/festivalComment",
+														type : "get",
+														data : {title:title, userId : userId,titleNo : titleNo, comment : comment},
+														success : function(data){
+															location.href="/placeSelect?titleNo="+titleNo;
+														}
+													});
+												}
+												</script>
 				<script>
 					// 이거는 자바 스크립트 선언에서 가져오는 듯
 					function initMap() {
@@ -286,35 +302,20 @@
 									</div>
 									<div id="collapseFour" class="panel-collapse collapse">
 										<div class="panel-body" class="form-horizontal">
-											
+											<%if(session.getAttribute("user")!=null){ %>
 												<div class="row form-group">
 													<label class="col-sm-1 control-label" style="padding-top:7px;"><%=user.getUserId() %></label>
+													<input type="hidden" calss="form-control" value="<%=pr.getPlaceTitle() %>" id="title"/>
 													<input type="hidden" class="form-control" value="<%=user.getUserId() %>" id="userId"/>
 													<input type="hidden" class="form-control" value="<%=pr.getTitleNo() %>" id="titleNo"/>
 													<div class="col-xs-9 col-xs-offset-1">
-														<input type="text" class="form-control" placeholder="댓글내용" id="commnet" name="comment"/>
+														<input type="text" class="form-control" placeholder="댓글내용" id="comment" name="comment"/>
 													</div>
 													<div class="col-xs-1">
 														<button type="button" onclick="insertComment();"class="btn btn-primary" style="font-size:14px; font;font-weight: bold;">전송</button>
 													</div>
 												</div>
-												<script>
-												function insertComment(){
-													var userId = $('#userId').val();
-													var titleNo = $('#titleNo').val();
-													var comment = $('#comment').val();
-													
-													$.ajax({
-														url : "/festivalComment",
-														type : "get",
-														data : {userId : userId,titleNo : titleNo, comment : comment},
-														success : function(data){
-															location.href="/placeSelect?titleNo="+titleNo;
-														}
-													});
-												}
-												</script>
-											<div class="container-fulid">
+												<div class="container-fulid">
 												<div class="row">
 													<table class="table">
 														<tr>
@@ -326,7 +327,50 @@
 														<%for(PlaceRankComment prc : list) { %>
 														<tr>
 															<td><%=prc.getUserId() %></td>
-															<td><%=prc.getUserComment() %><a href="/commentDelete"><span class="glyphicon glyphicon-trash pull-right"></span></a></td>
+															<%if(prc.getUserId().equals(((SeoulUser)session.getAttribute("user")).getUserId())){ %>
+															<td><%=prc.getUserComment() %><span class="glyphicon glyphicon-trash pull-right" onclick="commentDelete(<%=prc.getTitleNo()%>,<%=prc.getReviewNo()%>);"></span></td>
+															<%}else{ %>
+															<td><%=prc.getUserComment() %></td>
+															<%} %>
+															<td><%=prc.getWriteDate() %></td>
+														</tr>
+														<%} %>
+														<script>
+														function commentDelete(titleNo,reviewNo) {
+															location.href="/commentDelete?titleNo="+titleNo+"&reviewNo="+reviewNo;
+														}
+														</script>
+													</table>
+												</div>
+											</div>
+												<%}else {%>
+												 <div class="row form-group">
+													<label class="col-sm-1 control-label" style="padding-top:7px;">비로그인</label>	
+													<div class="col-xs-9 col-xs-offset-1">
+														<input type="text" class="form-control" placeholder="로그인후 이용이 가능합니다." id="comment" name="comment" readonly onclick="login()"/>
+													</div>
+													<script>
+													function login() {
+														alert("로그인을 먼저 진행해 주세요");
+														window.open("/views/main/login.jsp","_black","width=400px,height=250px");
+													}
+													</script>
+													<div class="col-xs-1">
+														<button type="button" onclick="insertComment();"class="btn btn-primary disabled" style="font-size:14px; font;font-weight: bold;">전송</button>
+													</div>
+												</div><div class="container-fulid">
+												<div class="row">
+													<table class="table">
+														<tr>
+															<th>아이디</th>
+															<th>내용</th>
+															<th>작성일</th>
+														</tr>
+														
+														<%for(PlaceRankComment prc : list) { %>
+														<tr>
+															<td><%=prc.getUserId() %></td>
+															<td><%=prc.getUserComment() %></td>
 															<td><%=prc.getWriteDate() %></td>
 														</tr>
 														<%} %>
@@ -334,6 +378,8 @@
 													</table>
 												</div>
 											</div>
+												<%} %>
+											
 										</div>
 									</div>
 								</div>

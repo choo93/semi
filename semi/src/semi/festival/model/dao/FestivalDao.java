@@ -240,7 +240,10 @@ public class FestivalDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query="INSERT INTO ELEMENT_INDEX_REVIEW VALUES(?,?,?,NULL,?,ELEMENT_INDEX_REVIEW_SEQ.NEXTVAL,SYSDATE)";
-		
+		System.out.println(fc.getTitle());
+		System.out.println(fc.getTitleNo());
+		System.out.println(fc.getUserId());
+		System.out.println(fc.getUserComment());
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, fc.getTitleNo());
@@ -290,6 +293,25 @@ public class FestivalDao {
 		}
 		
 		return list;
+	}
+
+	public int commentDelete(Connection conn, int reviewNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query="delete from element_index_review where seq_review = ?";
+		
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reviewNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 
 }

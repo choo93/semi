@@ -1,27 +1,29 @@
-package semi.festival.controller;
+package semi.travelready.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import semi.festival.model.service.FestivalService;
-import semi.festival.model.vo.FestivalComment;
+import semi.travelready.model.service.QnaService;
+import semi.travelready.model.vo.Answer;
+import semi.travelready.model.vo.Qna;
 
 /**
- * Servlet implementation class FestivalCommentServlet
+ * Servlet implementation class QnaSelectUpdateServlet
  */
-@WebServlet(name = "FestivalComment", urlPatterns = { "/festivalComment" })
-public class FestivalCommentServlet extends HttpServlet {
+@WebServlet(name = "QnaSelectUpdate", urlPatterns = { "/qnaSelectUpdate" })
+public class QnaSelectUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FestivalCommentServlet() {
+    public QnaSelectUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,20 +32,21 @@ public class FestivalCommentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
 		
-		FestivalComment fc = new FestivalComment();
+		int questionNo=Integer.parseInt(request.getParameter("questionNo"));
 		
-		fc.setUserId(request.getParameter("userId"));
-		fc.setTitle(request.getParameter("title"));
-		fc.setTitleNo(Integer.parseInt(request.getParameter("titleNo")));
-		fc.setUserComment(request.getParameter("comment"));
 		
-		int result = new FestivalService().insertComment(fc);
 		
-		response.setCharacterEncoding("utf-8");
-		response.getWriter().print(result);
-		response.getWriter().close();
+		Qna q=new QnaService().qnaSelect(questionNo);
+		Answer an=new QnaService().qnaComment(questionNo);
+		
+		
+		if(q!=null) {
+			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/QnAselect.jsp");
+			request.setAttribute("answer",an);
+			request.setAttribute("qna", q);
+			view.forward(request, response);
+		}
 	}
 
 	/**

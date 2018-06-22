@@ -1,4 +1,4 @@
-package semi.festival.controller;
+package semi.place.controller;
 
 import java.io.IOException;
 
@@ -14,14 +14,14 @@ import semi.festival.model.vo.FestivalComment;
 /**
  * Servlet implementation class FestivalCommentServlet
  */
-@WebServlet(name = "FestivalComment", urlPatterns = { "/festivalComment" })
-public class FestivalCommentServlet extends HttpServlet {
+@WebServlet(name = "FestivalComment", urlPatterns = { "/placerankComment" })
+public class PlaceRankCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FestivalCommentServlet() {
+    public PlaceRankCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.travelready.model.service.SeoulInformationService;
+import semi.travelready.model.vo.SeoulInformationComment;
 
 /**
  * Servlet implementation class SeoulInformationCommentUpDownServlet
@@ -38,15 +39,19 @@ public class SeoulInformationCommentUpDownServlet extends HttpServlet {
 			int up=Integer.parseInt(request.getParameter("Up"));
 			int result=new SeoulInformationService().commentUp(commentNo,up);
 			if(result>0) {
-				response.sendRedirect("/seoulInformationComment");
+				SeoulInformationComment sic=new SeoulInformationService().selectOne(commentNo);
+				response.getWriter().print(sic.getUp());
+				
 			}
 		}
 		else
 		{
 			int down=Integer.parseInt(request.getParameter("Down"));
 			int result=new SeoulInformationService().commentDown(commentNo,down);
+			System.out.println(down);
 			if(result>0) {
-				response.sendRedirect("/seoulInformationComment");
+				SeoulInformationComment sic=new SeoulInformationService().selectOne(commentNo);
+				response.getWriter().print(sic.getDown());
 			}
 		}
 	}

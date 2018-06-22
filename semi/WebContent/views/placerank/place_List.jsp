@@ -12,7 +12,7 @@
 	case 2: title = "나이트라이프 Top10"; break;
 	case 3: title = "전통 Top10"; break;
 	case 4: title = "쇼핑 Top10"; break;
-	case 5: title = "한류 Top10"; break;
+	case 5: title = "서울의 불빛 Top10"; break;
 	case 6: title = "가족여행 Top10"; break;
 	}
 

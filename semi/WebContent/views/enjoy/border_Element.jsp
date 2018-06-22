@@ -50,7 +50,32 @@
 <script src="../../js/bordertoogle.js"></script>
 </head>
 <style>
-.carousel-inner {
+.container-fluid {
+						padding: 0;
+					}
+
+					/* .carousel-inner {
+						width: 100%;
+						height: auto;
+					}
+
+					.carousel-inner div img {
+						width: 100%;
+						height: auto;
+					}
+
+					.carousel-caption {
+						bottom: 85%;
+					}
+
+					.control {
+						position: inherit;
+						top: 50%;
+						z-index: 5;
+						display: inline-block;
+						right: 50%;
+					} */
+ .carousel-inner {
 	width: 100%;
 	height: 500px;
 }
@@ -62,7 +87,7 @@
 
 .carousel-caption {
 	bottom: 85%;
-}
+} 
 </style>
 <body id="scroll">
 	<%-- <%@ include file="/views/main/header.jsp"%> --%>
@@ -82,7 +107,7 @@
 			<!-- 메인이미지 -->
 			<%StringTokenizer STImage = new StringTokenizer(ELD.getIndex_Image(),"##");
             int STImageSu = STImage.countTokens();%>
-
+			<div class="container">
 			<div id="carousel-generic" class="carousel slide">
 				<ol class="carousel-indicators">
 					<li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
@@ -94,11 +119,11 @@
 				<!-- 캐러셀 이미지 부분 -->
 				<div class="carousel-inner">
 					<div class="item active">
-						<img src="<%=STImage.nextToken()%>">
+						<img style="height: 500px"src="<%=STImage.nextToken()%>">
 					</div>
 					<%for(int i=1;i<STImageSu;i++){ %>
 					<div class="item">
-						<img src="<%=STImage.nextToken()%>">
+						<img style="height: 500px" src="<%=STImage.nextToken()%>">
 					</div>
 					<%} %>
 				</div>
@@ -111,7 +136,7 @@
 					<span class="glyphicon glyphicon-chevron-right"></span>
 				</a>
 			</div>
-			
+			</div>
 		<div id="basicInfoAllDiv" style="padding: 3px;">
 			<%if(ELD!=null) {%>
 			<!-- 기본정보 토글 부분을 담는 DIV -->
