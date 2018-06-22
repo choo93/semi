@@ -24,10 +24,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Seoulaim - 서울즐기기</title>
+<link rel="icon" href="../../image/main/favicon.ico">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/moreBtn.css">
 <!-- <link rel="stylesheet" href="../../css/enjoySelect.css"> -->
 <link rel="stylesheet" href="../../css/enjoy/pagination.css">
@@ -55,12 +55,23 @@ else self.name = '';
 	position: relative;
 	float: left;
 }
+#currentLocation{
+	margin-top:0px!important;
+	padding-top:25px!important;
+}
+.wrapper{
+	width:1900px;
+	margin:0 auto;
+}
 </style>
 
 <body id="scroll">
 	
+	<%@ include file="/views/main/header.jsp"%>
+	
 	<section>
 
+	<div class="wrapper">
 		<!-- 모든걸 감싸는 DIV -->
 		<div id="enjoyPage" style="width: 100%;">
 		
@@ -323,6 +334,7 @@ else self.name = '';
 
 		<%-- <jsp:useBean id="list" class="semi.enjoy.model.vo.EnjoyListData" scope="request">
 	</jsp:useBean> --%>
+	</div>
 	</section>
 	<%@ include file="/views/main/footer.jsp"%>
 
