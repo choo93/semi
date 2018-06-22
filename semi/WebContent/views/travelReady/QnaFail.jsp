@@ -116,7 +116,6 @@ function logout(){
 </script>
 
 <body id="scroll">
-<%@ include file="/views/main/header.jsp" %>
 <section>
 
 			
@@ -138,7 +137,7 @@ function logout(){
 						
 						<a href="/qnaCategory?search=확인완료" class="btn btn-outline-primary">해결된 질문</a>
 						<a href="/qnaCategory?search=확인전" class="btn btn-outline-primary">미해결된 질문</a>
-						<a href="/faq" class="btn btn-outline-primary">자무 묻는 질문 게시판 이동</a>
+						<a href="/faq" class="btn btn-outline-primary">자주 묻는 질문 게시판 이동</a>
 
 						
 					</fieldset>

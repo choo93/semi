@@ -120,12 +120,22 @@
      	
      	
      	$(document).ready(function(){
-    		$("textarea").keyup(function() 
+    		$("#textarea1").keyup(function() 
     		{ 
             
     			var inputLength = $(this).val().length; 
-    			var remain = 250 - inputLength; 
-    			$("strong[name=chk]").html(remain); 
+    			var remain =inputLength; 
+    			$("strong[name=chk1]").html(remain); 
+    		});
+    });
+    	
+    	$(document).ready(function(){
+    		$("#textarea2").keyup(function() 
+    		{ 
+            
+    			var inputLength = $(this).val().length; 
+    			var remain =inputLength; 
+    			$("strong[name=chk2]").html(remain); 
     		});
     });
     	
@@ -246,7 +256,7 @@
 					<p>전화 : 1345 (지역번호 없음)</p>
 					
 					<div id="comment" style="background-color:transparent; border:1px solid #f2f2f2">
-						<div style="width:100%; height:20%; font-weight:700"><span>소셜 로그인</span></div>
+						<div style="width:100%; height:20%; font-weight:700"><span>서울 방문 댓글</span></div>
 						<div style="width:100%; height:70%; margin-top:10px;">
 							<div style="width:100px; height:130px;float:left; background:url(/image/main/logo.png); background-repeat:no-repeat; background-size:100%;"></div>
 							<%if(su!=null){ %>
@@ -256,12 +266,12 @@
 							<div style="width:85%; height:100%; margin-left:15%;">
 				
 								<ul style="border-radius:10px;">
-									<li><textarea placeholder="소셜 계정으로 작성하세요" rows="1" readonly style="resize:none;"></textarea></li>
-									<li><textarea name="content" rows="10" style="height:80px; resize:none;"></textarea></li>
+									<li><textarea placeholder="로그인 후 작성하세요" rows="1" readonly style="resize:none;"></textarea></li>
+									<li><textarea id="textarea1" name="content" rows="10" style="height:80px; resize:none;"></textarea></li>
 									<li style="margin-bottom:10px;height:20px;">
 									<ul style="list-style:none; width:100%; height:20px; float:left;">
-										<li style="width:50%;list-style:none; float:left;"><button>사진</button></li>
-										<li style="padding-left:350px;width:50%;list-style:none; float:right;"><strong name="chk">0</strong><span>/250</span></li>
+								
+										<li style="padding-left:350px;width:50%;list-style:none; float:right;"><strong name="chk1">0</strong><span>/250</span></li>
 									</ul>
 									
 									</li>
@@ -308,15 +318,35 @@
 								<li style="height:100px; padding-top:40px;"><%=sic.getContent()%>
 									<ul style="list-style:none; float:right; width:200px; height:100%;">
 										<li style="width:50px; height:100%;list-style:none; float:left; text-align:center;">
-										<button onclick="up(<%=sic.getCommentNo()%>)" style="width:40px;height:30px; border-radius:7px; background-color:white;">
+										<%if(su!=null){ %>
+										<button onclick="up(<%=sic.getCommentNo()%>);" style="width:40px;height:30px; border-radius:7px; background-color:white;">
 										<span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
 									    background-position: 0px -93px;">
-									    <strong id="upinc"><%=sic.getUp()%></strong></span></button></li>
+									    <strong id="upinc"><%=sic.getUp()%></strong></span></button>
+									    <%}else{ %>
+									    <button onclick="logout();" style="width:40px;height:30px; border-radius:7px; background-color:white;">
+										<span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
+									    background-position: 0px -93px;">
+									    <strong id="upinc"><%=sic.getUp()%></strong></span></button>
+									    
+									    <%} %>
+									    
+									    
+									    
+									    </li>
 										
 										<li style="width:50px; height:100%;list-style:none; float:left; text-align:center;">
+										<%if(su!=null){ %>
 										<button onclick="down(<%=sic.getCommentNo()%>)" style="width:40px;height:30px; border-radius:7px; background-color:white;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
 									    background-position: 0px -109px; ">
-									    <strong id="downdec"><%=sic.getDown()%></strong></span></button></li>
+									    <strong id="downdec"><%=sic.getDown()%></strong></span></button>
+									    <%}else{ %>
+									    
+									    <button onclick="logout();" style="width:40px;height:30px; border-radius:7px; background-color:white;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
+									    background-position: 0px -109px; ">
+									    <strong id="downdec"><%=sic.getDown()%></strong></span></button>
+									    <%} %>
+									    </li>
 									
 									</ul>
 									
@@ -349,11 +379,11 @@
 									<input type="hidden" value="<%=su.getUserName()%>" name="userName">
 									<%} %>
 									<input type="hidden" value="<%=sic.getCommentNo()%>" name="commentNo">
-									<li><textarea name="content" rows="10" style="height:80px; resize:none;"></textarea></li>
+									<li><textarea id="textarea2" name="content" rows="10" style="height:80px; resize:none;"></textarea></li>
 									<li style="margin-bottom:10px;height:20px;">
 									<ul style="list-style:none; width:100%; height:20px; float:left;">
-										<li style="width:50%;list-style:none; float:left;"><button>사진</button></li>
-										<li style="padding-left:385px;width:50%;list-style:none; float:right;"><strong name="chk">0</strong><span>/250</span></li>
+										
+										<li style="padding-left:385px;width:50%;list-style:none; float:right;"><strong name="chk2">0</strong><span>/250</span></li>
 									</ul>
 									
 									</li>

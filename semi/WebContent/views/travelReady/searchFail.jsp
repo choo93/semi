@@ -161,7 +161,6 @@ function test(id){
 </script>
 
 <body id="scroll">
-<%@ include file="/views/main/header.jsp" %>
 <section>
 			
 			<div id="pagecontent">

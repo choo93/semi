@@ -72,11 +72,6 @@ input[type="checkbox"]:checked+span:not (.lever ):before {
 			<a href="/logout">로그아웃</a><br>
 	        </div>
 	        <% } %>	
-	       
-	        <form action="/search" method="get" class="search-wrapper">
-	        	<input type="search" placeholder="Search" style="width:280px;margin-left:10px;">
-	        	<img src="/image/main/search.png" onclick="search();" class="main_search">
-	        </form>
 	        	        		
 			<!-- mobile -->
 			<div id="fixed_login">

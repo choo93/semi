@@ -36,6 +36,7 @@ public class PdfDownServlet extends HttpServlet {
 			
 			int orderNo=Integer.parseInt(request.getParameter("orderNo"));
 			
+			System.out.println(orderNo);
 			GuideBookDown gbd=new GuideBookRequestService().pdfDown(orderNo);
 			
 			

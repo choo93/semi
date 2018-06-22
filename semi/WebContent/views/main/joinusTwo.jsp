@@ -281,7 +281,7 @@ input[type=email].valid:not(.browser-default):focus{
 				    	}
 				   }
 				   function submit(){
-					   if(submitCount==6){
+					   if(submitCount>=6){
 						   var userId = $('#user_id').val();
 						   var userPwd = $('#user_pwd').val();
 						   var userName = $('#user_name').val();

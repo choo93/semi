@@ -68,8 +68,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
         <% } else { %>
         <div id="login_join" class="login_after">	
 			<% if(user.getUserId().equals("admin")){ %>
-				<p><%=user.getUserName()%> 페이지 입니다</p>
-				<a href="/allUser">전체회원조회</a>
+				<p><%=user.getUserName()%>로 로그인 하셨습니다</p>
 			<% } else { %>
 				<p style="margin-bottom:4px;margin-left:35px;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
 				<a href="/myPage" style="margin-left:20px;margin-right:15px;">마이페이지</a>
@@ -77,17 +76,6 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			<a href="/logout">로그아웃</a><br>
         </div>
         <% } %>	
-        
-        <form action="/search" method="get" class="search-wrapper">
-        	<input type="search" placeholder="Search" style="width:200px;margin-left:10px;">
-        	<img src="/image/main/search.png" onclick="search();" class="main_search">
-        </form>
-        
-        <style>
-        	.scroll .search-wrapper{
-        		display:none;
-        	}
-        </style>
         
         <!-- desktop category -->
         <div id="main_category">
@@ -124,62 +112,61 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
         
         <!-- Tablet Category -->
 		<ul id="tablet_category">
-			<li class="category_title"><a href="">하이라이트</a>
+			<li class="category_title" style="cursor:pointer;"><a href="" style="display:block;width:100%;">하이라이트</a>
 			<ul class="category_sub_menu" style="display:none;">
 			    <li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
         		<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
 			</ul>
 			</li>
-			<li class="category_title"><a href="/views/enjoy/enjoyPhoto.jsp">서울즐기기</a>
+			<li class="category_title"><a href="/views/enjoy/enjoyPhoto.jsp" style="display:block;width:100%;">서울즐기기</a>
             <ul class="category_sub_menu" style="display:none;">
 			    <li><a href="/enjoyList?type=type1">추천코스</a></li>
 				<li><a href="/enjoyList?type=type2">명소</a></li>
 				<li><a href="/enjoyList?type=type3">쇼핑</a></li>
-				<li><a href="/enjoyList?type=type4">숙박</a></li>
 				<li><a href="/enjoyList?type=type5">음식점</a></li>
 				<li><a href="/enjoyList?type=type6">캘린더</a></li>
 			</ul>			
 			</li>
-			<li class="category_title"><a href="">예약하기</a>
+			<li class="category_title" style="cursor:pointer;"><a href="" style="display:block;width:100%;">예약하기</a>
             <ul class="category_sub_menu" style="display:none;">
 			    <li><a href="/concertList">공연예약</a></li>
 				<li><a href="/hotelList">호텔예약</a></li>
 				<li><a href="/doboList">서울도보관광예약</a></li>
 			</ul>			
 			</li>
-			<li class="category_title"><a href="">여행준비</a>
+			<li class="category_title"><a href="/views/travelReady/travelReady.jsp" style="display:block;width:100%;">여행준비</a>
 			<ul class="category_sub_menu" style="display:none;">
-			    <li><a href="">가이드북&amp;지도</a></li>
-			    <li><a href="">여행필수정보</a></li>
-			    <li><a href="">서비스 안내</a></li>
-			    <li><a href="">비즈니스&amp;파트너</a></li>
-			    <li><a href="">서울관광 이미지 다운로드</a></li>
-			    <li><a href="">FAQ</a></li>
-			    <li><a href="">공지사항</a></li>
+			    <li><a href="/guideBookDown">가이드북</a></li>
+				<li><a href="/views/travelReady/travelInformation.jsp">여행필수정보</a></li>
+				<li><a href="/seoulImage">서울 관광 이미지</a></li>
+				<li><a href="/faq">FAQ</a></li>
 			</ul>
 			</li>
 		</ul>
+		<style>
+			.category_title>a:hover{
+				color:#b43029;
+			}
+		</style>
         
 		</div>
 	
 		<!-- responsive - mobile -->
 		<div id="slide-out" class="sidenav">
-			<%
-				if (user == null) {
-			%>
+			<% if (user == null) { %>
 			<form action="/login" method="post"
 				style="margin: 17px; margin-top: 30px;">
 				<div class="input-field">
-					<input type="text" name="userId"> <label for="id">아이디</label>
+					<input type="text" name="userId" style="width:264px!important;margin-bottom:20px;"> 
+					<label for="id">아이디</label>
 				</div>
 				<div class="input-field">
-					<input type="text" name="userPwd"> <label for="id">비밀번호</label>
+					<input type="password" name="userPwd">
+					<label for="id">비밀번호</label>
 				</div>
-				<input class="btn submit_button" type="submit" value="LOGIN">
+				<input class="btn submit_button" type="submit" value="LOGIN" style="background-color:#b43029;width:100%;">
 			</form>
-			<%
-				} else {
-			%>
+			<% } else { %>
 			<%
 				if (user.getUserId().equals("admin")) {
 			%>
@@ -213,41 +200,83 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 				}
 			%>
 			
-			<div>
-	        	<div id="mobile_category_one" class="mobile_category">하이라이트</div>
-	        	<ul style="display:none;" id="mobile_one">
-	        		<li><a href="">Top 10</a></li>
-	        		<li><a href="">축제&amp;행사</a></li>
-	        		<li><a href="">서울 특화관광</a></li>
-	        		<li><a href="">한류관광</a></li>
-	        		<li><a href="">글로벌 서울 메이트
-	        		</a></li>
-	        	</ul>
-				<div id="mobile_category_two" class="mobile_category">서울즐기기</div>
-	        	<ul style="display:none;" id="mobile_two">
-	        		<li><a href="/enjoyList?type=type1">추천코스</a></li>
-					<li><a href="/enjoyList?type=type2">명소</a></li>
-					<li><a href="/enjoyList?type=type3">쇼핑</a></li>
-					<li><a href="/enjoyList?type=type4">숙박</a></li>
-					<li><a href="/enjoyList?type=type5">음식점</a></li>
-					<li><a href="/enjoyList?type=type6">캘린더</a></li>
-	        	</ul>
-				<div id="mobile_category_three" class="mobile_category">예약하기</div>
-	        	<ul style="display:none;" id="mobile_three">
-	        		<li><a href="/concertList">공연예약</a></li>
-					<li><a href="/hotelList">호텔예약</a></li>
-					<li><a href="/doboList">서울도보관광예약</a></li>
-	        	</ul>  
-				<div id="mobile_category_four" class="mobile_category">여행준비</div>
-	        	<ul style="display:none;" id="mobile_four">
-	        		<li><a href="">가이드북&amp;지도</a></li>
-	        		<li><a href="">여행필수정보</a></li>
-	        		<li><a href="">서비스 안내</a></li>
-	        		<li><a href="">비즈니스&amp;파트너</a></li>
-	        		<li><a href="">FAQ</a></li>
-	        		<li><a href="">공지사항</a></li>
-	        	</ul>          	        	        	
-        	</div>
+			<ul>
+				<li><span class="category category1">하이라이트</span>
+					<ul class="subcategory subcategory1">
+						<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
+						<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
+					</ul>
+				</li>
+				<li><span class="category category2">서울즐기기</span>
+					<ul class="subcategory subcategory2">
+						<li><a href="/enjoyList?type=type1">추천코스</a></li>
+						<li><a href="/enjoyList?type=type2">명소</a></li>
+						<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+						<li><a href="/enjoyList?type=type5">음식점</a></li>
+						<li><a href="/enjoyList?type=type6">캘린더</a></li>
+					</ul>
+				</li>
+				<li><span class="category category3">예약하기</span>
+					<ul class="subcategory subcategory3">
+						<li><a href="/concertList">공연예약</a></li>
+						<li><a href="/hotelList">호텔예약</a></li>
+						<li><a href="/doboList">서울도보관광예약</a></li>
+					</ul>
+				</li>
+				<li><span class="category category4">여행준비</span>
+					<ul class="subcategory subcategory4">
+						<li><a href="/guideBookDown">가이드북</a></li>
+						<li><a href="/views/travelReady/travelInformation.jsp">여행필수정보</a></li>
+						<li><a href="/seoulImage">서울 관광 이미지</a></li>
+						<li><a href="/faq">FAQ</a></li>
+					</ul>
+				</li>
+			</ul>
+			
+			<style>
+				.category{
+					cursor:pointer;
+					width:100%;
+					display:block;
+					border-left:3px solid white;
+					padding-left:17px;
+				}
+				.category:hover{
+					border-left:3px solid #b43029;
+				}
+				.subcategory{
+					display:none;
+				}
+			</style>
+			
+			<script>
+				$(".category1").click(function(){
+					$(".subcategory1").toggle("slow");
+					$(".subcategory2").css('display','none');
+					$(".subcategory3").css('display','none');
+					$(".subcategory4").css('display','none');
+				});
+				$(".category2").click(function(){
+					$(".subcategory2").toggle("slow");
+					$(".subcategory1").css('display','none');
+					$(".subcategory3").css('display','none');
+					$(".subcategory4").css('display','none');
+				});
+				$(".category3").click(function(){
+					$(".subcategory3").toggle("slow");
+					$(".subcategory2").css('display','none');
+					$(".subcategory1").css('display','none');
+					$(".subcategory4").css('display','none');
+				});
+				$(".category4").click(function(){
+					$(".subcategory4").toggle("slow");
+					$(".subcategory2").css('display','none');
+					$(".subcategory3").css('display','none');
+					$(".subcategory1").css('display','none');
+				});
+			</script>
+			
+  
         	<script>
         	$(document).ready(function(){
         		$("#main_category_one").click(function(){
@@ -323,23 +352,24 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 	            <hr class="border_top">
 	            <p>전통과 현대가 공존하는 도시 서울. 역사 유적, 조선시대 궁궐부터 최신 유행의 쇼핑 타운과 랜드마크까지 화려한 도시 라이프와 고즈넉한 전통의 멋을 취향에 따라 즐길 수 있다.</p>
 	            <p>CNN은 "서울에서 밤에 잠자는 사람은 루저"라고 했다. 잠자는 시간이 아까울 정도로 즐길거리가 많기 때문이다. 화려한 불빛과 함께 밤이 시작되면 낮과는 또다른 도시의 야경을 감상하고, 24시간 환한 쇼핑몰과 찜질방, 클럽과 바를 즐긴다. 시원한 강바람을 맞으며 자전거를 타고 출출해지면 푸짐하고 맛있는 야식을 먹는다. 잠들지 않는 서울의 밤은 낮과는 또 다른 매력으로 반짝반짝 빛나는 세계가 된다.</p>
-	            <a href="">하이라이트 바로가기</a>
-	            <hr class="border_bottom">
+	            <a href="/views/placerank/place_Photo.jsp"><span>Top10</span> 바로가기</a>
+	            <a href="/views/festival/festivalPhoto.jsp"><span>축제&행사</span> 바로가기</a>
         	</div>
 	        <div class="white_box">
 	            <h2>추천코스</h2>
 	            <hr class="border_top">
 	            <p>고궁, 엔터테인먼트, 호텔, 레스토랑, 스포츠&amp;아웃도어, 바, 카페, 면세점, 뷰티&amp;스파 등 인기 장소 추천!</p>
-	            <a href="/views/enjoy/enjoyPhoto.jsp">서울즐기기 바로가기</a>
+	            <a href="/views/enjoy/enjoyPhoto.jsp"><span>서울즐기기</span> 바로가기</a>
 	            <hr class="border_bottom">
 	        </div>       
         </div>
         <div class="section3">
 	        <div class="white_box2">
-	            <h2>호텔, 공연, 도보관광</h2>
+	            <h2>예약하기</h2>
 	            <hr class="border_top">
-	            <a href="">예약하기 바로가기</a>
-	            <hr class="border_bottom">
+	            <a href="/concertList"><span>공연예약</span> 바로가기</a>
+	            <a href="/hotelList"><span>호텔예약</span> 바로가기</a>
+	            <a href="/doboList"><span>서울도보관광예약</span> 바로가기</a>
 	        </div>            
         </div>
         <div class="section4">
@@ -353,6 +383,14 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 	        </div>       
         </div>
 	</section>
+	
+	<style>
+		@media (max-width:542px){
+			.red_box a, .white_box2 a{
+				display:block;
+			}
+		}
+	</style>
 	
 	<script>
 	   window.onload = function() {

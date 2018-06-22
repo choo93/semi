@@ -113,7 +113,7 @@ function insert(){
 	<div id="imagechange" class="container"> 
  <h1> 서울 관광 이미지   </h1>
  <%if(su!=null && su.getUserId().equals("admin")) {%>
- <botton class="btn btn-primary" onclick="insert();">등록</botton><%} %>총<%=sipd.getRecordTotalCount()%>
+ <botton class="btn btn-primary" onclick="insert();">등록</botton><%} %><h2>총<%=sipd.getRecordTotalCount()%></h2>
   <%for(SeoulImageFile sif:list){ 
   if(index<3){
 	  if(index==0){

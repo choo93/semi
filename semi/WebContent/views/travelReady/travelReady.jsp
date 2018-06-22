@@ -121,14 +121,18 @@ p {
 					</div>
 				</div>
 			</a>
-
-			<div id="service" class="menu">
-						<div class="middle">
-						<div class="font">서비스 안내</div>
+			
+				<a href="/faq">
+				<div id="FAQ" class="menu">
+					<div class="middle">
+						<div class="font">묻고 답하기</div>
 						<p>DISCOVER
 						</p>
-						</div>
-			</div>
+					</div>
+				</div>
+			</a> 
+			
+		
 			
 			<a href="/seoulImage">
 			<div id="image" class="menu">
@@ -141,15 +145,15 @@ p {
 				</div>
 				</a>
 
-			<a href="/faq">
-				<div id="FAQ" class="menu">
-					<div class="middle">
-						<div class="font">묻고 답하기</div>
+			<div id="service" class="menu">
+						<div class="middle">
+						<div class="font">서비스 안내</div>
 						<p>DISCOVER
 						</p>
-					</div>
-				</div>
-			</a> <a href="#">
+						</div>
+			</div>
+			
+			<a href="#">
 				<div id="notice" class="menu">
 					<div class="middle">
 						<div class="font" style="color: black;">공지사항</div>
