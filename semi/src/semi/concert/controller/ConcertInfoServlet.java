@@ -28,7 +28,6 @@ public class ConcertInfoServlet extends HttpServlet {
 		ConcertInfo ci = new ConcertService().selectAllInfo(indexNo);
 		
 		
-		
 		int currentPage; 
 		if(request.getParameter("currentPage")==null)
 		{

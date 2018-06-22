@@ -131,11 +131,42 @@ String mTime = mSimpleDateFormat.format ( currentTime );
             start: '2018-06-24'
           }
        	<%for(EnjoyFestival EF : list){%>
+        <%
+        String text1 = EF.getFestival_period();
+        String StartDate = "";
+        String EndDate ="";
+        for(int i = 0 ; i <text1.length(); i ++)
+        {    
+            // 48 ~ 57은 아스키 코드로 0~9이다.
+            if(48 <= text1.charAt(i) && text1.charAt(i) <= 57)
+            	if(StartDate.length()<=10){
+            	StartDate += text1.charAt(i);
+		            	if(StartDate.length()==4){
+        		    		StartDate += "-";
+		            	}
+        		    	if(StartDate.length()==7){
+            				StartDate += "-";
+            			}
+            	}
+            	else {
+            		EndDate += text1.charAt(i);
+        			if(StartDate.length()==4){
+        				EndDate += "-";
+        			}
+		        	if(StartDate.length()==7){
+		        		EndDate += "-";
+    	        	}
+        		}
+            	
+        }       
+
+        %>
+        
         <% StringTokenizer ST = new StringTokenizer(EF.getFestival_period(), " ~ ");%>
        	,{title : '<%=EF.getFestival_title() %>',
         <%while(ST.hasMoreTokens()){%>
-		start : '<%=ST.nextToken()%>',
-		end : '<%=ST.nextToken()%>',
+		start : '<%=StartDate%>',
+		end : '<%=EndDate%>',
 		<%}%>
 		url: '/festivalSelect?titleNo=<%=EF.getSEQ_Index_TitleNo()%>',
 		id : '<%=EF.getSEQ_Index_TitleNo()+EF.getFestival_title()%>'

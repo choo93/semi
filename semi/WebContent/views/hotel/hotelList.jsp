@@ -15,7 +15,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="/lib/w3.css">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../css/hotel/hotelList.css">
@@ -27,6 +26,15 @@
 <script src="../../js/main.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/hotel/hotelList.js"></script>
+<style>
+	.wrapper{
+		width:1600px;
+		margin:0 auto;
+	}
+	#contents{
+		width:98%;
+	}
+</style>
 </head>
 <body id="scroll">
 
@@ -35,8 +43,8 @@
 	<%@ include file="/views/main/header.jsp"%>
 	<section>
 
-
-	<div style="width: 1200px; height: 2400px; margin-left: 15%;">
+	<div class="wrapper">
+	<div style="width: 1200px; height: 2320px; margin-left: 15%;">
 
 		<div id="contents">
 			<div id="contents-1">
@@ -67,7 +75,7 @@
 			
 	</div>
 	<div class = "container" style="text-align:center;">
-	<ul class="pagination pagination-lg"><%= pageNavi %></ul>
+	<ul class="pagination pagination-lg" style="margin-bottom:60px;"><%= pageNavi %></ul>
 	</div>
 
 	<script>
@@ -76,6 +84,7 @@
 			location.href = "/hotelInfo?indexNum="+index;
 		}
 	</script> 
+	</div>
 	</section>
 	<%@ include file="/views/main/footer.jsp"%>
 
