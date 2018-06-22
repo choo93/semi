@@ -287,13 +287,13 @@ public class HotelDAO {
 			query="select * from roomInfo where RoomCode in ('3','4','5','6')";
 		}
 		else if(roomCode==4) {
-			query="select * from roomInfo where RoomCode in ('4','5','6','1')";
+			query="select * from roomInfo where RoomCode in ('1','4','5','6')";
 		}
 		else if(roomCode==5) {
-			query="select * from roomInfo where RoomCode in ('5','6','1','2')";
+			query="select * from roomInfo where RoomCode in ('1','2','5','6')";
 		}
 		else if(roomCode==6) {
-			query="select * from roomInfo where RoomCode in ('6','1','2','3')";
+			query="select * from roomInfo where RoomCode in ('1','2','3','6')";
 		}
 		
 		
