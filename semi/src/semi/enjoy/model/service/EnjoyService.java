@@ -87,9 +87,9 @@ public class EnjoyService {
 	}
 
 
-	public int insertReview(String reviewTitle, String reviewContents, int indexNo) {
+	public int insertReview(String reviewTitle, String reviewContents, int indexNo, String userID) {
 		Connection conn = JDBCTemplate.getConnection();
-		int result = new Enjoydao().insertReview(conn,reviewTitle,reviewContents,indexNo);
+		int result = new Enjoydao().insertReview(conn,reviewTitle,reviewContents,indexNo,userID);
 		JDBCTemplate.close(conn);
 		return result;
 	}

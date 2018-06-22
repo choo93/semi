@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
     
     
-    <%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
+    <%@ page import="semi.travelready.model.vo.*" import="java.util.*"  import="semi.login.model.vo.*"%>
 <%
 	SeoulInformationCommentPageData sicpd=(SeoulInformationCommentPageData)request.getAttribute("SeoulInformationCommentPageData");
 	ArrayList<SeoulInformationComment> list=sicpd.getNoticelist();
 	ArrayList<CommentComment> cList=(ArrayList<CommentComment>)request.getAttribute("CommentComment");
+	SeoulUser su=(SeoulUser)session.getAttribute("user");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -78,6 +79,10 @@
     			}
     		
     		
+    	}
+    	function logout()
+    	{
+    		alert("로그인후 이용해주세요");
     	}
     </script>
 
@@ -199,8 +204,12 @@
 						<div style="width:100%; height:20%; font-weight:700"><span>소셜 로그인</span></div>
 						<div style="width:100%; height:70%; margin-top:10px;">
 							<div style="width:100px; height:130px;float:left; background:url(/image/logo.png); background-repeat:no-repeat; background-size:100%;"></div>
+							<%if(su!=null){ %>
+									
 							<form action="/writeComment">
+							<%} %>
 							<div style="width:85%; height:100%; margin-left:15%;">
+				
 								<ul style="border-radius:10px;">
 									<li><textarea placeholder="소셜 계정으로 작성하세요" rows="1" readonly style="resize:none;"></textarea></li>
 									<li><textarea name="content" rows="10" style="height:80px; resize:none;"></textarea></li>
@@ -211,7 +220,15 @@
 									</ul>
 									
 									</li>
-									<li style="float:right;"><button>보내기</button></li>
+									<li style="float:right;">
+									<%if(su!=null){ %>
+									<input type="hidden" name="userName" value="<%=su.getUserName()%>">
+									<input type="submit" value="보내기">
+									<%}else{ %>
+									
+									<button onclick="logout();">보내기</button>
+									<%} %>
+									</li>
 								</ul>
 							</form>
 							</div>
@@ -353,6 +370,6 @@
 				</div>
 			
 		</section>
-<%@ include file="/views/main/footer.jsp" %>
+
 </body>
 </html>

@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 				}
 			}
 		}else {
-			response.sendRedirect("/views/login/loginFail.jsp");
+			response.sendRedirect("/views/main/login.jsp");
 		}
 	
 	}

@@ -116,6 +116,9 @@
         <input id="roomCode" type="hidden" name="roomCode">
         <button id="submit" onclick="payy();">방 선택</button>
         </div>
+        <div id="#hotelRoomInfoBack">
+        <button id="btnBack" onclick="back();">뒤로가기</button>
+        </div>
 		</div>
 		</div>
 	
@@ -123,6 +126,12 @@
 	
     </section>
 	<%@ include file="/views/main/footer.jsp" %>
+	
+	<script>
+		function back(){
+			history.go(-1);
+		}
+	</script>
 	
 <!-- 달력 가져오기 -->	
 	<script>
@@ -141,26 +150,14 @@
 
   
   $(function() {
-    $("#datepicker1").datepicker({maxDate: '+2y', minDate: '-2y', beforeShowDay: noPreviousdate});
+    $("#datepicker1").datepicker({minDate: 0});
   
   });
   
   
 </script>
  
-<!-- 이전 날짜 선택 못하게 막기 -->
-<script>
-function noPreviousdate(date){ 
-	 
-    if (date < new Date()) 
- 
-        return [false]; 
- 
-    return [true]; 
- 
-} 
 
-</script>
 <!-- 여기 까지 달력 가져오기 -->
 
 <script>
@@ -201,7 +198,7 @@ function noPreviousdate(date){
 		}else if(date==""){
 			alert('날짜를 선택해 주세요');
 		}else{
-			window.open("/roomSelect?price="+price+"&date="+date+"&hotelCode="+hotelCode+"&roomCode="+roomCode+"&indexNo="+indexNo,"_blank","width=800px,height=750px;");
+			window.open("/roomSelect?price="+price+"&date="+date+"&hotelCode="+hotelCode+"&roomCode="+roomCode+"&indexNo="+indexNo,"_blank","width=800px,height=750px,top=70,left=600;");
 		}
 		
 	}

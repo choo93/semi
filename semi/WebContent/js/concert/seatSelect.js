@@ -24,7 +24,7 @@ function select(me){
 		}
 	}else{		// 삭제 진행
 		if(num>0){
-			me.style.backgroundColor = "RGB(0, 125, 195)";
+			me.style.backgroundColor = "white";
 			document.getElementById('seatNo'+(delNum)).value = null;
 			num--;
 			sel=false;

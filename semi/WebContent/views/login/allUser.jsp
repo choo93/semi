@@ -11,7 +11,6 @@
 <body>
 <script>
 	function goback(){
-		//history.go(-1);
 		location.href="/index.jsp";
 	}
 </script>

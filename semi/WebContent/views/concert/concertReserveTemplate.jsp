@@ -4,16 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="icon" href="image/main/favicon.ico">
 <link rel="stylesheet" href="/css/concert/concertReserve.css?ver=1">
-<script src="../../js/concert/concertReserve.js"></script>
-
+<script src="../../js/concert/concertReserve.js?ver=1"></script>
 
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
-<title>Insert title here</title>
+<title>예약 하기</title>
 <body>
 	<div id="wrap">
 		<label>예약 하기</label>

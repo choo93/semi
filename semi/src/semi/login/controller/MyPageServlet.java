@@ -1,6 +1,7 @@
 package semi.login.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,20 +34,14 @@ public class MyPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String userPwd = request.getParameter("userPwd");
 		HttpSession session = request.getSession(false);
-		if(session.getAttribute("user")!=null) {
-			String userId = ((SeoulUser)session.getAttribute("user")).getUserId();
-			SeoulUser su = new UserService().selectOne(userId,userPwd);
-			if(su!=null) {
-				RequestDispatcher view = request.getRequestDispatcher("/views/login/myPage.jsp");
-				request.setAttribute("userInfo", su);
-				view.forward(request, response);
-			}else {
-				response.sendRedirect("/views/login/error.html");
-			}
+		SeoulUser su = new UserService().myPage();
+		if(su!=null) {
+			RequestDispatcher view = request.getRequestDispatcher("/views/login/myPage.jsp");
+			request.setAttribute("user", su);
+			view.forward(request, response);
 		}else {
-			response.sendRedirect("/views/login/error.html");
+			response.sendRedirect("/views/main/error.html");
 		}
 	}
 

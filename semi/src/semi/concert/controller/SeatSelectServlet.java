@@ -43,7 +43,7 @@ public class SeatSelectServlet extends HttpServlet {
 			view.forward(request, response);
 			System.out.println("sdf");
 		}else {
-			response.sendRedirect("/wrongPath.html");
+			response.sendRedirect("/error/wrongPath.html");
 		}
 
 	}

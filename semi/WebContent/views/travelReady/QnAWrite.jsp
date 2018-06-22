@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
+<%@ page import="semi.travelready.model.vo.*" import="java.util.*" import="semi.login.model.vo.*" %>
 <%
 	Qna q=(Qna)request.getAttribute("qna");
 	Answer an=(Answer)request.getAttribute("answer");
+	SeoulUser su=(SeoulUser)session.getAttribute("user");
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -124,7 +125,6 @@ function chk()
 </script>
 
 <body id="scroll">
-<%@ include file="/views/main/header.jsp" %>
 <section>
 			
 			<div id="pagecontent">
@@ -161,6 +161,8 @@ function chk()
 			</div>
 			
 			<div style="width:960px; height:40px; text-align:center;">
+			<input type="hidden" name="userName" value="<%=su.getUserName()%>">
+			<input type="hidden" name="userId" value="<%=su.getUserId()%>">
 				<input class="btn btn-primary"  type="submit" value="등록" onclick="return chk();">
 				</form>
 				<button class="btn btn-primary"  onclick="back();">취소</button>
@@ -173,6 +175,6 @@ function chk()
 
 			
 			</section>
-			<%@ include file="/views/main/footer.jsp"%>
+			
 </body>
 </html>

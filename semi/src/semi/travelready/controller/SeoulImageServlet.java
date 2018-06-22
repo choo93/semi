@@ -54,6 +54,9 @@ public class SeoulImageServlet extends HttpServlet {
 			view.forward(request, response);
 			
 		}
+		else {
+			response.sendRedirect("/views/travelReady/SeoulImageFail.jsp");
+		}
 	}
 
 	/**

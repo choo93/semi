@@ -29,7 +29,7 @@ public class CommentAddServlet extends HttpServlet {
 			int indexNo = Integer.parseInt(request.getParameter("index_titleNo"));
 			String userId = ((SeoulUser)session.getAttribute("user")).getUserId();
 			
-			int result = new EnjoyService().insertReview(reviewTitle, reviewContents,indexNo);
+			int result = new EnjoyService().insertReview(reviewTitle, reviewContents,indexNo,userId);
 			String type = request.getParameter("type");
 
 			if(result>0) //리뷰 작성 성공
@@ -44,7 +44,7 @@ public class CommentAddServlet extends HttpServlet {
 				response.sendRedirect("/concertList");
 			}
 		}else {		// 권한이 없을 때
-			response.sendRedirect("/wrongPath.html");
+			response.sendRedirect("/error/wrongPath.html");
 		}
 
 	}
