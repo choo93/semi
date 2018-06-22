@@ -379,7 +379,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 	            <hr class="border_top">
 	            <p>서울 여행시 필요한 교통수단, 기후, 국경일, 관광안내소 등 기본 정보 제공! <br>무료 가이드북을 신청할 수 있습니다.</p>
 	            <p>Q&amp;A를 통해 서울 여행 관련 질문을 받고, 빈도수가 높은 질문들을 모아 FAQ를 제공합니다.</p>
-	            <a href="">여행준비 바로가기</a>
+	            <a href="/views/travelReady/travelReady.jsp">여행준비 바로가기</a>
 	            <hr class="border_bottom">
 	        </div>       
         </div>

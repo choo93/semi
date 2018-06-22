@@ -321,6 +321,7 @@ a{color:black;}
 		height:100%;
 		border-right:1px solid #ddd;
 		transition:left 0.8s;
+		z-index:999;
 	}
 	
 	section{
@@ -336,6 +337,7 @@ a{color:black;}
 	
 	#main_icon{
 		display:none;
+		cursor:pointer;
 	}
 	
 	#main_logo{
@@ -457,7 +459,7 @@ a{color:black;}
     	height:260px;
     	background-color:#b43029;
     	position:absolute;
-    	right:350px;
+    	right:123px;
     	bottom:192px;
     	color:white;
     }
