@@ -27,15 +27,7 @@ public class ConcertInfoServlet extends HttpServlet {
 		
 		ConcertInfo ci = new ConcertService().selectAllInfo(indexNo);
 		
-		String search = "";
-		if(request.getParameter("search")!=null)
-		{
-			search = request.getParameter("search");
-		}
-		else 
-		{
-			search = "";
-		}
+		
 		
 		int currentPage; 
 		if(request.getParameter("currentPage")==null)
@@ -48,7 +40,7 @@ public class ConcertInfoServlet extends HttpServlet {
 		}
 
 		//페이징처리한 대상가져오기
-		CommentData cd = new ConcertService().getListCommentData(currentPage,search,indexNo);
+		CommentData cd = new ConcertService().getListCommentData(currentPage,indexNo);
 
 		if(ci!=null) {
 			RequestDispatcher view = request.getRequestDispatcher("/views/concert/concertInfoTemplate.jsp");

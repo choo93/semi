@@ -250,7 +250,7 @@ public class ConcertDAO {
 	}
 
 	public ArrayList<EnjoyComment> getListCommentData(Connection conn, int recordCountPerPage, int currentPage,
-			String search, int indexNo) {
+			 int indexNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
@@ -295,7 +295,7 @@ public class ConcertDAO {
 	}
 
 	public String getPageNaviComment(Connection conn, int naviCountPerPage, int recordCountPerPage, int currentPage,
-			String search, int indexNo) {
+			 int indexNo) {
 		// 게시물의 토탈 개수를 구해야 함
 		int recordTotalCount = 0;
 		// 총 게시물 개수 저장 변수 (정보가 없으므로 초기값은 0)
@@ -349,24 +349,32 @@ public class ConcertDAO {
 		if (endNavi == pageTotalCount) {
 			needNext = false;
 		}
+		
+		
 		StringBuilder sb = new StringBuilder(); // 오랜만이야..
 
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<a href='/concertInfo?currentPage=" + (startNavi - 1) +"&serarch="+search+"&indexNo="+indexNo+  "'> < </a>");
+			//sb.append("<a href='/concertInfo?currentPage=" + (startNavi - 1) +"&serarch="+search+"&indexNo="+indexNo+  "'> < </a>");
+			sb.append("<a onclick ='pp(" + (startNavi - 1) + "," +  indexNo + ");'> < </a>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<a href='/concertInfo?currentPage=" + i +"&serarch="+search+"&indexNo="+indexNo+ "'><B> " + i + " </B></a>");
+				//sb.append("<a href='/concertInfo?currentPage=" + i +"&serarch="+search+"&indexNo="+indexNo+ "'><B> " + i + " </B></a>");
+				sb.append("<a onclick ='pp(" + i + "," +  indexNo + ");'><b>" + i + "</b></a>");
 			} else {
-				sb.append("<a href='/concertInfo?currentPage=" + i +"&serarch="+search+"&indexNo="+indexNo+  "'> " + i + " </a>");
+				//sb.append("<a href='/concertInfo?currentPage=" + i +"&serarch="+search+"&indexNo="+indexNo+  "'> " + i + " </a>");
+				sb.append("<a onclick ='pp(" + i + "," +  indexNo + ");'>" + i + "</a>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<a href='/concertInfo?currentPage=" + (endNavi + 1) +"&serarch="+search+"&indexNo="+indexNo+  "'> > </a>");
+			//sb.append("<a href='/concertInfo?currentPage=" + (endNavi + 1) +"&serarch="+search+"&indexNo="+indexNo+  "'> > </a>");
+			sb.append("<a onclick ='pp(" + (endNavi + 1) + ","  + indexNo + ");'> > </a>");
 		}
 
 		return sb.toString();
+		
+		
 	}
 
 }
