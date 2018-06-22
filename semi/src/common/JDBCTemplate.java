@@ -9,7 +9,7 @@ public class JDBCTemplate {
 		Connection conn = null;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","Member_mgr","Member_mgr");	// 192.168.10.15 -> 창호 ip 주소
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.10.15:1521:xe","semiproject","semiproject");	// 192.168.10.15 -> 창호 ip 주소	계정이름,비밀번호 semiproject
 			conn.setAutoCommit(false);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
