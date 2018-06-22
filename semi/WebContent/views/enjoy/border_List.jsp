@@ -302,12 +302,8 @@ form{
 						<div id="referHits" style="position: relative; width: 100px; bottom: 55px; font: bold 11pt 나눔스퀘어; margin: 10px; left: 10px; float: right;">
 								<img src="/image/enjoy/hitsEye.png" style="height: 23%; width: 23%;"> <%=EID.getIndex_Hits()%>
 						</div>
-							
-<<<<<<< HEAD
-						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden;" style="font: bold 11pt 나눔스퀘어;">
-=======
+
 						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden; font: 13pt 나눔스퀘어;">
->>>>>>> refs/remotes/origin/master
 							<% int word1 = EID.getIndex_in_mainText().length();
 							if(word1>200){ 
 							%>
