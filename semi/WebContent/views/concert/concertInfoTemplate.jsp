@@ -25,7 +25,7 @@
 	
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
-	<script src="/js/concert/concertInfo.js"></script>
+	<script src="/js/concert/concertInfo.js?ver=1"></script>
 	
 	<script>
         // 이거는 자바 스크립트 선언에서 가져오는 듯
@@ -159,7 +159,7 @@
                 			<textarea id="userComment" name="User_Comment"></textarea>
                     		<input type="submit" value="작성" onclick="return commentCheck();">
                 		<%}else{ %>
-                			<textarea readonly placeholder="로그인 후 작성이 가능 합니다"></textarea>
+                			<textarea readonly placeholder="로그인 후 작성이 가능 합니다" onclick="login();"></textarea>
                 			<input type="button" value="작성">
                 		<%} %>
                 	</div>

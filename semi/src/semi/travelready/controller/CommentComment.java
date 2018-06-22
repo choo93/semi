@@ -32,9 +32,10 @@ public class CommentComment extends HttpServlet {
 		
 		int commentNo=Integer.parseInt(request.getParameter("commentNo"));
 		
+		String userName=request.getParameter("userName");
 		String content=request.getParameter("content");
 		
-		int result=new SeoulInformationService().insertCommentComment(commentNo,content);
+		int result=new SeoulInformationService().insertCommentComment(commentNo,content,userName);
 		
 		if(result>0)
 		{

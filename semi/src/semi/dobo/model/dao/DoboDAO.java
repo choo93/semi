@@ -204,20 +204,33 @@ public class DoboDAO {
 	public int addReserve(Connection conn, DoboReserve dr) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "insert into DOBORESERVE values(DOBORESERVE_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?)";
+		String query1 = "insert into DOBORESERVE values(DOBORESERVE_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?)";
+		String query2 = "insert into DOBORESERVE values(DOBORESERVE_SEQ.NEXTVAL,?,nologinuser_seq.nextval,?,?,?,?,?,?,?)";
 
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, dr.getDoboCode());
-			pstmt.setInt(2, dr.getUserNo());
-			pstmt.setString(3, dr.getDate());
-			pstmt.setString(4, dr.getTime());
-			pstmt.setString(5, dr.getReserveName());
-			pstmt.setString(6, dr.getGender());
-			pstmt.setString(7, dr.getNation());
-			pstmt.setString(8, dr.getPhone());
-			pstmt.setString(9, dr.getComment());
-
+			if(dr.getUserNo()!=-1) {
+				pstmt = conn.prepareStatement(query1);
+				pstmt.setString(1, dr.getDoboCode());
+				pstmt.setInt(2, dr.getUserNo());
+				pstmt.setString(3, dr.getDate());
+				pstmt.setString(4, dr.getTime());
+				pstmt.setString(5, dr.getReserveName());
+				pstmt.setString(6, dr.getGender());
+				pstmt.setString(7, dr.getNation());
+				pstmt.setString(8, dr.getPhone());
+				pstmt.setString(9, dr.getComment());
+			}else{
+				pstmt = conn.prepareStatement(query2);
+				pstmt.setString(1, dr.getDoboCode());
+				pstmt.setString(2, dr.getDate());
+				pstmt.setString(3, dr.getTime());
+				pstmt.setString(4, dr.getReserveName());
+				pstmt.setString(5, dr.getGender());
+				pstmt.setString(6, dr.getNation());
+				pstmt.setString(7, dr.getPhone());
+				pstmt.setString(8, dr.getComment());
+			}
+			
 			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -230,7 +243,7 @@ public class DoboDAO {
 	}
 
 	public ArrayList<EnjoyComment> getListCommentData(Connection conn, int recordCountPerPage, int currentPage,
-			String search, int indexNo) {
+			int indexNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
@@ -275,7 +288,7 @@ public class DoboDAO {
 	}
 
 	public String getPageNaviComment(Connection conn, int naviCountPerPage, int recordCountPerPage, int currentPage,
-			String search, int indexNo) {
+			int indexNo) {
 		// 게시물의 토탈 개수를 구해야 함
 		int recordTotalCount = 0;
 		// 총 게시물 개수 저장 변수 (정보가 없으므로 초기값은 0)
@@ -334,17 +347,21 @@ public class DoboDAO {
 
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<a href='/doboInfo?currentPage=" + (startNavi - 1) +"&serarch="+search+"&indexNo="+indexNo+  "'> < </a>");
+			//sb.append("<a href='/concertInfo?currentPage=" + (startNavi - 1) +"&serarch="+search+"&indexNo="+indexNo+  "'> < </a>");
+			sb.append("<a onclick ='pp(" + (startNavi - 1) + "," +  indexNo + ");'> < </a>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<a href='/doboInfo?currentPage=" + i +"&serarch="+search+"&indexNo="+indexNo+ "'><B> " + i + " </B></a>");
+				//sb.append("<a href='/concertInfo?currentPage=" + i +"&serarch="+search+"&indexNo="+indexNo+ "'><B> " + i + " </B></a>");
+				sb.append("<a onclick ='pp(" + i + "," +  indexNo + ");'><b>" + i + "</b></a>");
 			} else {
-				sb.append("<a href='/doboInfo?currentPage=" + i +"&serarch="+search+"&indexNo="+indexNo+  "'> " + i + " </a>");
+				//sb.append("<a href='/concertInfo?currentPage=" + i +"&serarch="+search+"&indexNo="+indexNo+  "'> " + i + " </a>");
+				sb.append("<a onclick ='pp(" + i + "," +  indexNo + ");'>" + i + "</a>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<a href='/doboInfo?currentPage=" + (endNavi + 1) +"&serarch="+search+"&indexNo="+indexNo+  "'> > </a>");
+			//sb.append("<a href='/concertInfo?currentPage=" + (endNavi + 1) +"&serarch="+search+"&indexNo="+indexNo+  "'> > </a>");
+			sb.append("<a onclick ='pp(" + (endNavi + 1) + ","  + indexNo + ");'> > </a>");
 		}
 
 		return sb.toString();

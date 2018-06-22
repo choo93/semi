@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
-
+<%@ page import="semi.travelready.model.vo.*" import="java.util.*" import="semi.login.model.vo.*"%>
+<%
+	SeoulUser su=(SeoulUser)session.getAttribute("user");
+%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,6 +18,7 @@
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
+
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
 
@@ -27,7 +30,7 @@ a
 {text-decoration:none!important;color:black;}
      #pagecontent
     {
-    	min-height:1000px;
+    	height:auto;
     	margin-left:3%;
     	margin-right:3%;
     	padding-left:51px;
@@ -38,7 +41,7 @@ a
     {
     margin:0 auto;
     width:960px;
-    min-height:1000px;
+    min-height:auto;
     padding-left:0px;
     }
     #faqtitle
@@ -88,7 +91,7 @@ fieldset{
 {
 	margin-top:2%;
 	width:100%;
-	height:98%;
+	height:auto;
 
 }
 dt
@@ -101,14 +104,7 @@ dt
 	line-height:22px;
 }
 
-#navi a{
-	font-size:30px;
-	border:2px solid #0080ff;
-	width:35px;
-	height:35px;
-	border-radius:3px;
-	text-align:center;
-}
+
 dd
 {
 display:none; 
@@ -116,72 +112,49 @@ border-bottom:1px solid #dcdcdc;
 width:100%; 
 padding : 10px 20px 10px 45px;
 line-height:22px;
-background-color:gray;
+background-color:#e3e3e3;
 }
 
-#basicInfo {
-	width: 635px;
-	height: 55px;
-	border-top: 3px solid black;
-	background-color: RGB(245, 245, 245);
-	font-size: 25px;
-	line-height: 40px;
-	padding-left: 10px;
-}
 
-#basicInfo:hover {
-	cursor: pointer;
-}
 
-#basicInfoContent {
-	width: 635px;
-	height: 200px;
-	font-weight: bold;
-	display: none;
-	padding-top: 10px;
-	padding-left: 10px;
-}
+
 
 </style>
 <script>
 var toggleText1 = false;
 var toggleText2 = false;
+var index=0;
 function test(id){
-	console.log(id);
-	$('#'+id).toggle('display');
-	if(toggleText1==true)
-	{
-		toggleText1 = false;
-	}
-	else{
 
-		toggleText1 = true;
-	}
+	$('#'+id).toggle('display');
+
 }
 </script>
 
 <body id="scroll">
-<%@ include file="/views/main/header.jsp" %>
 <section>
+
 			
 			<div id="pagecontent">
 			<section id="content">
-				<h2 style="font-size:24px; font-weight:bold; color:#0080ff;">자주 하시는 질문</h2>
+				<h2 style="font-size:24px; font-weight:bold; color:#0069d9;">자주 하시는 질문</h2>
 				<div id="faqtitle">
 				<div id="faqtitleimg"></div>
 				<strong style="font-size:18px;">"FAQ를 통해서 원하시는 답변을 쉽고 빠르게 찾아보세요"</strong><br>
-				<a href="/qna">게시판</a>
+			
+
 				질문을 하기시 전 자주하시는 질문을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				원하는 내용을 찾지 못하실 경우 '질문과 답변' 게시판에 문의해 주시면 친절하게 안내해 드리겠습니다.<br>
 				</div>
 				<a href="/qna" class="btn btn-outline-primary">질문과 답변 게시판 이동</a>
 				<fieldset>
 					<legend>게시물 검색</legend>
+					
 					<form action="/faqSearch">
 									<div class="input-group">
       <input type="text" class="form-control" name="search" placeholder="Search for..." aria-label="Search for...">
       <span class="input-group-btn">
-        <input type="submit" class="btn btn-secondary" value="검색"></button>
+        <input type="submit" class="btn btn-primary" value="검색"></button>
  
       </span>
       </div>
@@ -201,14 +174,25 @@ function test(id){
 					</ul>
 				</div>
 				
-				<div style="width:100%; height:780px;">
-					<h3 style="font-size:24px;">FAQ<br><%=request.getAttribute("search")%>에 대한 검색결과0건</h3>
+				<div style="width:100%; height:auto;">
+					<h3 style="font-size:24px; margin-right:50px;">FAQ</h3>
+								
+				
 					<dl id="faqcontent">
 				
-						<dt style="border-bottom:1px solid #dcdcdc; text-align:center;"><strong>검색 결과가 없습니다.</strong></dt>
-	
+						<dt style="border-bottom:1px solid #dcdcdc;">등록된 글이 없습니다.</dt>
+					
+				
 					</dl>					
 				</div>
+				<form action="/views/travelReady/FAQAnswer.jsp">
+				<%if(su!=null && su.getUserId().equals("admin")){ %>
+				<input type="submit" value="등록" class="btn btn-primary">
+				<%} %>
+				</form>
+
+				
+			
 		
 			</section>
 			
@@ -216,6 +200,6 @@ function test(id){
 
 			
 			</section>
-		
+	
 </body>
 </html>

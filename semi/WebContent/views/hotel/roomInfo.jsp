@@ -165,6 +165,7 @@
 <script>
 	
 	function roomPrice(val){
+		//alert(val);
 		if(val==1){
 			document.getElementById('hotelPaymentTotal').innerHTML = document.getElementById('room1').value;
 			document.getElementById('price').value = document.getElementById('room1').value;

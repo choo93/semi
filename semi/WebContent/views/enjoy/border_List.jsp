@@ -24,10 +24,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Seoulaim - 서울즐기기</title>
+<link rel="icon" href="../../image/main/favicon.ico">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/moreBtn.css">
 <!-- <link rel="stylesheet" href="../../css/enjoySelect.css"> -->
 <link rel="stylesheet" href="../../css/enjoy/pagination.css">
@@ -47,6 +47,18 @@ else self.name = '';
 </head>
 
 <style>
+  #sort {
+    border: 3px solid #D1D0ED;
+    border-radius: 5px;
+    font: 13px 나눔스퀘어;
+    color: #707070;
+    padding: 11px;
+    line-height: normal;
+  }
+  option{
+	font: 14px 나눔스퀘어;
+	color: #707070;
+  }
 .photo {
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
@@ -55,17 +67,29 @@ else self.name = '';
 	position: relative;
 	float: left;
 }
+#currentLocation{
+	margin-top:0px!important;
+	padding-top:25px!important;
+}
+.wrapper{
+	width:1900px;
+	margin:0 auto;
+}
 </style>
 
 <body id="scroll">
 	
+	<%@ include file="/views/main/header.jsp"%>
+	
 	<section>
 
+	<div class="wrapper">
 		<!-- 모든걸 감싸는 DIV -->
 		<div id="enjoyPage" style="width: 100%;">
 		
 		<!-- 헤더 DIV -->
 		<div class="header" style="width: 100%;">
+
 			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 10%; ">현재 위치 : 서울즐기기 > 
 			<% String CurrentType ="";
 			switch(type){
@@ -264,7 +288,7 @@ else self.name = '';
 								<img src="/image/enjoy/hitsEye.png" style="height: 23%; width: 23%;"> <%=EID.getIndex_Hits()%>
 						</div>
 							
-						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden;">
+						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden; font: 13pt 나눔스퀘어;">
 							<% int word1 = EID.getIndex_in_mainText().length();
 							if(word1>200){ 
 							%>
@@ -274,8 +298,7 @@ else self.name = '';
 							<%} %>
 
 						</div>
-						<div id="tags"
-							style="position: absolute; margin: 10px; left: 5px; bottom: 1px; overflow:hidden;">
+						<div id="tags" style="position: absolute; margin: 10px; left: 5px; bottom: 1px; overflow:hidden;">
 
 
 							<div style="display: inline;">
@@ -284,12 +307,12 @@ else self.name = '';
 									int su1 = Tag.countTokens();
 										if(su1<6){
 										for(int i=0;i<su1;i++) {
-								%><a href="#">#<%=Tag.nextToken()%></a>
+								%><a href="#" style="font: 11pt 나눔스퀘어;">#<%=Tag.nextToken()%></a>
 								<%
 										}}
 										else{
 											for(int i=0;i<6;i++){%>
-												<a href="#">#<%=Tag.nextToken()%></a>
+												<a href="#" style="font: 11pt 나눔스퀘어;">#<%=Tag.nextToken()%></a>
 											<%}
 												
 											
@@ -323,6 +346,7 @@ else self.name = '';
 
 		<%-- <jsp:useBean id="list" class="semi.enjoy.model.vo.EnjoyListData" scope="request">
 	</jsp:useBean> --%>
+	</div>
 	</section>
 	<%@ include file="/views/main/footer.jsp"%>
 
