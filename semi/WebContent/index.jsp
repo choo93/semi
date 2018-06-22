@@ -54,8 +54,8 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 <body id="scroll">
 	<header>
 		<div id="main_header">
-			<a href="#" data-target="slide-out" class="sidenav-trigger"><img
-				src="/image/main/menu.png"></a>
+			<a href="#" data-target="slide-out" class="sidenav-trigger">
+			<img src="/image/main/menu.png"></a>
 			<img src="/image/main/menu.png" id="main_icon" onclick="menu();">
 			<a href="http://localhost"><img
 				src="/image/main/logo.png" id="main_logo"></a>
