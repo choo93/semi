@@ -12,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="../../css/hotel/roomInfo.css">
+<link rel="stylesheet" href="../../css/hotel/roomInfo.css?ver=1">
 <link rel="stylesheet" href="/lib/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -47,7 +47,8 @@
 	    <div id="hotelRoom1Type-1"><%=ri.get(0).getRoomExplain() %></div>
 	    </div>
 	    <div id="hotelRoom1Capacity"><%=ri.get(0).getRoomCapacity() %></div>
-	    <div id="hotelRoom1Price"><%=ri.get(0).getRoomPrice() %></div>
+	    
+	    <div id="hotelRoom1Price"><%=Integer.parseInt(ri.get(0).getRoomPrice())/1000 %>,<%=(Integer.parseInt(ri.get(0).getRoomPrice())/100)%10 %>00</div>
 	    <div id="hotelRoom1Choice">
 	
 	    <input type="radio" id="room1" name="hotelPrice" onclick="roomPrice(<%=ri.get(0).getRoomCode() %>,this);" style="width:20px; height:20px;" value=<%=ri.get(0).getRoomPrice()%>>
@@ -61,7 +62,7 @@
 	    <div id="hotelRoom2Type-1"><%=ri.get(1).getRoomExplain() %></div>
 	    </div>
 	    <div id="hotelRoom2Capacity"><%=ri.get(1).getRoomCapacity() %></div>
-	    <div id="hotelRoom2Price"><%=ri.get(1).getRoomPrice() %></div>
+	    <div id="hotelRoom2Price"><%=Integer.parseInt(ri.get(1).getRoomPrice())/1000 %>,<%=(Integer.parseInt(ri.get(1).getRoomPrice())/100)%10 %>00</div>
 	    <div id="hotelRoom2Choice">
 	    
 	     <input type="radio" id="room2" name="hotelPrice" onclick="roomPrice(<%=ri.get(1).getRoomCode() %>,this);" style="width:20px; height:20px;" value=<%=ri.get(1).getRoomPrice()%>>
@@ -75,7 +76,7 @@
 	    <div id="hotelRoom3Type-1"><%=ri.get(2).getRoomExplain() %></div>
 	    </div>
 	    <div id="hotelRoom3Capacity"><%=ri.get(2).getRoomCapacity() %></div>
-	    <div id="hotelRoom3Price"><%=ri.get(2).getRoomPrice() %></div>
+	    <div id="hotelRoom3Price"><%=Integer.parseInt(ri.get(2).getRoomPrice())/1000 %>,<%=(Integer.parseInt(ri.get(2).getRoomPrice())/100)%10 %>00</div>
 	    <div id="hotelRoom3Choice">
 	     
 	      <input type="radio" id="room3" name="hotelPrice" onclick="roomPrice(<%=ri.get(2).getRoomCode() %>,this);" style="width:20px; height:20px;" value=<%=ri.get(2).getRoomPrice()%>>
@@ -89,7 +90,7 @@
 	    <div id="hotelRoom4Type-1"><%=ri.get(3).getRoomExplain() %></div>
 	    </div>
 	    <div id="hotelRoom4Capacity"><%=ri.get(3).getRoomCapacity() %></div>
-	    <div id="hotelRoom4Price"><%=ri.get(3).getRoomPrice() %></div>
+	    <div id="hotelRoom4Price"><%=Integer.parseInt(ri.get(3).getRoomPrice())/1000 %>,<%=(Integer.parseInt(ri.get(3).getRoomPrice())/100)%10 %>00</div>
 	    <div id="hotelRoom4Choice">
 	  
 	    <input type="radio" id="room4" name="hotelPrice" onclick="roomPrice(<%=ri.get(3).getRoomCode() %>,this);" style="width:20px; height:20px;" value=<%=ri.get(3).getRoomPrice()%>>
@@ -163,9 +164,9 @@
 <!-- 여기 까지 달력 가져오기 -->
 
 <script>
-	
+<%=Integer.parseInt(ri.get(2).getRoomPrice())/1000 %>,<%=(Integer.parseInt(ri.get(2).getRoomPrice())/100)%10 %>00
 	function roomPrice(val,room){
-		document.getElementById('hotelPaymentTotal').innerHTML = room.value;
+		document.getElementById('hotelPaymentTotal').innerHTML = Number(room.value)/1000+","+((Number(room.value)/100) %10)+"00";
 		document.getElementById('price').value = room.value;
 		document.getElementById('roomCode').value = val;
 	}
