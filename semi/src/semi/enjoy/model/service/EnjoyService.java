@@ -245,5 +245,18 @@ public class EnjoyService {
 			return result;
 		}
 
+
+		public int countReferHits(int indexNo) {
+			Connection conn = JDBCTemplate.getConnection();
+			int result = new Enjoydao().countReferHits(indexNo, conn);
+			if(result>0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+			JDBCTemplate.close(conn);
+			return result;
+		}
+
 	
 }

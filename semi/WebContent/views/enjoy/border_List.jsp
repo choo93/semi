@@ -173,8 +173,8 @@ else self.name = '';
 								<%} %>
 							</div>
 							
-							<div id="hits" style="position: relative; bottom: 45px; font: bold 12pt 나눔스퀘어; margin: 10px; right: 17px; float: right;">
-								조회수 : <%=eld.getIndex_Hits() %>
+							<div id="hits" style="position: relative; width: 100px; bottom: 55px; font: bold 10pt 나눔스퀘어; margin: 10px; left: 10px; float: right;">
+								<img src="/image/enjoy/hitsEye.png" style="height: 23%; width: 23%;"> <%=eld.getIndex_Hits() %>
 							</div>
 							
 						</div>
@@ -246,22 +246,29 @@ else self.name = '';
 						<!--url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);  -->
 					</div>
 
-					<div id="info"
-						style="float: left; width: 800px; height: 200px; margin-left: 20px; border: 1px solid #9B95C9; border-width: 2px 20px 2px 2px; position: relative;">
+					<div id="info" style="float: left; width: 800px; height: 200px; margin-left: 20px; border: 1px solid #9B95C9; border-width: 2px 20px 2px 2px; position: relative;">
+						
+						<!-- 게시물 제목 DIV -->
 						<div id="title" style="font: bold 30pt 나눔스퀘어; margin: 10px;">
+							<!-- word2 = 제목글자수 -->
 							<% int word2 = EID.getIndex_List_title().length();
-							if(word2>20){ 
-							%>
+							if(word2>20){ %>
 							<%=EID.getIndex_List_title().substring(0,20)%>..
 							<%}else{ %>
 							<%=EID.getIndex_List_title()%><br>
 							<%} %>
 						</div>
+						
+						<!-- 조회수 부분 -->
+						<div id="referHits" style="position: relative; width: 100px; bottom: 55px; font: bold 10pt 나눔스퀘어; margin: 10px; left: 10px; float: right;">
+								<img src="/image/enjoy/hitsEye.png" style="height: 23%; width: 23%;"> <%=EID.getIndex_Hits()%>
+						</div>
+							
 						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden;">
 							<% int word1 = EID.getIndex_in_mainText().length();
-							if(word1>400){ 
+							if(word1>200){ 
 							%>
-							<%=EID.getIndex_in_mainText().substring(0,400)%>.....
+							<%=EID.getIndex_in_mainText().substring(0,200)%>.....
 							<%}else{ %>
 							<%=EID.getIndex_in_mainText()%><br>
 							<%} %>
