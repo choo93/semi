@@ -60,24 +60,40 @@ else self.name = '';
 	padding-top:25px!important;
 }
 .wrapper{
-	width:1900px;
+	width:1800px;
 	margin:0 auto;
+}
+form{
+	width:1800px;
+	margin:0 auto;
+}
+.container{
+	width:1800px;
+	margin:0 auto;
+}
+.active{
+	height:47px!important;
+	line-height:47px!important;
+}
+.active>a{
+	height:47px!important;
+	line-height:47px!important;
 }
 </style>
 
-<body id="scroll">
+<body>
 	
 	<%@ include file="/views/main/header.jsp"%>
 	
 	<section>
 
-	<div class="wrapper">
+		<div class="wrapper">
 		<!-- 모든걸 감싸는 DIV -->
 		<div id="enjoyPage" style="width: 100%;">
 		
 		<!-- 헤더 DIV -->
 		<div class="header" style="width: 100%;">
-			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 10%; ">현재 위치 : 서울즐기기 > 
+			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 158px; ">현재 위치 : 서울즐기기 > 
 			<% String CurrentType ="";
 			switch(type){
 			case "type1" : CurrentType = "추천코스"; break;  
@@ -89,7 +105,7 @@ else self.name = '';
 			} %>
 			<%=CurrentType %>
 			</div>
-			<div id="enjoyText" style="color: #5F4B8B; font: bold 33pt 나눔스퀘어; margin-top: 20px; margin-left: 10%; "><%=CurrentType %>
+			<div id="enjoyText" style="color: #5F4B8B; font: bold 33pt 나눔스퀘어; margin-top: 20px; margin-left: 158px; "><%=CurrentType %>
 			<%if(option!=""){ %>
 				<% String CurrentSort = ""; 
 				switch(option){
@@ -101,7 +117,7 @@ else self.name = '';
 			<%}else{%>
 				</div>
 			<%} %> 
-			<div style="width: 95%; height: 2px; background: linear-gradient(to right, #D1D0ED 55%, white); margin-top: 1%; margin-bottom: 2%; margin-left: 10%;"></div>
+			<div style="width: 95%; height: 2px; background: linear-gradient(to right, #D1D0ED 55%, white); margin-top: 1%; margin-bottom: 2%; margin-left: 158px;"></div>
 		</div>
 
 			<!-- 정렬하기 DIV -->
@@ -173,12 +189,12 @@ else self.name = '';
 						<div id="titleAndHits">
 						
 							<!-- 게시물 제목 DIV -->
-							<div id="title" style="font: bold 30pt 나눔스퀘어; margin: 10px;">
+							<div id="title" style="font: bold 25pt 나눔스퀘어; margin: 10px;">
 								<!-- word2 = 제목글자수 -->
 								<% int word2 = eld.getIndex_Title().length();
-								if(word2>20){ %>
+								if(word2>15){ %>
 								<!-- 제목이 20글자가 넘어갈 시 21번째 글자부터 생략 후 ..으로 표시 -->
-								<%=eld.getIndex_Title().substring(0,20)%>..
+								<%=eld.getIndex_Title().substring(0,15)%>..
 								<%}else{ %>
 								<%=eld.getIndex_Title()%><br>
 								<%} %>
@@ -190,7 +206,7 @@ else self.name = '';
 							
 						</div>
 						
-						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden; font: 13pt 나눔스퀘어;">
+						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden; font: 11pt 나눔스퀘어;">
 							<% int word1 = eld.getIndex_BasicInfo().length();
 							if(word1>200){ 
 							%>
@@ -206,13 +222,13 @@ else self.name = '';
 								<%
 									StringTokenizer Tag = new StringTokenizer(eld.getIndex_Tags(), "#");
 									int su1 = Tag.countTokens();
-										if(su1<6){
+										if(su1<4){
 										for(int i=0;i<su1;i++) {
 								%><a href="#" style="font: 11pt 나눔스퀘어;">#<%=Tag.nextToken()%></a>
 								<%
 										}}
 										else{
-											for(int i=0;i<6;i++){%>
+											for(int i=0;i<4;i++){%>
 												<a href="#" style="font: 11pt 나눔스퀘어;">#<%=Tag.nextToken()%></a>
 											<%}
 												
@@ -229,7 +245,7 @@ else self.name = '';
 				</div>
 				
 			</form>
-		</div>
+
 		
 		<%
 			}
@@ -260,22 +276,22 @@ else self.name = '';
 					<div id="info" style="float: left; width: 800px; height: 200px; margin-left: 20px; border: 1px solid #9B95C9; border-width: 2px 20px 2px 2px; position: relative;">
 						
 						<!-- 게시물 제목 DIV -->
-						<div id="title" style="font: bold 30pt 나눔스퀘어; margin: 10px;">
+						<div id="title" style="font: bold 25pt 나눔스퀘어; margin: 10px;">
 							<!-- word2 = 제목글자수 -->
 							<% int word2 = EID.getIndex_List_title().length();
-							if(word2>20){ %>
-							<%=EID.getIndex_List_title().substring(0,20)%>..
+							if(word2>16){ %>
+							<%=EID.getIndex_List_title().substring(0,16)%>..
 							<%}else{ %>
 							<%=EID.getIndex_List_title()%><br>
 							<%} %>
 						</div>
 						
 						<!-- 조회수 부분 -->
-						<div id="referHits" style="position: relative; width: 100px; bottom: 55px; font: bold 10pt 나눔스퀘어; margin: 10px; left: 10px; float: right;">
+						<div id="referHits" style="position: relative; width: 100px; bottom: 55px; font: bold 11pt 나눔스퀘어; margin: 10px; left: 10px; float: right;">
 								<img src="/image/enjoy/hitsEye.png" style="height: 23%; width: 23%;"> <%=EID.getIndex_Hits()%>
 						</div>
 							
-						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden;">
+						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden;" style="font: bold 11pt 나눔스퀘어;">
 							<% int word1 = EID.getIndex_in_mainText().length();
 							if(word1>200){ 
 							%>
@@ -293,13 +309,13 @@ else self.name = '';
 								<%
 									StringTokenizer Tag = new StringTokenizer(EID.getIndex_List_Tags(), "#");
 									int su1 = Tag.countTokens();
-										if(su1<6){
+										if(su1<4){
 										for(int i=0;i<su1;i++) {
 								%><a href="#">#<%=Tag.nextToken()%></a>
 								<%
 										}}
 										else{
-											for(int i=0;i<6;i++){%>
+											for(int i=0;i<4;i++){%>
 												<a href="#">#<%=Tag.nextToken()%></a>
 											<%}
 												
@@ -322,7 +338,8 @@ else self.name = '';
 		<%
 			}
 		%>
-		<div class="container" style="text-align: center ">
+		<div class="wrapper">
+		<div class="container" style="text-align: center;margin-bottom:30px;">
         <ul class="pagination pagination-lg">
 		<%=pageNavi2%>
 		</ul>
@@ -330,13 +347,13 @@ else self.name = '';
 		<%} %>
 		
 		</div>
-	
+		</div>
 
 		<%-- <jsp:useBean id="list" class="semi.enjoy.model.vo.EnjoyListData" scope="request">
 	</jsp:useBean> --%>
-	</div>
+	</div>	
 	</section>
-	<%@ include file="/views/main/footer.jsp"%>
 
+	<%@ include file="/views/main/footer.jsp"%>
 </body>
 </html>
