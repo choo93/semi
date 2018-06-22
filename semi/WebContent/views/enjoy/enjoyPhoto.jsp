@@ -111,7 +111,7 @@ box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 						</div>	
 				</div>
 			</a>
-			<!--  -->
+			
 			<!-- 2 -->
 			<a href="/enjoyList?type=type2">
 				<div class="photo" id="photo2" style="height: 350px; float: left;">
