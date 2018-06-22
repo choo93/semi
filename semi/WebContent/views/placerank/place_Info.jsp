@@ -325,7 +325,7 @@
 														<tr>
 															<td><%=prc.getUserId() %></td>
 															<%if(prc.getUserId().equals(((SeoulUser)session.getAttribute("user")).getUserId())){ %>
-															<td><%=prc.getUserComment() %><span class="glyphicon glyphicon-trash pull-right" onclick="retrun commentDelete(<%=prc.getTitleNo()%>,<%=prc.getReviewNo()%>);"></span></td>
+															<td><%=prc.getUserComment() %><span class="glyphicon glyphicon-trash pull-right" onclick="return commentDelete(<%=prc.getTitleNo()%>,<%=prc.getReviewNo()%>);"></span></td>
 															<%}else{ %>
 															<td><%=prc.getUserComment() %></td>
 															<%} %>

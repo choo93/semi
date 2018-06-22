@@ -12,26 +12,68 @@
 </head>
 <style>
 #photo1{
+	width:50%;
+	height:350px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	z-index:1;
+	vertical-align: middle;
+	position: relative;
 	float: left;
 	background-image: url(../../image/enjoy/SEOUL1.png);
 }
 #photo2{
+	width:50%;
+	height:350px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	z-index:1;
+	vertical-align: middle;
+	position: relative;
 	float: right;
 	background-image: url(../../image/enjoy/SEOUL2.png);
 }
 #photo3{
+	width:50%;
+	height:350px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	z-index:1;
+	vertical-align: middle;
+	position: relative;
 	float: left;
 	background-image: url(../../image/enjoy/SEOUL3.png);
 }
 #photo4{
+	width:50%;
+	height:350px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	z-index:1;
+	vertical-align: middle;
+	position: relative;
 	float: right;
 	background-image: url(../../image/enjoy/SEOUL4.png);
 }
 #photo5{
+	width:50%;
+	height:350px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	z-index:1;
+	vertical-align: middle;
+	position: relative;
 	float: left;
 	background-image: url(../../image/enjoy/SEOUL5.png);
 }
 #photo6{
+	width:50%;
+	height:350px;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	z-index:1;
+	vertical-align: middle;
+	position: relative;
 	float: right;
 	background-image: url(../../image/enjoy/SEOUL6.png);
 }
@@ -65,15 +107,6 @@
 	top: 5;
 	left: 0;
 }
-.picture{
-	width:50%;
-	height:350px;
-	background-repeat:no-repeat;
-	background-size:100% 100%;
-	z-index:1;
-	vertical-align: middle;
-	position: relative;
-}
 .effectLeft{
 		height:80px; 
 		transition:all 0.8s, color 0.3s 0.3s;  
@@ -90,42 +123,9 @@ box-shadow:1000px 0 0 0 rgba(0,0,0,0.5) inset;
 .effectRight:hover{
 box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 }
-#photo1{
-	width:50%;
-}
-#photo2{
-	width:50%;
-}
-#photo3{
-	width:50%;
-}
-#photo4{
-	width:50%;
-}
-#photo5{
-	width:50%;
-}
-#photo6{
-	width:50%;
-}
 @media (max-width:808px){
 		
-			#photo1{
-				width:100%;
-			}
-			#photo2{
-				width:100%;
-			}
-			#photo3{
-				width:100%;
-			}
-			#photo4{
-				width:100%;
-			}
-			#photo5{
-				width:100%;
-			}
-			#photo6{
+			.photo1{
 				width:100%;
 			}
 		}
@@ -135,50 +135,61 @@ box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 	
 	<section>
 		<div id="enjoyPhoto" style="width: 100%;">
-			<div id="photo1" style="height: 350px; float: left;">
-					<a href="/enjoyList?type=type1">
-				 <img class="photo1"
-					src="../../image/enjoy/SEOUL1.png"
-					style="width: 100%; height: 100%;">
-					</a>
-				 
-				
-			</div>
-			<div id="photo2" style="height: 350px; float: left;">
-				
-				<a href="/enjoyList?type=type2">
-				<img class="photo2"
-					src="../../image/enjoy/SEOUL2.png"
-					style="width: 100%; height: 100%;"></a>
-										
-															
-			</div>
-			<div id="photo3" style="height: 350px; float: left;">
-				
-				<a href="/enjoyList?type=type3"><img class="photo3"
-					src="../../image/enjoy/SEOUL3.png"
-					style="width: 100%; height: 100%;"></a>
-
-			</div>
-			<div id="photo4" style="height: 350px; float: left;">
-				
-				<a href="/hotelList"><img class="photo4"
-					src="../../image/enjoy/SEOUL4.png"
-					style="width: 100%; height: 100%;"></a>
-
-			</div>
-			<div id="photo5" style="height: 350px; float: left;">
-				
-				<a href="/enjoyList?type=type5"><img class="photo5"
-					src="../../image/enjoy/SEOUL5.png"
-					style="width: 100%; height: 100%;"></a>
-			</div>
-			<div id="photo6" style="height: 350px; float: left;">
-				
-				<a href="/enjoyCalendar"><img class="photo6"
-					src="../../image/enjoy/SEOUL6.png"
-					style="width: 100%; height: 100%;"></a>
-			</div>
+			
+			<!-- 1 -->
+			<a href="/enjoyList?type=type1">
+				<div class="effectRight" id="photo1" style="height: 350px; float: left;">
+						<div class="fontPosition">
+							<div class="font">추천코스</div>
+						</div>	
+				</div>
+			</a>
+			
+			<!-- 2 -->
+			<a href="/enjoyList?type=type2">
+				<div class="effectLeft" id="photo2" style="height: 350px; float: left;">
+					<div class="fontPosition">
+						<div class="font">명소</div>
+					</div>							
+				</div>
+			</a>
+			
+			<!-- 3 -->
+			<a href="/enjoyList?type=type3">
+				<div class="effectRight" id="photo3" style="height: 350px; float: left;">
+					<div class="fontPosition">
+						<div class="font">쇼핑</div>
+					</div>
+				</div>
+			</a>
+			
+			<!-- 4 -->
+			<a href="/hotelList">
+				<div class="effectLeft" id="photo4" style="height: 350px; float: left;">
+					<div class="fontPosition">
+						<div class="font">숙박</div>
+					</div>
+				</div>
+			</a>
+			
+			<!-- 5 -->
+			<a href="/enjoyList?type=type5">
+				<div class="effectRight" id="photo5" style="height: 350px; float: left;">
+					<div class="fontPosition">
+						<div class="font">음식점</div>
+					</div>
+				</div>
+			</a>
+			
+			<!-- 6 -->
+			<a href="/enjoyCalendar">
+				<div class="effectLeft" id="photo6" style="height: 350px; float: left;">
+					<div class="fontPosition">
+						<div class="font">캘린더</div>
+					</div>
+				</div>
+			</a>
+			
 		</div>
 	</section>
 </body>

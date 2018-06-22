@@ -175,7 +175,7 @@ function test(){
       <th scope="col">
      <ul class="nav nav-pills">
          <li class="dropdown">
-               <a data-toggle="dropdown" data-target="#" href="dropdown.html" style="color:black;">메뉴 2 <span class="caret"></span></a>
+               <a data-toggle="dropdown" data-target="#" href="dropdown.html" style="color:black;">목록 <span class="caret"></span></a>
                <ul class="dropdown-menu" role="menu">
                 <li><a role="menuitem" href="#" onclick="checkAll();" >전체 선택</a></li>
                 <li><a role="menuitem" href="#" onclick="deliveryAfter();">배송 완료 목록 선택</a></li>

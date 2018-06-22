@@ -329,7 +329,7 @@ public class Enjoydao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query="insert into Element_Index_Review values(?,?,?,'test',?,Element_Index_Review_SEQ.nextval,sysdate)";
+		String query="insert into Element_Index_Review values(?,?,?,'test',?,Element_Index_Review_SEQ.nextval,sysdate,0,0,null)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -401,7 +401,7 @@ public class Enjoydao {
 
 		String query = 
 		
-		"select * from (select Element_Index_Review.*,row_number() over(order by SEQ_REVIEW)as num from Element_Index_Review where SEQ_INDEX_TITLENO = ? )where num between ? and ?";
+		"select * from (select Element_Index_Review.*,row_number() over(order by SEQ_REVIEW desc)as num from Element_Index_Review where SEQ_INDEX_TITLENO = ? )where num between ? and ?";
 		ArrayList<EnjoyComment> list = new ArrayList<EnjoyComment>();
 		try {
 			pstmt = conn.prepareStatement(query);

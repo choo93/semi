@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import ="java.util.*" import = "semi.enjoy.model.vo.EnjoyFestival"
+	import ="java.text.ParseException"
 	import ="java.text.SimpleDateFormat"
 	%>
 	<% 
@@ -9,11 +10,24 @@ if((ArrayList<EnjoyFestival>)request.getAttribute("list")!=null)
 	{
 	list = 	(ArrayList<EnjoyFestival>)request.getAttribute("list");
 	}
+ArrayList<EnjoyFestival> list2 = null; 
+if((ArrayList<EnjoyFestival>)request.getAttribute("list2")!=null)
+	{
+	list2 = 	(ArrayList<EnjoyFestival>)request.getAttribute("list2");
+	}
+
+ArrayList<EnjoyFestival> list3 = null; 
+if((ArrayList<EnjoyFestival>)request.getAttribute("list3")!=null)
+	{
+	list3 = 	(ArrayList<EnjoyFestival>)request.getAttribute("list3");
+	}
+
 SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
 Date currentTime = new Date ();
 String mTime = mSimpleDateFormat.format ( currentTime );
 
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,106 +87,27 @@ String mTime = mSimpleDateFormat.format ( currentTime );
 	      navLinks: true, // can click day/week names to navigate views,
 	      businessHours: true, // display business hours,
       defaultDate: '<%=mTime%>',
-      editable: true,
+      editable: false,
       eventLimit: true, // allow "more" link when too many events
       events: [
         {
-          title: 'All Day Event',
-          start: '2018-06-20'
-        },
-        {
-            title: 'Long Event',
-            start: '2018-06-24',
-            end: '2018-06-27'
-          },
-          {
-            id: 999,
-            title: 'Repeating Event',
-            start: '2018-06-01T16:00:00'
-          },
-          {
-            id: 989,
-            title: 'Repeating Event',
-            start: '2018-06-16T16:00:00'
-          },
-          {
-            title: 'Conference',
-            start: '2018-06-4',
-            end: '2018-06-17'
-          },
-          {
-            title: 'Meeting',
-            start: '2018-07-12T10:30:00',
-            end: '2018-07-18T12:30:00'
-          },
-          {
-            title: 'Lunch',
-            start: '2018-07-16T12:00:00'
-          },
-          {
-            title: 'Meeting',
-            start: '2018-05-12T14:30:00'
-          },
-          {
-            title: 'Happy Hour',
-            start: '2018-05-14T17:30:00'
-          },
-          {
-            title: 'Dinner',
-            start: '2018-05-10T20:00:00'
-          },
-          {
-            title: 'Birthday Party',
-            start: '2018-06-13T07:00:00'
-          },
-          {
-            title: 'Click for Google',
-            url: 'http://google.com/',
-            start: '2018-06-24'
-          }
-       	<%for(EnjoyFestival EF : list){%>
-        <%
-        String text1 = EF.getFestival_period();
-        String StartDate = "";
-        String EndDate ="";
-        for(int i = 0 ; i <text1.length(); i ++)
-        {    
-            // 48 ~ 57은 아스키 코드로 0~9이다.
-            if(48 <= text1.charAt(i) && text1.charAt(i) <= 57)
-            	if(StartDate.length()<=10){
-            	StartDate += text1.charAt(i);
-		            	if(StartDate.length()==4){
-        		    		StartDate += "-";
-		            	}
-        		    	if(StartDate.length()==7){
-            				StartDate += "-";
-            			}
-            	}
-            	else {
-            		EndDate += text1.charAt(i);
-        			if(StartDate.length()==4){
-        				EndDate += "-";
-        			}
-		        	if(StartDate.length()==7){
-		        		EndDate += "-";
-    	        	}
-        		}
-            	
-        }       
-
+          title: 'Happy New Year',
+          start: '2018-01-01'
+        }
+       	<%for(EnjoyFestival EF : list2){%> 
+        <% StringTokenizer ST = new StringTokenizer(EF.getFestival_period(), " ~ ");
+        String startDate=""; String endDate="";
+		startDate = ST.nextToken(); endDate = ST.nextToken();
         %>
-        
-        <% StringTokenizer ST = new StringTokenizer(EF.getFestival_period(), " ~ ");%>
        	,{title : '<%=EF.getFestival_title() %>',
-        <%while(ST.hasMoreTokens()){%>
-		start : '<%=StartDate%>',
-		end : '<%=EndDate%>',
-		<%}%>
+		start : '<%=startDate%>',
+		end : '<%=endDate%>',
 		url: '/festivalSelect?titleNo=<%=EF.getSEQ_Index_TitleNo()%>',
 		id : '<%=EF.getSEQ_Index_TitleNo()+EF.getFestival_title()%>'
+		
        	}
        	<%}%>
-     
+     	
       ]
     });
 
@@ -237,7 +172,7 @@ String mTime = mSimpleDateFormat.format ( currentTime );
 <div id='wrap'>
 
     <div id='external-events'>
-      <h4>Draggable Events</h4>
+      <h4></h4>
       <div class='fc-event'>My Event 1</div>
       <div class='fc-event'>My Event 2</div>
       <div class='fc-event'>My Event 3</div>
