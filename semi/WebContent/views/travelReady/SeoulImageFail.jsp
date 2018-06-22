@@ -112,8 +112,9 @@ function insert(){
   	
 	<div id="imagechange" class="container"> 
 	
-	등록되어 있는 사진이 없습니다.
+	
 <h1> 서울 관광 이미지   </h1>
+	관리자님 께서 등록하신 사진이 존재하지 않습니다.
  <%if(su!=null && su.getUserId().equals("admin")) {%>
  <botton class="btn btn-primary" onclick="insert();">등록</botton><%} %>
  </div>
