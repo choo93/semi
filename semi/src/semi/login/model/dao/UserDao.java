@@ -53,7 +53,7 @@ public class UserDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		boolean result = false;
-		String query = "select floor(sysdate-user_modified) as change_date from seoul_user where userid=?";
+		String query = "select floor(sysdate-user_modified) as change_date from seoul_user where user_id=?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userId);
