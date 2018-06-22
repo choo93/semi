@@ -95,7 +95,7 @@ form{
 
 <body>
 	
-	<%@ include file="/views/main/header.jsp"%>
+	<%-- <%@ include file="/views/main/header.jsp"%> --%>
 	
 	<section>
 
@@ -303,7 +303,7 @@ form{
 								<img src="/image/enjoy/hitsEye.png" style="height: 23%; width: 23%;"> <%=EID.getIndex_Hits()%>
 						</div>
 
-						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden; font: 13pt 나눔스퀘어;">
+						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden; font: 11pt 나눔스퀘어;">
 							<% int word1 = EID.getIndex_in_mainText().length();
 							if(word1>200){ 
 							%>
