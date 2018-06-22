@@ -31,8 +31,9 @@
         // 이거는 자바 스크립트 선언에서 가져오는 듯
         function initMap() {
         	var uluru = {
-                    lat: ${requestScope.concertInfo.concertLatitude}, 
+                    lat: ${requestScope.concertInfo.concertLatitude-0.00022}, 
                     lng: ${requestScope.concertInfo.concertLongtitude}
+                    
                 };
                 var map = new google.maps.Map(document.getElementById('mapContent'), {
                     zoom: 18,
