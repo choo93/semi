@@ -97,9 +97,9 @@ public class QnaService {
 		return result;
 	}
 
-	public int insertQna(String title, String content) {
+	public int insertQna(String title, String content, String userName, String userId) {
 		Connection conn=JDBCTemplate.getConnection();
-		int result=new QnaDao().insertQna(conn,title,content);
+		int result=new QnaDao().insertQna(conn,title,content,userName,userId);
 		
 		if(result>0) {
 			JDBCTemplate.commit(conn);
@@ -158,6 +158,38 @@ public class QnaService {
 		}
 		JDBCTemplate.close(conn);
 		return qpd2;
+	}
+
+	public int deleteQna(String questionNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new QnaDao().deleteQna(conn,questionNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else
+		{
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return result;
+		
+	}
+
+	public int updateQna(String title, String content, int questionNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new QnaDao().updateQna(conn,title,content,questionNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else
+		{
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return result;
+		
 	}
 
 }

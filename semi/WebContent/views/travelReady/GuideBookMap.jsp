@@ -73,7 +73,7 @@
    #rq{
    margin-left:55px; 
    font-size:30px; 
-   background-color:#007dc3;
+   background-color:#b43029;
    border-radius:9px;
    color:white;
    border:5px soild white;
@@ -105,16 +105,16 @@
     }
      .button
     {
-    	border:1px solid red;
+    	border:1px solid #b43029;
     	border-radius:5px;
     	text-align:center;
-    	color:red;
+    	color:#b43029;
     	font-weight:800;
     	overflow:hidden;text-overflow:ellipsis;
 
     }
     #btn{
-    color:red;
+    color:#b43029;
     background-color:white;
     border:0px;
     font-weight:700;
@@ -128,7 +128,7 @@
 				<section id="content">
 					<div class="dis" style="height:200px;">
 						<div id="guidebookrequest">
-						<a href="/views/travelReady/GuideBookRequest2.jsp">
+						<a href="/views/travelReady/GuideBookRequest.jsp">
 						<div style="padding-left:700px; padding-top:70px;">
 							<strong style="font-size:25px;">무료가이드북 & 지도</strong>
 							<br>
@@ -160,6 +160,6 @@
 			
 			</div>
 		</section>
-<%@ include file="/views/main/footer.jsp" %>
+
 </body>
 </html>

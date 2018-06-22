@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="semi.place.model.vo.*" import="java.util.*"%>
+	<%@ page import="semi.place.model.vo.*" import="java.util.*" import="semi.login.model.vo.*"%>
 		<%
 	PlaceRank pr = (PlaceRank) request.getAttribute("place");
 	ArrayList<PlaceRankComment> list = (ArrayList<PlaceRankComment>) request.getAttribute("comment");
-%>
+	SeoulUser user = (SeoulUser)session.getAttribute("user");%>
 			<!DOCTYPE html>
 			<html>
 
@@ -49,13 +49,13 @@
 
 					.font {
 						color: white;
-						text-shadow: 1px -1px 1px rgb(233, 231, 109), -1px 2px 2px rgb(137, 31, 199);
+						text-shadow: 1px -1px 1px #3071a9, -1px 2px 2px #3071a9;
 						height: 60px;
 						margin-bottom: 10px;
-						font: italic bold 2.5rem "나눔스퀘어";
+						font: italic bold 4rem "나눔스퀘어";
 						overflow: hidden;
 						text-overflow: ellipsis;
-						padding-top: 10px;
+						padding-top: 8px;
 						margin: 0;
 					}
 
@@ -68,6 +68,23 @@
 						padding-top: 30px;
 					}
 				</style>
+																<script>
+												function insertComment(){
+													var title = $('#title').val();
+													var userId = $('#userId').val();
+													var titleNo = $('#titleNo').val();
+													var comment = $('#comment').val();
+													
+													$.ajax({
+														url : "/festivalComment",
+														type : "get",
+														data : {title:title, userId : userId,titleNo : titleNo, comment : comment},
+														success : function(data){
+															location.href="/placeSelect?titleNo="+titleNo;
+														}
+													});
+												}
+												</script>
 				<script>
 					// 이거는 자바 스크립트 선언에서 가져오는 듯
 					function initMap() {
@@ -117,6 +134,7 @@
 								</div>
 
 								<!-- 캐러셀 시작 -->
+								<%if(pr.getPlaceSubImg1()!=null){ %>
 								<div id="carousel-generic" class="carousel slide">
 									<!-- 인디케이터 부분 -->
 									<ol class="carousel-indicators">
@@ -145,11 +163,33 @@
 										<span class="glyphicon glyphicon-chevron-right"></span>
 									</a>
 								</div>
+								<%}else{ %>
+								<div id="carousel-generic" class="carousel slide">
+									<!-- 인디케이터 부분 -->
+									<ol class="carousel-indicators">
+										<li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
+										</ol>
+									<!-- 캐러셀 이미지 부분 -->
+									<div class="carousel-inner">
+										<div class="item active">
+											<img src="<%=pr.getPlaceMainImg()%>">
+
+										</div>
+										</div>
+									<!-- 컨트롤러 부분 -->
+									<a href="#carousel-generic" class="left carousel-control" data-slide="prev">
+										<span class="glyphicon glyphicon-chevron-left"></span>
+									</a>
+									<a href="#carousel-generic" class="right carousel-control" data-slide="next">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+									</a>
+								</div>
+								<%} %>
 							</div>
 							<br>
 							<!-- 설명 시작 -->
 							<div class="container-fluid">
-								<div class="panel panel-danger">
+								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-target="#collapseOne"> 기본정보 </a>
@@ -161,7 +201,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="panel panel-danger">
+								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-target="#collapseTwo"> 상세정보 </a>
@@ -171,7 +211,7 @@
 										<div class="panel-body">
 
 											<table style="height: 100%; width: 100%;">
-
+												<%if(pr.getPlaceAddr()!=null){ %>
 												<tr>
 													<td>주소</td>
 													<td>
@@ -179,6 +219,7 @@
 														<%=pr.getPlaceAddr()%>
 													</td>
 												</tr>
+												<%}if(pr.getPlaceTell()!=null){ %>
 												<tr>
 													<td>전화번호</td>
 													<td>
@@ -186,8 +227,7 @@
 														<%=pr.getPlaceTell()%>
 													</td>
 												</tr>
-
-
+												<%}if(pr.getPlaceSite()!=null){ %>
 												<tr>
 													<td>웹사이트</td>
 													<td>
@@ -195,57 +235,42 @@
 														<a href="<%=pr.getPlaceSite()%>">웹사이트 보기</a>
 													</td>
 												</tr>
+												<%}if(pr.getPlaceOntime()!=null){ %>
 												<tr>
 													<td>이용시간</td>
 													<td>
-														<!-- 11 ~ 3월 09:00 ~ 18:00
-									<br>
-										4 ~ 10월 09:00 ~ 19:00 -->
-														<%=pr.getPlacePeriod()%>
-													</td>
-												</tr>
-
-												<tr>
-													<td>운영 요일</td>
-													<td>
-														<!-- 화수목금토일 -->
 														<%=pr.getPlaceOntime()%>
 													</td>
 												</tr>
+												<%}if(pr.getPlacePeriod()!=null){ %>
+												<tr>
+													<td>운영 요일</td>
+													<td>
+														<%=pr.getPlaceOntime()%>
+													</td>
+												</tr>
+												<%}if(pr.getPlaceUtility()!=null){ %>
 												<tr>
 													<td>장애인 편의시설</td>
-													<td>
-														<!-- 접근가능
-										<br>장애인화장실 -->
+													<td>														
 														<%=pr.getPlaceUtility()%>
 													</td>
 												</tr>
-												<tr>
-													<td>규모</td>
-													<td>
-														<!-- 서울 종로구 운니동에 있는 조선 후기 흥선대원군의 사가.
-										<br> 고종이 이곳에서 열두 살 때까지 자라다 왕이 됐으며 생부(生父) 이하응은 흥선대원군이 됐다.
-										<br> 운현궁(雲峴宮)에서 대원군은 서원 철폐, 경복궁 중건, 세제 개혁 등 많은 사업을 추진했다.
-										<br> 원래는 궁궐에 견줄 만큼 크고 웅장하였다고 전해지나 현재는 사랑채 노안당, 안채 이로당과 노락당만이 남아 있다.
-										<br> 정원 등은 잘 보존되어 있으며 인기 드라마 궁의 촬영지로도 쓰인 양관이 가까이에 있다. -->
-													</td>
-												</tr>
+												<%}if(pr.getPlaceNotice()!=null){ %>												
 												<tr>
 													<td>이것만은 꼭!</td>
 													<td>
-														<!-- 운현궁 양관 : 본래 흥선대원군의 손자인 이준용을 위해 지은 건물로 양관이라고 불린다.
-										<br> 프렌치 르네상스 풍의 석재를 혼용한 벽돌 2층 저택에 16개의 천장 문양이 모두 다르다.
-										<br> 1948년 덕성여자대학교에 매각되어 한때 교사로 쓰였고 지금도 평생교육원으로 쓰인다.
-										<br> 인기 드라마 궁의 촬영 장소로 사용되기도 했다. -->
-														<%=pr.getPlaceNotice()%>
+													<%=pr.getPlaceNotice()%>
 													</td>
 												</tr>
+												<%}if(pr.getPlacePayment()!=null){ %>
 												<tr>
 													<td>이용요금</td>
 													<td>
 														<%=pr.getPlacePayment()%>
 													</td>
 												</tr>
+												<%} %>
 												
 											</table>
 
@@ -253,7 +278,8 @@
 										</div>
 									</div>
 								</div>
-								<div class="panel panel-danger">
+								<%if(pr.getPlaceLatitude()!=0||pr.getPlaceLongtitude()!=0){ %>
+								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-target="#collapseThree"> 지도&교통
@@ -267,7 +293,8 @@
 										</div>
 									</div>
 								</div>
-								<div class="panel panel-danger">
+								<%} %>
+								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-target="#collapseFour"> 댓글 </a>
@@ -275,21 +302,20 @@
 									</div>
 									<div id="collapseFour" class="panel-collapse collapse">
 										<div class="panel-body" class="form-horizontal">
-											<form action="/PlaceComment">
+											<%if(session.getAttribute("user")!=null){ %>
 												<div class="row form-group">
-													<label class="col-sm-1 control-label" style="padding-top:7px;">아이디</label>
-													<input type="hidden" class="form-control" value="아이디" name="userId"/>
-													<input type="hidden" class="form-control" value="<%=pr.getPlaceTitle() %>" name="title"/>
-													<input type="hidden" class="form-control" value="<%=pr.getTitleNo() %>" name="titleNo"/>
+													<label class="col-sm-1 control-label" style="padding-top:7px;"><%=user.getUserId() %></label>
+													<input type="hidden" calss="form-control" value="<%=pr.getPlaceTitle() %>" id="title"/>
+													<input type="hidden" class="form-control" value="<%=user.getUserId() %>" id="userId"/>
+													<input type="hidden" class="form-control" value="<%=pr.getTitleNo() %>" id="titleNo"/>
 													<div class="col-xs-9 col-xs-offset-1">
-														<input type="text" class="form-control" placeholder="댓글내용" name="comment"/>
+														<input type="text" class="form-control" placeholder="댓글내용" id="comment" name="comment"/>
 													</div>
 													<div class="col-xs-1">
-														<button type="submit" class="btn btn-default"style="font-size:14px; font;font-weight: bold;">전송</button>
+														<button type="button" onclick="insertComment();"class="btn btn-primary" style="font-size:14px; font;font-weight: bold;">전송</button>
 													</div>
 												</div>
-											</form>
-											<div class="container-fulid">
+												<div class="container-fulid">
 												<div class="row">
 													<table class="table">
 														<tr>
@@ -301,7 +327,50 @@
 														<%for(PlaceRankComment prc : list) { %>
 														<tr>
 															<td><%=prc.getUserId() %></td>
-															<td><%=prc.getUserComment() %><a href="/commentDelete"><span class="glyphicon glyphicon-trash pull-right"></span></a></td>
+															<%if(prc.getUserId().equals(((SeoulUser)session.getAttribute("user")).getUserId())){ %>
+															<td><%=prc.getUserComment() %><span class="glyphicon glyphicon-trash pull-right" onclick="commentDelete(<%=prc.getTitleNo()%>,<%=prc.getReviewNo()%>);"></span></td>
+															<%}else{ %>
+															<td><%=prc.getUserComment() %></td>
+															<%} %>
+															<td><%=prc.getWriteDate() %></td>
+														</tr>
+														<%} %>
+														<script>
+														function commentDelete(titleNo,reviewNo) {
+															location.href="/commentDelete?titleNo="+titleNo+"&reviewNo="+reviewNo;
+														}
+														</script>
+													</table>
+												</div>
+											</div>
+												<%}else {%>
+												 <div class="row form-group">
+													<label class="col-sm-1 control-label" style="padding-top:7px;">비로그인</label>	
+													<div class="col-xs-9 col-xs-offset-1">
+														<input type="text" class="form-control" placeholder="로그인후 이용이 가능합니다." id="comment" name="comment" readonly onclick="login()"/>
+													</div>
+													<script>
+													function login() {
+														alert("로그인을 먼저 진행해 주세요");
+														window.open("/views/main/login.jsp","_black","width=400px,height=250px");
+													}
+													</script>
+													<div class="col-xs-1">
+														<button type="button" onclick="insertComment();"class="btn btn-primary disabled" style="font-size:14px; font;font-weight: bold;">전송</button>
+													</div>
+												</div><div class="container-fulid">
+												<div class="row">
+													<table class="table">
+														<tr>
+															<th>아이디</th>
+															<th>내용</th>
+															<th>작성일</th>
+														</tr>
+														
+														<%for(PlaceRankComment prc : list) { %>
+														<tr>
+															<td><%=prc.getUserId() %></td>
+															<td><%=prc.getUserComment() %></td>
 															<td><%=prc.getWriteDate() %></td>
 														</tr>
 														<%} %>
@@ -309,10 +378,12 @@
 													</table>
 												</div>
 											</div>
+												<%} %>
+											
 										</div>
 									</div>
 								</div>
-								<button class="btn btn-danger pull-right" onclick="back();">목록</button>
+								<button class="btn btn-primary pull-right" onclick="back();">목록</button>
 								<br>
 								<br>
 								<br>

@@ -43,3 +43,14 @@ function nologin(){
 function back(){
 	location.href="/concertList";
 }
+
+function commentCheck(){
+	if(document.getElementById('userComment').value == ""){
+		alert('댓글을 입력해 주세요');
+		return false;
+	}else{
+		alert('댓글이 입력되었습니다.');
+		return true;
+	}
+	
+}

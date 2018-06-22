@@ -46,9 +46,9 @@ public class SeoulInformationService {
 		
 	}
 
-	public int commentInsert(String content) {
+	public int commentInsert(String content, String userName) {
 		Connection conn=JDBCTemplate.getConnection();
-		int result=new SeoulInformationDao().commentInsert(conn,content);
+		int result=new SeoulInformationDao().commentInsert(conn,content,userName);
 		
 		if(result>0) {
 			JDBCTemplate.commit(conn);
@@ -183,6 +183,14 @@ public class SeoulInformationService {
 		}
 		JDBCTemplate.close(conn);
 		return sicpd2;
+	}
+
+	public SeoulInformationComment selectOne(int commentNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		SeoulInformationComment sic=new SeoulInformationDao().selectOne(conn,commentNo);
+		JDBCTemplate.close(conn);
+		return sic;
+		
 	}
 
 }

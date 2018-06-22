@@ -35,16 +35,15 @@ public class FestivalCommentServlet extends HttpServlet {
 		FestivalComment fc = new FestivalComment();
 		
 		fc.setUserId(request.getParameter("userId"));
-		fc.setTitleNo(Integer.parseInt(request.getParameter("titleNo")));
 		fc.setTitle(request.getParameter("title"));
+		fc.setTitleNo(Integer.parseInt(request.getParameter("titleNo")));
 		fc.setUserComment(request.getParameter("comment"));
 		
 		int result = new FestivalService().insertComment(fc);
 		
-		if(result>0)
-		{
-			response.sendRedirect("/festivalSelect?titleNo="+fc.getTitleNo());
-		}
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().print(result);
+		response.getWriter().close();
 	}
 
 	/**

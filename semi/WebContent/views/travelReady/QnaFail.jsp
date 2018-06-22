@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
-
+<%@ page import="semi.travelready.model.vo.*" import="java.util.*" import="semi.login.model.vo.*" %>
+<%SeoulUser su=(SeoulUser)session.getAttribute("user"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -109,6 +109,10 @@ if (self.name != 'reload') {
     self.location.reload(true);
 }
 else self.name = '';
+
+function logout(){
+	alert("로그인시 이용가능한 서비스입니다.");
+}
 </script>
 
 <body id="scroll">
@@ -153,9 +157,14 @@ else self.name = '';
 							</tr>
 						
 					</table>
+						<%if(su!=null){ %>
 					<form action="/views/travelReady/QnAWrite.jsp">
 					<input type="submit" value="글쓰기" class="btn btn-primary">
 				</form>
+				<%} %>
+				<%if(su==null){ %>
+					<button onclick="logout();" class="btn btn-primary">글쓰기</button>
+				<%} %>
 				</div>
 				
 	
@@ -166,6 +175,6 @@ else self.name = '';
 
 			
 			</section>
-			<%@ include file="/views/main/footer.jsp"%>
+			
 </body>
 </html>

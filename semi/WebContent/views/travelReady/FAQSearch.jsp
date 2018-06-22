@@ -113,7 +113,7 @@ border-bottom:1px solid #dcdcdc;
 width:895px; 
 padding : 10px 20px 10px 45px;
 line-height:22px;
-background-color:gray;
+background-color:#e3e3e3;
 }
 
 #basicInfo {
@@ -166,7 +166,7 @@ function answer(id){
 				<div id="faqtitle">
 				<div id="faqtitleimg"></div>
 				<strong style="font-size:18px;">"FAQ를 통해서 원하시는 답변을 쉽고 빠르게 찾아보세요"</strong><br>
-					<a href="/qna">게시판</a>
+				
 				질문을 하기시 전 자주하시는 질문을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				원하는 내용을 찾지 못하실 경우 '질문과 답변' 게시판에 문의해 주시면 친절하게 안내해 드리겠습니다.<br>
 				</div>
@@ -207,12 +207,19 @@ function answer(id){
 					</dl>					
 				</div>
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
+				<%if(fpd.getCurrentPage()>1){ %>
+					<a class="btn btn-primary btn-lg" href="/faq?currentPage=<%=fpd.getCurrentPage()-1%>"> < </a>
+					<%} %>
+				
 				<%for(int i=fpd.getStartNavi(); i<=fpd.getEndNavi();i++){ 
 					if(i==fpd.getCurrentPage()){%>
 						<a class="btn btn-primary btn-lg" href='/faqSearch?search=<%=request.getAttribute("search")%>&currentPage=<%=i%>'><%=i%></a>
 					<%}else{ %>
 						<a class="btn btn-primary btn-lg" href='/faqSearch?search=<%=request.getAttribute("search")%>&currentPage=<%=i%>'><%=i%></a>
 					<%} %>
+				<%} %>
+					<%if(fpd.getCurrentPage()<fpd.getPageTotalCount()){ %>
+					<a class="btn btn-primary btn-lg" href="/faq?currentPage=<%=fpd.getCurrentPage()+1%>"> > </a>
 				<%} %>
 				</div>
 		
@@ -222,6 +229,6 @@ function answer(id){
 
 			
 			</section>
-			<%@ include file="/views/main/footer.jsp"%>
+			
 </body>
 </html>

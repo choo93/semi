@@ -163,6 +163,7 @@ div {
 	font-size: 15px;
 	overflow: hidden;
 	text-overflow: clip;
+	line-height:20px;
 }
 
 #input {
@@ -255,6 +256,7 @@ div {
 	font-size: 15px;
 	overflow: hidden;
 	text-overflow: clip;
+	line-height:20px;
 }
 
 #btn {

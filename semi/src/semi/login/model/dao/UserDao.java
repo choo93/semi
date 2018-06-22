@@ -34,6 +34,7 @@ public class UserDao {
 				su.setUserName(rset.getString("user_name"));
 				su.setUserEmail(rset.getString("user_email"));
 				su.setUserPhone(rset.getString("user_phone"));
+				su.setUserBirthday(rset.getString("user_birthday"));
 				su.setUserAddr(rset.getString("user_addr"));
 				su.setUserJoindate(rset.getDate("user_joindate"));
 				su.setUserActive(rset.getString("user_active"));
@@ -52,7 +53,7 @@ public class UserDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		boolean result = false;
-		String query = "select floor(sysdate-user_modified) as change_date from seoul_user where userid=?";
+		String query = "select floor(sysdate-user_modified) as change_date from seoul_user where user_id=?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userId);
@@ -73,6 +74,38 @@ public class UserDao {
 		}
 		return result;
 	}
+	
+	public SeoulUser myPage(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from seoul_user";
+		SeoulUser su = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			if(rset.next())
+			{
+				su = new SeoulUser();
+				su.setUserNo(rset.getInt("user_no"));
+				su.setUserId(rset.getString("user_id"));
+				su.setUserPwd(rset.getString("user_pwd"));
+				su.setUserName(rset.getString("user_name"));
+				su.setUserEmail(rset.getString("user_email"));
+				su.setUserPhone(rset.getString("user_phone"));
+				su.setUserBirthday(rset.getString("user_birthday"));
+				su.setUserAddr(rset.getString("user_addr"));
+				su.setUserJoindate(rset.getDate("user_joindate"));
+				su.setUserActive(rset.getString("user_active"));
+				su.setUserModified(rset.getDate("user_modified"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return su;
+	}	
 
 	public ArrayList<SeoulUser> allSelect(Connection conn) {
 		Statement stmt = null;
@@ -162,6 +195,8 @@ public class UserDao {
 	}
 
 	public int updateUser(Connection conn, SeoulUser su) {
+		
+		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int result = 0;
@@ -181,17 +216,16 @@ public class UserDao {
 		}
 		query = null;
 		if(changePwd==true) {
-			query = "update seoul_user set user_pwd=?, user_email=?, user_phone=?, user_addr=?, user_modified=sysdate where user_id=?";
+			query = "update seoul_user set user_pwd=?, user_phone=?, user_addr=?, user_modified=sysdate where user_id=?";
 		}else {
-			query = "update seoul_user set user_pwd=?, user_email=?, user_phone=?, user_addr=? where user_id=?";
+			query = "update seoul_user set user_pwd=?, user_phone=?, user_addr=? where user_id=?";
 		}
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, su.getUserPwd());
-			pstmt.setString(2, su.getUserEmail());
-			pstmt.setString(3, su.getUserPhone());
-			pstmt.setString(4, su.getUserAddr());
-			pstmt.setString(5, su.getUserId());
+			pstmt.setString(2, su.getUserPhone());
+			pstmt.setString(3, su.getUserAddr());
+			pstmt.setString(4, su.getUserId());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -347,5 +381,76 @@ public class UserDao {
 
 		return list;
 	}
+
+	public SeoulUser idFind(Connection conn, String userName, String userEmail) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from seoul_user where user_name=? and user_email=?";
+		SeoulUser su = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, userEmail);
+			rset = pstmt.executeQuery();
+			if(rset.next())
+			{
+				su = new SeoulUser();
+				su.setUserNo(rset.getInt("user_no"));
+				su.setUserId(rset.getString("user_id"));
+				su.setUserPwd(rset.getString("user_pwd"));
+				su.setUserName(rset.getString("user_name"));
+				su.setUserEmail(rset.getString("user_email"));
+				su.setUserPhone(rset.getString("user_phone"));
+				su.setUserBirthday(rset.getString("user_birthday"));
+				su.setUserAddr(rset.getString("user_addr"));
+				su.setUserJoindate(rset.getDate("user_joindate"));
+				su.setUserActive(rset.getString("user_active"));
+				su.setUserModified(rset.getDate("user_modified"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return su;
+	}
+
+	public SeoulUser pwdFind(Connection conn, String userId, String userName, String userEmail) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from seoul_user where user_id=? and user_name=? and user_email=?";
+		SeoulUser su = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userName);
+			pstmt.setString(3, userEmail);
+			rset = pstmt.executeQuery();
+			if(rset.next())
+			{
+				su = new SeoulUser();
+				su.setUserNo(rset.getInt("user_no"));
+				su.setUserId(rset.getString("user_id"));
+				su.setUserPwd(rset.getString("user_pwd"));
+				su.setUserName(rset.getString("user_name"));
+				su.setUserEmail(rset.getString("user_email"));
+				su.setUserPhone(rset.getString("user_phone"));
+				su.setUserBirthday(rset.getString("user_birthday"));
+				su.setUserAddr(rset.getString("user_addr"));
+				su.setUserJoindate(rset.getDate("user_joindate"));
+				su.setUserActive(rset.getString("user_active"));
+				su.setUserModified(rset.getDate("user_modified"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return su;
+	}
+
+
 }
 

@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
     
     
-    <%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
+    <%@ page import="semi.travelready.model.vo.*" import="java.util.*"  import="semi.login.model.vo.*"%>
 <%
 	SeoulInformationCommentPageData sicpd=(SeoulInformationCommentPageData)request.getAttribute("SeoulInformationCommentPageData");
 	ArrayList<SeoulInformationComment> list=sicpd.getNoticelist();
 	ArrayList<CommentComment> cList=(ArrayList<CommentComment>)request.getAttribute("CommentComment");
+	SeoulUser su=(SeoulUser)session.getAttribute("user");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -79,6 +80,38 @@
     		
     		
     	}
+    	function logout()
+    	{
+    		alert("로그인후 이용해주세요");
+    	}
+    	function up(commentNo){
+    		var upDown="up";
+    		var up=document.getElementById('upinc').innerHTML;
+ 		   $.ajax({
+	 			url : "/seoulInformationCommentUpDown",
+	 			data : {UpDown:upDown,commentNo:commentNo,Up:up},
+	 			type : "post",
+	 			success:function(data){
+	 				document.getElementById('upinc').innerHTML=data;
+	 				
+	 			}
+	 		});	
+    	}
+    	
+     	function down(commentNo){
+    		var upDown="down";
+    		var down=document.getElementById('downdec').innerHTML;
+ 		   $.ajax({
+	 			url : "/seoulInformationCommentUpDown",
+	 			data : {UpDown:upDown,commentNo:commentNo,Down:down},
+	 			type : "post",
+	 			success:function(data){
+	 				document.getElementById('downdec').innerHTML=data;
+	 				
+	 			}
+	 		});	
+    	}
+    	
     </script>
 
 <body id="scroll">
@@ -198,9 +231,13 @@
 					<div id="comment" style="background-color:transparent; border:1px solid #f2f2f2">
 						<div style="width:100%; height:20%; font-weight:700"><span>소셜 로그인</span></div>
 						<div style="width:100%; height:70%; margin-top:10px;">
-							<div style="width:100px; height:130px;float:left; background:url(/image/logo.png); background-repeat:no-repeat; background-size:100%;"></div>
+							<div style="width:100px; height:130px;float:left; background:url(/image/main/logo.png); background-repeat:no-repeat; background-size:100%;"></div>
+							<%if(su!=null){ %>
+									
 							<form action="/writeComment">
+							<%} %>
 							<div style="width:85%; height:100%; margin-left:15%;">
+				
 								<ul style="border-radius:10px;">
 									<li><textarea placeholder="소셜 계정으로 작성하세요" rows="1" readonly style="resize:none;"></textarea></li>
 									<li><textarea name="content" rows="10" style="height:80px; resize:none;"></textarea></li>
@@ -211,7 +248,15 @@
 									</ul>
 									
 									</li>
-									<li style="float:right;"><button>보내기</button></li>
+									<li style="float:right;">
+									<%if(su!=null){ %>
+									<input type="hidden" name="userName" value="<%=su.getUserName()%>">
+									<input type="submit" value="보내기">
+									<%}else{ %>
+									
+									<button onclick="logout();">보내기</button>
+									<%} %>
+									</li>
 								</ul>
 							</form>
 							</div>
@@ -246,14 +291,15 @@
 								<li style="height:100px; padding-top:40px;"><%=sic.getContent()%>
 									<ul style="list-style:none; float:right; width:200px; height:100%;">
 										<li style="width:50px; height:100%;list-style:none; float:left; text-align:center;">
-										<a href="/seoulInformationCommentUpDown?UpDown=up&Up=<%=sic.getUp()%>&commentNo=<%=sic.getCommentNo()%>"><button style="width:40px;height:30px; border-radius:7px; background-color:white;">
+										<button onclick="up(<%=sic.getCommentNo()%>)" style="width:40px;height:30px; border-radius:7px; background-color:white;">
 										<span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
 									    background-position: 0px -93px;">
-									    <strong><%=sic.getUp()%></strong></span></button></a></li>
+									    <strong id="upinc"><%=sic.getUp()%></strong></span></button></li>
+										
 										<li style="width:50px; height:100%;list-style:none; float:left; text-align:center;">
-										<a href="/seoulInformationCommentUpDown?UpDown=down&Down=<%=sic.getDown()%>&commentNo=<%=sic.getCommentNo()%>"><button style="width:40px;height:30px; border-radius:7px; background-color:white;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
+										<button onclick="down(<%=sic.getCommentNo()%>)" style="width:40px;height:30px; border-radius:7px; background-color:white;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
 									    background-position: 0px -109px; ">
-									    <strong><%=sic.getDown()%></strong></span></button></a></li>
+									    <strong id="downdec"><%=sic.getDown()%></strong></span></button></li>
 									
 									</ul>
 									
@@ -353,6 +399,6 @@
 				</div>
 			
 		</section>
-<%@ include file="/views/main/footer.jsp" %>
+
 </body>
 </html>

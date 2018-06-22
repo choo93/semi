@@ -114,15 +114,15 @@ public class SeoulInformationDao {
 		
 	}
 
-	public int commentInsert(Connection conn, String content) {
+	public int commentInsert(Connection conn, String content, String userName) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String query="insert into seoulinformation values(seoulinformation_SEQ.nextval,'userName',?,sysdate,0,0)";
+		String query="insert into seoulinformation values(seoulinformation_SEQ.nextval,?,?,sysdate,0,0)";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
-			
-			pstmt.setString(1, content);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, content);
 ;
 			result=pstmt.executeUpdate();
 			
@@ -384,6 +384,42 @@ public class SeoulInformationDao {
 		sicpd.setRecordTotalCount(recordTotalCount);
 		
 		return sicpd;
+	}
+
+	public SeoulInformationComment selectOne(Connection conn, int commentNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		SeoulInformationComment sic=null;
+		String query="select * from seoulinformation where commentNo=?";
+		
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, commentNo);
+			
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				sic=new SeoulInformationComment();
+				sic.setCommentNo(rset.getInt("commentno"));
+				sic.setUserName(rset.getString("username"));
+				sic.setContent(rset.getString("content"));
+				sic.setWriteDate(rset.getDate("writedate"));
+				sic.setUp(rset.getInt("up"));
+				sic.setDown(rset.getInt("down"));
+			}
+			
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally
+		{
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return sic;
+		
 	}
 	
 }

@@ -59,7 +59,7 @@ public class SeoulImageSearchServlet extends HttpServlet {
 			view.forward(request, response);
 		}
 		else {
-			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/SeoulImageSearchFail.jsp");
+			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/SeoulImageFail.jsp");
 			request.setAttribute("search", search);
 			view.forward(request, response);
 		}
