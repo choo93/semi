@@ -262,7 +262,7 @@ public class ConcertDAO {
 
 		String query = 
 
-				"select * from (select Element_Index_Review.*,row_number() over(order by SEQ_REVIEW)as num from Element_Index_Review where SEQ_INDEX_TITLENO = ? )where num between ? and ?";
+				"select * from (select Element_Index_Review.*,row_number() over(order by SEQ_REVIEW desc)as num from Element_Index_Review where SEQ_INDEX_TITLENO = ? )where num between ? and ?";
 		ArrayList<EnjoyComment> list = new ArrayList<EnjoyComment>();
 		try {
 			pstmt = conn.prepareStatement(query);
