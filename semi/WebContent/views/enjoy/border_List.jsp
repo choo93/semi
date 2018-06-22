@@ -105,12 +105,7 @@ form{
 		
 		<!-- 헤더 DIV -->
 		<div class="header" style="width: 100%;">
-<<<<<<< HEAD
 			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 158px; ">현재 위치 : 서울즐기기 > 
-=======
-
-			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 10%; ">현재 위치 : 서울즐기기 > 
->>>>>>> refs/remotes/origin/master
 			<% String CurrentType ="";
 			switch(type){
 			case "type1" : CurrentType = "추천코스"; break;  
@@ -335,13 +330,9 @@ form{
 								<%
 										}}
 										else{
-<<<<<<< HEAD
 											for(int i=0;i<4;i++){%>
 												<a href="#">#<%=Tag.nextToken()%></a>
-=======
-											for(int i=0;i<6;i++){%>
-												<a href="#" style="font: 11pt 나눔스퀘어;">#<%=Tag.nextToken()%></a>
->>>>>>> refs/remotes/origin/master
+
 											<%}
 												
 											
