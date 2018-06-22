@@ -28,7 +28,7 @@
 	<section>
 		<div id="title">
         	공연 예약
-        	<button>비회원 예약 정보 조회</button>
+        	<button onclick="noUser();">비회원 예약 정보 조회</button>
     	</div>
     	
     	<%for(DoboInfo di : list){ %>
@@ -60,4 +60,12 @@
 	</section>
 	<%@ include file="/views/main/footer.jsp" %>
 </body>
+<script>
+function noUser(){
+	var reserveNo = window.prompt('예약 번호 입력');
+	location.href="/noUserDobo?reserveNo="+reserveNo;
+	
+	
+}
+</script>
 </html>

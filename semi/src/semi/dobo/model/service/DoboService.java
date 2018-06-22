@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
-import semi.concert.model.dao.ConcertDAO;
 import semi.dobo.model.dao.DoboDAO;
 import semi.dobo.model.vo.DoboInfo;
 import semi.dobo.model.vo.DoboPageData;
@@ -79,6 +78,13 @@ public class DoboService {
 		
 		
 		return cd;
+	}
+
+	public DoboReserve selectNoUserReserve(int reserveNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		DoboReserve dr = new DoboDAO().selectNoUserReserve(conn,reserveNo);
+		JDBCTemplate.close(conn);
+		return dr;
 	}
 
 }

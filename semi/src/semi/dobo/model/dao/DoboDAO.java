@@ -205,7 +205,7 @@ public class DoboDAO {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query1 = "insert into DOBORESERVE values(DOBORESERVE_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?)";
-		String query2 = "insert into DOBORESERVE values(DOBORESERVE_SEQ.NEXTVAL,?,nologinuser_seq.nextval,?,?,?,?,?,?,?)";
+		String query2 = "insert into DOBORESERVE values(nologinuser_seq.nextval,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			if(dr.getUserNo()!=-1) {
@@ -222,13 +222,14 @@ public class DoboDAO {
 			}else{
 				pstmt = conn.prepareStatement(query2);
 				pstmt.setString(1, dr.getDoboCode());
-				pstmt.setString(2, dr.getDate());
-				pstmt.setString(3, dr.getTime());
-				pstmt.setString(4, dr.getReserveName());
-				pstmt.setString(5, dr.getGender());
-				pstmt.setString(6, dr.getNation());
-				pstmt.setString(7, dr.getPhone());
-				pstmt.setString(8, dr.getComment());
+				pstmt.setInt(2, dr.getUserNo());
+				pstmt.setString(3, dr.getDate());
+				pstmt.setString(4, dr.getTime());
+				pstmt.setString(5, dr.getReserveName());
+				pstmt.setString(6, dr.getGender());
+				pstmt.setString(7, dr.getNation());
+				pstmt.setString(8, dr.getPhone());
+				pstmt.setString(9, dr.getComment());
 			}
 			
 			result = pstmt.executeUpdate();
@@ -365,6 +366,35 @@ public class DoboDAO {
 		}
 
 		return sb.toString();
+	}
+
+	public DoboReserve selectNoUserReserve(Connection conn, int reserveNo) {
+		PreparedStatement pstmt = null;
+		String query = "select di.doboTitle, dr.doboreserveDate, dr.doboreserveTime, di.doboMeet from doboInfo di, doboReserve dr where dr.doboReserveNum = ?";
+		ResultSet rset = null;
+		DoboReserve dr = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reserveNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				dr = new DoboReserve();
+				
+				dr.setDoboTitle(rset.getString(1));
+				dr.setDate(rset.getString(2));
+				dr.setTime(rset.getString(3));
+				dr.setDoboMeet(rset.getString(4));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return dr;
 	}
 
 }
