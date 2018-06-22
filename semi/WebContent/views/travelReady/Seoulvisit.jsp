@@ -12,6 +12,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -111,6 +117,17 @@
 	 			}
 	 		});	
     	}
+     	
+     	
+     	$(document).ready(function(){
+    		$("textarea").keyup(function() 
+    		{ 
+            
+    			var inputLength = $(this).val().length; 
+    			var remain = 250 - inputLength; 
+    			$("strong[name=chk]").html(remain); 
+    		});
+    });
     	
     </script>
 
@@ -244,17 +261,17 @@
 									<li style="margin-bottom:10px;height:20px;">
 									<ul style="list-style:none; width:100%; height:20px; float:left;">
 										<li style="width:50%;list-style:none; float:left;"><button>사진</button></li>
-										<li style="padding-left:350px;width:50%;list-style:none; float:right;"><strong>0</strong><span>/250</span></li>
+										<li style="padding-left:350px;width:50%;list-style:none; float:right;"><strong name="chk">0</strong><span>/250</span></li>
 									</ul>
 									
 									</li>
 									<li style="float:right;">
 									<%if(su!=null){ %>
 									<input type="hidden" name="userName" value="<%=su.getUserName()%>">
-									<input type="submit" value="보내기">
+									<input type="submit" class="btn btn-primary" value="보내기">
 									<%}else{ %>
 									
-									<button onclick="logout();">보내기</button>
+									<button class="btn btn-primary" onclick="logout();">보내기</button>
 									<%} %>
 									</li>
 								</ul>
@@ -279,7 +296,7 @@
 						
 						<div style="width:100%; height:100%;">
 						
-							<div style="width:80px; height:60px; float:left; margin-top:30px; background-color:#dd4b39;color:white; text-align:center;"><%=sic.getUserName()%></div>
+							<div style="width:80px; height:60px; float:left; margin-top:30px; background:url(/image/main/logo.png); background-repeat:no-repeat; background-size:100%;padding-top:40px; text-align:center;"><%=sic.getUserName()%></div>
 							<div style="width:90%; height:100%; margin-left:10%;">
 							<ul>
 								<li>
@@ -314,9 +331,12 @@
 									신고</span></button></li>
 									<form action="/seoulInformationCommentDelete">
 									<input type="hidden" name="commentNo" value="<%=sic.getCommentNo()%>">
+									<%if(su!=null && sic.getUserName().equals(su.getUserName())){ %>
 									<li><button style="cursor: pointer;background-color:white;border:none;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;
 									    background-position: 4px -26px;">
 									    삭제</span></button></li>
+									    <%} %>
+									    
 									</form>
 								</ul>
 								
@@ -325,16 +345,29 @@
 								<div id="<%=sic.getCommentNo()%>" style="width:100%; height:150px; display:none;">
 										<ul style="border-radius:10px;">
 									<form action="/CommentComment">
+									<%if(su!=null){ %>
+									<input type="hidden" value="<%=su.getUserName()%>" name="userName">
+									<%} %>
 									<input type="hidden" value="<%=sic.getCommentNo()%>" name="commentNo">
 									<li><textarea name="content" rows="10" style="height:80px; resize:none;"></textarea></li>
 									<li style="margin-bottom:10px;height:20px;">
 									<ul style="list-style:none; width:100%; height:20px; float:left;">
 										<li style="width:50%;list-style:none; float:left;"><button>사진</button></li>
-										<li style="padding-left:385px;width:50%;list-style:none; float:right;"><strong>0</strong><span>/250</span></li>
+										<li style="padding-left:385px;width:50%;list-style:none; float:right;"><strong name="chk">0</strong><span>/250</span></li>
 									</ul>
 									
 									</li>
-									<li style="float:right;"><input type="submit" value="보내기"></li>
+									
+									<li style="float:right;">
+									<%if(su!=null){ %>
+									<input type="hidden" name="userName" value="<%=su.getUserName()%>">
+									<input type="submit" class="btn btn-primary" value="보내기">
+									<%}else{ %>
+									
+									<input type="button" class="btn btn-primary" onclick="logout();" value="보내기">
+									<%} %>
+									</li>
+									
 									</form>
 								</ul>
 								</div>
@@ -344,7 +377,7 @@
 								<%if(sic.getCommentNo()==cc.getCommentNo()){ %>
 								<div style="width:100%; height:150px; border-bottom:1px solid black; ">
 								
-									<div style="width:80px; height:60px; float:left; margin-top:30px; background-color:#dd4b39;color:white; text-align:center;"><%=cc.getUserName()%></div>
+									<div style="width:80px; height:60px; float:left; margin-top:30px; background:url(/image/main/logo.png); background-repeat:no-repeat;padding-top:40px; background-size:100%; text-align:center;"><%=cc.getUserName()%></div>
 							<div style="width:90%; height:100%; margin-left:10%;">
 							<ul>
 								<li>

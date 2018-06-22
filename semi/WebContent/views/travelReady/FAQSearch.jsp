@@ -170,7 +170,7 @@ function answer(id){
 				질문을 하기시 전 자주하시는 질문을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				원하는 내용을 찾지 못하실 경우 '질문과 답변' 게시판에 문의해 주시면 친절하게 안내해 드리겠습니다.<br>
 				</div>
-				
+				<a href="/qna" class="btn btn-outline-primary">질문과 답변 게시판 이동</a>
 				<fieldset>
 					<legend>게시물 검색</legend>
 					<form action="/faqSearch">
