@@ -71,12 +71,6 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
         </div>
         <% } %>	
         
-        <style>
-        	a:hover{
-        		color:#b43029;
-        	}
-        </style>
-        
         <form action="/search" method="get" class="search-wrapper">
         	<input type="search" placeholder="Search" style="width:200px;margin-left:10px;">
         	<img src="/image/main/search.png" onclick="search();" class="main_search">
@@ -92,12 +86,8 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
         <div id="main_category">
         	<div id="main_category_one" class="main_category">하이라이트</div>
         	<ul style="display:none;" id="sub_category_one" class="main_sub_category">
-        		<li><a href="">Top 10</a></li>
-        		<li><a href="">축제&amp;행사</a></li>
-        		<li><a href="">서울 특화관광</a></li>
-        		<li><a href="">한류관광</a></li>
-        		<li><a href="">글로벌 서울 메이트
-        		</a></li>
+        		<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
+        		<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
         	</ul>
 			<div id="main_category_two" class="main_category">서울즐기기</div>
         	<ul style="display:none;" id="sub_category_two" class="main_sub_category">
@@ -129,11 +119,8 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 		<ul id="tablet_category">
 			<li class="category_title"><a href="">하이라이트</a>
 			<ul class="category_sub_menu" style="display:none;">
-			    <li><a href="">Top 10</a></li>
-			    <li><a href="">축제&amp;행사</a></li>
-			    <li><a href="">서울 특화관광</a></li>
-			    <li><a href="">한류관광</a></li>
-			    <li><a href="">글로벌 서울 메이트</a></li>
+			    <li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
+        		<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
 			</ul>
 			</li>
 			<li class="category_title"><a href="/views/enjoy/enjoyPhoto.jsp">서울즐기기</a>
@@ -255,6 +242,33 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 	        	</ul>          	        	        	
         	</div>
         	<script>
+        	$(document).ready(function(){
+        		$("#main_category_one").click(function(){
+        			$(this).next("ul").slideToggle('slow');
+        			$('#sub_category_two').css('display','none');
+        			$('#sub_category_three').css('display','none');
+        			$('#sub_category_four').css('display','none');
+        		});
+        		$("#main_category_two").click(function(){
+        			$(this).next("ul").slideToggle('slow');
+        			$('#sub_category_one').css('display','none');
+        			$('#sub_category_three').css('display','none');
+        			$('#sub_category_four').css('display','none');
+        		});
+        		$("#main_category_three").click(function(){
+        			$(this).next("ul").slideToggle('slow');
+        			$('#sub_category_two').css('display','none');
+        			$('#sub_category_one').css('display','none');
+        			$('#sub_category_four').css('display','none');
+        		});
+        		$("#main_category_four").click(function(){
+        			$(this).next("ul").slideToggle('slow');
+        			$('#sub_category_two').css('display','none');
+        			$('#sub_category_three').css('display','none');
+        			$('#sub_category_one').css('display','none');
+        		});
+        	});	        	
+        	
         	$("#mobile_category_one").click(function(){
         		$(this).next("ul").slideToggle('slow',function(){
         			
@@ -265,7 +279,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
         	});
         	$("#mobile_category_two").click(function(){
         		$(this).next("ul").slideToggle('slow',function(){
-        			location.href="/views/enjoy/enjoyPhoto.jsp";
+        			
         		});
         		$('#mobile_one').css('display','none');
         		$('#mobile_three').css('display','none');
@@ -332,6 +346,17 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 	        </div>       
         </div>
 	</section>
+	
+	<script>
+	   window.onload = function() {
+	      if(opener!=null) { // 자신이 팝업창 일때 
+	         opener.location.reload();
+	         window.close();
+	         
+	      }
+	   }
+	</script>	
+	
 	<%@ include file="/views/main/footer.jsp" %>
 </body>
 </html>

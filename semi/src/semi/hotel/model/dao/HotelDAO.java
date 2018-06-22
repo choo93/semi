@@ -187,7 +187,7 @@ public class HotelDAO {
 		
 		if(needPrev) //시작이 1페이지가 아니라면!
 		{
-			sb.append("<li> <a href='/hotelList?currentPage="+(startNavi-1)+"'> « </a></li>");
+			sb.append("<li> <a style='height:47px;line-height:47px;' href='/hotelList?currentPage="+(startNavi-1)+"'> « </a></li>");
 		}
 		else
 		{
@@ -197,16 +197,16 @@ public class HotelDAO {
 		{
 			if(i==currentPage)
 			{
-				sb.append("<li class='active'><a href='/hotelList?currentPage="+i+"'> "+i+" </a></li>");
+				sb.append("<li class='active'><a style='height:47px;line-height:47px;' href='/hotelList?currentPage="+i+"'> "+i+" </a></li>");
 			}
 			else
 			{
-				sb.append("<li><a href='/hotelList?currentPage="+i+"'> "+i+" </a></li>");
+				sb.append("<li><a style='height:47px;line-height:47px;' href='/hotelList?currentPage="+i+"'> "+i+" </a></li>");
 			}
 		}
 		if(needNext) // 끝 페이지가 아니라면!
 		{
-			sb.append("<li><a href='/hotelList?currentPage="+(endNavi+1)+"'> » </a></li>");
+			sb.append("<li><a style='height:47px;line-height:47px;' href='/hotelList?currentPage="+(endNavi+1)+"'> » </a></li>");
 		}
 		else
 		{

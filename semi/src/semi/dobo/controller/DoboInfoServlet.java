@@ -27,15 +27,6 @@ public class DoboInfoServlet extends HttpServlet {
 		
 		DoboInfo di = new DoboService().selectInfo(indexNo);
 		
-		String search = "";
-		if(request.getParameter("search")!=null)
-		{
-			search = request.getParameter("search");
-		}
-		else 
-		{
-			search = "";
-		}
 		
 		int currentPage; 
 		if(request.getParameter("currentPage")==null)
@@ -48,7 +39,7 @@ public class DoboInfoServlet extends HttpServlet {
 		}
 
 		//페이징처리한 대상가져오기
-		CommentData cd = new DoboService().getListCommentData(currentPage,search,indexNo);
+		CommentData cd = new DoboService().getListCommentData(currentPage,indexNo);
 		
 		if(di!=null) {
 			RequestDispatcher view = request.getRequestDispatcher("/views/dobo/doboInfoTemplate.jsp");

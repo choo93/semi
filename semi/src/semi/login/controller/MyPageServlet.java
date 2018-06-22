@@ -37,7 +37,7 @@ public class MyPageServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		SeoulUser su = new UserService().myPage();
 		if(su!=null) {
-			RequestDispatcher view = request.getRequestDispatcher("/views/login/myPage.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/views/main/myPage.jsp");
 			request.setAttribute("user", su);
 			view.forward(request, response);
 		}else {
