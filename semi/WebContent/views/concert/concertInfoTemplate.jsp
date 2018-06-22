@@ -88,7 +88,7 @@
                             <dd>${requestScope.concertInfo.concertShowTime }</dd>
                             <hr>
                             <dt>가격</dt>
-                            <dd id="pp">${requestScope.concertInfo.concertPrice }</dd>
+                            <dd id="pp"><%= Integer.parseInt(ci.getConcertPrice())/1000 %>,<%= (Integer.parseInt(ci.getConcertPrice())/100)%10 %>00</dd>
                         </dl>
                     </div>
                 </div>
@@ -101,8 +101,8 @@
                     </div>
                     <div id="reserveBtn">
                     	<%
-                    	if(session.getAttribute("user")!=null){ %>                    
-                        	<button onclick="reserve(${requestScope.concertInfo.indexNo },${requestScope.concertInfo.concertCode }, '${requestScope.concertInfo.concertPrice }');">예약하기</button>
+                    	if(session.getAttribute("user")!=null){ %>               
+        				 	<button onclick="reserve(${requestScope.concertInfo.indexNo },${requestScope.concertInfo.concertCode }, '${requestScope.concertInfo.concertPrice }');">예약하기</button>
                         <%}else{ %>
                         	<button onclick="nologin();">예약하기</button>
                         <%} %>
