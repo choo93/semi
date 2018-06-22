@@ -219,7 +219,7 @@ public class Enjoydao {
 		StringBuilder sb = new StringBuilder(); // 오랜만이야..
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<li><a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&sort="+option+"'> « </a></li>");
+			sb.append("<li><a style='height:47px;line-height:47px;' href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&sort="+option+"'> « </a></li>");
 		}
 		else { // 시작 페이지가 1페이지라면 !
 			sb.append("<li class='disabled'> <span>«</span> </li>");
@@ -228,11 +228,11 @@ public class Enjoydao {
 			if (i == currentPage) {
 				sb.append("<li class='active'><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "&sort="+option+"'> " + i + " </a></li>");
 			} else {
-				sb.append("<li><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&sort="+option+"'> " + i + " </a></li>");
+				sb.append("<li><a style='height:47px;line-height:47px;' href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&sort="+option+"'> " + i + " </a></li>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<li><a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&sort="+option+"'> » </a></li>");
+			sb.append("<li><a style='height:47px;line-height:47px;' href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&sort="+option+"'> » </a></li>");
 		}else {
 			sb.append("<li class='disabled'> <span>»</span> </li>");
 		}
@@ -329,7 +329,7 @@ public class Enjoydao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query="insert into Element_Index_Review values(?,?,?,'test',?,Element_Index_Review_SEQ.nextval,sysdate,0,0,null)";
+		String query="insert into Element_Index_Review values(?,?,?,'test',?,Element_Index_Review_SEQ.nextval,sysdate)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -783,20 +783,20 @@ public class Enjoydao {
 		StringBuilder sb = new StringBuilder(); // 오랜만이야..
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<li><a href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&sort="+option+"'> « </a></li>");
+			sb.append("<li><a style='height:47px;line-height:47px;' href='/enjoyList?currentPage=" + (startNavi - 1) +"&serarch="+search+"&type="+type+"&sort="+option+"'> « </a></li>");
 		}
 		else { // 시작 페이지가 1페이지라면 !
 			sb.append("<li class='disabled'> <span>«</span> </li>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<li class='active'><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "&sort="+option+"'> " + i + " </a></li>");
+				sb.append("<li class='active'><a style='height:47px;line-height:47px;' href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+ "&sort="+option+"'> " + i + " </a></li>");
 			} else {
-				sb.append("<li><a href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&sort="+option+"'> " + i + " </a></li>");
+				sb.append("<li><a style='height:47px;line-height:47px;' href='/enjoyList?currentPage=" + i +"&serarch="+search+"&type="+type+  "&sort="+option+"'> " + i + " </a></li>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<li><a href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&sort="+option+"'> » </a></li>");
+			sb.append("<li><a style='height:47px;line-height:47px;' href='/enjoyList?currentPage=" + (endNavi + 1) +"&serarch="+search+"&type="+type+  "&sort="+option+"'> » </a></li>");
 		}else {
 			sb.append("<li class='disabled'> <span>»</span> </li>");
 		}
@@ -955,5 +955,4 @@ public class Enjoydao {
 
 	
 }
-
 

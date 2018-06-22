@@ -45,13 +45,16 @@ public class FaqServlet extends HttpServlet {
 		}
 		
 		FaqPageData fpd=new FaqService().faqAll(currentPage);
-		
+		System.out.println("gd");
 		
 		if(fpd!=null)
 		{
 			RequestDispatcher view=request.getRequestDispatcher("/views/travelReady/FAQ.jsp");
 			request.setAttribute("faqPageData", fpd);
 			view.forward(request, response);
+		}
+		else {
+			response.sendRedirect("/views/travelReady/FaqFail.jsp");
 		}
 	}
 

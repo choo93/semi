@@ -13,13 +13,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/main.css">
+<!-- <link rel="stylesheet" href="../../css/main.css"> -->
 <link rel="stylesheet" href="../../css/moreButton.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<script src="../../js/bootstrap.min.js"></script>
 </head>
 <body id="scroll">
-	<%@ include file="/views/main/header.jsp"%>
+<%-- 	<%@ include file="/views/main/header.jsp"%> --%>
 	<section>
 	
 	<!-- 내용물 -->
@@ -189,10 +191,24 @@
 
 	</div>
 	
+		<!-- 목록버튼을 위한 DIV -->
+		<div style="width: 100%;">
+			<button class="btn btn-outline-secondary" onclick="goToList();" style="position: relative; left: 50%;">목 록</button>
+		</div>
+
+		<!-- 목록 버튼을 눌렀을 때 리스트로 돌아가게 하는 스크립트 -->
+		<script>
+			function goToList(){
+				location.href="/enjoyList?type=<%=EID.getList_Element()%>";
+			}
+		</script>
+		
+		<!-- 맨 밑 공백을 위한 DIV -->
+		<div style="width: 100%; height: 50px;"></div>
 	
 	</div>
 		
 	</section>
-	<%@ include file="/views/main/footer.jsp"%>
+<%-- 	<%@ include file="/views/main/footer.jsp"%> --%>
 </body>
 </html>

@@ -187,7 +187,7 @@ public class HotelDAO {
 		
 		if(needPrev) //시작이 1페이지가 아니라면!
 		{
-			sb.append("<li> <a href='/hotelList?currentPage="+(startNavi-1)+"'> « </a></li>");
+			sb.append("<li> <a style='height:47px;line-height:47px;' href='/hotelList?currentPage="+(startNavi-1)+"'> « </a></li>");
 		}
 		else
 		{
@@ -197,16 +197,16 @@ public class HotelDAO {
 		{
 			if(i==currentPage)
 			{
-				sb.append("<li class='active'><a href='/hotelList?currentPage="+i+"'> "+i+" </a></li>");
+				sb.append("<li class='active'><a style='height:47px;line-height:47px;' href='/hotelList?currentPage="+i+"'> "+i+" </a></li>");
 			}
 			else
 			{
-				sb.append("<li><a href='/hotelList?currentPage="+i+"'> "+i+" </a></li>");
+				sb.append("<li><a style='height:47px;line-height:47px;' href='/hotelList?currentPage="+i+"'> "+i+" </a></li>");
 			}
 		}
 		if(needNext) // 끝 페이지가 아니라면!
 		{
-			sb.append("<li><a href='/hotelList?currentPage="+(endNavi+1)+"'> » </a></li>");
+			sb.append("<li><a style='height:47px;line-height:47px;' href='/hotelList?currentPage="+(endNavi+1)+"'> » </a></li>");
 		}
 		else
 		{
@@ -287,13 +287,13 @@ public class HotelDAO {
 			query="select * from roomInfo where RoomCode in ('3','4','5','6')";
 		}
 		else if(roomCode==4) {
-			query="select * from roomInfo where RoomCode in ('4','5','6','1')";
+			query="select * from roomInfo where RoomCode in ('1','4','5','6')";
 		}
 		else if(roomCode==5) {
-			query="select * from roomInfo where RoomCode in ('5','6','1','2')";
+			query="select * from roomInfo where RoomCode in ('1','2','5','6')";
 		}
 		else if(roomCode==6) {
-			query="select * from roomInfo where RoomCode in ('6','1','2','3')";
+			query="select * from roomInfo where RoomCode in ('1','2','3','6')";
 		}
 		
 		

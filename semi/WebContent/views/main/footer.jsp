@@ -7,6 +7,6 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<footer>© 2018 SEOULAIM. ALL RIGHTS RESERVED.</footer>
+	<footer style="text-align:left;width:100%;">© 2018 SEOULAIM. ALL RIGHTS RESERVED.</footer>
 </body>
 </html>
