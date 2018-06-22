@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.festival.model.service.FestivalService;
-import semi.festival.model.vo.FestivalComment;
 
 /**
- * Servlet implementation class FestivalCommentServlet
+ * Servlet implementation class CommentDeleteServlet
  */
-@WebServlet(name = "FestivalComment", urlPatterns = { "/festivalComment" })
-public class FestivalCommentServlet extends HttpServlet {
+@WebServlet(name = "CommentDelete", urlPatterns = { "/commentDelete" })
+public class CommentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FestivalCommentServlet() {
+    public CommentDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,20 +29,16 @@ public class FestivalCommentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+		int titleNo = Integer.parseInt(request.getParameter("titleNo"));
+		int result = new FestivalService().commentDelete(reviewNo);
 		
-		FestivalComment fc = new FestivalComment();
-		
-		fc.setUserId(request.getParameter("userId"));
-		fc.setTitle(request.getParameter("title"));
-		fc.setTitleNo(Integer.parseInt(request.getParameter("titleNo")));
-		fc.setUserComment(request.getParameter("comment"));
-		
-		int result = new FestivalService().insertComment(fc);
-		
-		response.setCharacterEncoding("utf-8");
-		response.getWriter().print(result);
-		response.getWriter().close();
+		if(result>0)
+		{
+			response.sendRedirect("/placeSelect?titleNo="+titleNo);
+		}else {
+			
+		}
 	}
 
 	/**
