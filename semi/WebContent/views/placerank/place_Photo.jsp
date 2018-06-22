@@ -5,10 +5,10 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
+		<title>Seoulaim - Top 10</title>
+		<link rel="icon" href="../../image/main/favicon.ico">
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../../css/bootstrap-theme.min.css">
-<!-- 		<link rel="stylesheet" href="../../css/main.css"> -->
 		<script src="../../js/jquery-3.3.1.min.js"></script>
 		<script src="../../js/vegas/vegas.min.js"></script>
 		<script src="../../js/main.js"></script>
@@ -113,29 +113,50 @@
 		}
 		.under-bar {
 			top:10px;
-			width: 100px;
+			width: 156px;
 			height: 2px; 
 			border: 3px solid yellow;
+			margin-left:88px;
+		}
+		.container-fluid{
+			padding-left:0px;
+			padding-right:0px;
+		}
+		.row{
+			margin-bottom:0px!important;
+		}
+		@media (max-width:1265px){
+		
+			.picture{
+				width:100%;
+			}
 		}
 	</style>
 
 	<body id="scroll">
-		<%-- <%@ include file="/views/main/header.jsp"%> --%>
-
+		<%@ include file="/views/main/header.jsp"%>
 			<section>
+				<style>
+					.container-fluid{
+						padding-left:0px;
+						padding-right:0px;
+					}
+				</style>
 				<div class="container-fluid">
 					<div class="row">
 						<a href="/placeRankList?type=1">
 							<div class="col-xs-6 picture photo1">
 
-									<h2 class="font">Top 10 관광명소<div class="under-bar"></div>	</h2>
+									<h2 class="font">Top 10 관광명소</h2>
+									<div class="under-bar"></div>
 
 							</div>
 						</a>
 						<a href="/placeRankList?type=2">
 							<div class="col-xs-6 picture photo2">
 
-									<h2 class="font">Top 10 나이트라이프<div class="under-bar"></div>	</h2>
+									<h2 class="font">Top 10 나이트라이프</h2>
+									<div class="under-bar"></div>	
 
 
 							</div>
@@ -146,14 +167,16 @@
 						<a href="/placeRankList?type=3">
 							<div class="col-xs-6 picture photo3">
 
-									<h2 class="font">Top 10 전통<div class="under-bar"></div>	</h2>
+									<h2 class="font">Top 10 전통</h2>
+									<div class="under-bar"></div>	
 
 							</div>
 						</a>
 						<a href="/placeRankList?type=4">
 							<div class="col-xs-6 picture photo4">
 
-									<h2 class="font">Top 10 쇼핑<div class="under-bar"></div>	</h2>
+									<h2 class="font">Top 10 쇼핑</h2>
+									<div class="under-bar"></div>	
 
 
 							</div>
@@ -164,18 +187,16 @@
 						<a href="/placeRankList?type=5">
 							<div class="col-xs-6 picture photo5">
 
-									<h2 class="font">Top 10 서울의 불빛
-											<div class="under-bar"></div>		
-									</h2>
-									
+									<h2 class="font">Top 10 한류</h2>
+									<div class="under-bar"></div>	
 
 							</div>
 						</a>
 						<a href="/placeRankList?type=6">
 							<div class="col-xs-6 picture photo6">
 
-									<h2 class="font">Top 10 가족여행<div class="under-bar"></div>	</h2>
-
+									<h2 class="font">Top 10 가족여행</h2>
+									<div class="under-bar"></div>
 
 							</div>
 						</a>

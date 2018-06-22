@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../../css/main.css">
+<title>Seoulaim - 서울즐기기</title>
+<link rel="icon" href="../../image/main/favicon.ico">
 <link rel="stylesheet" href="../../css/moreButton.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
@@ -90,13 +90,52 @@ box-shadow:1000px 0 0 0 rgba(0,0,0,0.5) inset;
 .effectRight:hover{
 box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 }
+#photo1{
+	width:50%;
+}
+#photo2{
+	width:50%;
+}
+#photo3{
+	width:50%;
+}
+#photo4{
+	width:50%;
+}
+#photo5{
+	width:50%;
+}
+#photo6{
+	width:50%;
+}
+@media (max-width:808px){
+		
+			#photo1{
+				width:100%;
+			}
+			#photo2{
+				width:100%;
+			}
+			#photo3{
+				width:100%;
+			}
+			#photo4{
+				width:100%;
+			}
+			#photo5{
+				width:100%;
+			}
+			#photo6{
+				width:100%;
+			}
+		}
 </style>
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp"%>
 	
 	<section>
 		<div id="enjoyPhoto" style="width: 100%;">
-			<div id="photo1" style="width: 50%; height: 350px; float: left;">
+			<div id="photo1" style="height: 350px; float: left;">
 					<a href="/enjoyList?type=type1">
 				 <img class="photo1"
 					src="../../image/enjoy/SEOUL1.png"
@@ -105,7 +144,7 @@ box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 				 
 				
 			</div>
-			<div id="photo2" style="width: 50%; height: 350px; float: left;">
+			<div id="photo2" style="height: 350px; float: left;">
 				
 				<a href="/enjoyList?type=type2">
 				<img class="photo2"
@@ -114,27 +153,27 @@ box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 										
 															
 			</div>
-			<div id="photo3" style="width: 50%; height: 350px; float: left;">
+			<div id="photo3" style="height: 350px; float: left;">
 				
 				<a href="/enjoyList?type=type3"><img class="photo3"
 					src="../../image/enjoy/SEOUL3.png"
 					style="width: 100%; height: 100%;"></a>
 
 			</div>
-			<div id="photo4" style="width: 50%; height: 350px; float: left;">
+			<div id="photo4" style="height: 350px; float: left;">
 				
 				<a href="/hotelList"><img class="photo4"
 					src="../../image/enjoy/SEOUL4.png"
 					style="width: 100%; height: 100%;"></a>
 
 			</div>
-			<div id="photo5" style="width: 50%; height: 350px; float: left;">
+			<div id="photo5" style="height: 350px; float: left;">
 				
 				<a href="/enjoyList?type=type5"><img class="photo5"
 					src="../../image/enjoy/SEOUL5.png"
 					style="width: 100%; height: 100%;"></a>
 			</div>
-			<div id="photo6" style="width: 50%; height: 350px; float: left;">
+			<div id="photo6" style="height: 350px; float: left;">
 				
 				<a href="/enjoyCalendar"><img class="photo6"
 					src="../../image/enjoy/SEOUL6.png"
@@ -142,6 +181,5 @@ box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 			</div>
 		</div>
 	</section>
-	<%@ include file="/views/main/footer.jsp"%>
 </body>
 </html>

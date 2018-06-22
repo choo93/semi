@@ -5,10 +5,10 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
+		<title>Seoulaim - 축제&행사</title>
+		<link rel="icon" href="../../image/main/favicon.ico">
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../../css/bootstrap-theme.min.css">
-<!-- 		<link rel="stylesheet" href="../../css/main.css"> -->
 		<script src="../../js/jquery-3.3.1.min.js"></script>
 		<script src="../../js/vegas/vegas.min.js"></script>
 		<script src="../../js/main.js"></script>
@@ -122,12 +122,28 @@
 			width: 100px;
 			height: 2px;
 			border: 3px solid skyblue;
+			margin-left:85px;
+		}
+		.container-fluid{
+			padding-left:0;
+			padding-right:0;
+		}
+		.row{
+			margin-bottom:0!important;
+		}
+		.photo1>div{
+			width:50px;
+		}
+		@media (max-width:1265px){
+		
+			.picture{
+				width:100%;
+			}
 		}
 	</style>
 
 	<body id="scroll">
-<%-- 		<%@ include file="/views/main/header.jsp"%> --%>
-
+			<%@ include file="/views/main/header.jsp"%>
 			<section>
 				<div class="container-fluid">
 					<div class="row">
@@ -135,8 +151,10 @@
 							<div class="col-xs-6 picture photo1">
 
 								<h2 class="font">봄
-									<div class="under-bar"></div>
+									
 								</h2>
+								
+								<div class="under-bar"></div>
 
 							</div>
 						</a>
@@ -144,9 +162,10 @@
 							<div class="col-xs-6 picture photo2">
 
 								<h2 class="font">여름
-									<div class="under-bar"></div>
+									
 								</h2>
-
+		
+								<div class="under-bar"></div>
 
 							</div>
 						</a>
@@ -157,8 +176,10 @@
 							<div class="col-xs-6 picture photo3">
 
 								<h2 class="font">가을
-									<div class="under-bar"></div>
+									
 								</h2>
+								
+								<div class="under-bar"></div>
 
 							</div>
 						</a>
@@ -166,9 +187,10 @@
 							<div class="col-xs-6 picture photo4">
 
 								<h2 class="font">겨울
-									<div class="under-bar"></div>
+									
 								</h2>
 
+								<div class="under-bar"></div>
 
 							</div>
 						</a>
