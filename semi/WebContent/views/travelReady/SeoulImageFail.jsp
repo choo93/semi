@@ -23,6 +23,7 @@
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
 		
@@ -110,6 +111,8 @@ function insert(){
 <div id="div1" style="width:100%; height:700px; display:none;"></div>
   	
 	<div id="imagechange" class="container"> 
+	
+	등록되어 있는 사진이 없습니다.
 <h1> 서울 관광 이미지   </h1>
  <%if(su!=null && su.getUserId().equals("admin")) {%>
  <botton class="btn btn-primary" onclick="insert();">등록</botton><%} %>

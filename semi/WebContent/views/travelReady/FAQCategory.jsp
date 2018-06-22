@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
+<%@ page import="semi.travelready.model.vo.*" import="java.util.*" import="semi.login.model.vo.*" %>
 <%
 	FaqPageData fpd=(FaqPageData)request.getAttribute("faqPageData");
 	ArrayList<Faq> list=fpd.getNoticelist();
+	SeoulUser su=(SeoulUser)session.getAttribute("user");
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -192,7 +193,7 @@ function answer(id){
 				질문을 하기시 전 자주하시는 질문을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				원하는 내용을 찾지 못하실 경우 '질문과 답변' 게시판에 문의해 주시면 친절하게 안내해 드리겠습니다.<br>
 				</div>
-				
+				<a href="/qna" class="btn btn-outline-primary">질문과 답변 게시판 이동</a>
 				<fieldset>
 					<legend>게시물 검색</legend>
 					<form action="/faqSearch">
@@ -228,6 +229,9 @@ function answer(id){
 					<%} %>
 					</dl>					
 				</div>
+					<%if(su!=null && su.getUserId().equals("admin")){ %>
+				<input type="submit" value="등록" class="btn btn-primary">
+				<%} %>
 				<div  id="navi" style="width:100%; height:50px; padding-top:30px; padding-bottom:50px; text-align:center;">
 					<%if(fpd.getCurrentPage()>1){ %>
 					<a class="btn btn-primary btn-lg" href="/faq?currentPage=<%=fpd.getCurrentPage()-1%>"> < </a>

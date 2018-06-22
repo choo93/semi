@@ -63,9 +63,9 @@ public class SeoulInformationService {
 		
 	}
 
-	public int insertCommentComment(int commentNo, String content) {
+	public int insertCommentComment(int commentNo, String content, String userName) {
 		Connection conn=JDBCTemplate.getConnection();
-		int result=new SeoulInformationDao().insertCommentComment(conn,commentNo,content);
+		int result=new SeoulInformationDao().insertCommentComment(conn,commentNo,content,userName);
 		
 		if(result>0) {
 			JDBCTemplate.commit(conn);
