@@ -78,37 +78,38 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
         <% } %>	
         
         <!-- desktop category -->
-        <div id="main_category">
-        	<div id="main_category_one" class="main_category">하이라이트</div>
-        	<ul style="display:none;" id="sub_category_one" class="main_sub_category">
-        		<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
-        		<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
-        	</ul>
-			<div id="main_category_two" class="main_category">서울즐기기</div>
-        	<ul style="display:none;" id="sub_category_two" class="main_sub_category">
-        		<li><a href="/enjoyList?type=type1">추천코스</a></li>
-				<li><a href="/enjoyList?type=type2">명소</a></li>
-				<li><a href="/enjoyList?type=type3">쇼핑</a></li>
-				<li><a href="/enjoyList?type=type4">숙박</a></li>
-				<li><a href="/enjoyList?type=type5">음식점</a></li>
-				<li><a href="/enjoyList?type=type6">캘린더</a></li>
-        	</ul>
-			<div id="main_category_three" class="main_category">예약하기</div>
-        	<ul style="display:none;" id="sub_category_three" class="main_sub_category">
-        		<li><a href="/concertList">공연예약</a></li>
-				<li><a href="/hotelList">호텔예약</a></li>
-				<li><a href="/doboList">서울도보관광예약</a></li>
-        	</ul>  
-			<div id="main_category_four" class="main_category">여행준비</div>
-        	<ul style="display:none;" id="sub_category_four" class="main_sub_category">
-        		<li><a href="">가이드북&amp;지도</a></li>
-        		<li><a href="">여행필수정보</a></li>
-        		<li><a href="">서비스 안내</a></li>
-        		<li><a href="">비즈니스&amp;파트너</a></li>
-        		<li><a href="">FAQ</a></li>
-        		<li><a href="">공지사항</a></li>
-        	</ul>          	        	        	
-        </div>
+		<ul class="mainCategory" style="clear:both;">
+			<li><span class="category category1">하이라이트</span>
+				<ul class="subcategory subcategory1">
+					<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
+					<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
+				</ul>
+			</li>
+			<li><span class="category category2">서울즐기기</span>
+				<ul class="subcategory subcategory2">
+					<li><a href="/enjoyList?type=type1">추천코스</a></li>
+					<li><a href="/enjoyList?type=type2">명소</a></li>
+					<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+					<li><a href="/enjoyList?type=type5">음식점</a></li>
+					<li><a href="/enjoyList?type=type6">캘린더</a></li>
+				</ul>
+			</li>
+			<li><span class="category category3">예약하기</span>
+				<ul class="subcategory subcategory3">
+					<li><a href="/concertList">공연예약</a></li>
+					<li><a href="/hotelList">호텔예약</a></li>
+					<li><a href="/doboList">서울도보관광예약</a></li>
+				</ul>
+			</li>
+			<li><span class="category category4">여행준비</span>
+				<ul class="subcategory subcategory4">
+					<li><a href="/guideBookDown">가이드북</a></li>
+					<li><a href="/views/travelReady/travelInformation.jsp">여행필수정보</a></li>
+					<li><a href="/seoulImage">서울 관광 이미지</a></li>
+					<li><a href="/faq">FAQ</a></li>
+				</ul>
+			</li>
+		</ul>
         
         <!-- Tablet Category -->
 		<ul id="tablet_category">
