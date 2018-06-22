@@ -1,26 +1,8 @@
-/* intro */
-#intro_page a{
-    text-decoration:none;
-    color:white;
-    font-size:6rem;
-    position:absolute;
-    bottom:200px;
-    right:300px;
-    font-family: 'Great Vibes', cursive;
-}
-#intro_page a:hover{
-    color:yellow;
-}
-
 /* main */
 h1,h2,p{margin:0;}
 a{color:black;}
 
 /* header */
-.btn{
-	width:100%;
-	background-color:#b43029;
-}
 .btn:link, .btn:visited, .btn:hover, .btn:active{
 	background-color:#b43029;
 }
@@ -90,11 +72,21 @@ a{color:black;}
 	font-size:14px;
 	line-height:1.7;
 	text-align:justify;
+	margin-bottom:20px;
 }
-.red_box a, .white_box a, .white_box2 a, .red_box2 a{
+.red_box a, .white_box2 a{
+	margin-left:20px;
+	padding-top:20px;
 	font-size:16px;
 	font-weight:bold;
-	margin-top:20px;
+}
+.red_box a>span, .white_box2 a>span{
+	padding-bottom:6px;
+	border-bottom:2px solid #b43029;
+}
+.white_box a, .red_box2 a{
+	font-size:16px;
+	font-weight:bold;
 	display:block;
 	margin-left:20px;
 }
@@ -104,6 +96,9 @@ a{color:black;}
 	width:79px;
 	margin-left:20px;
 	border:none;
+}
+.white_box2 .border_top{
+	margin-bottom:20px;
 }
 .white_box2 .border_bottom, .red_box2 .border_bottom{
 	background-color:#b43029;
