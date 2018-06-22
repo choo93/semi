@@ -108,7 +108,7 @@
 			style="width: 100%; height: 10%; display: none;">
 			
 			
-			<div style="width: 100%; height: 90%; font-size:18px;">
+			<div style="width: 100%; height: 90%; font-size:16px;">
 			<hr><%=hi.getHotelExplain() %></div>
 		</div>
 

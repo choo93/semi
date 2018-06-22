@@ -23,7 +23,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
         <div id="room">
             <%for(int i=0;i<10;i++){ %>
             	<%for(int j=0;j<8;j++){ %>
-            		<div id="<%=i*8+j+1%>" onclick="select(this);"><%=100*(10-i)+j+1%>호</div>
+            		<div id="<%=i*8+j+1%>"  onclick="select(this);"><%=100*(10-i)+j+1%>호</div>
             	<%
             	}
             	%>
@@ -179,7 +179,11 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 				
 			});
 		}
-		
+
+				
 </script>
+
+
+
 </body>
 </html>

@@ -12,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="../../css/hotel/roomInfo.css?ver=1">
+<link rel="stylesheet" href="../../css/hotel/roomInfo.css">
 <link rel="stylesheet" href="/lib/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -23,6 +23,7 @@
 </head>
 <body id="scroll">
 
+    
 	<section>
 	
 	<div style="width: 1200px; height: 1400px; margin-left:15%;">
@@ -80,7 +81,7 @@
 	      <input type="radio" id="room3" name="hotelPrice" onclick="roomPrice(<%=ri.get(2).getRoomCode() %>);" style="width:20px; height:20px;" value=<%=ri.get(2).getRoomPrice()%>>
 	     
 	    </div>
-	    </div>
+	    </div>   
 	    
 	    <div id="hotelRoom4Info">
 	    <div id="hotelRoom4Type">
@@ -110,7 +111,7 @@
 		<input id="price" type="hidden" name="price">
 		<div id="dated">
 			<p>날짜 조회</p>
-        	<input type="text" id="datepicker1" name="date">
+        	<input type="text" id="datepicker1" name="date" readonly="readonly">
 		</div>
         <input type="hidden" name="hotelCode" value="<%=request.getParameter("hotelCode") %>">
         <input id="roomCode" type="hidden" name="roomCode">
@@ -153,6 +154,7 @@
     $("#datepicker1").datepicker({minDate: 0});
   
   });
+ 
   
   
 </script>
