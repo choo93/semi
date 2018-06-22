@@ -1,4 +1,3 @@
-<%@page import="com.sun.scenario.effect.impl.prism.PrCropPeer"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ page import="semi.place.model.vo.*" import="java.util.*" import="semi.login.model.vo.*"%>
