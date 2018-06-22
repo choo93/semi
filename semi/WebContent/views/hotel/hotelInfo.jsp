@@ -115,7 +115,7 @@
 
 		<div style="width: 100%; height: 3%;">
 			<div id="hotelPriceToggle" style = margin-top:2%;>
-				<div style="width: 80%; height: 100%; float: left; font-size:20px;padding-left:2%;padding-top:1%;font:bold 20pt 나눔스퀘어;">
+				<div style="width: 80%; height: 100%; float: left; padding-left:2%;padding-top:1%;font:bold 20pt 나눔스퀘어;">
 					호텔 가격 정보
 				</div>
 
@@ -130,7 +130,7 @@
 			style="width: 100%; height: 10%; ">
 			<hr>
 			<div style="height: 100%; width: 100%; ">
-			<div id = "hotelRoomPriceExplain"">
+			<div id = "hotelRoomPriceExplain">
 			      <pre> <%=hi.getHotelRoomPriceExplain() %></pre></div>
 			<div id = "hotelCheckInOut">	 
 				<%=hi.getHotelCheckInOut() %> </div>
