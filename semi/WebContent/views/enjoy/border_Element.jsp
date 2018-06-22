@@ -187,10 +187,7 @@
 					</div>
 				<%} %>
 				
-				<!-- 작성일 담는 DIV -->	
-				<%if(ELD.getIndex_Ondate()!=null) {%>
-					<p style="font: 12px 나눔스퀘어; margin-left: 20px; padding: 2px;">작성일 : <%=ELD.getIndex_Ondate()%></p>
-				<%} %>
+			
 				</div>
 	
 				<!-- 마진 -->
@@ -374,6 +371,14 @@
 						</tr>
 						<%} %>
 					<%} %>
+					
+				<!-- 작성일  -->	
+				<%if(ELD.getIndex_Ondate()!=null) {%>
+					<tr style="height: 50px; border-top: 1px solid #D1D0ED;">
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">작성일</td>
+							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=ELD.getIndex_Ondate()%></td>
+				</tr>
+				<%} %>
 					
 					<!-- 이용요금 -->
 					<%if(edd1.getDetail_payment()!=null){ %>
