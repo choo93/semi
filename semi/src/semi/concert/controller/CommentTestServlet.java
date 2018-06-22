@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import semi.concert.model.service.ConcertService;
 import semi.enjoy.model.vo.CommentData;
+import semi.enjoy.model.vo.EnjoyComment;
 
 @WebServlet(name = "CommentTest", urlPatterns = { "/commentTest" })
 public class CommentTestServlet extends HttpServlet {
@@ -27,6 +29,8 @@ public class CommentTestServlet extends HttpServlet {
 		
 		CommentData cd = new ConcertService().getListCommentData(currentPage,indexNo);
 		
+		/*
+		다른 방법
 		JSONObject result = new JSONObject();	// JSON 객체 생성
 		// JSON 객체는 MAP 형태로 사용 (키,값)
 		
@@ -45,6 +49,25 @@ public class CommentTestServlet extends HttpServlet {
 		response.getWriter().print(result);
 		//System.out.println(result.get("userId0"));
 		
+		response.getWriter().close();
+		*/
+		
+		JSONArray resultArray = new JSONArray();
+		
+		for(EnjoyComment comment : cd.getCommentList()) {
+			JSONObject result = new JSONObject();
+			result.put("userId", comment.getUSER_ID());
+			result.put("date", comment.getWrite_Date().toString());
+			result.put("content", comment.getUSER_COMMNET());
+			result.put("navi", cd.getPageNavi());
+			
+			resultArray.add(result);
+		}
+		
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().print(resultArray);
 		response.getWriter().close();
 	}
 
