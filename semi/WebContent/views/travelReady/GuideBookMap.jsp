@@ -2,9 +2,12 @@
     pageEncoding="UTF-8"
     import="java.util.*"
     import="semi.travelready.model.vo.*"
+   import="semi.login.model.vo.*"
     %>
     
-   <%ArrayList<GuideBookDown> list=(ArrayList<GuideBookDown>)request.getAttribute("image"); %>
+   <%ArrayList<GuideBookDown> list=(ArrayList<GuideBookDown>)request.getAttribute("image"); 
+	SeoulUser su=(SeoulUser)session.getAttribute("user");
+   %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -138,19 +141,22 @@
 						</div>
 						
 					</div>
+					<%if(su!=null && su.getUserId().equals("admin")){ %>
 					<form action="/adminGuideBookRequest">
 						<input type="submit" value="배송확인">
 					</form>
+					<%} %>
 					
 					<div class="dis" style="height:2000px; margin-top:32px;">
 					<%for(GuideBookDown gbd : list) {%>
 						<div class="item">
 							<div class="img" style="<%=gbd.getGuideBookImagePath()%>"></div>
 							<div class="name"><%=gbd.getGuideName()%></div>
-							<form action="/pdfDown" method="post">
-							<input type="hidden" name="orderNo" value="<%=gbd.getGuideNo()%>" >
-							<div class="button" style="font-family:'Nanum Gothic', sans-serif; font-size:0.9rem;">PDF View<br>(<%=gbd.getFileSize()%>)<input type="submit" id="btn" value="다운로드"></div>
-							</form>
+							
+							
+							<a href="/pdfDown?orderNo=<%=gbd.getGuideNo()%>"><div class="button" style="font-family:'Nanum Gothic', sans-serif; font-size:0.9rem;">PDF View<br>(<%=gbd.getFileSize()%>)다운로드</div>
+							
+							</a>
 						</div>
 						<%} %>
 						

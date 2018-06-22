@@ -66,6 +66,16 @@
 	{
 		alert("로그인후 이용해주세요");
 	}
+	
+   	$(document).ready(function(){
+		$("textarea").keyup(function() 
+		{ 
+        
+			var inputLength = $(this).val().length; 
+			var remain =inputLength; 
+			$("strong[name=chk]").html(remain); 
+		});
+});
     </script>
 
 <body id="scroll">
@@ -190,11 +200,11 @@
 							<div style="width:85%; height:100%; margin-left:15%;">
 								<ul style="border-radius:10px;">
 									<li><textarea placeholder="소셜 계정으로 작성하세요" rows="1" readonly></textarea></li>
-									<li><textarea name="content" rows="10" style="height:80px;"></textarea></li>
+									<li><textarea  name="content" rows="10" style="height:80px;"></textarea></li>
 									<li style="margin-bottom:10px;height:20px;">
 									<ul style="list-style:none; width:100%; height:20px; float:left;">
 										<li style="width:50%;list-style:none; float:left;"><button>사진</button></li>
-										<li style="padding-left:350px;width:50%;list-style:none; float:right;"><strong>0</strong><span>/250</span></li>
+										<li style="padding-left:350px;width:50%;list-style:none; float:right;"><strong name="chk">0</strong><span>/250</span></li>
 									</ul>
 									
 									</li>
