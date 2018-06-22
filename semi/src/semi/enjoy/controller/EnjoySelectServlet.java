@@ -115,11 +115,15 @@ public class EnjoySelectServlet extends HttpServlet {
 			// 추천코스 대려오기.
 			// System.out.println(cd.getPageNavi());
 
+			int countReferHits = new EnjoyService().countReferHits(SEQ_Index_TitleNo);
+			if(countReferHits>0) {
+				System.out.println("조회수 늘어나야됨 (추천코스)");
+			} else {
+				response.sendRedirect("/views/enjoy/sojung.jsp");
+			}
+			
 			EnjoyInforData EID = new EnjoyService().getOneData2(SEQ_Index_TitleNo);
 			ArrayList<EnjoyInforDataDetail> EIDD = new EnjoyService().getOneDetailData2(SEQ_Index_TitleNo);
-			
-			
-			
 
 			// 
 			if (EID != null && EIDD != null) {
