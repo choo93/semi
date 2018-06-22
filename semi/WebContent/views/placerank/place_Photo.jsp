@@ -32,7 +32,7 @@
 		}
 		.photo5 {
 			float: left;
-			background-image: url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=125&fileTy=ATTACH&fileNo=1&thumbTy=L);
+			background-image: url(http://korean.visitseoul.net/comm/getImage?srvcId=SECTION&parentSn=718&fileTy=ATTACH&fileNo=5&thumbTy=L);
 		}
 		.photo6 {
 			float: right;
