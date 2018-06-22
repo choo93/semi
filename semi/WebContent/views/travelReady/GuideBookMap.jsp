@@ -131,21 +131,29 @@
 				<section id="content">
 					<div class="dis" style="height:200px;">
 						<div id="guidebookrequest">
-						<a href="/views/travelReady/GuideBookRequest.jsp">
+					
+								<%if(su!=null && su.getUserId().equals("admin")){ %>
+								<a href="/adminGuideBookRequest">
 						<div style="padding-left:700px; padding-top:70px;">
 							<strong style="font-size:25px;">무료가이드북 & 지도</strong>
 							<br>
 								<strong id="rq">신청하기</strong>
 						</div>
 							</a>
+							<%}else{ %>
+								<a href="/views/travelReady/GuideBookRequest.jsp">
+						<div style="padding-left:700px; padding-top:70px;">
+							<strong style="font-size:25px;">무료가이드북 & 지도</strong>
+							<br>
+								<strong id="rq">신청하기</strong>
+						</div>
+							</a>
+							<%} %>
 						</div>
 						
 					</div>
-					<%if(su!=null && su.getUserId().equals("admin")){ %>
-					<form action="/adminGuideBookRequest">
-						<input type="submit" value="배송확인">
-					</form>
-					<%} %>
+			
+				
 					
 					<div class="dis" style="height:2000px; margin-top:32px;">
 					<%for(GuideBookDown gbd : list) {%>
