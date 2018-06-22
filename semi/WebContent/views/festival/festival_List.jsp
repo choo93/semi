@@ -23,13 +23,8 @@ case "winter" : seasons = "겨울 축제"; break;
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert title here</title>
         <link rel="stylesheet" href="../../css/bootstrap.min.css">
-        <!-- 부트스트랩 CSS -->
- <!--        <link rel="stylesheet" href="../../css/main.css"> -->
-        <!-- main header CSS -->
+
         <link rel="stylesheet" href="../../css/festival/moreBtn.css">
-        <!-- 버튼 CSS -->
-  <!--       <link rel="stylesheet" href="../../css/festival/pagination.css"> -->
-        <!-- 페이징 CSS (부트스트랩) -->
 
         <script src="../../js/jquery-3.3.1.min.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
@@ -94,7 +89,7 @@ case "winter" : seasons = "겨울 축제"; break;
         }
         .font {
 			color: #3071a9;
-			text-shadow: 1px -1px 1px red, -1px 2px 2px white;
+			text-shadow: 1px -1px 1px black, -1px 2px 2px white;
 			height: 60px;
 			margin-bottom: 10px;
 			font: italic bold 3.3rem "나눔스퀘어";
@@ -111,13 +106,7 @@ case "winter" : seasons = "겨울 축제"; break;
                 <h1 class="font" style="text-align: center;"><%=seasons %></h1>
                 </div>
                 <hr>
-                <div id="line" style="margin-left: 10%; padding: 20px;">
-                    <select name="list">
-                        <option value="">정렬하기</option>
-                        <option value="title">제목</option>
-                        <option value="dayOfIssue">발행일</option>
-                    </select>
-                </div>
+
 
                 <!-- 내용물 -->
               

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="semi.festival.model.vo.*" import="java.util.*"%>
+	<%@ page import="semi.festival.model.vo.*" import="java.util.*" import="semi.login.model.vo.*"%>
 		<%
 	Festival f = (Festival) request.getAttribute("festival");
 	ArrayList<FestivalComment> list = (ArrayList<FestivalComment>) request.getAttribute("comment");
-%>
+	SeoulUser user = (SeoulUser)session.getAttribute("user");%>
 			<!DOCTYPE html>
 			<html>
 
@@ -67,9 +67,11 @@
 					.container {
 						padding-top: 30px;
 					}
+					.panel-title {
+						cursor : pointer;
+					}
 				</style>
 				<script>
-					// 이거는 자바 스크립트 선언에서 가져오는 듯
 					function initMap() {
 						var uluru = {
 							lat:
@@ -102,6 +104,23 @@
 
 
 				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap"></script>
+	<script>
+		function insertComment(){
+			var title = $('#title').val();
+			var userId = $('#userId').val();
+			var titleNo = $('#titleNo').val();
+			var comment = $('#comment').val();
+			$.ajax({
+				url : "/festivalComment",
+				type : "get",
+				data : {title:title, userId : userId,titleNo : titleNo, comment : comment},
+				success : function(data){
+					location.href="/festivalSelect?titleNo="+titleNo;
+					}
+			});
+		}
+</script>		
+			
 			</head>
 
 			<body id="scroll">
@@ -173,9 +192,9 @@
 							<!-- 설명 시작 -->
 							<div class="container-fluid">
 								<div class="panel panel-primary">
-									<div class="panel-heading">
+									<div class="panel-heading" data-toggle="collapse" data-target="#collapseOne">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-target="#collapseOne"> 기본정보 </a>
+											기본정보
 										</h4>
 									</div>
 									<div id="collapseOne" class="panel-collapse collapse in">
@@ -186,9 +205,9 @@
 								</div>
 								<%if(f.getFestivalAddr()!=null){ %>
 								<div class="panel panel-primary">
-									<div class="panel-heading">
+									<div class="panel-heading" data-toggle="collapse" data-target="#collapseTwo">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-target="#collapseTwo"> 상세정보 </a>
+											상세정보
 										</h4>
 									</div>
 									<div id="collapseTwo" class="panel-collapse collapse">
@@ -252,10 +271,6 @@
 												<tr>
 													<td>이것만은 꼭!</td>
 													<td>
-														<!-- 운현궁 양관 : 본래 흥선대원군의 손자인 이준용을 위해 지은 건물로 양관이라고 불린다.
-										<br> 프렌치 르네상스 풍의 석재를 혼용한 벽돌 2층 저택에 16개의 천장 문양이 모두 다르다.
-										<br> 1948년 덕성여자대학교에 매각되어 한때 교사로 쓰였고 지금도 평생교육원으로 쓰인다.
-										<br> 인기 드라마 궁의 촬영 장소로 사용되기도 했다. -->
 														<%=f.getFestivalNotice()%>
 													</td>
 												</tr>
@@ -278,10 +293,9 @@
 								
 								<%if(f.getFestivalLatitude()!=0){ %>
 								<div class="panel panel-primary">
-									<div class="panel-heading">
+									<div class="panel-heading" data-toggle="collapse" data-target="#collapseThree">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-target="#collapseThree"> 지도&교통
-											</a>
+											지도&교통
 										</h4>
 									</div>
 									<div id="collapseThree" class="panel-collapse collapse">
@@ -292,28 +306,27 @@
 									</div>
 								</div><%} %>
 								<div class="panel panel-primary">
-									<div class="panel-heading">
+									<div class="panel-heading" data-toggle="collapse" data-target="#collapseFour">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-target="#collapseFour"> 댓글 </a>
+											댓글
 										</h4>
 									</div>
 									<div id="collapseFour" class="panel-collapse collapse">
 										<div class="panel-body" class="form-horizontal">
-											<form action="/festivalComment">
+											<%if(session.getAttribute("user")!=null){ %>
 												<div class="row form-group">
-													<label class="col-sm-1 control-label" style="padding-top:7px;">아이디</label>
-													<input type="hidden" class="form-control" value="아이디" name="userId"/>
-													<input type="hidden" class="form-control" value="<%=f.getFestivalTitle() %>" name="title"/>
-													<input type="hidden" class="form-control" value="<%=f.getTitleNo() %>" name="titleNo"/>
+													<label class="col-sm-1 control-label" style="padding-top:7px;"><%=user.getUserId() %></label>
+													<input type="hidden" calss="form-control" value="<%=f.getFestivalTitle() %>" id="title"/>
+													<input type="hidden" class="form-control" value="<%=user.getUserId() %>" id="userId"/>
+													<input type="hidden" class="form-control" value="<%=f.getTitleNo() %>" id="titleNo"/>
 													<div class="col-xs-9 col-xs-offset-1">
-														<input type="text" class="form-control" placeholder="댓글내용" name="comment"/>
+														<input type="text" class="form-control" placeholder="댓글내용" id="comment" name="comment"/>
 													</div>
 													<div class="col-xs-1">
-														<button type="submit" class="btn btn-default"style="font-size:14px; font;font-weight: bold;">전송</button>
+														<button type="button" onclick="insertComment();"class="btn btn-primary" style="font-size:14px; font;font-weight: bold;">전송</button>
 													</div>
 												</div>
-											</form>
-											<div class="container-fulid">
+												<div class="container-fulid">
 												<div class="row">
 													<table class="table">
 														<tr>
@@ -325,13 +338,62 @@
 														<%for(FestivalComment fc : list) { %>
 														<tr>
 															<td><%=fc.getUserId() %></td>
-															<td><%=fc.getUserComment() %><a href="/commentDelete"><span class="glyphicon glyphicon-trash pull-right"></span></a></td>
+															<%if(fc.getUserId().equals(((SeoulUser)session.getAttribute("user")).getUserId())){ %>
+															<td><%=fc.getUserComment() %><span class="glyphicon glyphicon-trash pull-right" onclick="retrun commentDelete(<%=fc.getTitleNo()%>,<%=fc.getReviewNo()%>);"></span></td>
+															<%}else{ %>
+															<td><%=fc.getUserComment() %></td>
+															<%} %>
+															<td><%=fc.getWriteDate() %></td>
+														</tr>
+														<%} %>
+														<script>
+														function commentDelete(titleNo,reviewNo) {
+															if(confirm("정말로 삭제하시겠습니까?"))
+																	{
+															location.href="/commentDelete?titleNo="+titleNo+"&reviewNo="+reviewNo;
+																	}
+														}
+														</script>
+													</table>
+												</div>
+											</div>
+												<%}else {%>
+												 <div class="row form-group">
+													<label class="col-sm-1 control-label" style="padding-top:7px;">비로그인</label>	
+													<div class="col-xs-9 col-xs-offset-1">
+														<input type="text" class="form-control" placeholder="로그인후 이용이 가능합니다." id="comment" name="comment" readonly onclick="login()"/>
+													</div>
+													<script>
+													function login() {
+														alert("로그인을 먼저 진행해 주세요");
+														window.open("/views/main/login_popup.jsp","_black","width=870px,height=510px");
+													}
+													</script>
+													<div class="col-xs-1">
+														<button type="button" onclick="insertComment();"class="btn btn-primary disabled" style="font-size:14px; font;font-weight: bold;">전송</button>
+													</div>
+												</div><div class="container-fulid">
+												<div class="row">
+													<table class="table">
+														<tr>
+															<th>아이디</th>
+															<th>내용</th>
+															<th>작성일</th>
+														</tr>
+														
+														<%for(FestivalComment fc : list) { %>
+														<tr>
+															<td><%=fc.getUserId() %></td>
+															<td><%=fc.getUserComment() %></td>
 															<td><%=fc.getWriteDate() %></td>
 														</tr>
 														<%} %>
 														
 													</table>
 												</div>
+											</div>
+												<%} %>
+											
 											</div>
 										</div>
 									</div>
