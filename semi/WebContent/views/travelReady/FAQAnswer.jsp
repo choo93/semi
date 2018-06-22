@@ -143,7 +143,7 @@ function chk()
 				질문을 하시기 전에 '자주 하시는 질문'을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				</div>
 	
-				
+				<a href="/qna" class="btn btn-outline-primary">질문과 답변 게시판 이동</a>
 				
 		<div id="QnA" style="width:100%; height:560px;">
 				

@@ -2,11 +2,16 @@
     pageEncoding="UTF-8"%>
     
     
-    <%@ page import="semi.travelready.model.vo.*" import="java.util.*" %>
-
+    <%@ page import="semi.travelready.model.vo.*" import="java.util.*" import="semi.login.model.vo.*" %>
+	<%SeoulUser su=(SeoulUser)session.getAttribute("user"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -56,6 +61,12 @@
     	border-radius:10px;
     }
     </style>
+    <script>
+	function logout()
+	{
+		alert("로그인후 이용해주세요");
+	}
+    </script>
 
 <body id="scroll">
 <%@ include file="/views/main/header.jsp" %>
@@ -174,7 +185,7 @@
 					<div id="comment" style="background-color:transparent; border:1px solid #f2f2f2">
 						<div style="width:100%; height:20%; font-weight:700"><span>소셜 로그인</span></div>
 						<div style="width:100%; height:70%; margin-top:10px;">
-							<div style="width:100px; height:130px;float:left; background:url(/image/logo.png); background-repeat:no-repeat; background-size:100%;"></div>
+							<div style="width:100px; height:130px;float:left; background:url(/image/main/logo.png); background-repeat:no-repeat; background-size:100%;"></div>
 							<form action="/writeComment">
 							<div style="width:85%; height:100%; margin-left:15%;">
 								<ul style="border-radius:10px;">
@@ -187,7 +198,17 @@
 									</ul>
 									
 									</li>
-									<li style="float:right;"><button>보내기</button></li>
+									<li style="float:right;">
+									<%if(su!=null){ %>
+									<input type="hidden" name="userName" value="<%=su.getUserName()%>">
+									<input type="submit" value="보내기">
+							
+									<%}else{ %>
+									
+									<input type="button" onclick="logout();" value="보내기">
+									<%} %>
+									
+									</li>
 								</ul>
 							</form>
 							</div>

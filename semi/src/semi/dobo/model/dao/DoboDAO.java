@@ -204,20 +204,33 @@ public class DoboDAO {
 	public int addReserve(Connection conn, DoboReserve dr) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "insert into DOBORESERVE values(DOBORESERVE_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?)";
+		String query1 = "insert into DOBORESERVE values(DOBORESERVE_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?)";
+		String query2 = "insert into DOBORESERVE values(DOBORESERVE_SEQ.NEXTVAL,?,nologinuser_seq.nextval,?,?,?,?,?,?,?)";
 
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, dr.getDoboCode());
-			pstmt.setInt(2, dr.getUserNo());
-			pstmt.setString(3, dr.getDate());
-			pstmt.setString(4, dr.getTime());
-			pstmt.setString(5, dr.getReserveName());
-			pstmt.setString(6, dr.getGender());
-			pstmt.setString(7, dr.getNation());
-			pstmt.setString(8, dr.getPhone());
-			pstmt.setString(9, dr.getComment());
-
+			if(dr.getUserNo()!=-1) {
+				pstmt = conn.prepareStatement(query1);
+				pstmt.setString(1, dr.getDoboCode());
+				pstmt.setInt(2, dr.getUserNo());
+				pstmt.setString(3, dr.getDate());
+				pstmt.setString(4, dr.getTime());
+				pstmt.setString(5, dr.getReserveName());
+				pstmt.setString(6, dr.getGender());
+				pstmt.setString(7, dr.getNation());
+				pstmt.setString(8, dr.getPhone());
+				pstmt.setString(9, dr.getComment());
+			}else{
+				pstmt = conn.prepareStatement(query2);
+				pstmt.setString(1, dr.getDoboCode());
+				pstmt.setString(2, dr.getDate());
+				pstmt.setString(3, dr.getTime());
+				pstmt.setString(4, dr.getReserveName());
+				pstmt.setString(5, dr.getGender());
+				pstmt.setString(6, dr.getNation());
+				pstmt.setString(7, dr.getPhone());
+				pstmt.setString(8, dr.getComment());
+			}
+			
 			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {

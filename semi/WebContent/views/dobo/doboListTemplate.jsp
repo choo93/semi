@@ -28,6 +28,7 @@
 	<section>
 		<div id="title">
         	공연 예약
+        	<button>비회원 예약 정보 조회</button>
     	</div>
     	
     	<%for(DoboInfo di : list){ %>

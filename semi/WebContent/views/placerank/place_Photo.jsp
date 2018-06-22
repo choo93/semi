@@ -173,7 +173,7 @@
 						<a href="/placeRankList?type=5">
 							<div class="col-xs-6 picture photo5">
 
-									<h2 class="font">Top 10 한류</h2>
+									<h2 class="font">Top 10 서울의불빛</h2>
 									<div class="under-bar"></div>	
 
 							</div>
