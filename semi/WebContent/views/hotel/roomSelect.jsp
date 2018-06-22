@@ -9,7 +9,7 @@ HotelReserve hr = (HotelReserve)request.getAttribute("reserve");%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/css/hotel/roomSelect.css">
-<script src="/js/hotel/roomSelect.js"></script>
+<script src="/js/hotel/roomSelect.js?ver=1"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"

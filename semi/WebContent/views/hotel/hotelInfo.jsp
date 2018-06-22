@@ -129,7 +129,7 @@
 		<div id="hotelPriceExplain"
 			style="width: 100%; height: 10%; ">
 			<hr>
-			<div style="height: 100%; width: 100%; ">
+			<div style="height: 100%; width: 100%;">
 			<div id = "hotelRoomPriceExplain">
 			      <pre> <%=hi.getHotelRoomPriceExplain() %></pre></div>
 			<div id = "hotelCheckInOut">	 
