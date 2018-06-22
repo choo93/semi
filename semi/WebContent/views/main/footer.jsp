@@ -6,7 +6,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 </head>
+<style>
+footer{
+	background-color:black;
+	color:white;
+	padding:5px;
+
+}
+</style>
 <body>
-	<footer style="text-align:left;width:100%;">© 2018 SEOULAIM. ALL RIGHTS RESERVED.</footer>
+	<footer>© 2018 SEOULAIM. ALL RIGHTS RESERVED.</footer>
 </body>
 </html>

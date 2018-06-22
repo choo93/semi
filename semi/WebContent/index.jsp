@@ -62,8 +62,8 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 
         <% if(user==null){ %>
         <div id="login_join">
-        	<p class="login_before login_left"><a href="/views/main/login.jsp">로그인</a></p>
-        	<p class="login_before login_right"><a href="/views/main/joinus.jsp">회원가입</a></p>
+        	<a href="/views/main/login.jsp" class="main-login">로그인</a>
+        	<a href="/views/main/joinus.jsp">회원가입</a>
         </div>    
         <% } else { %>
         <div id="login_join" class="login_after">	
@@ -392,17 +392,8 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			}
 		}
 	</style>
-	
-	<script>
-	   window.onload = function() {
-	      if(opener!=null) { // 자신이 팝업창 일때 
-	         opener.location.reload();
-	         window.close();
-	         
-	      }
-	   }
-	</script>	
-	
-	<%@ include file="/views/main/footer.jsp" %>
+		
+	<%@ include file="/views/main/footer.jsp"%>
+
 </body>
 </html>
