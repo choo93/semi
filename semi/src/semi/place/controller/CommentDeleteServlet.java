@@ -1,4 +1,4 @@
-package semi.festival.controller;
+package semi.place.controller;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import semi.festival.model.service.FestivalService;
 /**
  * Servlet implementation class CommentDeleteServlet
  */
-@WebServlet(name = "CommentDelete", urlPatterns = { "/commentDelete" })
+@WebServlet(name = "PlaceCommentDelete", urlPatterns = { "/placeCommentDelete" })
 public class CommentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,7 +35,7 @@ public class CommentDeleteServlet extends HttpServlet {
 		
 		if(result>0)
 		{
-			response.sendRedirect("/festivalSelect?titleNo="+titleNo);
+			response.sendRedirect("/placeSelect?titleNo="+titleNo);
 		}else {
 			
 		}

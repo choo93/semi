@@ -1,4 +1,4 @@
-package semi.festival.controller;
+package semi.place.controller;
 
 import java.io.IOException;
 
@@ -9,18 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.festival.model.service.FestivalService;
+import semi.festival.model.vo.FestivalComment;
 
 /**
- * Servlet implementation class CommentDeleteServlet
+ * Servlet implementation class FestivalCommentServlet
  */
-@WebServlet(name = "CommentDelete", urlPatterns = { "/commentDelete" })
-public class CommentDeleteServlet extends HttpServlet {
+@WebServlet(name = "FestivalComment", urlPatterns = { "/placerankComment" })
+public class PlaceRankCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommentDeleteServlet() {
+    public PlaceRankCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,16 +30,20 @@ public class CommentDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-		int titleNo = Integer.parseInt(request.getParameter("titleNo"));
-		int result = new FestivalService().commentDelete(reviewNo);
+		request.setCharacterEncoding("utf-8");
 		
-		if(result>0)
-		{
-			response.sendRedirect("/festivalSelect?titleNo="+titleNo);
-		}else {
-			
-		}
+		FestivalComment fc = new FestivalComment();
+		
+		fc.setUserId(request.getParameter("userId"));
+		fc.setTitle(request.getParameter("title"));
+		fc.setTitleNo(Integer.parseInt(request.getParameter("titleNo")));
+		fc.setUserComment(request.getParameter("comment"));
+		
+		int result = new FestivalService().insertComment(fc);
+		
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().print(result);
+		response.getWriter().close();
 	}
 
 	/**
