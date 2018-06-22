@@ -327,7 +327,7 @@ public class Enjoydao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query="insert into Element_Index_Review values(?,?,'test','test',?,Element_Index_Review_SEQ.nextval,sysdate,0,0,null)";
+		String query="insert into Element_Index_Review values(?,?,?,'test',?,Element_Index_Review_SEQ.nextval,sysdate,0,0,null)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);

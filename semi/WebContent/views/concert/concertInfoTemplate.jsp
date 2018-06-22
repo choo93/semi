@@ -195,6 +195,112 @@
         </div>
         <div id="back"><button onclick="back();">목록으로</button></div>
     </div>
+    <script>
+    	
+    	function pp(currentPage,indexNo){
+    		$.ajax({
+				url : "/commentTest?currentPage="+currentPage+"&indexNo=" + indexNo,
+				type : "get",
+				success : function(data){
+					
+					 $('#commentList').html("");
+					/* 
+					다른 방법
+					for(var i=0;i<data.size;i++){
+						var commentDiv = $("<div>");	// 제일 큰거
+						var titleDiv = $("<div>");
+						
+						if(i==0){
+							var idDiv = $("<div>").html(data.userId0);
+							var dateDiv = $("<div>").html(data.date0);
+							var pre = $("<pre>").html(data.content0);
+						}else if(i==1){
+							var idDiv = $("<div>").html(data.userId1);
+							var dateDiv = $("<div>").html(data.date1);
+							var pre = $("<pre>").html(data.content1);
+						}else if(i==2){
+							var idDiv = $("<div>").html(data.userId2);
+							var dateDiv = $("<div>").html(data.date2);
+							var pre = $("<pre>").html(data.content2);
+						}else if(i==3){
+							var idDiv = $("<div>").html(data.userId3);
+							var dateDiv = $("<div>").html(data.date3);
+							var pre = $("<pre>").html(data.content3);
+						}else if(i==4){
+							var idDiv = $("<div>").html(data.userId4);
+							var dateDiv = $("<div>").html(data.date4);
+							var pre = $("<pre>").html(data.content4);
+						}
+						
+						var contentDiv = $("<div>");
+						
+						
+						titleDiv.attr("id","commentTitle");
+						contentDiv.attr("id","commentContent");
+						
+						titleDiv.append(idDiv);
+						titleDiv.append(dateDiv);
+						
+						contentDiv.append(pre);
+
+						commentDiv.append(titleDiv);
+						commentDiv.append(contentDiv);
+						
+						$('#commentList').append(commentDiv);
+					}
+					var navi = $("<label>").html(data.pageNavi);
+					
+					navi.attr("id","navi");
+					
+					$('#commentList').append(navi);
+					 */
+					 
+					 
+					 for(var i=0;i<data.length;i++){
+							var commentDiv = $("<div>");	// 제일 큰거
+							var titleDiv = $("<div>");
+							
+							var idDiv = $("<div>").html(data[i].userId);
+							var dateDiv = $("<div>").html(data[i].date);
+							var pre = $("<pre>").html(data[i].content);
+							
+							var contentDiv = $("<div>");
+							
+							titleDiv.attr("id","commentTitle");
+							contentDiv.attr("id","commentContent");
+							
+							titleDiv.append(idDiv);
+							titleDiv.append(dateDiv);
+							
+							contentDiv.append(pre);
+
+							commentDiv.append(titleDiv);
+							commentDiv.append(contentDiv);
+							
+							$('#commentList').append(commentDiv);
+						}
+						var navi = $("<label>").html(data[0].navi);
+						
+						navi.attr("id","navi");
+						
+						$('#commentList').append(navi);
+					
+					
+					
+					
+					
+					
+				},
+				error : function(){
+					alert('실패');
+				}
+			});
+    	};
+    
+    </script>
+    
+    
+    
 	</section>
 	<jsp:include page="/views/main/footer.jsp" />
 </body>
