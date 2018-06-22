@@ -160,4 +160,36 @@ public class QnaService {
 		return qpd2;
 	}
 
+	public int deleteQna(String questionNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new QnaDao().deleteQna(conn,questionNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else
+		{
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return result;
+		
+	}
+
+	public int updateQna(String title, String content, int questionNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=new QnaDao().updateQna(conn,title,content,questionNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else
+		{
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return result;
+		
+	}
+
 }

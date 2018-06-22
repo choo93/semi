@@ -122,14 +122,16 @@
 					<a href="/placeRankList?type=3">
 							<div class="col-xs-6 picture photo3">
 
-									<h2 class="font">Top 10 전통<div class="under-bar"></div>	</h2>
+									<h2 class="font">Top 10 전통</h2>
+									<div class="under-bar"></div>	
 
 							</div>
 						</a>
 						<a href="/placeRankList?type=4">
 							<div class="col-xs-6 picture photo4">
 
-									<h2 class="font">Top 10 쇼핑<div class="under-bar"></div>	</h2>
+									<h2 class="font">Top 10 쇼핑</h2>
+									<div class="under-bar"></div>	
 
 
 							</div>
@@ -140,18 +142,16 @@
 						<a href="/placeRankList?type=5">
 							<div class="col-xs-6 picture photo5">
 
-									<h2 class="font">Top 10 서울의 불빛
-											<div class="under-bar"></div>		
-									</h2>
-									
+									<h2 class="font">Top 10 한류</h2>
+									<div class="under-bar"></div>	
 
 							</div>
 						</a>
 						<a href="/placeRankList?type=6">
 							<div class="col-xs-6 picture photo6">
 
-									<h2 class="font">Top 10 가족여행<div class="under-bar"></div>	</h2>
-
+									<h2 class="font">Top 10 가족여행</h2>
+									<div class="under-bar"></div>
 
 							</div>
 						</a>

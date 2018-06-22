@@ -4,13 +4,10 @@
 	import ="semi.enjoy.model.vo.EnjoyInforDataDetail"
 	import ="java.util.*"
 	%>
-	<%
+<%
 	EnjoyInforData EID =(EnjoyInforData)request.getAttribute("EID"); 
 	ArrayList<EnjoyInforDataDetail> LIST =(ArrayList<EnjoyInforDataDetail>)request.getAttribute("EIDD");
-	
-	%>
-	
-	</script>
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +24,27 @@
 	
 	<!-- 내용물 -->
 	<div id="enjoyRecommendedCoursePage" style="width: 100%;">
+	
+		<!-- 헤더 DIV -->
+		<div class="header" style="width: 100%;">
+		
+			<!-- 현재 위치 : 서울즐기기 > 추천코스 DIV -->
+			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 10%; ">현재 위치 : 서울즐기기 > 추천코스</div>
+			
+			<!-- 제목과 조회수 -->
+			<div id="textAndHits">
+			
+				<!-- 제목 -->
+				<div id="enjoyText" style="color: #5F4B8B; font: bold 33pt 나눔스퀘어; margin-top: 20px; margin-left: 10%;"><%=EID.getIndex_List_title() %></div>
+				
+				<!-- 조회수 -->
+				<div id="enjoyHits" style="position: relative; width: 100px; bottom: 35px; color: #5F4B8B; font: bold 10pt 나눔스퀘어; margin: 10px; right: 100px; float: right;">
+					<img src="/image/enjoy/hitsEye.png" style="position: relative; top: 5px; height: 23%; width: 23%;"> <%=EID.getIndex_Hits() %>
+				</div>
+				
+			</div>
+			<div style="width: 95%; height: 2px; background: linear-gradient(to right, #D1D0ED 55%, white); margin-top: 1%; margin-bottom: 2%; margin-left: 10%;"></div>
+		</div>
 
 	<!-- 코스대표사진 -->
 

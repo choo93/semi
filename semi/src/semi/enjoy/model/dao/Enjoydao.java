@@ -38,6 +38,7 @@ public class Enjoydao {
 				ELD.setIndex_TitleNo(rset.getInt("index_TitleNo"));
 				ELD.setIndex_Tags(rset.getString("index_Tags"));
 				ELD.setList_Element(rset.getString("list_Element"));
+				ELD.setIndex_Hits(rset.getInt("Index_Hits"));
 
 				list.add(ELD);
 
@@ -261,6 +262,7 @@ public class Enjoydao {
 				ELD.setIndex_TitleNo(rset.getInt("index_TitleNo"));
 				ELD.setIndex_Tags(rset.getString("index_Tags"));
 				ELD.setList_Element(rset.getString("list_Element"));
+				ELD.setIndex_Hits(rset.getInt("Index_Hits"));
 				
 			}
 			
@@ -416,9 +418,6 @@ public class Enjoydao {
 				EC.setUSER_COMMNET(rset.getString(5));
 				EC.setSEQ_REIVEW(rset.getInt(6));
 				EC.setWrite_Date(rset.getDate(7));
-				EC.setC_Like(rset.getInt(8));
-				EC.setC_DLike(rset.getInt(9));
-				EC.setC_StateID(rset.getString(10));
 				
 				list.add(EC);
 			}
@@ -665,6 +664,7 @@ public class Enjoydao {
 				EID.setIndex_first_course_comment(rset.getString(9));
 				EID.setIndex_LastComment(rset.getString(10));
 				EID.setIndex_LastIamge(rset.getString(11));
+				EID.setIndex_Hits(rset.getInt(12));
 
 				list.add(EID);
 			}
@@ -830,6 +830,7 @@ public class Enjoydao {
 				EID.setIndex_first_course_comment(rset.getString(9));
 				EID.setIndex_LastComment(rset.getString(10));
 				EID.setIndex_LastIamge(rset.getString(11));
+				EID.setIndex_Hits(rset.getInt(12));
 				
 				
 				
@@ -926,6 +927,27 @@ public class Enjoydao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int countReferHits(int indexNo, Connection conn) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "update Refer_List_Main set Index_Hits=Index_Hits+1 where Index_TitleNo=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, indexNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
 		}
 		return result;
 	}

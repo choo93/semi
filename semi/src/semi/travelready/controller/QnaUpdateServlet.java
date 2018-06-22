@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import semi.travelready.model.service.QnaService;
 
 /**
- * Servlet implementation class DeleteQnaServlet
+ * Servlet implementation class QnaUpdateServlet
  */
-@WebServlet(name = "DeleteQna", urlPatterns = { "/deleteQna" })
-public class DeleteQnaServlet extends HttpServlet {
+@WebServlet(name = "QnaUpdate", urlPatterns = { "/qnaUpdate" })
+public class QnaUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteQnaServlet() {
+    public QnaUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,12 +30,14 @@ public class DeleteQnaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String questionNo=request.getParameter("questionNo");
-		int result=new QnaService().deleteQna(questionNo);
-		
+		String title=request.getParameter("title");
+		String content=request.getParameter("content");
+		int questionNo=Integer.parseInt(request.getParameter("questionNo"));
+		int result=new QnaService().updateQna(title,content,questionNo);
 		if(result>0) {
-			response.sendRedirect("/qna");
+			response.sendRedirect("/qnaSelectUpdate?questionNo="+questionNo);
 		}
+				
 	}
 
 	/**

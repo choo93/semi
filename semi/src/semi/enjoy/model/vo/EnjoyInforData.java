@@ -16,6 +16,7 @@ public class EnjoyInforData {
 	private String Index_first_course_comment;
 	private String Index_LastComment;
 	private String Index_LastIamge;
+	private int Index_Hits;
 	public String getList_Element() {
 		return List_Element;
 	}
@@ -82,9 +83,16 @@ public class EnjoyInforData {
 	public void setIndex_LastIamge(String index_LastIamge) {
 		Index_LastIamge = index_LastIamge;
 	}
+	public int getIndex_Hits() {
+		return Index_Hits;
+	}
+	public void setIndex_Hits(int index_Hits) {
+		Index_Hits = index_Hits;
+	}
+
 	public EnjoyInforData(String list_Element, int index_TitleNo, String index_List_title, String index_List_IntroImage,
 			Date index_Ondate, String index_List_Tags, String index_in_mainText, String index_First_Course_title,
-			String index_first_course_comment, String index_LastComment, String index_LastIamge) {
+			String index_first_course_comment, String index_LastComment, String index_LastIamge, int index_Hits) {
 		super();
 		List_Element = list_Element;
 		Index_TitleNo = index_TitleNo;
@@ -97,7 +105,9 @@ public class EnjoyInforData {
 		Index_first_course_comment = index_first_course_comment;
 		Index_LastComment = index_LastComment;
 		Index_LastIamge = index_LastIamge;
+		Index_Hits = index_Hits;
 	}
+	
 	public EnjoyInforData() {
 		super();
 		// TODO Auto-generated constructor stub

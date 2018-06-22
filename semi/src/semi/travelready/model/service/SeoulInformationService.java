@@ -185,4 +185,12 @@ public class SeoulInformationService {
 		return sicpd2;
 	}
 
+	public SeoulInformationComment selectOne(int commentNo) {
+		Connection conn=JDBCTemplate.getConnection();
+		SeoulInformationComment sic=new SeoulInformationDao().selectOne(conn,commentNo);
+		JDBCTemplate.close(conn);
+		return sic;
+		
+	}
+
 }

@@ -24,10 +24,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Seoulaim - 서울즐기기</title>
+<link rel="icon" href="../../image/main/favicon.ico">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/moreBtn.css">
 <!-- <link rel="stylesheet" href="../../css/enjoySelect.css"> -->
 <link rel="stylesheet" href="../../css/enjoy/pagination.css">
@@ -47,6 +47,18 @@ else self.name = '';
 </head>
 
 <style>
+  #sort {
+    border: 3px solid #D1D0ED;
+    border-radius: 5px;
+    font: 13px 나눔스퀘어;
+    color: #707070;
+    padding: 11px;
+    line-height: normal;
+  }
+  option{
+	font: 14px 나눔스퀘어;
+	color: #707070;
+  }
 .photo {
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
@@ -55,17 +67,29 @@ else self.name = '';
 	position: relative;
 	float: left;
 }
+#currentLocation{
+	margin-top:0px!important;
+	padding-top:25px!important;
+}
+.wrapper{
+	width:1900px;
+	margin:0 auto;
+}
 </style>
 
 <body id="scroll">
 	
+	<%@ include file="/views/main/header.jsp"%>
+	
 	<section>
 
+	<div class="wrapper">
 		<!-- 모든걸 감싸는 DIV -->
 		<div id="enjoyPage" style="width: 100%;">
 		
 		<!-- 헤더 DIV -->
 		<div class="header" style="width: 100%;">
+
 			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 10%; ">현재 위치 : 서울즐기기 > 
 			<% String CurrentType ="";
 			switch(type){
@@ -173,8 +197,8 @@ else self.name = '';
 								<%} %>
 							</div>
 							
-							<div id="hits" style="position: relative; bottom: 45px; font: bold 12pt 나눔스퀘어; margin: 10px; right: 17px; float: right;">
-								조회수 : <%=eld.getIndex_Hits() %>
+							<div id="hits" style="position: relative; width: 100px; bottom: 55px; font: bold 10pt 나눔스퀘어; margin: 10px; left: 10px; float: right;">
+								<img src="/image/enjoy/hitsEye.png" style="height: 23%; width: 23%;"> <%=eld.getIndex_Hits() %>
 							</div>
 							
 						</div>
@@ -246,29 +270,35 @@ else self.name = '';
 						<!--url(http://korean.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=18822&fileTy=MEDIA&fileNo=1&thumbTy=L);  -->
 					</div>
 
-					<div id="info"
-						style="float: left; width: 800px; height: 200px; margin-left: 20px; border: 1px solid #9B95C9; border-width: 2px 20px 2px 2px; position: relative;">
+					<div id="info" style="float: left; width: 800px; height: 200px; margin-left: 20px; border: 1px solid #9B95C9; border-width: 2px 20px 2px 2px; position: relative;">
+						
+						<!-- 게시물 제목 DIV -->
 						<div id="title" style="font: bold 30pt 나눔스퀘어; margin: 10px;">
+							<!-- word2 = 제목글자수 -->
 							<% int word2 = EID.getIndex_List_title().length();
-							if(word2>20){ 
-							%>
+							if(word2>20){ %>
 							<%=EID.getIndex_List_title().substring(0,20)%>..
 							<%}else{ %>
 							<%=EID.getIndex_List_title()%><br>
 							<%} %>
 						</div>
-						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden;">
+						
+						<!-- 조회수 부분 -->
+						<div id="referHits" style="position: relative; width: 100px; bottom: 55px; font: bold 10pt 나눔스퀘어; margin: 10px; left: 10px; float: right;">
+								<img src="/image/enjoy/hitsEye.png" style="height: 23%; width: 23%;"> <%=EID.getIndex_Hits()%>
+						</div>
+							
+						<div id="contents" style="padding: 5px; margin: 10px; overflow:hidden; font: 13pt 나눔스퀘어;">
 							<% int word1 = EID.getIndex_in_mainText().length();
-							if(word1>400){ 
+							if(word1>200){ 
 							%>
-							<%=EID.getIndex_in_mainText().substring(0,400)%>.....
+							<%=EID.getIndex_in_mainText().substring(0,200)%>.....
 							<%}else{ %>
 							<%=EID.getIndex_in_mainText()%><br>
 							<%} %>
 
 						</div>
-						<div id="tags"
-							style="position: absolute; margin: 10px; left: 5px; bottom: 1px; overflow:hidden;">
+						<div id="tags" style="position: absolute; margin: 10px; left: 5px; bottom: 1px; overflow:hidden;">
 
 
 							<div style="display: inline;">
@@ -277,12 +307,12 @@ else self.name = '';
 									int su1 = Tag.countTokens();
 										if(su1<6){
 										for(int i=0;i<su1;i++) {
-								%><a href="#">#<%=Tag.nextToken()%></a>
+								%><a href="#" style="font: 11pt 나눔스퀘어;">#<%=Tag.nextToken()%></a>
 								<%
 										}}
 										else{
 											for(int i=0;i<6;i++){%>
-												<a href="#">#<%=Tag.nextToken()%></a>
+												<a href="#" style="font: 11pt 나눔스퀘어;">#<%=Tag.nextToken()%></a>
 											<%}
 												
 											
@@ -316,6 +346,7 @@ else self.name = '';
 
 		<%-- <jsp:useBean id="list" class="semi.enjoy.model.vo.EnjoyListData" scope="request">
 	</jsp:useBean> --%>
+	</div>
 	</section>
 	<%@ include file="/views/main/footer.jsp"%>
 

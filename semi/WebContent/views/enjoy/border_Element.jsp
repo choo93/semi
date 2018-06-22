@@ -50,7 +50,32 @@
 <script src="../../js/bordertoogle.js"></script>
 </head>
 <style>
-.carousel-inner {
+.container-fluid {
+						padding: 0;
+					}
+
+					/* .carousel-inner {
+						width: 100%;
+						height: auto;
+					}
+
+					.carousel-inner div img {
+						width: 100%;
+						height: auto;
+					}
+
+					.carousel-caption {
+						bottom: 85%;
+					}
+
+					.control {
+						position: inherit;
+						top: 50%;
+						z-index: 5;
+						display: inline-block;
+						right: 50%;
+					} */
+ .carousel-inner {
 	width: 100%;
 	height: 500px;
 }
@@ -62,7 +87,7 @@
 
 .carousel-caption {
 	bottom: 85%;
-}
+} 
 </style>
 <body id="scroll">
 	<%-- <%@ include file="/views/main/header.jsp"%> --%>
@@ -73,8 +98,22 @@
 		
 		<!-- 헤더 DIV -->
 		<div class="header" style="width: 100%;">
-			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 10%; ">현재 위치 : 서울즐기기 > 명소</div>
-			<div id="enjoyText" style="color: #5F4B8B; font: bold 33pt 나눔스퀘어; margin-top: 20px; margin-left: 10%; ">명소</div>
+			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 10%; ">현재 위치 : 서울즐기기 > 
+			<% String CurrentType ="";
+			switch(ELD.getList_Element()){
+			case "type1" : CurrentType = "추천코스"; break;  
+			case "type2" : CurrentType = "명소"; break;
+			case "type3" : CurrentType = "쇼핑"; break;
+			case "type4" : CurrentType = "음식점"; break;
+			case "type5" : CurrentType = "숙박"; break;
+			case "type6" : CurrentType = "캘린더"; break;
+			} %>
+			<%=CurrentType %>
+			
+			</div>
+			<div id="enjoyText" style="color: #5F4B8B; font: bold 33pt 나눔스퀘어; margin-top: 20px; margin-left: 10%; ">
+			<%=ELD.getIndex_Title() %>
+			</div>
 			<div style="width: 95%; height: 2px; background: linear-gradient(to right, #D1D0ED 55%, white); margin-top: 1%; margin-bottom: 2%; margin-left: 10%;"></div>
 		</div>
 		
@@ -82,7 +121,7 @@
 			<!-- 메인이미지 -->
 			<%StringTokenizer STImage = new StringTokenizer(ELD.getIndex_Image(),"##");
             int STImageSu = STImage.countTokens();%>
-
+			<div class="container">
 			<div id="carousel-generic" class="carousel slide">
 				<ol class="carousel-indicators">
 					<li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
@@ -94,11 +133,11 @@
 				<!-- 캐러셀 이미지 부분 -->
 				<div class="carousel-inner">
 					<div class="item active">
-						<img src="<%=STImage.nextToken()%>">
+						<img style="height: 500px"src="<%=STImage.nextToken()%>">
 					</div>
 					<%for(int i=1;i<STImageSu;i++){ %>
 					<div class="item">
-						<img src="<%=STImage.nextToken()%>">
+						<img style="height: 500px" src="<%=STImage.nextToken()%>">
 					</div>
 					<%} %>
 				</div>
@@ -111,7 +150,7 @@
 					<span class="glyphicon glyphicon-chevron-right"></span>
 				</a>
 			</div>
-			
+			</div>
 		<div id="basicInfoAllDiv" style="padding: 3px;">
 			<%if(ELD!=null) {%>
 			<!-- 기본정보 토글 부분을 담는 DIV -->
@@ -148,10 +187,7 @@
 					</div>
 				<%} %>
 				
-				<!-- 작성일 담는 DIV -->	
-				<%if(ELD.getIndex_Ondate()!=null) {%>
-					<p style="font: 12px 나눔스퀘어; margin-left: 20px; padding: 2px;">작성일 : <%=ELD.getIndex_Ondate()%></p>
-				<%} %>
+			
 				</div>
 	
 				<!-- 마진 -->
@@ -160,7 +196,7 @@
 				<div id="aboutTag" style="width: 100%; height: 30%; margin-bottom: 2%;">
 				<div style="width: 100%; height: 2px; background: linear-gradient(to right, #D1D0ED 55%, white); margin-top: 2%; margin-bottom: 2%;"></div>
 					<%if(ELD.getIndex_Tags()!=null) {%>
-						<p style="display: inline; height: 100%; font: 15px 나눔스퀘어; margin-left: 15px;">태그</p>
+						<p style="display: inline; height: 100%; font: 15px 나눔스퀘어; margin-left: 15px; width:300px;">태그</p>
 						<div style="display: inline; margin-left: 15px;">
 						<%StringTokenizer Tag = new StringTokenizer(ELD.getIndex_Tags(), "#");
           	            while (Tag.hasMoreTokens()) {%>
@@ -206,12 +242,12 @@
 					<%if(edd1.getDetail_addr()!=null) {%>
 						<%if(edd1.getDetail_tell()==null){ %>
 						<tr style="height: 50px;">
-							<td style="width: 100px; font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">주소</td>
+							<td style="width: 100px; font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">주소</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_addr()%></td>
 						</tr>
 						<%} else { %>
 						<tr style="height: 50px; border-bottom: 1px solid #D1D0ED;">
-							<td style="width: 100px; font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">주소</td>
+							<td style="width: 100px; font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">주소</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_addr()%></td>
 						</tr>
 						<%} %>
@@ -222,18 +258,18 @@
 						<%if(edd1.getDetail_url()==null){ %>
 							<%if(edd1.getDetail_onTime()!=null){ %>
 							<tr style="height: 50px; border-bottom: 1px solid #D1D0ED;">
-								<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">전화번호</td>
+								<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">전화번호</td>
 								<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_tell()%></td>
 							</tr>
 							<%}else{ %>
 							<tr style="height: 50px;">
-								<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">전화번호</td>
+								<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">전화번호</td>
 								<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_tell()%></td>
 							</tr>
 							<%} %>
 						<%} else { %>
 						<tr style="height: 50px; border-bottom: 1px solid #D1D0ED;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">전화번호</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">전화번호</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_tell()%></td>
 						</tr>
 						<%} %>
@@ -243,12 +279,12 @@
 					<%if(edd1.getDetail_url()!=null){ %>
 						<%if(edd1.getDetail_onTime()==null) { %>
 						<tr style="height: 50px;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">웹사이트</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">웹사이트</td>
 							<td style="position: relative; top: 5px; padding: 5px; margin: 7px;"> <a href="<%=edd1.getDetail_url()%>" style="font: 15px 나눔스퀘어;">웹사이트 보기</a> </td>
 						</tr>
 						<%} else { %>
 						<tr style="height: 50px; border-bottom: 1px solid #D1D0ED;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">웹사이트</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">웹사이트</td>
 							<td style="position: relative; top: 5px; padding: 5px; margin: 7px;"> <a href="<%=edd1.getDetail_url()%>" style="font: 15px 나눔스퀘어;">웹사이트 보기</a> </td>
 						</tr>
 						<%} %>
@@ -258,12 +294,12 @@
 					<%if(edd1.getDetail_onTime()!=null){ %>
 						<%if(edd1.getDetail_offday()==null){ %>
 						<tr style="height: 50px;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">이용시간</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">이용시간</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_onTime()%></td>
 						</tr>
 						<%} else { %>
 						<tr style="height: 50px; border-bottom: 1px solid #D1D0ED;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">이용시간</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">이용시간</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_onTime()%></td>
 						</tr>
 						<%} %>
@@ -273,12 +309,12 @@
 					<%if(edd1.getDetail_offday()!=null){ %>
 						<%if(edd1.getDetail_onday()==null){ %>
 						<tr style="height: 50px;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">휴무일</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">휴무일</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_offday()%></td>
 						</tr>
 						<%} else { %>
 						<tr style="height: 50px; border-bottom: 1px solid #D1D0ED;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">휴무일</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">휴무일</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_offday()%></td>
 						</tr>
 						<%} %>
@@ -289,18 +325,18 @@
 						<%if(edd1.getDetail_disabled()==null){ %>
 							<%if(edd1.getDetail_notice()!=null){ %>
 							<tr style="height: 50px; border-bottom: 1px solid #D1D0ED;">
-								<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">운영 요일</td>
+								<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">운영 요일</td>
 								<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_onday()%></td>
 							</tr>
 							<%} else { %>
 							<tr style="height: 50px;">
-								<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">운영 요일</td>
+								<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">운영 요일</td>
 								<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_onday()%></td>
 							</tr>
 							<%} %>
 						<%} else { %>
 						<tr style="height: 50px; border-bottom: 1px solid #D1D0ED;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">운영 요일</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">운영 요일</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_onday()%></td>
 						</tr>
 						<%} %>
@@ -310,12 +346,12 @@
 					<%if(edd1.getDetail_disabled()!=null){ %>
 						<%if(edd1.getDetail_notice()==null){ %>
 						<tr style="height: 50px;">
-							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">장애인 편의시설</td>
+							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">장애인 편의시설</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_disabled()%></td>
 						</tr>
 						<%} else { %>
 						<tr style="height: 50px; border-bottom: 1px solid #D1D0ED;">
-							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">장애인 편의시설</td>
+							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">장애인 편의시설</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_disabled()%></td>
 						</tr>
 						<%} %>
@@ -325,27 +361,35 @@
 					<%if(edd1.getDetail_notice()!=null){ %>
 						<%if(edd1.getDetail_payment()==null){%>
 						<tr style="height: 50px;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">안내사항</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">안내사항</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_notice()%></td>
 						</tr>
 						<%} else { %>
 						<tr style="height: 50px; border-bottom: 1px solid #D1D0ED;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">안내사항</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">안내사항</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_notice()%></td>
 						</tr>
 						<%} %>
 					<%} %>
 					
+				<!-- 작성일  -->	
+				<%if(ELD.getIndex_Ondate()!=null) {%>
+					<tr style="height: 50px; border-top: 1px solid #D1D0ED;">
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">작성일</td>
+							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=ELD.getIndex_Ondate()%></td>
+				</tr>
+				<%} %>
+					
 					<!-- 이용요금 -->
 					<%if(edd1.getDetail_payment()!=null){ %>
 						<%if(edd1.getDetail_utility()==null){ %>
 						<tr style="height: 50px; height: 50px;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">이용요금</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">이용요금</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_payment()%></td>
 						</tr>
 						<%} else { %>
 						<tr style="height: 50px; height: 50px; border-bottom: 1px solid #D1D0ED;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">이용요금</td>
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">이용요금</td>
 							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_payment()%></td>
 						</tr>
 						<%} %>
@@ -354,7 +398,7 @@
 					<!-- 이용시설안내 -->
 					<%if(edd1.getDetail_utility()!=null){ %>
 					<tr style="height: 50px;">
-						<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">이용시설안내</td>
+						<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">이용시설안내</td>
 						<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_utility()%></td>
 					</tr>
 					<%} %>
@@ -363,7 +407,7 @@
 			</div>
 			<%} %>
 		</div>
-			
+		<%if(edd1.getDetail_traficAddress()!=null||edd1.getDetail_traficRoot()!=null){ %>
 		<div id="mapInfoAllDiv" style="padding: 3px;">
 			<!-- 지도&교통편 토글 부분을 담는 DIV -->
 			<div style="width: 90%; margin-top: 3%; margin-left: 5%; margin-bottom: 3%; ">
@@ -385,45 +429,40 @@
 					
 				</div>
 				
+				<table style="width: 98%; height: 98%; margin: 0 auto;">
+				
+				<%if(edd1.getDetail_traficRoot()!=null){ %>
+				<tr style="height: 50px; height: 50px; border-bottom: 1px solid #D1D0ED;">
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">교통정보</td>
+							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_traficRoot()%></td>
+				</tr>
+				<%} %>
+				<%if(edd1.getDetail_Latitue()==0||edd1.getDetail_Longitude()==0){ %>
+				<tr style="height: 50px; height: 50px; border-bottom: 1px solid #D1D0ED;">
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">안내</td>
+							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">해당 장소는 지도안내가 지원되지 않습니다.</td>
+				</tr>
+				<%}else{ %>
+				<tr style="height: 50px; height: 50px; border-bottom: 1px solid #D1D0ED;">
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">안내</td>
+							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;">지도 안내를 원하신다면 "▼" 를 눌러주세요</td>
+				</tr>
+				<%} %>
+				</table>
+				
 			</div>
-			
-			<!-- 지도&교통편 내용만 담는 DIV -->
-			<div id="map_info" style="width: 90%; height: 15%; margin-top: 3%; margin-left: 5%; margin-bottom: 3%; border: 1px solid #D1D0ED; display: none;">
-
+			<%if(edd1.getDetail_Latitue()!=0||edd1.getDetail_Longitude()!=0){ %>
 				<!-- 지도교통 내용 넣을곳 -->
 				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap"></script>
-				
-				<!-- 지도 가져오는 스크립트 --> 
-				<script>
-                function initMap() {
-                    var uluru = {
-                    lat: ${37.5606449}, 
-               		lng: ${126.99718819999998}
-                };
-                var map = new google.maps.Map(document.getElementById('map_info'), {
-                   zoom: 18,
-                   center: uluru
-                });
-                var marker = new google.maps.Marker({
-                   position: uluru,
-                   map: map
-                });
-                }
-        
-                 var latitude;
-                 var longitude;
-                 window.onload = function() {
-                  	navigator.geolocation.getCurrentPosition(showYourLocation);
-                 }
+			<!-- 지도&교통편 내용만 담는 DIV -->
+			<div id="map_info" style="width: 90%; height:500px; margin-top: 3%; margin-left: 5%; margin-bottom: 3%; border: 1px solid #D1D0ED; display: none;">
 
-                 function showYourLocation(position) {
-                  	latitude = position.coords.latitude;
-                  	longitude = position.coords.longitude;
-                 }
-                </script>
+
+							
 			</div>
+			<%} %>
 		</div>
-
+	<%} %>
 		<div id="commentAllDiv" style="padding: 3px;">
 			<!-- 댓글 토글 부분 담는 DIV-->
 			<div style="width: 90%; margin-top: 3%; margin-left: 5%; margin-bottom: 3%;">
@@ -733,7 +772,35 @@
       }
    </script>
 	<!-- ▲ 이미지 슬라이더 스크립트 -->
+	<!--  지도 api -->
+	<!-- 지도 가져오는 스크립트 --> 
+				<script>
+                function initMap() {
+                    var uluru = {
+                    lat: <%=edd1.getDetail_Latitue()%>, 
+                    lng: <%=edd1.getDetail_Longitude()%>
+                };
+                var map = new google.maps.Map(document.getElementById('map_info'), {
+                   zoom: 18,
+                   center: uluru
+                });
+                var marker = new google.maps.Marker({
+                   position: uluru,
+                   map: map
+                });
+                }
+        
+                 var latitude;
+                 var longitude;
+                 window.onload = function() {
+                  	navigator.geolocation.getCurrentPosition(showYourLocation);
+                 }
 
+                 function showYourLocation(position) {
+                  	latitude = position.coords.latitude;
+                  	longitude = position.coords.longitude;
+                 }
+                </script>
 	<%@ include file="/views/main/footer.jsp"%>
 </body>
 
