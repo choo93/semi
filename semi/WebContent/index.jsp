@@ -21,7 +21,14 @@
 <script src="js/main/vegas.min.js"></script>
 <script src="js/main/materialize.min.js"></script>
 <script src="js/main/main.js"></script>
-
+<script>
+	window.onload = function() {
+		if(opener!=null) { // 자신이 팝업창 일때 
+			opener.location.reload();
+			window.close();	
+		}
+	}
+</script>
 <style>
 /* materialize !important */
 input[type=text]:not(.browser-default):focus:not([readonly]){

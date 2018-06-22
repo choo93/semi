@@ -239,7 +239,7 @@ public class FestivalDao {
 	public int insertComment(Connection conn, FestivalComment fc) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query="INSERT INTO ELEMENT_INDEX_REVIEW VALUES(?,?,?,NULL,?,ELEMENT_INDEX_REVIEW_SEQ.NEXTVAL,SYSDATE)";
+		String query="INSERT INTO ELEMENT_INDEX_REVIEW VALUES(?,?,?,'',?,ELEMENT_INDEX_REVIEW_SEQ.NEXTVAL,SYSDATE,0,0,'')";
 		System.out.println(fc.getTitle());
 		System.out.println(fc.getTitleNo());
 		System.out.println(fc.getUserId());
@@ -264,7 +264,7 @@ public class FestivalDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<FestivalComment> list = new ArrayList<FestivalComment>();
-		String query="SELECT * FROM ELEMENT_INDEX_REVIEW WHERE INDEX_TITLENO=?";
+		String query="SELECT * FROM ELEMENT_INDEX_REVIEW WHERE SEQ_Index_TitleNo=?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -274,13 +274,13 @@ public class FestivalDao {
 			while (rset.next())
 			{
 				FestivalComment fc = new FestivalComment();
-				fc.setTitleNo(rset.getInt("INDEX_TITLENO"));
-				fc.setTitle(rset.getString("INDEX_TITLE"));
+				fc.setTitleNo(rset.getInt("SEQ_INDEX_TITLENO"));
 				fc.setUserId(rset.getString("USER_ID"));
 				fc.setUserImage(rset.getString("USER_IMAGE"));
 				fc.setUserComment(rset.getString("USER_COMMENT"));
 				fc.setReviewNo(rset.getInt("SEQ_REVIEW"));
 				fc.setWriteDate(rset.getDate("WRITE_DATE"));
+			
 				
 				list.add(fc);
 			}
