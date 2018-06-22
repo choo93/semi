@@ -75,7 +75,7 @@
 			
 	</div>
 	<div class = "container" style="text-align:center;">
-	<ul class="pagination pagination-lg"><%= pageNavi %></ul>
+	<ul class="pagination pagination-lg" style="margin-bottom:60px;"><%= pageNavi %></ul>
 	</div>
 
 	<script>

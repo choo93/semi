@@ -111,8 +111,8 @@ form{
 			case "type1" : CurrentType = "추천코스"; break;  
 			case "type2" : CurrentType = "명소"; break;
 			case "type3" : CurrentType = "쇼핑"; break;
-			case "type4" : CurrentType = "음식점"; break;
-			case "type5" : CurrentType = "숙박"; break;
+			case "type4" : CurrentType = "숙박"; break;
+			case "type5" : CurrentType = "음식점"; break;
 			case "type6" : CurrentType = "캘린더"; break;
 			} %>
 			<%=CurrentType %>
@@ -334,10 +334,7 @@ form{
 												<a href="#">#<%=Tag.nextToken()%></a>
 
 											<%}
-												
-											
 										}
-										
 								%>
 							</div>
 						</div>
