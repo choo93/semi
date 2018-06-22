@@ -286,13 +286,13 @@ footer{
     	position:fixed;
     	top:0; left:0;
     	background:#fff;
-    	width:220px;
+    	width:300px;
     	height:100%;
     	border-right:1px solid #ddd;
     	transition:left 0.8s;
     }
     section{
-    	margin-left:221px;
+    	margin-left:351px;
     	transition:margin 0.8s;
     }
     footer{
@@ -305,6 +305,9 @@ footer{
     #main_logo{
     	width:90%;
     	margin:5%;
+    }
+    #main_category{
+    	clear:both;
     }
     
     /* main - contents */

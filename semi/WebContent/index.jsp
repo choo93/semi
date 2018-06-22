@@ -77,17 +77,6 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
         </div>
         <% } %>	
         
-        <form action="/search" method="get" class="search-wrapper">
-        	<input type="search" placeholder="Search" style="width:200px;margin-left:10px;">
-        	<img src="/image/main/search.png" onclick="search();" class="main_search">
-        </form>
-        
-        <style>
-        	.scroll .search-wrapper{
-        		display:none;
-        	}
-        </style>
-        
         <!-- desktop category -->
         <div id="main_category">
         	<div id="main_category_one" class="main_category">하이라이트</div>
