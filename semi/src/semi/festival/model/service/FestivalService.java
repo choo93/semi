@@ -71,5 +71,19 @@ public class FestivalService {
 		JDBCTemplate.close(conn);
 		return list;
 	}
+
+
+	public int commentDelete(int reviewNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new FestivalDao().commentDelete(conn,reviewNo);
+		if(result>0)
+		{
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
 	
 }
