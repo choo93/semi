@@ -72,12 +72,7 @@ input[type="checkbox"]:checked+span:not (.lever ):before {
 			<a href="/logout">로그아웃</a><br>
 	        </div>
 	        <% } %>	
-	        
-	        <style>
-	        	a:hover{
-	        		color:#b43029;
-	        	}
-	        </style>
+	       
 	        <form action="/search" method="get" class="search-wrapper">
 	        	<input type="search" placeholder="Search" style="width:280px;margin-left:10px;">
 	        	<img src="/image/main/search.png" onclick="search();" class="main_search">
@@ -138,12 +133,8 @@ input[type="checkbox"]:checked+span:not (.lever ):before {
 	       <div id="main_category">
 	        	<div id="main_category_one" class="main_category">하이라이트</div>
 	        	<ul style="display:none;" id="sub_category_one" class="main_sub_category">
-	        		<li><a href="">Top 10</a></li>
-	        		<li><a href="">축제&amp;행사</a></li>
-	        		<li><a href="">서울 특화관광</a></li>
-	        		<li><a href="">한류관광</a></li>
-	        		<li><a href="">글로벌 서울 메이트
-	        		</a></li>
+	        		<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
+        			<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
 	        	</ul>
 				<div id="main_category_two" class="main_category">서울즐기기</div>
 	        	<ul style="display:none;" id="sub_category_two" class="main_sub_category">

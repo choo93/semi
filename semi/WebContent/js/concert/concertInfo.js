@@ -54,3 +54,22 @@ function commentCheck(){
 	}
 	
 }
+
+
+function login(){
+	alert("로그인후 이용해 주세요");
+	window.open("/views/main/login.jsp","_black","width=850px,height=600px");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

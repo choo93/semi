@@ -126,9 +126,7 @@ function logout(){
 				<div id="faqtitle">
 				<div id="faqtitleimg"></div>
 				<strong style="font-size:18px;">"서울 관광에 관해서 궁금하신 사항을 질문해주세요. 어떤 질문이든 환영하며, 신속하게 답변 드리겠습니다"</strong><br>
-				<form action="/faq">
-				<input type="submit" value="FAQ게시판">
-				</form>
+			
 				여행박사 상품 및 서비스에 대해 궁금하신 사항을 친절하게 안내해 드리겠습니다. <br>
 				질문을 하시기 전에 '자주 하시는 질문'을 찾아보시면 보다 신속하게 궁금증을 해소하실 수 있습니다.<br>
 				</div>
@@ -140,6 +138,7 @@ function logout(){
 						
 						<a href="/qnaCategory?search=확인완료" class="btn btn-outline-primary">해결된 질문</a>
 						<a href="/qnaCategory?search=확인전" class="btn btn-outline-primary">미해결된 질문</a>
+						<a href="/faq" class="btn btn-outline-primary">자무 묻는 질문 게시판 이동</a>
 
 						
 					</fieldset>

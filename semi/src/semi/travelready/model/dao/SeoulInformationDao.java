@@ -136,16 +136,17 @@ public class SeoulInformationDao {
 		return result;
 	}
 
-	public int insertCommentComment(Connection conn, int commentNo, String content) {
+	public int insertCommentComment(Connection conn, int commentNo, String content, String userName) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String query="insert into seoulinformationcomment values(?,'userName',?,sysdate)";
+		String query="insert into seoulinformationcomment values(?,?,?,sysdate)";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
 			
 			pstmt.setInt(1, commentNo);
-			pstmt.setString(2, content);
+			pstmt.setString(2, userName);
+			pstmt.setString(3, content);
 ;
 			result=pstmt.executeUpdate();
 			

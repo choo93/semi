@@ -11,83 +11,81 @@
 			<head>
 				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1">
-				<title>Insert title here</title>
+				<title>명소 정보</title>
 
 				<link rel="stylesheet" href="../../css/bootstrap.min.css">
 				<script src="../../js/jquery-3.3.1.min.js"></script>
 				<script src="../../js/bootstrap.min.js"></script>
-<!-- 				<link rel="stylesheet" href="../../css/main.css"> -->
 				<script src="../../js/main.js"></script>
-				<!-- <link rel="stylesheet" href="../../css/PlaceFont.css"> -->
 
-				<style>
-					.container-fluid {
-						padding: 0;
-					}
+<style>
+.container-fluid {
+	padding: 0;
+}
 
-					.carousel-inner {
-						width: 100%;
-						height: auto;
-					}
+.carousel-inner {
+	width: 100%;
+	height: auto;
+}
 
-					.carousel-inner div img {
-						width: 100%;
-						height: auto;
-					}
+.carousel-inner div img {
+	width: 100%;
+	height: auto;
+}
 
-					.carousel-caption {
-						bottom: 85%;
-					}
+.carousel-caption {
+	bottom: 85%;
+}
 
-					.control {
-						position: inherit;
-						top: 50%;
-						z-index: 5;
-						display: inline-block;
-						right: 50%;
-					}
+.control {
+	position: inherit;
+	top: 50%;
+	z-index: 5;
+	display: inline-block;
+	right: 50%;
+}
 
-					.font {
-						color: white;
-						text-shadow: 1px -1px 1px #3071a9, -1px 2px 2px #3071a9;
-						height: 60px;
-						margin-bottom: 10px;
-						font: italic bold 4rem "나눔스퀘어";
-						overflow: hidden;
-						text-overflow: ellipsis;
-						padding-top: 8px;
-						margin: 0;
-					}
+.font {
+	color: white;
+	text-shadow: 1px -1px 1px #3071a9, -1px 2px 2px #3071a9;
+	height: 60px;
+	margin-bottom: 10px;
+	font: italic bold 4rem "나눔스퀘어";
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-top: 8px;
+	margin: 0;
+}
 
-					.head {
-						/* background-color: #ffffff; */
-						background-color: rgb(0, 0, 0, 0.8);
-					}
+.head {
+	background-color: rgb(0, 0, 0, 0.8);
+}
 
-					.container {
-						padding-top: 30px;
+.container {
+	padding-top: 30px;
+}
+.panel-title {
+	cursor:pointer;
+}
+</style>
+<script>
+		function insertComment(){
+			var title = $('#title').val();
+			var userId = $('#userId').val();
+			var titleNo = $('#titleNo').val();
+			var comment = $('#comment').val();
+			$.ajax({
+				url : "/festivalComment",
+				type : "get",
+				data : {title:title, userId : userId,titleNo : titleNo, comment : comment},
+				success : function(data){
+					location.href="/placeSelect?titleNo="+titleNo;
 					}
-				</style>
-																<script>
-												function insertComment(){
-													var title = $('#title').val();
-													var userId = $('#userId').val();
-													var titleNo = $('#titleNo').val();
-													var comment = $('#comment').val();
-													
-													$.ajax({
-														url : "/festivalComment",
-														type : "get",
-														data : {title:title, userId : userId,titleNo : titleNo, comment : comment},
-														success : function(data){
-															location.href="/placeSelect?titleNo="+titleNo;
-														}
-													});
-												}
-												</script>
-				<script>
-					// 이거는 자바 스크립트 선언에서 가져오는 듯
-					function initMap() {
+			});
+		}
+</script>
+<script>
+				function initMap() {
 						var uluru = {
 							lat:
 <%=pr.getPlaceLatitude() %>
@@ -190,9 +188,9 @@
 							<!-- 설명 시작 -->
 							<div class="container-fluid">
 								<div class="panel panel-primary">
-									<div class="panel-heading">
+									<div class="panel-heading" data-toggle="collapse" data-target="#collapseOne">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-target="#collapseOne"> 기본정보 </a>
+											기본정보
 										</h4>
 									</div>
 									<div id="collapseOne" class="panel-collapse collapse in">
@@ -202,9 +200,9 @@
 									</div>
 								</div>
 								<div class="panel panel-primary">
-									<div class="panel-heading">
+									<div class="panel-heading" data-toggle="collapse" data-target="#collapseTwo">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-target="#collapseTwo"> 상세정보 </a>
+											상세정보
 										</h4>
 									</div>
 									<div id="collapseTwo" class="panel-collapse collapse">
@@ -280,10 +278,9 @@
 								</div>
 								<%if(pr.getPlaceLatitude()!=0||pr.getPlaceLongtitude()!=0){ %>
 								<div class="panel panel-primary">
-									<div class="panel-heading">
+									<div class="panel-heading" data-toggle="collapse" data-target="#collapseThree">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-target="#collapseThree"> 지도&교통
-											</a>
+											 지도&교통
 										</h4>
 									</div>
 									<div id="collapseThree" class="panel-collapse collapse">
@@ -295,9 +292,9 @@
 								</div>
 								<%} %>
 								<div class="panel panel-primary">
-									<div class="panel-heading">
-										<h4 class="panel-title">
-											<a data-toggle="collapse" data-target="#collapseFour"> 댓글 </a>
+									<div class="panel-heading" data-toggle="collapse" data-target="#collapseFour">
+										<h4 class="panel-title"">
+											댓글 
 										</h4>
 									</div>
 									<div id="collapseFour" class="panel-collapse collapse">
@@ -328,7 +325,7 @@
 														<tr>
 															<td><%=prc.getUserId() %></td>
 															<%if(prc.getUserId().equals(((SeoulUser)session.getAttribute("user")).getUserId())){ %>
-															<td><%=prc.getUserComment() %><span class="glyphicon glyphicon-trash pull-right" onclick="commentDelete(<%=prc.getTitleNo()%>,<%=prc.getReviewNo()%>);"></span></td>
+															<td><%=prc.getUserComment() %><span class="glyphicon glyphicon-trash pull-right" onclick="retrun commentDelete(<%=prc.getTitleNo()%>,<%=prc.getReviewNo()%>);"></span></td>
 															<%}else{ %>
 															<td><%=prc.getUserComment() %></td>
 															<%} %>
@@ -337,7 +334,10 @@
 														<%} %>
 														<script>
 														function commentDelete(titleNo,reviewNo) {
+															if(confirm("정말로 삭제하시겠습니까?"))
+															{
 															location.href="/commentDelete?titleNo="+titleNo+"&reviewNo="+reviewNo;
+															}
 														}
 														</script>
 													</table>
@@ -352,7 +352,7 @@
 													<script>
 													function login() {
 														alert("로그인을 먼저 진행해 주세요");
-														window.open("/views/main/login.jsp","_black","width=400px,height=250px");
+														window.open("/views/main/login_popup.jsp","_black","width=870px,height=600px");
 													}
 													</script>
 													<div class="col-xs-1">
