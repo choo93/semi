@@ -70,6 +70,9 @@
 					.panel-title {
 						cursor : pointer;
 					}
+					td span {
+						cursor : pointer;
+					}
 				</style>
 				<script>
 					function initMap() {
@@ -339,7 +342,7 @@
 														<tr>
 															<td><%=fc.getUserId() %></td>
 															<%if(fc.getUserId().equals(((SeoulUser)session.getAttribute("user")).getUserId())){ %>
-															<td><%=fc.getUserComment() %><span class="glyphicon glyphicon-trash pull-right" onclick="retrun commentDelete(<%=fc.getTitleNo()%>,<%=fc.getReviewNo()%>);"></span></td>
+															<td><%=fc.getUserComment() %><span class="glyphicon glyphicon-trash pull-right" onclick="return commentDelete(<%=fc.getTitleNo()%>,<%=fc.getReviewNo()%>);"></span></td>
 															<%}else{ %>
 															<td><%=fc.getUserComment() %></td>
 															<%} %>
