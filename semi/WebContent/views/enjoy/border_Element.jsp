@@ -37,7 +37,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/main.css">
+<!-- <link rel="stylesheet" href="../../css/main.css"> -->
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../css/enjoy/ReviewBox.css">
 <link rel="stylesheet" href="../../css/enjoy/inputReview.css">
@@ -720,11 +720,22 @@
 						
 					</div>
 				</div>
+			</div>
+			
+				<!-- 목록버튼을 위한 DIV -->
+				<div style="width: 100%;">
+					<button type="button" class="btn btn-outline-secondary" onclick="goToList();" style="position: relative; left: 50%;">목 록</button>
+				</div>
+
+				<!-- 목록 버튼을 눌렀을 때 리스트로 돌아가게 하는 스크립트 -->
+				<script>
+					function goToList(){
+						location.href="/enjoyList?type=<%=edd1.getIndex_type()%>";
+					}
+				</script>
 				
 				<!-- 맨 밑 공백을 위한 DIV -->
 				<div style="width: 100%; height: 50px;"></div>
-			
-			</div>
 		</div>
 	</section>
 
@@ -795,13 +806,12 @@
                  window.onload = function() {
                   	navigator.geolocation.getCurrentPosition(showYourLocation);
                  }
-
                  function showYourLocation(position) {
                   	latitude = position.coords.latitude;
                   	longitude = position.coords.longitude;
                  }
                 </script>
-	<%@ include file="/views/main/footer.jsp"%>
+	<%-- 	<%@ include file="/views/main/footer.jsp"%> --%>
 </body>
 
 </html>
