@@ -12,12 +12,6 @@
     color:yellow;
 }
 
-/* scrollbar */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #fff; }
-::-webkit-scrollbar-thumb { background: #b43029; }
-::-webkit-scrollbar-thumb:hover { background: #000; }
-
 /* main */
 h1,h2,p{margin:0;}
 a{color:black;}
