@@ -25,6 +25,7 @@
 	float:right;
 	margin-top:20px;
 	margin-right:20px;
+	height:100%;
 }
 
 #contents {
@@ -80,6 +81,6 @@
 #btn>button{
 	float:right;
 	margin-right:30px;
-	background-color:RGBrgb(180,48,41);
+	background-color:RGB(180,48,41);
 	font-wight:bold;
 }
