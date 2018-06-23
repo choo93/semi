@@ -639,8 +639,11 @@ public class Enjoydao {
 		{
 			query = "select * from (select Refer_List_Main.*,row_number() over(order by INDEX_ONDATE desc)as num from Refer_List_Main where List_Element = ?) where num between ? and ?";
 		}
-		else
+		else if(option.equals("hits"))
 		{
+		query = "select * from (select Refer_List_Main.*,row_number() over(order by INDEX_HITS desc)as num from Refer_List_Main where List_Element = ?) where num between ? and ?";
+		}
+		else {
 		query = "select * from (select Refer_List_Main.*,row_number() over(order by Index_titleNo)as num from Refer_List_Main where List_Element = ?) where num between ? and ?";
 		}
 		ArrayList<EnjoyInforData> list = new ArrayList<EnjoyInforData>();

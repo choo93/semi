@@ -36,7 +36,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>서울즐기기 - <%=ELD.getIndex_Title() %></title>
 <!-- <link rel="stylesheet" href="../../css/main.css"> -->
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../css/enjoy/ReviewBox.css">
@@ -48,6 +48,12 @@
 <script src="../../js/main.js"></script>
 <script src="../../js/bootstrap.js"></script>
 <script src="../../js/bordertoogle.js"></script>
+<script>
+                        function login() {
+                           alert("로그인을 먼저 진행해 주세요");
+                           window.open("/views/main/login_popup.jsp","_black","width=870px,height=600px");
+                        }
+</script>
 </head>
 <style>
 .container-fluid {
@@ -372,13 +378,7 @@
 						<%} %>
 					<%} %>
 					
-				<!-- 작성일  -->	
-				<%if(ELD.getIndex_Ondate()!=null) {%>
-					<tr style="height: 50px; border-top: 1px solid #D1D0ED;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">작성일</td>
-							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=ELD.getIndex_Ondate()%></td>
-				</tr>
-				<%} %>
+				
 					
 					<!-- 이용요금 -->
 					<%if(edd1.getDetail_payment()!=null){ %>
@@ -402,6 +402,14 @@
 						<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_utility()%></td>
 					</tr>
 					<%} %>
+					<!-- 작성일  -->	
+				<%if(ELD.getIndex_Ondate()!=null) {%>
+					<tr style="height: 50px; border-top: 1px solid #D1D0ED;">
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">작성일</td>
+							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=ELD.getIndex_Ondate()%></td>
+				</tr>
+				<%} %>
+					
 				</table>
 				
 			</div>
@@ -652,7 +660,7 @@
 							<div class="cantWriteBox" style="width: 70%; height: 100px; padding: 5px; margin-top: 40px; margin-bottom: 40px;">
 								<div id="notWriteReview">
 									<input type="text" name="Not_Index_Title" readonly style="width: 100%; height: 100%; border: transparent; background-color: transparent; font: 12pt 나눔스퀘어; padding-top: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-									<textarea name="Not_User_Comment" readonly placeholder="로그인후  첫번째 의견의  주인공이 되어주세요" style="resize: none; width: 100%; border: transparent; background-color: transparent; font: 12pt 나눔스퀘어; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></textarea>
+									<textarea onclick="login();" name="Not_User_Comment" readonly placeholder="로그인후  첫번째 의견의  주인공이 되어주세요" style="resize: none; width: 100%; border: transparent; background-color: transparent; font: 12pt 나눔스퀘어; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></textarea>
 								</div>
 							</div>
 							
@@ -661,7 +669,7 @@
 							<div class="cantWriteBox" style="width: 70%; height: 100px; padding: 5px; margin-top: 40px; margin-bottom: 40px;">
 								<div id="notWriteReview">
 									<input type="text" name="Not_Index_Title" readonly style="width: 100%; height: 100%; border: transparent; background-color: transparent; font: 12pt 나눔스퀘어; padding-top: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-									<textarea name="Not_User_Comment" readonly placeholder="로그인 한 사용자만 덧글 작성이 가능합니다" style="resize: none; width: 100%; border: transparent; background-color: transparent; font: 12pt 나눔스퀘어; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></textarea>
+									<textarea onclick="login();" name="Not_User_Comment" readonly placeholder="로그인 한 사용자만 덧글 작성이 가능합니다" style="resize: none; width: 100%; border: transparent; background-color: transparent; font: 12pt 나눔스퀘어; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></textarea>
 								</div>
 							</div>
 
