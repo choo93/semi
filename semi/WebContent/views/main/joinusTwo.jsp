@@ -192,10 +192,10 @@ input[type=email].valid:not(.browser-default):focus{
 				    	var regExp;
 				    	var resultChk;
 				    	var userPwd = $('#user_pwd').val();
-				    	regExp = /^[a-zA-Z0-9]{6,16}$/;
+				    	regExp = /^[a-zA-Z0-9$@$!%*#?&]{6,16}$/;
 				    	resultChk = regExp.test(userPwd);
 				    	if(resultChk == false){
-				    		$('#pwd_check').html("<span style='color:red;'>6~16자 영문 대 소문자, 숫자를 사용하세요.</span>");
+				    		$('#pwd_check').html("<span style='color:red;'>6~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>");
 				    	}else{
 				    		$('#pwd_check').html("<span style='color:#26a69a;'>OK</span>");
 				    		submitCount+=1;

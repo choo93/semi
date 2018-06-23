@@ -276,69 +276,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 					$(".subcategory1").css('display','none');
 				});
 			</script>
-			
-  
-        	<script>
-        	$(document).ready(function(){
-        		$("#main_category_one").click(function(){
-        			$(this).next("ul").slideToggle('slow');
-        			$('#sub_category_two').css('display','none');
-        			$('#sub_category_three').css('display','none');
-        			$('#sub_category_four').css('display','none');
-        		});
-        		$("#main_category_two").click(function(){
-        			$(this).next("ul").slideToggle('slow');
-        			$('#sub_category_one').css('display','none');
-        			$('#sub_category_three').css('display','none');
-        			$('#sub_category_four').css('display','none');
-        		});
-        		$("#main_category_three").click(function(){
-        			$(this).next("ul").slideToggle('slow');
-        			$('#sub_category_two').css('display','none');
-        			$('#sub_category_one').css('display','none');
-        			$('#sub_category_four').css('display','none');
-        		});
-        		$("#main_category_four").click(function(){
-        			$(this).next("ul").slideToggle('slow');
-        			$('#sub_category_two').css('display','none');
-        			$('#sub_category_three').css('display','none');
-        			$('#sub_category_one').css('display','none');
-        		});
-        	});	        	
-        	
-        	$("#mobile_category_one").click(function(){
-        		$(this).next("ul").slideToggle('slow',function(){
-        			
-        		});
-        		$('#mobile_two').css('display','none');
-        		$('#mobile_three').css('display','none');
-        		$('#mobile_four').css('display','none');
-        	});
-        	$("#mobile_category_two").click(function(){
-        		$(this).next("ul").slideToggle('slow',function(){
-        			
-        		});
-        		$('#mobile_one').css('display','none');
-        		$('#mobile_three').css('display','none');
-        		$('#mobile_four').css('display','none');
-        	});
-        	$("#mobile_category_three").click(function(){
-        		$(this).next("ul").slideToggle('slow',function(){
-        			
-        		});
-        		$('#mobile_two').css('display','none');
-        		$('#mobile_one').css('display','none');
-        		$('#mobile_four').css('display','none');
-        	});
-        	$("#mobile_category_four").click(function(){
-        		$(this).next("ul").slideToggle('slow',function(){
-        			location.href="/views/travelReady/travelReady.jsp";
-        		});
-        		$('#mobile_two').css('display','none');
-        		$('#mobile_three').css('display','none');
-        		$('#mobile_one').css('display','none');
-        	});        	
-        	</script>
+		
 		</div>
 	</header>
 

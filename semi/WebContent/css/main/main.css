@@ -321,7 +321,6 @@ a{color:black;}
 		height:100%;
 		border-right:1px solid #ddd;
 		transition:left 0.8s;
-		z-index:999;
 	}
 	
 	section{
