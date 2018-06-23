@@ -35,11 +35,11 @@
 				<li><a href="#reserveList" style="margin-right:32px;">예약 리스트</a></li>
 			</ul>
 			<style>
-				ul>li {
+				nav ul>li {
 					margin-right: 32px;
 				}
 				
-				ul>li>a:hover {
+				nav ul>li>a:hover {
 					color: yellow;
 				}
 			</style>

@@ -22,7 +22,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Seoulaim - Top 10</title>
+<title>Seoulaim - Top 10 - 리스트</title>
 <link rel="icon" href="../../image/main/favicon.ico">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <!-- 부트스트랩 CSS -->
