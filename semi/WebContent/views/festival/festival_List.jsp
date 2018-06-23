@@ -90,18 +90,25 @@ case "winter" : seasons = "겨울 축제"; break;
         .font {
 			color: #3071a9;
 			text-shadow: 1px -1px 1px black, -1px 2px 2px white;
-			height: 60px;
 			margin-bottom: 10px;
 			font: italic bold 3.3rem "나눔스퀘어";
 			overflow: hidden;
 			text-overflow: ellipsis;
+			margin-top:0px;
+			padding-top:20px;
+			padding-bottom:20px;
+		}
+		.wrapper{
+			width:1662px;
+			margin:0 auto;
 		}
 
     </style>
 
     <body id="scroll">
-  <%--       <%@ include file="/views/main/header.jsp"%> --%>
+ <%@ include file="/views/main/header.jsp"%>
             <section>
+            <div class="wrapper">
                 <div id="head" class="container-fulid">
                 <h1 class="font" style="text-align: center;"><%=seasons %></h1>
                 </div>
@@ -269,7 +276,7 @@ case "winter" : seasons = "겨울 축제"; break;
 
                     <!-- 페이징 처리 시작 -->
 
-                    <div class="container" style="text-align: center ">
+                    <div class="container" style="text-align: center;margin-bottom:30px;">
                         <ul class="pagination pagination-lg">
                         
                         <%=pageNavi %>
@@ -300,7 +307,7 @@ case "winter" : seasons = "겨울 축제"; break;
                     </div>
                 </div>
 
-
+			</div>
             </section>
             <%-- <%@ include file="/views/main/footer.jsp"%> --%>
     </body>

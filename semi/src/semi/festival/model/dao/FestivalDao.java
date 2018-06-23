@@ -172,19 +172,19 @@ public class FestivalDao {
 		
 
 		if (needPrev) { // 시작이 1페이지가 아니라면!
-			sb.append("<li> <a href='/festivalList?currentPage=" + (startNavi - 1) +"&season="+season+  "'> « </a> </li>");
+			sb.append("<li> <a style='height:47px;line-height:47px;' href='/festivalList?currentPage=" + (startNavi - 1) +"&season="+season+  "'> « </a> </li>");
 		} else { // 시작 페이지가 1페이지라면 !
 			sb.append("<li class='disabled'> <span>«</span> </li>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<li class='active'><a href='/festivalList?currentPage=" + i +"&season="+season+ "'>" + i + "</a></li>");
+				sb.append("<li class='active'><a style='height:47px;line-height:47px;' href='/festivalList?currentPage=" + i +"&season="+season+ "'>" + i + "</a></li>");
 			} else {
-				sb.append("<li> <a href='/festivalList?currentPage=" + i +"&season="+season+  "'> " + i + " </a> </li>");
+				sb.append("<li> <a style='height:47px;line-height:47px;' href='/festivalList?currentPage=" + i +"&season="+season+  "'> " + i + " </a> </li>");
 			}
 		}
 		if (needNext) { // 끝페이지가 아니라면!
-			sb.append("<li><a href='/festivalList?currentPage=" + (endNavi + 1) +"&season="+season+  "'> » </a></li>");
+			sb.append("<li><a style='height:47px;line-height:47px;' href='/festivalList?currentPage=" + (endNavi + 1) +"&season="+season+  "'> » </a></li>");
 		}else {
 			sb.append("<li class='disabled'> <span>»</span> </li>");
 		}

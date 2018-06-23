@@ -127,8 +127,169 @@
 			</head>
 
 			<body id="scroll">
-	<%-- 			<%@ include file="/views/main/header.jsp"%> --%>
+				<header style="position:fixed;width:50px;border-right:1px solid #ddd;height:100%;">
+				<div id="click">
+					<a href="#" class="click"><img
+						src="/image/main/menu.png" style="width:30px;margin-top:10px;margin-left:10px;background-color:white;z-index:999;"></a>
+				</div>
+				<div id="click-open" style="display:none;">
+					<a href="http://localhost"><img
+						src="/image/main/logo.png" id="main_logo" style="width:260px;margin-left:20px;margin-top:20px;"></a>
+						
+					<style>
+					a{
+						font-size:1rem!important;
+					}
+					#login_join{
+						text-align:center;
+						margin-top:20px;
+						margin-bottom:20px;
+					}
+					.main-login{
+						margin-right:20px;	
+					}
+					#login_join>a:hover{
+						color:#b43029;
+					}
+					.category{
+						cursor:pointer;
+						width:100%;
+						display:block;
+						border-left:3px solid white;
+						padding-left:17px;
+					}
+					.category:hover{
+						border-left:3px solid #b43029;
+					}
+					.subcategory{
+						display:none;
+					}
+					.subcategory>li{
+						height:40px;
+						line-height:40px;
+					}
+					.subcategory>li>a{
+						display:block;
+						width:100%;
+						padding-left:40px;
+					}
+					.subcategory>li>a:hover{
+						background-color:rgba(0,0,0,0.05);
+					}
+					a, ul>li{
+						font-size:1rem!important;
+					}
+					
+					</style>
+						
+					<% if(user==null){ %>
+			        <div id="login_join">
+			        	<a href="/views/main/login.jsp" class="main-login" style="font-size:1.5rem!important;">로그인</a>
+			        	<a href="/views/main/joinus.jsp" style="font-size:1.5rem!important;">회원가입</a>
+			        </div>    
+			        <% } else { %>
+			        <div id="login_join" class="login_after">	
+					<% if(user.getUserId().equals("admin")){ %>
+						<p style="margin-bottom:8px;font-size:1.5rem;"><span style="font-weight:bold;"><%=user.getUserName()%></span>로 로그인 하셨습니다</p>
+					<% } else { %>
+						<p style="margin-bottom:8px;margin-left:-20px;font-size:1.5rem;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
+						<a href="/myPage" style="margin-left:-19px;margin-right:15px;font-size:1.5rem!important;">마이페이지</a>
+					<% } %>
+					<a href="/logout" style="font-size:1.5rem!important;">로그아웃</a><br>
+			        </div>
+			        <% } %>	
+			        
+			        <style>
+			        	#login_join>a:hover{
+			        		text-decoration:none;
+			        	}
+			        	.mainCategory>li{
+			        		font-size:1.7rem!important;
+			        		margin-left:-40px;
+			        		padding-top:20px;
+			        		padding-bottom:20px;
+			        	}
+			        	.mainCategory>li>ul{
+			        		list-style:none;
+			        	}
+			        	.mainCategory>li>ul>li{
+			        		margin-left:-40px;
+			        		padding-top:20px;
+			        		padding-bottom:20px;
+			        	}
+			        	.mainCategory>li>ul>li>a{
+			        		width:100%;
+			        		display:block;
+			        		font-size:1.7rem!important;
+			        	}
+			        	.mainCategory>li>ul>li>a:hover{
+			        		text-decoration:none;
+			        	}
+			        </style>	        	
+					<!-- common category -->
+					<ul class="mainCategory" style="clear:both;list-style:none;">
+						<li><span class="category category1">하이라이트</span>
+							<ul class="subcategory subcategory1" style="display:block;">
+								<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
+								<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
+							</ul>
+						</li>
+						<li><span class="category category2">서울즐기기</span>
+							<ul class="subcategory subcategory2">
+								<li><a href="/enjoyList?type=type1">추천코스</a></li>
+								<li><a href="/enjoyList?type=type2">명소</a></li>
+								<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+								<li><a href="/enjoyList?type=type5">음식점</a></li>
+								<li><a href="/enjoyList?type=type6">캘린더</a></li>
+							</ul>
+						</li>
+						<li><span class="category category3">예약하기</span>
+							<ul class="subcategory subcategory3">
+								<li><a href="/concertList">공연예약</a></li>
+								<li><a href="/hotelList">호텔예약</a></li>
+								<li><a href="/doboList">서울도보관광예약</a></li>
+							</ul>
+						</li>
+						<li><span class="category category4">여행준비</span>
+							<ul class="subcategory subcategory4">
+								<li><a href="/guideBookDown">가이드북</a></li>
+								<li><a href="/views/travelReady/travelInformation.jsp">여행필수정보</a></li>
+								<li><a href="/seoulImage">서울 관광 이미지</a></li>
+								<li><a href="/faq">FAQ</a></li>
+							</ul>
+						</li>
+					</ul>
+		
+					<script>
+					$(".category1").click(function(){
+						$(".subcategory1").toggle("slow");
+						$(".subcategory2").css('display','none');
+						$(".subcategory3").css('display','none');
+						$(".subcategory4").css('display','none');
+					});
+					$(".category2").click(function(){
+						$(".subcategory2").toggle("slow");
+						$(".subcategory1").css('display','none');
+						$(".subcategory3").css('display','none');
+						$(".subcategory4").css('display','none');
+					});
+					$(".category3").click(function(){
+						$(".subcategory3").toggle("slow");
+						$(".subcategory2").css('display','none');
+						$(".subcategory1").css('display','none');
+						$(".subcategory4").css('display','none');
+					});
+					$(".category4").click(function(){
+						$(".subcategory4").toggle("slow");
+						$(".subcategory2").css('display','none');
+						$(".subcategory3").css('display','none');
+						$(".subcategory1").css('display','none');
+					});			
+					</script>
+				</div>
 
+				
+				</header>
 					<section>
 						<div class="container">
 							<div class="container-fulid">
@@ -420,6 +581,25 @@
 						<script>
 							$('.carousel').carousel();
 						</script>
+						
+				<script>
+					$('.click').click(function(){
+						$('header').css('width','300px');
+						$('#click').css('display','none');
+						$('section').css('margin-left','301px');
+						$('section').css('opacity','0.5');
+						$('section').css('background-color','rgba(0,0,0,0.5)');
+						$('#click-open').css('display','block');
+					});
+					$('section').click(function(){
+						$('header').css('width','50px');
+						$('#click').css('display','block');
+						$('section').css('margin-left','51px');
+						$('section').css('opacity','1');
+						$('section').css('background-color','white');
+						$('#click-open').css('display','none');
+					});
+				</script>							
 			</body>
 
 			</html>

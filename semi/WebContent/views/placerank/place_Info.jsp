@@ -177,8 +177,8 @@
 						
 					<% if(user==null){ %>
 			        <div id="login_join">
-			        	<a href="/views/main/login.jsp" class="main-login">로그인</a>
-			        	<a href="/views/main/joinus.jsp">회원가입</a>
+			        	<a href="/views/main/login.jsp" class="main-login" style="font-size:1.5rem!important;">로그인</a>
+			        	<a href="/views/main/joinus.jsp" style="font-size:1.5rem!important;">회원가입</a>
 			        </div>    
 			        <% } else { %>
 			        <div id="login_join" class="login_after">	
