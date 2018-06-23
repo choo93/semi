@@ -208,8 +208,10 @@ input[type=email].valid:not(.browser-default):focus{
 				    	if(userPwd==userPwd2){
 				    		$('#pwd_check2').html("<span style='color:#26a69a;'>OK</span>");
 				    		submitCount+=1;
-				    	}else{
+				    	}else if(userPwd!=userPwd2){
 				    		$('#pwd_check2').html("<span style='color:red;'>비밀번호가 일치하지 않습니다.</span>");
+				    	}else if(userPwd==null){
+				    		$('#pwd_check2').html("<span style='color:red;'>비밀번호를 입력해주세요.</span>");
 				    	}
 				    }	
 				    
@@ -281,6 +283,7 @@ input[type=email].valid:not(.browser-default):focus{
 				    	}
 				   }
 				   function submit(){
+					   alert();
 					   if(submitCount>=6){
 						   var userId = $('#user_id').val();
 						   var userPwd = $('#user_pwd').val();
@@ -302,9 +305,12 @@ input[type=email].valid:not(.browser-default):focus{
 					 			data : user,
 					 			type : "post",
 					 			success:function(){
+					 				if()
 					 				location.href="/views/main/joinusFinal.jsp";
 					 			}
 					 		});	
+					   }else{
+						   alert();
 					   }
 				    }
 
