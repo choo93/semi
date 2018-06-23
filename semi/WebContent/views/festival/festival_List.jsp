@@ -41,6 +41,11 @@ case "winter" : seasons = "겨울 축제"; break;
         </script>
 
     </head>
+    
+    
+    
+    
+    
     <style>
         .photo {
             background-repeat: no-repeat;
