@@ -64,12 +64,12 @@ input[type=email].valid:not(.browser-default):focus{
 				<label>
 					<span style="color:black;margin-left:30px;font-size:1rem;font-weight:bold;">비밀번호</span>
 					<input type="password" id="user_pwd" onchange="pwdCheck();">
-					<span id="pwd_check" class="helper-text" style="margin-left:140px;">6~16자 영문 대 소문자, 숫자를 사용하세요.</span>
+					<span id="pwd_check" class="helper-text" style="margin-left:140px;">6~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>
 				</label>	
 				<label>
 					<span style="color:black;margin-left:30px;font-size:1rem;font-weight:bold;">비밀번호 확인</span>
 					<input type="password" id="user_pwd2" onchange="pwdCheck2();">
-					<span id="pwd_check2" class="helper-text" style="margin-left:140px;">6~16자 영문 대 소문자, 숫자를 사용하세요.</span>
+					<span id="pwd_check2" class="helper-text" style="margin-left:140px;">6~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>
 				</label>
 				<label>
 					<span style="color:black;margin-left:30px;font-size:1rem;font-weight:bold;">이름</span>
