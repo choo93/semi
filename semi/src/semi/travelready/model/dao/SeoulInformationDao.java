@@ -44,6 +44,8 @@ public class SeoulInformationDao {
 				sic.setWriteDate(rset.getDate("writedate"));
 				sic.setUp(rset.getInt("up"));
 				sic.setDown(rset.getInt("down"));
+				sic.setUserId(rset.getString("userid"));
+				sic.setIdChk(rset.getString("idchk"));
 				
 				list.add(sic);
 			}
@@ -114,15 +116,17 @@ public class SeoulInformationDao {
 		
 	}
 
-	public int commentInsert(Connection conn, String content, String userName) {
+	public int commentInsert(Connection conn, String content, String userName, String userId) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String query="insert into seoulinformation values(seoulinformation_SEQ.nextval,?,?,sysdate,0,0)";
+		String query="insert into seoulinformation values(seoulinformation_SEQ.nextval,?,?,sysdate,0,0,?,?)";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1, userName);
 			pstmt.setString(2, content);
+			pstmt.setString(3, userId);
+			pstmt.setString(4, userId+'/');
 ;
 			result=pstmt.executeUpdate();
 			
@@ -238,16 +242,18 @@ public class SeoulInformationDao {
 		return result;
 	}
 
-	public int commentUp(Connection conn, int commentNo, int up) {
+	public int commentUp(Connection conn, int commentNo, int up, String userId, String idChk) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		up+=1;
-		String query="update seoulinformation set up=? where commentno=?";
+		String query="update seoulinformation set up=?,idchk=? where commentno=?";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, up);
-			pstmt.setInt(2, commentNo);
+			pstmt.setString(2, idChk+userId+'/');
+			pstmt.setInt(3, commentNo);
+			
 
 			result=pstmt.executeUpdate();
 			
@@ -261,16 +267,17 @@ public class SeoulInformationDao {
 		return result;
 	}
 
-	public int commentDown(Connection conn, int commentNo, int down) {
+	public int commentDown(Connection conn, int commentNo, int down, String userId, String idChk) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		down+=1;
-		String query="update seoulinformation set down=? where commentno=?";
+		String query="update seoulinformation set down=?,idchk=? where commentno=?";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, down);
-			pstmt.setInt(2, commentNo);
+			pstmt.setString(2, idChk+userId+'/');
+			pstmt.setInt(3, commentNo);
 
 			result=pstmt.executeUpdate();
 			
@@ -316,6 +323,8 @@ public class SeoulInformationDao {
 				sic.setWriteDate(rset.getDate("writedate"));
 				sic.setUp(rset.getInt("up"));
 				sic.setDown(rset.getInt("down"));
+				sic.setUserId(rset.getString("userid"));
+				sic.setIdChk(rset.getString("idchk"));
 				
 				list.add(sic);
 			}
@@ -408,6 +417,8 @@ public class SeoulInformationDao {
 				sic.setWriteDate(rset.getDate("writedate"));
 				sic.setUp(rset.getInt("up"));
 				sic.setDown(rset.getInt("down"));
+				sic.setUserId(rset.getString("userid"));
+				sic.setIdChk(rset.getString("idchk"));
 			}
 			
 		

@@ -33,27 +33,47 @@ public class SeoulInformationCommentUpDownServlet extends HttpServlet {
 		
 		String upDown=request.getParameter("UpDown");
 		int commentNo=Integer.parseInt(request.getParameter("commentNo"));
+		String userId=request.getParameter("userId");
+		
+		SeoulInformationComment sic=new SeoulInformationService().selectOne(commentNo);
+		String idChk=sic.getIdChk();
+		
+		String[] idArray=idChk.split("/");
+		
+		int idChkResult=-1;
+		for(int i=0; i<idArray.length; i++) {
+			if(idArray[i].equals(userId)) {
+				idChkResult=-2;
+			}
+		}
+		
+		if(idChkResult==-1) {
 		
 		
 		if(upDown.equals("up")) {
 			int up=Integer.parseInt(request.getParameter("Up"));
-			int result=new SeoulInformationService().commentUp(commentNo,up);
+			int result=new SeoulInformationService().commentUp(commentNo,up,userId,idChk);
 			if(result>0) {
-				SeoulInformationComment sic=new SeoulInformationService().selectOne(commentNo);
+				sic=new SeoulInformationService().selectOne(commentNo);
 				response.getWriter().print(sic.getUp());
+				
 				
 			}
 		}
 		else
 		{
 			int down=Integer.parseInt(request.getParameter("Down"));
-			int result=new SeoulInformationService().commentDown(commentNo,down);
-			System.out.println(down);
+			int result=new SeoulInformationService().commentDown(commentNo,down,userId,idChk);
 			if(result>0) {
-				SeoulInformationComment sic=new SeoulInformationService().selectOne(commentNo);
+				sic=new SeoulInformationService().selectOne(commentNo);
 				response.getWriter().print(sic.getDown());
 			}
 		}
+	}else
+	{
+		response.getWriter().print(idChkResult);
+		
+	}
 	}
 
 	/**

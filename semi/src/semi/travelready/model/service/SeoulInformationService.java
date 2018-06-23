@@ -46,9 +46,9 @@ public class SeoulInformationService {
 		
 	}
 
-	public int commentInsert(String content, String userName) {
+	public int commentInsert(String content, String userName, String userId) {
 		Connection conn=JDBCTemplate.getConnection();
-		int result=new SeoulInformationDao().commentInsert(conn,content,userName);
+		int result=new SeoulInformationDao().commentInsert(conn,content,userName,userId);
 		
 		if(result>0) {
 			JDBCTemplate.commit(conn);
@@ -121,9 +121,9 @@ public class SeoulInformationService {
 		return result;
 	}
 
-	public int commentUp(int commentNo, int up) {
+	public int commentUp(int commentNo, int up, String userId, String idChk) {
 		Connection conn=JDBCTemplate.getConnection();
-		int result=new SeoulInformationDao().commentUp(conn,commentNo,up);
+		int result=new SeoulInformationDao().commentUp(conn,commentNo,up,userId,idChk);
 		
 		if(result>0) {
 			JDBCTemplate.commit(conn);
@@ -138,9 +138,9 @@ public class SeoulInformationService {
 		
 	}
 
-	public int commentDown(int commentNo, int down) {
+	public int commentDown(int commentNo, int down, String userId, String idChk) {
 		Connection conn=JDBCTemplate.getConnection();
-		int result=new SeoulInformationDao().commentDown(conn,commentNo,down);
+		int result=new SeoulInformationDao().commentDown(conn,commentNo,down,userId,idChk);
 		
 		if(result>0) {
 			JDBCTemplate.commit(conn);

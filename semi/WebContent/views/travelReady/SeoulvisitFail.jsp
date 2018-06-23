@@ -193,13 +193,13 @@
 					<p>전화 : 1345 (지역번호 없음)</p>
 					
 					<div id="comment" style="background-color:transparent; border:1px solid #f2f2f2">
-						<div style="width:100%; height:20%; font-weight:700"><span>소셜 로그인</span></div>
+						<div style="width:100%; height:20%; font-weight:700"><span>서울 방문 댓글</span></div>
 						<div style="width:100%; height:70%; margin-top:10px;">
 							<div style="width:100px; height:130px;float:left; background:url(/image/main/logo.png); background-repeat:no-repeat; background-size:100%;"></div>
 							<form action="/writeComment">
 							<div style="width:85%; height:100%; margin-left:15%;">
 								<ul style="border-radius:10px;">
-									<li><textarea placeholder="소셜 계정으로 작성하세요" rows="1" readonly></textarea></li>
+									<li><textarea placeholder="로그인 후 작성하세요" rows="1" readonly></textarea></li>
 									<li><textarea  name="content" rows="10" style="height:80px;"></textarea></li>
 									<li style="margin-bottom:10px;height:20px;">
 									<ul style="list-style:none; width:100%; height:20px; float:left;">
@@ -211,6 +211,7 @@
 									<li style="float:right;">
 									<%if(su!=null){ %>
 									<input type="hidden" name="userName" value="<%=su.getUserName()%>">
+									<input type="hidden" name="userId" value="<%=su.getUserId()%>">
 									<input type="submit" value="보내기">
 							
 									<%}else{ %>
