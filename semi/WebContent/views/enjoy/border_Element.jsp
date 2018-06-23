@@ -36,7 +36,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>서울즐기기 - <%=ELD.getIndex_Title() %></title>
 <!-- <link rel="stylesheet" href="../../css/main.css"> -->
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../css/enjoy/ReviewBox.css">
@@ -378,13 +378,7 @@
 						<%} %>
 					<%} %>
 					
-				<!-- 작성일  -->	
-				<%if(ELD.getIndex_Ondate()!=null) {%>
-					<tr style="height: 50px; border-top: 1px solid #D1D0ED;">
-							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">작성일</td>
-							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=ELD.getIndex_Ondate()%></td>
-				</tr>
-				<%} %>
+				
 					
 					<!-- 이용요금 -->
 					<%if(edd1.getDetail_payment()!=null){ %>
@@ -408,6 +402,14 @@
 						<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=edd1.getDetail_utility()%></td>
 					</tr>
 					<%} %>
+					<!-- 작성일  -->	
+				<%if(ELD.getIndex_Ondate()!=null) {%>
+					<tr style="height: 50px; border-top: 1px solid #D1D0ED;">
+							<td style="font: bold 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px; width:300px;">작성일</td>
+							<td style="font: 15px 나눔스퀘어; position: relative; top: 5px; padding: 5px; margin: 7px;"><%=ELD.getIndex_Ondate()%></td>
+				</tr>
+				<%} %>
+					
 				</table>
 				
 			</div>
