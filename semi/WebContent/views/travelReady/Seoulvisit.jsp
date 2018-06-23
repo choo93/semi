@@ -90,30 +90,39 @@
     	{
     		alert("로그인후 이용해주세요");
     	}
-    	function up(commentNo){
+    	function up(commentNo,userId){
+    		
     		var upDown="up";
     		var up=document.getElementById('upinc').innerHTML;
  		   $.ajax({
 	 			url : "/seoulInformationCommentUpDown",
-	 			data : {UpDown:upDown,commentNo:commentNo,Up:up},
+	 			data : {UpDown:upDown,commentNo:commentNo,Up:up,userId:userId},
 	 			type : "post",
 	 			success:function(data){
+	 				console.log(data);
+	 				if(data==-2){
+	 					alert("이미 추천하신 댓글입니다.")
+	 				}else{
 	 				document.getElementById('upinc').innerHTML=data;
+	 				}
 	 				
 	 			}
 	 		});	
     	}
     	
-     	function down(commentNo){
+     	function down(commentNo,userId){
     		var upDown="down";
     		var down=document.getElementById('downdec').innerHTML;
  		   $.ajax({
 	 			url : "/seoulInformationCommentUpDown",
-	 			data : {UpDown:upDown,commentNo:commentNo,Down:down},
+	 			data : {UpDown:upDown,commentNo:commentNo,Down:down,userId:userId},
 	 			type : "post",
 	 			success:function(data){
+	 				if(data==-2){
+	 					alert("이미 추천하신 댓글입니다.")
+	 				}else{
 	 				document.getElementById('downdec').innerHTML=data;
-	 				
+	 				}
 	 			}
 	 		});	
     	}
@@ -278,6 +287,7 @@
 									<li style="float:right;">
 									<%if(su!=null){ %>
 									<input type="hidden" name="userName" value="<%=su.getUserName()%>">
+									<input type="hidden" name="userId" value="<%=su.getUserId()%>">
 									<input type="submit" class="btn btn-primary" value="보내기">
 									<%}else{ %>
 									
@@ -319,7 +329,7 @@
 									<ul style="list-style:none; float:right; width:200px; height:100%;">
 										<li style="width:50px; height:100%;list-style:none; float:left; text-align:center;">
 										<%if(su!=null){ %>
-										<button onclick="up(<%=sic.getCommentNo()%>);" style="width:40px;height:30px; border-radius:7px; background-color:white;">
+										<button onclick="up(<%=sic.getCommentNo()%>,'<%=su.getUserId()%>');" style="width:40px;height:30px; border-radius:7px; background-color:white;">
 										<span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
 									    background-position: 0px -93px;">
 									    <strong id="upinc"><%=sic.getUp()%></strong></span></button>
@@ -337,7 +347,7 @@
 										
 										<li style="width:50px; height:100%;list-style:none; float:left; text-align:center;">
 										<%if(su!=null){ %>
-										<button onclick="down(<%=sic.getCommentNo()%>)" style="width:40px;height:30px; border-radius:7px; background-color:white;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
+										<button onclick="down(<%=sic.getCommentNo()%>,'<%=su.getUserId()%>')" style="width:40px;height:30px; border-radius:7px; background-color:white;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
 									    background-position: 0px -109px; ">
 									    <strong id="downdec"><%=sic.getDown()%></strong></span></button>
 									    <%}else{ %>
@@ -361,7 +371,7 @@
 									신고</span></button></li>
 									<form action="/seoulInformationCommentDelete">
 									<input type="hidden" name="commentNo" value="<%=sic.getCommentNo()%>">
-									<%if(su!=null && sic.getUserName().equals(su.getUserName())){ %>
+									<%if(su!=null && sic.getUserId().equals(su.getUserId())){ %>
 									<li><button style="cursor: pointer;background-color:white;border:none;"><span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 4px -62px;
 									    background-position: 4px -26px;">
 									    삭제</span></button></li>

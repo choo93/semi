@@ -9,6 +9,20 @@ public class SeoulInformationComment {
 		private Date writeDate;
 		private int up;
 		private int down;
+		private String userId;
+		private String idChk;
+		public String getUserId() {
+			return userId;
+		}
+		public void setUserId(String userId) {
+			this.userId = userId;
+		}
+		public String getIdChk() {
+			return idChk;
+		}
+		public void setIdChk(String idChk) {
+			this.idChk = idChk;
+		}
 		public int getCommentNo() {
 			return commentNo;
 		}
