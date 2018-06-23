@@ -33,9 +33,9 @@ public class WriteCommentServlet extends HttpServlet {
 		
 		String content=request.getParameter("content");
 		String userName=request.getParameter("userName");
-		System.out.println(userName);
+		String userId=request.getParameter("userId");
 		
-	int result=new SeoulInformationService().commentInsert(content,userName);
+	int result=new SeoulInformationService().commentInsert(content,userName,userId);
 	
 	if(result>0) {
 		response.sendRedirect("/seoulInformationComment");
