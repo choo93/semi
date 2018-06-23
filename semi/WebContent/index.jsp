@@ -54,16 +54,16 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 <body id="scroll">
 	<header>
 		<div id="main_header">
-			<a href="#" data-target="slide-out" class="sidenav-trigger"><img
-				src="/image/main/menu.png"></a>
+			<a href="#" data-target="slide-out" class="sidenav-trigger">
+			<img src="/image/main/menu.png"></a>
 			<img src="/image/main/menu.png" id="main_icon" onclick="menu();">
 			<a href="http://localhost"><img
 				src="/image/main/logo.png" id="main_logo"></a>
 
         <% if(user==null){ %>
         <div id="login_join">
-        	<p class="login_before login_left"><a href="/views/main/login.jsp">로그인</a></p>
-        	<p class="login_before login_right"><a href="/views/main/joinus.jsp">회원가입</a></p>
+        	<a href="/views/main/login.jsp" class="main-login">로그인</a>
+        	<a href="/views/main/joinus.jsp">회원가입</a>
         </div>    
         <% } else { %>
         <div id="login_join" class="login_after">	
@@ -78,37 +78,38 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
         <% } %>	
         
         <!-- desktop category -->
-        <div id="main_category">
-        	<div id="main_category_one" class="main_category">하이라이트</div>
-        	<ul style="display:none;" id="sub_category_one" class="main_sub_category">
-        		<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
-        		<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
-        	</ul>
-			<div id="main_category_two" class="main_category">서울즐기기</div>
-        	<ul style="display:none;" id="sub_category_two" class="main_sub_category">
-        		<li><a href="/enjoyList?type=type1">추천코스</a></li>
-				<li><a href="/enjoyList?type=type2">명소</a></li>
-				<li><a href="/enjoyList?type=type3">쇼핑</a></li>
-				<li><a href="/enjoyList?type=type4">숙박</a></li>
-				<li><a href="/enjoyList?type=type5">음식점</a></li>
-				<li><a href="/enjoyList?type=type6">캘린더</a></li>
-        	</ul>
-			<div id="main_category_three" class="main_category">예약하기</div>
-        	<ul style="display:none;" id="sub_category_three" class="main_sub_category">
-        		<li><a href="/concertList">공연예약</a></li>
-				<li><a href="/hotelList">호텔예약</a></li>
-				<li><a href="/doboList">서울도보관광예약</a></li>
-        	</ul>  
-			<div id="main_category_four" class="main_category">여행준비</div>
-        	<ul style="display:none;" id="sub_category_four" class="main_sub_category">
-        		<li><a href="">가이드북&amp;지도</a></li>
-        		<li><a href="">여행필수정보</a></li>
-        		<li><a href="">서비스 안내</a></li>
-        		<li><a href="">비즈니스&amp;파트너</a></li>
-        		<li><a href="">FAQ</a></li>
-        		<li><a href="">공지사항</a></li>
-        	</ul>          	        	        	
-        </div>
+		<ul class="mainCategory" style="clear:both;">
+			<li><span class="category category1">하이라이트</span>
+				<ul class="subcategory subcategory1">
+					<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
+					<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
+				</ul>
+			</li>
+			<li><span class="category category2">서울즐기기</span>
+				<ul class="subcategory subcategory2">
+					<li><a href="/enjoyList?type=type1">추천코스</a></li>
+					<li><a href="/enjoyList?type=type2">명소</a></li>
+					<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+					<li><a href="/enjoyList?type=type5">음식점</a></li>
+					<li><a href="/enjoyList?type=type6">캘린더</a></li>
+				</ul>
+			</li>
+			<li><span class="category category3">예약하기</span>
+				<ul class="subcategory subcategory3">
+					<li><a href="/concertList">공연예약</a></li>
+					<li><a href="/hotelList">호텔예약</a></li>
+					<li><a href="/doboList">서울도보관광예약</a></li>
+				</ul>
+			</li>
+			<li><span class="category category4">여행준비</span>
+				<ul class="subcategory subcategory4">
+					<li><a href="/guideBookDown">가이드북</a></li>
+					<li><a href="/views/travelReady/travelInformation.jsp">여행필수정보</a></li>
+					<li><a href="/seoulImage">서울 관광 이미지</a></li>
+					<li><a href="/faq">FAQ</a></li>
+				</ul>
+			</li>
+		</ul>
         
         <!-- Tablet Category -->
 		<ul id="tablet_category">
@@ -275,69 +276,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 					$(".subcategory1").css('display','none');
 				});
 			</script>
-			
-  
-        	<script>
-        	$(document).ready(function(){
-        		$("#main_category_one").click(function(){
-        			$(this).next("ul").slideToggle('slow');
-        			$('#sub_category_two').css('display','none');
-        			$('#sub_category_three').css('display','none');
-        			$('#sub_category_four').css('display','none');
-        		});
-        		$("#main_category_two").click(function(){
-        			$(this).next("ul").slideToggle('slow');
-        			$('#sub_category_one').css('display','none');
-        			$('#sub_category_three').css('display','none');
-        			$('#sub_category_four').css('display','none');
-        		});
-        		$("#main_category_three").click(function(){
-        			$(this).next("ul").slideToggle('slow');
-        			$('#sub_category_two').css('display','none');
-        			$('#sub_category_one').css('display','none');
-        			$('#sub_category_four').css('display','none');
-        		});
-        		$("#main_category_four").click(function(){
-        			$(this).next("ul").slideToggle('slow');
-        			$('#sub_category_two').css('display','none');
-        			$('#sub_category_three').css('display','none');
-        			$('#sub_category_one').css('display','none');
-        		});
-        	});	        	
-        	
-        	$("#mobile_category_one").click(function(){
-        		$(this).next("ul").slideToggle('slow',function(){
-        			
-        		});
-        		$('#mobile_two').css('display','none');
-        		$('#mobile_three').css('display','none');
-        		$('#mobile_four').css('display','none');
-        	});
-        	$("#mobile_category_two").click(function(){
-        		$(this).next("ul").slideToggle('slow',function(){
-        			
-        		});
-        		$('#mobile_one').css('display','none');
-        		$('#mobile_three').css('display','none');
-        		$('#mobile_four').css('display','none');
-        	});
-        	$("#mobile_category_three").click(function(){
-        		$(this).next("ul").slideToggle('slow',function(){
-        			
-        		});
-        		$('#mobile_two').css('display','none');
-        		$('#mobile_one').css('display','none');
-        		$('#mobile_four').css('display','none');
-        	});
-        	$("#mobile_category_four").click(function(){
-        		$(this).next("ul").slideToggle('slow',function(){
-        			location.href="/views/travelReady/travelReady.jsp";
-        		});
-        		$('#mobile_two').css('display','none');
-        		$('#mobile_three').css('display','none');
-        		$('#mobile_one').css('display','none');
-        	});        	
-        	</script>
+		
 		</div>
 	</header>
 
@@ -378,7 +317,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 	            <hr class="border_top">
 	            <p>서울 여행시 필요한 교통수단, 기후, 국경일, 관광안내소 등 기본 정보 제공! <br>무료 가이드북을 신청할 수 있습니다.</p>
 	            <p>Q&amp;A를 통해 서울 여행 관련 질문을 받고, 빈도수가 높은 질문들을 모아 FAQ를 제공합니다.</p>
-	            <a href="">여행준비 바로가기</a>
+	            <a href="/views/travelReady/travelReady.jsp">여행준비 바로가기</a>
 	            <hr class="border_bottom">
 	        </div>       
         </div>
@@ -391,17 +330,8 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			}
 		}
 	</style>
-	
-	<script>
-	   window.onload = function() {
-	      if(opener!=null) { // 자신이 팝업창 일때 
-	         opener.location.reload();
-	         window.close();
-	         
-	      }
-	   }
-	</script>	
-	
-	<%@ include file="/views/main/footer.jsp" %>
+		
+	<%@ include file="/views/main/footer.jsp"%>
+
 </body>
 </html>
