@@ -23,7 +23,10 @@ case "winter" : seasons = "겨울 축제"; break;
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert title here</title>
         <link rel="stylesheet" href="../../css/bootstrap.min.css">
-
+<title>Seoulaim - 축제&행사 - 리스트</title>
+		<link rel="icon" href="../../image/main/favicon.ico">
+		
+		
         <link rel="stylesheet" href="../../css/festival/moreBtn.css">
 
         <script src="../../js/jquery-3.3.1.min.js"></script>
