@@ -22,7 +22,8 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>명소 리스트</title>
+<title>Seoulaim - Top 10</title>
+<link rel="icon" href="../../image/main/favicon.ico">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="../../css/festival/moreBtn.css">
@@ -92,18 +93,24 @@ hr {
 .font {
 			color: #3071a9;
 			text-shadow: 1px -1px 1px black, -1px 2px 2px white;
-			height: 60px;
 			margin-bottom: 10px;
 			font: italic bold 3.3rem "나눔스퀘어";
 			overflow: hidden;
 			text-overflow: ellipsis;
+			margin-top:0px;
+			padding-top:20px;
+			padding-bottom:20px;
 		}
-
+.wrapper{
+	width:1662px;
+	margin:0 auto;
+}
 </style>
 
 <body id="scroll">
-<%-- 	<%@ include file="/views/main/header.jsp"%> --%>
+<%@ include file="/views/main/header.jsp"%>
 	<section>
+	<div class="wrapper">
 		<div id="head" class="container-fulid">
                 <h1 class="font" style="text-align: center;"><%=title %></h1>
         </div>
@@ -163,7 +170,7 @@ hr {
 
 		</div>
 
-
+</div>
 	</section>
 </body>
 

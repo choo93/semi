@@ -137,23 +137,6 @@ public class UserDao {
 		return list;
 	}
 
-	public int deleteUser(Connection conn, String userId, String userPwd) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		String query = "delete from seoul_user where user_id=? and user_pwd=?";
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, userId);
-			pstmt.setString(2, userPwd);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(pstmt);
-		}
-		return result;
-	}
-
 	public int insertUser(Connection conn, SeoulUser su) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -194,8 +177,6 @@ public class UserDao {
 	}
 
 	public int updateUser(Connection conn, SeoulUser su) {
-		
-		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int result = 0;
@@ -449,6 +430,23 @@ public class UserDao {
 		}
 		return su;
 	}
+
+	public int deleteUser(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "update seoul_user set user_active ='N' where user_id=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
 
 
 }
