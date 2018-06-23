@@ -14,7 +14,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>도보 관광 예약</title>
-	<link rel="stylesheet" href="../../css/main.css">
 	<link rel="stylesheet" href="../../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../../css/concert/concertList.css?ver=1">
 	<link rel="stylesheet" href="../../css/moreBtn.css">
@@ -26,6 +25,7 @@
 <body id="scroll">
 	<%@ include file="/views/main/header.jsp" %>
 	<section>
+	<div style="width:960px;margin:0 auto;">
 		<div id="title">
         	공연 예약
         	<button onclick="noUser();">비회원 예약 정보 조회</button>
@@ -47,7 +47,7 @@
         			<%} %>
         		</div>
         		<div id="btn">
-        			<button id="button" onclick="doboInfo(<%=di.getIndexNo() %>);">자세히</button>
+        			<button id="button" style="background-color:#3071a9;"onclick="doboInfo(<%=di.getIndexNo() %>);">자세히</button>
         		</div>
         	</div>
     	</div>
@@ -56,6 +56,7 @@
 		
 		<div class = "container" style="text-align:center;">
 			<ul class="pagination pagination-lg"><%= pageNavi %></ul>
+		</div>
 		</div>
 	</section>
 	<%@ include file="/views/main/footer.jsp" %>
