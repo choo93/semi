@@ -69,7 +69,7 @@ input[type=email].valid:not(.browser-default):focus{
 				<label>
 					<span style="color:black;margin-left:30px;font-size:1rem;font-weight:bold;">비밀번호 확인</span>
 					<input type="password" id="user_pwd2" onchange="pwdCheck2();">
-					<span id="pwd_check2" class="helper-text" style="margin-left:140px;">6~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>
+					<span id="pwd_check2" class="helper-text" style="margin-left:140px;">비밀번호를 한 번 더 입력해주세요.</span>
 				</label>
 				<label>
 					<span style="color:black;margin-left:30px;font-size:1rem;font-weight:bold;">이름</span>
@@ -205,13 +205,12 @@ input[type=email].valid:not(.browser-default):focus{
 				    function pwdCheck2(){
 				    	var userPwd = $('#user_pwd').val();
 				    	var userPwd2 = $('#user_pwd2').val();
+				    	
 				    	if(userPwd==userPwd2){
 				    		$('#pwd_check2').html("<span style='color:#26a69a;'>OK</span>");
 				    		submitCount+=1;
-				    	}else if(userPwd!=userPwd2){
+				    	}else{
 				    		$('#pwd_check2').html("<span style='color:red;'>비밀번호가 일치하지 않습니다.</span>");
-				    	}else if(userPwd==null){
-				    		$('#pwd_check2').html("<span style='color:red;'>비밀번호를 입력해주세요.</span>");
 				    	}
 				    }	
 				    
@@ -283,7 +282,6 @@ input[type=email].valid:not(.browser-default):focus{
 				    	}
 				   }
 				   function submit(){
-					   alert();
 					   if(submitCount>=6){
 						   var userId = $('#user_id').val();
 						   var userPwd = $('#user_pwd').val();
@@ -305,15 +303,13 @@ input[type=email].valid:not(.browser-default):focus{
 					 			data : user,
 					 			type : "post",
 					 			success:function(){
-					 				if()
 					 				location.href="/views/main/joinusFinal.jsp";
 					 			}
 					 		});	
 					   }else{
-						   alert();
+						   alert("필수 항목을 작성해주시길 바랍니다");
 					   }
 				    }
-
 				</script>		
 		</div>
 		<div style="background-color:white;height:20px;"></div>

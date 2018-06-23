@@ -58,7 +58,6 @@ public class UserDao {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userId);
 			rset = pstmt.executeQuery();
-			System.out.println("1. "+query);
 			if(rset.next()) {
 				if(rset.getInt("change_date")>=90) {
 					result = true;
