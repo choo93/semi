@@ -64,8 +64,9 @@
 <script>
 function noUser(){
 	var reserveNo = window.prompt('예약 번호 입력');
-	location.href="/noUserDobo?reserveNo="+reserveNo;
-	
+	if(reserveNo){
+		location.href="/noUserDobo?reserveNo="+reserveNo;
+	}
 	
 }
 </script>

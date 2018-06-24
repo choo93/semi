@@ -124,6 +124,12 @@
 	color:lightgrey;
 }
 
+
+#price::before{
+	content:"₩";
+}
+
+
 #submit{
 	width:150px;	height:50px;
 	margin-left:300px;

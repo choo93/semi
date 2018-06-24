@@ -46,7 +46,7 @@
 				type="hidden" name="concertCode"
 				value="<%=request.getParameter("concertCode")%>">
 			<div id="priced">
-				<label>가격 </label> <label id="price"> <%=request.getParameter("price")%></label>
+				<label>가격 </label> <label id="price"> <%=Integer.parseInt(request.getParameter("price"))/1000%>,<%=Integer.parseInt(request.getParameter("price"))/100%10 %>00</label>
 			</div>
 			<input type="hidden" name="price" id="pprice"
 				value="<%=request.getParameter("price")%>"> <input

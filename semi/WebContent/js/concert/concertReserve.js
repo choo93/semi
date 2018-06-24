@@ -14,6 +14,6 @@ function check(){
 function changePrice(){
 	var people = document.getElementById('people').value;
 	var firstPrice = document.getElementById('firstPrice').value;
-	document.getElementById('price').innerHTML = Number(people)*Number(firstPrice);
+	document.getElementById('price').innerHTML = Math.floor((Number(people)*Number(firstPrice))/1000) + "," + ((Number(people)*Number(firstPrice))/100%10)+"00";
 	document.getElementById('pprice').value = Number(people)*Number(firstPrice);
 }

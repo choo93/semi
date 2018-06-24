@@ -2,8 +2,12 @@
     pageEncoding="UTF-8"
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<% String reserve = (String)request.getAttribute("reserve"); 
-	int noUserReserveNo = (Integer)(request.getAttribute("noUserReserveNo"));
+<% String reserve = (String)request.getAttribute("reserve");
+	int noUserReserveNo=0;
+	if(request.getAttribute("noUserReserveNo")!=null){
+		noUserReserveNo = (Integer)(request.getAttribute("noUserReserveNo"));
+	}
+	
 	System.out.println(noUserReserveNo);
 %>    
 <html>

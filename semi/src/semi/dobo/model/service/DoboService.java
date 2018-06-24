@@ -8,6 +8,7 @@ import semi.dobo.model.dao.DoboDAO;
 import semi.dobo.model.vo.DoboInfo;
 import semi.dobo.model.vo.DoboPageData;
 import semi.dobo.model.vo.DoboReserve;
+import semi.dobo.model.vo.DoboReserveResult;
 import semi.enjoy.model.vo.CommentData;
 import semi.enjoy.model.vo.EnjoyComment;
 
@@ -38,19 +39,25 @@ public class DoboService {
 		return dpd;
 	}
 
-	public int addReserve(DoboReserve dr) {
+	public DoboReserveResult addReserve(DoboReserve dr) {
 		Connection conn = JDBCTemplate.getConnection();
 		int result = new DoboDAO().addReserve(conn,dr);
 		
+		DoboReserveResult rr = new DoboReserveResult();
+		
+		rr.setResult(result);
+		
 		if(result>0) {
 			JDBCTemplate.commit(conn);
+			int noUserReserveNo = new DoboDAO().loadLatestReserveNo(conn);
+			rr.setNoUserReserveNo(noUserReserveNo);
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
 		
 		JDBCTemplate.close(conn);
 		
-		return result;
+		return rr;
 	}
 
 	public CommentData getListCommentData(int currentPage, int indexNo) {
@@ -87,11 +94,11 @@ public class DoboService {
 		return dr;
 	}
 
-	public int loadLatestReserveNo() {
+	/*public int loadLatestReserveNo() {
 		Connection conn = JDBCTemplate.getConnection();
 		int noUserReserveNo = new DoboDAO().loadLatestReserveNo(conn);
 		JDBCTemplate.close(conn);
 		return noUserReserveNo;
-	}
+	}*/
 
 }
