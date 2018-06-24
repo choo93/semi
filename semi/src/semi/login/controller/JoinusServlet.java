@@ -42,7 +42,7 @@ public class JoinusServlet extends HttpServlet {
 		su.setUserActive("Y");
 		int result = new UserService().insertUser(su);
 		if(result>0) {
-			response.sendRedirect("/views/login/joinusSuccess.jsp");
+			response.sendRedirect("/views/main/joinusFinal.jsp");
 		}else {
 			response.sendRedirect("/views/login/error.html");
 		}

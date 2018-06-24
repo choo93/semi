@@ -91,19 +91,19 @@ input[type=email].valid:not(.browser-default):focus{
 				</label>
 				<label>
 					<span style="color:black;margin-left:30px;font-size:1rem;font-weight:bold;margin-top:10px;float:left;">생년월일</span>
-					<select id="user_year" name="user_year" class="browser-default" style="width:194px;float:left;margin-left:44px;border:1px solid #ddd;font-size:1rem;">
+					<select id="user_year" name="user_year" class="browser-default" style="width:194px;float:left;margin-left:44px;border:1px solid #ddd;font-size:1rem;" onchange="birthdayCheck();">
 					    <option disabled selected>YEAR</option>
 					    <% for(int i=2018; i>1909; i--){ %>
 							<option><%=i %>년</option>
 						<% } %>
 					</select>
-					  <select id="user_month" name="user_month" class="browser-default" style="width:194px;margin-left:13px;float:left;border:1px solid #ddd;font-size:1rem;">
+					  <select id="user_month" name="user_month" class="browser-default" style="width:194px;margin-left:13px;float:left;border:1px solid #ddd;font-size:1rem;" onchange="birthdayCheck();">
 					    <option disabled selected>MONTH</option>
 					    <% for(int i=1; i<=12; i++){ %>
 							<option><%=i %>월</option>
 						<% } %>
 					  </select>
-					<select id="user_day" name="user_day" class="browser-default" style="width:194px;margin-left:13px;float:left;border:1px solid #ddd;font-size:1rem;">
+					<select id="user_day" name="user_day" class="browser-default" style="width:194px;margin-left:13px;float:left;border:1px solid #ddd;font-size:1rem;" onchange="birthdayCheck();">
 					    <option disabled selected>DAY</option>
 					    <% for(int i=1; i<=31; i++){ %>
 							<option><%=i %>일</option>
@@ -163,6 +163,14 @@ input[type=email].valid:not(.browser-default):focus{
 				    }
 				    
 					var submitCount=0;
+					var idBool = false;
+					var pwdBool1 = false;
+					var pwdBool2 = false;
+					var nameBool = false;
+					var emailBool = false;
+					var phoneBool1 = false;
+					var phoneBool2 = false;
+					var birthdayBool = false;
 				    function idCheck(){
 				    	var regExp;
 				    	var resultChk;
@@ -171,6 +179,7 @@ input[type=email].valid:not(.browser-default):focus{
 				    	resultChk = regExp.test(userId);
 				    	if(resultChk == false){
 				    		$('#id_check').html("<span style='color:red;'>5~12자의 영문 소문자와 숫자만 사용 가능합니다.</span>");
+				    		idBool = false;
 				    	}else{
 				    		$.ajax({
 					 			url : "/userIdCheck",
@@ -179,9 +188,10 @@ input[type=email].valid:not(.browser-default):focus{
 					 			success : function(result){
 					 				if(result==1){
 					 					$('#id_check').html("<span style='color:red;'>이미 사용중이거나 탈퇴한 아이디입니다.</span>");
+					 					idBool = false;
 					 				} else{
 					 					$('#id_check').html("<span style='color:#26a69a;'>사용할 수 있는 아이디입니다.</span>");
-					 					submitCount+=1;
+					 					idBool = true;
 					 				}
 					 			}
 					 		});	
@@ -196,9 +206,11 @@ input[type=email].valid:not(.browser-default):focus{
 				    	resultChk = regExp.test(userPwd);
 				    	if(resultChk == false){
 				    		$('#pwd_check').html("<span style='color:red;'>6~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>");
+				    		pwdBool1 = false;
 				    	}else{
 				    		$('#pwd_check').html("<span style='color:#26a69a;'>OK</span>");
 				    		submitCount+=1;
+				    		pwdBool1 = true;
 				    	}
 				    }
 				    
@@ -209,8 +221,10 @@ input[type=email].valid:not(.browser-default):focus{
 				    	if(userPwd==userPwd2){
 				    		$('#pwd_check2').html("<span style='color:#26a69a;'>OK</span>");
 				    		submitCount+=1;
+				    		pwdBool2 = true;
 				    	}else{
 				    		$('#pwd_check2').html("<span style='color:red;'>비밀번호가 일치하지 않습니다.</span>");
+				    		pwdBool2 = false;
 				    	}
 				    }	
 				    
@@ -222,9 +236,11 @@ input[type=email].valid:not(.browser-default):focus{
 				    	resultChk = regExp.test(userName);
 				    	if(resultChk == false){
 				    		$('#name_check').html("<span style='color:red;'>한글만 가능합니다.</span>");
+				    		nameBool = false;
 				    	}else{
 				    		$('#name_check').html("<span style='color:#26a69a;'>OK</span>");
 				    		submitCount+=1;
+				    		nameBool = true;
 				    	}
 				    }
 				    
@@ -236,6 +252,7 @@ input[type=email].valid:not(.browser-default):focus{
 				    	resultChk = regExp.test(userEmail);
 				    	if(resultChk == false){
 				    		$('#email_check').html("<span style='color:red;'>이메일 형식에 맞춰서 작성해주세요.	`</span>");
+				    		emailBool = false;
 				    	}else{
 				    		$.ajax({
 					 			url : "/userEmail",
@@ -244,9 +261,11 @@ input[type=email].valid:not(.browser-default):focus{
 					 			success : function(result){
 					 				if(result==1){
 					 					$('#email_check').html("<span style='color:red;'>이미 사용중인 이메일입니다.</span>");
+					 					emailBool = false;
 					 				} else{
 					 					$('#email_check').html("<span style='color:#26a69a;'>OK</span>");
 					 					submitCount+=1;
+					 					emailBool = true;
 					 				}
 					 			}
 					 		});	
@@ -261,9 +280,10 @@ input[type=email].valid:not(.browser-default):focus{
 				    	resultChk = regExp.test(userPhone);
 				    	if(resultChk == false){
 				    		$('#phone_check').html("<span style='color:red;'>숫자만 가능합니다.</span>");
+				    		phoneBool1 = false;
 				    	}else{
 				    		$('#phone_check').html("<span style='color:#26a69a;'>OK</span>");
-				    		
+				    		phoneBool1 = true;
 				    	}
 				   }
 				   
@@ -275,14 +295,34 @@ input[type=email].valid:not(.browser-default):focus{
 				    	resultChk = regExp.test(userPhone);
 				    	if(resultChk == false){
 				    		$('#phone_check').html("<span style='color:red;'>숫자만 가능합니다.</span>");
+				    		phoneBool2 = false;
 				    	}else{
 				    		$('#phone_check').html("<span style='color:#26a69a;'>OK</span>");
 				    		submitCount+=1;
 				    		console.log(submitCount);
+				    		phoneBool2 = true;
 				    	}
 				   }
+				   
+				   function birthdayCheck(){
+					   var year = document.getElementById('user_year').value;
+					   var month = document.getElementById('user_month').value;
+					   var day = document.getElementById('user_day').value;
+					   
+					   if(year=='YEAR'){
+						   birthdayBool = false;
+					   }else if(month=='MONTH'){
+						   birthdayBool = false;
+					   }else if(day=='DAY'){
+						   birthdayBool = false;
+					   }else{
+						   birthdayBool = true;
+					   }
+					   
+				   }
+				   
 				   function submit(){
-					   if(submitCount>=6){
+					   if(idBool&&pwdBool1&&pwdBool2&&nameBool&&emailBool&&phoneBool1&&phoneBool2&&birthdayBool){
 						   var userId = $('#user_id').val();
 						   var userPwd = $('#user_pwd').val();
 						   var userName = $('#user_name').val();
