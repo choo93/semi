@@ -46,15 +46,28 @@ public class EnjoyCalendarServlet extends HttpServlet {
 
 		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
 		Date currentTime = new Date ();
-		String mTime = mSimpleDateFormat.format ( currentTime );
+		String mTime = mSimpleDateFormat.format ( currentTime ); 
+		String CurrenmtMonth = "";
+		switch(currentTime.getMonth()+1) // getmonth는 1월이 0부터시작함. +1해줘야 우리가사용하는 month와같음
+		{
+		case 3 :  CurrenmtMonth = "spring"; break;
+		case 6 : CurrenmtMonth = "summer"; break;
+		case 9 :CurrenmtMonth = "fall"; break;
+		case 10 :CurrenmtMonth = "fall"; break;
+		case 11 :CurrenmtMonth = "fall"; break;
+		default : CurrenmtMonth = "winter"; break;
+		}
 		if(list.isEmpty()) {
 		}
 		else {
 			ArrayList<EnjoyFestival> list2 = new ArrayList<EnjoyFestival>();
 			ArrayList<EnjoyFestival> list3 = new ArrayList<EnjoyFestival>();
-			
+			ArrayList<EnjoyFestival> list4 = new ArrayList<EnjoyFestival>();
 			for(EnjoyFestival EF : list)
 			{
+				
+				 
+				
 				StringTokenizer ST = new StringTokenizer(EF.getFestival_period(), " ~ ");
 		        String startDate=""; String endDate="";
 				startDate = ST.nextToken(); endDate = ST.nextToken();
@@ -69,8 +82,13 @@ public class EnjoyCalendarServlet extends HttpServlet {
 					
 					int end30day = (int)((day2.getTime() - currentTime.getTime()) / (60*60*24*1000));
 //					System.out.println(day3+EF.getFestival_title());
-					// 모든정보는 list에 담는다// 담겨져있음.
-//					list.add(EF);
+					// 계절별 행사
+					if(EF.getSeason().equals(CurrenmtMonth))
+					{
+						list4.add(EF);
+					}
+					
+					
 					// 일주일 이내에 시작예정인것은 list2에 담는다.
 					if(0<=start7day&&start7day<=7) {
 						list2.add(EF);
@@ -104,6 +122,7 @@ public class EnjoyCalendarServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("list2", list2);
 			request.setAttribute("list3", list3);
+			request.setAttribute("list4", list4);
 //			request.setAttribute("comment", list);
 			view.forward(request, response);
 			

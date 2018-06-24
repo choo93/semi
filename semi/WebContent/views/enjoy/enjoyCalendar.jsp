@@ -22,6 +22,13 @@ if((ArrayList<EnjoyFestival>)request.getAttribute("list3")!=null)
 	list3 = 	(ArrayList<EnjoyFestival>)request.getAttribute("list3");
 	}
 
+
+ArrayList<EnjoyFestival> list4 = null; 
+if((ArrayList<EnjoyFestival>)request.getAttribute("list4")!=null)
+	{
+	list4 = 	(ArrayList<EnjoyFestival>)request.getAttribute("list4");
+	}
+
 SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
 Date currentTime = new Date ();
 String mTime = mSimpleDateFormat.format ( currentTime );
@@ -80,7 +87,23 @@ String mTime = mSimpleDateFormat.format ( currentTime );
             revertDuration: 0  //  original position after the drag
           });
 
-        });    	    
+        });    	 
+	  $('#external-events3 .fc-event').each(function() {
+
+          // store data so the calendar knows to render an event upon drop
+          $(this).data('event', {
+            title: $.trim($(this).text()), // use the element's text as the event title
+            stick: true // maintain when user navigates (see docs on the renderEvent method)
+          });
+
+          // make the event draggable using jQuery UI
+          $(this).draggable({
+            zIndex: 999,
+            revert: true,      // will cause the event to go back to its
+            revertDuration: 0  //  original position after the drag
+          });
+
+        }); 
 	  
 	  
     $('#calendar').fullCalendar({
@@ -111,6 +134,10 @@ String mTime = mSimpleDateFormat.format ( currentTime );
             $(this).remove();
           }
           if ($('#drop-remove2').is(':checked')) {
+              // if so, remove the element from the "Draggable Events" list
+              $(this).remove();
+            }
+          if ($('#drop-remove3').is(':checked')) {
               // if so, remove the element from the "Draggable Events" list
               $(this).remove();
             }
@@ -262,6 +289,39 @@ String mTime = mSimpleDateFormat.format ( currentTime );
     vertical-align: middle;
   }
   
+  #external-events3 {
+    float: left;
+    width: 15%;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    background: #eee;
+    text-align: center;
+  }
+
+  #external-events3 h4 {
+    font-size: 16px;
+    margin-top: 0;
+    padding-top: 1em;
+     text-align : center;
+  }
+
+  #external-events3 .fc-event {
+    margin: 10px 0;
+    cursor: pointer;
+    background-color : #0BC904;
+  }
+
+  #external-events\3 p {
+    margin: 1.5em 0;
+    font-size: 11px;
+    color: #666;
+  }
+
+  #external-events3 p input {
+    margin: 0;
+    vertical-align: middle;
+  }
+  
     
     #calendar {
         float:right;
@@ -280,17 +340,20 @@ String mTime = mSimpleDateFormat.format ( currentTime );
 		</div>
 <div id='wrap'>
 		
-    <div id='external-events' style="position: absolute; top:200px; left:450px">
+    <div id='external-events' style="position: absolute; top:150px; left:450px">
       <h4>7일 이내 시작할 예정사항</h4>
-      <%for(EnjoyFestival EF2 : list2){%> 
-        <% StringTokenizer ST2 = new StringTokenizer(EF2.getFestival_period(), " ~ ");
-        String startDate2=""; String endDate2="";
-		startDate2 = ST2.nextToken(); endDate2 = ST2.nextToken();
-        %>
-        <a href="/festivalSelect?titleNo=<%=EF2.getSEQ_Index_TitleNo()%>">
-        <div class='fc-event'><%=EF2.getFestival_title() %></div>
+       
+      <%if(list2.size()<=5){ %>
+      <%for(int i=0; i<list2.size();i++){ %>
+        <a href="/festivalSelect?titleNo=<%=list2.get(i).getSEQ_Index_TitleNo()%>">
+        <div class='fc-event'><%=list2.get(i).getFestival_title() %></div>
         </a>
      <%} %>
+     <%}else{ for(int i=0;i<5;i++) {%>
+     	<a href="/festivalSelect?titleNo=<%=list2.get(i).getSEQ_Index_TitleNo()%>">
+        <div class='fc-event'><%=list2.get(i).getFestival_title() %></div>
+        </a>
+     <%}} %>
       <p>
         <input type='checkbox' id='drop-remove' checked="true" style="display:none" />
         <label for='drop-remove'>클릭시 게시물로 이동합니다.</label>
@@ -299,20 +362,53 @@ String mTime = mSimpleDateFormat.format ( currentTime );
       
     </div>
     
-    <div id='external-events2' style="position: absolute; top:550px; left:450px">
+    <div id='external-events2' style="position: absolute; top:450px; left:450px">
       <h4>한달 이내 종료될 예정사항</h4>
-      <%for(EnjoyFestival EF3 : list3){%> 
-        <% StringTokenizer ST3 = new StringTokenizer(EF3.getFestival_period(), " ~ ");
-        String startDate3=""; String endDate3="";
-		startDate3 = ST3.nextToken(); endDate3 = ST3.nextToken();
-        %>
-        <a href="/festivalSelect?titleNo=<%=EF3.getSEQ_Index_TitleNo()%>">
-        <div class='fc-event'><%=EF3.getFestival_title() %></div>
+      <%if(list3.size()<=5){ %>
+      <%for(int i=0; i<list3.size();i++){%> 
+
+        <a href="/festivalSelect?titleNo=<%=list3.get(i).getSEQ_Index_TitleNo()%>">
+        <div class='fc-event'><%=list3.get(i).getFestival_title() %></div>
         </a>
      <%} %>
+     <%}else { for(int i=0;i<5;i++){ %>
+      <a href="/festivalSelect?titleNo=<%=list3.get(i).getSEQ_Index_TitleNo()%>">
+        <div class='fc-event'><%=list3.get(i).getFestival_title() %></div>
+        </a>
+     <%}} %>
       <p>
         <input type='checkbox' id='drop-remove2' checked="true"  style="display:none"/>
         <label for='drop-remove2' >클릭시 게시물로 이동합니다.</label>
+      </p>
+    
+      
+    </div>
+    
+    <div id='external-events3' style="position: absolute; top:700px; left:450px">
+    <%String CurrentMonth="";
+    switch(list4.get(0).getSeason())
+    {
+    case "spring" : CurrentMonth = "봄"; break; 
+    case "summer" : CurrentMonth = "여름"; break;
+    case "fall" : CurrentMonth = "가을"; break;
+    case "winter " : CurrentMonth = "겨울"; break;
+    }
+    %>
+    
+      <h4> 계절별 행사 (<%=CurrentMonth%>)</h4>
+      <%if(list4.size()<=5){ %>
+      <%for(int i=0;i<list4.size();i++){%> 
+        <a href="/festivalSelect?titleNo=<%=list4.get(i).getSEQ_Index_TitleNo()%>">
+        <div class='fc-event'><%=list4.get(i).getFestival_title() %></div>
+        </a>
+     <%}} else{for(int i=0;i<5;i++){ %>
+     <a href="/festivalSelect?titleNo=<%=list4.get(i).getSEQ_Index_TitleNo()%>">
+        <div class='fc-event'><%=list4.get(i).getFestival_title() %></div>
+        </a>
+     <%}} %>
+      <p>
+        <input type='checkbox' id='drop-remove3' checked="true"  style="display:none"/>
+        <label for='drop-remove3' >클릭시 게시물로 이동합니다.</label>
       </p>
     
       
