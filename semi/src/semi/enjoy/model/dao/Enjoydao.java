@@ -574,6 +574,7 @@ public class Enjoydao {
 	            EF.setSEQ_Index_TitleNo(rset.getInt(4));
 	            EF.setFestival_period(rset.getString(8));
 	            EF.setFestival_ontime(rset.getString(10));
+	            EF.setSeason(rset.getString(2));
 	            list.add(EF);
 
 	         }

@@ -13,6 +13,7 @@ public class EnjoyFestival {
 	private  String festival_ontime;
 	private  String StartTime;
 	private  String EndTime;
+	private String Season;
 	public int getFestival_index() {
 		return festival_index;
 	}
@@ -55,8 +56,14 @@ public class EnjoyFestival {
 	public void setEndTime(String endTime) {
 		EndTime = endTime;
 	}
+	public String getSeason() {
+		return Season;
+	}
+	public void setSeason(String season) {
+		Season = season;
+	}
 	public EnjoyFestival(int festival_index, String festival_title, int sEQ_Index_TitleNo, String festival_period,
-			String festival_ontime, String startTime, String endTime) {
+			String festival_ontime, String startTime, String endTime, String season) {
 		super();
 		this.festival_index = festival_index;
 		this.festival_title = festival_title;
@@ -65,8 +72,10 @@ public class EnjoyFestival {
 		this.festival_ontime = festival_ontime;
 		StartTime = startTime;
 		EndTime = endTime;
+		Season = season;
 	}
 	public EnjoyFestival() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
      
