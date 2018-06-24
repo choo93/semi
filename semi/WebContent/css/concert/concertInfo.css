@@ -222,13 +222,16 @@ dl>hr {
 }
 
 #traffic>pre{
-	width:90%;	height:100%;
+	display:block;
+	width:70%;	height:100%;
+	/* float:left; */
 	padding-top:10px;
 	
 }
 
 
 #basicInfoContent>div>div:last-child{
+	width:70%;	height:100%;
 	padding-left:20px;
 	line-height:350%;
 }
@@ -259,10 +262,9 @@ dl>hr {
 }
 
 textarea {
-	margin-left: 50px;
-	/* margin-top: 20px; */
-	width: 530px;
-	height: 180px;
+	margin-left: 50px !important;
+	width: 530px !important;
+	height: 180px !important;
 	display: block;
 }
 
@@ -325,10 +327,14 @@ textarea {
 	margin-left: 40%;
 }
 #navi>a{
-	font-size:20px;
+	font-size:20px !important;
+	cursor:pointer;
+	margin-right:10px;
 }
 #navi>a>b{
-	font-size:20px;
+	cursor:pointer;
+	margin-right:10px;
+	font-size:20px !important;
 }
 #back{
 	width:100%;
@@ -347,5 +353,5 @@ textarea {
 }
 
 #pp::before{
-	content:"\\";
+	content:"₩";
 }

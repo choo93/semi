@@ -1,5 +1,6 @@
 package semi.dobo.model.dao;
 
+import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -370,7 +371,8 @@ public class DoboDAO {
 
 	public DoboReserve selectNoUserReserve(Connection conn, int reserveNo) {
 		PreparedStatement pstmt = null;
-		String query = "select di.doboTitle, dr.doboreserveDate, dr.doboreserveTime, di.doboMeet from doboInfo di, doboReserve dr where dr.doboReserveNum = ?";
+		String query = "select di.doboTitle, dr.doboreserveDate, dr.doboreserveTime, di.doboMeet from doboInfo di, doboReserve dr "
+				+ "where dr.doboCode = di.doboCode and dr.doboReserveNum = ?";
 		ResultSet rset = null;
 		DoboReserve dr = null;
 		
@@ -391,10 +393,35 @@ public class DoboDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
 		
-		
 		return dr;
+	}
+
+	public int loadLatestReserveNo(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from doboreserve order by 1";
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1)*(-1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+			
+		return result;
 	}
 
 }

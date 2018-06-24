@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import semi.dobo.model.service.DoboService;
 import semi.dobo.model.vo.DoboReserve;
+import semi.dobo.model.vo.DoboReserveResult;
 import semi.login.model.vo.SeoulUser;
 
 @WebServlet(name = "DoboReserve", urlPatterns = { "/doboReserve" })
@@ -42,11 +43,16 @@ public class DoboReserveServlet extends HttpServlet {
 		dr.setPhone(request.getParameter("phone"));
 		dr.setComment(request.getParameter("comment"));
 		
-		int result = new DoboService().addReserve(dr);
+		DoboReserveResult rr = new DoboService().addReserve(dr);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/dobo/reserve.jsp");
-		if(result>0) {
+		if(rr.getResult()>0) {
 			request.setAttribute("reserve", "success");
+			
+			if(dr.getUserNo()==-1) {
+				request.setAttribute("noUserReserveNo", rr.getNoUserReserveNo());
+			}
+			
 		}else {
 			request.setAttribute("reserve", "fail");
 		}

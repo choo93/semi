@@ -120,6 +120,7 @@
 				</div>
 				<div id="btn">
 					<input type="submit" value="예약하기" onclick="return check();">
+					<button type="button" onclick="back();">뒤로가기</button>
 				</div>
 
 			</div>

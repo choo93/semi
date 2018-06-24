@@ -37,6 +37,6 @@ function selBool(){
 	if(sel){
 		pay();
 	}else{
-		alert('좌석을 선택해 주세요');
+		alert(maxNum + '개의 좌석을 선택해 주세요');
 	}
 }
