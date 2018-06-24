@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
@@ -43,6 +44,9 @@ public class EnjoyCalendarServlet extends HttpServlet {
 		
 		ArrayList<EnjoyFestival> list = new EnjoyService().AllFestivalData();
 
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
+		Date currentTime = new Date ();
+		String mTime = mSimpleDateFormat.format ( currentTime );
 		if(list.isEmpty()) {
 		}
 		else {
@@ -57,17 +61,34 @@ public class EnjoyCalendarServlet extends HttpServlet {
 				SimpleDateFormat sidf = new SimpleDateFormat("yyyy-MM-dd");
 				Date day1;Date day2;
 				try {
-					day1 = sidf.parse(startDate);
-					day2 = sidf.parse(endDate);
+					day1 = sidf.parse(startDate); // 시작일
+					day2 = sidf.parse(endDate); // 종료일
 					int day3 = (int)((day2.getTime() - day1.getTime())/(60*60*24*1000));
+					
+					int start7day = (int)((day1.getTime() - currentTime.getTime()) / (60*60*24*1000)); 
+					
+					int end30day = (int)((day2.getTime() - currentTime.getTime()) / (60*60*24*1000));
 //					System.out.println(day3+EF.getFestival_title());
-					if(0<day3&&day3<=9) {
+					// 모든정보는 list에 담는다// 담겨져있음.
+//					list.add(EF);
+					// 일주일 이내에 시작예정인것은 list2에 담는다.
+					if(0<=start7day&&start7day<=7) {
+						list2.add(EF);
+					}
+					
+					// 한달 이내에 종료될 예정인것은 list3에담는다.
+					else if(0<=end30day&&end30day<=30) {
+						list3.add(EF);
+						
+					}
+					
+					/*if(0<day3&&day3<=9) {
 						list2.add(EF);
 					}
 					else if(day3>=30)
 					{
 						list3.add(EF);
-					}
+					}*/
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
