@@ -259,10 +259,10 @@ dl>hr {
 }
 
 textarea {
-	margin-left: 50px;
+	margin-left: 50px !important;
 	/* margin-top: 20px; */
-	width: 530px;
-	height: 180px;
+	width: 530px !important;
+	height: 180px !important;
 	display: block;
 }
 

@@ -47,6 +47,12 @@ public class DoboReserveServlet extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/views/dobo/reserve.jsp");
 		if(result>0) {
 			request.setAttribute("reserve", "success");
+			
+			if(dr.getUserNo()==-1) {
+				int noUserReserveNo = new DoboService().loadLatestReserveNo();
+				request.setAttribute("noUserReserveNo", noUserReserveNo);
+			}
+			
 		}else {
 			request.setAttribute("reserve", "fail");
 		}

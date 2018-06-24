@@ -17,6 +17,7 @@
 <body>
 	<div id="wrap">
 		<label>예약 하기</label>
+		<input type="hidden" value ="<%=request.getParameter("price")%>" id="firstPrice">	
 		<form action="/seatSelect" method="get">
 			<div id="dated">
 				<label>날짜선택 </label> <input autocomplete="off"; id="datepicker1" type="text" name="date"><br>
@@ -32,10 +33,12 @@
 				</select>
 			</div>
 			<div id="peopled">
-				<label>인원 선택</label> <select id="people" name="people">
+				<label>인원 선택</label> <select id="people" name="people" onchange="changePrice();">
 					<option value="1">1명</option>
 					<option value="2">2명</option>
 					<option value="3">3명</option>
+					<option value="4">4명</option>
+					<option value="5">5명</option>
 				</select>
 			</div>
 			<input type="hidden" name="indexNo"
@@ -45,7 +48,7 @@
 			<div id="priced">
 				<label>가격 </label> <label id="price"> <%=request.getParameter("price")%></label>
 			</div>
-			<input type="hidden" name="price"
+			<input type="hidden" name="price" id="pprice"
 				value="<%=request.getParameter("price")%>"> <input
 				id="submit" type="submit" value="좌석선택" onclick="return check();">
 		</form>
@@ -70,7 +73,7 @@
 		$("#datepicker1").datepicker({minDate: 0});
 	});
   
-  
+	
 </script>
 
 </body>

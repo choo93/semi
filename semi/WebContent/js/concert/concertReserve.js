@@ -10,3 +10,10 @@ function check(){
 	return true;
 	
 }
+
+function changePrice(){
+	var people = document.getElementById('people').value;
+	var firstPrice = document.getElementById('firstPrice').value;
+	document.getElementById('price').innerHTML = Number(people)*Number(firstPrice);
+	document.getElementById('pprice').value = Number(people)*Number(firstPrice);
+}

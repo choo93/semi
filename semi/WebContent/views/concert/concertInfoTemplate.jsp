@@ -21,7 +21,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>${requestScope.concertInfo.concertTitle }</title>
 	<link rel="stylesheet" href="../../css/main.css">
-	<link rel="stylesheet" href="/css/concert/concertInfo.css">
+	<link rel="stylesheet" href="/css/concert/concertInfo.css?ver=1">
 	
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>

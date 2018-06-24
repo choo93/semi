@@ -87,4 +87,11 @@ public class DoboService {
 		return dr;
 	}
 
+	public int loadLatestReserveNo() {
+		Connection conn = JDBCTemplate.getConnection();
+		int noUserReserveNo = new DoboDAO().loadLatestReserveNo(conn);
+		JDBCTemplate.close(conn);
+		return noUserReserveNo;
+	}
+
 }

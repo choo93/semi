@@ -208,9 +208,9 @@ div {
 }
 
 textarea {
-	margin: auto;
-	width: 530px;
-	height: 180px;
+	margin: auto !important;
+	width: 530px !important;
+	height: 180px !important;
 	display: block;
 }
 
