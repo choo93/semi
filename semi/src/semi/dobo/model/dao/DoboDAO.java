@@ -393,8 +393,10 @@ public class DoboDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
-		
 		
 		return dr;
 	}
