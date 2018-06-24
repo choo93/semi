@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="/css/concert/concertInfo.css">
 	
   	<script src="../../js/jquery-3.3.1.min.js"></script>
-	<script src="../../js/main.js"></script>
+	<!-- <script src="../../js/main.js"></script> -->
 	<script src="/js/concert/concertInfo.js?ver=1"></script>
 	
 	<script>
@@ -55,9 +55,13 @@
         }
 	</script>
 	
-	
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap">
+	<!-- 첫번째 키 -->
+	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap">
+	</script> -->
+	<!-- 두번째 키 -->
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-4XsuBSSVZeOvC4zgU71aY0brfNVVb8&callback=initMap">
 	</script>
+	<!-- 승재형 키 -->
 	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh9pJm90w4fD5Tzzq49BXxKHEI0t2sU_M&callback=initMap">
 	</script> -->
 </head>
