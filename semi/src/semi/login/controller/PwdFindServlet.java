@@ -80,7 +80,6 @@ if(su!=null) {
 	        msg.setContent(contents, "text/html; charset=UTF-8");
 	        msg.setHeader("Content-type", "text/html; charset=UTF-8");
 	        Transport.send(msg);
-	        System.out.println();
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
