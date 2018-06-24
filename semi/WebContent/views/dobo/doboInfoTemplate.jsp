@@ -20,17 +20,15 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${requestScope.doboInfo.doboTitle }</title>
-<link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/dobo/doboInfo.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
-<script src="../../js/main.js"></script>
 <script src="/js/dobo/doboInfo.js?ver=1"></script>
 </head>
 <body id="scroll">
 	<jsp:include page="/views/main/header.jsp" />
 	<section>
 
-		<div id="wrap">
+		<div id="wrap" style="width:960px;margin:0 auto;">
 			<div id="contents">
 				<div id="contentTitle">${requestScope.doboInfo.doboTitle }</div>
 				<div id="contentTop">
@@ -126,11 +124,11 @@
                 	<input type="hidden" value="ds" name="Index_Title">
                 	<div id="comment">
                 		<%if(session.getAttribute("user")!=null){ %>
-                			<textarea id="userComment" name="User_Comment"></textarea>
+                			<textarea id="userComment" name="User_Comment" style="resize:none;background-color:white;border:1px solid #ddd;"></textarea>
                     		<input type="submit" value="작성" onclick="return commentCheck();">
                 		<%}else{ %>
                 			<textarea readonly placeholder="로그인 후 작성이 가능 합니다"></textarea>
-                			<input type="button" value="작성">
+                			<input type="button" value="작성" style="float:right;">
                 		<%} %>
                 	</div>
                 	<input type="hidden" value="<%= request.getParameter("indexNo") %>" name="index_titleNo">

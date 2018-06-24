@@ -31,17 +31,17 @@ public class UserUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		SeoulUser su = new SeoulUser();
-		su.setUserId(request.getParameter("id"));
-		su.setUserPwd(request.getParameter("pwd"));
-		su.setUserPhone(request.getParameter("phone"));
-		su.setUserAddr(request.getParameter("addr"));
+		su.setUserId(request.getParameter("userId"));
+		su.setUserPwd(request.getParameter("userPwd"));
+		su.setUserPhone(request.getParameter("userPhone"));
+		su.setUserAddr(request.getParameter("userAddr"));
 		
 		int result = new UserService().updateUser(su);
 		
 		if(result>0) {
-			response.sendRedirect("/views/login/updateSuccess.jsp");
+			response.sendRedirect("/views/main/updateSuccess.jsp");
 		}else {
-			response.sendRedirect("/views/login/error.html");
+			response.sendRedirect("/views/main/error.html");
 		}
 				
 	}

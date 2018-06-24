@@ -20,8 +20,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>${requestScope.concertInfo.concertTitle }</title>
-	<link rel="stylesheet" href="../../css/main.css">
-	<link rel="stylesheet" href="/css/concert/concertInfo.css?ver=1">
+	<link rel="stylesheet" href="/css/concert/concertInfo.css">
 	
   	<script src="../../js/jquery-3.3.1.min.js"></script>
 	<script src="../../js/main.js"></script>
@@ -63,7 +62,7 @@
 <body id="scroll">
 	<jsp:include page="/views/main/header.jsp" />
 	<section>
-		<div id="wrap">
+		<div id="wrap" style="width:960px;margin:0 auto;">
         <div id="contents">
             <div id="contentTitle">
 				${requestScope.concertInfo.concertTitle }

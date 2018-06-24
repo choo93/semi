@@ -68,10 +68,10 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
         <% } else { %>
         <div id="login_join" class="login_after">	
 			<% if(user.getUserId().equals("admin")){ %>
-				<p><%=user.getUserName()%>로 로그인 하셨습니다</p>
+				<p style="margin-bottom:9px;"><span style="font-weight:bold;"><%=user.getUserName()%></span>로 로그인 하셨습니다</p>
 			<% } else { %>
-				<p style="margin-bottom:4px;margin-left:35px;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
-				<a href="/myPage" style="margin-left:20px;margin-right:15px;">마이페이지</a>
+				<p style="margin-bottom:7px;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
+				<a href="/myPage" style="margin-right:15px;">마이페이지</a>
 			<% } %>
 			<a href="/logout">로그아웃</a><br>
         </div>
@@ -171,14 +171,9 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			<%
 				if (user.getUserId().equals("admin")) {
 			%>
-			<p style="margin-left: 30px; margin-top: 20px;">
-				<%=user.getUserName()%>
-				페이지 입니다
+			<p style="margin-left: 30px; margin-top:30px;margin-bottom:20px;">
+				<span style="font-weight:bold;"><%=user.getUserName()%></span>로 로그인 하셨습니다
 			</p>
-			<ul>
-				<li><a href="/allUser">회원 정보 조회</a></li>
-				<li><a href="">회원 예약 관리</a></li>
-			</ul>
 			<p class="main_admin_page">
 				<a href="/logout">로그아웃</a>
 			</p>
@@ -201,7 +196,7 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 				}
 			%>
 			
-			<ul>
+			<ul style="clear:both;margin-top:20px;">
 				<li><span class="category category1">하이라이트</span>
 					<ul class="subcategory subcategory1">
 						<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>

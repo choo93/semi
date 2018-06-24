@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	회원 가입 완료
+	<script>
+		alert("수정이 완료되었습니다");
+		history.go(-1);
+	</script>
 </body>
 </html>

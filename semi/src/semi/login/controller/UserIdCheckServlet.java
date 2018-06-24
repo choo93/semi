@@ -29,16 +29,13 @@ public class UserIdCheckServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
-		System.out.println("test."+userId);
 		boolean result = new UserService().idCheck(userId);
-		System.out.println(result);
 		int chk=0;
 		if(result==true) {
 			chk=1;
 		}else {
 			chk=2;
 		}
-		System.out.println(chk);
 		response.getWriter().print(chk);
 		response.getWriter().close();
 	}

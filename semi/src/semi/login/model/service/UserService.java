@@ -41,18 +41,6 @@ public class UserService {
 		return list;
 	}
 
-	public int deleteUser(String userId, String userPwd) {
-		Connection conn = JDBCTemplate.getConnection();
-		int result = new UserDao().deleteUser(conn,userId,userPwd);
-		if(result>0) {
-			JDBCTemplate.commit(conn);
-		}else {
-			JDBCTemplate.rollback(conn);
-		}
-		JDBCTemplate.close(conn);
-		return result;
-	}
-
 	public int insertUser(SeoulUser su) {
 		Connection conn = JDBCTemplate.getConnection();
 		int result = new UserDao().insertUser(conn,su);
@@ -137,6 +125,18 @@ public class UserService {
 		SeoulUser su = new UserDao().pwdFind(conn,userId,userName,userEmail);
 		JDBCTemplate.close(conn);
 		return su;
+	}
+
+	public int deleteUser(String userId) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new UserDao().deleteUser(conn,userId);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
 	}
 
 }

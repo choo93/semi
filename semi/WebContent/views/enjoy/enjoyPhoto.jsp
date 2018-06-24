@@ -125,7 +125,7 @@ box-shadow:-1000px 0 0 0 rgba(0,0,0,0.5) inset;
 }
 @media (max-width:808px){
 		
-			.photo1{
+			#photo1,#photo2,#photo3,#photo4,#photo5,#photo6{
 				width:100%;
 			}
 		}

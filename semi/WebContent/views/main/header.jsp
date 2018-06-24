@@ -42,6 +42,9 @@ input[type="checkbox"]:checked+span:not (.lever ):before {
 	border-right: 2px solid #b43029;
 	border-bottom: 2px solid #b43029;
 }
+a{
+	text-decoration:none!important;
+}
 </style>
 </head>
 <body>
@@ -92,6 +95,9 @@ input[type="checkbox"]:checked+span:not (.lever ):before {
 			.subcategory>li>a:hover{
 				background-color:rgba(0,0,0,0.05);
 			}
+			a, ul>li{
+				font-size:1rem!important;
+			}
 			</style>
 				
 			<% if(user==null){ %>
@@ -102,11 +108,10 @@ input[type="checkbox"]:checked+span:not (.lever ):before {
 	        <% } else { %>
 	        <div id="login_join" class="login_after">	
 			<% if(user.getUserId().equals("admin")){ %>
-				<p><%=user.getUserName()%> 페이지 입니다</p>
-				<a href="/allUser">전체회원조회</a>
+				<p style="margin-bottom:8px;font-size:1rem;"><span style="font-weight:bold;"><%=user.getUserName()%></span>로 로그인 하셨습니다</p>
 			<% } else { %>
-				<p style="margin-bottom:4px;margin-left:73px;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
-				<a href="/myPage" style="margin-left:64px;margin-right:15px;">마이페이지</a>
+				<p style="margin-bottom:8px;margin-left:-20px;font-size:1rem;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
+				<a href="/myPage" style="margin-left:-19px;margin-right:15px;">마이페이지</a>
 			<% } %>
 			<a href="/logout">로그아웃</a><br>
 	        </div>
@@ -130,32 +135,39 @@ input[type="checkbox"]:checked+span:not (.lever ):before {
 			<%
 				} else {
 			%>
+			
 			<%
 				if (user.getUserId().equals("admin")) {
 			%>
-			<p style="margin-left: 30px; margin-top: 20px;">
-				<%=user.getUserName()%>
-				페이지 입니다
-			</p>
-			<ul>
-				<li><a href="/allUser">회원 정보 조회</a></li>
-				<li><a href="">회원 예약 관리</a></li>
-			</ul>
-			<p class="main_admin_page">
-				<a href="/logout">로그아웃</a>
+			<p style="margin-left: 30px; margin-top: 20px;margin-bottom:15px;">
+				<span style="font-weight:bold;"><%=user.getUserName()%></span>로 로그인 하셨습니다<br>
+				<a href="/logout" class="header-logout">로그아웃</a>
 			</p>
 			<style>
-			.mobile_category{
-				display: none;
-			}
+				.header-logout{
+					float:right;
+					margin-top:20px;
+					color:#b43029;
+					margin-right:20px!important;
+				}
+				.header-logout:hover{
+					color:#b43029;
+				}
 			</style>
 			<%
 				} else {
 			%>
 			<p id="main_login_page">
-				<span><%=user.getUserName()%></span>님 환영합니다<br>
-				<a href="/myPage" style="padding-right:10px;">마이페이지</a> <a href="/logout" style="padding-left:10px;">로그아웃</a>
+				<p><span style="margin-left:74px;font-weight:bold;margin-bottom:20px;font-size:1rem;"><%=user.getUserName()%></span>님 환영합니다</p>
+				<a href="/myPage" style="padding-right:10px;margin-left:69px;font-size:1rem;">마이페이지</a> 
+				<a href="/logout" class="header-logout">로그아웃</a>
 			</p>
+			<style>
+				#main_login_page>a:hover{
+					color:#b43029!important;
+				}
+			</style>
+			
 			<%
 				}
 			%>

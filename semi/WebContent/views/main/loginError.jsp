@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	회원 탈퇴 완료
+	<script>
+		alert("아이디와 비밀번호를 정확하게 입력해주세요");
+		history.go(-1);
+	</script>
 </body>
 </html>

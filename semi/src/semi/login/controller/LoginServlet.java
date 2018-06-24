@@ -1,6 +1,8 @@
 package semi.login.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,9 +50,11 @@ public class LoginServlet extends HttpServlet {
 				}else {
 					response.sendRedirect("/index.jsp");
 				}
+			}else {
+				response.sendRedirect("views/main/loginError.jsp");
 			}
 		}else {
-			response.sendRedirect("/views/main/login.jsp");
+			response.sendRedirect("/views/main/loginError.jsp");
 		}
 	
 	}
