@@ -26,6 +26,13 @@ a
 	position: relative;
 }
 
+@media (max-width:1265px){
+		
+	#main .menu{
+		width:100%;
+	}
+}
+
 #image {
 	float: right;
 	background-image: url(/views/travelReady/image/image.png);
