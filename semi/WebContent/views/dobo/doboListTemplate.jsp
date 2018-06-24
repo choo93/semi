@@ -27,7 +27,7 @@
 	<section>
 	<div style="width:960px;margin:0 auto;">
 		<div id="title">
-        	공연 예약
+        	도보 관광 예약
         	<button onclick="noUser();">비회원 예약 정보 조회</button>
     	</div>
     	
