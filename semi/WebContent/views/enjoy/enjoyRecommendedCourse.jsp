@@ -12,7 +12,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Seoulaim - 서울즐기기 - 정보</title>
+<link rel="icon" href="../../image/main/favicon.ico">
 <!-- <link rel="stylesheet" href="../../css/main.css"> -->
 <link rel="stylesheet" href="../../css/moreButton.css">
 <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -21,17 +22,17 @@
 <script src="../../js/bootstrap.min.js"></script>
 </head>
 <body id="scroll">
-<%-- 	<%@ include file="/views/main/header.jsp"%> --%>
+<%@ include file="/views/main/header.jsp"%>
 	<section>
 	
 	<!-- 내용물 -->
-	<div id="enjoyRecommendedCoursePage" style="width: 100%;">
+	<div id="enjoyRecommendedCoursePage" style="width: 1600px;margin:0 auto;">
 	
 		<!-- 헤더 DIV -->
-		<div class="header" style="width: 100%;">
+		<div class="header">
 		
 			<!-- 현재 위치 : 서울즐기기 > 추천코스 DIV -->
-			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; margin-top: 25px; margin-left: 10%; ">현재 위치 : 서울즐기기 > 추천코스</div>
+			<div id="currentLocation" style="color: #5F4B8B; font: 12pt 나눔스퀘어; padding-top:25px;margin-top:0px;margin-left:10%;">현재 위치 : 서울즐기기 > 추천코스</div>
 			
 			<!-- 제목과 조회수 -->
 			<div id="textAndHits">
@@ -52,7 +53,7 @@
 
 	  <div id="aboutRecommendedCourse" style="width: 80%; margin-top: 5%; margin-left: 10%;">
       <div class="photo" style="width: 700px; height: 500px; margin:0 auto; border-radius: 12px;" >
-		<img src="<%=EID.getIndex_List_IntroImage()%>">
+		<img style="width:100%;" src="<%=EID.getIndex_List_IntroImage()%>">
 		</div>
 			<!-- 사진 링크 위의 DIV에 이미지 넣기(background-color은 빼주세욤) -->
 	
@@ -87,7 +88,7 @@
 		<!-- 코스 1~ 이미지 -->
 
 		<div id="courseNumImg" style="width: 73px; height: 100px; margin:0 auto;">
-		<img src="<%= EIDD.getIndex_CourseIcon() %>">
+		<img style="width:100%;" src="<%= EIDD.getIndex_CourseIcon() %>">
 		</div>
 
 			<!-- 코스 제목&부제 담을 DIV -->
@@ -106,7 +107,7 @@
 			<!-- 코스 이미지 -->
 
 			<div class="photo" style="width: 700px; height: 500px; margin:0 auto; border-radius: 12px;">
-			<img src="<%=EIDD.getIndex_Image()%>">
+			<img style="width:100%;" src="<%=EIDD.getIndex_Image()%>">
 			</div>
 	
 			<!-- 코스 설명 -->
@@ -193,7 +194,7 @@
 	
 		<!-- 목록버튼을 위한 DIV -->
 		<div style="width: 100%;">
-			<button class="btn btn-outline-secondary" onclick="goToList();" style="position: relative; left: 50%;">목 록</button>
+			<button class="btn btn-outline-secondary" onclick="goToList();" style="position: relative; left: 50%;background-color:#302843;">목 록</button>
 		</div>
 
 		<!-- 목록 버튼을 눌렀을 때 리스트로 돌아가게 하는 스크립트 -->

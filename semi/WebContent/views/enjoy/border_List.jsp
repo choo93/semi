@@ -24,7 +24,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Seoulaim - 서울즐기기</title>
+<title>Seoulaim - 서울즐기기 - 리스트</title>
 <link rel="icon" href="../../image/main/favicon.ico">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <!-- 부트스트랩 CSS -->
@@ -95,7 +95,7 @@ form{
 
 <body>
 	
-	<%-- <%@ include file="/views/main/header.jsp"%> --%>
+	<%@ include file="/views/main/header.jsp"%>
 	
 	<section>
 
@@ -362,7 +362,5 @@ form{
 	</jsp:useBean> --%>
 	</div>	
 	</section>
-
-	<%@ include file="/views/main/footer.jsp"%>
 </body>
 </html>

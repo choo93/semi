@@ -10,8 +10,6 @@
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../../css/bootstrap-theme.min.css">
 		<script src="../../js/jquery-3.3.1.min.js"></script>
-		<script src="../../js/vegas/vegas.min.js"></script>
-		<script src="../../js/main.js"></script>
 	</head>
 	<style>
 		.photo1 {
@@ -101,7 +99,7 @@
 			top:10px;
 			width: 156px;
 			height: 2px; 
-			border: 3px solid yellow;
+			border: 3px solid #3071a9;
 			margin-left:88px;
 		}
 		.container-fluid{

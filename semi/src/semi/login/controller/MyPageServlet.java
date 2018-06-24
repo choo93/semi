@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import semi.concert.model.vo.ConcertReserve;
+import semi.dobo.model.vo.DoboReserve;
+import semi.hotel.model.vo.HotelReserve;
 import semi.login.model.service.UserService;
 import semi.login.model.vo.SeoulUser;
 
@@ -36,9 +39,19 @@ public class MyPageServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession(false);
 		SeoulUser su = new UserService().myPage();
+		
+		int userNo = ((SeoulUser)session.getAttribute("user")).getUserNo();
+		
+		ArrayList<ConcertReserve> concertList = new UserService().loadConcertReserve(userNo);
+		ArrayList<DoboReserve> doboList = new UserService().loadDoboReserve(userNo);
+		ArrayList<HotelReserve> hotelList = new UserService().loadHotelReserve(userNo);
+		
 		if(su!=null) {
 			RequestDispatcher view = request.getRequestDispatcher("/views/main/myPage.jsp");
 			request.setAttribute("user", su);
+			request.setAttribute("concert", concertList);
+			request.setAttribute("dobo", doboList);
+			request.setAttribute("hotel", hotelList);
 			view.forward(request, response);
 		}else {
 			response.sendRedirect("/views/main/error.html");

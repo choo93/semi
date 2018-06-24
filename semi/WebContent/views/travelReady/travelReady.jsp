@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
+<title>Seoulaim - 여행준비</title>
+<link rel="icon" href="../../image/main/favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Nanum+Gothic" rel="stylesheet">
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main/materialize.min.js"></script>
-<script src="../../js/main/main.js"></script>
 </head>
 <style>
 *{margin:0; padding:0;font-family: 'Nanum Gothic', sans-serif; font-size:0.9rem;}
@@ -18,12 +18,19 @@ a
 {text-decoration:none!important;color:black;}
 #main .menu {
 	width: 50%;
-	height: 400px;
+	height:600px;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	z-index: 1;
 	vertical-align: middle;
 	position: relative;
+}
+
+@media (max-width:1265px){
+		
+	#main .menu{
+		width:100%;
+	}
 }
 
 #image {
@@ -64,7 +71,7 @@ a
 	vertical-align: middle;
 	margin-left: 5%;
 	margin-right: 5%;
-	margin-top: 200px;
+	margin-top: 429px;
 	position: absolute;
 	z-index: 2;
 }
@@ -74,9 +81,9 @@ a
 	height: 60px;
 	font-size: 3.3rem;
 	margin-bottom: 10px;
-	font-family: 'Great Vibes', cursive;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	font-family: 'Do Hyeon', sans-serif;
 }
 
 .middle:after {
@@ -90,8 +97,8 @@ a
 	left: 0;
 }
 
-p {
-	font-family: Interstate, sans-serif;
+.middle p {
+	font-family: 'Do Hyeon', sans-serif;
 	color: yellow;
 	position: absolute;
 	letter-spacing: 2px;
@@ -145,23 +152,7 @@ p {
 				</div>
 				</a>
 
-			<div id="service" class="menu">
-						<div class="middle">
-						<div class="font">서비스 안내</div>
-						<p>DISCOVER
-						</p>
-						</div>
-			</div>
-			
-			<a href="#">
-				<div id="notice" class="menu">
-					<div class="middle">
-						<div class="font" style="color: black;">공지사항</div>
-						<p>DISCOVER
-						</p>
-					</div>
-				</div>
-			</a>
+		
 		</div>
 	</section>
 
