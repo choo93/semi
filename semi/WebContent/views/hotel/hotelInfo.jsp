@@ -6,12 +6,12 @@
 	
 %>
 	
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../../css/main.css">
+<title>Seoulaim - 호텔 정보</title>
+<link rel="icon" href="../../image/main/favicon.ico">
 <link rel="stylesheet" href="../../css//hotel/hotelInfo.css?ver=1">
 <link rel="stylesheet" href="/lib/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
@@ -31,8 +31,6 @@
 </style>
 
 <body id="scroll">
-
->
 
 	<%@ include file="/views/main/header.jsp"%>
 	<section>

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import semi.hotel.model.vo.HotelInfo;
-import semi.hotel.model.vo.HotelListData;
 import semi.hotel.model.vo.HotelReserve;
 import semi.hotel.model.vo.RoomInfo;
 
