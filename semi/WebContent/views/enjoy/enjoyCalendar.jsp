@@ -598,7 +598,7 @@ String mTime = mSimpleDateFormat.format ( currentTime );
     <div style='clear:both'></div>
 <!-- 목록버튼을 위한 DIV -->
 				<div style="width: 100%;">
-					<button type="button" class="button" onclick="goToList();" style="position: absolute; left: 892px; width:100px; height:20px;top:799px;">리스트로 이동</button>
+					<button type="button" class="button" onclick="goToList();" style="position: absolute; left: 892px; width:100px; height:35px;top:799px;border:none;background-color:a93030;color:white;">리스트로 이동</button>
 				</div>
 
 				<!-- 목록 버튼을 눌렀을 때 리스트로 돌아가게 하는 스크립트 -->
