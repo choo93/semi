@@ -461,7 +461,7 @@
 			</div>
 			<%if(edd1.getDetail_Latitue()!=0||edd1.getDetail_Longitude()!=0){ %>
 				<!-- 지도교통 내용 넣을곳 -->
-				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap"></script>
+				
 			<!-- 지도&교통편 내용만 담는 DIV -->
 			<div id="map_info" style="width: 90%; height:500px; margin-top: 3%; margin-left: 5%; margin-bottom: 3%; border: 1px solid #D1D0ED; display: none;">
 
@@ -819,6 +819,7 @@
                   	longitude = position.coords.longitude;
                  }
                 </script>
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap"></script>
 	<%-- 	<%@ include file="/views/main/footer.jsp"%> --%>
 </body>
 
