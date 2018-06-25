@@ -354,7 +354,6 @@ function insert(){
 						$('#click').css('display','none');
 						$('section').css('margin-left','301px');
 						$('section').css('opacity','0.5');
-						$('section').css('background-color','rgba(0,0,0,0.5)');
 						$('#click-open').css('display','block');
 					});
 					$('section').click(function(){
