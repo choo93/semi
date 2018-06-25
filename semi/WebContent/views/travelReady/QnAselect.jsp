@@ -209,13 +209,13 @@ function update(){
 				</div>
 				
 
-				<button class="btn btn-primary" style="margin-top:20px;" onclick="back();">목록</button>
+				
 					
 					<input type="hidden" name="questionNo" value="<%=q.getQuestionNo()%>">
 				<input type="submit"class="btn btn-primary" style="margin-top:20px;" value="답변 등록">
 		
 				</form>
-
+				<button class="btn btn-primary" style="margin-top:20px;" onclick="back();">목록</button>
 				<%}else{%>
 				<div id="QnA" style="width:100%; height:auto;">
 				<ul style="width:100%; height:auto;">
@@ -227,7 +227,7 @@ function update(){
 				<li style="height:150px;border-bottom:2px solid gray;">
 				<dl><dt class="image" style="height:70px;  background-image:url(/views/travelReady/image/question.png);">
 					<input type="hidden" id="uqnaNo" value="<%=q.getQuestionNo()%>">
-					<dd class="answer" ><textarea  id="upC" row="5" style="width:500px; height:100px; display:none;"><%=q.getContent()%></textarea><label id="C"><%=q.getContent()%></label></dd>
+					<dd class="answer" ><textarea  id="upC" row="5" style="width:500px; height:100px; display:none;"><%=q.getContent()%></textarea><textarea  id="C" row="5" style="width:500px; height:100px; border:0px;resize:none;" readonly><%=q.getContent()%></textarea></dd>
 				</dt></dl>
 				</li>
 				</ul>
