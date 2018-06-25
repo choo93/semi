@@ -43,7 +43,8 @@ String mTime = mSimpleDateFormat.format ( currentTime );
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Seoulaim - 캘린더</title>
+		<link rel="icon" href="../../image/main/favicon.ico">
 <link rel="stylesheet" href="../../css/enjoy/fullcalendar.min.css">
 <link rel="stylesheet" href="../../css/enjoy/fullcalendar.print.min.css" media="print">
 
@@ -336,9 +337,10 @@ String mTime = mSimpleDateFormat.format ( currentTime );
   
     
     #calendar {
-        float:right;
         max-width : 1000px;
         margin : 0 auto;
+        position:absolute;
+        left:463px;
     }
 </style>
 </head>
@@ -410,9 +412,9 @@ String mTime = mSimpleDateFormat.format ( currentTime );
 						<p style="margin-bottom:8px;font-size:1rem;"><span style="font-weight:bold;"><%=user.getUserName()%></span>로 로그인 하셨습니다</p>
 					<% } else { %>
 						<p style="margin-bottom:8px;margin-left:-20px;font-size:1rem;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
-						<a href="/myPage" style="margin-left:-19px;margin-right:15px;font-size:1rem!important;">마이페이지</a>
+						<a href="/myPage" style="margin-left:-19px;margin-right:15px;font-size:1rem!important;text-decoration:none!important;">마이페이지</a>
 					<% } %>
-					<a href="/logout" style="font-size:1rem!important;">로그아웃</a><br>
+					<a href="/logout" style="font-size:1rem!important;text-decoration:none!important;">로그아웃</a><br>
 			        </div>
 			        <% } %>	
 			        
@@ -445,33 +447,33 @@ String mTime = mSimpleDateFormat.format ( currentTime );
 					<ul class="mainCategory" style="clear:both;list-style:none;">
 						<li><span class="category category1">하이라이트</span>
 							<ul class="subcategory subcategory1" style="display:block;font-size:1rem!important;">
-								<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
-								<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
+								<li><a href="/views/placerank/place_Photo.jsp" style="text-decoration:none;">Top 10</a></li>
+								<li><a href="/views/festival/festivalPhoto.jsp" style="text-decoration:none;">축제&amp;행사</a></li>
 							</ul>
 						</li>
 						<li><span class="category category2">서울즐기기</span>
 							<ul class="subcategory subcategory2">
-								<li><a href="/enjoyList?type=type1">추천코스</a></li>
-								<li><a href="/enjoyList?type=type2">명소</a></li>
-								<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+								<li><a href="/enjoyList?type=type1" style="text-decoration:none;">추천코스</a></li>
+								<li><a href="/enjoyList?type=type2" style="text-decoration:none;">명소</a></li>
+								<li><a href="/enjoyList?type=type3" style="text-decoration:none;">쇼핑</a></li>
 				<li><a href="/hotelList">숙소</a></li>
-					<li><a href="/enjoyList?type=type5">음식점</a></li>
-					<li><a href="/enjoyCalendar">캘린더</a></li>
+					<li><a href="/enjoyList?type=type5" style="text-decoration:none;">음식점</a></li>
+					<li><a href="/enjoyCalendar" style="text-decoration:none;">캘린더</a></li>
 							</ul>
 						</li>
 						<li><span class="category category3">예약하기</span>
 							<ul class="subcategory subcategory3">
-								<li><a href="/concertList">공연예약</a></li>
-								<li><a href="/hotelList">호텔예약</a></li>
-								<li><a href="/doboList">서울도보관광예약</a></li>
+								<li><a href="/concertList" style="text-decoration:none;">공연예약</a></li>
+								<li><a href="/hotelList" style="text-decoration:none;">호텔예약</a></li>
+								<li><a href="/doboList" style="text-decoration:none;">서울도보관광예약</a></li>
 							</ul>
 						</li>
 						<li><span class="category category4">여행준비</span>
 							<ul class="subcategory subcategory4">
-								<li><a href="/guideBookDown">가이드북</a></li>
-								<li><a href="/views/travelReady/travelInformation.jsp">여행필수정보</a></li>
-								<li><a href="/seoulImage">서울 관광 이미지</a></li>
-								<li><a href="/faq">FAQ</a></li>
+								<li><a href="/guideBookDown" style="text-decoration:none;">가이드북</a></li>
+								<li><a href="/views/travelReady/travelInformation.jsp" style="text-decoration:none;">여행필수정보</a></li>
+								<li><a href="/seoulImage" style="text-decoration:none;">서울 관광 이미지</a></li>
+								<li><a href="/faq" style="text-decoration:none;">FAQ</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -596,7 +598,7 @@ String mTime = mSimpleDateFormat.format ( currentTime );
     <div style='clear:both'></div>
 <!-- 목록버튼을 위한 DIV -->
 				<div style="width: 100%;">
-					<button type="button" class="button" onclick="goToList();" style="position: absolute; left: 892px; width:100px; height:20px">리스트로 이동</button>
+					<button type="button" class="button" onclick="goToList();" style="position: absolute; left: 892px; width:100px; height:20px;top:799px;">리스트로 이동</button>
 				</div>
 
 				<!-- 목록 버튼을 눌렀을 때 리스트로 돌아가게 하는 스크립트 -->
@@ -618,7 +620,6 @@ String mTime = mSimpleDateFormat.format ( currentTime );
 						$('#click').css('display','none');
 						$('section').css('margin-left','301px');
 						$('section').css('opacity','0.5');
-						$('section').css('background-color','rgba(0,0,0,0.5)');
 						$('#click-open').css('display','block');
 					});
 					$('section').click(function(){

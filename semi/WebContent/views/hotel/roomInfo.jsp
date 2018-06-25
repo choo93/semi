@@ -13,7 +13,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Seoulaim - 호텔 예약</title>
 <link rel="icon" href="../../image/main/favicon.ico">
-<link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/hotel/roomInfo.css?ver=1">
 <link rel="stylesheet" href="/lib/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Great+Vibes" rel="stylesheet">
@@ -81,8 +80,8 @@
 						
 					<% if(user==null){ %>
 			        <div id="login_join">
-			        	<a href="/views/main/login.jsp" class="main-login" style="font-size:1rem!important;">로그인</a>
-			        	<a href="/views/main/joinus.jsp" style="font-size:1rem!important;">회원가입</a>
+			        	<a href="/views/main/login.jsp" class="main-login" style="font-size:1rem!important;text-decoration:none!important;">로그인</a>
+			        	<a href="/views/main/joinus.jsp" style="font-size:1rem!important;text-decoration:none!important;">회원가입</a>
 			        </div>    
 			        <% } else { %>
 			        <div id="login_join" class="login_after">	
@@ -90,9 +89,9 @@
 						<p style="margin-bottom:8px;font-size:1rem;"><span style="font-weight:bold;"><%=user.getUserName()%></span>로 로그인 하셨습니다</p>
 					<% } else { %>
 						<p style="margin-bottom:8px;margin-left:-20px;font-size:1rem;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
-						<a href="/myPage" style="margin-left:-19px;margin-right:15px;font-size:1rem!important;">마이페이지</a>
+						<a href="/myPage" style="margin-left:-19px;margin-right:15px;font-size:1rem!important;text-decoration:none!important;">마이페이지</a>
 					<% } %>
-					<a href="/logout" style="font-size:1rem!important;">로그아웃</a><br>
+					<a href="/logout" style="font-size:1rem!important;text-decoration:none!important;">로그아웃</a><br>
 			        </div>
 			        <% } %>	
 			        
@@ -127,33 +126,33 @@
 					<ul class="mainCategory" style="clear:both;list-style:none;margin-left:50px;">
 						<li><span class="category category1">하이라이트</span>
 							<ul class="subcategory subcategory1" style="display:block;font-size:1rem!important;">
-								<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
-								<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
+								<li><a href="/views/placerank/place_Photo.jsp" style="text-decoration:none!important;">Top 10</a></li>
+								<li><a href="/views/festival/festivalPhoto.jsp" style="text-decoration:none!important;">축제&amp;행사</a></li>
 							</ul>
 						</li>
 						<li><span class="category category2">서울즐기기</span>
 							<ul class="subcategory subcategory2">
-								<li><a href="/enjoyList?type=type1">추천코스</a></li>
-								<li><a href="/enjoyList?type=type2">명소</a></li>
-								<li><a href="/enjoyList?type=type3">쇼핑</a></li>
-				<li><a href="/hotelList">숙소</a></li>
-					<li><a href="/enjoyList?type=type5">음식점</a></li>
-					<li><a href="/enjoyCalendar">캘린더</a></li>
+								<li><a href="/enjoyList?type=type1" style="text-decoration:none!important;">추천코스</a></li>
+								<li><a href="/enjoyList?type=type2" style="text-decoration:none!important;">명소</a></li>
+								<li><a href="/enjoyList?type=type3" style="text-decoration:none!important;">쇼핑</a></li>
+				<li><a href="/hotelList" style="text-decoration:none!important;">숙소</a></li>
+					<li><a href="/enjoyList?type=type5" style="text-decoration:none!important;">음식점</a></li>
+					<li><a href="/enjoyCalendar" style="text-decoration:none!important;">캘린더</a></li>
 							</ul>
 						</li>
 						<li><span class="category category3">예약하기</span>
 							<ul class="subcategory subcategory3">
-								<li><a href="/concertList">공연예약</a></li>
-								<li><a href="/hotelList">호텔예약</a></li>
-								<li><a href="/doboList">서울도보관광예약</a></li>
+								<li><a href="/concertList" style="text-decoration:none!important;">공연예약</a></li>
+								<li><a href="/hotelList" style="text-decoration:none!important;">호텔예약</a></li>
+								<li><a href="/doboList" style="text-decoration:none!important;">서울도보관광예약</a></li>
 							</ul>
 						</li>
 						<li><span class="category category4">여행준비</span>
 							<ul class="subcategory subcategory4">
-								<li><a href="/guideBookDown">가이드북</a></li>
-								<li><a href="/views/travelReady/travelInformation.jsp">여행필수정보</a></li>
-								<li><a href="/seoulImage">서울 관광 이미지</a></li>
-								<li><a href="/faq">FAQ</a></li>
+								<li><a href="/guideBookDown" style="text-decoration:none!important;">가이드북</a></li>
+								<li><a href="/views/travelReady/travelInformation.jsp" style="text-decoration:none!important;">여행필수정보</a></li>
+								<li><a href="/seoulImage" style="text-decoration:none!important;">서울 관광 이미지</a></li>
+								<li><a href="/faq" style="text-decoration:none!important;">FAQ</a></li>
 							</ul>
 						</li>
 					</ul>
