@@ -20,10 +20,8 @@
 <link rel="icon" href="../../image/main/favicon.ico">
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<title>Insert title here</title>
 
   	<script src="../../js/jquery-3.3.1.min.js"></script>
-	<script src="../../js/main.js"></script>
 
 		
 
