@@ -84,39 +84,7 @@
 			});
 		}
 </script>
-<script>
-				function initMap() {
-						var uluru = {
-							lat:
-<%=pr.getPlaceLatitude() %>
-	,
-							lng:
-<%=pr.getPlaceLongtitude() %>
-	};
-						var map = new google.maps.Map(document.getElementById('mapContent'), {
-							zoom: 18,
-							center: uluru
-						});
-						var marker = new google.maps.Marker({
-							position: uluru,
-							map: map
-						});
-					}
 
-					var latitude;
-					var longitude;
-					window.onload = function () {
-						navigator.geolocation.getCurrentPosition(showYourLocation);
-					}
-
-					function showYourLocation(position) {
-						latitude = position.coords.latitude;
-						longitude = position.coords.longitude;
-					}
-				</script>
-
-
-				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap"></script>
 			</head>
 
 			<body id="scroll">
@@ -584,7 +552,40 @@
 						$('section').css('background-color','white');
 						$('#click-open').css('display','none');
 					});
-				</script>						
+				</script>
+                                                                              <script>
+				function initMap() {
+						var uluru = {
+							lat:
+<%=pr.getPlaceLatitude() %>
+	,
+							lng:
+<%=pr.getPlaceLongtitude() %>
+	};
+						var map = new google.maps.Map(document.getElementById('mapContent'), {
+							zoom: 18,
+							center: uluru
+						});
+						var marker = new google.maps.Marker({
+							position: uluru,
+							map: map
+						});
+					}
+
+					var latitude;
+					var longitude;
+					window.onload = function () {
+						navigator.geolocation.getCurrentPosition(showYourLocation);
+					}
+
+					function showYourLocation(position) {
+						latitude = position.coords.latitude;
+						longitude = position.coords.longitude;
+					}
+				</script>
+
+
+				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap"></script>
 			</body>
 
 			</html>
