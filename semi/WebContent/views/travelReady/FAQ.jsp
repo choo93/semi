@@ -305,7 +305,7 @@ function test(id){
 
 			
 			<div id="pagecontent">
-			<article id="content" style="padding-top:50px;height:800px;">
+			<article id="content" style="padding-top:50px;">
 				<h2 style="font-size:24px; font-weight:bold; color:#0069d9;">자주 하시는 질문</h2>
 				<div id="faqtitle">
 				<div id="faqtitleimg"></div>
