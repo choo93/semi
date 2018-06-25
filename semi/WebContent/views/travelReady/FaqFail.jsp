@@ -29,7 +29,7 @@ a
 {text-decoration:none!important;color:black;}
      #pagecontent
     {
-    	height:auto;
+    	height:800px;
     	margin-left:3%;
     	margin-right:3%;
     	padding-left:51px;
@@ -176,7 +176,7 @@ function test(id){
 					.subcategory>li>a{
 						display:block;
 						width:100%;
-						padding-left:40px;
+						padding-left:75px;
 					}
 					.subcategory>li>a:hover{
 						background-color:rgba(0,0,0,0.05);
@@ -198,7 +198,7 @@ function test(id){
 						<p style="margin-bottom:8px;font-size:1rem;"><span style="font-weight:bold;"><%=user.getUserName()%></span>로 로그인 하셨습니다</p>
 					<% } else { %>
 						<p style="margin-bottom:8px;margin-left:-20px;font-size:1rem;"><span style="font-weight:bold;"><%=user.getUserName()%></span>님 환영합니다</p>
-						<a href="/myPage" style="margin-left:-19px;margin-right:15px;font-size:1.5rem!important;">마이페이지</a>
+						<a href="/myPage" style="margin-left:-19px;margin-right:15px;font-size:1rem!important;">마이페이지</a>
 					<% } %>
 					<a href="/logout" style="font-size:1rem!important;">로그아웃</a><br>
 			        </div>
@@ -209,7 +209,7 @@ function test(id){
 			        		text-decoration:none;
 			        	}
 			        	.mainCategory>li{
-			        		font-size:1.7rem!important;
+			        		font-size:1rem!important;
 			        		margin-left:-40px;
 			        		padding-top:20px;
 			        		padding-bottom:20px;
@@ -232,9 +232,9 @@ function test(id){
 			        	}
 			        </style>	        	
 					<!-- common category -->
-					<ul class="mainCategory" style="clear:both;list-style:none;margin-left:73px;">
+					<ul class="mainCategory" style="clear:both;list-style:none;margin-left:50px;">
 						<li><span class="category category1">하이라이트</span>
-							<ul class="subcategory subcategory1" style="display:block;">
+							<ul class="subcategory subcategory1" style="display:block;font-size:1rem!important;">
 								<li><a href="/views/placerank/place_Photo.jsp">Top 10</a></li>
 								<li><a href="/views/festival/festivalPhoto.jsp">축제&amp;행사</a></li>
 							</ul>
@@ -244,8 +244,9 @@ function test(id){
 								<li><a href="/enjoyList?type=type1">추천코스</a></li>
 								<li><a href="/enjoyList?type=type2">명소</a></li>
 								<li><a href="/enjoyList?type=type3">쇼핑</a></li>
-								<li><a href="/enjoyList?type=type5">음식점</a></li>
-								<li><a href="/enjoyList?type=type6">캘린더</a></li>
+				<li><a href="/hotelList">숙소</a></li>
+					<li><a href="/enjoyList?type=type5">음식점</a></li>
+					<li><a href="/enjoyCalendar">캘린더</a></li>
 							</ul>
 						</li>
 						<li><span class="category category3">예약하기</span>
@@ -371,7 +372,6 @@ function test(id){
 						$('#click').css('display','none');
 						$('section').css('margin-left','301px');
 						$('section').css('opacity','0.5');
-						$('section').css('background-color','rgba(0,0,0,0.5)');
 						$('#click-open').css('display','block');
 					});
 					$('section').click(function(){
