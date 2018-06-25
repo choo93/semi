@@ -8,7 +8,7 @@
 %>
     
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -22,7 +22,6 @@
 <title>Insert title here</title>
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../../js/main.js"></script>
@@ -297,7 +296,6 @@ function insert(){
 						$('#click').css('display','none');
 						$('section').css('margin-left','301px');
 						$('section').css('opacity','0.5');
-						$('section').css('background-color','rgba(0,0,0,0.5)');
 						$('#click-open').css('display','block');
 					});
 					$('section').click(function(){

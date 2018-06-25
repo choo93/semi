@@ -3,12 +3,6 @@ html, body{height:100%;}
 a{text-decoration:none!important;color:black;}
 li{list-style:none;}
 
-/* scrollbar */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #fff; }
-::-webkit-scrollbar-thumb { background: #b43029; }
-::-webkit-scrollbar-thumb:hover { background: #000; }
-
 #menu_icon_close{
     display:none;
 }
