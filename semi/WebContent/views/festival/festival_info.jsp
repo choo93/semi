@@ -207,8 +207,9 @@
 								<li><a href="/enjoyList?type=type1">추천코스</a></li>
 								<li><a href="/enjoyList?type=type2">명소</a></li>
 								<li><a href="/enjoyList?type=type3">쇼핑</a></li>
-								<li><a href="/enjoyList?type=type5">음식점</a></li>
-								<li><a href="/enjoyList?type=type6">캘린더</a></li>
+				<li><a href="/hotelList">숙소</a></li>
+					<li><a href="/enjoyList?type=type5">음식점</a></li>
+					<li><a href="/enjoyCalendar">캘린더</a></li>
 							</ul>
 						</li>
 						<li><span class="category category3">예약하기</span>
@@ -567,8 +568,8 @@
 						$('section').css('background-color','white');
 						$('#click-open').css('display','none');
 					});
-				</script>		
-				<script>
+				</script>
+        <script>
 					function initMap() {
 						var uluru = {
 							lat:
@@ -578,7 +579,7 @@
 <%=f.getFestivalLongtitude() %>
 	};
 						var map = new google.maps.Map(document.getElementById('mapContent'), {
-							zoom: 16,
+							zoom: 18,
 							center: uluru
 						});
 						var marker = new google.maps.Marker({
@@ -600,7 +601,7 @@
 				</script>
 
 
-				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap"></script>					
+				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap"></script>
 			</body>
 
 			</html>
