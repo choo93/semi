@@ -90,8 +90,9 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 					<li><a href="/enjoyList?type=type1">추천코스</a></li>
 					<li><a href="/enjoyList?type=type2">명소</a></li>
 					<li><a href="/enjoyList?type=type3">쇼핑</a></li>
+					<li><a href="/hotelList">숙소</a></li>
 					<li><a href="/enjoyList?type=type5">음식점</a></li>
-					<li><a href="/enjoyList?type=type6">캘린더</a></li>
+					<li><a href="/enjoyCalendar">캘린더</a></li>
 				</ul>
 			</li>
 			<li><span class="category category3">예약하기</span>
@@ -124,8 +125,9 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 			    <li><a href="/enjoyList?type=type1">추천코스</a></li>
 				<li><a href="/enjoyList?type=type2">명소</a></li>
 				<li><a href="/enjoyList?type=type3">쇼핑</a></li>
-				<li><a href="/enjoyList?type=type5">음식점</a></li>
-				<li><a href="/enjoyList?type=type6">캘린더</a></li>
+				<li><a href="/hotelList">숙소</a></li>
+					<li><a href="/enjoyList?type=type5">음식점</a></li>
+					<li><a href="/enjoyCalendar">캘린더</a></li>
 			</ul>			
 			</li>
 			<li class="category_title" style="cursor:pointer;"><a href="" style="display:block;width:100%;">예약하기</a>
@@ -208,8 +210,9 @@ input[type=password]:not(.browser-default):focus:not([readonly])+label{
 						<li><a href="/enjoyList?type=type1">추천코스</a></li>
 						<li><a href="/enjoyList?type=type2">명소</a></li>
 						<li><a href="/enjoyList?type=type3">쇼핑</a></li>
-						<li><a href="/enjoyList?type=type5">음식점</a></li>
-						<li><a href="/enjoyList?type=type6">캘린더</a></li>
+				<li><a href="/hotelList">숙소</a></li>
+					<li><a href="/enjoyList?type=type5">음식점</a></li>
+					<li><a href="/enjoyCalendar">캘린더</a></li>
 					</ul>
 				</li>
 				<li><span class="category category3">예약하기</span>
