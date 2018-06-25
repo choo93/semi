@@ -93,7 +93,7 @@
     	function up(commentNo,userId){
     		
     		var upDown="up";
-    		var up=document.getElementById('upinc').innerHTML;
+    		var up=document.getElementById('upinc_'+commentNo).innerHTML;
  		   $.ajax({
 	 			url : "/seoulInformationCommentUpDown",
 	 			data : {UpDown:upDown,commentNo:commentNo,Up:up,userId:userId},
@@ -103,7 +103,7 @@
 	 				if(data==-2){
 	 					alert("이미 추천하신 댓글입니다.")
 	 				}else{
-	 				document.getElementById('upinc').innerHTML=data;
+	 				document.getElementById('upinc_'+commentNo).innerHTML=data;
 	 				}
 	 				
 	 			}
@@ -332,12 +332,13 @@
 										<button onclick="up(<%=sic.getCommentNo()%>,'<%=su.getUserId()%>');" style="width:40px;height:30px; border-radius:7px; background-color:white;">
 										<span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
 									    background-position: 0px -93px;">
-									    <strong id="upinc"><%=sic.getUp()%></strong></span></button>
+									    <strong id="upinc_<%=sic.getCommentNo()%>"><%=sic.getUp()%></strong></span></button>
+									    
 									    <%}else{ %>
 									    <button onclick="logout();" style="width:40px;height:30px; border-radius:7px; background-color:white;">
 										<span style="padding-left:20px;  background: url(https://101.livere.co.kr/images/ver8/pluginicon8.png) no-repeat 0px -94px;
 									    background-position: 0px -93px;">
-									    <strong id="upinc"><%=sic.getUp()%></strong></span></button>
+									    <strong id="upinc_<%=sic.getCommentNo()%>"><%=sic.getUp()%></strong></span></button>
 									    
 									    <%} %>
 									    
@@ -376,6 +377,7 @@
 									    background-position: 4px -26px;">
 									    삭제</span></button></li>
 									    <%} %>
+									    
 									    
 									</form>
 								</ul>
