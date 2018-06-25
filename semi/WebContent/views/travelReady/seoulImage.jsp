@@ -87,6 +87,10 @@ function insert(){
 </script>
 
 <body id="scroll">
+
+
+
+
 <section>
 <center>
 <form class="form-inline" action="/seoulImageSearch" method="post">
