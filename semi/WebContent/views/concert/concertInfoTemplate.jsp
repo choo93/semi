@@ -26,44 +26,7 @@
 	<!-- <script src="../../js/main.js"></script> -->
 	<script src="/js/concert/concertInfo.js?ver=1"></script>
 	
-	<script>
-        // 이거는 자바 스크립트 선언에서 가져오는 듯
-        function initMap() {
-        	var uluru = {
-                    lat: <%= ci.getConcertLatitude()-0.00022 %>, 
-                    lng: <%= ci.getConcertLongtitude()%>
-               };
-                var map = new google.maps.Map(document.getElementById('mapContent'), {
-                    zoom: 18,
-                    center: uluru
-                });
-                var marker = new google.maps.Marker({
-                    position: uluru,
-                    map: map
-                });
-            }
-            
-        var latitude;
-        var longitude;
-        window.onload = function() {
-            navigator.geolocation.getCurrentPosition(showYourLocation);
-        }
-
-        function showYourLocation(position) {
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
-        }
-	</script>
 	
-	<!-- 첫번째 키 -->
-	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap">
-	</script> -->
-	<!-- 두번째 키 -->
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-4XsuBSSVZeOvC4zgU71aY0brfNVVb8&callback=initMap">
-	</script>
-	<!-- 승재형 키 -->
-	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh9pJm90w4fD5Tzzq49BXxKHEI0t2sU_M&callback=initMap">
-	</script> -->
 </head>
 <body id="scroll">
 	<jsp:include page="/views/main/header.jsp" />
@@ -303,7 +266,44 @@
     	};
     
     </script>
-    
+    <script>
+        // 이거는 자바 스크립트 선언에서 가져오는 듯
+        function initMap() {
+        	var uluru = {
+                    lat: <%= ci.getConcertLatitude()-0.00022 %>, 
+                    lng: <%= ci.getConcertLongtitude()%>
+               };
+                var map = new google.maps.Map(document.getElementById('mapContent'), {
+                    zoom: 18,
+                    center: uluru
+                });
+                var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+            }
+            
+        var latitude;
+        var longitude;
+        window.onload = function() {
+            navigator.geolocation.getCurrentPosition(showYourLocation);
+        }
+
+        function showYourLocation(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+        }
+	</script>
+	
+	<!-- 첫번째 키 -->
+	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGT4VwYUrA0PeXg-MIt2MvQBGEyDLBQ4Y&callback=initMap">
+	</script> -->
+	<!-- 두번째 키 -->
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-4XsuBSSVZeOvC4zgU71aY0brfNVVb8&callback=initMap">
+	</script>
+	<!-- 승재형 키 -->
+	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh9pJm90w4fD5Tzzq49BXxKHEI0t2sU_M&callback=initMap">
+	</script> -->
     
     
 	</section>
